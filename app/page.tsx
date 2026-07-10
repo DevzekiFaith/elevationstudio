@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
+import { BrandFlow } from "@/components/BrandFlow";
 
 export default function Home() {
   return (
@@ -71,6 +72,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <BrandFlow />
 
       <div className="marquee-bar">
         <div className="marquee-inner">
