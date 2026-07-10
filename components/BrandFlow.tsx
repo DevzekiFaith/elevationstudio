@@ -3,133 +3,154 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const BRANDS = [
+const PROJECTS = [
   {
     name: "VOLTA",
-    sector: "Luxury Hospitality",
-    location: "Victoria Island, Lagos",
+    sector: "LUXURY HOSPITALITY",
+    location: "VICTORIA ISLAND, LAGOS",
+    heroImage: "/volta_stage_4.png",
     accentColor: "#d4a843",
+    desc: "An ultra-premium 5-star boutique hotel group commanding the coastal Lagos skyline. Complete brand transformation to appeal to global luxury travelers, spanning architectural renders, booking engines, and staff culture alignment.",
     stages: [
       {
         num: "01",
-        label: "Guest Insights",
+        label: "GUEST INSIGHTS",
+        verb: "Auditing market expectations",
         image: "/volta_stage_1.png",
         detail:
-          "Audited 12 luxury competitors across Victoria Island and Accra, mapping guest friction and sensory lobby environments.",
+          "Audited 12 luxury competitors across Victoria Island to benchmark the unique customer expectations for the Volta boutique experience.",
       },
       {
         num: "02",
-        label: "Identity System",
+        label: "IDENTITY SYSTEM",
+        verb: "Crafting visual signature",
         image: "/volta_stage_2.png",
         detail:
-          "Golden geometric chevron emblem, luxury room signage, and custom leather keycard packaging.",
+          "Designed the bespoke Volta brand identity featuring a signature gold geometric chevron emblem, luxury room signage, and custom leather keycard packaging.",
       },
       {
         num: "03",
-        label: "Booking Platform",
+        label: "BOOKING ENGINE",
+        verb: "Developing digital portal",
         image: "/volta_stage_3.png",
         detail:
-          "Immersive Next.js reservation engine with video backdrops and custom calendar availability flows.",
+          "Engineered the immersive Volta Next.js reservation engine with video backdrops and custom calendar availability flows.",
       },
       {
         num: "04",
-        label: "Facade & Architecture",
+        label: "FACADE & SPACE",
+        verb: "Architecting physical form",
         image: "/volta_stage_4.png",
         detail:
-          "Exterior facade renders and BIM layouts — glass, brass, and dark granite against the Lagos twilight.",
+          "Delivered production-ready exterior facade renders and interior layouts for the Volta hotel, capturing its glass and brass lines against the Lagos sunset.",
       },
       {
         num: "05",
-        label: "Culture Program",
+        label: "CULTURE PROGRAM",
+        verb: "Aligning human service",
         image: "/volta_stage_5.png",
         detail:
-          "6-month Mindvest hospitality alignment — training front-of-house, butler, and concierge teams.",
+          "Conducted a 6-month Mindvest training alignment program to instil the premium Volta hospitality service model across all front-of-house teams.",
       },
     ],
   },
   {
     name: "GREENFIELD",
-    sector: "Real Estate Development",
-    location: "Sagamu–Lagos Corridor",
+    sector: "REAL ESTATE MASTERPLAN",
+    location: "SAGAMU–LAGOS CORRIDOR",
+    heroImage: "/greenfield_stage_4.png",
     accentColor: "#4ecba0",
+    desc: "A pioneering mixed-use eco-luxury metropolis. Setting new benchmarks for sustainable African urbanism with solar mapping, interactive 3D plot selectors, and rammed-earth clubhouse architectural designs.",
     stages: [
       {
         num: "01",
-        label: "Ecology Surveys",
+        label: "ECOLOGY SURVEYS",
+        verb: "Mapping natural canvas",
         image: "/greenfield_stage_1.png",
         detail:
-          "Topographic drone mapping and solar exposure vectors along the Lagos–Sagamu corridor.",
+          "Conducted solar exposure vector models and topographic drone mapping to define the green layout of the Greenfield metropolis.",
       },
       {
         num: "02",
-        label: "Eco Identity",
+        label: "ECO IDENTITY",
+        verb: "Synthesizing structure & soil",
         image: "/greenfield_stage_2.png",
         detail:
-          "Deep emerald and terracotta logo system — structures rising from nature.",
+          "Designed the sustainable Greenfield brand identity utilizing deep emerald and terracotta clay tones to symbolize structure rising from nature.",
       },
       {
         num: "03",
-        label: "Plot Selector",
+        label: "PLOT SELECTOR",
+        verb: "Coding custom interactive 3D",
         image: "/greenfield_stage_3.png",
         detail:
-          "Real-time interactive land plot app with live pricing and availability for buyers.",
+          "Built the custom Greenfield interactive 3D land plot selector app with live availability and digital contract signing.",
       },
       {
         num: "04",
-        label: "Clubhouse Facade",
+        label: "CLUBHOUSE FACADE",
+        verb: "Modeling organic architecture",
         image: "/greenfield_stage_4.png",
         detail:
-          "Rammed-earth facade, solar canopy roof, and integrated landscape 3D renders.",
+          "Designed the physical architecture for the Greenfield eco-clubhouse, showcasing rammed-earth facades, solar roofing, and integrated landscape renders.",
       },
       {
         num: "05",
-        label: "Sustainability Charter",
+        label: "GREEN CHARTER",
+        verb: "Deploying environmental code",
         image: "/greenfield_stage_5.png",
         detail:
-          "Internal developer workshops and a printed charter manual for eco-compliant construction.",
+          "Established the Greenfield Sustainability Charter training and workshops to transition construction partners into eco-friendly building practices.",
       },
     ],
   },
   {
     name: "MERIDIAN",
-    sector: "Federal Institution",
-    location: "Abeokuta, Ogun State",
+    sector: "FEDERAL INSTITUTION",
+    location: "ABEOKUTA, OGUN STATE",
+    heroImage: "/meridian_stage_4.png",
     accentColor: "#a89fd4",
+    desc: "A monumental public agency modernization. Establishing civic trust through visual crest redesigns, secure citizen portals, contemporary administrative pavilions, and national administrative workflow reforms.",
     stages: [
       {
         num: "01",
-        label: "Friction Audit",
+        label: "FRICTION AUDIT",
+        verb: "Analyzing public bottlenecks",
         image: "/meridian_stage_1.png",
         detail:
-          "Service blueprint mapping citizen queue times and paper-form bottlenecks across all public touchpoints.",
+          "Mapped public service touchpoints and queue times to identify bottlenecks across all Meridian citizen portals.",
       },
       {
         num: "02",
-        label: "Sovereign Crest",
+        label: "SOVEREIGN CREST",
+        verb: "Redesigning civic shield",
         image: "/meridian_stage_2.png",
         detail:
-          "Royal indigo vector shield crest, official stationery, stamps, and agency letterheads.",
+          "Re-engineered the historic crest into a clean royal indigo Meridian vector shield emblem, designing official stationery, stamps, and letterheads.",
       },
       {
         num: "03",
-        label: "Citizen Portal",
+        label: "CITIZEN PORTAL",
+        verb: "Securing identity node",
         image: "/meridian_stage_3.png",
         detail:
-          "Secure React platform with multi-factor login, fast mobile loads, and accessible data widgets.",
+          "Developed the secure React-based Meridian citizen portal optimized for multi-factor login and fast loading on mobile networks.",
       },
       {
         num: "04",
-        label: "Civic Pavilion",
+        label: "CIVIC PAVILION",
+        verb: "Drafting concrete structure",
         image: "/meridian_stage_4.png",
         detail:
-          "Modern administrative pavilion exterior — concrete geometry, acoustic panels, shaded public plazas.",
+          "Designed the new Meridian administrative pavilion exterior, prioritizing clean concrete geometry, acoustic panels, and shaded public plazas.",
       },
       {
         num: "05",
-        label: "Sector Reform",
+        label: "SECTOR REFORM",
+        verb: "Enacting efficiency framework",
         image: "/meridian_stage_5.png",
         detail:
-          "Digital adoption workshops for 200+ civil servants using the Mindvest Human Architecture Framework.",
+          "Conducted administrative efficiency workshops for 200+ civil servants using the Mindvest framework to accelerate Meridian's digital adoption.",
       },
     ],
   },
@@ -137,9 +158,12 @@ const BRANDS = [
 
 export function BrandFlow() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  
   const [visible, setVisible] = useState(false);
-  const [activeBrand, setActiveBrand] = useState(0);
-  const [activeStage, setActiveStage] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [selectedProjectIdx, setSelectedProjectIdx] = useState<number | null>(null);
+  const [activeStageIdx, setActiveStageIdx] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
 
   useEffect(() => {
@@ -150,156 +174,181 @@ export function BrandFlow() {
           observer.disconnect();
         }
       },
-      { threshold: 0.06 }
+      { threshold: 0.05 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  const brand = BRANDS[activeBrand];
-  const stage = brand.stages[activeStage];
-
-  const switchBrand = (idx: number) => {
-    if (idx === activeBrand) return;
-    setTransitioning(true);
-    setTimeout(() => {
-      setActiveBrand(idx);
-      setActiveStage(0);
-      setTransitioning(false);
-    }, 260);
+  const handleScroll = () => {
+    if (!trackRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = trackRef.current;
+    const maxScroll = scrollWidth - clientWidth;
+    if (maxScroll <= 0) return;
+    setScrollProgress((scrollLeft / maxScroll) * 100);
   };
 
-  const switchStage = (idx: number) => {
-    if (idx === activeStage) return;
+  const openProjectDetails = (idx: number) => {
+    setSelectedProjectIdx(idx);
+    setActiveStageIdx(0);
+    // Prevent background scrolling when overlay is active
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeProjectDetails = () => {
+    setSelectedProjectIdx(null);
+    document.body.style.overflow = "unset";
+  };
+
+  const handleStageSelect = (idx: number) => {
     setTransitioning(true);
     setTimeout(() => {
-      setActiveStage(idx);
+      setActiveStageIdx(idx);
       setTransitioning(false);
     }, 200);
   };
 
-  return (
-    <section
-      className={`bfx-section ${visible ? "bfx-visible" : ""}`}
-      ref={sectionRef}
-    >
-      {/* Subtle editorial grid */}
-      <div className="bfx-grid" />
+  const selectedProject = selectedProjectIdx !== null ? PROJECTS[selectedProjectIdx] : null;
+  const currentStage = selectedProject ? selectedProject.stages[activeStageIdx] : null;
 
-      <div className="bfx-inner">
-        {/* ── Top bar: eyebrow + brand switcher ── */}
-        <div className="bfx-topbar">
-          <div className="bfx-eyebrow">
-            <span className="bfx-eyebrow-line" />
-            The Elevation Journey
+  return (
+    <section className={`pf-section ${visible ? "pf-visible" : ""}`} ref={sectionRef}>
+      <div className="pf-inner">
+        {/* Section Header */}
+        <div className="pf-header">
+          <div className="pf-eyebrow">
+            <span className="pf-eyebrow-line" />
+            CASE ARCHIVE
           </div>
-          <div className="bfx-switcher">
-            {BRANDS.map((b, i) => (
-              <button
-                key={b.name}
-                className={`bfx-switch ${activeBrand === i ? "bfx-switch--on" : ""}`}
-                onClick={() => switchBrand(i)}
-                style={{ "--ac": b.accentColor } as React.CSSProperties}
-              >
-                <span className="bfx-switch-num">0{i + 1}</span>
-                {b.name}
-              </button>
+          <h2 className="pf-title">
+            FROM RESEARCH TO <span className="pf-title-accent">TRANSFORMATION</span>
+          </h2>
+        </div>
+
+        {/* Draggable/Scrollable Project Track */}
+        <div className="pf-track-container">
+          <div className="pf-track" ref={trackRef} onScroll={handleScroll}>
+            {PROJECTS.map((proj, idx) => (
+              <div key={proj.name} className="pf-card" onClick={() => openProjectDetails(idx)}>
+                <div className="pf-card-img-wrap">
+                  <Image
+                    src={proj.heroImage}
+                    alt={proj.name}
+                    fill
+                    className="pf-card-img"
+                    sizes="(max-width: 900px) 100vw, 30vw"
+                  />
+                  <div className="pf-card-tint" />
+                </div>
+                <div className="pf-card-content">
+                  <div className="pf-card-meta">
+                    <span className="pf-card-sector">{proj.sector}</span>
+                    <span className="pf-card-location">{proj.location}</span>
+                  </div>
+                  <h3 className="pf-card-name">{proj.name}</h3>
+                  <button className="pf-card-btn" style={{ "--ac-color": proj.accentColor } as React.CSSProperties}>
+                    EXPLORE DECREE <span>→</span>
+                  </button>
+                </div>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* ── Main card ── */}
-        <div className="bfx-card">
-          {/* Full-bleed background image */}
-          <div className={`bfx-img-bg ${transitioning ? "bfx-img-bg--out" : "bfx-img-bg--in"}`}>
-            <Image
-              src={stage.image}
-              alt={`${brand.name} — ${stage.label}`}
-              fill
-              className="bfx-img"
-              sizes="100vw"
-              priority={activeBrand === 0 && activeStage === 0}
+        {/* Modern Slider Scroll Bar (Not arrows pointing) */}
+        <div className="pf-scrollbar-container">
+          <div className="pf-scrollbar-track">
+            <div 
+              className="pf-scrollbar-thumb" 
+              style={{ left: `${scrollProgress}%` }}
             />
-            {/* Dark left gradient so text is legible */}
-            <div className="bfx-img-fade" />
           </div>
-
-          {/* Glass content panel */}
-          <div
-            className="bfx-glass"
-            style={{ "--ac": brand.accentColor } as React.CSSProperties}
-          >
-            {/* Accent top rule */}
-            <div
-              className="bfx-accent-rule"
-              style={{ background: brand.accentColor }}
-            />
-
-            {/* Sector + location */}
-            <div className="bfx-meta">
-              <span
-                className="bfx-sector"
-                style={{ color: brand.accentColor }}
-              >
-                {brand.sector}
-              </span>
-              <span className="bfx-location">{brand.location}</span>
-            </div>
-
-            {/* MASSIVE brand name — bleeds over image */}
-            <div
-              className={`bfx-brand-name ${transitioning ? "bfx-brand-name--out" : "bfx-brand-name--in"}`}
-            >
-              {brand.name}
-            </div>
-
-            {/* Stage label + detail */}
-            <div className={`bfx-stage-block ${transitioning ? "bfx-stage-block--out" : "bfx-stage-block--in"}`}>
-              <div className="bfx-stage-label-row">
-                <span
-                  className="bfx-stage-num"
-                  style={{ color: brand.accentColor }}
-                >
-                  Stage {stage.num}
-                </span>
-                <span className="bfx-stage-slash">/</span>
-                <span className="bfx-stage-name">{stage.label}</span>
-              </div>
-              <p className="bfx-stage-detail">{stage.detail}</p>
-            </div>
-
-            {/* Stage navigation pills */}
-            <div className="bfx-stage-nav">
-              {brand.stages.map((s, i) => (
-                <button
-                  key={s.num}
-                  className={`bfx-pill ${activeStage === i ? "bfx-pill--on" : ""}`}
-                  onClick={() => switchStage(i)}
-                  style={{ "--ac": brand.accentColor } as React.CSSProperties}
-                  title={s.label}
-                >
-                  {s.num}
-                </button>
-              ))}
-              <span className="bfx-pill-label">{stage.label}</span>
-            </div>
-          </div>
-
-          {/* Corner chrome detail (editorial) */}
-          <div className="bfx-corner bfx-corner-tr">
-            <div className="bfx-corner-dot" />
-            <span className="bfx-corner-text">5 STAGES</span>
-          </div>
-          <div className="bfx-corner bfx-corner-br">
-            <span
-              className="bfx-corner-text"
-              style={{ color: brand.accentColor }}
-            >
-              ◆ {activeBrand + 1} / {BRANDS.length}
-            </span>
-          </div>
+          <span className="pf-scrollbar-label">DRAG OR SCROLL TO VIEW</span>
         </div>
       </div>
+
+      {/* Full-Screen Project Case Study Drawer Overlay */}
+      {selectedProject && currentStage && (
+        <div className="pf-drawer">
+          <div className="pf-drawer-backdrop" onClick={closeProjectDetails} />
+          
+          <div className="pf-drawer-content" style={{ "--ac-color": selectedProject.accentColor } as React.CSSProperties}>
+            {/* Close Button in top right */}
+            <button className="pf-drawer-close" onClick={closeProjectDetails}>
+              [ CLOSE CASE STUDY ]
+            </button>
+
+            <div className="pf-drawer-grid">
+              {/* Drawer Left column: Project Profile info */}
+              <div className="pf-d-left">
+                <div className="pf-d-project-header">
+                  <span className="pf-d-sector">{selectedProject.sector}</span>
+                  <h2 className="pf-d-project-name">{selectedProject.name}</h2>
+                  <span className="pf-d-location">{selectedProject.location}</span>
+                </div>
+                
+                <p className="pf-d-project-desc">{selectedProject.desc}</p>
+                
+                {/* Horizontal Progress Timeline Slider Selector (No arrows) */}
+                <div className="pf-timeline">
+                  <span className="pf-timeline-label">ELEVATION SEGMENT</span>
+                  <div className="pf-timeline-track-wrap">
+                    <div className="pf-timeline-track-bg" />
+                    <div 
+                      className="pf-timeline-track-fill" 
+                      style={{ width: `${(activeStageIdx / (selectedProject.stages.length - 1)) * 100}%` }}
+                    />
+                    <div className="pf-timeline-nodes">
+                      {selectedProject.stages.map((st, sIdx) => (
+                        <button
+                          key={st.num}
+                          onClick={() => handleStageSelect(sIdx)}
+                          className={`pf-timeline-node ${activeStageIdx === sIdx ? "pf-timeline-node--active" : ""} ${sIdx < activeStageIdx ? "pf-timeline-node--past" : ""}`}
+                          style={{ left: `${(sIdx / (selectedProject.stages.length - 1)) * 100}%` }}
+                          title={st.label}
+                        >
+                          <span className="pf-node-num">{st.num}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Drawer Middle column: Immersive stage image frame */}
+              <div className="pf-d-center">
+                <div className="pf-d-image-wrap">
+                  <Image
+                    key={currentStage.image}
+                    src={currentStage.image}
+                    alt={currentStage.label}
+                    fill
+                    className={`pf-d-image ${transitioning ? "pf-d-image--fade" : ""}`}
+                    sizes="(max-width: 900px) 100vw, 40vw"
+                    priority
+                  />
+                  <div className="pf-d-image-shadow" />
+                </div>
+              </div>
+
+              {/* Drawer Right column: Technical specifications details */}
+              <div className="pf-d-right">
+                <div className={`pf-d-spec-box ${transitioning ? "pf-d-spec-box--fade" : ""}`}>
+                  <div className="pf-d-spec-eyebrow">
+                    <span>STAGE {currentStage.num} OF 05</span>
+                    <span className="pf-d-spec-dot" />
+                    <span>{currentStage.verb.toUpperCase()}</span>
+                  </div>
+                  
+                  <h3 className="pf-d-spec-label">{currentStage.label}</h3>
+                  <div className="pf-d-spec-line" />
+                  <p className="pf-d-spec-detail">{currentStage.detail}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

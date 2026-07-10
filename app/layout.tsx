@@ -45,8 +45,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${bebas.variable} ${cormorant.variable} ${dmMono.variable} ${syne.variable} scroll-smooth`}
+      suppressHydrationWarning
     >
-      <body className="min-h-screen antialiased">
+      <body className="min-h-screen antialiased" suppressHydrationWarning>
         <CustomCursor />
         {children}
       </body>
