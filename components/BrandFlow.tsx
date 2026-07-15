@@ -158,13 +158,13 @@ const PROJECTS = [
 
 export function BrandFlow() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
   
   const [visible, setVisible] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeProjectIdx, setActiveProjectIdx] = useState(0);
   const [selectedProjectIdx, setSelectedProjectIdx] = useState<number | null>(null);
   const [activeStageIdx, setActiveStageIdx] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
+  const [stageTransitioning, setStageTransitioning] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -180,12 +180,23 @@ export function BrandFlow() {
     return () => observer.disconnect();
   }, []);
 
-  const handleScroll = () => {
-    if (!trackRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = trackRef.current;
-    const maxScroll = scrollWidth - clientWidth;
-    if (maxScroll <= 0) return;
-    setScrollProgress((scrollLeft / maxScroll) * 100);
+  const handleProjectSelect = (idx: number) => {
+    if (idx === activeProjectIdx || transitioning) return;
+    setTransitioning(true);
+    setTimeout(() => {
+      setActiveProjectIdx(idx);
+      setTransitioning(false);
+    }, 400);
+  };
+
+  const handleNext = () => {
+    const nextIdx = (activeProjectIdx + 1) % PROJECTS.length;
+    handleProjectSelect(nextIdx);
+  };
+
+  const handlePrev = () => {
+    const prevIdx = (activeProjectIdx - 1 + PROJECTS.length) % PROJECTS.length;
+    handleProjectSelect(prevIdx);
   };
 
   const openProjectDetails = (idx: number) => {
@@ -201,69 +212,144 @@ export function BrandFlow() {
   };
 
   const handleStageSelect = (idx: number) => {
-    setTransitioning(true);
+    setStageTransitioning(true);
     setTimeout(() => {
       setActiveStageIdx(idx);
-      setTransitioning(false);
+      setStageTransitioning(false);
     }, 200);
   };
+
+  const getPreviewIndices = (activeIdx: number) => {
+    const indices = [];
+    for (let i = 1; i < PROJECTS.length; i++) {
+      indices.push((activeIdx + i) % PROJECTS.length);
+    }
+    return indices;
+  };
+
+  const activeProject = PROJECTS[activeProjectIdx];
+  const previewIndices = getPreviewIndices(activeProjectIdx);
 
   const selectedProject = selectedProjectIdx !== null ? PROJECTS[selectedProjectIdx] : null;
   const currentStage = selectedProject ? selectedProject.stages[activeStageIdx] : null;
 
   return (
     <section className={`pf-section ${visible ? "pf-visible" : ""}`} ref={sectionRef}>
+      {/* Immersive background layer */}
+      <div className="pf-bg-container">
+        {PROJECTS.map((proj, idx) => (
+          <div
+            key={proj.name}
+            className={`pf-bg-image-wrap ${idx === activeProjectIdx ? "active" : ""}`}
+          >
+            <Image
+              src={proj.heroImage}
+              alt={proj.name}
+              fill
+              className="pf-bg-image"
+              priority={idx === 0}
+              sizes="100vw"
+            />
+          </div>
+        ))}
+        <div className="pf-bg-overlay" />
+      </div>
+
       <div className="pf-inner">
-        {/* Section Header */}
-        <div className="pf-header">
+        {/* Section Header Row */}
+        <div className="pf-header-bar">
           <div className="pf-eyebrow">
             <span className="pf-eyebrow-line" />
             CASE ARCHIVE
           </div>
-          <h2 className="pf-title">
-            FROM RESEARCH TO <span className="pf-title-accent">TRANSFORMATION</span>
-          </h2>
+          <h2 className="pf-section-title-small">FROM RESEARCH TO TRANSFORMATION</h2>
         </div>
 
-        {/* Draggable/Scrollable Project Track */}
-        <div className="pf-track-container">
-          <div className="pf-track" ref={trackRef} onScroll={handleScroll}>
-            {PROJECTS.map((proj, idx) => (
-              <div key={proj.name} className="pf-card" onClick={() => openProjectDetails(idx)}>
-                <div className="pf-card-img-wrap">
-                  <Image
-                    src={proj.heroImage}
-                    alt={proj.name}
-                    fill
-                    className="pf-card-img"
-                    sizes="(max-width: 900px) 100vw, 30vw"
-                  />
-                  <div className="pf-card-tint" />
-                </div>
-                <div className="pf-card-content">
-                  <div className="pf-card-meta">
-                    <span className="pf-card-sector">{proj.sector}</span>
-                    <span className="pf-card-location">{proj.location}</span>
+        {/* Full-Screen Content Layout */}
+        <div className="pf-main-layout">
+          {/* Left Column: Active project details */}
+          <div className={`pf-active-details ${transitioning ? "pf-fade-out" : ""}`}>
+            <span className="pf-project-sector">{activeProject.sector}</span>
+            <h3 className="pf-project-name">{activeProject.name}</h3>
+            <span className="pf-project-location">{activeProject.location}</span>
+            <p className="pf-project-desc">{activeProject.desc}</p>
+            
+            <button 
+              className="pf-explore-btn"
+              onClick={() => openProjectDetails(activeProjectIdx)}
+              style={{ "--ac-color": activeProject.accentColor } as React.CSSProperties}
+            >
+              EXPLORE DECREE <span>→</span>
+            </button>
+          </div>
+
+          {/* Right Column: Floating Preview cards */}
+          <div className="pf-previews-column">
+            {previewIndices.map((idx) => {
+              const proj = PROJECTS[idx];
+              return (
+                <div 
+                  key={proj.name} 
+                  className="pf-preview-card"
+                  onClick={() => handleProjectSelect(idx)}
+                >
+                  <div className="pf-preview-img-wrap">
+                    <Image
+                      src={proj.heroImage}
+                      alt={proj.name}
+                      fill
+                      className="pf-preview-img"
+                      sizes="(max-width: 900px) 100vw, 250px"
+                    />
+                    <div className="pf-preview-tint" />
                   </div>
-                  <h3 className="pf-card-name">{proj.name}</h3>
-                  <button className="pf-card-btn" style={{ "--ac-color": proj.accentColor } as React.CSSProperties}>
-                    EXPLORE DECREE <span>→</span>
-                  </button>
+                  <div className="pf-preview-content">
+                    <span className="pf-preview-sector">{proj.sector}</span>
+                    <h4 className="pf-preview-name">{proj.name}</h4>
+                    <span className="pf-preview-action">EXPLORE DECREE →</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
-        {/* Modern Slider Scroll Bar (Not arrows pointing) */}
-        <div className="pf-scrollbar-container">
-          <div className="pf-scrollbar-track">
-            <div 
-              className="pf-scrollbar-thumb" 
-              style={{ left: `${scrollProgress}%` }}
-            />
+        {/* Bottom Controls */}
+        <div className="pf-bottom-controls">
+          <div className="pf-progress-container">
+            <span className="pf-progress-label">DRAG OR SCROLL TO VIEW</span>
+            <div className="pf-progress-bar-track">
+              <div 
+                className="pf-progress-bar-thumb"
+                style={{ 
+                  width: `${((activeProjectIdx + 1) / PROJECTS.length) * 100}%`,
+                  backgroundColor: activeProject.accentColor
+                }}
+              />
+            </div>
+            <span className="pf-progress-numbers">
+              {String(activeProjectIdx + 1).padStart(2, '0')} / {String(PROJECTS.length).padStart(2, '0')}
+            </span>
           </div>
-          <span className="pf-scrollbar-label">DRAG OR SCROLL TO VIEW</span>
+
+          <div className="pf-nav-arrows">
+            <button 
+              className="pf-arrow-btn" 
+              onClick={handlePrev} 
+              aria-label="Previous Project"
+              style={{ "--ac-color": activeProject.accentColor } as React.CSSProperties}
+            >
+              &lt;
+            </button>
+            <button 
+              className="pf-arrow-btn" 
+              onClick={handleNext} 
+              aria-label="Next Project"
+              style={{ "--ac-color": activeProject.accentColor } as React.CSSProperties}
+            >
+              &gt;
+            </button>
+          </div>
         </div>
       </div>
 
@@ -279,8 +365,45 @@ export function BrandFlow() {
             </button>
 
             <div className="pf-drawer-grid">
-              {/* Drawer Left column: Project Profile info */}
-              <div className="pf-d-left">
+              {/* Drawer Left column: Immersive stage image slider */}
+              <div className="pf-d-slider-container">
+                <div className="pf-d-image-viewport">
+                  <button 
+                    className="pf-d-nav-arrow prev" 
+                    onClick={() => handleStageSelect((activeStageIdx - 1 + selectedProject.stages.length) % selectedProject.stages.length)}
+                    aria-label="Previous Stage"
+                  >
+                    &lt;
+                  </button>
+
+                  <div 
+                    className="pf-d-image-click-target" 
+                    onClick={() => handleStageSelect((activeStageIdx + 1) % selectedProject.stages.length)}
+                  >
+                    <Image
+                      key={currentStage.image}
+                      src={currentStage.image}
+                      alt={currentStage.label}
+                      fill
+                      className={`pf-d-image ${stageTransitioning ? "pf-d-image--fade" : ""}`}
+                      sizes="(max-width: 900px) 100vw, 50vw"
+                      priority
+                    />
+                    <div className="pf-d-image-shadow" />
+                  </div>
+
+                  <button 
+                    className="pf-d-nav-arrow next" 
+                    onClick={() => handleStageSelect((activeStageIdx + 1) % selectedProject.stages.length)}
+                    aria-label="Next Stage"
+                  >
+                    &gt;
+                  </button>
+                </div>
+              </div>
+
+              {/* Drawer Right column: Project profile details ("write up"), stage specs, and timeline */}
+              <div className="pf-d-writeup-card">
                 <div className="pf-d-project-header">
                   <span className="pf-d-sector">{selectedProject.sector}</span>
                   <h2 className="pf-d-project-name">{selectedProject.name}</h2>
@@ -289,51 +412,10 @@ export function BrandFlow() {
                 
                 <p className="pf-d-project-desc">{selectedProject.desc}</p>
                 
-                {/* Horizontal Progress Timeline Slider Selector (No arrows) */}
-                <div className="pf-timeline">
-                  <span className="pf-timeline-label">ELEVATION SEGMENT</span>
-                  <div className="pf-timeline-track-wrap">
-                    <div className="pf-timeline-track-bg" />
-                    <div 
-                      className="pf-timeline-track-fill" 
-                      style={{ width: `${(activeStageIdx / (selectedProject.stages.length - 1)) * 100}%` }}
-                    />
-                    <div className="pf-timeline-nodes">
-                      {selectedProject.stages.map((st, sIdx) => (
-                        <button
-                          key={st.num}
-                          onClick={() => handleStageSelect(sIdx)}
-                          className={`pf-timeline-node ${activeStageIdx === sIdx ? "pf-timeline-node--active" : ""} ${sIdx < activeStageIdx ? "pf-timeline-node--past" : ""}`}
-                          style={{ left: `${(sIdx / (selectedProject.stages.length - 1)) * 100}%` }}
-                          title={st.label}
-                        >
-                          <span className="pf-node-num">{st.num}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <div className="pf-d-divider" />
 
-              {/* Drawer Middle column: Immersive stage image frame */}
-              <div className="pf-d-center">
-                <div className="pf-d-image-wrap">
-                  <Image
-                    key={currentStage.image}
-                    src={currentStage.image}
-                    alt={currentStage.label}
-                    fill
-                    className={`pf-d-image ${transitioning ? "pf-d-image--fade" : ""}`}
-                    sizes="(max-width: 900px) 100vw, 40vw"
-                    priority
-                  />
-                  <div className="pf-d-image-shadow" />
-                </div>
-              </div>
-
-              {/* Drawer Right column: Technical specifications details */}
-              <div className="pf-d-right">
-                <div className={`pf-d-spec-box ${transitioning ? "pf-d-spec-box--fade" : ""}`}>
+                {/* Stage Technical Specifications details */}
+                <div className={`pf-d-spec-box ${stageTransitioning ? "pf-d-spec-box--fade" : ""}`}>
                   <div className="pf-d-spec-eyebrow">
                     <span>STAGE {currentStage.num} OF 05</span>
                     <span className="pf-d-spec-dot" />
@@ -343,6 +425,30 @@ export function BrandFlow() {
                   <h3 className="pf-d-spec-label">{currentStage.label}</h3>
                   <div className="pf-d-spec-line" />
                   <p className="pf-d-spec-detail">{currentStage.detail}</p>
+                </div>
+
+                {/* Passive timeline tracker */}
+                <div className="pf-timeline">
+                  <span className="pf-timeline-label">ELEVATION SEGMENT</span>
+                  <div className="pf-timeline-progress-wrap">
+                    <div className="pf-timeline-steps">
+                      {selectedProject.stages.map((st, sIdx) => (
+                        <div
+                          key={st.num}
+                          className={`pf-timeline-step-indicator ${activeStageIdx === sIdx ? "active" : ""}`}
+                        >
+                          <span className="pf-step-num">{st.num}</span>
+                          <span className="pf-step-dot" />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="pf-timeline-line-track">
+                      <div 
+                        className="pf-timeline-line-thumb" 
+                        style={{ width: `${(activeStageIdx / (selectedProject.stages.length - 1)) * 100}%` }}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
