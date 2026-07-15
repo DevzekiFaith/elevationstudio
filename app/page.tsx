@@ -27,7 +27,7 @@ export default function Home() {
               <span>◆</span> Culture Transformation
             </div>
             <div className="ticker-item">
-              <span>◆</span> Sagamu — Lagos — Nigeria
+              <span>◆</span> Ogun — Lagos Corridor
             </div>
             <div className="ticker-item">
               <span>◆</span> Brand Identity
@@ -42,7 +42,7 @@ export default function Home() {
               <span>◆</span> Culture Transformation
             </div>
             <div className="ticker-item">
-              <span>◆</span> Sagamu — Lagos — Nigeria
+              <span>◆</span> Ogun — Lagos Corridor
             </div>
           </div>
         </div>
@@ -378,44 +378,39 @@ export default function Home() {
               lineHeight: 0.9,
             }}
           >
-            THREE <span style={{ color: "var(--gold)" }}>MARKETS</span>
+            GLOBAL REACH, <span style={{ color: "var(--gold)" }}>LOCAL BASE</span>
           </div>
 
           <div className="markets-grid">
             <div className="market">
               <div className="market-num">01</div>
               <div className="market-name">
-                Primary
+                Global Reach
                 <br />
-                Ogun / Lagos Corridor
+                Serve Wherever You Are
               </div>
-              <div className="market-region">Sagamu · Lagos · Abeokuta</div>
+              <div className="market-region">Any Location / Base Globally</div>
               <ul className="market-items">
-                <li>New businesses launching from scratch</li>
-                <li>Manufacturers in the Sagamu industrial corridor</li>
-                <li>
-                  Real estate developers — brand, web, show apartments
-                </li>
-                <li>Hospitality — hotels, event centres, restaurants</li>
-                <li>Healthcare facilities modernising their brand</li>
+                <li>We serve individuals and companies from any location of their base</li>
+                <li>Seamless remote integration, workflow collaboration, and digital engineering</li>
+                <li>African diaspora businesses wanting authentic, high-impact design intelligence</li>
+                <li>Startups, NGOs, and remote-first companies scaling their digital footprint</li>
               </ul>
             </div>
 
             <div className="market">
               <div className="market-num">02</div>
               <div className="market-name">
-                Secondary
+                Local Base
                 <br />
-                International Remote
+                Ogun — Lagos Corridor
               </div>
-              <div className="market-region">Diaspora · Global · Remote</div>
+              <div className="market-region">Our Operational Headquarters</div>
               <ul className="market-items">
-                <li>
-                  African diaspora businesses wanting African design intelligence
-                </li>
-                <li>International companies entering the Nigerian market</li>
-                <li>NGOs and development organisations</li>
-                <li>Tech startups needing design-development integration</li>
+                <li>Retaining the Ogun - Lagos corridor as our headquarters and operational hub</li>
+                <li>Real estate developers — brand identity, web design, and spatial concepts</li>
+                <li>Manufacturing and industrial corridor corporations upgrading visual assets</li>
+                <li>Hospitality, retail, and commercial developments across the corridor</li>
               </ul>
             </div>
 
@@ -426,15 +421,15 @@ export default function Home() {
                 <br />
                 Institutional
               </div>
-              <div className="market-region">Ogun State · Federal · Education</div>
+              <div className="market-region">Federal, State & Public Sector</div>
               <ul className="market-items">
                 <li>
-                  State agencies modernising visual identity and digital presence
+                  State agencies modernising visual identity and secure citizen portals
                 </li>
                 <li>
-                  Educational institutions — brand, digital, space design
+                  Educational institutions — brand, digital systems, and space design
                 </li>
-                <li>Feeds into Mindvest Global government partnership strategy</li>
+                <li>Feeds into Mindvest Global partnership strategy for public infrastructure</li>
               </ul>
             </div>
           </div>
@@ -720,17 +715,17 @@ export default function Home() {
               <div className="footer-contact-label">Email</div>
               <div className="footer-contact-value">
                 <a
-                  href="mailto:hello@elevationstudio.ng"
+                  href="mailto:unovaconsultingfirstafrica@gmail.com"
                   style={{ color: "inherit", textDecoration: "none" }}
                 >
-                  hello@elevationstudio.ng
+                  unovaconsultingfirstafrica@gmail.com
                 </a>
               </div>
             </div>
             <div className="footer-contact-item">
-              <div className="footer-contact-label">Location</div>
+              <div className="footer-contact-label">Location Base</div>
               <div className="footer-contact-value">
-                Sagamu, Ogun State · Nigeria
+                Ogun — Lagos Corridor · Nigeria
               </div>
             </div>
             <div className="footer-contact-item">

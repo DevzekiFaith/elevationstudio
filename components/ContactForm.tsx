@@ -304,12 +304,12 @@ export function ContactForm() {
 
         <div className="contact-detail-block">
           <div className="footer-contact-label">Email</div>
-          <a href="mailto:hello@elevationstudio.ng">hello@elevationstudio.ng</a>
+          <a href="mailto:unovaconsultingfirstafrica@gmail.com">unovaconsultingfirstafrica@gmail.com</a>
           <div className="footer-contact-label" style={{ marginTop: 16 }}>
-            Location
+            Location Base
           </div>
           <div className="footer-contact-value" style={{ fontSize: 14 }}>
-            Sagamu, Ogun State · Nigeria
+            Ogun — Lagos Corridor · Nigeria
           </div>
         </div>
       </aside>

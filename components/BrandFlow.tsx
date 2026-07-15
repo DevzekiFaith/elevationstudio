@@ -57,7 +57,7 @@ const PROJECTS = [
   {
     name: "GREENFIELD",
     sector: "REAL ESTATE MASTERPLAN",
-    location: "SAGAMU–LAGOS CORRIDOR",
+    location: "OGUN–LAGOS CORRIDOR",
     heroImage: "/greenfield_stage_4.png",
     accentColor: "#4ecba0",
     desc: "A pioneering mixed-use eco-luxury metropolis. Setting new benchmarks for sustainable African urbanism with solar mapping, interactive 3D plot selectors, and rammed-earth clubhouse architectural designs.",
@@ -107,7 +107,7 @@ const PROJECTS = [
   {
     name: "MERIDIAN",
     sector: "FEDERAL INSTITUTION",
-    location: "ABEOKUTA, OGUN STATE",
+    location: "OGUN STATE, NIGERIA",
     heroImage: "/meridian_stage_4.png",
     accentColor: "#a89fd4",
     desc: "A monumental public agency modernization. Establishing civic trust through visual crest redesigns, secure citizen portals, contemporary administrative pavilions, and national administrative workflow reforms.",
