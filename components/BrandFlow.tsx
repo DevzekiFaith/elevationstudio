@@ -450,6 +450,24 @@ export function BrandFlow() {
                     </div>
                   </div>
                 </div>
+
+                <div style={{ marginTop: 24, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+                  <a
+                    href={`https://wa.me/2349119059859?text=${encodeURIComponent(
+                      `Hello Elevation Studio, I'm viewing the ${selectedProject.name} (${selectedProject.sector}) case study and would like to discuss a similar project scope.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="pf-explore-btn"
+                    style={{
+                      "--ac-color": selectedProject.accentColor,
+                      display: "inline-flex",
+                      textDecoration: "none",
+                    } as React.CSSProperties}
+                  >
+                    INQUIRE ON WHATSAPP (09119059859) →
+                  </a>
+                </div>
               </div>
             </div>
           </div>

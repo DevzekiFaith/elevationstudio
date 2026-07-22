@@ -303,8 +303,19 @@ export function ContactForm() {
         </div>
 
         <div className="contact-detail-block">
-          <div className="footer-contact-label">Email</div>
-          <a href="mailto:unovaconsultingfirstafrica@gmail.com">unovaconsultingfirstafrica@gmail.com</a>
+          <div className="footer-contact-label">Email Inquiries</div>
+          <a href="mailto:mindvestglobalresources@gmail.com">mindvestglobalresources@gmail.com</a>
+          <div className="footer-contact-label" style={{ marginTop: 16 }}>
+            Direct WhatsApp / Phone
+          </div>
+          <a
+            href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20interested%20in%20initiating%20a%20project."
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--gold)", fontWeight: 500 }}
+          >
+            09119059859 (WhatsApp Chat) →
+          </a>
           <div className="footer-contact-label" style={{ marginTop: 16 }}>
             Location Base
           </div>

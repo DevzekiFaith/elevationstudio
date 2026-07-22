@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { BrandFlow } from "@/components/BrandFlow";
+import { Testimonials } from "@/components/Testimonials";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -646,6 +648,8 @@ export default function Home() {
         </section>
       </Reveal>
 
+      <Testimonials />
+
       <Reveal>
         <section className="cta-section" id="contact">
           <div className="cta-bg" />
@@ -664,9 +668,15 @@ export default function Home() {
             <Link href="/contact" className="btn-primary">
               Start a Project
             </Link>
-            <Link href="/#packages" className="btn-ghost">
-              View Packages
-            </Link>
+            <a
+              href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20ready%20to%20start%20a%20project%20brief."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost"
+              style={{ display: "inline-flex", alignItems: "center", gap: 8 }}
+            >
+              Chat on WhatsApp (09119059859) →
+            </a>
           </div>
         </section>
       </Reveal>
@@ -681,7 +691,9 @@ export default function Home() {
               Brand. Digital. Space. Culture.
             </div>
             <a
-              href="https://mindvestglobal.com"
+              href="https://mindvestglobalresources.com.ng"
+              target="_blank"
+              rel="noopener noreferrer"
               className="footer-parent-link"
             >
               A Mindvest Global Company
@@ -704,6 +716,9 @@ export default function Home() {
                 <Link href="/#process">Our Process</Link>
               </li>
               <li>
+                <Link href="/#testimonials">Client Stories</Link>
+              </li>
+              <li>
                 <Link href="/#bridge">The Master Plan</Link>
               </li>
             </ul>
@@ -715,10 +730,23 @@ export default function Home() {
               <div className="footer-contact-label">Email</div>
               <div className="footer-contact-value">
                 <a
-                  href="mailto:unovaconsultingfirstafrica@gmail.com"
+                  href="mailto:mindvestglobalresources@gmail.com"
                   style={{ color: "inherit", textDecoration: "none" }}
                 >
-                  unovaconsultingfirstafrica@gmail.com
+                  mindvestglobalresources@gmail.com
+                </a>
+              </div>
+            </div>
+            <div className="footer-contact-item">
+              <div className="footer-contact-label">WhatsApp Direct</div>
+              <div className="footer-contact-value">
+                <a
+                  href="https://wa.me/2349119059859"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "var(--gold)", textDecoration: "none" }}
+                >
+                  09119059859
                 </a>
               </div>
             </div>
@@ -741,10 +769,14 @@ export default function Home() {
           </div>
           <div className="footer-mindvest">
             Part of{" "}
-            <a href="https://mindvestglobal.com">Mindvest Global Resources LLC</a>
+            <a href="https://mindvestglobalresources.com.ng" target="_blank" rel="noopener noreferrer">
+              Mindvest Global Resources LLC
+            </a>
           </div>
         </div>
       </footer>
+
+      <WhatsAppButton />
     </>
   );
 }
