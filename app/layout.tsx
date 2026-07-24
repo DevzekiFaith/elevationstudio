@@ -31,9 +31,93 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Elevation Studio — Brand. Digital. Space. Culture.",
+  metadataBase: new URL("https://elevationstudio.vercel.app"),
+  title: {
+    default: "Elevation Studio — Integrated Brand, Digital & Space Architecture Studio",
+    template: "%s | Elevation Studio",
+  },
   description:
-    "Elevation Studio is Nigeria's only integrated brand, digital, and space design studio — backed by Mindvest Global's transformation intelligence.",
+    "Nigeria's premier integrated studio fusing visual brand identity, Next.js digital engineering, spatial architecture, and culture transformation — powered by Mindvest Global.",
+  keywords: [
+    "Elevation Studio",
+    "Brand Identity Studio Nigeria",
+    "Digital Engineering Agency Lagos",
+    "Space Design Studio Ogun Lagos Corridor",
+    "Real Estate Masterplan Visualisation",
+    "Luxury Hospitality Brand Agency",
+    "Culture Architecture Mindvest Global",
+    "Zeki Ubor Architecture Studio",
+    "Next.js Development Agency Nigeria",
+  ],
+  authors: [{ name: "Zeki Ubor — Elevation Studio" }],
+  creator: "Elevation Studio / Mindvest Global Resources LLC",
+  publisher: "Mindvest Global Resources LLC",
+  alternates: {
+    canonical: "https://elevationstudio.vercel.app",
+  },
+  openGraph: {
+    title: "Elevation Studio — Brand. Digital. Space. Culture.",
+    description:
+      "Nigeria's only integrated studio combining visual brand identity, web engineering, spatial architecture, and culture transformation under one roof.",
+    url: "https://elevationstudio.vercel.app",
+    siteName: "Elevation Studio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Elevation Studio — Integrated Brand, Digital & Space Architecture",
+    description:
+      "Architecture, Brand, Digital, and Culture Transformation under one roof. Based in Ogun–Lagos corridor serving clients globally.",
+    creator: "@mindvestglobal",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Elevation Studio",
+  image: "https://elevationstudio.vercel.app/volta_stage_4.png",
+  "@id": "https://elevationstudio.vercel.app",
+  url: "https://elevationstudio.vercel.app",
+  telephone: "+2349119059859",
+  email: "mindvestglobalresources@gmail.com",
+  priceRange: "₦500,000 - ₦50,000,000+",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Ogun — Lagos Corridor",
+    addressLocality: "Lagos / Ogun State",
+    addressRegion: "Lagos",
+    addressCountry: "NG",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 6.5244,
+    longitude: 3.3792,
+  },
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Mindvest Global Resources LLC",
+    url: "https://mindvestglobalresources.com.ng",
+  },
+  knowsAbout: [
+    "Brand Identity Systems",
+    "Digital Web Engineering",
+    "Spatial Architecture & Interior Renders",
+    "Organisational Culture Transformation",
+    "Real Estate Masterplan Marketing",
+  ],
 };
 
 export default function RootLayout({
@@ -47,6 +131,12 @@ export default function RootLayout({
       className={`${bebas.variable} ${cormorant.variable} ${dmMono.variable} ${syne.variable} scroll-smooth`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-screen antialiased" suppressHydrationWarning>
         <CustomCursor />
         {children}

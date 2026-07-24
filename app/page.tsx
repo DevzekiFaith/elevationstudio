@@ -4,6 +4,7 @@ import { Reveal } from "@/components/Reveal";
 import { BrandFlow } from "@/components/BrandFlow";
 import { Testimonials } from "@/components/Testimonials";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { QRCodeCard } from "@/components/QRCodeCard";
 
 export default function Home() {
   return (
@@ -678,6 +679,12 @@ export default function Home() {
               Chat on WhatsApp (09119059859) →
             </a>
           </div>
+        </section>
+      </Reveal>
+
+      <Reveal>
+        <section id="qr-access" style={{ padding: "80px 48px 40px", background: "#060606" }}>
+          <QRCodeCard />
         </section>
       </Reveal>
 

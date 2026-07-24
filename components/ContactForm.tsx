@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { QRCodeCard } from "./QRCodeCard";
 
 const PACKAGES = [
   {
@@ -321,6 +322,10 @@ export function ContactForm() {
           </div>
           <div className="footer-contact-value" style={{ fontSize: 14 }}>
             Ogun — Lagos Corridor · Nigeria
+          </div>
+
+          <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+            <QRCodeCard compact />
           </div>
         </div>
       </aside>
