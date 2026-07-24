@@ -5,6 +5,7 @@ import { BrandFlow } from "@/components/BrandFlow";
 import { Testimonials } from "@/components/Testimonials";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { QRCodeCard } from "@/components/QRCodeCard";
+import { LocationMap } from "@/components/LocationMap";
 
 export default function Home() {
   return (
@@ -436,6 +437,10 @@ export default function Home() {
               </ul>
             </div>
           </div>
+
+          <div style={{ marginTop: 48 }}>
+            <LocationMap />
+          </div>
         </section>
       </Reveal>
 
@@ -703,7 +708,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="footer-parent-link"
             >
-              A Mindvest Global Company
+              A Mindvest Global Resources Company
             </a>
           </div>
 
