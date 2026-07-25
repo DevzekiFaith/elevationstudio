@@ -36,6 +36,9 @@ export function Nav() {
           <Link href="/#services">Services</Link>
         </li>
         <li>
+          <Link href="/#renders">3D Renders</Link>
+        </li>
+        <li>
           <Link href="/#packages">Packages</Link>
         </li>
         <li>

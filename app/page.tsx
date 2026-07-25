@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { BrandFlow } from "@/components/BrandFlow";
+import { RenderGallery } from "@/components/RenderGallery";
 import { Testimonials } from "@/components/Testimonials";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { QRCodeCard } from "@/components/QRCodeCard";
@@ -78,6 +79,8 @@ export default function Home() {
       </section>
 
       <BrandFlow />
+
+      <RenderGallery />
 
       <div className="marquee-bar">
         <div className="marquee-inner">
