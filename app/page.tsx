@@ -67,9 +67,9 @@ export default function Home() {
               roof.
             </div>
             <div className="hero-actions">
-              <Link href="/#packages" className="btn-primary">
+              <a href="#packages" className="btn-primary">
                 View Packages
-              </Link>
+              </a>
               <Link href="/contact" className="btn-ghost">
                 Start a Project
               </Link>
@@ -719,22 +719,22 @@ export default function Home() {
             <div className="footer-col-title">Navigation</div>
             <ul className="footer-links">
               <li>
-                <Link href="/#services">Services</Link>
+                <a href="#services">Services</a>
               </li>
               <li>
-                <Link href="/#packages">Packages</Link>
+                <a href="#packages">Packages</a>
               </li>
               <li>
-                <Link href="/#markets">Who We Serve</Link>
+                <a href="#markets">Who We Serve</a>
               </li>
               <li>
-                <Link href="/#process">Our Process</Link>
+                <a href="#process">Our Process</a>
               </li>
               <li>
-                <Link href="/#testimonials">Client Stories</Link>
+                <a href="#testimonials">Client Stories</a>
               </li>
               <li>
-                <Link href="/#bridge">The Master Plan</Link>
+                <a href="#bridge">The Master Plan</a>
               </li>
             </ul>
           </div>

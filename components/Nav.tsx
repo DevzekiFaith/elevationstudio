@@ -33,25 +33,25 @@ export function Nav() {
       </Link>
       <ul className="nav-links">
         <li>
-          <Link href="/#services">Services</Link>
+          <a href="#services">Services</a>
         </li>
         <li>
-          <Link href="/#renders">3D Renders</Link>
+          <a href="#renders">3D Renders</a>
         </li>
         <li>
-          <Link href="/#packages">Packages</Link>
+          <a href="#packages">Packages</a>
         </li>
         <li>
-          <Link href="/#markets">Who We Serve</Link>
+          <a href="#markets">Who We Serve</a>
         </li>
         <li>
-          <Link href="/#process">Process</Link>
+          <a href="#process">Process</a>
         </li>
         <li>
-          <Link href="/#testimonials">Client Stories</Link>
+          <a href="#testimonials">Client Stories</a>
         </li>
         <li>
-          <Link href="/#bridge">The Master Plan</Link>
+          <a href="#bridge">The Master Plan</a>
         </li>
       </ul>
       <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
