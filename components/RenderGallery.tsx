@@ -4,6 +4,15 @@ import Image from "next/image";
 import { useState } from "react";
 import { Reveal } from "./Reveal";
 
+// Swiper React components & modules
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay, Keyboard } from "swiper/modules";
+
+// Swiper CSS styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 export interface RenderItem {
   id: string;
   title: string;
@@ -36,6 +45,23 @@ const RENDERS: RenderItem[] = [
   },
   {
     id: "2",
+    title: "Modern High-Rise Apartment Tower at Dusk",
+    category: "residential",
+    categoryLabel: "LUXURY HIGH-RISE RESIDENTIAL",
+    location: "VICTORIA ISLAND WATERFRONT CORRIDOR",
+    image: "/renders/highrise_luxury_apartments.jpg",
+    accentColor: "#d4a843",
+    specs: [
+      "Multi-Tier Balcony Recessed LEDs",
+      "Warm Vertical Facade Strips",
+      "Reflective Wet Paving Entry Courtyard",
+      "Glass Balustrade Decking",
+    ],
+    description:
+      "A multi-level luxury apartment tower captured at dusk, boasting warm vertical strip illumination, glass balustrades, integrated lush terrace planters, and executive entrance drops.",
+  },
+  {
+    id: "3",
     title: "Executive 2-Story Luxury Duplex",
     category: "residential",
     categoryLabel: "RESIDENTIAL ARCHITECTURE",
@@ -52,7 +78,7 @@ const RENDERS: RenderItem[] = [
       "A contemporary 2-story luxury duplex boasting integrated under-soffit architectural LED strips, tinted glass balcony railings, and lush perimeter garden beds.",
   },
   {
-    id: "3",
+    id: "4",
     title: "Grand Foyer & Floating Staircase",
     category: "interior",
     categoryLabel: "LUXURY INTERIOR ARCHITECTURE",
@@ -69,7 +95,24 @@ const RENDERS: RenderItem[] = [
       "An opulent double-height entryway featuring floating marble treads, seamless frameless glass guardrails, custom gallery artwork, and warm indirect cove ambient lighting.",
   },
   {
-    id: "4",
+    id: "5",
+    title: "Sprawling Multi-Family Residential Block",
+    category: "residential",
+    categoryLabel: "MULTI-FAMILY HOUSING COMPLEX",
+    location: "OGUN–LAGOS SUBURBAN CORRIDOR",
+    image: "/renders/multifamily_residential_block.jpg",
+    accentColor: "#d4a843",
+    specs: [
+      "Linear Multi-Unit Block Structure",
+      "Recessed Wall Sconce Lighting",
+      "Wood-Accented Recessed Balconies",
+      "Cobblestone Perimeter Courtyard",
+    ],
+    description:
+      "A multi-unit residential development designed with high-density architectural symmetry, incorporating warm accent wall sconces, wood-paneled balcony niches, and cobblestone grounds.",
+  },
+  {
+    id: "6",
     title: "Architectural Gallery & Atrium Corridor",
     category: "interior",
     categoryLabel: "COMMERCIAL INTERIOR ARCHITECTURE",
@@ -86,7 +129,7 @@ const RENDERS: RenderItem[] = [
       "An ultra-modern corporate lobby corridor featuring brushed brass trim, fluted privacy glass, custom brand pylons, and architectural floor lighting.",
   },
   {
-    id: "5",
+    id: "7",
     title: "Contemporary Glass-Fronted Residence",
     category: "residential",
     categoryLabel: "MODERN RESIDENTIAL ESTATE",
@@ -103,7 +146,7 @@ const RENDERS: RenderItem[] = [
       "A striking minimalist residence with floor-to-ceiling glass paneling, a bespoke laser-cut black entrance gate, and warm interior ambient glow.",
   },
   {
-    id: "6",
+    id: "8",
     title: "Twin Luxury Multi-Unit Estate",
     category: "residential",
     categoryLabel: "LUXURY RESIDENTIAL COMPOUND",
@@ -120,7 +163,7 @@ const RENDERS: RenderItem[] = [
       "A sprawling dual-villa residential estate combining classic pitch roofs with sleek modern white facade rendering, floating portico steps, and subtle ambient nightscape lighting.",
   },
   {
-    id: "7",
+    id: "9",
     title: "Raw Concrete Executive Gallery Atrium",
     category: "interior",
     categoryLabel: "SPATIAL INTERIOR CONCEPTS",
@@ -137,7 +180,7 @@ const RENDERS: RenderItem[] = [
       "A sophisticated gallery atrium showcasing raw board-formed architectural concrete walls, high-gloss terrazzo floor reflections, and oversized illuminated vessel planters.",
   },
   {
-    id: "8",
+    id: "10",
     title: "Luxury Event Centre & Pavilion Walkway",
     category: "event",
     categoryLabel: "HOSPITALITY & EVENT SPACES",
@@ -154,7 +197,7 @@ const RENDERS: RenderItem[] = [
       "A flagship multi-purpose event grounds concept featuring tensioned conical canopy umbrellas, integrated storm-drain channels, and ambient outdoor garden illumination.",
   },
   {
-    id: "9",
+    id: "11",
     title: "Contemporary Executive Master Suite",
     category: "interior",
     categoryLabel: "HIGH-END INTERIOR CONCEPT",
@@ -171,7 +214,7 @@ const RENDERS: RenderItem[] = [
       "An executive master suite blending raw textured concrete surfaces with teal velvet accents, gallery-grade artwork displays, and floor-to-ceiling acoustic glass partitions.",
   },
   {
-    id: "10",
+    id: "12",
     title: "Commercial Plaza & Mixed-Use Complex",
     category: "commercial",
     categoryLabel: "COMMERCIAL & MIXED-USE PLAZA",
@@ -234,47 +277,66 @@ export function RenderGallery() {
             ))}
           </div>
 
-          {/* Render Showcase Grid */}
-          <div className="rg-grid">
-            {filteredRenders.map((render) => (
-              <div
-                key={render.id}
-                className="rg-card"
-                onClick={() => setSelectedRender(render)}
-              >
-                <div className="rg-card-img-wrap">
-                  <Image
-                    src={render.image}
-                    alt={render.title}
-                    fill
-                    className="rg-card-img"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority={render.id === "1"}
-                  />
-                  <div className="rg-card-overlay" />
-                  <div className="rg-card-badge">{render.categoryLabel}</div>
-                </div>
+          {/* Render Swiper Carousel */}
+          <div className="rg-swiper-wrapper">
+            <Swiper
+              key={filter}
+              modules={[Navigation, Pagination, Autoplay, Keyboard]}
+              spaceBetween={24}
+              slidesPerView={1}
+              breakpoints={{
+                640: { slidesPerView: 1.4 },
+                768: { slidesPerView: 2.2 },
+                1024: { slidesPerView: 3 },
+              }}
+              navigation
+              pagination={{ clickable: true, dynamicBullets: true }}
+              autoplay={{ delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true }}
+              keyboard={{ enabled: true }}
+              grabCursor={true}
+              className="rg-swiper-container"
+            >
+              {filteredRenders.map((render) => (
+                <SwiperSlide key={render.id}>
+                  <div
+                    className="rg-card"
+                    onClick={() => setSelectedRender(render)}
+                  >
+                    <div className="rg-card-img-wrap">
+                      <Image
+                        src={render.image}
+                        alt={render.title}
+                        fill
+                        className="rg-card-img"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority={render.id === "1"}
+                      />
+                      <div className="rg-card-overlay" />
+                      <div className="rg-card-badge">{render.categoryLabel}</div>
+                    </div>
 
-                <div className="rg-card-body">
-                  <div className="rg-card-location">{render.location}</div>
-                  <h3 className="rg-card-title">{render.title}</h3>
-                  <p className="rg-card-desc">{render.description}</p>
+                    <div className="rg-card-body">
+                      <div className="rg-card-location">{render.location}</div>
+                      <h3 className="rg-card-title">{render.title}</h3>
+                      <p className="rg-card-desc">{render.description}</p>
 
-                  <div className="rg-card-specs">
-                    {render.specs.slice(0, 2).map((sp, idx) => (
-                      <span key={idx} className="rg-spec-chip">
-                        ◆ {sp}
-                      </span>
-                    ))}
+                      <div className="rg-card-specs">
+                        {render.specs.slice(0, 2).map((sp, idx) => (
+                          <span key={idx} className="rg-spec-chip">
+                            ◆ {sp}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="rg-card-action">
+                        <span>VIEW RENDER SPECS</span>
+                        <span>→</span>
+                      </div>
+                    </div>
                   </div>
-
-                  <div className="rg-card-action">
-                    <span>VIEW RENDER SPECS</span>
-                    <span>→</span>
-                  </div>
-                </div>
-              </div>
-            ))}
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
 
