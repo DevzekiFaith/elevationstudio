@@ -230,6 +230,40 @@ const RENDERS: RenderItem[] = [
     description:
       "A monumental commercial plaza and residential complex designed for high-density elegance, featuring warm facade uplighting, glass balconies, and reflective courtyard paving.",
   },
+  {
+    id: "13",
+    title: "Modern Commercial Plaza & Indoor Atrium",
+    category: "commercial",
+    categoryLabel: "COMMERCIAL & MIXED-USE PLAZA",
+    location: "ABUJA / LAGOS COMMERCIAL CORRIDOR, NIGERIA",
+    image: "/renders/modern_plaza_indoor_atrium.jpg",
+    accentColor: "#60a5fa",
+    specs: [
+      "4-Story Skylight Central Courtyard",
+      "Linear LED Soffit Strips",
+      "Frameless Storefront Glazing",
+      "Integrated Digital Directory Totem",
+    ],
+    description:
+      "A flagship 4-story commercial plaza interior atrium in Nigeria featuring a soaring skylight canopy, multi-level glass shopfront balconies, fluted store signage, and polished stone walkway paving.",
+  },
+  {
+    id: "14",
+    title: "Family Event Centre & Outdoor Dining Pavilion",
+    category: "event",
+    categoryLabel: "HOSPITALITY & EVENT SPACES",
+    location: "VICTORIA ISLAND / OGUN CORRIDOR, NIGERIA",
+    image: "/renders/family_event_centre_pavilion.jpg",
+    accentColor: "#a89fd4",
+    specs: [
+      "Pergola Dining Pavilion Shading",
+      "Double-Story Modern Event Villa",
+      "Lush Perimeter Planter Wall Sconces",
+      "Al Fresco Lattice Lounge Seating",
+    ],
+    description:
+      "A serene multi-purpose family event centre and outdoor dining pavilion, boasting white architectural pergolas, green lattice terrace seating, high-contrast black glass framing, and ambient perimeter lighting.",
+  },
 ];
 
 export function RenderGallery() {
