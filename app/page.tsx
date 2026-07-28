@@ -741,7 +741,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="footer-parent-link"
             >
-              A Mindvest Global Resources Company
+              Elevation Studio — A Subsidiary of Mindvest Global Resources LLC
             </a>
           </div>
 
@@ -813,7 +813,7 @@ export default function Home() {
             © 2026 Elevation Studio · All Rights Reserved
           </div>
           <div className="footer-mindvest">
-            Part of{" "}
+            Elevation Studio — A Subsidiary of{" "}
             <a href="https://mindvestglobalresources.com.ng" target="_blank" rel="noopener noreferrer">
               Mindvest Global Resources LLC
             </a>
