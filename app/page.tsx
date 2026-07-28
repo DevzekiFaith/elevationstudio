@@ -309,8 +309,15 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className="pkg-card-bottom">
-                  <div className="pkg-card-price">₦500K</div>
-                  <div className="pkg-card-range">— ₦2,000,000</div>
+                  <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
+                  <div>
+                    <div className="pkg-card-price">₦500K</div>
+                    <div className="pkg-card-range">— ₦2,000,000</div>
+                  </div>
+                  <Link href="/contact?package=1" className="pkg-card-cta">
+                    <span>REQUEST PROPOSAL</span>
+                    <span>→</span>
+                  </Link>
                 </div>
               </div>
 
@@ -327,8 +334,15 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className="pkg-card-bottom">
-                  <div className="pkg-card-price">₦1.5M</div>
-                  <div className="pkg-card-range">— ₦5,000,000</div>
+                  <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
+                  <div>
+                    <div className="pkg-card-price">₦1.5M</div>
+                    <div className="pkg-card-range">— ₦5,000,000</div>
+                  </div>
+                  <Link href="/contact?package=2" className="pkg-card-cta">
+                    <span>REQUEST PROPOSAL</span>
+                    <span>→</span>
+                  </Link>
                 </div>
               </div>
 
@@ -345,8 +359,15 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className="pkg-card-bottom">
-                  <div className="pkg-card-price">₦5M</div>
-                  <div className="pkg-card-range">— ₦20,000,000</div>
+                  <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
+                  <div>
+                    <div className="pkg-card-price">₦5M</div>
+                    <div className="pkg-card-range">— ₦20,000,000</div>
+                  </div>
+                  <Link href="/contact?package=3" className="pkg-card-cta">
+                    <span>REQUEST PROPOSAL</span>
+                    <span>→</span>
+                  </Link>
                 </div>
               </div>
 
@@ -366,8 +387,45 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className="pkg-card-bottom">
-                  <div className="pkg-card-price">₦15M</div>
-                  <div className="pkg-card-range">— ₦50,000,000+</div>
+                  <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
+                  <div>
+                    <div className="pkg-card-price">₦15M</div>
+                    <div className="pkg-card-range">— ₦50,000,000+</div>
+                  </div>
+                  <Link href="/contact?package=4" className="pkg-card-cta">
+                    <span>COMMISSION BRIEF</span>
+                    <span>→</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Executive Payment & Retainer Scoping Disclosure */}
+            <div className="pkg-retainer-disclosure">
+              <div className="pkg-retainer-badge">
+                <svg className="pkg-retainer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="M9 12l2 2 4-4"/>
+                </svg>
+                <span>CORPORATE RETAINER &amp; SCOPING DISCLOSURE</span>
+              </div>
+
+              <div className="pkg-retainer-body">
+                <p className="pkg-retainer-text">
+                  All project figures represent <strong>customized investment ranges</strong> based on client scale and deliverables. Formal project retainers, milestones, and <strong>verified corporate bank transfer details</strong> are issued exclusively via official Elevation Studio proposals upon brief review.
+                </p>
+
+                <div className="pkg-retainer-btn-wrapper">
+                  <a
+                    href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20would%20like%20to%20schedule%20an%20Executive%20Discovery%20Consultation."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="pkg-retainer-btn"
+                  >
+                    <span>BOOK DISCOVERY SESSION</span>
+                    <span className="pkg-retainer-arrow">→</span>
+                  </a>
+                  <span className="pkg-retainer-subnote">DIRECT EXECUTIVE DESK • 24H RESPONSE</span>
                 </div>
               </div>
             </div>
@@ -616,41 +674,13 @@ export default function Home() {
               </div>
             </div>
 
-            <div
-              style={{
-                marginTop: 2,
-                background: "var(--black)",
-                padding: "32px 40px",
-                border: "1px solid var(--border)",
-                display: "flex",
-                gap: 20,
-                alignItems: "flex-start",
-              }}
-            >
-              <div
-                style={{
-                  color: "var(--gold)",
-                  fontSize: 18,
-                  flexShrink: 0,
-                  marginTop: 2,
-                }}
-              >
-                ◆
-              </div>
-              <div
-                style={{
-                  fontSize: 13,
-                  color: "var(--muted)",
-                  lineHeight: 1.8,
-                }}
-              >
-                All payments to{" "}
-                <strong style={{ color: "var(--white)" }}>
-                  Mindvest Global Resources LLC — Globus Bank
-                </strong>
-                . Quotes are valid for 30 days. Project slots are reserved in
-                order of deposit received. Retainer clients receive priority
-                scheduling and a dedicated point of contact.
+            <div className="payment-bank-notice">
+              <svg className="payment-bank-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+              <div className="payment-bank-text">
+                <strong>Executive Governance &amp; Proposal Assurance:</strong> Formal project proposals, milestone schedules, and verified corporate settlement accounts are issued exclusively upon brief review. Quotes remain valid for 30 days from proposal issuance. Retainer clients receive priority calendar scheduling and a dedicated lead architect.
               </div>
             </div>
           </div>

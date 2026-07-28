@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { QRCodeCard } from "./QRCodeCard";
 import { LocationMap } from "./LocationMap";
 
@@ -85,13 +86,30 @@ const initialFields = {
   additionalNotes: "",
 };
 
-export function ContactForm() {
+function ContactFormInner() {
+  const searchParams = useSearchParams();
   const [step, setStep] = useState<Step>(1);
   const [fields, setFields] = useState(initialFields);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    const pkg = searchParams?.get("package") || searchParams?.get("pkg");
+    if (pkg && ["1", "2", "3", "4"].includes(pkg)) {
+      let defaultBudgetIdx = 0;
+      if (pkg === "2") defaultBudgetIdx = 3; // ₦3.5M – ₦5M
+      if (pkg === "3") defaultBudgetIdx = 5; // ₦8M – ₦12M
+      if (pkg === "4") defaultBudgetIdx = 8; // ₦30M – ₦50M
+
+      setFields((f) => ({
+        ...f,
+        packageId: pkg,
+        budgetIndex: defaultBudgetIdx,
+      }));
+    }
+  }, [searchParams]);
 
   const formId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID;
 
@@ -654,5 +672,13 @@ export function ContactForm() {
         </form>
       </div>
     </div>
+  );
+}
+
+export function ContactForm() {
+  return (
+    <Suspense fallback={<div className="contact-page" style={{ padding: 40, color: "var(--gold)" }}>Loading proposal form...</div>}>
+      <ContactFormInner />
+    </Suspense>
   );
 }
