@@ -4367,21 +4367,23 @@ footer {
   display: flex;
   align-items: center;
   gap: 2px;
-  background: var(--off-black);
+  background: rgba(14, 14, 14, 0.9);
   border: 1px solid var(--border);
   padding: 3px;
   border-radius: 9999px;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .currency-toggle-btn {
   position: relative;
-  padding: 6px 12px;
+  padding: 6px 14px;
   background: transparent;
   border: none;
   color: var(--muted);
   cursor: pointer;
   border-radius: 9999px;
-  transition: color 0.2s ease;
+  transition: color 0.25s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4393,15 +4395,16 @@ footer {
 
 .currency-toggle-btn.active {
   color: var(--black);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .currency-toggle-indicator {
   position: absolute;
   inset: 0;
-  background: var(--gold);
+  background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 100%);
   border-radius: 9999px;
   z-index: 1;
+  box-shadow: 0 0 12px rgba(212, 168, 67, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 /* ═══════════════════════════════════════════

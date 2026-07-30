@@ -1,10 +1,12 @@
 "use client";
 
+import { useId } from "react";
 import { useCurrency, type Currency } from "./CurrencyContext";
 import { motion } from "framer-motion";
 
 export function CurrencyToggle() {
   const { currency, setCurrency } = useCurrency();
+  const instanceId = useId();
 
   const options: { id: Currency; label: string; symbol: string }[] = [
     { id: "NGN", label: "NGN", symbol: "₦" },
@@ -26,9 +28,14 @@ export function CurrencyToggle() {
           >
             {active && (
               <motion.div
-                layoutId="activeCurrencyBg"
+                layoutId={`activeCurrencyBg-${instanceId}`}
                 className="currency-toggle-indicator"
-                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 380,
+                  damping: 24,
+                  mass: 0.6,
+                }}
               />
             )}
             <span className="relative z-10 font-mono text-[10px] tracking-wider uppercase">
