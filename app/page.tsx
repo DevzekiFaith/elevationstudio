@@ -226,8 +226,8 @@ export default function Home() {
         </section>
       </Reveal>
 
-      {/* 2D Blueprint vs 3D Render Comparison Slider */}
-      <BlueprintSlider />
+      {/* 2D Blueprint vs 3D Render Comparison Slider - Hidden until custom blueprint assets are assigned */}
+      {/* <BlueprintSlider /> */}
 
       <RenderGallery />
 
