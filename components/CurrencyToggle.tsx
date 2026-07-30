@@ -38,7 +38,7 @@ export function CurrencyToggle() {
                 }}
               />
             )}
-            <span className="relative z-10 font-mono text-[10px] tracking-wider uppercase">
+            <span className="relative z-10 font-mono text-[9px] leading-none tracking-wider uppercase">
               {opt.symbol} {opt.label}
             </span>
           </button>
