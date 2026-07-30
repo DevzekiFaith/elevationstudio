@@ -7,17 +7,25 @@ import { Testimonials } from "@/components/Testimonials";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { QRCodeCard } from "@/components/QRCodeCard";
 import { LocationMap } from "@/components/LocationMap";
+import { ParallaxLayer } from "@/components/ParallaxLayer";
+import { TiltCard } from "@/components/TiltCard";
+import { Magnetic } from "@/components/Magnetic";
 
 export default function Home() {
   return (
     <>
       <Nav />
 
-      <section className="hero">
-        <div className="hero-bg" />
-        <div className="hero-grid" />
+      {/* Hero Section with Parallax Depth */}
+      <section className="hero relative overflow-hidden">
+        <ParallaxLayer speed={-0.35} className="absolute inset-0 pointer-events-none">
+          <div className="hero-bg" />
+          <div className="hero-grid opacity-60" />
+          <div className="ambient-orb ambient-orb-gold w-[600px] h-[600px] -top-32 -right-32" />
+          <div className="ambient-orb ambient-orb-bridge w-[500px] h-[500px] bottom-0 -left-20" />
+        </ParallaxLayer>
 
-        <div className="hero-ticker">
+        <div className="hero-ticker relative z-10">
           <div className="ticker-inner">
             <div className="ticker-item">
               <span>◆</span> Brand Identity
@@ -52,28 +60,43 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-content">
-          <div className="hero-label">Elevation Studio · Est. 2026</div>
-          <div className="hero-headline">
-            BUILD
-            <br />
-            <span className="line2">DIFFERENT</span>
-            <span className="gold-word">.</span>
-          </div>
+        <div className="hero-content relative z-10">
+          <Reveal direction="down" duration={0.6} delay={0.1}>
+            <div className="hero-label">Elevation Studio · Est. 2026</div>
+          </Reveal>
+          
+          <Reveal direction="up" duration={0.8} delay={0.2}>
+            <div className="hero-headline">
+              BUILD
+              <br />
+              <span className="line2">DIFFERENT</span>
+              <span className="gold-word pulse-glow">.</span>
+            </div>
+          </Reveal>
+
           <div className="hero-bottom">
-            <div className="hero-sub">
-              Nigeria&apos;s only studio where brand design, digital engineering,
-              spatial architecture, and cultural transformation meet under one
-              roof.
-            </div>
-            <div className="hero-actions">
-              <a href="#packages" className="btn-primary">
-                View Packages
-              </a>
-              <Link href="/contact" className="btn-ghost">
-                Start a Project
-              </Link>
-            </div>
+            <Reveal direction="up" duration={0.7} delay={0.4}>
+              <div className="hero-sub">
+                Nigeria&apos;s only studio where brand design, digital engineering,
+                spatial architecture, and cultural transformation meet under one
+                roof.
+              </div>
+            </Reveal>
+
+            <Reveal direction="up" duration={0.7} delay={0.5}>
+              <div className="hero-actions">
+                <Magnetic strength={0.3}>
+                  <a href="#packages" className="btn-primary">
+                    View Packages
+                  </a>
+                </Magnetic>
+                <Magnetic strength={0.3}>
+                  <Link href="/contact" className="btn-ghost">
+                    Start a Project
+                  </Link>
+                </Magnetic>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -123,158 +146,125 @@ export default function Home() {
         </div>
       </div>
 
-      <Reveal>
-        <section className="about" id="about">
-          <div className="about-left">
-            <div className="section-tag">Who We Are</div>
-            <div className="about-title">
-              WE DON&apos;T
-              <br />
-              JUST
-              <br />
-              <span className="stroke">DESIGN</span>
-            </div>
-            <p className="about-body">
-              Elevation Studio is the{" "}
-              <strong>design and development arm of Mindvest Global</strong> —
-              built for businesses that understand the difference between looking
-              good and being architecturally sound.
-            </p>
-            <p className="about-body">
-              We work at the intersection of{" "}
-              <strong>
-                visual identity, digital engineering, physical space, and human
-                culture
-              </strong>{" "}
-              — because the best brands don&apos;t just communicate, they
-              inhabit every dimension they occupy.
-            </p>
-          </div>
-          <div className="about-right">
-            <div className="about-stat">
-              <div className="stat-big">4</div>
-              <div className="stat-label">
-                Service
-                <br />
-                Packages
-              </div>
-            </div>
-            <div className="about-stat">
-              <div className="stat-big">3</div>
-              <div className="stat-label">
-                Target
-                <br />
-                Markets
-              </div>
-            </div>
-            <div className="about-stat">
-              <div className="stat-big">2</div>
-              <div className="stat-label">
-                Disciplines
-                <br />
-                Combined
-              </div>
-            </div>
-            <div className="about-stat">
-              <div className="stat-big">∞</div>
-              <div className="stat-label">
-                Transformation
-                <br />
-                Potential
-              </div>
-            </div>
-          </div>
-        </section>
-      </Reveal>
+      <Reveal direction="up" duration={0.7}>
+        <section className="services relative overflow-hidden" id="services">
+          <ParallaxLayer speed={0.15} className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
+            <div className="ambient-orb ambient-orb-gold w-[450px] h-[450px] opacity-10" />
+          </ParallaxLayer>
 
-      <Reveal>
-        <section className="services" id="services">
-          <div className="services-header">
-            <div className="services-title">
-              WHAT
-              <br />
-              WE <span style={{ color: "var(--gold)" }}>BUILD</span>
+          <div className="services-top">
+            <div>
+              <div className="section-tag">Capabilities</div>
+              <div className="services-headline">
+                FOUR DISCIPLINES,
+                <br />
+                <span className="gold">ONE ARCHITECTURE</span>
+              </div>
             </div>
-            <div className="services-desc">
-              Four disciplines. One integrated intelligence. Every engagement is
+            <div className="services-sub">
+              We operate as a single studio, not a group of contractors. Every
+              project benefits from all four views — giving you a brand that
+              lives comfortably in print, code, concrete, and culture.
+            </div>
+          </div>
+
+          <div className="section-divider" />
+
+          <div className="services-lead">
+            <div className="services-lead-num">04</div>
+            <div className="services-lead-text">
+              Pillars of execution. Every deliverable is engineered to last,
               designed to outlast the brief.
             </div>
           </div>
 
           <div className="service-list">
-            <div className="service-item">
-              <div className="service-num">01</div>
-              <div className="service-body">
-                <div className="service-name">BRAND IDENTITY</div>
-                <div className="service-desc">
-                  Logo systems, colour language, typography, brand guidelines,
-                  and stationery. The visual architecture your business will
-                  speak from for decades.
+            <Reveal direction="left" delay={0.1}>
+              <div className="service-item glow-card-border">
+                <div className="service-num">01</div>
+                <div className="service-body">
+                  <div className="service-name">BRAND IDENTITY</div>
+                  <div className="service-desc">
+                    Logo systems, colour language, typography, brand guidelines,
+                    and stationery. The visual architecture your business will
+                    speak from for decades.
+                  </div>
+                </div>
+                <div className="service-tags">
+                  <div className="service-tag">Logo Design</div>
+                  <div className="service-tag">Guidelines</div>
+                  <div className="service-tag">Stationery</div>
                 </div>
               </div>
-              <div className="service-tags">
-                <div className="service-tag">Logo Design</div>
-                <div className="service-tag">Guidelines</div>
-                <div className="service-tag">Stationery</div>
-              </div>
-            </div>
+            </Reveal>
 
-            <div className="service-item">
-              <div className="service-num">02</div>
-              <div className="service-body">
-                <div className="service-name">DIGITAL ENGINEERING</div>
-                <div className="service-desc">
-                  Website design and development, social media systems, email
-                  infrastructure. Built with React, Next.js, and TypeScript —
-                  not templates.
+            <Reveal direction="left" delay={0.2}>
+              <div className="service-item glow-card-border">
+                <div className="service-num">02</div>
+                <div className="service-body">
+                  <div className="service-name">DIGITAL ENGINEERING</div>
+                  <div className="service-desc">
+                    Website design and development, social media systems, email
+                    infrastructure. Built with React, Next.js, and TypeScript —
+                    not templates.
+                  </div>
+                </div>
+                <div className="service-tags">
+                  <div className="service-tag">Web Design</div>
+                  <div className="service-tag">Development</div>
+                  <div className="service-tag">Next.js</div>
                 </div>
               </div>
-              <div className="service-tags">
-                <div className="service-tag">Web Design</div>
-                <div className="service-tag">Development</div>
-                <div className="service-tag">Next.js</div>
-              </div>
-            </div>
+            </Reveal>
 
-            <div className="service-item">
-              <div className="service-num">03</div>
-              <div className="service-body">
-                <div className="service-name">SPACE DESIGN</div>
-                <div className="service-desc">
-                  Interior concepts, space-brand alignment, show apartment
-                  design. For businesses whose brand must translate into the
-                  physical rooms their customers enter.
+            <Reveal direction="left" delay={0.3}>
+              <div className="service-item glow-card-border">
+                <div className="service-num">03</div>
+                <div className="service-body">
+                  <div className="service-name">SPACE DESIGN</div>
+                  <div className="service-desc">
+                    Interior concepts, space-brand alignment, show apartment
+                    design. For businesses whose brand must translate into the
+                    physical rooms their customers enter.
+                  </div>
+                </div>
+                <div className="service-tags">
+                  <div className="service-tag">Interior Design</div>
+                  <div className="service-tag">Revit / Lumion</div>
+                  <div className="service-tag">BIM</div>
                 </div>
               </div>
-              <div className="service-tags">
-                <div className="service-tag">Interior Design</div>
-                <div className="service-tag">Revit / Lumion</div>
-                <div className="service-tag">BIM</div>
-              </div>
-            </div>
+            </Reveal>
 
-            <div className="service-item">
-              <div className="service-num">04</div>
-              <div className="service-body">
-                <div className="service-name">CULTURE TRANSFORMATION</div>
-                <div className="service-desc">
-                  Organisational culture programmes, leadership development, and
-                  6–12 month transformation partnerships — powered by Mindvest
-                  Global&apos;s Human Architecture Framework.
+            <Reveal direction="left" delay={0.4}>
+              <div className="service-item glow-card-border">
+                <div className="service-num">04</div>
+                <div className="service-body">
+                  <div className="service-name">CULTURE TRANSFORMATION</div>
+                  <div className="service-desc">
+                    Organisational culture programmes, leadership development, and
+                    6–12 month transformation partnerships — powered by Mindvest
+                    Global&apos;s Human Architecture Framework.
+                  </div>
+                </div>
+                <div className="service-tags">
+                  <div className="service-tag">Culture Design</div>
+                  <div className="service-tag">Leadership</div>
+                  <div className="service-tag">Mindvest</div>
                 </div>
               </div>
-              <div className="service-tags">
-                <div className="service-tag">Culture Design</div>
-                <div className="service-tag">Leadership</div>
-                <div className="service-tag">Mindvest</div>
-              </div>
-            </div>
+            </Reveal>
           </div>
         </section>
       </Reveal>
 
-      <Reveal>
-        <section className="packages" id="packages">
+      {/* Packages Section with Interactive 3D Tilt Cards */}
+      <Reveal direction="up" duration={0.8}>
+        <section className="packages relative overflow-hidden" id="packages">
+          <ParallaxLayer speed={-0.2} className="absolute left-0 top-1/3 pointer-events-none">
+            <div className="ambient-orb ambient-orb-gold w-[500px] h-[500px] opacity-15" />
+          </ParallaxLayer>
+
           <div className="packages-inner">
             <div className="packages-top">
               <div className="pkg-title">
@@ -296,108 +286,124 @@ export default function Home() {
             </div>
 
             <div className="pkg-grid">
-              <div className="pkg-card">
-                <div className="pkg-card-top">
-                  <div className="pkg-card-num">Package 01</div>
-                  <div className="pkg-card-name">THE FOUNDATION</div>
-                  <div className="pkg-card-subtitle">Brand Identity Only</div>
-                  <ul className="pkg-card-includes">
-                    <li className="new">Logo & master mark design</li>
-                    <li className="new">Colour system & typography</li>
-                    <li className="new">Brand guidelines document</li>
-                    <li className="new">Stationery suite</li>
-                  </ul>
-                </div>
-                <div className="pkg-card-bottom">
-                  <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
-                  <div>
-                    <div className="pkg-card-price">₦500K</div>
-                    <div className="pkg-card-range">— ₦2,000,000</div>
+              <TiltCard glare maxTilt={7}>
+                <div className="pkg-card h-full">
+                  <div className="pkg-card-top">
+                    <div className="pkg-card-num">Package 01</div>
+                    <div className="pkg-card-name">THE FOUNDATION</div>
+                    <div className="pkg-card-subtitle">Brand Identity Only</div>
+                    <ul className="pkg-card-includes">
+                      <li className="new">Logo & master mark design</li>
+                      <li className="new">Colour system & typography</li>
+                      <li className="new">Brand guidelines document</li>
+                      <li className="new">Stationery suite</li>
+                    </ul>
                   </div>
-                  <Link href="/contact?package=1" className="pkg-card-cta">
-                    <span>REQUEST PROPOSAL</span>
-                    <span>→</span>
-                  </Link>
+                  <div className="pkg-card-bottom">
+                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
+                    <div>
+                      <div className="pkg-card-price">₦500K</div>
+                      <div className="pkg-card-range">— ₦2,000,000</div>
+                    </div>
+                    <Magnetic strength={0.2}>
+                      <Link href="/contact?package=1" className="pkg-card-cta">
+                        <span>REQUEST PROPOSAL</span>
+                        <span>→</span>
+                      </Link>
+                    </Magnetic>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
 
-              <div className="pkg-card">
-                <div className="pkg-card-top">
-                  <div className="pkg-card-num">Package 02</div>
-                  <div className="pkg-card-name">THE STRUCTURE</div>
-                  <div className="pkg-card-subtitle">Brand + Digital</div>
-                  <ul className="pkg-card-includes">
-                    <li>Everything in Foundation</li>
-                    <li className="new">Website design & development</li>
-                    <li className="new">Social media templates</li>
-                    <li className="new">Email marketing setup</li>
-                  </ul>
-                </div>
-                <div className="pkg-card-bottom">
-                  <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
-                  <div>
-                    <div className="pkg-card-price">₦1.5M</div>
-                    <div className="pkg-card-range">— ₦5,000,000</div>
+              <TiltCard glare maxTilt={7}>
+                <div className="pkg-card h-full">
+                  <div className="pkg-card-top">
+                    <div className="pkg-card-num">Package 02</div>
+                    <div className="pkg-card-name">THE STRUCTURE</div>
+                    <div className="pkg-card-subtitle">Brand + Digital</div>
+                    <ul className="pkg-card-includes">
+                      <li>Everything in Foundation</li>
+                      <li className="new">Website design & development</li>
+                      <li className="new">Social media templates</li>
+                      <li className="new">Email marketing setup</li>
+                    </ul>
                   </div>
-                  <Link href="/contact?package=2" className="pkg-card-cta">
-                    <span>REQUEST PROPOSAL</span>
-                    <span>→</span>
-                  </Link>
+                  <div className="pkg-card-bottom">
+                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
+                    <div>
+                      <div className="pkg-card-price">₦1.5M</div>
+                      <div className="pkg-card-range">— ₦5,000,000</div>
+                    </div>
+                    <Magnetic strength={0.2}>
+                      <Link href="/contact?package=2" className="pkg-card-cta">
+                        <span>REQUEST PROPOSAL</span>
+                        <span>→</span>
+                      </Link>
+                    </Magnetic>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
 
-              <div className="pkg-card">
-                <div className="pkg-card-top">
-                  <div className="pkg-card-num">Package 03</div>
-                  <div className="pkg-card-name">THE ELEVATION</div>
-                  <div className="pkg-card-subtitle">Brand + Digital + Space</div>
-                  <ul className="pkg-card-includes">
-                    <li>Everything in Structure</li>
-                    <li className="new">Space design consultation</li>
-                    <li className="new">Interior design concept & docs</li>
-                    <li className="new">Space-brand alignment audit</li>
-                  </ul>
-                </div>
-                <div className="pkg-card-bottom">
-                  <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
-                  <div>
-                    <div className="pkg-card-price">₦5M</div>
-                    <div className="pkg-card-range">— ₦20,000,000</div>
+              <TiltCard glare maxTilt={7}>
+                <div className="pkg-card h-full">
+                  <div className="pkg-card-top">
+                    <div className="pkg-card-num">Package 03</div>
+                    <div className="pkg-card-name">THE ELEVATION</div>
+                    <div className="pkg-card-subtitle">Brand + Digital + Space</div>
+                    <ul className="pkg-card-includes">
+                      <li>Everything in Structure</li>
+                      <li className="new">Space design consultation</li>
+                      <li className="new">Interior design concept & docs</li>
+                      <li className="new">Space-brand alignment audit</li>
+                    </ul>
                   </div>
-                  <Link href="/contact?package=3" className="pkg-card-cta">
-                    <span>REQUEST PROPOSAL</span>
-                    <span>→</span>
-                  </Link>
+                  <div className="pkg-card-bottom">
+                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
+                    <div>
+                      <div className="pkg-card-price">₦5M</div>
+                      <div className="pkg-card-range">— ₦20,000,000</div>
+                    </div>
+                    <Magnetic strength={0.2}>
+                      <Link href="/contact?package=3" className="pkg-card-cta">
+                        <span>REQUEST PROPOSAL</span>
+                        <span>→</span>
+                      </Link>
+                    </Magnetic>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
 
-              <div className="pkg-card bridge">
-                <div className="bridge-label">Flagship</div>
-                <div className="pkg-card-top">
-                  <div className="pkg-card-num">Package 04</div>
-                  <div className="pkg-card-name">THE MASTER PLAN</div>
-                  <div className="pkg-card-subtitle">
-                    Brand + Digital + Space + Culture
+              <TiltCard glare maxTilt={8}>
+                <div className="pkg-card bridge h-full">
+                  <div className="bridge-label">Flagship</div>
+                  <div className="pkg-card-top">
+                    <div className="pkg-card-num">Package 04</div>
+                    <div className="pkg-card-name">THE MASTER PLAN</div>
+                    <div className="pkg-card-subtitle">
+                      Brand + Digital + Space + Culture
+                    </div>
+                    <ul className="pkg-card-includes">
+                      <li>Everything in Elevation</li>
+                      <li className="new">Mindvest culture transformation</li>
+                      <li className="new">Leadership development</li>
+                      <li className="new">6–12 month partnership</li>
+                    </ul>
                   </div>
-                  <ul className="pkg-card-includes">
-                    <li>Everything in Elevation</li>
-                    <li className="new">Mindvest culture transformation</li>
-                    <li className="new">Leadership development</li>
-                    <li className="new">6–12 month partnership</li>
-                  </ul>
-                </div>
-                <div className="pkg-card-bottom">
-                  <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
-                  <div>
-                    <div className="pkg-card-price">₦15M</div>
-                    <div className="pkg-card-range">— ₦50,000,000+</div>
+                  <div className="pkg-card-bottom">
+                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
+                    <div>
+                      <div className="pkg-card-price">₦15M</div>
+                      <div className="pkg-card-range">— ₦50,000,000+</div>
+                    </div>
+                    <Magnetic strength={0.25}>
+                      <Link href="/contact?package=4" className="pkg-card-cta">
+                        <span>COMMISSION BRIEF</span>
+                        <span>→</span>
+                      </Link>
+                    </Magnetic>
                   </div>
-                  <Link href="/contact?package=4" className="pkg-card-cta">
-                    <span>COMMISSION BRIEF</span>
-                    <span>→</span>
-                  </Link>
                 </div>
-              </div>
+              </TiltCard>
             </div>
 
             {/* Executive Payment & Retainer Scoping Disclosure */}
@@ -416,15 +422,17 @@ export default function Home() {
                 </p>
 
                 <div className="pkg-retainer-btn-wrapper">
-                  <a
-                    href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20would%20like%20to%20schedule%20an%20Executive%20Discovery%20Consultation."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="pkg-retainer-btn"
-                  >
-                    <span>BOOK DISCOVERY SESSION</span>
-                    <span className="pkg-retainer-arrow">→</span>
-                  </a>
+                  <Magnetic strength={0.3}>
+                    <a
+                      href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20would%20like%20to%20schedule%20an%20Executive%20Discovery%20Consultation."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pkg-retainer-btn"
+                    >
+                      <span>BOOK DISCOVERY SESSION</span>
+                      <span className="pkg-retainer-arrow">→</span>
+                    </a>
+                  </Magnetic>
                   <span className="pkg-retainer-subnote">DIRECT EXECUTIVE DESK • 24H RESPONSE</span>
                 </div>
               </div>
@@ -433,7 +441,7 @@ export default function Home() {
         </section>
       </Reveal>
 
-      <Reveal>
+      <Reveal direction="up">
         <section className="markets" id="markets">
           <div className="section-tag">Who We Serve</div>
           <div
@@ -447,56 +455,62 @@ export default function Home() {
           </div>
 
           <div className="markets-grid">
-            <div className="market">
-              <div className="market-num">01</div>
-              <div className="market-name">
-                Global Reach
-                <br />
-                Serve Wherever You Are
+            <TiltCard glare maxTilt={6}>
+              <div className="market h-full">
+                <div className="market-num">01</div>
+                <div className="market-name">
+                  Global Reach
+                  <br />
+                  Serve Wherever You Are
+                </div>
+                <div className="market-region">Any Location / Base Globally</div>
+                <ul className="market-items">
+                  <li>We serve individuals and companies from any location of their base</li>
+                  <li>Seamless remote integration, workflow collaboration, and digital engineering</li>
+                  <li>African diaspora businesses wanting authentic, high-impact design intelligence</li>
+                  <li>Startups, NGOs, and remote-first companies scaling their digital footprint</li>
+                </ul>
               </div>
-              <div className="market-region">Any Location / Base Globally</div>
-              <ul className="market-items">
-                <li>We serve individuals and companies from any location of their base</li>
-                <li>Seamless remote integration, workflow collaboration, and digital engineering</li>
-                <li>African diaspora businesses wanting authentic, high-impact design intelligence</li>
-                <li>Startups, NGOs, and remote-first companies scaling their digital footprint</li>
-              </ul>
-            </div>
+            </TiltCard>
 
-            <div className="market">
-              <div className="market-num">02</div>
-              <div className="market-name">
-                Local Base
-                <br />
-                Ogun — Lagos Corridor
+            <TiltCard glare maxTilt={6}>
+              <div className="market h-full">
+                <div className="market-num">02</div>
+                <div className="market-name">
+                  Local Base
+                  <br />
+                  Ogun — Lagos Corridor
+                </div>
+                <div className="market-region">Our Operational Headquarters</div>
+                <ul className="market-items">
+                  <li>Retaining the Ogun - Lagos corridor as our headquarters and operational hub</li>
+                  <li>Real estate developers — brand identity, web design, and spatial concepts</li>
+                  <li>Manufacturing and industrial corridor corporations upgrading visual assets</li>
+                  <li>Hospitality, retail, and commercial developments across the corridor</li>
+                </ul>
               </div>
-              <div className="market-region">Our Operational Headquarters</div>
-              <ul className="market-items">
-                <li>Retaining the Ogun - Lagos corridor as our headquarters and operational hub</li>
-                <li>Real estate developers — brand identity, web design, and spatial concepts</li>
-                <li>Manufacturing and industrial corridor corporations upgrading visual assets</li>
-                <li>Hospitality, retail, and commercial developments across the corridor</li>
-              </ul>
-            </div>
+            </TiltCard>
 
-            <div className="market">
-              <div className="market-num">03</div>
-              <div className="market-name">
-                Government &
-                <br />
-                Institutional
+            <TiltCard glare maxTilt={6}>
+              <div className="market h-full">
+                <div className="market-num">03</div>
+                <div className="market-name">
+                  Government &
+                  <br />
+                  Institutional
+                </div>
+                <div className="market-region">Federal, State & Public Sector</div>
+                <ul className="market-items">
+                  <li>
+                    State agencies modernising visual identity and secure citizen portals
+                  </li>
+                  <li>
+                    Educational institutions — brand, digital systems, and space design
+                  </li>
+                  <li>Feeds into Mindvest Global partnership strategy for public infrastructure</li>
+                </ul>
               </div>
-              <div className="market-region">Federal, State & Public Sector</div>
-              <ul className="market-items">
-                <li>
-                  State agencies modernising visual identity and secure citizen portals
-                </li>
-                <li>
-                  Educational institutions — brand, digital systems, and space design
-                </li>
-                <li>Feeds into Mindvest Global partnership strategy for public infrastructure</li>
-              </ul>
-            </div>
+            </TiltCard>
           </div>
 
           <div style={{ marginTop: 48 }}>
@@ -505,7 +519,7 @@ export default function Home() {
         </section>
       </Reveal>
 
-      <Reveal>
+      <Reveal direction="up">
         <section className="process" id="process">
           <div className="process-inner">
             <div className="section-tag">How We Work</div>
@@ -522,58 +536,54 @@ export default function Home() {
             </div>
 
             <div className="process-steps">
-              <div className="p-step">
-                <div className="p-step-num">01</div>
-                <div className="p-step-name">Discovery</div>
-                <div className="p-step-desc">
-                  Deep dive into your business, audience, and ambition. We
-                  don&apos;t design until we understand what you&apos;re building
-                  toward.
-                </div>
-                <div className="p-step-arrow">→</div>
-              </div>
-              <div className="p-step">
-                <div className="p-step-num">02</div>
-                <div className="p-step-name">Architecture</div>
-                <div className="p-step-desc">
-                  Brand strategy, information architecture, spatial concepts. The
-                  blueprint before a single pixel is placed.
-                </div>
-                <div className="p-step-arrow">→</div>
-              </div>
-              <div className="p-step">
-                <div className="p-step-num">03</div>
-                <div className="p-step-name">Design</div>
-                <div className="p-step-desc">
-                  Visual identity, web design, space concepts. Three rounds of
-                  refinement. Your feedback shapes every iteration.
-                </div>
-                <div className="p-step-arrow">→</div>
-              </div>
-              <div className="p-step">
-                <div className="p-step-num">04</div>
-                <div className="p-step-name">Build</div>
-                <div className="p-step-desc">
-                  Development, production, handover. Everything documented,
-                  everything working, everything yours.
-                </div>
-                <div className="p-step-arrow">→</div>
-              </div>
-              <div className="p-step">
-                <div className="p-step-num">05</div>
-                <div className="p-step-name">Elevate</div>
-                <div className="p-step-desc">
-                  For Package 4 clients — the transformation partnership begins.
-                  Culture, leadership, ongoing support.
-                </div>
-              </div>
+              {[
+                {
+                  num: "01",
+                  name: "Discovery",
+                  desc: "Deep dive into your business, audience, and ambition. We don't design until we understand what you're building toward.",
+                },
+                {
+                  num: "02",
+                  name: "Architecture",
+                  desc: "Brand strategy, information architecture, spatial concepts. The blueprint before a single pixel is placed.",
+                },
+                {
+                  num: "03",
+                  name: "Design",
+                  desc: "Visual identity, web design, space concepts. Three rounds of refinement. Your feedback shapes every iteration.",
+                },
+                {
+                  num: "04",
+                  name: "Build",
+                  desc: "Development, production, handover. Everything documented, everything working, everything yours.",
+                },
+                {
+                  num: "05",
+                  name: "Elevate",
+                  desc: "For Package 4 clients — the transformation partnership begins. Culture, leadership, ongoing support.",
+                },
+              ].map((step, index) => (
+                <Reveal key={step.num} direction="up" delay={index * 0.1}>
+                  <div className="p-step h-full">
+                    <div className="p-step-num">{step.num}</div>
+                    <div className="p-step-name">{step.name}</div>
+                    <div className="p-step-desc">{step.desc}</div>
+                    {index < 4 && <div className="p-step-arrow">→</div>}
+                  </div>
+                </Reveal>
+              ))}
             </div>
           </div>
         </section>
       </Reveal>
 
-      <Reveal>
-        <section className="bridge-section" id="bridge">
+      {/* The Strategic Bridge Section */}
+      <Reveal direction="zoom">
+        <section className="bridge-section relative overflow-hidden" id="bridge">
+          <ParallaxLayer speed={0.25} className="absolute right-[-100px] bottom-[-100px] pointer-events-none">
+            <div className="ambient-orb ambient-orb-bridge w-[600px] h-[600px] opacity-25" />
+          </ParallaxLayer>
+
           <div className="bridge-left">
             <div className="section-tag">The Strategic Bridge</div>
             <div className="bridge-title">
@@ -613,24 +623,28 @@ export default function Home() {
           </div>
 
           <div className="bridge-right">
-            <div className="bridge-pkg-label">Package 04 — Flagship</div>
-            <div className="bridge-pkg-name">THE MASTER PLAN</div>
-            <ul className="bridge-pkg-includes">
-              <li>Everything in The Elevation (Brand + Digital + Space)</li>
-              <li>
-                Mindvest Global organisational culture transformation programme
-              </li>
-              <li>Leadership development for the client&apos;s team</li>
-              <li>6–12 month transformation partnership</li>
-              <li>Quarterly culture audits and progress reviews</li>
-            </ul>
-            <div className="bridge-price">₦15M</div>
-            <div className="bridge-price-range">— ₦50,000,000+</div>
+            <TiltCard glare maxTilt={8}>
+              <div className="h-full">
+                <div className="bridge-pkg-label">Package 04 — Flagship</div>
+                <div className="bridge-pkg-name">THE MASTER PLAN</div>
+                <ul className="bridge-pkg-includes">
+                  <li>Everything in The Elevation (Brand + Digital + Space)</li>
+                  <li>
+                    Mindvest Global organisational culture transformation programme
+                  </li>
+                  <li>Leadership development for the client&apos;s team</li>
+                  <li>6–12 month transformation partnership</li>
+                  <li>Quarterly culture audits and progress reviews</li>
+                </ul>
+                <div className="bridge-price">₦15M</div>
+                <div className="bridge-price-range">— ₦50,000,000+</div>
+              </div>
+            </TiltCard>
           </div>
         </section>
       </Reveal>
 
-      <Reveal>
+      <Reveal direction="up">
         <section className="payment" id="payment">
           <div className="payment-inner">
             <div className="section-tag">Payment Structure</div>
@@ -646,32 +660,40 @@ export default function Home() {
             </div>
 
             <div className="payment-grid">
-              <div className="payment-card">
-                <div className="payment-card-label">Packages 01 & 02</div>
-                <div className="payment-split">50 / 50</div>
-                <div className="payment-desc">
-                  50% deposit to commence work. 50% on final delivery before
-                  handover. No exceptions.
+              <TiltCard glare maxTilt={5}>
+                <div className="payment-card h-full">
+                  <div className="payment-card-label">Packages 01 & 02</div>
+                  <div className="payment-split">50 / 50</div>
+                  <div className="payment-desc">
+                    50% deposit to commence work. 50% on final delivery before
+                    handover. No exceptions.
+                  </div>
                 </div>
-              </div>
-              <div className="payment-card">
-                <div className="payment-card-label">Package 03</div>
-                <div className="payment-split">40/30/30</div>
-                <div className="payment-desc">
-                  40% on signing. 30% at design approval milestone. 30% on
-                  project completion and handover.
+              </TiltCard>
+
+              <TiltCard glare maxTilt={5}>
+                <div className="payment-card h-full">
+                  <div className="payment-card-label">Package 03</div>
+                  <div className="payment-split">40/30/30</div>
+                  <div className="payment-desc">
+                    40% on signing. 30% at design approval milestone. 30% on
+                    project completion and handover.
+                  </div>
                 </div>
-              </div>
-              <div className="payment-card bridge-pay">
-                <div className="payment-card-label">
-                  Package 04 — Master Plan
+              </TiltCard>
+
+              <TiltCard glare maxTilt={5}>
+                <div className="payment-card bridge-pay h-full">
+                  <div className="payment-card-label">
+                    Package 04 — Master Plan
+                  </div>
+                  <div className="payment-split">30/30/40</div>
+                  <div className="payment-desc">
+                    30% on signing. 30% at midpoint. 40% structured as monthly
+                    retainer across the 6–12 month partnership.
+                  </div>
                 </div>
-                <div className="payment-split">30/30/40</div>
-                <div className="payment-desc">
-                  30% on signing. 30% at midpoint. 40% structured as monthly
-                  retainer across the 6–12 month partnership.
-                </div>
-              </div>
+              </TiltCard>
             </div>
 
             <div className="payment-bank-notice">
@@ -689,38 +711,48 @@ export default function Home() {
 
       <Testimonials />
 
-      <Reveal>
-        <section className="cta-section" id="contact">
-          <div className="cta-bg" />
-          <div className="cta-title">
-            READY TO
-            <br />
-            <span className="gold">BUILD</span>
-            <br />
-            <span className="stroke">SOMETHING</span>
-          </div>
-          <div className="cta-sub">
-            Tell us what you&apos;re building. We&apos;ll tell you how to build
-            it right.
-          </div>
-          <div className="cta-actions">
-            <Link href="/contact" className="btn-primary">
-              Start a Project
-            </Link>
-            <a
-              href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20ready%20to%20start%20a%20project%20brief."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost"
-              style={{ display: "inline-flex", alignItems: "center", gap: 8 }}
-            >
-              Chat on WhatsApp (09119059859) →
-            </a>
+      <Reveal direction="zoom">
+        <section className="cta-section relative overflow-hidden" id="contact">
+          <ParallaxLayer speed={-0.3} className="absolute inset-0 pointer-events-none">
+            <div className="cta-bg" />
+            <div className="ambient-orb ambient-orb-gold w-[600px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+          </ParallaxLayer>
+
+          <div className="relative z-10">
+            <div className="cta-title">
+              READY TO
+              <br />
+              <span className="gold">BUILD</span>
+              <br />
+              <span className="stroke">SOMETHING</span>
+            </div>
+            <div className="cta-sub">
+              Tell us what you&apos;re building. We&apos;ll tell you how to build
+              it right.
+            </div>
+            <div className="cta-actions">
+              <Magnetic strength={0.35}>
+                <Link href="/contact" className="btn-primary">
+                  Start a Project
+                </Link>
+              </Magnetic>
+              <Magnetic strength={0.35}>
+                <a
+                  href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20ready%20to%20start%20a%20project%20brief."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
+                  style={{ display: "inline-flex", alignItems: "center", gap: 8 }}
+                >
+                  Chat on WhatsApp (09119059859) →
+                </a>
+              </Magnetic>
+            </div>
           </div>
         </section>
       </Reveal>
 
-      <Reveal>
+      <Reveal direction="up">
         <section id="qr-access" style={{ padding: "80px 48px 40px", background: "#060606" }}>
           <QRCodeCard />
         </section>

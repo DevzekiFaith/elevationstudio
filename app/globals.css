@@ -4242,5 +4242,79 @@ footer {
   }
 }
 
+/* Interactive Parallax & Animation Utility Classes */
+.perspective-1000 {
+  perspective: 1000px;
+}
 
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-bright) 50%, var(--bridge-accent) 100%);
+  transform-origin: 0%;
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 0 12px rgba(212, 168, 67, 0.8);
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0.15;
+  will-change: transform;
+}
+
+.ambient-orb-gold {
+  background: radial-gradient(circle, var(--gold-bright) 0%, rgba(212, 168, 67, 0) 70%);
+}
+
+.ambient-orb-bridge {
+  background: radial-gradient(circle, var(--bridge-accent) 0%, rgba(78, 203, 160, 0) 70%);
+}
+
+.hero-parallax-bg {
+  will-change: transform;
+  transition: transform 0.1s cubic-bezier(0,0,0.2,1);
+}
+
+.glow-card-border {
+  position: relative;
+}
+
+.glow-card-border::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(212, 168, 67, 0.4), transparent 40%, rgba(78, 203, 160, 0.3));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.glow-card-border:hover::after {
+  opacity: 1;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(212, 168, 67, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(212, 168, 67, 0.45);
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
 

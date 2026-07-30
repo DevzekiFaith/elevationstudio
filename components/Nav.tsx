@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Magnetic } from "@/components/Magnetic";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -14,17 +16,22 @@ export function Nav() {
   }, []);
 
   return (
-    <nav
-      className="nav"
+    <motion.nav
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="nav transition-all duration-300"
       style={
         scrolled
           ? {
-              background: "rgba(6,6,6,0.97)",
-              borderBottom: "1px solid #333336",
+              background: "rgba(6,6,6,0.95)",
+              borderBottom: "1px solid rgba(212,168,67,0.2)",
+              backdropFilter: "blur(12px)",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
             }
           : {
               background: "linear-gradient(to bottom, rgba(6,6,6,0.95), transparent)",
-              borderBottom: "none",
+              borderBottom: "1px solid transparent",
             }
       }
     >
@@ -55,19 +62,23 @@ export function Nav() {
         </li>
       </ul>
       <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-        <a
-          href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20interested%20in%20discussing%20a%20project."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="nav-wa-btn"
-          title="Direct WhatsApp (09119059859)"
-        >
-          WhatsApp
-        </a>
-        <Link href="/contact" className="nav-cta">
-          Start a Project
-        </Link>
+        <Magnetic strength={0.25}>
+          <a
+            href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20interested%20in%20discussing%20a%20project."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-wa-btn"
+            title="Direct WhatsApp (09119059859)"
+          >
+            WhatsApp
+          </a>
+        </Magnetic>
+        <Magnetic strength={0.3}>
+          <Link href="/contact" className="nav-cta">
+            Start a Project
+          </Link>
+        </Magnetic>
       </div>
-    </nav>
+    </motion.nav>
   );
 }

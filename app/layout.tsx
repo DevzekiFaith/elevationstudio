@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { CustomCursor } from "@/components/CustomCursor";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 const bebas = Bebas_Neue({
   weight: "400",
@@ -138,6 +139,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen antialiased" suppressHydrationWarning>
+        <ScrollProgress />
         <CustomCursor />
         {children}
       </body>

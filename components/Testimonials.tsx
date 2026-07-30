@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { Reveal } from "./Reveal";
+import { TiltCard } from "./TiltCard";
+import { Magnetic } from "./Magnetic";
+import { motion, AnimatePresence } from "framer-motion";
 
 const TESTIMONIALS = [
   {
@@ -42,7 +45,7 @@ export function Testimonials() {
   const active = TESTIMONIALS[activeIndex];
 
   return (
-    <Reveal>
+    <Reveal direction="up" duration={0.7}>
       <section className="testimonials-section" id="testimonials">
         <div className="testimonials-inner">
           <div className="testimonials-top">
@@ -59,20 +62,31 @@ export function Testimonials() {
             </div>
           </div>
 
-          <div className="testimonial-card-featured">
-            <div className="t-card-badge">{active.tag}</div>
-            <blockquote className="t-quote">&ldquo;{active.quote}&rdquo;</blockquote>
+          <TiltCard glare maxTilt={6} className="w-full">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.4 }}
+                className="testimonial-card-featured glow-card-border"
+              >
+                <div className="t-card-badge">{active.tag}</div>
+                <blockquote className="t-quote">&ldquo;{active.quote}&rdquo;</blockquote>
 
-            <div className="t-footer">
-              <div>
-                <div className="t-author">{active.author}</div>
-                <div className="t-role">
-                  {active.role} · <span style={{ color: "var(--gold)" }}>{active.company}</span>
+                <div className="t-footer">
+                  <div>
+                    <div className="t-author">{active.author}</div>
+                    <div className="t-role">
+                      {active.role} · <span style={{ color: "var(--gold)" }}>{active.company}</span>
+                    </div>
+                  </div>
+                  <div className="t-package">{active.packageUsed}</div>
                 </div>
-              </div>
-              <div className="t-package">{active.packageUsed}</div>
-            </div>
-          </div>
+              </motion.div>
+            </AnimatePresence>
+          </TiltCard>
 
           <div className="testimonial-nav">
             <div className="t-dots">
@@ -91,14 +105,16 @@ export function Testimonials() {
             </div>
 
             <div className="t-actions">
-              <a
-                href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20saw%20your%20client%20case%20studies%20and%20would%20like%20to%20discuss%20a%20similar%20project."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="t-wa-cta"
-              >
-                Discuss Your Scope on WhatsApp (09119059859) →
-              </a>
+              <Magnetic strength={0.25}>
+                <a
+                  href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20saw%20your%20client%20case%20studies%20and%20would%20like%20to%20discuss%20a%20similar%20project."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="t-wa-cta"
+                >
+                  Discuss Your Scope on WhatsApp (09119059859) →
+                </a>
+              </Magnetic>
             </div>
           </div>
         </div>

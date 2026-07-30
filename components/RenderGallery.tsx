@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Reveal } from "./Reveal";
+import { TiltCard } from "./TiltCard";
 
 // Swiper React components & modules
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -332,42 +333,44 @@ export function RenderGallery() {
             >
               {filteredRenders.map((render) => (
                 <SwiperSlide key={render.id}>
-                  <div
-                    className="rg-card"
-                    onClick={() => setSelectedRender(render)}
-                  >
-                    <div className="rg-card-img-wrap">
-                      <Image
-                        src={render.image}
-                        alt={render.title}
-                        fill
-                        className="rg-card-img"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        priority={render.id === "1"}
-                      />
-                      <div className="rg-card-overlay" />
-                      <div className="rg-card-badge">{render.categoryLabel}</div>
-                    </div>
-
-                    <div className="rg-card-body">
-                      <div className="rg-card-location">{render.location}</div>
-                      <h3 className="rg-card-title">{render.title}</h3>
-                      <p className="rg-card-desc">{render.description}</p>
-
-                      <div className="rg-card-specs">
-                        {render.specs.slice(0, 2).map((sp, idx) => (
-                          <span key={idx} className="rg-spec-chip">
-                            ◆ {sp}
-                          </span>
-                        ))}
+                  <TiltCard glare maxTilt={8} className="h-full">
+                    <div
+                      className="rg-card h-full"
+                      onClick={() => setSelectedRender(render)}
+                    >
+                      <div className="rg-card-img-wrap">
+                        <Image
+                          src={render.image}
+                          alt={render.title}
+                          fill
+                          className="rg-card-img"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          priority={render.id === "1"}
+                        />
+                        <div className="rg-card-overlay" />
+                        <div className="rg-card-badge">{render.categoryLabel}</div>
                       </div>
 
-                      <div className="rg-card-action">
-                        <span>VIEW RENDER SPECS</span>
-                        <span>→</span>
+                      <div className="rg-card-body">
+                        <div className="rg-card-location">{render.location}</div>
+                        <h3 className="rg-card-title">{render.title}</h3>
+                        <p className="rg-card-desc">{render.description}</p>
+
+                        <div className="rg-card-specs">
+                          {render.specs.slice(0, 2).map((sp, idx) => (
+                            <span key={idx} className="rg-spec-chip">
+                              ◆ {sp}
+                            </span>
+                          ))}
+                        </div>
+
+                        <div className="rg-card-action">
+                          <span>VIEW RENDER SPECS</span>
+                          <span>→</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </TiltCard>
                 </SwiperSlide>
               ))}
             </Swiper>
