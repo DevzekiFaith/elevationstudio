@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Magnetic } from "@/components/Magnetic";
+import { CurrencyToggle } from "@/components/CurrencyToggle";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -62,6 +63,7 @@ export function Nav() {
         </li>
       </ul>
       <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+        <CurrencyToggle />
         <Magnetic strength={0.25}>
           <a
             href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20interested%20in%20discussing%20a%20project."

@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
@@ -10,8 +12,17 @@ import { LocationMap } from "@/components/LocationMap";
 import { ParallaxLayer } from "@/components/ParallaxLayer";
 import { TiltCard } from "@/components/TiltCard";
 import { Magnetic } from "@/components/Magnetic";
+import { BlueprintSlider } from "@/components/BlueprintSlider";
+import { useCurrency } from "@/components/CurrencyContext";
 
 export default function Home() {
+  const { formatPrice, currency } = useCurrency();
+
+  const p1 = formatPrice(1);
+  const p2 = formatPrice(2);
+  const p3 = formatPrice(3);
+  const p4 = formatPrice(4);
+
   return (
     <>
       <Nav />
@@ -102,49 +113,6 @@ export default function Home() {
       </section>
 
       <BrandFlow />
-
-      <RenderGallery />
-
-      <div className="marquee-bar">
-        <div className="marquee-inner">
-          <div className="marquee-item">
-            Brand Identity <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Web Development <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Space Design <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Culture Architecture <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Digital Systems <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Interior Concepts <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Brand Identity <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Web Development <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Space Design <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Culture Architecture <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Digital Systems <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Interior Concepts <div className="marquee-dot" />
-          </div>
-        </div>
-      </div>
 
       <Reveal direction="up" duration={0.7}>
         <section className="services relative overflow-hidden" id="services">
@@ -258,7 +226,53 @@ export default function Home() {
         </section>
       </Reveal>
 
-      {/* Packages Section with Interactive 3D Tilt Cards */}
+      {/* 2D Blueprint vs 3D Render Comparison Slider */}
+      <BlueprintSlider />
+
+      <RenderGallery />
+
+      <div className="marquee-bar">
+        <div className="marquee-inner">
+          <div className="marquee-item">
+            Brand Identity <div className="marquee-dot" />
+          </div>
+          <div className="marquee-item">
+            Web Development <div className="marquee-dot" />
+          </div>
+          <div className="marquee-item">
+            Space Design <div className="marquee-dot" />
+          </div>
+          <div className="marquee-item">
+            Culture Architecture <div className="marquee-dot" />
+          </div>
+          <div className="marquee-item">
+            Digital Systems <div className="marquee-dot" />
+          </div>
+          <div className="marquee-item">
+            Interior Concepts <div className="marquee-dot" />
+          </div>
+          <div className="marquee-item">
+            Brand Identity <div className="marquee-dot" />
+          </div>
+          <div className="marquee-item">
+            Web Development <div className="marquee-dot" />
+          </div>
+          <div className="marquee-item">
+            Space Design <div className="marquee-dot" />
+          </div>
+          <div className="marquee-item">
+            Culture Architecture <div className="marquee-dot" />
+          </div>
+          <div className="marquee-item">
+            Digital Systems <div className="marquee-dot" />
+          </div>
+          <div className="marquee-item">
+            Interior Concepts <div className="marquee-dot" />
+          </div>
+        </div>
+      </div>
+
+      {/* Packages Section with Interactive 3D Tilt Cards and Dynamic Currency State */}
       <Reveal direction="up" duration={0.8}>
         <section className="packages relative overflow-hidden" id="packages">
           <ParallaxLayer speed={-0.2} className="absolute left-0 top-1/3 pointer-events-none">
@@ -280,7 +294,8 @@ export default function Home() {
                   lineHeight: 1.8,
                 }}
               >
-                Each tier builds on the last. Enter where your business is.
+                Each tier builds on the last. Showing figures in{" "}
+                <span className="text-[var(--gold)] font-mono font-bold">{currency}</span>. Enter where your business is.
                 Ascend as your vision demands.
               </div>
             </div>
@@ -300,10 +315,10 @@ export default function Home() {
                     </ul>
                   </div>
                   <div className="pkg-card-bottom">
-                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
+                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE ({currency})</div>
                     <div>
-                      <div className="pkg-card-price">₦500K</div>
-                      <div className="pkg-card-range">— ₦2,000,000</div>
+                      <div className="pkg-card-price">{p1.min}</div>
+                      <div className="pkg-card-range">{p1.max}</div>
                     </div>
                     <Magnetic strength={0.2}>
                       <Link href="/contact?package=1" className="pkg-card-cta">
@@ -329,10 +344,10 @@ export default function Home() {
                     </ul>
                   </div>
                   <div className="pkg-card-bottom">
-                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
+                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE ({currency})</div>
                     <div>
-                      <div className="pkg-card-price">₦1.5M</div>
-                      <div className="pkg-card-range">— ₦5,000,000</div>
+                      <div className="pkg-card-price">{p2.min}</div>
+                      <div className="pkg-card-range">{p2.max}</div>
                     </div>
                     <Magnetic strength={0.2}>
                       <Link href="/contact?package=2" className="pkg-card-cta">
@@ -358,10 +373,10 @@ export default function Home() {
                     </ul>
                   </div>
                   <div className="pkg-card-bottom">
-                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
+                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE ({currency})</div>
                     <div>
-                      <div className="pkg-card-price">₦5M</div>
-                      <div className="pkg-card-range">— ₦20,000,000</div>
+                      <div className="pkg-card-price">{p3.min}</div>
+                      <div className="pkg-card-range">{p3.max}</div>
                     </div>
                     <Magnetic strength={0.2}>
                       <Link href="/contact?package=3" className="pkg-card-cta">
@@ -390,10 +405,10 @@ export default function Home() {
                     </ul>
                   </div>
                   <div className="pkg-card-bottom">
-                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE</div>
+                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE ({currency})</div>
                     <div>
-                      <div className="pkg-card-price">₦15M</div>
-                      <div className="pkg-card-range">— ₦50,000,000+</div>
+                      <div className="pkg-card-price">{p4.min}</div>
+                      <div className="pkg-card-range">{p4.max}</div>
                     </div>
                     <Magnetic strength={0.25}>
                       <Link href="/contact?package=4" className="pkg-card-cta">
@@ -413,12 +428,12 @@ export default function Home() {
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                   <path d="M9 12l2 2 4-4"/>
                 </svg>
-                <span>CORPORATE RETAINER &amp; SCOPING DISCLOSURE</span>
+                <span>CORPORATE RETAINER &amp; SCOPING DISCLOSURE ({currency})</span>
               </div>
 
               <div className="pkg-retainer-body">
                 <p className="pkg-retainer-text">
-                  All project figures represent <strong>customized investment ranges</strong> based on client scale and deliverables. Formal project retainers, milestones, and <strong>verified corporate bank transfer details</strong> are issued exclusively via official Elevation Studio proposals upon brief review.
+                  All project figures represent <strong>customized investment ranges ({currency})</strong> based on client scale and deliverables. Formal project retainers, milestones, and <strong>verified corporate bank transfer details</strong> are issued exclusively via official Elevation Studio proposals upon brief review.
                 </p>
 
                 <div className="pkg-retainer-btn-wrapper">
@@ -636,8 +651,8 @@ export default function Home() {
                   <li>6–12 month transformation partnership</li>
                   <li>Quarterly culture audits and progress reviews</li>
                 </ul>
-                <div className="bridge-price">₦15M</div>
-                <div className="bridge-price-range">— ₦50,000,000+</div>
+                <div className="bridge-price">{p4.min}</div>
+                <div className="bridge-price-range">{p4.max}</div>
               </div>
             </TiltCard>
           </div>
