@@ -14,6 +14,7 @@ import { TiltCard } from "@/components/TiltCard";
 import { Magnetic } from "@/components/Magnetic";
 import { BlueprintSlider } from "@/components/BlueprintSlider";
 import { useCurrency } from "@/components/CurrencyContext";
+import { CurrencyToggle } from "@/components/CurrencyToggle";
 
 export default function Home() {
   const { formatPrice, currency } = useCurrency();
@@ -280,23 +281,34 @@ export default function Home() {
           </ParallaxLayer>
 
           <div className="packages-inner">
-            <div className="packages-top">
-              <div className="pkg-title">
-                OUR
-                <br />
-                <span style={{ color: "var(--gold)" }}>PACKAGES</span>
+            <div className="packages-top flex flex-wrap justify-between items-end gap-6 mb-12">
+              <div>
+                <div className="pkg-title">
+                  OUR
+                  <br />
+                  <span style={{ color: "var(--gold)" }}>PACKAGES</span>
+                </div>
               </div>
-              <div
-                style={{
-                  fontSize: 14,
-                  color: "var(--muted)",
-                  maxWidth: 320,
-                  lineHeight: 1.8,
-                }}
-              >
-                Each tier builds on the last. Showing figures in{" "}
-                <span className="text-[var(--gold)] font-mono font-bold">{currency}</span>. Enter where your business is.
-                Ascend as your vision demands.
+
+              <div className="flex flex-col items-end gap-3">
+                <div className="flex items-center gap-3">
+                  <span className="text-[10px] font-mono tracking-widest text-[var(--muted)] uppercase">
+                    CURRENCY TOGGLE:
+                  </span>
+                  <CurrencyToggle />
+                </div>
+                <div
+                  style={{
+                    fontSize: 14,
+                    color: "var(--muted)",
+                    maxWidth: 340,
+                    lineHeight: 1.7,
+                    textAlign: "right",
+                  }}
+                >
+                  Each tier builds on the last. Showing figures in{" "}
+                  <span className="text-[var(--gold)] font-mono font-bold">{currency}</span>. Enter where your business is.
+                </div>
               </div>
             </div>
 
@@ -304,7 +316,10 @@ export default function Home() {
               <TiltCard glare maxTilt={7}>
                 <div className="pkg-card h-full">
                   <div className="pkg-card-top">
-                    <div className="pkg-card-num">Package 01</div>
+                    <div className="flex justify-between items-center mb-2">
+                      <div className="pkg-card-num">Package 01</div>
+                      <CurrencyToggle />
+                    </div>
                     <div className="pkg-card-name">THE FOUNDATION</div>
                     <div className="pkg-card-subtitle">Brand Identity Only</div>
                     <ul className="pkg-card-includes">
@@ -333,7 +348,10 @@ export default function Home() {
               <TiltCard glare maxTilt={7}>
                 <div className="pkg-card h-full">
                   <div className="pkg-card-top">
-                    <div className="pkg-card-num">Package 02</div>
+                    <div className="flex justify-between items-center mb-2">
+                      <div className="pkg-card-num">Package 02</div>
+                      <CurrencyToggle />
+                    </div>
                     <div className="pkg-card-name">THE STRUCTURE</div>
                     <div className="pkg-card-subtitle">Brand + Digital</div>
                     <ul className="pkg-card-includes">
@@ -362,7 +380,10 @@ export default function Home() {
               <TiltCard glare maxTilt={7}>
                 <div className="pkg-card h-full">
                   <div className="pkg-card-top">
-                    <div className="pkg-card-num">Package 03</div>
+                    <div className="flex justify-between items-center mb-2">
+                      <div className="pkg-card-num">Package 03</div>
+                      <CurrencyToggle />
+                    </div>
                     <div className="pkg-card-name">THE ELEVATION</div>
                     <div className="pkg-card-subtitle">Brand + Digital + Space</div>
                     <ul className="pkg-card-includes">
@@ -392,7 +413,10 @@ export default function Home() {
                 <div className="pkg-card bridge h-full">
                   <div className="bridge-label">Flagship</div>
                   <div className="pkg-card-top">
-                    <div className="pkg-card-num">Package 04</div>
+                    <div className="flex justify-between items-center mb-2">
+                      <div className="pkg-card-num">Package 04</div>
+                      <CurrencyToggle />
+                    </div>
                     <div className="pkg-card-name">THE MASTER PLAN</div>
                     <div className="pkg-card-subtitle">
                       Brand + Digital + Space + Culture
