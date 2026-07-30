@@ -72,6 +72,13 @@ export const metadata: Metadata = {
       "Architecture, Brand, Digital, and Culture Transformation under one roof. Based in Ogun–Lagos corridor serving clients globally.",
     creator: "@mindvestglobal",
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   robots: {
     index: true,
     follow: true,
