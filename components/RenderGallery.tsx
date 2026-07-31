@@ -28,6 +28,23 @@ export interface RenderItem {
 
 const RENDERS: RenderItem[] = [
   {
+    id: "0",
+    title: "Lettable Commercial Plaza & Executive Studio Suite",
+    category: "commercial",
+    categoryLabel: "COMMERCIAL & SPATIAL ARCHITECTURE",
+    location: "PRIME BUSINESS LOCATION / OGUN-LAGOS CORRIDOR",
+    image: "/renders/lettable_space_commercial_flyer.jpg",
+    accentColor: "#d4a843",
+    specs: [
+      "4-Story Glass & LED Wash Facade",
+      "Rooftop Studio Suite (5m x 6m)",
+      "Warm Cove Kitchen & Bath Lighting",
+      "24/7 Secure Business Environment",
+    ],
+    description:
+      "A flagship commercial building masterplan featuring premium office spaces for rent, floor-to-ceiling curtain wall glazing, interlocked paved courtyard, and an executive rooftop studio apartment with custom wood finishes.",
+  },
+  {
     id: "1",
     title: "5-Bedroom Modern Luxury Residence",
     category: "residential",
@@ -345,7 +362,7 @@ export function RenderGallery() {
                           fill
                           className="rg-card-img"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          priority={render.id === "1"}
+                          priority={render.id === "0" || render.id === "1"}
                         />
                         <div className="rg-card-overlay" />
                         <div className="rg-card-badge">{render.categoryLabel}</div>
