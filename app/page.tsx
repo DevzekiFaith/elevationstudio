@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { BrandFlow } from "@/components/BrandFlow";
@@ -72,42 +73,89 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-content relative z-10">
-          <Reveal direction="down" duration={0.6} delay={0.1}>
-            <div className="hero-label">Elevation Studio · Est. 2026</div>
-          </Reveal>
-          
-          <Reveal direction="up" duration={0.8} delay={0.2}>
-            <div className="hero-headline">
-              BUILD
-              <br />
-              <span className="line2">DIFFERENT</span>
-              <span className="gold-word pulse-glow">.</span>
-            </div>
-          </Reveal>
-
-          <div className="hero-bottom">
-            <Reveal direction="up" duration={0.7} delay={0.4}>
-              <div className="hero-sub">
-                Nigeria&apos;s only studio where brand design, digital engineering,
-                spatial architecture, and cultural transformation meet under one
-                roof.
+        <div className="hero-content relative z-10 max-w-[1500px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="lg:col-span-6 flex flex-col">
+            <Reveal direction="down" duration={0.6} delay={0.1}>
+              <div className="hero-label">Elevation Studio · Est. 2026</div>
+            </Reveal>
+            
+            <Reveal direction="up" duration={0.8} delay={0.2}>
+              <div className="hero-headline">
+                BUILD
+                <br />
+                <span className="line2">DIFFERENT</span>
+                <span className="gold-word pulse-glow">.</span>
               </div>
             </Reveal>
 
-            <Reveal direction="up" duration={0.7} delay={0.5}>
-              <div className="hero-actions">
-                <Magnetic strength={0.3}>
-                  <a href="#packages" className="btn-primary">
-                    View Packages
-                  </a>
-                </Magnetic>
-                <Magnetic strength={0.3}>
-                  <Link href="/contact" className="btn-ghost">
-                    Start a Project
-                  </Link>
-                </Magnetic>
-              </div>
+            <div className="hero-bottom flex-col sm:flex-row gap-6 mt-8">
+              <Reveal direction="up" duration={0.7} delay={0.4}>
+                <div className="hero-sub text-base lg:text-xl">
+                  Nigeria&apos;s premier studio fusing brand design, digital engineering,
+                  spatial 3D architecture, and cultural transformation under one
+                  roof.
+                </div>
+              </Reveal>
+
+              <Reveal direction="up" duration={0.7} delay={0.5}>
+                <div className="hero-actions mt-4">
+                  <Magnetic strength={0.3}>
+                    <a href="#packages" className="btn-primary">
+                      View Packages
+                    </a>
+                  </Magnetic>
+                  <Magnetic strength={0.3}>
+                    <Link href="/contact" className="btn-ghost">
+                      Start a Project
+                    </Link>
+                  </Magnetic>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 flex justify-center lg:justify-end mt-6 lg:mt-0">
+            <Reveal direction="zoom" duration={0.8} delay={0.3}>
+              <TiltCard glare maxTilt={7} className="w-full max-w-[580px]">
+                <div className="relative rounded-2xl overflow-hidden border border-[#333336] shadow-[0_20px_60px_rgba(0,0,0,0.85)] group glow-card-border">
+                  <div className="relative aspect-[4/3] w-full">
+                    <Image
+                      src="/hero_architectural_render.jpg"
+                      alt="Featured 3D Spatial Architecture — Elevation Studio"
+                      fill
+                      priority
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-transparent to-black/20 opacity-80" />
+                  </div>
+
+                  {/* Top Floating Badge */}
+                  <div className="absolute top-4 left-4 z-10 flex gap-2">
+                    <span className="px-3 py-1.5 bg-[#060606]/85 backdrop-blur-md border border-[var(--gold-border)] rounded text-[10px] font-mono tracking-widest text-[var(--gold)] uppercase shadow-md">
+                      FEATURED 3D SPATIAL ARCHITECTURE
+                    </span>
+                  </div>
+
+                  {/* Bottom Info Overlay */}
+                  <div className="absolute bottom-4 left-4 right-4 z-10 flex justify-between items-end gap-3 bg-[#0a0a0c]/85 backdrop-blur-md p-4 rounded-xl border border-white/10">
+                    <div>
+                      <div className="font-mono text-[10px] tracking-widest text-[var(--gold)] uppercase mb-0.5">
+                        OGUN–LAGOS CORRIDOR
+                      </div>
+                      <div className="font-bebas text-xl text-white tracking-wide">
+                        5-Bedroom Modern Luxury Residence
+                      </div>
+                    </div>
+                    <Link
+                      href="/renders/1"
+                      className="px-3 py-2 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-[10px] tracking-wider uppercase font-semibold rounded transition-colors whitespace-nowrap"
+                    >
+                      EXPLORE HD ↗
+                    </Link>
+                  </div>
+                </div>
+              </TiltCard>
             </Reveal>
           </div>
         </div>
