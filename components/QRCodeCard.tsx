@@ -7,7 +7,7 @@ export function QRCodeCard({ compact = false }: { compact?: boolean }) {
   const [copiedImage, setCopiedImage] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const url = "https://elevationstudio.vercel.app/";
+  const url = "https://www.elevationstudiong.com.ng/";
   const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=600x600&data=${encodeURIComponent(
     url
   )}&color=d4a843&bgcolor=0c0c0e`;

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://elevationstudio.vercel.app/sitemap.xml",
+    sitemap: "https://www.elevationstudiong.com.ng/sitemap.xml",
   };
 }

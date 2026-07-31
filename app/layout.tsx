@@ -32,39 +32,55 @@ const syne = Syne({
   variable: "--font-syne",
 });
 
+const DOMAIN = "https://www.elevationstudiong.com.ng";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://elevationstudio.vercel.app"),
+  metadataBase: new URL(DOMAIN),
   title: {
     default: "Elevation Studio — Integrated Brand, Digital & Space Architecture Studio",
-    template: "%s | Elevation Studio",
+    template: "%s | Elevation Studio Nigeria",
   },
   description:
-    "Nigeria's premier integrated studio fusing visual brand identity, Next.js digital engineering, spatial architecture, and culture transformation — powered by Mindvest Global.",
+    "Nigeria's premier integrated studio fusing visual brand identity, Next.js web engineering, spatial 3D architecture, and culture transformation along the Ogun–Lagos corridor — powered by Mindvest Global.",
   keywords: [
     "Elevation Studio",
+    "Elevation Studio Nigeria",
+    "www.elevationstudiong.com.ng",
+    "elevationstudiong.com.ng",
     "Brand Identity Studio Nigeria",
     "Digital Engineering Agency Lagos",
     "Space Design Studio Ogun Lagos Corridor",
-    "Real Estate Masterplan Visualisation",
-    "Luxury Hospitality Brand Agency",
+    "Real Estate Masterplan 3D Visualisation Nigeria",
+    "Luxury Hospitality Brand Agency Africa",
     "Culture Architecture Mindvest Global",
     "Zeki Ubor Architecture Studio",
     "Next.js Development Agency Nigeria",
+    "3D Interior Renders Lekki Victoria Island",
+    "Corporate Brand Strategy Firm Nigeria",
+    "Spatial Architecture Firm Lagos",
   ],
   authors: [{ name: "Zeki Ubor — Elevation Studio" }],
   creator: "Elevation Studio / Mindvest Global Resources LLC",
   publisher: "Mindvest Global Resources LLC",
   alternates: {
-    canonical: "https://elevationstudio.vercel.app",
+    canonical: DOMAIN,
   },
   openGraph: {
-    title: "Elevation Studio — Brand. Digital. Space. Culture.",
+    title: "Elevation Studio — Integrated Brand, Digital, Space & Culture Studio",
     description:
-      "Nigeria's only integrated studio combining visual brand identity, web engineering, spatial architecture, and culture transformation under one roof.",
-    url: "https://elevationstudio.vercel.app",
+      "Nigeria's only integrated studio combining visual brand identity, Next.js web engineering, 3D spatial architecture, and culture transformation under one roof.",
+    url: DOMAIN,
     siteName: "Elevation Studio",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: `${DOMAIN}/volta_stage_4.png`,
+        width: 1200,
+        height: 630,
+        alt: "Elevation Studio — Integrated Brand, Digital & Space Architecture",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -72,6 +88,7 @@ export const metadata: Metadata = {
     description:
       "Architecture, Brand, Digital, and Culture Transformation under one roof. Based in Ogun–Lagos corridor serving clients globally.",
     creator: "@mindvestglobal",
+    images: [`${DOMAIN}/volta_stage_4.png`],
   },
   icons: {
     icon: [
@@ -97,9 +114,14 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Elevation Studio",
-  image: "https://elevationstudio.vercel.app/volta_stage_4.png",
-  "@id": "https://elevationstudio.vercel.app",
-  url: "https://elevationstudio.vercel.app",
+  image: `${DOMAIN}/volta_stage_4.png`,
+  "@id": DOMAIN,
+  url: DOMAIN,
+  sameAs: [
+    DOMAIN,
+    "https://elevationstudiong.com.ng",
+    "https://mindvestglobalresources.com.ng",
+  ],
   telephone: "+2349119059859",
   email: "mindvestglobalresources@gmail.com",
   priceRange: "₦500,000 - ₦50,000,000+",
@@ -115,6 +137,7 @@ const jsonLd = {
     latitude: 6.5244,
     longitude: 3.3792,
   },
+  areaServed: ["NG", "US", "GB", "Worldwide"],
   parentOrganization: {
     "@type": "Organization",
     name: "Mindvest Global Resources LLC",
@@ -127,6 +150,40 @@ const jsonLd = {
     "Organisational Culture Transformation",
     "Real Estate Masterplan Marketing",
   ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Elevation Studio Capabilities & Packages",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Package 01 — The Foundation (Brand Identity Systems)",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Package 02 — The Structure (Brand + Digital Engineering)",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Package 03 — The Elevation (Brand + Digital + Space Design)",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Package 04 — The Master Plan (Brand + Digital + Space + Culture)",
+        },
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
