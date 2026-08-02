@@ -159,6 +159,7 @@ export function Testimonials() {
                       alt={t.author}
                       fill
                       className="object-cover"
+                      sizes="28px"
                     />
                   </div>
                   <div className="flex flex-col text-left">
