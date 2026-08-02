@@ -80,7 +80,7 @@ export function Testimonials() {
             </div>
           </div>
 
-          <TiltCard glare maxTilt={6} className="w-full">
+          <TiltCard glare maxTilt={5} className="w-full">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active.id}
@@ -88,35 +88,52 @@ export function Testimonials() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.4 }}
-                className="testimonial-card-featured glow-card-border"
+                className="testimonial-card-featured p-6 md:p-10 bg-[#0e0e10] border border-[#333336] rounded-2xl glow-card-border"
               >
-                <div className="flex flex-wrap justify-between items-center gap-2 mb-6">
-                  <div className="t-card-badge mb-0">{active.tag}</div>
-                  <div className="font-mono text-[11px] tracking-widest text-[var(--gold)] uppercase flex items-center gap-1.5">
-                    <span>📍</span> {active.location}
-                  </div>
-                </div>
-
-                <blockquote className="t-quote">&ldquo;{active.quote}&rdquo;</blockquote>
-
-                <div className="t-footer flex flex-wrap justify-between items-center gap-6 mt-8 pt-6 border-t border-white/10">
-                  <div className="flex items-center gap-4">
-                    <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-[var(--gold-border)] shadow-md flex-shrink-0">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center">
+                  {/* Left Column: Side-by-Side Large Portrait Photo */}
+                  <div className="md:col-span-4 flex flex-col items-center text-center">
+                    <div className="relative w-44 h-44 md:w-56 md:h-56 rounded-2xl overflow-hidden border-2 border-[var(--gold-border)] shadow-[0_15px_35px_rgba(0,0,0,0.7)] group">
                       <Image
                         src={active.avatar}
                         alt={active.author}
                         fill
-                        className="object-cover"
+                        priority
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        sizes="(max-width: 768px) 180px, 240px"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-transparent to-transparent opacity-50" />
                     </div>
+
+                    <div className="mt-4 font-mono text-[10px] md:text-[11px] tracking-widest text-[var(--gold)] uppercase flex items-center justify-center gap-1.5 bg-[#060606]/80 px-3 py-1.5 rounded-full border border-white/10">
+                      <span>📍</span> {active.location}
+                    </div>
+                  </div>
+
+                  {/* Right Column: Side-by-Side Remark & Client Details */}
+                  <div className="md:col-span-8 flex flex-col justify-between h-full">
                     <div>
-                      <div className="t-author font-bold text-white text-base md:text-lg">{active.author}</div>
-                      <div className="t-role text-xs md:text-sm text-white/70">
+                      <div className="flex flex-wrap justify-between items-center gap-2 mb-4">
+                        <div className="t-card-badge mb-0">{active.tag}</div>
+                        <div className="text-xs font-mono text-[var(--gold)] uppercase tracking-wider">
+                          {active.packageUsed}
+                        </div>
+                      </div>
+
+                      <blockquote className="text-lg md:text-2xl font-serif italic text-white/95 leading-relaxed mb-6">
+                        &ldquo;{active.quote}&rdquo;
+                      </blockquote>
+                    </div>
+
+                    <div className="pt-4 border-t border-white/10 flex flex-col gap-1">
+                      <div className="font-bebas text-2xl md:text-3xl text-white tracking-wide">
+                        {active.author}
+                      </div>
+                      <div className="text-sm font-sans text-white/70">
                         {active.role} · <span style={{ color: "var(--gold)" }}>{active.company}</span>
                       </div>
                     </div>
                   </div>
-                  <div className="t-package text-xs font-mono text-[var(--gold)] uppercase tracking-wider">{active.packageUsed}</div>
                 </div>
               </motion.div>
             </AnimatePresence>
