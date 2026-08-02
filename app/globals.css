@@ -80,11 +80,17 @@ nav {
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 24px 60px;
+  padding: 20px 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   backdrop-filter: blur(8px);
+}
+
+@media (max-width: 1024px) {
+  nav {
+    padding: 16px 24px;
+  }
 }
 
 .nav-logo {
