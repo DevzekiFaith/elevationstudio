@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export function WhatsAppButton() {
   const [open, setOpen] = useState(false);
@@ -29,7 +30,13 @@ export function WhatsAppButton() {
   };
 
   return (
-    <div className="whatsapp-floating-wrap">
+    <motion.div
+      drag
+      dragConstraints={{ left: -1000, right: 50, top: -1000, bottom: 50 }}
+      dragElastic={0.1}
+      whileDrag={{ scale: 1.05, cursor: "grabbing" }}
+      className="whatsapp-floating-wrap cursor-grab active:cursor-grabbing z-[9999]"
+    >
       {open && (
         <div className="whatsapp-popup">
           <div className="whatsapp-popup-header">
@@ -42,7 +49,7 @@ export function WhatsAppButton() {
             </div>
             <button
               type="button"
-              className="whatsapp-close"
+              className="whatsapp-close cursor-pointer"
               onClick={() => setOpen(false)}
               aria-label="Close WhatsApp Popup"
             >
@@ -61,7 +68,7 @@ export function WhatsAppButton() {
                   href={getWhatsAppLink(opt.text)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="whatsapp-option-card"
+                  className="whatsapp-option-card cursor-pointer"
                   onClick={() => setOpen(false)}
                 >
                   <div className="wa-opt-title">{opt.title}</div>
@@ -76,7 +83,7 @@ export function WhatsAppButton() {
               href="https://instagram.com/elevationstudio.ng"
               target="_blank"
               rel="noopener noreferrer"
-              className="py-2 px-3 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white rounded font-mono text-xs text-center font-semibold block"
+              className="py-2 px-3 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white rounded font-mono text-xs text-center font-semibold block cursor-pointer"
             >
               Follow @elevationstudio.ng on Instagram 📸
             </a>
@@ -84,7 +91,7 @@ export function WhatsAppButton() {
               href={getWhatsAppLink("Hello Elevation Studio, I'm reaching out directly from your website.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="whatsapp-direct-btn"
+              className="whatsapp-direct-btn cursor-pointer"
             >
               Open Direct Chat (09119059859) →
             </a>
@@ -97,7 +104,7 @@ export function WhatsAppButton() {
           href="https://instagram.com/elevationstudio.ng"
           target="_blank"
           rel="noopener noreferrer"
-          className="whatsapp-launcher bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:opacity-95 text-white flex items-center gap-2 px-4 py-3 rounded-full shadow-2xl transition-all border border-white/20"
+          className="whatsapp-launcher bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:opacity-95 text-white flex items-center gap-2 px-4 py-3 rounded-full shadow-2xl transition-all border border-white/20 cursor-pointer"
           title="Follow Elevation Studio on Instagram (@elevationstudio.ng)"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -110,10 +117,10 @@ export function WhatsAppButton() {
 
         <button
           type="button"
-          className="whatsapp-launcher"
+          className="whatsapp-launcher cursor-pointer"
           onClick={() => setOpen(!open)}
           aria-label="Contact on WhatsApp"
-          title="Direct WhatsApp Inquiry"
+          title="Direct WhatsApp Inquiry (Drag to move anywhere)"
         >
           <svg
             width="24"
@@ -130,6 +137,6 @@ export function WhatsAppButton() {
           <span className="whatsapp-launcher-badge">WhatsApp</span>
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 }

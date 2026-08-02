@@ -119,10 +119,15 @@ nav {
   text-decoration: none;
   transition: color 0.2s;
   font-family: var(--font-dm-mono), monospace;
+  cursor: pointer;
 }
 
 .nav-links a:hover {
   color: var(--gold);
+}
+
+.nav-cta, .nav-wa-btn, button, [role="button"] {
+  cursor: pointer !important;
 }
 
 .nav-cta {
