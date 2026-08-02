@@ -337,6 +337,17 @@ function ContactFormInner() {
             09119059859 (WhatsApp Chat) →
           </a>
           <div className="footer-contact-label" style={{ marginTop: 16 }}>
+            Instagram
+          </div>
+          <a
+            href="https://instagram.com/elevationstudio.ng"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--gold)", fontWeight: 500 }}
+          >
+            @elevationstudio.ng →
+          </a>
+          <div className="footer-contact-label" style={{ marginTop: 16 }}>
             Location Base
           </div>
           <div className="footer-contact-value" style={{ fontSize: 14 }}>

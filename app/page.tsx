@@ -916,6 +916,19 @@ export default function Home() {
               </div>
             </div>
             <div className="footer-contact-item">
+              <div className="footer-contact-label">Instagram</div>
+              <div className="footer-contact-value">
+                <a
+                  href="https://instagram.com/elevationstudio.ng"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "var(--gold)", textDecoration: "none" }}
+                >
+                  @elevationstudio.ng
+                </a>
+              </div>
+            </div>
+            <div className="footer-contact-item">
               <div className="footer-contact-label">Location Base</div>
               <div className="footer-contact-value">
                 Ogun — Lagos Corridor · Nigeria

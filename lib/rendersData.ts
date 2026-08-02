@@ -14,6 +14,31 @@ export interface RenderItem {
 export const RENDERS: RenderItem[] = [
   {
     id: "0",
+    title: "4-Story Commercial Plaza — Front Facade & Executive Parking",
+    category: "commercial",
+    categoryLabel: "COMMERCIAL & SPATIAL ARCHITECTURE",
+    location: "LEKKI PHASE 1 / OGUN-LAGOS CORRIDOR",
+    image: "/renders/commercial_plaza_front_facade.jpg",
+    accentColor: "#d4a843",
+    specs: [
+      "4-Story Symmetrical White Rendered Facade",
+      "Automated Black Steel Perimeter Gate",
+      "Executive Ground-Level Parking Bays",
+      "Linear Under-Soffit Warm LED Wash",
+      "Floor-to-Ceiling Anodized Shopfront Glazing",
+      "Integrated Security Access Control",
+    ],
+    description:
+      "A flagship 4-story commercial plaza front elevation featuring symmetrical architectural white framing, automated security gating, executive courtyard parking for luxury vehicles, and warm linear LED soffit illumination.",
+    architecturalHighlights: [
+      "Dual vertical structural towers flanking an internal pedestrian courtyard accessway",
+      "High-contrast dark anodized aluminum window mullions with floor-to-ceiling double glazing",
+      "Recessed perimeter wall sconces highlighting boundary security fencing and driveway paving",
+      "Dedicated ground-floor retail showroom bays with unobstructed street-facing visibility",
+    ],
+  },
+  {
+    id: "15",
     title: "Lettable Commercial Plaza & Executive Studio Suite",
     category: "commercial",
     categoryLabel: "COMMERCIAL & SPATIAL ARCHITECTURE",

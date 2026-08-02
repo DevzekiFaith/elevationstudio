@@ -120,6 +120,7 @@ const jsonLd = {
   sameAs: [
     DOMAIN,
     "https://elevationstudiong.com.ng",
+    "https://instagram.com/elevationstudio.ng",
     "https://mindvestglobalresources.com.ng",
   ],
   telephone: "+2349119059859",
