@@ -73,7 +73,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-content relative z-10 max-w-[1400px] mx-auto flex flex-col gap-10">
+        <div className="hero-content relative z-10 max-w-[1400px] mx-auto flex flex-col gap-8 pt-4 md:pt-6">
           {/* Top Label & Massive Headline */}
           <div>
             <Reveal direction="down" duration={0.6} delay={0.1}>
