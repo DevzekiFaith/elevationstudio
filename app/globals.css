@@ -142,14 +142,14 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 140px 60px 80px;
+  padding: 180px 60px 80px;
   position: relative;
   overflow: hidden;
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 110px 24px 60px;
+    padding: 140px 24px 60px;
   }
 }
 
