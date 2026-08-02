@@ -71,7 +71,15 @@ export function WhatsAppButton() {
             </div>
           </div>
 
-          <div className="whatsapp-popup-footer">
+          <div className="whatsapp-popup-footer flex flex-col gap-2">
+            <a
+              href="https://instagram.com/elevationstudio.ng"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-2 px-3 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white rounded font-mono text-xs text-center font-semibold block"
+            >
+              Follow @elevationstudio.ng on Instagram 📸
+            </a>
             <a
               href={getWhatsAppLink("Hello Elevation Studio, I'm reaching out directly from your website.")}
               target="_blank"
@@ -84,27 +92,44 @@ export function WhatsAppButton() {
         </div>
       )}
 
-      <button
-        type="button"
-        className="whatsapp-launcher"
-        onClick={() => setOpen(!open)}
-        aria-label="Contact on WhatsApp"
-        title="Direct WhatsApp Inquiry"
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+      <div className="flex items-center gap-3">
+        <a
+          href="https://instagram.com/elevationstudio.ng"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="whatsapp-launcher bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:opacity-95 text-white flex items-center gap-2 px-4 py-3 rounded-full shadow-2xl transition-all border border-white/20"
+          title="Follow Elevation Studio on Instagram (@elevationstudio.ng)"
         >
-          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-        </svg>
-        <span className="whatsapp-launcher-badge">WhatsApp</span>
-      </button>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+          <span className="font-mono text-xs font-semibold tracking-wider">@elevationstudio.ng</span>
+        </a>
+
+        <button
+          type="button"
+          className="whatsapp-launcher"
+          onClick={() => setOpen(!open)}
+          aria-label="Contact on WhatsApp"
+          title="Direct WhatsApp Inquiry"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+          </svg>
+          <span className="whatsapp-launcher-badge">WhatsApp</span>
+        </button>
+      </div>
     </div>
   );
 }

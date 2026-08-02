@@ -863,6 +863,17 @@ export default function Home() {
             >
               Elevation Studio — A Subsidiary of Mindvest Global Resources LLC
             </a>
+            <div className="mt-4">
+              <a
+                href="https://instagram.com/elevationstudio.ng"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#0e0e10] hover:bg-[var(--gold)]/10 border border-[var(--gold-border)] rounded-lg text-xs font-mono text-[var(--gold)] transition-colors group"
+              >
+                <span>📸 Follow on Instagram:</span>
+                <strong className="text-white group-hover:text-[var(--gold)]">@elevationstudio.ng ↗</strong>
+              </a>
+            </div>
           </div>
 
           <div>
