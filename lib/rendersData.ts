@@ -1,7 +1,7 @@
 export interface RenderItem {
   id: string;
   title: string;
-  category: "residential" | "commercial" | "event" | "interior";
+  category: "residential" | "commercial" | "event" | "interior" | "plaza" | "football";
   categoryLabel: string;
   location: string;
   image: string;
@@ -316,5 +316,80 @@ export const RENDERS: RenderItem[] = [
     ],
     description:
       "A serene multi-purpose family event centre and outdoor dining pavilion, boasting white architectural pergolas, green lattice terrace seating, high-contrast black glass framing, and ambient perimeter lighting.",
+  },
+  {
+    id: "16",
+    title: "Modern Commercial Plaza Store Corridor & Atrium Walkway",
+    category: "plaza",
+    categoryLabel: "MODERN PLAZA ARCHITECTURE",
+    location: "LAGOS / ABUJA COMMERCIAL AXIS, NIGERIA",
+    image: "/renders/modern_plaza_store_corridor.jpg",
+    accentColor: "#d4a843",
+    specs: [
+      "Multi-Level Open Storefront Balconies",
+      "Linear Warm Soffit Illumination",
+      "Polished Cobblestone Corridor Paving",
+      "Subtle Downlight Wall Sconces",
+      "Integrated Store Signage & Branding",
+      "Minimalist White Facade Elements",
+    ],
+    description:
+      "A sophisticated multi-level modern commercial plaza interior featuring illuminated storefronts (Store 01, Store 02), open-air vertical atrium wells, warm linear cove lighting, polished stone walkway paving, and integrated store branding.",
+    architecturalHighlights: [
+      "Open-well vertical light shaft illuminating lower level retail corridors",
+      "Integrated black aluminum signage boxes with warm LED backlighting",
+      "Continuous linear LED under-soffit wash along all floor levels",
+      "Subtropical indoor planter arrangements enhancing pedestrian atmosphere",
+    ],
+  },
+  {
+    id: "17",
+    title: "Private Luxury Football Pitch — Dusk Floodlight Atmosphere",
+    category: "football",
+    categoryLabel: "PRIVATE FOOTBALL PITCH & SPORTS RECREATION",
+    location: "PRIVATE LUXURY ESTATE / LEKKI-ABUJA CORRIDOR",
+    image: "/renders/private_football_pitch_dusk.jpg",
+    accentColor: "#4ecba0",
+    specs: [
+      "Heavy-Duty Tubular Steel Cage Frame",
+      "High-Intensity LED Perimeter Floodlights",
+      "Professional Synthetic Turf Pitch",
+      "Linear Wall Wash & Ground Spotlights",
+      "Integrated Steel Netting Enclosure",
+      "Pro-Grade Goal Posts & Ball Markings",
+    ],
+    description:
+      "A state-of-the-art private mini football pitch within a luxury residential compound captured at sunset. Features high-tensile tubular steel cage framework, professional synthetic turf, integrated perimeter floodlighting, and warm landscape sconce illumination.",
+    architecturalHighlights: [
+      "Modular tubular steel structural frame engineered for wind and ball impact resistance",
+      "High-efficiency perimeter LED strip wash integrated along upper structural beams",
+      "Low-glare ground spotlighting illuminating interlocked spectator walkways",
+      "Seamless integration into private residential villa perimeter grounds",
+    ],
+  },
+  {
+    id: "18",
+    title: "Private Luxury Football Pitch — Daytime Structural Elevation",
+    category: "football",
+    categoryLabel: "PRIVATE FOOTBALL PITCH & SPORTS RECREATION",
+    location: "PRIVATE LUXURY ESTATE / LEKKI-ABUJA CORRIDOR",
+    image: "/renders/private_football_pitch_day.jpg",
+    accentColor: "#4ecba0",
+    specs: [
+      "Polished Steel Cage Architecture",
+      "All-Weather Synthetic Turf System",
+      "High-Tension Anti-Rebound Mesh Netting",
+      "Paved Boundary Walkway & Garden Bed",
+      "Precision White Boundary Pitch Line Marking",
+      "Integrated Drainage Foundation",
+    ],
+    description:
+      "A crisp daytime elevation of the private sports arena showcasing its structural steel cage engineering, all-weather synthetic turf, white boundary markings, and landscaped perimeter border.",
+    architecturalHighlights: [
+      "Mirror-finish structural steel column assembly with concealed fasteners",
+      "High-density UV-stabilized synthetic grass turf with shock-pad underlayment",
+      "Lush garden boundary beds separating the pitch enclosure from estate walkways",
+      "Multi-angle sightlines designed for private tournament viewing",
+    ],
   },
 ];

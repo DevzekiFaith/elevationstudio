@@ -17,7 +17,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export function RenderGallery() {
-  const [filter, setFilter] = useState<"all" | "residential" | "commercial" | "event" | "interior">("all");
+  const [filter, setFilter] = useState<"all" | "residential" | "commercial" | "event" | "interior" | "plaza" | "football">("all");
   const [selectedRender, setSelectedRender] = useState<RenderItem | null>(null);
 
   const filteredRenders = RENDERS.filter(
@@ -37,7 +37,7 @@ export function RenderGallery() {
               </h2>
             </div>
             <p className="rg-subtitle">
-              From luxury residential villas and double-height interiors to commercial plazas and event pavilions — engineered to bridge architectural blueprint into physical reality.
+              From luxury residential villas and private sports grounds to commercial plazas and event pavilions — engineered to bridge architectural blueprint into physical reality.
             </p>
           </div>
 
@@ -45,6 +45,8 @@ export function RenderGallery() {
           <div className="rg-filter-bar">
             {[
               { id: "all", label: "ALL RENDERS" },
+              { id: "plaza", label: "MODERN PLAZAS" },
+              { id: "football", label: "PRIVATE FOOTBALL PITCH" },
               { id: "residential", label: "RESIDENTIAL VILLAS" },
               { id: "commercial", label: "COMMERCIAL PLAZAS" },
               { id: "event", label: "EVENT CENTRES" },
