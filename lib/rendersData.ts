@@ -392,4 +392,29 @@ export const RENDERS: RenderItem[] = [
       "Multi-angle sightlines designed for private tournament viewing",
     ],
   },
+  {
+    id: "19",
+    title: "Executive Multi-Unit Terrace Duplex Estate",
+    category: "residential",
+    categoryLabel: "LUXURY TERRACE RESIDENCE",
+    location: "LEKKI PHASE 1 / CHEVRON AXIS, NIGERIA",
+    image: "/renders/luxury_terrace_duplex_estate.jpg",
+    accentColor: "#d4a843",
+    specs: [
+      "Cantilevered Steel Carport Canopies",
+      "Textured Stone Clad Boundary Wall",
+      "Vertical Timber Recessed Accents",
+      "Linear Under-Soffit Night Wash",
+      "Integrated Perimeter Wall Sconces",
+      "Executive SUV Parking Bays",
+    ],
+    description:
+      "A prestigious multi-unit terrace duplex residence captured at twilight. Features cantilevered executive carport structures, warm soffit strip lighting, natural stone boundary cladding, and rich timber recessed entry balconies.",
+    architecturalHighlights: [
+      "Dual cantilevered steel cantilever carports with integrated LED downlights",
+      "High-contrast timber wall panelling around upper terrace balconies",
+      "Natural split-face stone cladding along perimeter security walls and garden steps",
+      "Clean white rendered upper facade with warm architectural vertical wall sconces",
+    ],
+  },
 ];
