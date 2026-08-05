@@ -26,8 +26,8 @@ export function RenderGallery() {
 
   return (
     <Reveal>
-      <section className="render-gallery-section" id="renders">
-        <div className="render-gallery-inner">
+      <section className="render-gallery-section py-20 sm:py-28 md:py-36 px-6 md:px-16 lg:px-24" id="renders">
+        <div className="render-gallery-inner max-w-[1400px] mx-auto">
           {/* Section Header */}
           <div className="rg-header-bar">
             <div>

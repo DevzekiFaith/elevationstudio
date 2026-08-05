@@ -152,8 +152,8 @@ export function Testimonials() {
 
   return (
     <Reveal direction="up" duration={0.7}>
-      <section className="testimonials-section relative" id="testimonials">
-        <div className="testimonials-inner">
+      <section className="testimonials-section relative py-20 sm:py-28 md:py-36 px-6 md:px-16 lg:px-24 border-t border-b border-[#333336]" id="testimonials">
+        <div className="testimonials-inner max-w-[1400px] mx-auto">
           <div className="testimonials-top flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
             <div>
               <div className="flex items-center gap-3 mb-2 flex-wrap">

@@ -1,24 +1,11 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 export function QRCodeCard({ compact = false }: { compact?: boolean }) {
-  const [activeTab, setActiveTab] = useState<"generator" | "scanner">("generator");
   const [copiedLink, setCopiedLink] = useState(false);
   const [copiedImage, setCopiedImage] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
-
-  // QR Scanner States
-  const [isCameraActive, setIsCameraActive] = useState(false);
-  const [scanResult, setScanResult] = useState<{
-    url: string;
-    isOfficial: boolean;
-    scannedAt: string;
-  } | null>(null);
-  const [isScanningFile, setIsScanningFile] = useState(false);
-  const [scannerError, setScannerError] = useState("");
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const url = "https://www.elevationstudiong.com.ng/";
   const displayDomain = "www.elevationstudiong.com.ng";
@@ -236,98 +223,36 @@ export function QRCodeCard({ compact = false }: { compact?: boolean }) {
     }
   };
 
-  // --- QR SCANNER FUNCTIONALITY ---
-  const startCameraScan = async () => {
-    setScannerError("");
-    try {
-      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        setScannerError("Camera access is not supported by your current browser.");
-        return;
-      }
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "environment" },
-      });
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        videoRef.current.play();
-        setIsCameraActive(true);
-      }
-    } catch {
-      setScannerError(
-        "Camera permission denied or camera unavailable. You can use the 'Upload QR Image' or 'Run Test Scan' options below."
-      );
-    }
-  };
-
-  const stopCameraScan = () => {
-    if (videoRef.current && videoRef.current.srcObject) {
-      const stream = videoRef.current.srcObject as MediaStream;
-      stream.getTracks().forEach((track) => track.stop());
-      videoRef.current.srcObject = null;
-    }
-    setIsCameraActive(false);
-  };
-
-  const handleRunDiagnosticTestScan = () => {
-    setScannerError("");
-    setIsScanningFile(true);
-    setTimeout(() => {
-      setIsScanningFile(false);
-      setScanResult({
-        url,
-        isOfficial: true,
-        scannedAt: new Date().toLocaleTimeString(),
-      });
-    }, 800);
-  };
-
-  const handleFileUploadScan = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setScannerError("");
-    setIsScanningFile(true);
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      setTimeout(() => {
-        setIsScanningFile(false);
-        setScanResult({
-          url,
-          isOfficial: true,
-          scannedAt: new Date().toLocaleTimeString(),
-        });
-      }, 700);
-    };
-    reader.onerror = () => {
-      setIsScanningFile(false);
-      setScannerError("Failed to read image file.");
-    };
-    reader.readAsDataURL(file);
-  };
-
   if (compact) {
     return (
-      <div className="qr-compact-card">
-        <div className="phone-mockup-compact">
-          <div className="phone-compact-screen">
+      <div className="p-6 bg-[#0c0c10] border border-[var(--gold-border)] rounded-2xl flex flex-col sm:flex-row items-center gap-6 shadow-xl">
+        <div className="phone-mockup-compact flex-shrink-0">
+          <div className="phone-compact-screen p-3 bg-[#08080a] rounded-xl border border-white/10">
             <img
               src={qrImageUrl}
               alt={`Scan QR Code to open Elevation Studio on Mobile (${displayDomain})`}
-              width={100}
-              height={100}
-              className="qr-img"
+              width={110}
+              height={110}
+              className="qr-img rounded-lg"
             />
           </div>
         </div>
-        <div className="qr-compact-info">
-          <div className="qr-compact-title">Scan on Mobile</div>
-          <div className="qr-compact-url">{displayDomain}</div>
-          <div style={{ display: "flex", gap: "8px" }}>
-            <button type="button" className="qr-btn-sm" onClick={handleCopyLink}>
+        <div className="qr-compact-info flex flex-col gap-2 text-center sm:text-left">
+          <div className="font-bebas text-xl text-white tracking-wide">SCAN ON MOBILE</div>
+          <div className="font-mono text-xs text-[var(--gold)]">{displayDomain}</div>
+          <div className="flex flex-wrap gap-2.5 mt-2 justify-center sm:justify-start">
+            <button
+              type="button"
+              className="px-4 py-2 bg-[var(--gold)]/10 hover:bg-[var(--gold)] text-[var(--gold)] hover:text-[#060606] border border-[var(--gold-border)] rounded-lg font-mono text-xs tracking-wider transition-colors font-semibold"
+              onClick={handleCopyLink}
+            >
               {copiedLink ? "✓ Link Copied" : "Copy Link"}
             </button>
-            <button type="button" className="qr-btn-sm" onClick={handleDownloadPhoneQR}>
+            <button
+              type="button"
+              className="px-4 py-2 bg-[#141418] hover:bg-white/10 text-white border border-white/15 rounded-lg font-mono text-xs tracking-wider transition-colors"
+              onClick={handleDownloadPhoneQR}
+            >
               {isGenerating ? "Preparing..." : "Download Phone QR"}
             </button>
           </div>
@@ -337,50 +262,24 @@ export function QRCodeCard({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <div className="qr-full-card">
-      <div className="qr-card-header">
-        <div className="qr-eyebrow">DIGITAL ACCESS & VERIFICATION POINT</div>
-        <h3 className="qr-card-title">
+    <div className="p-8 sm:p-12 md:p-16 bg-[#0c0c10] border border-[var(--gold-border)] rounded-3xl shadow-[0_30px_90px_rgba(0,0,0,0.9)] relative overflow-hidden">
+      {/* Header Container with Generous Spacing */}
+      <div className="max-w-3xl mb-12">
+        <div className="font-mono text-xs tracking-[4px] text-[var(--gold)] uppercase mb-2">
+          DIGITAL ACCESS & PORTFOLIO POINT
+        </div>
+        <h3 className="font-bebas text-3xl sm:text-5xl text-white tracking-wide mb-4">
           EXPERIENCE <span style={{ color: "var(--gold)" }}>ELEVATION</span> ON MOBILE
         </h3>
-        <p className="qr-card-sub">
-          Scan the QR Code with your smartphone camera to launch the interactive studio portfolio, or use our built-in QR scanner tool below to verify target website links.
+        <p className="font-sans text-base text-[var(--white-dim)] leading-relaxed">
+          Scan the QR Code with your smartphone camera to launch the interactive studio portfolio, case archives, and direct project briefs instantly on your mobile device.
         </p>
-
-        {/* Mode Toggle Tabs */}
-        <div className="flex gap-3 mt-6 justify-center sm:justify-start">
-          <button
-            type="button"
-            className={`px-5 py-2.5 rounded font-mono text-xs uppercase tracking-wider transition-all border ${
-              activeTab === "generator"
-                ? "bg-[var(--gold)] text-[#060606] font-semibold border-[var(--gold)] shadow-md shadow-[var(--gold)]/20"
-                : "bg-[#0e0e10] text-[var(--muted)] border-white/10 hover:text-white"
-            }`}
-            onClick={() => {
-              stopCameraScan();
-              setActiveTab("generator");
-            }}
-          >
-            📱 Mobile QR Code & Phone Mockup
-          </button>
-          <button
-            type="button"
-            className={`px-5 py-2.5 rounded font-mono text-xs uppercase tracking-wider transition-all border ${
-              activeTab === "scanner"
-                ? "bg-[var(--gold)] text-[#060606] font-semibold border-[var(--gold)] shadow-md shadow-[var(--gold)]/20"
-                : "bg-[#0e0e10] text-[var(--muted)] border-white/10 hover:text-white"
-            }`}
-            onClick={() => setActiveTab("scanner")}
-          >
-            🔍 Live Camera & File QR Scanner
-          </button>
-        </div>
       </div>
 
-      {activeTab === "generator" ? (
-        <div className="qr-phone-showcase-grid">
-          {/* Realistic Luxury Smartphone Mockup */}
-          <div className="phone-mockup-wrap">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        {/* Realistic Luxury Smartphone Mockup */}
+        <div className="lg:col-span-6 flex justify-center">
+          <div className="phone-mockup-wrap transform transition-transform hover:scale-[1.02]">
             <div className="phone-chassis">
               {/* Phone Hardware Buttons */}
               <div className="phone-btn-volume-up" />
@@ -436,29 +335,31 @@ export function QRCodeCard({ compact = false }: { compact?: boolean }) {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Action Controls & Details Side Panel */}
-          <div className="qr-side-panel">
-            <div className="qr-info-badge">
-              <span className="gold-dot" />
+        {/* Action Controls & Details Side Panel with Padded Box Layout */}
+        <div className="lg:col-span-6 flex flex-col gap-6">
+          <div className="p-8 bg-[#121216] border border-white/10 rounded-2xl flex flex-col gap-6 shadow-xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[var(--gold)]/10 border border-[var(--gold-border)] rounded-full text-xs font-mono text-[var(--gold)] w-fit uppercase">
+              <span className="w-2 h-2 rounded-full bg-[var(--gold)] animate-pulse" />
               <span>Ready for Print Collateral, Pitch Decks & Socials</span>
             </div>
 
-            <h4 className="qr-panel-heading">Mobile Portfolio QR Code</h4>
-            <p className="qr-panel-desc">
-              Download or copy the phone mockup image containing the scannable QR code. You can directly paste (<code style={{ color: "var(--gold)" }}>Ctrl+V</code>) or insert it into pitch decks, WhatsApp messages, proposals, blueprints, and social media.
+            <h4 className="font-bebas text-3xl text-white tracking-wide">Mobile Portfolio QR Code</h4>
+            <p className="font-sans text-sm text-[var(--white-dim)] leading-relaxed">
+              Download or copy the scannable phone mockup image. You can directly paste (<code className="text-[var(--gold)] px-1 py-0.5 bg-[#09090c] rounded">Ctrl+V</code>) or insert it into pitch decks, WhatsApp messages, proposals, blueprints, and social media.
             </p>
 
-            <div className="qr-url-box">
-              <span className="qr-url-label">CANONICAL TARGET URL:</span>
-              <span className="qr-url-text">{url}</span>
+            <div className="p-4 bg-[#08080a] border border-white/10 rounded-xl flex flex-col gap-1">
+              <span className="font-mono text-[10px] tracking-widest text-zinc-400 uppercase">CANONICAL TARGET URL:</span>
+              <span className="font-mono text-sm font-semibold text-[var(--gold)] break-all">{url}</span>
             </div>
 
-            <div className="qr-panel-actions">
+            <div className="flex flex-col gap-3.5 pt-2">
               {/* Download Phone Mockup Image Button */}
               <button
                 type="button"
-                className="qr-action-btn primary"
+                className="w-full py-4 px-6 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs font-bold rounded-xl uppercase tracking-wider transition-all shadow-lg shadow-[var(--gold)]/20 flex items-center justify-center gap-2.5"
                 onClick={handleDownloadPhoneQR}
                 disabled={isGenerating}
               >
@@ -473,7 +374,7 @@ export function QRCodeCard({ compact = false }: { compact?: boolean }) {
               {/* Copy Phone Image to Clipboard Button */}
               <button
                 type="button"
-                className="qr-action-btn secondary"
+                className="w-full py-4 px-6 bg-[#181820] hover:bg-[#20202a] text-white border border-white/15 rounded-xl font-mono text-xs font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-2.5"
                 onClick={handleCopyPhoneQRImage}
                 disabled={isGenerating}
               >
@@ -485,7 +386,11 @@ export function QRCodeCard({ compact = false }: { compact?: boolean }) {
               </button>
 
               {/* Copy Direct URL Link */}
-              <button type="button" className="qr-action-btn secondary" onClick={handleCopyLink}>
+              <button
+                type="button"
+                className="w-full py-3.5 px-6 bg-[#141419] hover:bg-white/10 text-white/90 border border-white/10 rounded-xl font-mono text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2.5"
+                onClick={handleCopyLink}
+              >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
                   <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
@@ -499,7 +404,7 @@ export function QRCodeCard({ compact = false }: { compact?: boolean }) {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="qr-action-btn whatsapp"
+                className="w-full py-4 px-6 bg-emerald-950/80 hover:bg-emerald-900 text-emerald-400 border border-emerald-500/40 rounded-xl font-mono text-xs font-bold uppercase tracking-wider transition-all text-center flex items-center justify-center gap-2.5 mt-1"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
@@ -509,149 +414,7 @@ export function QRCodeCard({ compact = false }: { compact?: boolean }) {
             </div>
           </div>
         </div>
-      ) : (
-        /* LIVE SCANNER TAB INTERFACE */
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mt-8 items-start">
-          {/* Left Column: Viewfinder / Camera View */}
-          <div className="md:col-span-6 bg-[#0e0e10] border border-[#333336] rounded-2xl p-6 relative flex flex-col items-center justify-center min-h-[380px]">
-            {isCameraActive ? (
-              <div className="relative w-full aspect-square max-w-[320px] rounded-xl overflow-hidden border-2 border-[var(--gold)] shadow-xl">
-                <video ref={videoRef} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 border-2 border-dashed border-[var(--gold)]/60 rounded-xl pointer-events-none animate-pulse" />
-                <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-[var(--gold)] shadow-[0_0_12px_#d4a843] pointer-events-none" />
-              </div>
-            ) : (
-              <div className="flex flex-col items-center text-center gap-4 py-8">
-                <div className="w-20 h-20 rounded-2xl bg-[var(--gold)]/10 border border-[var(--gold-border)] flex items-center justify-center text-3xl text-[var(--gold)]">
-                  📷
-                </div>
-                <div>
-                  <h4 className="font-bebas text-2xl text-white">QR CAMERA & FILE SCANNER</h4>
-                  <p className="font-sans text-xs text-[var(--white-dim)] max-w-xs mt-1">
-                    Scan physical QR codes using your device camera or upload a QR image file to verify its encoded URL payload.
-                  </p>
-                </div>
-              </div>
-            )}
-
-            <div className="flex flex-wrap gap-3 mt-6 justify-center">
-              {isCameraActive ? (
-                <button
-                  type="button"
-                  onClick={stopCameraScan}
-                  className="px-5 py-2.5 bg-red-900/60 border border-red-500/50 hover:bg-red-900 text-white font-mono text-xs rounded uppercase tracking-wider transition-colors"
-                >
-                  Stop Camera 🛑
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={startCameraScan}
-                  className="px-5 py-2.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs font-semibold rounded uppercase tracking-wider transition-all shadow-md shadow-[var(--gold)]/20"
-                >
-                  Start Camera Scanner 🎥
-                </button>
-              )}
-
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                className="px-5 py-2.5 bg-[#17171d] border border-white/20 hover:border-white/40 text-white font-mono text-xs rounded uppercase tracking-wider transition-colors"
-              >
-                Upload QR Image 📁
-              </button>
-
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                className="hidden"
-                onChange={handleFileUploadScan}
-              />
-            </div>
-
-            {scannerError && (
-              <div className="mt-4 p-3 bg-amber-950/60 border border-amber-500/40 text-amber-300 font-mono text-xs rounded max-w-sm text-center">
-                ⚠️ {scannerError}
-              </div>
-            )}
-          </div>
-
-          {/* Right Column: Diagnostic Scanner & Verification Results */}
-          <div className="md:col-span-6 bg-[#0e0e10] border border-[#333336] rounded-2xl p-6 sm:p-8 flex flex-col justify-between h-full min-h-[380px]">
-            <div>
-              <div className="font-mono text-[10px] tracking-[3px] text-[var(--gold)] uppercase mb-1">
-                INSTANT VERIFICATION SUITE
-              </div>
-              <h4 className="font-bebas text-2xl text-white mb-2">QR DIAGNOSTIC SCANNER</h4>
-              <p className="font-sans text-xs text-[var(--white-dim)] leading-relaxed mb-6">
-                Test the QR code target in real-time. This diagnostic scanner inspects scannability, SSL security, and canonical domain alignment for <code className="text-[var(--gold)]">{displayDomain}</code>.
-              </p>
-
-              <button
-                type="button"
-                onClick={handleRunDiagnosticTestScan}
-                disabled={isScanningFile}
-                className="w-full py-3.5 bg-gradient-to-r from-[var(--gold)] to-[var(--gold-bright)] text-[#060606] font-mono text-xs font-bold rounded uppercase tracking-wider shadow-lg hover:brightness-110 transition-all flex items-center justify-center gap-2"
-              >
-                {isScanningFile ? (
-                  <span>Decoding & Verifying QR Payload...</span>
-                ) : (
-                  <>
-                    <span>⚡ Run Live Diagnostic Test Scan</span>
-                    <span>→</span>
-                  </>
-                )}
-              </button>
-            </div>
-
-            {/* Scan Diagnostic Result Card */}
-            {scanResult ? (
-              <div className="mt-6 p-5 bg-[#141419] border border-emerald-500/40 rounded-xl flex flex-col gap-3 shadow-lg animate-fadeIn">
-                <div className="flex items-center justify-between">
-                  <span className="px-2.5 py-1 bg-emerald-950 text-emerald-400 border border-emerald-500/40 rounded font-mono text-[10px] uppercase font-bold tracking-widest flex items-center gap-1">
-                    <span>✓</span> VERIFIED ACTIVE QR CODE
-                  </span>
-                  <span className="font-mono text-[10px] text-zinc-500">{scanResult.scannedAt}</span>
-                </div>
-
-                <div className="flex flex-col gap-1 pt-1">
-                  <span className="font-mono text-[11px] text-zinc-400">TARGET ENCODED PAYLOAD:</span>
-                  <a
-                    href={scanResult.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono text-sm font-semibold text-[var(--gold)] hover:underline break-all"
-                  >
-                    {scanResult.url}
-                  </a>
-                </div>
-
-                <div className="p-2.5 bg-[#09090c] rounded border border-white/5 font-sans text-xs text-zinc-300">
-                  🌐 <strong>Domain Match:</strong> <span className="text-emerald-400 font-mono">100% Matches Canonical Site</span>
-                  <br />
-                  🔒 <strong>Protocol:</strong> <span className="font-mono text-emerald-400">HTTPS / SSL Verified</span>
-                </div>
-
-                <a
-                  href={scanResult.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-semibold rounded text-center uppercase tracking-wider transition-colors mt-1"
-                >
-                  Launch Target Website ↗
-                </a>
-              </div>
-            ) : (
-              <div className="mt-6 p-4 bg-[#141419] border border-white/10 rounded-xl text-center">
-                <span className="font-mono text-xs text-zinc-500">
-                  Ready to scan. Click &quot;Run Live Diagnostic Test Scan&quot; above to verify QR status.
-                </span>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 }
