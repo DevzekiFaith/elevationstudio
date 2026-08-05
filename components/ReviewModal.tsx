@@ -480,7 +480,7 @@ export function ReviewModal({ isOpen, onClose, onReviewSubmitted, initialTab = "
                     </span>
                   </div>
                   <textarea
-                    rows={4}
+                    rows={3}
                     placeholder="Share your experience working with Elevation Studio across spatial renders, brand architecture, code engineering, or culture training..."
                     value={quote}
                     onChange={(e) => setQuote(e.target.value)}
