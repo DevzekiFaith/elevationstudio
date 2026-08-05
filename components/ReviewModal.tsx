@@ -170,7 +170,7 @@ export function ReviewModal({ isOpen, onClose, onReviewSubmitted, initialTab = "
             </div>
 
             {/* Mode Switcher Tabs */}
-            <div style={{ display: "flex", gap: "10px", marginBottom: "24px" }}>
+            <div style={{ display: "flex", gap: "8px", marginBottom: "14px" }}>
               <button
                 type="button"
                 className={`review-cancel-btn ${activeTab === "form" ? "active" : ""}`}
