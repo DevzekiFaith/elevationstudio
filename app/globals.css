@@ -4625,6 +4625,7 @@ footer {
   z-index: 10;
   max-height: 80vh;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 @media (min-width: 640px) {
@@ -4775,7 +4776,12 @@ footer {
   outline: none;
   transition: all 0.2s ease;
   width: 100%;
+  box-sizing: border-box;
   font-family: var(--font-syne), sans-serif;
+}
+
+.review-textarea {
+  resize: none;
 }
 
 .review-input::placeholder,
