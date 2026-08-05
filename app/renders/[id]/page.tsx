@@ -135,14 +135,14 @@ export default async function RenderDetailPage({ params }: PageProps) {
 
             {render.architecturalHighlights && render.architecturalHighlights.length > 0 && (
               <Reveal direction="up" delay={0.2}>
-                <div className="p-8 bg-[#0e0e10] border border-[#333336] rounded-xl glow-card-border">
-                  <h3 className="font-bebas text-2xl text-[var(--gold)] tracking-wider mb-4">
+                <div className="p-8 sm:p-10 bg-[#0e0e12] border border-white/10 rounded-2xl glow-card-border">
+                  <h3 className="font-bebas text-2xl sm:text-3xl text-[var(--gold)] tracking-wider mb-5">
                     SPATIAL ENGINEERING HIGHLIGHTS
                   </h3>
-                  <ul className="flex flex-col gap-3">
+                  <ul className="flex flex-col gap-3.5">
                     {render.architecturalHighlights.map((hl, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-sm text-white/70 leading-relaxed font-sans">
-                        <span className="text-[var(--gold)] mt-0.5">◆</span>
+                      <li key={idx} className="flex items-start gap-3.5 text-sm sm:text-base text-white/80 leading-relaxed font-sans">
+                        <span className="text-[var(--gold)] mt-0.5 font-bold">◆</span>
                         <span>{hl}</span>
                       </li>
                     ))}
@@ -155,21 +155,21 @@ export default async function RenderDetailPage({ params }: PageProps) {
           <div className="lg:col-span-5 flex flex-col gap-8">
             <Reveal direction="up" delay={0.3}>
               <TiltCard glare maxTilt={5}>
-                <div className="p-8 bg-[#0e0e10] border border-[#333336] rounded-xl flex flex-col gap-6">
-                  <div className="font-mono text-xs tracking-[3px] text-[var(--gold)] uppercase border-b border-[#333336] pb-4">
+                <div className="p-8 sm:p-10 bg-[#0e0e12] border border-white/10 rounded-2xl flex flex-col gap-6">
+                  <div className="font-mono text-xs tracking-[3px] text-[var(--gold)] uppercase border-b border-white/10 pb-4 font-semibold">
                     TECHNICAL SPECIFICATIONS
                   </div>
 
-                  <div className="grid grid-cols-1 gap-3">
+                  <div className="grid grid-cols-1 gap-3.5">
                     {render.specs.map((sp, idx) => (
-                      <div key={idx} className="flex items-center gap-3 text-sm text-white font-sans">
-                        <span className="text-[var(--gold)] text-xs">◆</span>
+                      <div key={idx} className="flex items-center gap-3.5 text-sm text-white font-sans">
+                        <span className="text-[var(--gold)] text-xs font-bold">◆</span>
                         <span>{sp}</span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="pt-4 border-t border-[#333336]">
+                  <div className="pt-6 border-t border-white/10 mt-2">
                     <Magnetic strength={0.35} className="w-full">
                       <a
                         href={`https://wa.me/2349119059859?text=${encodeURIComponent(
@@ -177,7 +177,7 @@ export default async function RenderDetailPage({ params }: PageProps) {
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full py-4 px-6 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs tracking-[2px] uppercase font-semibold rounded text-center block transition-colors shadow-lg"
+                        className="w-full py-4 px-6 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs tracking-[2px] uppercase font-bold rounded-xl text-center block transition-all shadow-lg shadow-[var(--gold)]/20"
                       >
                         COMMISSION SIMILAR 3D SCOPE →
                       </a>

@@ -1,7 +1,7 @@
 export interface RenderItem {
   id: string;
   title: string;
-  category: "residential" | "commercial" | "event" | "interior" | "plaza" | "football";
+  category: "residential" | "commercial" | "event" | "interior" | "plaza" | "football" | "terrace";
   categoryLabel: string;
   location: string;
   image: string;
@@ -35,6 +35,56 @@ export const RENDERS: RenderItem[] = [
       "High-contrast dark anodized aluminum window mullions with floor-to-ceiling double glazing",
       "Recessed perimeter wall sconces highlighting boundary security fencing and driveway paving",
       "Dedicated ground-floor retail showroom bays with unobstructed street-facing visibility",
+    ],
+  },
+  {
+    id: "20",
+    title: "Modern Executive Terrace Housing Estate with Carports & Warm Accent Lighting",
+    category: "terrace",
+    categoryLabel: "MODERN TERRACE ARCHITECTURE",
+    location: "LEKKI PHASE 1 / OGUN-LAGOS CORRIDOR, NIGERIA",
+    image: "/renders/modern_terrace_residence.jpg",
+    accentColor: "#efc558",
+    specs: [
+      "Multi-Unit Symmetrical Modern Terrace Facade",
+      "Cantilevered Steel Carport Shade Structures",
+      "Terracotta Accent Recessed Entry Porches",
+      "Automated Steel Perimeter Fence Gating",
+      "Linear Soffit Wash & Pillar Lighting",
+      "Interlocked Driveway & Paved Courtyard",
+    ],
+    description:
+      "A luxury multi-unit modern terrace housing estate featuring clean white architectural geometry, terracotta-accented recessed entryways, cantilevered steel carports, integrated perimeter pillar sconces, and lush front garden hedging.",
+    architecturalHighlights: [
+      "Symmetrical multi-unit terrace layout with dedicated covered parking bays for luxury vehicles",
+      "High-contrast warm terracotta recessed accent walls on entry porches and upper balconies",
+      "Steel frame carports with heavy-duty shade fabric and integrated pillar sconces",
+      "Wet-paved interlocked driveway with illuminated perimeter hedge borders",
+    ],
+  },
+  {
+    id: "19",
+    title: "Executive Multi-Unit Terrace Duplex Estate",
+    category: "terrace",
+    categoryLabel: "LUXURY TERRACE RESIDENCE",
+    location: "LEKKI PHASE 1 / CHEVRON AXIS, NIGERIA",
+    image: "/renders/luxury_terrace_duplex_estate.jpg",
+    accentColor: "#d4a843",
+    specs: [
+      "Cantilevered Steel Carport Canopies",
+      "Textured Stone Clad Boundary Wall",
+      "Vertical Timber Recessed Accents",
+      "Linear Under-Soffit Night Wash",
+      "Integrated Perimeter Wall Sconces",
+      "Executive SUV Parking Bays",
+    ],
+    description:
+      "A prestigious multi-unit terrace duplex residence captured at twilight. Features cantilevered executive carport structures, warm soffit strip lighting, natural stone boundary cladding, and rich timber recessed entry balconies.",
+    architecturalHighlights: [
+      "Dual cantilevered steel carports with integrated LED downlights",
+      "High-contrast timber wall panelling around upper terrace balconies",
+      "Natural split-face stone cladding along perimeter security walls and garden steps",
+      "Clean white rendered upper facade with warm architectural vertical wall sconces",
     ],
   },
   {
@@ -390,31 +440,6 @@ export const RENDERS: RenderItem[] = [
       "High-density UV-stabilized synthetic grass turf with shock-pad underlayment",
       "Lush garden boundary beds separating the pitch enclosure from estate walkways",
       "Multi-angle sightlines designed for private tournament viewing",
-    ],
-  },
-  {
-    id: "19",
-    title: "Executive Multi-Unit Terrace Duplex Estate",
-    category: "residential",
-    categoryLabel: "LUXURY TERRACE RESIDENCE",
-    location: "LEKKI PHASE 1 / CHEVRON AXIS, NIGERIA",
-    image: "/renders/luxury_terrace_duplex_estate.jpg",
-    accentColor: "#d4a843",
-    specs: [
-      "Cantilevered Steel Carport Canopies",
-      "Textured Stone Clad Boundary Wall",
-      "Vertical Timber Recessed Accents",
-      "Linear Under-Soffit Night Wash",
-      "Integrated Perimeter Wall Sconces",
-      "Executive SUV Parking Bays",
-    ],
-    description:
-      "A prestigious multi-unit terrace duplex residence captured at twilight. Features cantilevered executive carport structures, warm soffit strip lighting, natural stone boundary cladding, and rich timber recessed entry balconies.",
-    architecturalHighlights: [
-      "Dual cantilevered steel cantilever carports with integrated LED downlights",
-      "High-contrast timber wall panelling around upper terrace balconies",
-      "Natural split-face stone cladding along perimeter security walls and garden steps",
-      "Clean white rendered upper facade with warm architectural vertical wall sconces",
     ],
   },
 ];

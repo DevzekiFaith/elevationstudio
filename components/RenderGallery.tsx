@@ -17,7 +17,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export function RenderGallery() {
-  const [filter, setFilter] = useState<"all" | "residential" | "commercial" | "event" | "interior" | "plaza" | "football">("all");
+  const [filter, setFilter] = useState<"all" | "terrace" | "residential" | "commercial" | "event" | "interior" | "plaza" | "football">("all");
   const [selectedRender, setSelectedRender] = useState<RenderItem | null>(null);
 
   const filteredRenders = RENDERS.filter(
@@ -45,6 +45,7 @@ export function RenderGallery() {
           <div className="rg-filter-bar">
             {[
               { id: "all", label: "ALL RENDERS" },
+              { id: "terrace", label: "MODERN TERRACES" },
               { id: "plaza", label: "MODERN PLAZAS" },
               { id: "football", label: "PRIVATE FOOTBALL PITCH" },
               { id: "residential", label: "RESIDENTIAL VILLAS" },
@@ -115,17 +116,17 @@ export function RenderGallery() {
                         </div>
                       </div>
 
-                      <div className="p-4 pt-0 border-t border-[#333336]/40 flex gap-2">
+                      <div className="p-5 pt-4 border-t border-white/10 flex gap-3 mt-auto">
                         <Link
                           href={`/renders/${render.id}`}
-                          className="flex-1 py-3 px-4 bg-[var(--gold)]/10 hover:bg-[var(--gold)] text-[var(--gold)] hover:text-[#060606] border border-[var(--gold-border)] rounded text-[11px] font-mono tracking-wider font-semibold text-center transition-all"
+                          className="flex-1 py-3 px-4 bg-[var(--gold)]/10 hover:bg-[var(--gold)] text-[var(--gold)] hover:text-[#060606] border border-[var(--gold-border)] rounded-lg text-[11px] font-mono tracking-wider font-semibold text-center transition-all shadow-sm"
                         >
                           FULL HD PAGE →
                         </Link>
                         <button
                           type="button"
                           onClick={() => setSelectedRender(render)}
-                          className="py-3 px-4 bg-transparent border border-[#333336] hover:border-white/40 text-white/80 rounded text-[11px] font-mono tracking-wider transition-all"
+                          className="py-3 px-4 bg-[#141419] border border-white/15 hover:border-white/40 text-white rounded-lg text-[11px] font-mono tracking-wider transition-all"
                         >
                           SPECS
                         </button>
