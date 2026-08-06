@@ -82,7 +82,7 @@ export function LocationMap({ height = "420px" }: { height?: string }) {
     if (!script) {
       script = document.createElement("script");
       script.id = scriptId;
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initElevationMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initElevationMap&loading=async&libraries=marker`;
       script.async = true;
       script.defer = true;
 
@@ -103,6 +103,7 @@ export function LocationMap({ height = "420px" }: { height?: string }) {
       const map = new window.google.maps.Map(mapRef.current, {
         center: location,
         zoom: 11,
+        mapId: "ELEVATION_STUDIO_MAP_ID",
         styles: darkGoldMapStyle,
         disableDefaultUI: false,
         zoomControl: true,
@@ -111,21 +112,42 @@ export function LocationMap({ height = "420px" }: { height?: string }) {
         fullscreenControl: true,
       });
 
-      // Custom marker marker icon
-      const marker = new window.google.maps.Marker({
-        position: location,
-        map: map,
-        title: "Elevation Studio HQ — Ogun - Lagos Corridor",
-        animation: window.google.maps.Animation.DROP,
-        icon: {
-          path: window.google.maps.SymbolPath.CIRCLE,
-          scale: 10,
-          fillColor: "#d4a843",
-          fillOpacity: 1,
-          strokeColor: "#ffffff",
-          strokeWeight: 2,
-        },
-      });
+      // Custom marker pin element
+      let marker: any = null;
+
+      // Use AdvancedMarkerElement if available (recommended by Google Maps 2024+)
+      if (window.google.maps.marker && window.google.maps.marker.AdvancedMarkerElement) {
+        const pinContent = document.createElement("div");
+        pinContent.style.width = "20px";
+        pinContent.style.height = "20px";
+        pinContent.style.borderRadius = "50%";
+        pinContent.style.background = "#d4a843";
+        pinContent.style.border = "3px solid #ffffff";
+        pinContent.style.boxShadow = "0 0 15px rgba(212, 168, 67, 0.8)";
+        pinContent.style.cursor = "pointer";
+
+        marker = new window.google.maps.marker.AdvancedMarkerElement({
+          position: location,
+          map: map,
+          title: "Elevation Studio HQ — Ogun - Lagos Corridor",
+          content: pinContent,
+        });
+      } else {
+        // Fallback marker for legacy API compatibility
+        marker = new window.google.maps.Marker({
+          position: location,
+          map: map,
+          title: "Elevation Studio HQ — Ogun - Lagos Corridor",
+          icon: {
+            path: window.google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            fillColor: "#d4a843",
+            fillOpacity: 1,
+            strokeColor: "#ffffff",
+            strokeWeight: 2,
+          },
+        });
+      }
 
       // Info Window
       const infoWindow = new window.google.maps.InfoWindow({
@@ -148,51 +170,25 @@ export function LocationMap({ height = "420px" }: { height?: string }) {
   }, [apiKey]);
 
   return (
-    <div className="location-map-container" style={{ height }}>
-      {/* Map Header */}
-      <div className="location-map-header">
-        <div className="location-map-tag">
-          <span className="gold-dot" />
-          <span>OPERATIONAL HEADQUARTERS</span>
+    <div
+      style={{ height }}
+      className="relative w-full rounded-2xl overflow-hidden border border-[#333336] bg-[#0c0c0e] shadow-2xl"
+    >
+      <div ref={mapRef} className="w-full h-full" />
+
+      {!mapLoaded && (
+        <div className="absolute inset-0 bg-[#0c0c0e] flex flex-col items-center justify-center gap-3 p-6 text-center z-10 pointer-events-none">
+          <div className="w-8 h-8 rounded-full border-2 border-[var(--gold)] border-t-transparent animate-spin" />
+          <div className="font-mono text-xs text-[var(--gold)] uppercase tracking-wider">
+            Loading Interactive Studio Location Map...
+          </div>
         </div>
-        <h4 className="location-map-title">OGUN — LAGOS CORRIDOR HUB</h4>
-      </div>
-
-      {/* Map Viewport Canvas */}
-      <div className="location-map-viewport">
-        <div ref={mapRef} className="location-map-canvas" />
-
-        {/* Fallback dark iframe embed if JS API is initializing */}
-        {!mapLoaded && (
-          <iframe
-            title="Elevation Studio Ogun-Lagos Corridor HQ Map"
-            width="100%"
-            height="100%"
-            style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) contrast(1.2)" }}
-            loading="lazy"
-            allowFullScreen
-            src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=Ogun+Lagos+Corridor,Nigeria&zoom=11`}
-          />
-        )}
-      </div>
-
-      {/* Map Footer Bar */}
-      <div className="location-map-footer">
-        <div className="map-coord-text">LOCATION COORDS: 6.6852° N, 3.4158° E</div>
-        <a
-          href="https://maps.google.com/?q=Ogun+Lagos+Corridor,Nigeria"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="map-open-link"
-        >
-          Open in Google Maps ↗
-        </a>
-      </div>
+      )}
     </div>
   );
 }
 
-// Global TypeScript declarations for Google Maps window object
+// Global window declaration for TypeScript
 declare global {
   interface Window {
     google: any;
