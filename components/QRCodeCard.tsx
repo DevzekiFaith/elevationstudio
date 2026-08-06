@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { TiltCard } from "./TiltCard";
 
 export function QRCodeCard({ compact = false }: { compact?: boolean }) {
   const [copiedLink, setCopiedLink] = useState(false);
@@ -225,183 +226,187 @@ export function QRCodeCard({ compact = false }: { compact?: boolean }) {
 
   if (compact) {
     return (
-      <div className="p-6 bg-[#0c0c10] border border-[var(--gold-border)] rounded-2xl flex flex-col sm:flex-row items-center gap-6 shadow-xl">
-        <div className="phone-mockup-compact flex-shrink-0">
-          <div className="phone-compact-screen p-3 bg-[#08080a] rounded-xl border border-white/10">
-            <img
-              src={qrImageUrl}
-              alt={`Scan QR Code to open Elevation Studio on Mobile (${displayDomain})`}
-              width={110}
-              height={110}
-              className="qr-img rounded-lg"
-            />
+      <TiltCard glare maxTilt={6} className="w-full">
+        <div className="p-6 bg-[#0c0c10] border border-[var(--gold-border)] rounded-2xl flex flex-col sm:flex-row items-center gap-6 shadow-xl">
+          <div className="phone-mockup-compact flex-shrink-0">
+            <div className="phone-compact-screen p-3 bg-[#08080a] rounded-xl border border-white/10">
+              <img
+                src={qrImageUrl}
+                alt={`Scan QR Code to open Elevation Studio on Mobile (${displayDomain})`}
+                width={110}
+                height={110}
+                className="qr-img rounded-lg"
+              />
+            </div>
+          </div>
+          <div className="qr-compact-info flex flex-col gap-2 text-center sm:text-left">
+            <div className="font-bebas text-xl text-white tracking-wide">SCAN ON MOBILE</div>
+            <div className="font-mono text-xs text-[var(--gold)]">{displayDomain}</div>
+            <div className="flex flex-wrap gap-2.5 mt-2 justify-center sm:justify-start">
+              <button
+                type="button"
+                className="px-4 py-2 bg-[var(--gold)]/10 hover:bg-[var(--gold)] text-[var(--gold)] hover:text-[#060606] border border-[var(--gold-border)] rounded-lg font-mono text-xs tracking-wider transition-colors font-semibold"
+                onClick={handleCopyLink}
+              >
+                {copiedLink ? "✓ Link Copied" : "Copy Link"}
+              </button>
+              <button
+                type="button"
+                className="px-4 py-2 bg-[#141418] hover:bg-white/10 text-white border border-white/15 rounded-lg font-mono text-xs tracking-wider transition-colors"
+                onClick={handleDownloadPhoneQR}
+              >
+                {isGenerating ? "Preparing..." : "Download Phone QR"}
+              </button>
+            </div>
           </div>
         </div>
-        <div className="qr-compact-info flex flex-col gap-2 text-center sm:text-left">
-          <div className="font-bebas text-xl text-white tracking-wide">SCAN ON MOBILE</div>
-          <div className="font-mono text-xs text-[var(--gold)]">{displayDomain}</div>
-          <div className="flex flex-wrap gap-2.5 mt-2 justify-center sm:justify-start">
-            <button
-              type="button"
-              className="px-4 py-2 bg-[var(--gold)]/10 hover:bg-[var(--gold)] text-[var(--gold)] hover:text-[#060606] border border-[var(--gold-border)] rounded-lg font-mono text-xs tracking-wider transition-colors font-semibold"
-              onClick={handleCopyLink}
-            >
-              {copiedLink ? "✓ Link Copied" : "Copy Link"}
-            </button>
-            <button
-              type="button"
-              className="px-4 py-2 bg-[#141418] hover:bg-white/10 text-white border border-white/15 rounded-lg font-mono text-xs tracking-wider transition-colors"
-              onClick={handleDownloadPhoneQR}
-            >
-              {isGenerating ? "Preparing..." : "Download Phone QR"}
-            </button>
-          </div>
-        </div>
-      </div>
+      </TiltCard>
     );
   }
 
   return (
-    <div className="qr-card-hero">
-      {/* Header Container */}
-      <div className="max-w-3xl mb-12">
-        <div className="qr-eyebrow">DIGITAL ACCESS & PORTFOLIO POINT</div>
-        <h3 className="qr-headline">
-          EXPERIENCE <span style={{ color: "var(--gold)" }}>ELEVATION</span> ON MOBILE
-        </h3>
-        <p className="qr-subtext">
-          Scan the QR Code with your smartphone camera to launch the interactive studio portfolio, case archives, and direct project briefs instantly on your mobile device.
-        </p>
-      </div>
+    <TiltCard glare maxTilt={5} className="w-full">
+      <div className="qr-card-hero">
+        {/* Header Container */}
+        <div className="max-w-3xl mb-12">
+          <div className="qr-eyebrow">DIGITAL ACCESS & PORTFOLIO POINT</div>
+          <h3 className="qr-headline">
+            EXPERIENCE <span style={{ color: "var(--gold)" }}>ELEVATION</span> ON MOBILE
+          </h3>
+          <p className="qr-subtext">
+            Scan the QR Code with your smartphone camera to launch the interactive studio portfolio, case archives, and direct project briefs instantly on your mobile device.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        {/* Realistic Luxury Smartphone Mockup */}
-        <div className="lg:col-span-6 flex justify-center">
-          <div className="phone-chassis">
-            {/* Inner Screen Container */}
-            <div className="phone-screen">
-              {/* Dynamic Island / Notch */}
-              <div className="phone-notch">
-                <span className="phone-camera" />
-                <span className="phone-speaker" />
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Realistic Luxury Smartphone Mockup */}
+          <div className="lg:col-span-6 flex justify-center">
+            <div className="phone-chassis">
+              {/* Inner Screen Container */}
+              <div className="phone-screen">
+                {/* Dynamic Island / Notch */}
+                <div className="phone-notch">
+                  <span className="phone-camera" />
+                  <span className="phone-speaker" />
+                </div>
 
-              {/* Status Bar */}
-              <div className="phone-status-bar">
-                <span>09:41</span>
-                <span>5G 98%</span>
-              </div>
+                {/* Status Bar */}
+                <div className="phone-status-bar">
+                  <span>09:41</span>
+                  <span>5G 98%</span>
+                </div>
 
-              {/* Phone Content Screen */}
-              <div className="phone-inner-app">
-                <div className="phone-app-header">
-                  <div className="phone-app-brand">
-                    ELEVATION <span>STUDIO</span>
+                {/* Phone Content Screen */}
+                <div className="phone-inner-app">
+                  <div className="phone-app-header">
+                    <div className="phone-app-brand">
+                      ELEVATION <span>STUDIO</span>
+                    </div>
+                    <div className="phone-app-badge">PORTFOLIO ACCESS</div>
                   </div>
-                  <div className="phone-app-badge">PORTFOLIO ACCESS</div>
-                </div>
 
-                <div className="phone-qr-stage">
-                  <img
-                    src={qrImageUrl}
-                    alt={`Elevation Studio QR Code (${displayDomain})`}
-                    width={175}
-                    height={175}
-                    className="phone-qr-image"
-                  />
-                  <div className="phone-qr-center-badge">ES</div>
-                </div>
+                  <div className="phone-qr-stage">
+                    <img
+                      src={qrImageUrl}
+                      alt={`Elevation Studio QR Code (${displayDomain})`}
+                      width={175}
+                      height={175}
+                      className="phone-qr-image"
+                    />
+                    <div className="phone-qr-center-badge">ES</div>
+                  </div>
 
-                <div className="phone-app-footer">
-                  <div className="phone-app-url">{displayDomain}</div>
-                  <div className="phone-app-hint">Point camera to scan or share</div>
-                </div>
+                  <div className="phone-app-footer">
+                    <div className="phone-app-url">{displayDomain}</div>
+                    <div className="phone-app-hint">Point camera to scan or share</div>
+                  </div>
 
-                {/* Home Indicator Bar */}
-                <div className="phone-home-indicator" />
+                  {/* Home Indicator Bar */}
+                  <div className="phone-home-indicator" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Controls & Details Side Panel */}
+          <div className="lg:col-span-6 flex flex-col gap-6">
+            <div className="qr-actions-card">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[var(--gold)]/10 border border-[var(--gold-border)] rounded-full text-xs font-mono text-[var(--gold)] w-fit uppercase">
+                <span className="w-2 h-2 rounded-full bg-[var(--gold)] animate-pulse" />
+                <span>Ready for Print Collateral, Pitch Decks & Socials</span>
+              </div>
+
+              <h4 className="font-bebas text-3xl text-white tracking-wide margin-0">Mobile Portfolio QR Code</h4>
+              <p className="font-sans text-sm text-[var(--white-dim)] leading-relaxed margin-0">
+                Download or copy the scannable phone mockup image. You can directly paste (<code className="text-[var(--gold)] px-1 py-0.5 bg-[#09090c] rounded">Ctrl+V</code>) or insert it into pitch decks, WhatsApp messages, proposals, blueprints, and social media.
+              </p>
+
+              <div className="qr-url-box">
+                <span className="qr-url-label">CANONICAL TARGET URL:</span>
+                <span className="qr-url-text">{url}</span>
+              </div>
+
+              <div className="flex flex-col gap-3.5 pt-2">
+                {/* Download Phone Mockup Image Button */}
+                <button
+                  type="button"
+                  className="qr-action-btn primary"
+                  onClick={handleDownloadPhoneQR}
+                  disabled={isGenerating}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  {isGenerating ? "Rendering Phone PNG..." : "Download Phone QR Image (PNG)"}
+                </button>
+
+                {/* Copy Phone Image to Clipboard Button */}
+                <button
+                  type="button"
+                  className="qr-action-btn secondary"
+                  onClick={handleCopyPhoneQRImage}
+                  disabled={isGenerating}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                  </svg>
+                  {copiedImage ? "✓ Phone QR Image Copied (Paste Anywhere)" : "Copy Phone QR Image to Clipboard"}
+                </button>
+
+                {/* Copy Direct URL Link */}
+                <button
+                  type="button"
+                  className="qr-action-btn secondary"
+                  onClick={handleCopyLink}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                  </svg>
+                  {copiedLink ? "✓ Website URL Copied" : "Copy Live Website Link"}
+                </button>
+
+                <a
+                  href={`https://wa.me/2349119059859?text=${encodeURIComponent(
+                    "Hello Elevation Studio, I am scanning your mobile QR code and would like to discuss a project brief."
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="qr-action-btn whatsapp"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                  </svg>
+                  Share Portfolio via WhatsApp (09119059859) →
+                </a>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Action Controls & Details Side Panel */}
-        <div className="lg:col-span-6 flex flex-col gap-6">
-          <div className="qr-actions-card">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[var(--gold)]/10 border border-[var(--gold-border)] rounded-full text-xs font-mono text-[var(--gold)] w-fit uppercase">
-              <span className="w-2 h-2 rounded-full bg-[var(--gold)] animate-pulse" />
-              <span>Ready for Print Collateral, Pitch Decks & Socials</span>
-            </div>
-
-            <h4 className="font-bebas text-3xl text-white tracking-wide margin-0">Mobile Portfolio QR Code</h4>
-            <p className="font-sans text-sm text-[var(--white-dim)] leading-relaxed margin-0">
-              Download or copy the scannable phone mockup image. You can directly paste (<code className="text-[var(--gold)] px-1 py-0.5 bg-[#09090c] rounded">Ctrl+V</code>) or insert it into pitch decks, WhatsApp messages, proposals, blueprints, and social media.
-            </p>
-
-            <div className="qr-url-box">
-              <span className="qr-url-label">CANONICAL TARGET URL:</span>
-              <span className="qr-url-text">{url}</span>
-            </div>
-
-            <div className="flex flex-col gap-3.5 pt-2">
-              {/* Download Phone Mockup Image Button */}
-              <button
-                type="button"
-                className="qr-action-btn primary"
-                onClick={handleDownloadPhoneQR}
-                disabled={isGenerating}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                {isGenerating ? "Rendering Phone PNG..." : "Download Phone QR Image (PNG)"}
-              </button>
-
-              {/* Copy Phone Image to Clipboard Button */}
-              <button
-                type="button"
-                className="qr-action-btn secondary"
-                onClick={handleCopyPhoneQRImage}
-                disabled={isGenerating}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                </svg>
-                {copiedImage ? "✓ Phone QR Image Copied (Paste Anywhere)" : "Copy Phone QR Image to Clipboard"}
-              </button>
-
-              {/* Copy Direct URL Link */}
-              <button
-                type="button"
-                className="qr-action-btn secondary"
-                onClick={handleCopyLink}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                </svg>
-                {copiedLink ? "✓ Website URL Copied" : "Copy Live Website Link"}
-              </button>
-
-              <a
-                href={`https://wa.me/2349119059859?text=${encodeURIComponent(
-                  "Hello Elevation Studio, I am scanning your mobile QR code and would like to discuss a project brief."
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="qr-action-btn whatsapp"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                </svg>
-                Share Portfolio via WhatsApp (09119059859) →
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
+    </TiltCard>
   );
 }
