@@ -1,7 +1,7 @@
 export interface RenderItem {
   id: string;
   title: string;
-  category: "residential" | "commercial" | "event" | "interior" | "plaza" | "football" | "terrace";
+  category: "residential" | "commercial" | "event" | "interior" | "plaza" | "football" | "terrace" | "institutional";
   categoryLabel: string;
   location: string;
   image: string;
@@ -12,6 +12,60 @@ export interface RenderItem {
 }
 
 export const RENDERS: RenderItem[] = [
+  {
+    id: "21",
+    title: "Modern Educational Campus — Nursery, Primary & Secondary Wings (Day View)",
+    category: "institutional",
+    categoryLabel: "EDUCATIONAL & INSTITUTIONAL ARCHITECTURE",
+    location: "LEKKI PHASE 1 / OGUN-LAGOS EDUCATIONAL CORRIDOR",
+    image: "/renders/modern_school_day.jpg",
+    accentColor: "#efc558",
+    specs: [
+      "End-to-End Ecosystem Execution (Research, Branding, Digital Visibility & Spatial Design)",
+      "Integrated Nursery, Primary & Secondary Academic Wings",
+      "Multi-Purpose Meeting Hall & Executive Staff Room",
+      "Outdoor Recreational Playground & Basketball Arena",
+      "Perimeter Paved Courtyard with Burgundy Umbrella Seating",
+      "Multi-Tiered External Staircases & High-Visibility Glazing",
+      "Subtropical Landscaping & Outdoor Student Assembly Grounds",
+    ],
+    description:
+      "A flagship modern educational campus masterplan delivering a complete institutional ecosystem — engineered from initial feasibility research and strategic branding to digital visibility platforms and full 3D spatial space design. Integrates Nursery, Primary, and Secondary academic wings around a vibrant recreational courtyard, featuring a dedicated multi-purpose meeting hall with staff room, equipped playground with basketball court, and seamless multi-tier circulation staircases.",
+    architecturalHighlights: [
+      "Turnkey institutional ecosystem integration — bridging feasibility research, strategic brand identity, digital visibility, and 3D spatial architecture",
+      "Zoned multi-level academic blocks engineered for optimal student movement, ventilation, and age-group separation",
+      "Integrated administrative wing hosting staff offices, executive meeting hall, and reception facilities",
+      "Central landscaped recreational grounds featuring heavy-duty wooden picnic benches, shading umbrellas, swings, and sports arena",
+      "High-durability white rendered facade with energy-efficient green window glazing, safety balustrades, and external staircases",
+    ],
+  },
+  {
+    id: "22",
+    title: "Modern School Campus Courtyard & Assembly Grounds (Evening View)",
+    category: "institutional",
+    categoryLabel: "EDUCATIONAL & INSTITUTIONAL ARCHITECTURE",
+    location: "LEKKI PHASE 1 / OGUN-LAGOS EDUCATIONAL CORRIDOR",
+    image: "/renders/modern_school_evening.jpg",
+    accentColor: "#d4a843",
+    specs: [
+      "Complete Institutional Ecosystem Scope (Research → Brand → Digital → Spatial)",
+      "Day/Evening Courtyard Illumination & Perimeter Security Lighting",
+      "Integrated Playground, Swing Structures & Basketball Hoop",
+      "Staff Conference Hall & Administrative Wing Connection",
+      "Low-Maintenance Interlocked Courtyard Paving & Lawn Bedding",
+      "Executive Staff & Visitor Drop-off Parking Bay",
+      "Safety-Compliant Perimeter Fencing & Stairwell Guardrails",
+    ],
+    description:
+      "An evening architectural rendering of the modern school campus showcasing the full institutional ecosystem in motion — from spatial space design and ambient courtyard lighting to digital visibility systems and cohesive brand integration. Highlights outdoor student recreational amenities, staff administrative block, and a serene academic atmosphere.",
+    architecturalHighlights: [
+      "Comprehensive ecosystem rollout — uniting spatial space design, brand identity, digital presence, and operational spatial strategy",
+      "Warm architectural accent lighting illuminating ground-level walkways, stairwells, and classroom entryways",
+      "Multi-purpose outdoor recreational zone combining natural grass turf, basketball hoop, and swing sets",
+      "Efficient architectural circulation connecting the staff room, meeting hall, and all three learning sections",
+      "Reflective polished courtyard paving enhancing light distribution across the educational compound",
+    ],
+  },
   {
     id: "0",
     title: "4-Story Commercial Plaza — Front Facade & Executive Parking",

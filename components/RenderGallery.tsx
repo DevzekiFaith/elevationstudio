@@ -17,7 +17,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export function RenderGallery() {
-  const [filter, setFilter] = useState<"all" | "terrace" | "residential" | "commercial" | "event" | "interior" | "plaza" | "football">("all");
+  const [filter, setFilter] = useState<"all" | "terrace" | "residential" | "commercial" | "event" | "interior" | "plaza" | "football" | "institutional">("all");
   const [selectedRender, setSelectedRender] = useState<RenderItem | null>(null);
 
   const filteredRenders = RENDERS.filter(
@@ -37,7 +37,7 @@ export function RenderGallery() {
               </h2>
             </div>
             <p className="rg-subtitle">
-              From luxury residential villas and private sports grounds to commercial plazas and event pavilions — engineered to bridge architectural blueprint into physical reality.
+              From modern educational campuses to luxury residential villas, commercial plazas, and sports grounds — we manage the complete project ecosystem, from feasibility research and strategic branding to digital visibility and 3D spatial space design.
             </p>
           </div>
 
@@ -45,6 +45,7 @@ export function RenderGallery() {
           <div className="rg-filter-bar">
             {[
               { id: "all", label: "ALL RENDERS" },
+              { id: "institutional", label: "ACADEMIC & SCHOOLS" },
               { id: "terrace", label: "MODERN TERRACES" },
               { id: "plaza", label: "MODERN PLAZAS" },
               { id: "football", label: "PRIVATE FOOTBALL PITCH" },
