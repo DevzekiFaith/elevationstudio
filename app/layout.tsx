@@ -204,6 +204,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${bebas.variable} ${cormorant.variable} ${dmMono.variable} ${syne.variable} scroll-smooth`}
       suppressHydrationWarning
     >
