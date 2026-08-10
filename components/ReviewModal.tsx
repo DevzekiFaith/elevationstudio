@@ -26,7 +26,7 @@ interface ReviewModalProps {
 const PACKAGES = [
   "Package 01 — The Blueprint (Brand Identity)",
   "Package 02 — The Structure (Brand + Digital Systems)",
-  "Package 03 — The Elevation (Brand + Digital + Space)",
+  "Package 03 — The Elevation (Brand + Digital + Presence + Space)",
   "Package 04 — The Master Plan (Brand + Digital + Space + Culture)",
   "Custom 3D Spatial Architecture Renders",
   "Mindvest Culture & Team Transformation",

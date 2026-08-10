@@ -182,7 +182,7 @@ const jsonLd = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Package 03 — The Elevation (Brand + Digital + Space Design)",
+          name: "Package 03 — The Elevation (Brand + Digital + Presence + Space)",
         },
       },
       {

@@ -27,7 +27,7 @@ const PACKAGES = [
     id: "3",
     code: "Package 03 — The Elevation",
     name: "The Elevation",
-    short: "Brand + Digital + Space",
+    short: "Brand + Digital + Presence + Space",
     range: "₦5M — ₦20M",
     bridge: false,
   },
