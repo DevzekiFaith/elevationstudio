@@ -13,6 +13,57 @@ export interface RenderItem {
 
 export const RENDERS: RenderItem[] = [
   {
+    id: "24",
+    title: "Modern 5-Bedroom Luxury Bungalow Villa — Daytime Facade & Grand Portico",
+    category: "residential",
+    categoryLabel: "LUXURY RESIDENTIAL BUNGALOW",
+    location: "LEKKI PHASE 1 / OGUN-LAGOS RESIDENTIAL CORRIDOR, NIGERIA",
+    image: "/renders/modern_5bed_bungalow_day.jpg",
+    accentColor: "#efc558",
+    specs: [
+      "5 En-Suite Master Bedrooms with Private Ante-Rooms",
+      "Double-Height Grand Entrance Portico with Crystal Chandelier",
+      "Architectural Perimeter Soffit LED Strip Wash & Wall Sconces",
+      "Monolithic Vertical Fin Wall & Slim Window Framing",
+      "Wet-Paved Polished Courtyard Driveway with Garden Bedding",
+      "Subtropical Landscape Planters with Exotic Palms & Monsteras",
+    ],
+    description:
+      "A state-of-the-art 5-bedroom modern luxury bungalow masterplan featuring a high-impact vertical architectural fin wall, cantilevered grand entrance porch adorned with a crystal chandelier, vertical recessed slim window glazing, and wet-paved courtyard driveway framed by tropical monstera foliage.",
+    architecturalHighlights: [
+      "Monolithic vertical architectural fin wall anchoring the front elevation symmetry",
+      "Cantilevered entrance canopy featuring an opulent multi-tier crystal chandelier and recessed spotlights",
+      "Perimeter linear LED under-soffit warm wash and dual-beam exterior wall sconces",
+      "Integrated lush garden beds featuring monstera plants, potted palms, and ground cover up-lighting",
+      "High-durability white rendered facade with moisture-resistant architectural soffit capping",
+    ],
+  },
+  {
+    id: "25",
+    title: "Modern 5-Bedroom Luxury Bungalow Villa — Evening Warm LED Illumination",
+    category: "residential",
+    categoryLabel: "LUXURY RESIDENTIAL BUNGALOW",
+    location: "LEKKI PHASE 1 / OGUN-LAGOS RESIDENTIAL CORRIDOR, NIGERIA",
+    image: "/renders/modern_5bed_bungalow_evening.jpg",
+    accentColor: "#d4a843",
+    specs: [
+      "5 En-Suite Master Bedrooms with Private Ante-Rooms",
+      "Warm Soffit & Pillar Architectural Lighting Scheme",
+      "Illuminated Entrance Porch with Crystal Chandelier Glow",
+      "Perimeter Wall Sconces & Landscape Up-Lighting",
+      "High-Index Reflective Wet-Paved Courtyard Paving",
+      "Integrated Security Access & Subtropical Hedge Border",
+    ],
+    description:
+      "An evening architectural rendering of the 5-bedroom luxury bungalow highlighting the warm linear LED soffit illumination, perimeter garden up-lighting, crystal chandelier ambient glow, and floating vertical architectural fin structure.",
+    architecturalHighlights: [
+      "Dramatic warm architectural LED wash illuminating facade soffits, entrance porch, and ground-level perimeter",
+      "Multi-tier crystal chandelier casting an opulent warm glow through the grand entrance canopy",
+      "Strategic dual-beam vertical wall sconces highlighting white architectural render textures",
+      "Specular wet-paved courtyard reflection amplifying twilight sky contrast and facade lighting",
+    ],
+  },
+  {
     id: "23",
     title: "Luxury Boutique Hotel & Resort Pool — High-Angle Aerial Spatial View",
     category: "event",
