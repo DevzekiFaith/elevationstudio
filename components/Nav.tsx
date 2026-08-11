@@ -190,7 +190,7 @@ export function Nav() {
               <span className="font-mono text-[10px] tracking-[5px] text-[var(--gold)] uppercase mb-8 opacity-75">
                 STUDIO NAVIGATION
               </span>
-              <ul className="flex flex-col items-center gap-2 w-full max-w-md">
+              <ul className="flex flex-col items-center gap-4 sm:gap-6 md:gap-7 w-full max-w-md">
                 {navItems.map((item, index) => (
                   <motion.li
                     key={item.label}
@@ -202,7 +202,7 @@ export function Nav() {
                     <a
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="font-bebas block py-2 text-4xl sm:text-5xl md:text-6xl text-white hover:text-[var(--gold)] transition-colors tracking-widest"
+                      className="font-bebas block py-3 sm:py-4 text-4xl sm:text-5xl md:text-6xl text-white hover:text-[var(--gold)] transition-colors tracking-widest"
                     >
                       {item.label}
                     </a>
