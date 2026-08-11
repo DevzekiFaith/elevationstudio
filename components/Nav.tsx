@@ -10,6 +10,7 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -32,194 +33,228 @@ export function Nav() {
 
   return (
     <>
-      {/* ─── Floating Nav Bar ─── */}
+      {/* ─── Modern Floating Navigation Header ─── */}
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-0 left-0 right-0 z-[100] px-3 sm:px-5 lg:px-8 py-3 pointer-events-none"
+        className="fixed top-0 left-0 right-0 z-[100] px-4 sm:px-6 lg:px-8 py-4 pointer-events-none"
       >
-        {/*
-          3-column grid so the centre nav links are ALWAYS mathematically centred:
-          [logo · · · · ][nav links][· · · · actions]
-          Each outer column takes equal "auto" space; the centre column takes 1fr.
-        */}
+        {/* Using a grid with auto-1fr-auto to ensure mathematical centering of navigation links */}
         <div
           className={`
-            max-w-[1600px] mx-auto pointer-events-auto
+            max-w-[1440px] mx-auto pointer-events-auto
             grid grid-cols-[auto_1fr_auto] items-center
-            px-4 sm:px-5 lg:px-7 py-2.5 sm:py-3 lg:py-3.5
+            px-5 sm:px-6 lg:px-8 py-3 lg:py-3.5
             rounded-full transition-all duration-500 border
             ${
               scrolled || mobileMenuOpen
-                ? "bg-[#09090d]/95 backdrop-blur-xl shadow-[0_15px_50px_rgba(0,0,0,0.9)] border-[var(--gold-border)]/35"
-                : "bg-[#09090d]/80 backdrop-blur-md shadow-lg border-white/8"
+                ? "bg-[#09090d]/95 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] border-[var(--gold-border)]/40"
+                : "bg-[#060608]/75 backdrop-blur-md shadow-lg border-white/5"
             }
           `}
         >
-          {/* ── Column 1: Logo ── */}
+          {/* Logo Section */}
           <Link
             href="/"
-            className="flex items-center gap-2 group shrink-0"
+            className="flex items-center gap-2.5 group shrink-0"
             onClick={() => setMobileMenuOpen(false)}
           >
-            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[var(--gold)] group-hover:scale-125 transition-transform" />
-            <span className="font-bebas text-lg sm:text-xl lg:text-2xl tracking-[2px] lg:tracking-[2.5px] text-white leading-none">
-              ELEVATION&nbsp;<span className="text-[var(--gold)]">STUDIO</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[var(--gold)] group-hover:scale-125 transition-transform duration-300" />
+            <span className="font-bebas text-lg sm:text-xl lg:text-2xl tracking-[2.5px] text-white leading-none">
+              ELEVATION <span className="text-[var(--gold)]">STUDIO</span>
             </span>
           </Link>
 
-          {/* ── Column 2: Centre Nav Links (desktop only) ── */}
-          <nav className="hidden lg:flex items-center justify-center">
-            <ul className="flex items-center gap-5 xl:gap-8 font-mono text-[10px] xl:text-xs tracking-[2px] xl:tracking-widest text-[#f4f0e8]/75 uppercase">
-              {navItems.map((item) => (
-                <li key={item.label}>
+          {/* Navigation Links with sliding background highlight */}
+          {/* Using a div instead of a nav tag to avoid conflicting with the global `nav` selector in globals.css */}
+          <div className="hidden lg:flex items-center justify-center">
+            <ul 
+              className="relative flex items-center gap-1 p-1 bg-white/[0.03] rounded-full border border-white/5"
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              {navItems.map((item, idx) => (
+                <li key={item.label} className="relative">
                   <a
                     href={item.href}
-                    className="relative group py-1 hover:text-[var(--gold)] transition-colors duration-200"
+                    className="relative z-10 block px-4 py-2 font-mono text-[11px] xl:text-xs tracking-wider uppercase transition-colors duration-300 rounded-full"
+                    style={{
+                      color: hoveredIndex === idx ? "var(--white)" : "var(--white-dim)"
+                    }}
+                    onMouseEnter={() => setHoveredIndex(idx)}
                   >
                     {item.label}
-                    <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full" />
                   </a>
+
+                  {/* Animated sliding background pill */}
+                  <AnimatePresence>
+                    {hoveredIndex === idx && (
+                      <motion.span
+                        layoutId="nav-hover-pill"
+                        className="absolute inset-0 bg-white/5 border border-white/10 rounded-full z-0"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 380,
+                          damping: 30
+                        }}
+                      />
+                    )}
+                  </AnimatePresence>
                 </li>
               ))}
             </ul>
-          </nav>
+          </div>
 
-          {/* ── Column 3: Right Actions (desktop) + Hamburger (mobile) ── */}
-          <div className="flex items-center justify-end gap-2 lg:gap-2.5 xl:gap-3 shrink-0">
-            {/* Desktop-only actions */}
-            <div className="hidden lg:flex items-center flex-row gap-2 xl:gap-2.5">
-              <Magnetic strength={0.25}>
+          {/* Actions / CTA Section */}
+          <div className="flex items-center justify-end gap-3 shrink-0">
+            {/* Desktop Buttons */}
+            <div className="hidden lg:flex items-center gap-3">
+              <Magnetic strength={0.15}>
                 <button
                   type="button"
                   onClick={() => setReviewModalOpen(true)}
-                  className="px-3 xl:px-4 py-1.5 xl:py-2 bg-[var(--gold)]/15 hover:bg-[var(--gold)] text-[var(--gold)] hover:text-[#060606] rounded-full font-mono text-[10px] xl:text-xs tracking-wider transition-all duration-300 border border-[var(--gold)]/25"
+                  className="px-4 py-2 bg-white/5 hover:bg-[var(--gold)]/10 text-white hover:text-[var(--gold)] rounded-full font-mono text-[11px] xl:text-xs tracking-wider transition-all duration-300 border border-white/10 hover:border-[var(--gold-border)]"
                   title="Submit a verified client review"
                 >
                   Review Us
                 </button>
               </Magnetic>
 
-              <Magnetic strength={0.2}>
+              <Magnetic strength={0.15}>
                 <a
                   href="https://instagram.com/elevationstudio.ng"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center px-3 xl:px-3.5 py-1.5 xl:py-2 bg-[#14141a] hover:bg-white/10 text-white/80 rounded-full font-mono text-[10px] xl:text-xs tracking-wider transition-colors border border-white/6"
-                  title="@elevationstudio.ng"
+                  className="px-3.5 py-2 bg-[#0d0d11] hover:bg-white/10 text-white/80 rounded-full font-mono text-[11px] xl:text-xs tracking-wider transition-colors border border-white/5"
+                  title="Follow on Instagram"
                 >
                   IG
                 </a>
               </Magnetic>
 
-              <Magnetic strength={0.2}>
+              <Magnetic strength={0.15}>
                 <a
                   href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20interested%20in%20discussing%20a%20project."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center px-3 xl:px-3.5 py-1.5 xl:py-2 bg-[#14141a] hover:bg-emerald-950/80 text-emerald-400 rounded-full font-mono text-[10px] xl:text-xs tracking-wider transition-colors border border-emerald-900/40"
-                  title="WhatsApp Consultation"
+                  className="px-3.5 py-2 bg-[#0d0d11] hover:bg-emerald-950/50 text-emerald-400 rounded-full font-mono text-[11px] xl:text-xs tracking-wider transition-colors border border-emerald-950/40"
+                  title="WhatsApp Chat"
                 >
                   Chat
                 </a>
               </Magnetic>
 
-              <Magnetic strength={0.3}>
+              <Magnetic strength={0.2}>
                 <Link
                   href="/contact"
-                  className="px-4 xl:px-5 py-2 xl:py-2.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-[10px] xl:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md shadow-[var(--gold)]/20 hover:scale-[1.03] whitespace-nowrap"
+                  className="px-5 py-2.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-[11px] xl:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md shadow-[var(--gold)]/10 hover:scale-[1.02]"
                 >
                   Start a Project →
                 </Link>
               </Magnetic>
             </div>
 
-            {/* Mobile / Tablet hamburger */}
+            {/* Mobile / Tablet Toggle Button */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden flex items-center px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full font-mono text-xs text-[var(--gold)] uppercase bg-[#14141a] border border-[var(--gold-border)]/30 hover:bg-white/8 transition-colors"
+              className="lg:hidden flex items-center justify-center p-2.5 rounded-full bg-white/[0.04] border border-white/10 text-white hover:text-[var(--gold)] hover:border-[var(--gold-border)] transition-colors"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? "CLOSE ✕" : "MENU ☰"}
+              <div className="w-5 h-4 relative flex flex-col justify-between items-center">
+                <span className={`w-5 h-[1.5px] bg-current rounded-full transition-transform duration-300 ${mobileMenuOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+                <span className={`w-4 h-[1.5px] bg-current rounded-full transition-opacity duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`} />
+                <span className={`w-5 h-[1.5px] bg-current rounded-full transition-transform duration-300 ${mobileMenuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+              </div>
             </button>
           </div>
         </div>
       </motion.header>
 
-      {/* ─── Mobile / Tablet Full-Screen Overlay ─── */}
+      {/* ─── Modern Mobile Navigation Full-Screen Overlay ─── */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.28 }}
-            className="fixed inset-0 z-[99] lg:hidden flex flex-col bg-[#06060a]/98 backdrop-blur-2xl overflow-y-auto"
-            style={{ paddingTop: "76px" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[99] lg:hidden bg-[#060609]/98 backdrop-blur-2xl flex flex-col justify-between overflow-y-auto"
+            style={{ paddingTop: "88px" }}
           >
-            {/* Nav links – centred */}
-            <div className="flex-1 flex flex-col items-center justify-center gap-2 px-6 py-10">
-              <p className="font-mono text-[9px] sm:text-[10px] tracking-[5px] text-[var(--gold)] uppercase mb-6">
+            {/* Nav links block */}
+            <div className="flex-1 flex flex-col items-center justify-center px-6 py-12">
+              <span className="font-mono text-[10px] tracking-[5px] text-[var(--gold)] uppercase mb-8 opacity-75">
                 STUDIO NAVIGATION
-              </p>
-              <ul className="flex flex-col items-center gap-1 w-full">
-                {navItems.map((item) => (
-                  <li key={item.label} className="w-full text-center">
+              </span>
+              <ul className="flex flex-col items-center gap-2 w-full max-w-md">
+                {navItems.map((item, index) => (
+                  <motion.li
+                    key={item.label}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.08, duration: 0.4 }}
+                    className="w-full text-center"
+                  >
                     <a
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="font-bebas block py-2 text-[2.8rem] sm:text-[3.5rem] md:text-[4.5rem] text-white hover:text-[var(--gold)] transition-colors tracking-wide"
+                      className="font-bebas block py-2 text-4xl sm:text-5xl md:text-6xl text-white hover:text-[var(--gold)] transition-colors tracking-widest"
                     >
                       {item.label}
                     </a>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>
 
-            {/* Bottom action strip */}
-            <div className="shrink-0 px-6 sm:px-10 pb-10 pt-6 border-t border-white/10">
-              <p className="font-mono text-[9px] sm:text-[10px] tracking-[4px] text-[var(--muted)] uppercase text-center mb-5">
-                DIRECT STUDIO CHANNELS
-              </p>
+            {/* Actions Section */}
+            <div className="shrink-0 px-6 sm:px-10 pb-12 pt-6 border-t border-white/5 bg-[#08080c]/50">
+              <div className="max-w-md mx-auto flex flex-col gap-4">
+                <span className="font-mono text-[9px] tracking-[4px] text-[var(--muted)] uppercase text-center mb-2">
+                  DIRECT STUDIO CHANNELS
+                </span>
 
-              <div className="flex flex-col gap-3 max-w-sm mx-auto">
                 <button
                   type="button"
-                  onClick={() => { setMobileMenuOpen(false); setReviewModalOpen(true); }}
-                  className="w-full py-3.5 rounded-full bg-[var(--gold)]/12 hover:bg-[var(--gold)]/20 text-[var(--gold)] font-mono text-xs tracking-widest uppercase border border-[var(--gold)]/30 transition-all"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setReviewModalOpen(true);
+                  }}
+                  className="w-full py-4 rounded-full bg-white/5 hover:bg-white/10 text-white font-mono text-xs tracking-widest uppercase border border-white/10 transition-all duration-300"
                 >
-                  WRITE A CLIENT REVIEW
+                  Write a Client Review
                 </button>
 
                 <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full py-4 rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs font-bold tracking-widest uppercase text-center shadow-lg shadow-[var(--gold)]/25 transition-all"
+                  className="w-full py-4 rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs font-bold tracking-widest uppercase text-center shadow-lg shadow-[var(--gold)]/10 transition-all duration-300"
                 >
-                  START A PROJECT →
+                  Start a Project →
                 </Link>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-3 w-full">
                   <a
                     href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20interested%20in%20discussing%20a%20project."
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="py-3 rounded-full bg-[#121217] hover:bg-[#1a1a22] text-emerald-400 font-mono text-[11px] tracking-wider text-center border border-emerald-900/40 transition-colors flex items-center justify-center"
+                    className="py-3 rounded-full bg-[#121217] text-emerald-400 font-mono text-xs tracking-wider text-center border border-emerald-950 transition-colors flex items-center justify-center"
                   >
-                    WHATSAPP ↗
+                    WHATSAPP
                   </a>
                   <a
                     href="https://instagram.com/elevationstudio.ng"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="py-3 rounded-full bg-[#121217] hover:bg-[#1a1a22] text-[var(--gold)] font-mono text-[11px] tracking-wider text-center border border-[var(--gold-border)]/40 transition-colors flex items-center justify-center"
+                    className="py-3 rounded-full bg-[#121217] text-[var(--gold)] font-mono text-xs tracking-wider text-center border border-[var(--gold-border)]/20 transition-colors flex items-center justify-center"
                   >
-                    INSTAGRAM ↗
+                    INSTAGRAM
                   </a>
                 </div>
               </div>
@@ -228,7 +263,7 @@ export function Nav() {
         )}
       </AnimatePresence>
 
-      {/* ─── Review Modal ─── */}
+      {/* Global Review Modal */}
       <ReviewModal
         isOpen={reviewModalOpen}
         onClose={() => setReviewModalOpen(false)}
