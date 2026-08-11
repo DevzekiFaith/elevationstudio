@@ -89,7 +89,7 @@ export function Nav() {
           {/* ── Column 3: Right Actions (desktop) + Hamburger (mobile) ── */}
           <div className="flex items-center justify-end gap-2 lg:gap-2.5 xl:gap-3 shrink-0">
             {/* Desktop-only actions */}
-            <div className="hidden lg:flex items-center gap-2 xl:gap-2.5">
+            <div className="hidden lg:flex items-center flex-row gap-2 xl:gap-2.5">
               <Magnetic strength={0.25}>
                 <button
                   type="button"
@@ -106,7 +106,7 @@ export function Nav() {
                   href="https://instagram.com/elevationstudio.ng"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hidden xl:flex items-center px-3 py-1.5 xl:py-2 bg-[#14141a] hover:bg-white/10 text-white/80 rounded-full font-mono text-[10px] xl:text-xs tracking-wider transition-colors border border-white/6"
+                  className="flex items-center px-3 xl:px-3.5 py-1.5 xl:py-2 bg-[#14141a] hover:bg-white/10 text-white/80 rounded-full font-mono text-[10px] xl:text-xs tracking-wider transition-colors border border-white/6"
                   title="@elevationstudio.ng"
                 >
                   IG
@@ -118,7 +118,7 @@ export function Nav() {
                   href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20interested%20in%20discussing%20a%20project."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hidden xl:flex items-center px-3 py-1.5 xl:py-2 bg-[#14141a] hover:bg-emerald-950/80 text-emerald-400 rounded-full font-mono text-[10px] xl:text-xs tracking-wider transition-colors border border-emerald-900/40"
+                  className="flex items-center px-3 xl:px-3.5 py-1.5 xl:py-2 bg-[#14141a] hover:bg-emerald-950/80 text-emerald-400 rounded-full font-mono text-[10px] xl:text-xs tracking-wider transition-colors border border-emerald-900/40"
                   title="WhatsApp Consultation"
                 >
                   Chat
