@@ -57,43 +57,12 @@ export const PACKAGES_DATA: PackageDetail[] = [
     slugs: ["2", "structure"],
     num: "Package 02",
     name: "THE STRUCTURE",
-    subtitle: "Brand + Digital",
-    description: "Digital web engineering and interactive visual systems built upon your brand foundation.",
+    subtitle: "Brand + Digital + Presence",
+    description: "A complete digital and local transformation of how your business is seen, discovered, experienced, and remembered online.",
     range: "₦1.5M — ₦5M",
     paymentSplit: "50 / 50",
     paymentDesc: "50% deposit to commence work. 50% on final delivery before handover.",
     baseInclude: "Everything in Foundation",
-    pillars: [
-      {
-        title: "WEB ENGINEERING",
-        sub: "Website design & custom development",
-        details: ["Custom Next.js web application", "Responsive mobile-first interface", "High-performance SEO architecture"]
-      },
-      {
-        title: "DIGITAL ASSETS",
-        sub: "Social media templates & digital collateral",
-        details: ["Modular social grid templates", "Custom digital campaign banners", "Interactive presentation slide deck"]
-      },
-      {
-        title: "COMMUNICATION SETUP",
-        sub: "Email marketing & CRM integration",
-        details: ["Automated onboarding email templates", "CRM subscriber capture forms", "Domain authentication & MX record setup"]
-      }
-    ],
-    cta: "REQUEST PROPOSAL",
-    ctaHref: "/contact?package=2"
-  },
-  {
-    id: "3",
-    slugs: ["3", "elevation"],
-    num: "Package 03",
-    name: "THE ELEVATION",
-    subtitle: "Brand + Digital + Presence + Space",
-    description: "A complete transformation of how your business is seen, discovered, experienced, and remembered.",
-    range: "₦5M — ₦20M",
-    paymentSplit: "40 / 30 / 30",
-    paymentDesc: "40% on signing. 30% at design approval milestone. 30% on project completion and handover.",
-    baseInclude: "Everything in The Structure",
     pillars: [
       {
         title: "LOCAL PRESENCE",
@@ -108,28 +77,71 @@ export const PACKAGES_DATA: PackageDetail[] = [
         ]
       },
       {
-        title: "SPACE",
-        sub: "Interior, exterior & 3D spatial transformation",
+        title: "DIGITAL ENGINEERING",
+        sub: "Custom website design & development",
         details: [
-          "Interior design concepts",
-          "Exterior facade design concepts",
-          "3D architectural visualisation & render suite",
-          "Spatial transformation documentation",
-          "Architectural signage design",
-          "Brand-space physical integration"
+          "Custom Next.js web application",
+          "Responsive mobile-first interface",
+          "High-performance SEO architecture",
+          "Speed & accessibility engineering"
         ]
       },
       {
-        title: "ALIGNMENT",
-        sub: "Connecting your brand, digital presence and physical experience",
+        title: "DIGITAL ASSETS & SYSTEMS",
+        sub: "Social media templates & email marketing setup",
         details: [
-          "Strategic flow: Brand → Digital → Local Presence → Physical Space",
-          "Omnichannel customer experience audit",
-          "Unified brand touchpoint documentation"
+          "Modular social grid templates",
+          "Custom digital campaign banners",
+          "Automated onboarding email templates",
+          "CRM subscriber capture integration"
         ]
       }
     ],
-    cta: "START YOUR ELEVATION",
+    cta: "REQUEST PROPOSAL",
+    ctaHref: "/contact?package=2"
+  },
+  {
+    id: "3",
+    slugs: ["3", "elevation"],
+    num: "Package 03",
+    name: "THE ELEVATION",
+    subtitle: "Brand + Digital + Space",
+    description: "Connecting visual identity, digital presence, and custom 3D spatial architectural transformation.",
+    range: "₦5M — ₦20M",
+    paymentSplit: "40 / 30 / 30",
+    paymentDesc: "40% on signing. 30% at design approval milestone. 30% on project completion and handover.",
+    baseInclude: "Everything in Structure",
+    pillars: [
+      {
+        title: "SPATIAL CONSULTATION",
+        sub: "Space design consultation & architectural direction",
+        details: [
+          "Site spatial potential analysis",
+          "Architectural spatial planning",
+          "Space-brand alignment assessment"
+        ]
+      },
+      {
+        title: "3D SPATIAL DESIGN",
+        sub: "Interior & exterior design concept & documentation",
+        details: [
+          "Interior design concepts",
+          "Exterior facade design concepts",
+          "3D architectural visualization & render suite",
+          "Spatial transformation documentation"
+        ]
+      },
+      {
+        title: "BRAND-SPACE AUDIT",
+        sub: "Space-brand physical alignment audit & signage",
+        details: [
+          "Physical-to-digital brand consistency",
+          "Architectural signage design & placement",
+          "Physical spatial experience touchpoints"
+        ]
+      }
+    ],
+    cta: "REQUEST PROPOSAL",
     ctaHref: "/contact?package=3"
   },
   {
@@ -137,12 +149,12 @@ export const PACKAGES_DATA: PackageDetail[] = [
     slugs: ["4", "master-plan"],
     num: "Package 04",
     name: "THE MASTER PLAN",
-    subtitle: "Brand + Digital + Presence + Space + Culture",
+    subtitle: "Brand + Digital + Space + Culture",
     description: "End-to-end organisational transformation combining architecture, digital engineering, and Mindvest culture development.",
     range: "₦15M — ₦50M+",
     paymentSplit: "30 / 30 / 40",
     paymentDesc: "30% on signing. 30% at midpoint. 40% structured as monthly retainer across the 6–12 month partnership.",
-    baseInclude: "Everything in The Elevation",
+    baseInclude: "Everything in Elevation",
     pillars: [
       {
         title: "ORGANISATIONAL CULTURE",

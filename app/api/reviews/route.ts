@@ -22,7 +22,7 @@ const inMemoryReviews: ReviewItem[] = [
     company: "Crestview Eco-Properties & Masterplans",
     location: "Lagos / Ogun Corridor, Nigeria",
     rating: 5,
-    packageUsed: "Package 03 — The Elevation (Brand + Digital + Presence + Space)",
+    packageUsed: "Package 03 — The Elevation (Brand + Digital + Space)",
     quote:
       "When launching our masterplan along the Ogun–Lagos corridor, we needed spatial architecture renders that matched real civil blueprints and an interactive plot selector. Elevation Studio delivered both flawlessly without us needing three different agencies.",
     createdAt: "2026-08-01T10:00:00Z",

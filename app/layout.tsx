@@ -175,14 +175,14 @@ const jsonLd = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Package 02 — The Structure (Brand + Digital Engineering)",
+          name: "Package 02 — The Structure (Brand + Digital + Presence)",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Package 03 — The Elevation (Brand + Digital + Presence + Space)",
+          name: "Package 03 — The Elevation (Brand + Digital + Space Design)",
         },
       },
       {

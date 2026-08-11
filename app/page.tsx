@@ -402,13 +402,17 @@ export default function Home() {
                       <CurrencyToggle />
                     </div>
                     <div className="pkg-card-name">THE STRUCTURE</div>
-                    <div className="pkg-card-subtitle">Brand + Digital</div>
+                    <div className="pkg-card-subtitle">Brand + Digital + Presence</div>
                     <ul className="pkg-card-includes">
                       <li>Everything in Foundation</li>
-                      <li className="new">Website design & development</li>
-                      <li className="new">Social media templates</li>
-                      <li className="new">Email marketing setup</li>
+                      <li className="new">Local presence &amp; Google optimisation</li>
+                      <li className="new">Website design &amp; custom engineering</li>
+                      <li className="new">Social media &amp; email marketing setup</li>
                     </ul>
+                    <Link href="/packages/2" className="pkg-hover-badge group" title="Open full Package 02 detail modal">
+                      <span>OPEN FULL SCOPE MODAL</span>
+                      <span className="group-hover:translate-x-0.5 transition-transform">✦</span>
+                    </Link>
                   </div>
                   <div className="pkg-card-bottom">
                     <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE ({currency})</div>
@@ -434,14 +438,12 @@ export default function Home() {
                       <CurrencyToggle />
                     </div>
                     <div className="pkg-card-name">THE ELEVATION</div>
-                    <div className="pkg-card-subtitle">
-                      Brand + Digital + Presence + Space
-                    </div>
+                    <div className="pkg-card-subtitle">Brand + Digital + Space</div>
                     <ul className="pkg-card-includes">
                       <li>Everything in Structure</li>
-                      <li className="new">Local presence optimisation</li>
-                      <li className="new">Interior, exterior &amp; 3D spatial design</li>
-                      <li className="new">Brand, digital &amp; physical alignment</li>
+                      <li className="new">Space design consultation</li>
+                      <li className="new">Interior design concept &amp; docs</li>
+                      <li className="new">Space-brand alignment audit</li>
                     </ul>
                     <Link href="/packages/3" className="pkg-hover-badge group" title="Open full Package 03 detail modal">
                       <span>OPEN FULL SCOPE MODAL</span>
@@ -456,7 +458,7 @@ export default function Home() {
                     </div>
                     <Magnetic strength={0.2}>
                       <Link href="/contact?package=3" className="pkg-card-cta">
-                        <span>START YOUR ELEVATION</span>
+                        <span>REQUEST PROPOSAL</span>
                         <span>→</span>
                       </Link>
                     </Magnetic>
@@ -722,7 +724,7 @@ export default function Home() {
                 <div className="bridge-pkg-label">Package 04 — Flagship</div>
                 <div className="bridge-pkg-name">THE MASTER PLAN</div>
                 <ul className="bridge-pkg-includes">
-                  <li>Everything in The Elevation (Brand + Digital + Presence + Space)</li>
+                  <li>Everything in The Elevation (Brand + Digital + Space)</li>
                   <li>
                     Mindvest Global organisational culture transformation programme
                   </li>
