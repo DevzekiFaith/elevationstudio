@@ -51,7 +51,7 @@ export function RenderGallery() {
               { id: "football", label: "PRIVATE FOOTBALL PITCH" },
               { id: "residential", label: "RESIDENTIAL VILLAS" },
               { id: "commercial", label: "COMMERCIAL PLAZAS" },
-              { id: "event", label: "EVENT CENTRES" },
+              { id: "event", label: "HOTELS & EVENT SPACES" },
               { id: "interior", label: "LUXURY INTERIORS" },
             ].map((tab) => (
               <button

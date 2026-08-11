@@ -13,6 +13,32 @@ export interface RenderItem {
 
 export const RENDERS: RenderItem[] = [
   {
+    id: "23",
+    title: "Luxury Boutique Hotel & Resort Pool — High-Angle Aerial Spatial View",
+    category: "event",
+    categoryLabel: "LUXURY HOSPITALITY & HOTEL RESORT",
+    location: "VICTORIA ISLAND WATERFRONT / LEKKI PHASE 1, NIGERIA",
+    image: "/renders/luxury_hotel_pool_resort.jpg",
+    accentColor: "#4ecba0",
+    specs: [
+      "Multi-Tiered White Hotel Balconies with Potted Palms",
+      "Turquoise Swimming Pool with Submerged Lounger Deck",
+      "Striped Sun Umbrellas & Al Fresco Dining Courtyard",
+      "Dark Tiled Gazebo Roofs & Tropical Landscaping",
+      "Integrated Linear Perimeter Lighting & Paved Walkways",
+      "Private Balcony Glass Balustrades & Recessed Windows",
+    ],
+    description:
+      "An aerial 3D spatial architecture view of a luxury boutique hotel and resort complex — featuring multi-tier white guestroom wings with potted palm balconies, a crystal turquoise pool with submerged sun loungers, outdoor dining cabanas under striped umbrellas, dark tiled gazebos, and subtropical landscaping.",
+    architecturalHighlights: [
+      "High-angle spatial masterplan detailing pool circulation, outdoor lounge cabanas, and guestroom wing integration",
+      "Cantilevered private guest balconies with dark tiled flooring, safety glass balustrades, and potted palms",
+      "Turquoise swimming pool featuring built-in shallow water lounger ledges and submerged steps",
+      "Zoned al fresco hospitality area with orange/white striped sun umbrellas, dark timber gazebos, and lush garden beds",
+      "Subtle floor-recessed LED path lights illuminating interlocked walkways and outdoor lounge zones",
+    ],
+  },
+  {
     id: "21",
     title: "Modern Educational Campus — Nursery, Primary & Secondary Wings (Day View)",
     category: "institutional",
