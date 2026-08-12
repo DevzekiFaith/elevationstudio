@@ -134,7 +134,7 @@ export function ResidentialServices() {
                 return (
                   <Reveal key={opt.id} direction="up" delay={0.2 + idx * 0.1}>
                     <div 
-                      className={`border rounded-2xl transition-all duration-300 p-8 sm:p-10 cursor-pointer ${
+                      className={`border rounded-2xl transition-all duration-300 p-8 pr-10 sm:p-10 sm:pr-14 cursor-pointer ${
                         isOpen 
                           ? "bg-[#0c0c10] border-[var(--gold)]/40 shadow-2xl" 
                           : "bg-[#09090b]/80 border-white/10 hover:border-white/20 hover:bg-[#0a0a0e]"
