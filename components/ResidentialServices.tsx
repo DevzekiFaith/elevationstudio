@@ -252,9 +252,9 @@ export function ResidentialServices() {
         {/* ── Transparent Glassmorphic Bottom Action Callout Section ── */}
         <Reveal direction="up" duration={0.8}>
           <div className="relative rounded-3xl p-10 sm:p-16 lg:p-20 bg-white/[0.02] backdrop-blur-md border border-white/12 overflow-hidden shadow-[0_25px_70px_rgba(0,0,0,0.7)]">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--gold)]/10 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 left-0 w-96 h-96 bg-[var(--gold)]/10 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="max-w-3xl relative z-10">
+            <div className="max-w-3xl ml-auto text-right relative z-10 flex flex-col items-end">
               <span className="font-mono text-xs sm:text-sm tracking-[4px] text-[var(--gold)] uppercase font-semibold block mb-4">
                 START YOUR RESIDENTIAL PROJECT
               </span>
@@ -265,7 +265,7 @@ export function ResidentialServices() {
                 “Tell us about your project, your plot and the kind of home you want to create. We begin by understanding your vision before we begin designing it.”
               </p>
               
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex flex-wrap items-center justify-end gap-4 w-full">
                 <Magnetic strength={0.3}>
                   <Link
                     href="#contact"
