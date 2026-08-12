@@ -135,7 +135,7 @@ export function ResidentialServices() {
           }}
         >
           {/* Left — content */}
-          <div
+          <TiltCard glare maxTilt={4} className="res-content-col"
             style={{
               padding: "80px 60px 80px 0",
               borderRight: "1px solid var(--border)",
@@ -143,7 +143,6 @@ export function ResidentialServices() {
               flexDirection: "column",
               justifyContent: "space-between",
             }}
-            className="res-content-col"
           >
             <Reveal direction="left" duration={0.8}>
               <div>
@@ -260,7 +259,7 @@ export function ResidentialServices() {
                 </Magnetic>
               </div>
             </Reveal>
-          </div>
+          </TiltCard>
 
           {/* Right — image */}
           <TiltCard glare maxTilt={5} className="res-image-col">
@@ -359,7 +358,7 @@ export function ResidentialServices() {
           </TiltCard>
 
           {/* Right — content */}
-          <div
+          <TiltCard glare maxTilt={4} className="res-content-col"
             style={{
               padding: "80px 0 80px 60px",
               borderLeft: "1px solid var(--border)",
@@ -367,7 +366,6 @@ export function ResidentialServices() {
               flexDirection: "column",
               justifyContent: "space-between",
             }}
-            className="res-content-col"
           >
             <Reveal direction="right" duration={0.8}>
               <div>
@@ -484,7 +482,7 @@ export function ResidentialServices() {
                 </Magnetic>
               </div>
             </Reveal>
-          </div>
+          </TiltCard>
         </div>
       </div>
 
@@ -529,7 +527,7 @@ export function ResidentialServices() {
 
             <div className="res-workflow-grid">
               {WORKFLOW_STAGES.map((stage, i) => (
-                <div key={stage.num} className="res-workflow-step">
+                <TiltCard key={stage.num} glare maxTilt={6} className="res-workflow-step">
                   {/* Number */}
                   <div
                     style={{
@@ -569,7 +567,7 @@ export function ResidentialServices() {
                   >
                     {stage.desc}
                   </div>
-                </div>
+                </TiltCard>
               ))}
             </div>
           </Reveal>
@@ -697,54 +695,60 @@ export function ResidentialServices() {
 
           {/* Right CTAs */}
           <Reveal direction="right" duration={0.8} delay={0.15}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 16,
-                alignItems: "flex-end",
-                minWidth: 240,
-              }}
-              className="res-cta-buttons"
-            >
-              <Magnetic strength={0.25}>
-                <Link
-                  href="#contact?service=residential-architecture"
-                  className="btn-primary"
-                  style={{ display: "block", textAlign: "center", whiteSpace: "nowrap" }}
-                >
-                  Residential Architecture
-                </Link>
-              </Magnetic>
-              <Magnetic strength={0.25}>
-                <Link
-                  href="#contact?service=residential-masterplan"
-                  className="btn-ghost"
-                  style={{ display: "block", textAlign: "center", whiteSpace: "nowrap" }}
-                >
-                  Residential Masterplan
-                </Link>
-              </Magnetic>
-              <a
-                href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20would%20like%20to%20discuss%20a%20residential%20architecture%20project."
-                target="_blank"
-                rel="noopener noreferrer"
+            <TiltCard glare maxTilt={5}>
+              <div
                 style={{
-                  fontFamily: "var(--font-dm-mono), monospace",
-                  fontSize: 11,
-                  letterSpacing: 2,
-                  textTransform: "uppercase",
-                  color: "var(--muted)",
-                  textDecoration: "none",
-                  transition: "color 0.2s",
-                  whiteSpace: "nowrap",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 16,
+                  alignItems: "flex-end",
+                  minWidth: 240,
+                  padding: "28px 32px",
+                  background: "rgba(255,255,255,0.02)",
+                  border: "1px solid var(--border)",
+                  borderRadius: 4,
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+                className="res-cta-buttons"
               >
-                WhatsApp Consultation ↗
-              </a>
-            </div>
+                <Magnetic strength={0.25}>
+                  <Link
+                    href="#contact?service=residential-architecture"
+                    className="btn-primary"
+                    style={{ display: "block", textAlign: "center", whiteSpace: "nowrap" }}
+                  >
+                    Residential Architecture
+                  </Link>
+                </Magnetic>
+                <Magnetic strength={0.25}>
+                  <Link
+                    href="#contact?service=residential-masterplan"
+                    className="btn-ghost"
+                    style={{ display: "block", textAlign: "center", whiteSpace: "nowrap" }}
+                  >
+                    Residential Masterplan
+                  </Link>
+                </Magnetic>
+                <a
+                  href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20would%20like%20to%20discuss%20a%20residential%20architecture%20project."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontFamily: "var(--font-dm-mono), monospace",
+                    fontSize: 11,
+                    letterSpacing: 2,
+                    textTransform: "uppercase",
+                    color: "var(--muted)",
+                    textDecoration: "none",
+                    transition: "color 0.2s",
+                    whiteSpace: "nowrap",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+                >
+                  WhatsApp Consultation ↗
+                </a>
+              </div>
+            </TiltCard>
           </Reveal>
         </div>
       </div>
