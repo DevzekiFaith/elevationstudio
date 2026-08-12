@@ -39,6 +39,22 @@ const PACKAGES = [
     range: "₦15M — ₦50M+",
     bridge: true,
   },
+  {
+    id: "res-arch",
+    code: "Residential Architecture",
+    name: "Residential Architecture",
+    short: "Modern Bungalows, Duplexes & Private Homes",
+    range: "Starting from ₦1.5M",
+    bridge: false,
+  },
+  {
+    id: "res-master",
+    code: "Residential Masterplan",
+    name: "Residential Masterplan",
+    short: "Luxury Villas, Compounds & Multiple Buildings",
+    range: "Starting from ₦4.5M",
+    bridge: false,
+  },
 ] as const;
 
 const BUDGET_STEPS = [
@@ -97,10 +113,10 @@ function ContactFormInner() {
 
   useEffect(() => {
     const pkg = searchParams?.get("package") || searchParams?.get("pkg");
-    if (pkg && ["1", "2", "3", "4"].includes(pkg)) {
+    if (pkg && ["1", "2", "3", "4", "res-arch", "res-master"].includes(pkg)) {
       let defaultBudgetIdx = 0;
-      if (pkg === "2") defaultBudgetIdx = 3; // ₦3.5M – ₦5M
-      if (pkg === "3") defaultBudgetIdx = 5; // ₦8M – ₦12M
+      if (pkg === "2" || pkg === "res-arch") defaultBudgetIdx = 2; // ₦2M – ₦3.5M
+      if (pkg === "3" || pkg === "res-master") defaultBudgetIdx = 4; // ₦5M – ₦8M
       if (pkg === "4") defaultBudgetIdx = 8; // ₦30M – ₦50M
 
       setFields((f) => ({

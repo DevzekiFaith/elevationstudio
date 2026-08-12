@@ -26,6 +26,7 @@ export function Nav() {
   const navItems = [
     { label: "Services", href: "#services" },
     { label: "3D Renders", href: "#renders" },
+    { label: "Residential", href: "#residential" },
     { label: "Packages", href: "#packages" },
     { label: "Process", href: "#process" },
     { label: "Client Stories", href: "#testimonials" },

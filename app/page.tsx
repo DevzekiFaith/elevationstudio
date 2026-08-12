@@ -16,6 +16,7 @@ import { Magnetic } from "@/components/Magnetic";
 import { BlueprintSlider } from "@/components/BlueprintSlider";
 import { useCurrency } from "@/components/CurrencyContext";
 import { CurrencyToggle } from "@/components/CurrencyToggle";
+import { ResidentialServices } from "@/components/ResidentialServices";
 
 export default function Home() {
   const { formatPrice, currency } = useCurrency();
@@ -280,6 +281,8 @@ export default function Home() {
       {/* <BlueprintSlider /> */}
 
       <RenderGallery />
+
+      <ResidentialServices />
 
       <div className="marquee-bar">
         <div className="marquee-inner">
