@@ -119,7 +119,7 @@ export function ResidentialServices() {
               <Reveal direction="up" duration={0.6} delay={0.1}>
                 {/* Subject Headline (Enlarged for maximum impact) */}
                 <h2 className="font-bebas text-5xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-wide text-white mb-4 leading-[0.95]">
-                  RESIDENTIAL <span style={{ color: "var(--gold)" }}>SERVICES</span>
+                  RESIDENTIAL & <span style={{ color: "var(--gold)" }}>PRIVATE CLIENT</span> SERVICES
                 </h2>
               </Reveal>
               <Reveal direction="up" duration={0.6} delay={0.2}>
