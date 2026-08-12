@@ -117,7 +117,7 @@ export function ResidentialServices() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent pointer-events-none" />
 
                 {/* ── Transparent Crystal Glassmorphic Overlay Badge ── */}
-                <div className="absolute bottom-6 left-6 right-6 p-6 sm:p-8 bg-black/40 backdrop-blur-md border border-white/15 rounded-2xl flex flex-col gap-3 shadow-2xl">
+                <div className="absolute bottom-6 left-6 right-6 p-6 sm:p-8 bg-black/15 backdrop-blur-sm border border-white/15 rounded-2xl flex flex-col gap-3 shadow-2xl">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs tracking-[3px] text-[var(--gold)] uppercase font-semibold">
                       FEATURED ARCHITECTURAL MASTERPIECE
@@ -128,12 +128,12 @@ export function ResidentialServices() {
                     Modern 5-Bedroom Luxury Bungalow Villa
                   </h3>
                   <div className="grid grid-cols-2 gap-4 pt-3 border-t border-white/10 mt-1">
-                    <div className="bg-black/30 backdrop-blur-sm p-3 rounded-xl border border-white/10">
+                    <div className="bg-black/10 backdrop-blur-sm p-3 rounded-xl border border-white/10">
                       <span className="font-mono text-[10px] text-white/50 block uppercase tracking-wider">STRUCTURE</span>
                       <span className="font-mono text-xs sm:text-sm font-bold text-white">5 En-Suite Master Suites</span>
                     </div>
-                    <div className="bg-black/30 backdrop-blur-sm p-3 rounded-xl border border-white/10">
-                      <span className="font-mono text-[10px] text-white/50 block uppercase tracking-wider">LOCATION</span>
+                    <div className="bg-black/10 backdrop-blur-sm p-3 rounded-xl border border-white/10">
+                      <span className="font-mono text-[10px] text-white/60 block uppercase tracking-wider">LOCATION</span>
                       <span className="font-mono text-xs sm:text-sm font-bold text-[var(--gold-bright)]">Lekki Phase 1 / Ogun</span>
                     </div>
                   </div>
