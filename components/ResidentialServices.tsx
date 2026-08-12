@@ -62,7 +62,7 @@ export function ResidentialServices() {
 
   return (
     <section
-      className="residential-section py-24 sm:py-36 lg:py-44 px-4 sm:px-8 md:px-12 lg:px-20 bg-[#050508] relative overflow-hidden"
+      className="residential-section py-24 sm:py-36 lg:py-44 bg-[#050508] relative overflow-hidden"
       id="residential"
     >
       {/* ── Transparent Ambient Backdrop Lighting ── */}
@@ -73,7 +73,7 @@ export function ResidentialServices() {
       <div className="absolute top-16 right-16 w-96 h-96 border border-white/[0.06] rounded-full pointer-events-none hidden lg:block" />
       <div className="absolute top-32 right-32 w-64 h-64 border border-[var(--gold)]/10 rounded-full pointer-events-none hidden lg:block" />
 
-      <div className="max-w-[1440px] mx-auto relative z-10">
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
         
         {/* ── Section Header ── */}
         <div className="mb-16 sm:mb-24">
@@ -86,7 +86,7 @@ export function ResidentialServices() {
           </Reveal>
 
           <Reveal direction="up" duration={0.8} delay={0.1}>
-            <h2 className="font-bebas text-5xl sm:text-7xl lg:text-8xl xl:text-[7.5rem] tracking-wide leading-[0.88] text-white uppercase mb-6 drop-shadow-lg">
+            <h2 className="font-bebas text-4xl sm:text-6xl lg:text-7xl xl:text-[6.5rem] tracking-wide leading-[0.9] text-white uppercase mb-6 drop-shadow-lg">
               RESIDENTIAL &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--gold)] via-[var(--gold-bright)] to-amber-200">PRIVATE CLIENT</span> SERVICES
             </h2>
           </Reveal>

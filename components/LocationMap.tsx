@@ -104,7 +104,6 @@ export function LocationMap({ height = "420px" }: { height?: string }) {
         center: location,
         zoom: 11,
         mapId: "ELEVATION_STUDIO_MAP_ID",
-        styles: darkGoldMapStyle,
         disableDefaultUI: false,
         zoomControl: true,
         mapTypeControl: false,
