@@ -112,18 +112,18 @@ export function ResidentialServices() {
           <div className="lg:col-span-6 flex flex-col justify-center">
             
             {/* Header info */}
-            <div className="mb-8 lg:mb-10">
+            <div className="mb-6 lg:mb-8">
               <Reveal direction="down" duration={0.5}>
-                <div className="section-tag text-xs tracking-[3px] mb-3">Residential Options</div>
+                <div className="section-tag text-xs tracking-[3px] mb-2 uppercase">RESIDENTIAL OPTIONS</div>
               </Reveal>
               <Reveal direction="up" duration={0.6} delay={0.1}>
-                {/* Subject Headline (Enlarged for maximum impact) */}
-                <h2 className="font-bebas text-5xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-wide text-white mb-4 leading-[0.95]">
+                {/* Subject Headline */}
+                <h2 className="font-bebas text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-wide text-white mb-3 leading-[1.05]">
                   RESIDENTIAL & <span style={{ color: "var(--gold)" }}>PRIVATE CLIENT</span> SERVICES
                 </h2>
               </Reveal>
               <Reveal direction="up" duration={0.6} delay={0.2}>
-                <p className="font-sans text-sm sm:text-base lg:text-lg text-[var(--white-dim)] leading-relaxed max-w-2xl">
+                <p className="font-sans text-xs sm:text-sm lg:text-base text-[var(--white-dim)] leading-relaxed max-w-xl">
                   Bespoke architectural space planning, floor plans, 3D modeling, and masterplanning optimized for private property owners and residential developers.
                 </p>
               </Reveal>
