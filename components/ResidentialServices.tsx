@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
+import { TiltCard } from "./TiltCard";
 
 /* ─────────────────────────────────────────
    Residential & Private Client Services
@@ -262,52 +263,44 @@ export function ResidentialServices() {
           </div>
 
           {/* Right — image */}
-          <div
-            className="res-image-col"
-            style={{
-              position: "relative",
-              overflow: "hidden",
-              minHeight: 500,
-            }}
-          >
-            <Image
-              src="/renders/modern_5bed_bungalow_day.jpg"
-              alt="Modern 5-Bedroom Residential Architecture — Elevation Studio"
-              fill
-              className="object-cover"
-              style={{
-                transition: "transform 1s ease",
-              }}
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+          <TiltCard glare maxTilt={5} className="res-image-col">
             <div
               style={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "linear-gradient(to right, var(--black) 0%, transparent 30%, transparent 70%, rgba(6,6,6,0.3) 100%)",
-              }}
-            />
-            {/* Floating Label */}
-            <div
-              style={{
-                position: "absolute",
-                bottom: 32,
-                right: 32,
-                padding: "10px 18px",
-                background: "rgba(6,6,6,0.85)",
-                backdropFilter: "blur(8px)",
-                border: "1px solid var(--border)",
-                fontFamily: "var(--font-dm-mono), monospace",
-                fontSize: 10,
-                letterSpacing: 3,
-                textTransform: "uppercase",
-                color: "var(--gold)",
+                position: "relative",
+                overflow: "hidden",
+                minHeight: 500,
+                height: "100%",
               }}
             >
-              Bungalow · Villa · Duplex
+              <Image
+                src="/renders/modern_5bed_bungalow_day.jpg"
+                alt="Modern 5-Bedroom Residential Architecture — Elevation Studio"
+                fill
+                className="object-cover"
+                style={{ transition: "transform 1s ease" }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              {/* Floating Label */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: 32,
+                  right: 32,
+                  padding: "10px 18px",
+                  background: "rgba(6,6,6,0.85)",
+                  backdropFilter: "blur(8px)",
+                  border: "1px solid var(--border)",
+                  fontFamily: "var(--font-dm-mono), monospace",
+                  fontSize: 10,
+                  letterSpacing: 3,
+                  textTransform: "uppercase",
+                  color: "var(--gold)",
+                }}
+              >
+                Bungalow · Villa · Duplex
+              </div>
             </div>
-          </div>
+          </TiltCard>
         </div>
       </div>
 
@@ -327,49 +320,43 @@ export function ResidentialServices() {
           }}
         >
           {/* Left — image (reversed) */}
-          <div
-            className="res-image-col res-image-left"
-            style={{
-              position: "relative",
-              overflow: "hidden",
-              minHeight: 500,
-            }}
-          >
-            <Image
-              src="/renders/residential_villa_facade.jpg"
-              alt="Luxury Residential Masterplan — Elevation Studio"
-              fill
-              className="object-cover"
-              style={{ transition: "transform 1s ease" }}
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+          <TiltCard glare maxTilt={5} className="res-image-col res-image-left">
             <div
               style={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "linear-gradient(to left, var(--black) 0%, transparent 30%, transparent 70%, rgba(6,6,6,0.3) 100%)",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                bottom: 32,
-                left: 32,
-                padding: "10px 18px",
-                background: "rgba(6,6,6,0.85)",
-                backdropFilter: "blur(8px)",
-                border: "1px solid var(--border)",
-                fontFamily: "var(--font-dm-mono), monospace",
-                fontSize: 10,
-                letterSpacing: 3,
-                textTransform: "uppercase",
-                color: "var(--gold)",
+                position: "relative",
+                overflow: "hidden",
+                minHeight: 500,
+                height: "100%",
               }}
             >
-              Villas · Compounds · Estates
+              <Image
+                src="/renders/residential_villa_facade.jpg"
+                alt="Luxury Residential Masterplan — Elevation Studio"
+                fill
+                className="object-cover"
+                style={{ transition: "transform 1s ease" }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: 32,
+                  left: 32,
+                  padding: "10px 18px",
+                  background: "rgba(6,6,6,0.85)",
+                  backdropFilter: "blur(8px)",
+                  border: "1px solid var(--border)",
+                  fontFamily: "var(--font-dm-mono), monospace",
+                  fontSize: 10,
+                  letterSpacing: 3,
+                  textTransform: "uppercase",
+                  color: "var(--gold)",
+                }}
+              >
+                Villas · Compounds · Estates
+              </div>
             </div>
-          </div>
+          </TiltCard>
 
           {/* Right — content */}
           <div
