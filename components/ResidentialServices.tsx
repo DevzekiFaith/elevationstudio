@@ -130,46 +130,46 @@ export function ResidentialServices() {
             </div>
 
             {/* Service Options List */}
-            <div className="flex flex-col gap-4 mb-6">
+            <div className="flex flex-col gap-6 mb-8">
               {residentialOptions.map((opt, idx) => {
                 const isOpen = expandedOption === opt.id;
                 return (
                   <Reveal key={opt.id} direction="up" delay={0.15 + idx * 0.1}>
                     <div 
-                      className={`border rounded-2xl transition-all duration-300 p-5 sm:p-6 cursor-pointer ${
+                      className={`border rounded-2xl transition-all duration-300 p-6 sm:p-8 cursor-pointer ${
                         isOpen 
-                          ? "bg-[#0d0d12] border-[var(--gold)]/50 shadow-2xl" 
-                          : "bg-[#09090c] border-white/10 hover:border-white/20 hover:bg-[#0b0b10]"
+                          ? "bg-[#0d0d12] border-[var(--gold)]/60 shadow-2xl" 
+                          : "bg-[#09090c] border-white/12 hover:border-white/25 hover:bg-[#0b0b10]"
                       }`}
                       onClick={() => setExpandedOption(isOpen ? null : (opt.id as any))}
                     >
                       {/* Top Meta Line: Option Code + Price Tag */}
-                      <div className="flex items-center justify-between gap-3 mb-1.5">
-                        <span className="font-mono text-[10px] font-bold text-[var(--gold)] tracking-widest uppercase">
+                      <div className="flex items-center justify-between gap-3 mb-3">
+                        <span className="font-mono text-xs font-bold text-[var(--gold)] tracking-widest uppercase">
                           OPTION {opt.code}
                         </span>
-                        <span className="px-2.5 py-0.5 bg-[var(--gold)]/10 border border-[var(--gold-border)]/40 text-[var(--gold-bright)] font-mono text-[11px] font-bold rounded-full whitespace-nowrap">
+                        <span className="px-3.5 py-1 bg-[var(--gold)]/15 border border-[var(--gold-border)] text-[var(--gold-bright)] font-mono text-xs sm:text-sm font-bold rounded-full whitespace-nowrap shadow-sm">
                           {opt.price}
                         </span>
                       </div>
 
-                      {/* Main Title (Subject Text - Kept Big & Bold) */}
-                      <div className="mb-2">
-                        <h3 className="font-bebas text-2xl sm:text-3xl text-white tracking-wider leading-tight">
+                      {/* Main Title (Subject Text - Large & Prominent) */}
+                      <div className="mb-3">
+                        <h3 className="font-bebas text-2xl sm:text-3xl lg:text-4xl text-white tracking-wider leading-tight">
                           {opt.title}
                         </h3>
-                        <span className="font-mono text-[9px] tracking-wider text-white/45 block mt-0.5">
+                        <span className="font-mono text-xs sm:text-sm tracking-wider text-white/70 font-medium block mt-1.5">
                           {opt.suitableFor}
                         </span>
                       </div>
 
-                      {/* Supporting Description (Reduced Font Size) */}
-                      <p className="font-sans text-[11px] sm:text-xs text-white/65 leading-relaxed">
+                      {/* Supporting Description (Clear & Comfortable Font Size) */}
+                      <p className="font-sans text-sm sm:text-base text-white/85 leading-relaxed font-normal mt-2">
                         {opt.description}
                       </p>
 
                       {/* Toggle Scope Button */}
-                      <div className="mt-3 flex items-center gap-1.5 text-[10px] font-mono text-[var(--gold)] hover:text-white transition-colors">
+                      <div className="mt-4 flex items-center gap-2 text-xs sm:text-sm font-mono font-semibold text-[var(--gold)] hover:text-white transition-colors">
                         <span>{isOpen ? "HIDE DETAILED SCOPE ▴" : "VIEW DETAILED SCOPE ▾"}</span>
                       </div>
 
@@ -183,23 +183,23 @@ export function ResidentialServices() {
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                             className="overflow-hidden"
                           >
-                            <div className="border-t border-white/10 mt-4 pt-4">
-                              <div className="font-mono text-[9px] tracking-wider text-white/40 uppercase mb-2.5">
+                            <div className="border-t border-white/12 mt-5 pt-5">
+                              <div className="font-mono text-xs tracking-wider text-white/50 font-semibold uppercase mb-3">
                                 INCLUDED DELIVERABLES:
                               </div>
-                              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2">
+                              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                                 {opt.scope.map((item, i) => (
-                                  <li key={i} className="flex items-start gap-1.5 font-mono text-[10px] text-white/75 leading-snug">
-                                    <span className="text-[var(--gold)] shrink-0 mt-0.5">✦</span>
+                                  <li key={i} className="flex items-start gap-2 font-mono text-xs sm:text-sm text-white/90 leading-snug">
+                                    <span className="text-[var(--gold)] shrink-0 mt-0.5 font-bold">✦</span>
                                     <span>{item}</span>
                                   </li>
                                 ))}
                               </ul>
 
-                              <div className="mt-5 flex justify-end">
+                              <div className="mt-6 flex justify-end">
                                 <Link
                                   href={`#contact?pkg=${opt.id}`}
-                                  className="px-4 py-2 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-[11px] font-bold uppercase tracking-wider rounded-lg transition-colors text-center shadow-md"
+                                  className="px-6 py-3 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs sm:text-sm font-bold uppercase tracking-wider rounded-lg transition-colors text-center shadow-md"
                                   onClick={(e) => e.stopPropagation()}
                                 >
                                   START PROJECT →
@@ -216,25 +216,25 @@ export function ResidentialServices() {
             </div>
 
             {/* Mobile pricing disclaimer */}
-            <div className="block lg:hidden font-mono text-[9px] text-[var(--muted)] leading-relaxed mb-4">
+            <div className="block lg:hidden font-mono text-xs text-[var(--muted)] leading-relaxed mb-6">
               * “Final professional fees are determined by project size, complexity, site conditions and required deliverables.”
             </div>
 
             {/* Call To Action Block */}
             <Reveal direction="up" duration={0.6} delay={0.3}>
-              <div className="border border-white/10 bg-[#09090d] rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="border border-white/12 bg-[#09090d] rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
                 <div className="flex-1">
-                  <span className="font-mono text-[10px] tracking-[3px] text-[var(--gold)] uppercase block mb-1">
+                  <span className="font-mono text-xs tracking-[3px] text-[var(--gold)] uppercase block mb-1 font-bold">
                     START A PROJECT
                   </span>
-                  <p className="font-sans text-[11px] sm:text-xs text-white/65 leading-relaxed">
+                  <p className="font-sans text-xs sm:text-sm text-white/80 leading-relaxed">
                     Tell us about your plot, budget and vision. We begin by understanding your space before we design it.
                   </p>
                 </div>
                 <div className="shrink-0 w-full sm:w-auto">
                   <Link
                     href="#contact"
-                    className="w-full sm:w-auto px-5 py-3 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs font-bold uppercase tracking-widest text-center rounded-xl transition-all duration-300 block shadow-lg shadow-[var(--gold)]/15 hover:scale-[1.02]"
+                    className="w-full sm:w-auto px-6 py-3.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-center rounded-xl transition-all duration-300 block shadow-lg shadow-[var(--gold)]/15 hover:scale-[1.02]"
                   >
                     START YOUR PROJECT →
                   </Link>
