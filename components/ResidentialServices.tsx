@@ -67,7 +67,7 @@ export function ResidentialServices() {
 
       <div className="max-w-[1400px] mx-auto relative z-10">
         {/* Asymmetrical Editorial Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-24 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-stretch">
           
           {/* ── Left Column: Pinterest-Inspired Editorial Image Frame ── */}
           <div className="lg:col-span-6 flex flex-col justify-between">
