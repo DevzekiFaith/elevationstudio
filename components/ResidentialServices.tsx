@@ -1,19 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Reveal } from "./Reveal";
-import { TiltCard } from "./TiltCard";
 import { Magnetic } from "./Magnetic";
 
 export function ResidentialServices() {
+  const [expandedOption, setExpandedOption] = useState<"res-arch" | "res-master" | null>(null);
+
   const residentialOptions = [
     {
       id: "res-arch",
       code: "01",
       title: "RESIDENTIAL ARCHITECTURE",
-      price: "Starting from ₦1.5M",
+      price: "₦1.5M",
       description: "For clients planning modern bungalows, duplexes and private homes.",
-      suitableFor: "Modern Bungalows • Duplexes • Private Homes",
+      suitableFor: "Modern Bungalows · Duplexes · Private Homes",
       scope: [
         "Discovery and client brief",
         "Space planning",
@@ -25,25 +29,21 @@ export function ResidentialServices() {
         "Detailed 3D architectural model",
         "3–5 high-quality exterior visualizations",
         "Up to 2 design revision rounds",
-        "Final design presentation",
+        "Final design presentation package",
       ],
-      ctaText: "START RESIDENTIAL PROJECT →",
-      accent: "var(--gold)",
     },
     {
       id: "res-master",
       code: "02",
       title: "RESIDENTIAL MASTERPLAN",
-      price: "Starting from ₦4.5M",
-      description:
-        "For luxury homes, villas, private compounds, multiple residential buildings and complex residential developments.",
-      suitableFor:
-        "Luxury Bungalows • Villas • Private Compounds • Multiple Residential Buildings • Sprawling Estates",
+      price: "₦4.5M",
+      description: "For luxury homes, villas, private compounds and complex residential developments.",
+      suitableFor: "Luxury Bungalows · Villas · Private Compounds · Multiple Residential Buildings",
       scope: [
         "Everything in Residential Architecture",
         "Advanced architectural design development",
         "Site and compound planning",
-        "Entrance and gate concept",
+        "Entrance and gate architectural concept",
         "Landscape concept",
         "Exterior lighting direction",
         "Premium material and finish direction",
@@ -51,33 +51,8 @@ export function ResidentialServices() {
         "6–10 high-quality visualizations",
         "Selected interior concept direction",
         "Up to 3 design revision rounds",
-        "Premium final presentation",
+        "Premium final presentation package",
       ],
-      ctaText: "START MASTERPLAN PROJECT →",
-      accent: "var(--bridge-accent)",
-    },
-  ];
-
-  const workflowSteps = [
-    {
-      step: "01",
-      title: "DISCOVERY",
-      text: "We understand the client's vision, plot, lifestyle, requirements and project goals.",
-    },
-    {
-      step: "02",
-      title: "ARCHITECTURE",
-      text: "We develop the space planning, floor plans, circulation and architectural concept.",
-    },
-    {
-      step: "03",
-      title: "DESIGN",
-      text: "We develop the façade, materials, finishes and 3D visualizations.",
-    },
-    {
-      step: "04",
-      title: "BUILD",
-      text: "We prepare the agreed final design and presentation package for the next stage.",
     },
   ];
 
@@ -86,161 +61,189 @@ export function ResidentialServices() {
       className="residential-section py-20 sm:py-28 md:py-36 px-6 md:px-16 lg:px-24 bg-[#060606] relative overflow-hidden"
       id="residential"
     >
-      {/* Background Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[var(--gold)]/5 rounded-full blur-[140px] pointer-events-none" />
+      {/* Subtle Background Lighting */}
+      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[var(--gold)]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-[var(--bridge-accent)]/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto relative z-10">
-        {/* Section Header */}
-        <Reveal direction="up" duration={0.6}>
-          <div className="mb-14 md:mb-20">
-            <div className="section-tag mb-3">Service Category</div>
-            <h2 className="font-bebas text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wide text-white mb-4">
-              RESIDENTIAL & <span style={{ color: "var(--gold)" }}>PRIVATE CLIENT</span> SERVICES
-            </h2>
-            <p className="font-sans text-base sm:text-lg text-[var(--white-dim)] max-w-3xl leading-relaxed">
-              Dedicated architectural spatial design, floor planning, facade engineering, and masterplanning for private homeowners, modern bungalow builders, villa compounds, and multi-unit residential developments.
-            </p>
-          </div>
-        </Reveal>
-
-        {/* 2-Column Residential Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {residentialOptions.map((opt, idx) => (
-            <Reveal key={opt.id} direction="up" delay={idx * 0.15}>
-              <TiltCard glare maxTilt={4} className="h-full">
-                <div className="h-full bg-[#0a0a0e] border border-white/10 hover:border-[var(--gold-border)] rounded-2xl p-8 sm:p-10 md:p-12 flex flex-col justify-between transition-all duration-500 shadow-2xl relative overflow-hidden group">
-                  {/* Card Header */}
-                  <div>
-                    <div className="flex items-center justify-between gap-4 mb-6 border-b border-white/10 pb-6">
-                      <div>
-                        <span className="font-mono text-xs tracking-[3px] text-[var(--gold)] uppercase block mb-1">
-                          Option {opt.code}
-                        </span>
-                        <h3 className="font-bebas text-3xl sm:text-4xl text-white tracking-wide">
-                          {opt.title}
-                        </h3>
-                      </div>
-                      <div className="text-right">
-                        <span className="font-mono text-xs text-[var(--muted)] block">PRICING</span>
-                        <span className="font-mono text-lg sm:text-xl font-bold text-[var(--gold-bright)] whitespace-nowrap">
-                          {opt.price}
-                        </span>
-                      </div>
-                    </div>
-
-                    <p className="font-sans text-sm sm:text-base text-white/80 mb-6 italic">
-                      {opt.description}
-                    </p>
-
-                    {/* Suitable For Banner */}
-                    <div className="bg-[#121218] border border-white/5 rounded-xl p-4 mb-8">
-                      <div className="font-mono text-[10px] tracking-[2px] text-[var(--gold)] uppercase mb-1">
-                        SUITABLE FOR
-                      </div>
-                      <div className="font-sans text-xs sm:text-sm text-white/90 font-medium">
-                        {opt.suitableFor}
-                      </div>
-                    </div>
-
-                    {/* Deliverables Scope List */}
-                    <div className="mb-8">
-                      <div className="font-mono text-xs tracking-[2px] text-white/60 uppercase mb-4">
-                        WHAT IS INCLUDED:
-                      </div>
-                      <ul className="space-y-2.5">
-                        {opt.scope.map((item, i) => (
-                          <li key={i} className="flex items-start gap-3 text-xs sm:text-sm text-white/80 font-mono">
-                            <span className="text-[var(--gold)] shrink-0 mt-0.5">✦</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+        {/* Asymmetrical Editorial Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-stretch">
+          
+          {/* ── Left Column: Pinterest-Inspired Editorial Image Frame ── */}
+          <div className="lg:col-span-6 flex flex-col justify-between">
+            <Reveal direction="left" duration={0.8}>
+              <div className="relative w-full h-[320px] sm:h-[450px] lg:h-[580px] rounded-2xl overflow-hidden border border-white/10 group shadow-[0_30px_80px_rgba(0,0,0,0.9)]">
+                {/* 5-Bedroom Bungalow Daytime Image */}
+                <Image
+                  src="/renders/modern_5bed_bungalow_day.jpg"
+                  alt="Modern 5-Bedroom Bungalow Daytime Facade"
+                  fill
+                  priority
+                  className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                
+                {/* Visual Glassmorphic Tag */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30 opacity-80" />
+                
+                {/* Floating Architectural Specifications */}
+                <div className="absolute bottom-6 left-6 right-6 p-5 sm:p-6 bg-[#0a0a0c]/85 backdrop-blur-md border border-white/10 rounded-xl flex flex-col gap-2">
+                  <div className="font-mono text-[10px] tracking-[3px] text-[var(--gold)] uppercase">
+                    FEATURED PROJECT
                   </div>
-
-                  {/* Card Action Button */}
-                  <div className="pt-6 border-t border-white/10">
-                    <Link
-                      href={`#contact?pkg=${opt.id}`}
-                      className="w-full py-4 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-center rounded-xl transition-all duration-300 block shadow-lg shadow-[var(--gold)]/10 group-hover:scale-[1.01]"
-                    >
-                      {opt.ctaText}
-                    </Link>
-                  </div>
+                  <h4 className="font-bebas text-lg sm:text-2xl text-white tracking-wide leading-tight">
+                    Modern 5-Bedroom Luxury Bungalow Villa
+                  </h4>
+                  <p className="font-mono text-[11px] text-white/60">
+                    Ogun-Lagos Corridor / Lekki Phase 1
+                  </p>
                 </div>
-              </TiltCard>
+              </div>
             </Reveal>
-          ))}
-        </div>
 
-        {/* Required Pricing Footnote */}
-        <Reveal direction="up" delay={0.2}>
-          <div className="text-center font-mono text-xs text-[var(--muted)] mb-20 max-w-2xl mx-auto">
-            “Final professional fees are determined by project size, complexity, site conditions and required deliverables.”
+            {/* Subtle Pricing disclaimer */}
+            <div className="hidden lg:block pt-8 font-mono text-[11px] text-[var(--muted)] max-w-md leading-relaxed">
+              * “Final professional fees are determined by project size, complexity, site conditions and required deliverables.”
+            </div>
           </div>
-        </Reveal>
 
-        {/* 4-Step Residential Client Workflow */}
-        <Reveal direction="up" delay={0.25}>
-          <div className="bg-[#09090d] border border-white/10 rounded-2xl p-8 sm:p-12 md:p-16 mb-16">
-            <div className="text-center mb-12">
-              <span className="font-mono text-xs tracking-[4px] text-[var(--gold)] uppercase block mb-2">
-                CLIENT WORKFLOW
-              </span>
-              <h3 className="font-bebas text-3xl sm:text-4xl md:text-5xl text-white tracking-wide">
-                HOW WE DESIGN YOUR RESIDENTIAL HOME
-              </h3>
+          {/* ── Right Column: Clean Typographical Information & Accordion ── */}
+          <div className="lg:col-span-6 flex flex-col justify-center">
+            
+            {/* Header info */}
+            <div className="mb-10 sm:mb-14">
+              <Reveal direction="down" duration={0.5}>
+                <div className="section-tag mb-3">Residential Options</div>
+              </Reveal>
+              <Reveal direction="up" duration={0.6} delay={0.1}>
+                <h2 className="font-bebas text-4xl sm:text-5xl lg:text-6xl tracking-wide text-white mb-4">
+                  RESIDENTIAL & <span style={{ color: "var(--gold)" }}>PRIVATE CLIENT</span> SERVICES
+                </h2>
+              </Reveal>
+              <Reveal direction="up" duration={0.6} delay={0.2}>
+                <p className="font-sans text-sm sm:text-base text-[var(--white-dim)] leading-relaxed">
+                  Bespoke architectural space planning, floor plans, 3D modeling, and masterplanning optimized for private property owners and residential developers.
+                </p>
+              </Reveal>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {workflowSteps.map((wf) => (
-                <div
-                  key={wf.step}
-                  className="bg-[#111116] border border-white/5 rounded-xl p-6 relative flex flex-col justify-between hover:border-[var(--gold-border)]/40 transition-colors"
-                >
-                  <div>
-                    <span className="font-mono text-2xl font-bold text-[var(--gold)] block mb-3">
-                      {wf.step}
-                    </span>
-                    <h4 className="font-bebas text-xl text-white tracking-wider mb-2">
-                      {wf.title}
-                    </h4>
-                    <p className="font-sans text-xs sm:text-sm text-white/70 leading-relaxed">
-                      {wf.text}
-                    </p>
-                  </div>
+            {/* Interactive Clean Service Rows (Collapsible Details to remove text clutter) */}
+            <div className="flex flex-col gap-5 mb-10">
+              {residentialOptions.map((opt, idx) => {
+                const isOpen = expandedOption === opt.id;
+                return (
+                  <Reveal key={opt.id} direction="up" delay={0.2 + idx * 0.1}>
+                    <div 
+                      className={`border rounded-2xl transition-all duration-300 p-6 sm:p-8 cursor-pointer ${
+                        isOpen 
+                          ? "bg-[#0c0c10] border-[var(--gold)]/40 shadow-xl" 
+                          : "bg-[#09090b]/80 border-white/10 hover:border-white/20 hover:bg-[#0a0a0e]"
+                      }`}
+                      onClick={() => setExpandedOption(isOpen ? null : (opt.id as any))}
+                    >
+                      {/* Header row of the option */}
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex items-center gap-4">
+                          <span className="font-mono text-sm font-bold text-[var(--gold)]">
+                            {opt.code}
+                          </span>
+                          <div>
+                            <h3 className="font-bebas text-xl sm:text-2xl text-white tracking-wider leading-none">
+                              {opt.title}
+                            </h3>
+                            <span className="font-mono text-[10px] tracking-wider text-white/50 block mt-1">
+                              {opt.suitableFor}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="text-right flex flex-col items-end">
+                          <span className="font-mono text-[10px] text-[var(--muted)] tracking-wider">STARTING FROM</span>
+                          <span className="font-mono text-base sm:text-lg font-bold text-[var(--gold-bright)]">
+                            {opt.price}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Description */}
+                      <p className="font-sans text-xs sm:text-sm text-white/70 mt-4 leading-relaxed">
+                        {opt.description}
+                      </p>
+
+                      {/* Expandable / Collapsible Scope Details (Keeps layout clean and elegant) */}
+                      <div className="mt-4 flex items-center gap-2 text-xs font-mono text-[var(--gold)] hover:text-white transition-colors">
+                        <span>{isOpen ? "HIDE DETAILED SCOPE ▴" : "VIEW DETAILED SCOPE ▾"}</span>
+                      </div>
+
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                          >
+                            <div className="border-t border-white/5 mt-5 pt-5">
+                              <div className="font-mono text-[10px] tracking-wider text-white/40 uppercase mb-3">
+                                INCLUDED DELIVERABLES:
+                              </div>
+                              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+                                {opt.scope.map((item, i) => (
+                                  <li key={i} className="flex items-center gap-2 font-mono text-[11px] text-white/80">
+                                    <span className="text-[var(--gold)] shrink-0">✦</span>
+                                    <span>{item}</span>
+                                  </li>
+                                ))}
+                              </ul>
+
+                              <div className="mt-6 flex justify-end">
+                                <Link
+                                  href={`#contact?pkg=${opt.id}`}
+                                  className="px-6 py-3 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs font-bold uppercase tracking-wider rounded-lg transition-colors text-center"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  START PROJECT
+                                </Link>
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+
+            {/* Mobile-only pricing disclaimer */}
+            <div className="block lg:hidden font-mono text-[10px] text-[var(--muted)] leading-relaxed mb-8">
+              * “Final professional fees are determined by project size, complexity, site conditions and required deliverables.”
+            </div>
+
+            {/* Call To Action Block */}
+            <Reveal direction="up" duration={0.6} delay={0.4}>
+              <div className="border border-white/5 bg-[#09090b]/40 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div className="flex-1">
+                  <span className="font-mono text-[10px] tracking-[3px] text-[var(--gold)] uppercase block mb-1">
+                    START A PROJECT
+                  </span>
+                  <p className="font-sans text-xs sm:text-sm text-white/70 leading-relaxed max-w-md">
+                    Tell us about your plot, budget and vision. We begin by understanding your space before we design it.
+                  </p>
                 </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Strong Bottom CTA Section */}
-        <Reveal direction="up" delay={0.3}>
-          <div className="bg-gradient-to-r from-[#121218] via-[#1a1a24] to-[#121218] border border-[var(--gold-border)]/40 rounded-2xl p-8 sm:p-12 md:p-16 text-center shadow-2xl relative overflow-hidden">
-            <div className="max-w-3xl mx-auto">
-              <span className="font-mono text-xs tracking-[4px] text-[var(--gold)] uppercase block mb-3">
-                START YOUR RESIDENTIAL PROJECT
-              </span>
-              <h3 className="font-bebas text-3xl sm:text-5xl text-white tracking-wide mb-4">
-                LET&apos;S BUILD YOUR DREAM RESIDENTIAL SPACE
-              </h3>
-              <p className="font-sans text-base sm:text-lg text-white/80 mb-8 leading-relaxed">
-                “Tell us about your project, your plot and the kind of home you want to create. We begin by understanding your vision before we begin designing it.”
-              </p>
-              <div className="flex justify-center">
-                <Magnetic strength={0.3}>
+                <div className="shrink-0 w-full sm:w-auto">
                   <Link
                     href="#contact"
-                    className="px-8 py-4 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs sm:text-sm font-bold uppercase tracking-widest rounded-full transition-all duration-300 shadow-xl shadow-[var(--gold)]/20 hover:scale-105 block"
+                    className="w-full sm:w-auto px-6 py-3.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs font-bold uppercase tracking-widest text-center rounded-xl transition-all duration-300 block shadow-lg shadow-[var(--gold)]/10"
                   >
                     START YOUR PROJECT →
                   </Link>
-                </Magnetic>
+                </div>
               </div>
-            </div>
+            </Reveal>
+
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
