@@ -1563,22 +1563,30 @@ nav {
 }
 
 .pkg-card {
-  background: var(--steel-mid);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 0;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 24px;
 }
 
 .pkg-card:hover {
   transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
 }
 
 .pkg-card-top {
   padding: 40px 32px 32px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   flex: 1;
 }
 
@@ -1725,7 +1733,10 @@ nav {
 
 .pkg-card-bottom {
   padding: 24px 32px;
-  background: var(--black);
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
   gap: 12px;
