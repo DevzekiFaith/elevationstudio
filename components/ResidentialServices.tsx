@@ -2,295 +2,846 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Reveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
 
+/* ─────────────────────────────────────────
+   Residential & Private Client Services
+   Editorial alternating layout – premium
+───────────────────────────────────────── */
+
+const SERVICE_01_INCLUDES = [
+  "Discovery & client brief",
+  "Space planning and floor plans",
+  "Architectural concept and façade design",
+  "Materials and finish direction",
+  "Elevations and key sections",
+  "Detailed 3D model",
+  "3–5 high-quality exterior visualizations",
+  "Up to 2 revision rounds",
+  "Final presentation package",
+];
+
+const SERVICE_02_INCLUDES = [
+  "Everything in Residential Architecture",
+  "Advanced architectural development",
+  "Site and compound planning",
+  "Entrance and landscape concept",
+  "Exterior lighting direction",
+  "Premium material direction",
+  "6–10 high-quality visualizations",
+  "Selected interior concept direction",
+  "Up to 3 revision rounds",
+  "Premium final presentation package",
+];
+
+const WORKFLOW_STAGES = [
+  { num: "01", name: "Discovery", desc: "Understanding your site, vision and brief." },
+  { num: "02", name: "Architecture", desc: "Spatial planning, massing and concept." },
+  { num: "03", name: "Design", desc: "Renders, façade and material refinement." },
+  { num: "04", name: "Build", desc: "Final drawings, model and handover pack." },
+];
+
 export function ResidentialServices() {
-  const [expandedOption, setExpandedOption] = useState<"res-arch" | "res-master" | null>(null);
-
-  const residentialOptions = [
-    {
-      id: "res-arch",
-      code: "01",
-      title: "RESIDENTIAL ARCHITECTURE",
-      price: "Starting from ₦1.5M",
-      priceShort: "₦1.5M",
-      description: "For clients planning modern bungalows, duplexes and private homes.",
-      suitableFor: "Modern Bungalows · Duplexes · Private Homes",
-      highlights: ["3–5 HD Renders", "Floor Plan Engineering", "2 Revision Rounds"],
-      scope: [
-        "Discovery and client brief",
-        "Space planning",
-        "Floor plan development",
-        "Architectural concept and building massing",
-        "Façade design",
-        "Material and finish direction",
-        "Key elevations and sections",
-        "Detailed 3D architectural model",
-        "3–5 high-quality exterior visualizations",
-        "Up to 2 design revision rounds",
-        "Final design presentation package",
-      ],
-    },
-    {
-      id: "res-master",
-      code: "02",
-      title: "RESIDENTIAL MASTERPLAN",
-      price: "Starting from ₦4.5M",
-      priceShort: "₦4.5M",
-      description: "For luxury homes, villas, private compounds and complex residential developments.",
-      suitableFor: "Luxury Bungalows · Villas · Private Compounds · Multiple Residential Buildings",
-      highlights: ["6–10 HD Renders", "Compound Masterplanning", "3 Revision Rounds"],
-      scope: [
-        "Everything in Residential Architecture",
-        "Advanced architectural design development",
-        "Site and compound planning",
-        "Entrance and gate architectural concept",
-        "Landscape concept",
-        "Exterior lighting direction",
-        "Premium material and finish direction",
-        "Expanded 3D design development",
-        "6–10 high-quality visualizations",
-        "Selected interior concept direction",
-        "Up to 3 design revision rounds",
-        "Premium final presentation package",
-      ],
-    },
-  ];
-
   return (
     <section
-      className="residential-section py-24 sm:py-36 lg:py-44 bg-[#050508] relative overflow-hidden"
       id="residential"
+      style={{
+        background: "var(--black)",
+        borderTop: "1px solid var(--border)",
+        borderBottom: "1px solid var(--border)",
+      }}
     >
-      {/* ── Transparent Ambient Backdrop Lighting ── */}
-      <div className="absolute top-1/4 right-0 w-[650px] h-[650px] bg-[var(--gold)]/8 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/3 left-0 w-[550px] h-[550px] bg-[var(--bridge-accent)]/8 rounded-full blur-[140px] pointer-events-none" />
+      {/* ── 1. SECTION HEADER ── */}
+      <div
+        style={{
+          maxWidth: 1300,
+          margin: "0 auto",
+          padding: "100px 60px 80px",
+        }}
+        className="res-header-wrap"
+      >
+        <Reveal direction="up" duration={0.7}>
+          <div
+            style={{
+              fontFamily: "var(--font-dm-mono), monospace",
+              fontSize: 10,
+              letterSpacing: 5,
+              textTransform: "uppercase",
+              color: "var(--gold)",
+              marginBottom: 24,
+              display: "flex",
+              alignItems: "center",
+              gap: 14,
+            }}
+          >
+            <span
+              style={{
+                display: "inline-block",
+                width: 28,
+                height: 1,
+                background: "var(--gold)",
+              }}
+            />
+            Residential &amp; Private Client Services
+          </div>
 
-      {/* Delicate Architectural Line Rings */}
-      <div className="absolute top-16 right-16 w-96 h-96 border border-white/[0.06] rounded-full pointer-events-none hidden lg:block" />
-      <div className="absolute top-32 right-32 w-64 h-64 border border-[var(--gold)]/10 rounded-full pointer-events-none hidden lg:block" />
+          <h2
+            style={{
+              fontFamily: "var(--font-bebas), sans-serif",
+              fontSize: "clamp(48px, 7vw, 96px)",
+              lineHeight: 0.92,
+              color: "var(--white)",
+              letterSpacing: 1,
+              marginBottom: 24,
+            }}
+          >
+            Modern homes, designed
+            <br />
+            from{" "}
+            <span style={{ color: "var(--gold)" }}>vision</span> to architectural clarity.
+          </h2>
 
-      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
-        
-        {/* ── Section Header ── */}
-        <div className="mb-16 sm:mb-24">
-          <Reveal direction="down" duration={0.6}>
-            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.03] backdrop-blur-md border border-white/10 font-mono text-xs text-[var(--gold)] tracking-[4px] uppercase mb-4 shadow-sm">
-              <span>[ RESIDENTIAL OPTIONS ]</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
-              <span className="text-white/50">[ SINCE 2026 ]</span>
-            </div>
-          </Reveal>
+          <p
+            style={{
+              fontFamily: "var(--font-cormorant), serif",
+              fontSize: "clamp(16px, 1.6vw, 22px)",
+              fontStyle: "italic",
+              color: "var(--white-dim)",
+              maxWidth: 560,
+              lineHeight: 1.6,
+            }}
+          >
+            Bespoke space planning, floor plans, 3D visualization and compound masterplanning
+            — crafted for private property owners and residential developers across Nigeria.
+          </p>
+        </Reveal>
+      </div>
 
-          <Reveal direction="up" duration={0.8} delay={0.1}>
-            <h2 className="font-bebas text-4xl sm:text-6xl lg:text-7xl xl:text-[6.5rem] tracking-wide leading-[0.9] text-white uppercase mb-6 drop-shadow-lg">
-              RESIDENTIAL &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--gold)] via-[var(--gold-bright)] to-amber-200">PRIVATE CLIENT</span> SERVICES
-            </h2>
-          </Reveal>
-
-          <Reveal direction="up" duration={0.8} delay={0.2}>
-            <p className="font-sans text-sm sm:text-base lg:text-lg text-[#a0a0a8] max-w-3xl leading-relaxed font-normal">
-              Bespoke architectural space planning, floor plans, 3D modeling, and masterplanning optimized for private property owners and residential developers.
-            </p>
-          </Reveal>
-        </div>
-
-        {/* ── Main Architectural Feature Showcase & Options Grid ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20 sm:mb-28">
-          
-          {/* Left Column: 3D Bungalow Render with Transparent Glass Badge Overlay */}
-          <div className="lg:col-span-6">
-            <Reveal direction="left" duration={0.9}>
-              <div className="relative w-full h-[450px] sm:h-[600px] lg:h-[720px] xl:h-[800px] rounded-3xl overflow-hidden border border-white/15 shadow-[0_35px_90px_rgba(0,0,0,0.95)] group">
-                <Image
-                  src="/renders/modern_5bed_bungalow_day.jpg"
-                  alt="Modern 5-Bedroom Bungalow Daytime Facade"
-                  fill
-                  priority
-                  className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent pointer-events-none" />
-
-                {/* ── Transparent Crystal Glassmorphic Overlay Badge ── */}
-                <div className="absolute bottom-6 left-6 right-6 p-6 sm:p-8 bg-black/15 backdrop-blur-sm border border-white/15 rounded-2xl flex flex-col gap-3 shadow-2xl">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs tracking-[3px] text-[var(--gold)] uppercase font-semibold">
-                      FEATURED ARCHITECTURAL MASTERPIECE
-                    </span>
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  </div>
-                  <h3 className="font-bebas text-2xl sm:text-3xl text-white tracking-wide leading-none">
-                    Modern 5-Bedroom Luxury Bungalow Villa
-                  </h3>
-                  <div className="grid grid-cols-2 gap-4 pt-3 border-t border-white/10 mt-1">
-                    <div className="bg-black/10 backdrop-blur-sm p-3 rounded-xl border border-white/10">
-                      <span className="font-mono text-[10px] text-white/50 block uppercase tracking-wider">STRUCTURE</span>
-                      <span className="font-mono text-xs sm:text-sm font-bold text-white">5 En-Suite Master Suites</span>
-                    </div>
-                    <div className="bg-black/10 backdrop-blur-sm p-3 rounded-xl border border-white/10">
-                      <span className="font-mono text-[10px] text-white/60 block uppercase tracking-wider">LOCATION</span>
-                      <span className="font-mono text-xs sm:text-sm font-bold text-[var(--gold-bright)]">Lekki Phase 1 / Ogun</span>
-                    </div>
-                  </div>
+      {/* ── 2. SERVICE 01 — text left / image right ── */}
+      <div style={{ borderTop: "1px solid var(--border)" }}>
+        <div
+          className="res-block-inner res-block-01"
+          style={{
+            maxWidth: 1300,
+            margin: "0 auto",
+            padding: "0 60px",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 0,
+            alignItems: "stretch",
+            minHeight: 640,
+          }}
+        >
+          {/* Left — content */}
+          <div
+            style={{
+              padding: "80px 60px 80px 0",
+              borderRight: "1px solid var(--border)",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+            className="res-content-col"
+          >
+            <Reveal direction="left" duration={0.8}>
+              <div>
+                <div
+                  style={{
+                    fontFamily: "var(--font-bebas), sans-serif",
+                    fontSize: "clamp(64px, 9vw, 120px)",
+                    lineHeight: 1,
+                    color: "rgba(244,240,232,0.07)",
+                    userSelect: "none",
+                    marginBottom: -20,
+                  }}
+                >
+                  01
                 </div>
+
+                <div
+                  style={{
+                    width: 32,
+                    height: 2,
+                    background: "var(--gold)",
+                    marginBottom: 20,
+                  }}
+                />
+
+                <h3
+                  style={{
+                    fontFamily: "var(--font-bebas), sans-serif",
+                    fontSize: "clamp(28px, 3.5vw, 48px)",
+                    letterSpacing: 1,
+                    color: "var(--white)",
+                    marginBottom: 12,
+                    lineHeight: 1,
+                  }}
+                >
+                  Residential Architecture
+                </h3>
+
+                <div
+                  style={{
+                    fontFamily: "var(--font-dm-mono), monospace",
+                    fontSize: 13,
+                    color: "var(--gold)",
+                    letterSpacing: 1,
+                    marginBottom: 20,
+                  }}
+                >
+                  Starting from ₦1.5M
+                </div>
+
+                <p
+                  style={{
+                    fontFamily: "var(--font-cormorant), serif",
+                    fontSize: 18,
+                    fontStyle: "italic",
+                    color: "var(--white-dim)",
+                    lineHeight: 1.7,
+                    marginBottom: 36,
+                    maxWidth: 420,
+                  }}
+                >
+                  For bungalows, duplexes and private homes. A complete architectural
+                  design experience from your first brief to final renders.
+                </p>
+
+                <ul
+                  style={{
+                    listStyle: "none",
+                    padding: 0,
+                    margin: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 10,
+                  }}
+                >
+                  {SERVICE_01_INCLUDES.map((item, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        fontFamily: "var(--font-syne), sans-serif",
+                        fontSize: 13,
+                        color: "rgba(244,240,232,0.75)",
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: 10,
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "var(--gold)",
+                          flexShrink: 0,
+                          marginTop: 2,
+                          fontSize: 8,
+                        }}
+                      >
+                        ◆
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div style={{ marginTop: 48 }}>
+                <Magnetic strength={0.2}>
+                  <Link
+                    href="#contact?service=residential-architecture"
+                    className="btn-primary"
+                    style={{ display: "inline-block" }}
+                  >
+                    Start This Project
+                  </Link>
+                </Magnetic>
               </div>
             </Reveal>
           </div>
 
-          {/* Right Column: Ultra-Clear Transparent Glassmorphic Option Cards */}
-          <div className="lg:col-span-6 flex flex-col gap-8 sm:gap-10">
-            {residentialOptions.map((opt, idx) => {
-              const isOpen = expandedOption === opt.id;
-              return (
-                <Reveal key={opt.id} direction="up" delay={0.2 + idx * 0.15}>
-                  {/* ── Transparent Glassmorphic Panel ── */}
-                  <div
-                    className={`rounded-3xl transition-all duration-500 p-8 sm:p-12 relative overflow-hidden cursor-pointer ${
-                      isOpen
-                        ? "bg-[#090910]/70 backdrop-blur-lg border-2 border-[var(--gold)]/60 shadow-[0_25px_70px_rgba(0,0,0,0.85)]"
-                        : "bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-md border border-white/12 hover:border-white/25 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-                    }`}
-                    onClick={() => setExpandedOption(isOpen ? null : (opt.id as any))}
-                  >
-                    {/* Top Header Row: Code Badge + Transparent Glass Price Tag */}
-                    <div className="flex items-center justify-between gap-4 mb-6">
-                      <span className="font-mono text-sm font-bold text-[var(--gold)] tracking-widest px-3.5 py-1 bg-[var(--gold)]/10 border border-[var(--gold-border)]/30 rounded-lg uppercase">
-                        [ OPTION {opt.code} ]
-                      </span>
-                      <span className="font-mono text-base sm:text-lg font-bold text-[var(--gold-bright)] bg-white/[0.04] backdrop-blur-md px-5 py-1.5 rounded-full border border-white/15 shadow-sm">
-                        {opt.price}
-                      </span>
-                    </div>
-
-                    {/* Main Title & Target Subtitle */}
-                    <div className="mb-5">
-                      <h3 className="font-bebas text-3xl sm:text-4xl lg:text-5xl text-white tracking-wider leading-none mb-2">
-                        {opt.title}
-                      </h3>
-                      <p className="font-mono text-xs sm:text-sm text-white/70 tracking-wider font-medium">
-                        {opt.suitableFor}
-                      </p>
-                    </div>
-
-                    {/* Feature Highlights Pills (Transparent Style) */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {opt.highlights.map((h, i) => (
-                        <span key={i} className="px-3.5 py-1 bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-full font-mono text-[11px] text-white/80">
-                          ✦ {h}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Description Paragraph */}
-                    <p className="font-sans text-sm sm:text-base text-white/85 leading-relaxed mb-6 font-normal">
-                      {opt.description}
-                    </p>
-
-                    {/* Scope Toggle Trigger */}
-                    <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                      <span className="font-mono text-xs sm:text-sm font-bold text-[var(--gold)] hover:text-white transition-colors flex items-center gap-1.5">
-                        {isOpen ? "HIDE DETAILED DELIVERABLES ▴" : "VIEW DETAILED DELIVERABLES ▾"}
-                      </span>
-                      <span className="text-white/40 text-xs font-mono">
-                        {isOpen ? "Collapse" : "Expand Scope"}
-                      </span>
-                    </div>
-
-                    {/* Accordion Expandable Content */}
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.35, ease: "easeInOut" }}
-                          className="overflow-hidden"
-                        >
-                          <div className="pt-6 mt-4 border-t border-white/10">
-                            <span className="font-mono text-xs text-white/50 font-bold uppercase tracking-wider block mb-4">
-                              FULL DELIVERABLE INCLUSIONS:
-                            </span>
-                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                              {opt.scope.map((item, i) => (
-                                <li key={i} className="flex items-start gap-2.5 font-mono text-xs sm:text-sm text-white/90 leading-relaxed bg-white/[0.02] p-2.5 rounded-xl border border-white/5">
-                                  <span className="text-[var(--gold)] shrink-0 font-bold mt-0.5">✦</span>
-                                  <span>{item}</span>
-                                </li>
-                              ))}
-                            </ul>
-
-                            <div className="flex justify-end">
-                              <Link
-                                href={`#contact?pkg=${opt.id}`}
-                                className="px-7 py-3.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs sm:text-sm font-bold uppercase tracking-widest rounded-xl transition-all duration-300 shadow-lg shadow-[var(--gold)]/20 hover:scale-105"
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                START THIS PROJECT →
-                              </Link>
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </Reveal>
-              );
-            })}
-
-            {/* Disclaimer */}
-            <div className="font-mono text-xs text-[var(--muted)] leading-relaxed pt-2">
-              * “Final professional fees are determined by project size, complexity, site conditions and required deliverables.”
+          {/* Right — image */}
+          <div
+            className="res-image-col"
+            style={{
+              position: "relative",
+              overflow: "hidden",
+              minHeight: 500,
+            }}
+          >
+            <Image
+              src="/renders/modern_5bed_bungalow_day.jpg"
+              alt="Modern 5-Bedroom Residential Architecture — Elevation Studio"
+              fill
+              className="object-cover"
+              style={{
+                transition: "transform 1s ease",
+              }}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(to right, var(--black) 0%, transparent 30%, transparent 70%, rgba(6,6,6,0.3) 100%)",
+              }}
+            />
+            {/* Floating Label */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: 32,
+                right: 32,
+                padding: "10px 18px",
+                background: "rgba(6,6,6,0.85)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid var(--border)",
+                fontFamily: "var(--font-dm-mono), monospace",
+                fontSize: 10,
+                letterSpacing: 3,
+                textTransform: "uppercase",
+                color: "var(--gold)",
+              }}
+            >
+              Bungalow · Villa · Duplex
             </div>
           </div>
         </div>
+      </div>
 
-        {/* ── Transparent Glassmorphic Bottom Action Callout Section ── */}
-        <Reveal direction="up" duration={0.8}>
-          <div className="relative rounded-3xl p-10 sm:p-16 lg:p-20 bg-white/[0.02] backdrop-blur-md border border-white/12 overflow-hidden shadow-[0_25px_70px_rgba(0,0,0,0.7)]">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-[var(--gold)]/10 rounded-full blur-[120px] pointer-events-none" />
-
-            <div className="max-w-3xl ml-auto text-right relative z-10 flex flex-col items-end">
-              <span className="font-mono text-xs sm:text-sm tracking-[4px] text-[var(--gold)] uppercase font-semibold block mb-4">
-                START YOUR RESIDENTIAL PROJECT
-              </span>
-              <h3 className="font-bebas text-4xl sm:text-6xl text-white tracking-wide uppercase leading-none mb-6 drop-shadow-sm">
-                TELL US ABOUT YOUR PLOT, BUDGET &amp; VISION
-              </h3>
-              <p className="font-sans text-base sm:text-lg text-white/85 leading-relaxed mb-10 font-normal">
-                “Tell us about your project, your plot and the kind of home you want to create. We begin by understanding your vision before we begin designing it.”
-              </p>
-              
-              <div className="flex flex-wrap items-center justify-end gap-4 w-full">
-                <Magnetic strength={0.3}>
-                  <Link
-                    href="#contact"
-                    className="px-9 py-4 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs sm:text-sm font-bold uppercase tracking-widest rounded-full transition-all duration-300 shadow-xl shadow-[var(--gold)]/25 hover:scale-105 inline-block"
-                  >
-                    START YOUR PROJECT →
-                  </Link>
-                </Magnetic>
-
-                <Magnetic strength={0.2}>
-                  <a
-                    href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20interested%20in%20discussing%20a%20residential%20architecture%20project."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-7 py-4 bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-md text-white font-mono text-xs sm:text-sm tracking-wider uppercase rounded-full border border-white/15 transition-colors inline-block"
-                  >
-                    DIRECT WHATSAPP CONSULTATION ↗
-                  </a>
-                </Magnetic>
-              </div>
+      {/* ── 3. SERVICE 02 — image left / text right ── */}
+      <div style={{ borderTop: "1px solid var(--border)" }}>
+        <div
+          className="res-block-inner res-block-02"
+          style={{
+            maxWidth: 1300,
+            margin: "0 auto",
+            padding: "0 60px",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 0,
+            alignItems: "stretch",
+            minHeight: 680,
+          }}
+        >
+          {/* Left — image (reversed) */}
+          <div
+            className="res-image-col res-image-left"
+            style={{
+              position: "relative",
+              overflow: "hidden",
+              minHeight: 500,
+            }}
+          >
+            <Image
+              src="/renders/residential_villa_facade.jpg"
+              alt="Luxury Residential Masterplan — Elevation Studio"
+              fill
+              className="object-cover"
+              style={{ transition: "transform 1s ease" }}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(to left, var(--black) 0%, transparent 30%, transparent 70%, rgba(6,6,6,0.3) 100%)",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                bottom: 32,
+                left: 32,
+                padding: "10px 18px",
+                background: "rgba(6,6,6,0.85)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid var(--border)",
+                fontFamily: "var(--font-dm-mono), monospace",
+                fontSize: 10,
+                letterSpacing: 3,
+                textTransform: "uppercase",
+                color: "var(--gold)",
+              }}
+            >
+              Villas · Compounds · Estates
             </div>
           </div>
-        </Reveal>
 
+          {/* Right — content */}
+          <div
+            style={{
+              padding: "80px 0 80px 60px",
+              borderLeft: "1px solid var(--border)",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+            className="res-content-col"
+          >
+            <Reveal direction="right" duration={0.8}>
+              <div>
+                <div
+                  style={{
+                    fontFamily: "var(--font-bebas), sans-serif",
+                    fontSize: "clamp(64px, 9vw, 120px)",
+                    lineHeight: 1,
+                    color: "rgba(244,240,232,0.07)",
+                    userSelect: "none",
+                    marginBottom: -20,
+                  }}
+                >
+                  02
+                </div>
+
+                <div
+                  style={{
+                    width: 32,
+                    height: 2,
+                    background: "var(--gold)",
+                    marginBottom: 20,
+                  }}
+                />
+
+                <h3
+                  style={{
+                    fontFamily: "var(--font-bebas), sans-serif",
+                    fontSize: "clamp(28px, 3.5vw, 48px)",
+                    letterSpacing: 1,
+                    color: "var(--white)",
+                    marginBottom: 12,
+                    lineHeight: 1,
+                  }}
+                >
+                  Residential Masterplan
+                </h3>
+
+                <div
+                  style={{
+                    fontFamily: "var(--font-dm-mono), monospace",
+                    fontSize: 13,
+                    color: "var(--gold)",
+                    letterSpacing: 1,
+                    marginBottom: 20,
+                  }}
+                >
+                  Starting from ₦4.5M
+                </div>
+
+                <p
+                  style={{
+                    fontFamily: "var(--font-cormorant), serif",
+                    fontSize: 18,
+                    fontStyle: "italic",
+                    color: "var(--white-dim)",
+                    lineHeight: 1.7,
+                    marginBottom: 36,
+                    maxWidth: 420,
+                  }}
+                >
+                  For luxury homes, villas, private compounds and larger residential
+                  projects. A complete site-to-structure masterplan.
+                </p>
+
+                <ul
+                  style={{
+                    listStyle: "none",
+                    padding: 0,
+                    margin: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 10,
+                  }}
+                >
+                  {SERVICE_02_INCLUDES.map((item, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        fontFamily: "var(--font-syne), sans-serif",
+                        fontSize: 13,
+                        color: "rgba(244,240,232,0.75)",
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: 10,
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "var(--gold)",
+                          flexShrink: 0,
+                          marginTop: 2,
+                          fontSize: 8,
+                        }}
+                      >
+                        ◆
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div style={{ marginTop: 48 }}>
+                <Magnetic strength={0.2}>
+                  <Link
+                    href="#contact?service=residential-masterplan"
+                    className="btn-primary"
+                    style={{ display: "inline-block" }}
+                  >
+                    Start This Project
+                  </Link>
+                </Magnetic>
+              </div>
+            </Reveal>
+          </div>
+        </div>
       </div>
+
+      {/* ── 4. WORKFLOW ── */}
+      <div
+        style={{
+          borderTop: "1px solid var(--border)",
+          background: "var(--steel)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 1300,
+            margin: "0 auto",
+            padding: "80px 60px",
+          }}
+        >
+          <Reveal direction="up" duration={0.7}>
+            <div
+              style={{
+                fontFamily: "var(--font-dm-mono), monospace",
+                fontSize: 10,
+                letterSpacing: 5,
+                textTransform: "uppercase",
+                color: "var(--muted)",
+                marginBottom: 48,
+                display: "flex",
+                alignItems: "center",
+                gap: 14,
+              }}
+            >
+              <span
+                style={{
+                  display: "inline-block",
+                  width: 28,
+                  height: 1,
+                  background: "var(--border)",
+                }}
+              />
+              How It Works
+            </div>
+
+            <div className="res-workflow-grid">
+              {WORKFLOW_STAGES.map((stage, i) => (
+                <div key={stage.num} className="res-workflow-step">
+                  {/* Number */}
+                  <div
+                    style={{
+                      fontFamily: "var(--font-bebas), sans-serif",
+                      fontSize: "clamp(48px, 6vw, 72px)",
+                      lineHeight: 1,
+                      color: "var(--white)",
+                      marginBottom: 8,
+                    }}
+                  >
+                    {stage.num}
+                  </div>
+                  {/* Connector line */}
+                  <div className="res-workflow-connector" />
+                  {/* Name */}
+                  <div
+                    style={{
+                      fontFamily: "var(--font-dm-mono), monospace",
+                      fontSize: 11,
+                      letterSpacing: 3,
+                      textTransform: "uppercase",
+                      color: "var(--gold)",
+                      marginBottom: 10,
+                    }}
+                  >
+                    {stage.name}
+                  </div>
+                  {/* Description */}
+                  <div
+                    style={{
+                      fontFamily: "var(--font-syne), sans-serif",
+                      fontSize: 13,
+                      color: "var(--muted)",
+                      lineHeight: 1.6,
+                      maxWidth: 200,
+                    }}
+                  >
+                    {stage.desc}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </div>
+
+      {/* ── 5. PRICING NOTE ── */}
+      <div
+        style={{
+          borderTop: "1px solid var(--border)",
+          background: "var(--black)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 1300,
+            margin: "0 auto",
+            padding: "32px 60px",
+            display: "flex",
+            alignItems: "center",
+            gap: 24,
+          }}
+          className="res-pricing-note"
+        >
+          <span
+            style={{
+              display: "inline-block",
+              width: 20,
+              height: 1,
+              background: "var(--border)",
+              flexShrink: 0,
+            }}
+          />
+          <p
+            style={{
+              fontFamily: "var(--font-cormorant), serif",
+              fontSize: 15,
+              fontStyle: "italic",
+              color: "var(--muted)",
+              lineHeight: 1.6,
+            }}
+          >
+            Final professional fees depend on project size, complexity, site conditions
+            and required deliverables.
+          </p>
+        </div>
+      </div>
+
+      {/* ── 6. FINAL CTA ── */}
+      <div
+        style={{
+          borderTop: "1px solid var(--border)",
+          background: "var(--off-black)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 1300,
+            margin: "0 auto",
+            padding: "100px 60px",
+            display: "grid",
+            gridTemplateColumns: "1fr auto",
+            gap: 60,
+            alignItems: "center",
+          }}
+          className="res-cta-grid"
+        >
+          {/* Left copy */}
+          <Reveal direction="up" duration={0.8}>
+            <div>
+              <div
+                style={{
+                  fontFamily: "var(--font-dm-mono), monospace",
+                  fontSize: 10,
+                  letterSpacing: 5,
+                  textTransform: "uppercase",
+                  color: "var(--gold)",
+                  marginBottom: 20,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 14,
+                }}
+              >
+                <span
+                  style={{
+                    display: "inline-block",
+                    width: 28,
+                    height: 1,
+                    background: "var(--gold)",
+                  }}
+                />
+                Start Your Residential Project
+              </div>
+
+              <h3
+                style={{
+                  fontFamily: "var(--font-bebas), sans-serif",
+                  fontSize: "clamp(40px, 5.5vw, 80px)",
+                  lineHeight: 0.92,
+                  color: "var(--white)",
+                  letterSpacing: 1,
+                  marginBottom: 24,
+                }}
+              >
+                Start Your
+                <br />
+                <span style={{ color: "var(--gold)" }}>Residential Project</span>
+              </h3>
+
+              <p
+                style={{
+                  fontFamily: "var(--font-cormorant), serif",
+                  fontSize: "clamp(16px, 1.5vw, 20px)",
+                  fontStyle: "italic",
+                  color: "var(--white-dim)",
+                  lineHeight: 1.7,
+                  maxWidth: 520,
+                }}
+              >
+                Tell us about your project, your plot and the kind of home you want to
+                create. We begin by understanding your vision before we begin designing it.
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Right CTAs */}
+          <Reveal direction="right" duration={0.8} delay={0.15}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 16,
+                alignItems: "flex-end",
+                minWidth: 240,
+              }}
+              className="res-cta-buttons"
+            >
+              <Magnetic strength={0.25}>
+                <Link
+                  href="#contact?service=residential-architecture"
+                  className="btn-primary"
+                  style={{ display: "block", textAlign: "center", whiteSpace: "nowrap" }}
+                >
+                  Residential Architecture
+                </Link>
+              </Magnetic>
+              <Magnetic strength={0.25}>
+                <Link
+                  href="#contact?service=residential-masterplan"
+                  className="btn-ghost"
+                  style={{ display: "block", textAlign: "center", whiteSpace: "nowrap" }}
+                >
+                  Residential Masterplan
+                </Link>
+              </Magnetic>
+              <a
+                href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20would%20like%20to%20discuss%20a%20residential%20architecture%20project."
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "var(--font-dm-mono), monospace",
+                  fontSize: 11,
+                  letterSpacing: 2,
+                  textTransform: "uppercase",
+                  color: "var(--muted)",
+                  textDecoration: "none",
+                  transition: "color 0.2s",
+                  whiteSpace: "nowrap",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+              >
+                WhatsApp Consultation ↗
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+
+      {/* ── Responsive CSS ── */}
+      <style>{`
+        @media (max-width: 900px) {
+          .res-header-wrap {
+            padding: 72px 24px 56px !important;
+          }
+          .res-block-inner {
+            grid-template-columns: 1fr !important;
+            padding: 0 24px !important;
+          }
+          .res-block-01 .res-image-col,
+          .res-block-02 .res-image-col {
+            order: -1 !important;
+            min-height: 320px !important;
+            border-right: none !important;
+            border-left: none !important;
+            border-bottom: 1px solid var(--border) !important;
+          }
+          .res-block-02 .res-image-left {
+            order: -1 !important;
+          }
+          .res-content-col {
+            padding: 48px 0 48px 0 !important;
+            border-right: none !important;
+            border-left: none !important;
+          }
+          .res-workflow-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
+          .res-cta-grid {
+            grid-template-columns: 1fr !important;
+            padding: 72px 24px !important;
+          }
+          .res-cta-buttons {
+            align-items: flex-start !important;
+          }
+          .res-pricing-note {
+            padding: 28px 24px !important;
+          }
+        }
+        @media (max-width: 560px) {
+          .res-block-inner {
+            padding: 0 16px !important;
+          }
+          .res-workflow-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        .res-workflow-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 0;
+          position: relative;
+        }
+        .res-workflow-step {
+          padding: 0 32px 0 0;
+          position: relative;
+        }
+        .res-workflow-connector {
+          width: 100%;
+          height: 1px;
+          background: var(--border);
+          margin: 16px 0 24px;
+          position: relative;
+        }
+        .res-workflow-connector::after {
+          content: "";
+          position: absolute;
+          right: -6px;
+          top: -3px;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: var(--gold);
+          border: 1px solid var(--gold);
+        }
+        .res-block-inner .res-image-col:hover img {
+          transform: scale(1.04);
+        }
+      `}</style>
     </section>
   );
 }

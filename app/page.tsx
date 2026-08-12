@@ -282,7 +282,7 @@ export default function Home() {
 
       <RenderGallery />
 
-      <ResidentialServices />
+      {/* <ResidentialServices /> */}
 
       <div className="marquee-bar">
         <div className="marquee-inner">
@@ -539,6 +539,8 @@ export default function Home() {
           </div>
         </section>
       </Reveal>
+
+      <ResidentialServices />
 
       <Reveal direction="up">
         <section className="markets" id="markets">
