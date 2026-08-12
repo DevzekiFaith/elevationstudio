@@ -161,9 +161,15 @@ export function LocationMap({ height = "420px" }: { height?: string }) {
         `,
       });
 
-      marker.addListener("click", () => {
-        infoWindow.open(map, marker);
-      });
+      if (window.google.maps.marker && window.google.maps.marker.AdvancedMarkerElement && marker instanceof window.google.maps.marker.AdvancedMarkerElement) {
+        marker.addEventListener("gmp-click", () => {
+          infoWindow.open(map, marker);
+        });
+      } else {
+        marker.addListener("click", () => {
+          infoWindow.open(map, marker);
+        });
+      }
 
       setMapLoaded(true);
     }
