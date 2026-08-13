@@ -8,7 +8,7 @@ import { TiltCard } from "./TiltCard";
 
 /* ─────────────────────────────────────────
    Residential & Private Client Services
-   Editorial alternating layout – premium
+   Editorial alternating layout — premium
 ───────────────────────────────────────── */
 
 const SERVICE_01_INCLUDES = [
@@ -43,6 +43,34 @@ const WORKFLOW_STAGES = [
   { num: "04", name: "Build", desc: "Final drawings, model and handover pack." },
 ];
 
+function CheckItem({ text }: { text: string }) {
+  return (
+    <li
+      style={{
+        fontFamily: "var(--font-syne), sans-serif",
+        fontSize: 13,
+        color: "rgba(244,240,232,0.75)",
+        display: "flex",
+        alignItems: "flex-start",
+        gap: 10,
+        lineHeight: 1.5,
+      }}
+    >
+      <span
+        style={{
+          color: "var(--gold)",
+          flexShrink: 0,
+          marginTop: 2,
+          fontSize: 8,
+        }}
+      >
+        ◆
+      </span>
+      {text}
+    </li>
+  );
+}
+
 export function ResidentialServices() {
   return (
     <section
@@ -54,65 +82,21 @@ export function ResidentialServices() {
       }}
     >
       {/* ── 1. SECTION HEADER ── */}
-      <div
-        style={{
-          maxWidth: 1300,
-          margin: "0 auto",
-          padding: "100px 60px 80px",
-        }}
-        className="res-header-wrap"
-      >
+      <div className="res-header-wrap">
         <Reveal direction="up" duration={0.7}>
-          <div
-            style={{
-              fontFamily: "var(--font-dm-mono), monospace",
-              fontSize: 10,
-              letterSpacing: 5,
-              textTransform: "uppercase",
-              color: "var(--gold)",
-              marginBottom: 24,
-              display: "flex",
-              alignItems: "center",
-              gap: 14,
-            }}
-          >
-            <span
-              style={{
-                display: "inline-block",
-                width: 28,
-                height: 1,
-                background: "var(--gold)",
-              }}
-            />
+          <div className="res-eyebrow">
+            <span className="res-eyebrow-line" />
             Residential &amp; Private Client Services
           </div>
 
-          <h2
-            style={{
-              fontFamily: "var(--font-bebas), sans-serif",
-              fontSize: "clamp(48px, 7vw, 96px)",
-              lineHeight: 0.92,
-              color: "var(--white)",
-              letterSpacing: 1,
-              marginBottom: 24,
-            }}
-          >
+          <h2 className="res-heading">
             Modern homes, designed
             <br />
             from{" "}
             <span style={{ color: "var(--gold)" }}>vision</span> to architectural clarity.
           </h2>
 
-          <p
-            style={{
-              fontFamily: "var(--font-cormorant), serif",
-              fontSize: "clamp(16px, 1.6vw, 22px)",
-              fontStyle: "italic",
-              color: "var(--white-dim)",
-              maxWidth: 560,
-              lineHeight: 1.6,
-            }}
-          >
+          <p className="res-subtitle">
             Bespoke space planning, floor plans, 3D visualization and compound masterplanning
             — crafted for private property owners and residential developers across Nigeria.
           </p>
@@ -120,133 +104,25 @@ export function ResidentialServices() {
       </div>
 
       {/* ── 2. SERVICE 01 — text left / image right ── */}
-      <div style={{ borderTop: "1px solid var(--border)" }}>
-        <div
-          className="res-block-inner res-block-01"
-          style={{
-            maxWidth: 1300,
-            margin: "0 auto",
-            padding: "0 60px",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 0,
-            alignItems: "stretch",
-            minHeight: 640,
-          }}
-        >
-          {/* Left — content */}
-          <TiltCard glare maxTilt={4} className="res-content-col"
-            style={{
-              padding: "80px 60px 80px 0",
-              borderRight: "1px solid var(--border)",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
+      <div className="res-block-border">
+        <div className="res-block-inner res-block-01">
+
+          {/* Left — content (plain div — full column height) */}
+          <div className="res-content-col res-content-left">
             <Reveal direction="left" duration={0.8}>
               <div>
-                <div
-                  style={{
-                    fontFamily: "var(--font-bebas), sans-serif",
-                    fontSize: "clamp(64px, 9vw, 120px)",
-                    lineHeight: 1,
-                    color: "rgba(244,240,232,0.07)",
-                    userSelect: "none",
-                    marginBottom: -20,
-                  }}
-                >
-                  01
-                </div>
-
-                <div
-                  style={{
-                    width: 32,
-                    height: 2,
-                    background: "var(--gold)",
-                    marginBottom: 20,
-                  }}
-                />
-
-                <h3
-                  style={{
-                    fontFamily: "var(--font-bebas), sans-serif",
-                    fontSize: "clamp(28px, 3.5vw, 48px)",
-                    letterSpacing: 1,
-                    color: "var(--white)",
-                    marginBottom: 12,
-                    lineHeight: 1,
-                  }}
-                >
-                  Residential Architecture
-                </h3>
-
-                <div
-                  style={{
-                    fontFamily: "var(--font-dm-mono), monospace",
-                    fontSize: 13,
-                    color: "var(--gold)",
-                    letterSpacing: 1,
-                    marginBottom: 20,
-                  }}
-                >
-                  Starting from ₦1.5M
-                </div>
-
-                <p
-                  style={{
-                    fontFamily: "var(--font-cormorant), serif",
-                    fontSize: 18,
-                    fontStyle: "italic",
-                    color: "var(--white-dim)",
-                    lineHeight: 1.7,
-                    marginBottom: 36,
-                    maxWidth: 420,
-                  }}
-                >
+                <div className="res-block-num" aria-hidden>01</div>
+                <div className="res-gold-bar" />
+                <h3 className="res-service-title">Residential Architecture</h3>
+                <div className="res-price">Starting from ₦1.5M</div>
+                <p className="res-service-desc">
                   For bungalows, duplexes and private homes. A complete architectural
                   design experience from your first brief to final renders.
                 </p>
-
-                <ul
-                  style={{
-                    listStyle: "none",
-                    padding: 0,
-                    margin: 0,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 10,
-                  }}
-                >
-                  {SERVICE_01_INCLUDES.map((item, i) => (
-                    <li
-                      key={i}
-                      style={{
-                        fontFamily: "var(--font-syne), sans-serif",
-                        fontSize: 13,
-                        color: "rgba(244,240,232,0.75)",
-                        display: "flex",
-                        alignItems: "flex-start",
-                        gap: 10,
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      <span
-                        style={{
-                          color: "var(--gold)",
-                          flexShrink: 0,
-                          marginTop: 2,
-                          fontSize: 8,
-                        }}
-                      >
-                        ◆
-                      </span>
-                      {item}
-                    </li>
-                  ))}
+                <ul className="res-includes-list">
+                  {SERVICE_01_INCLUDES.map((item, i) => <CheckItem key={i} text={item} />)}
                 </ul>
               </div>
-
               <div style={{ marginTop: 48 }}>
                 <Magnetic strength={0.2}>
                   <Link
@@ -259,217 +135,67 @@ export function ResidentialServices() {
                 </Magnetic>
               </div>
             </Reveal>
-          </TiltCard>
+          </div>
 
-          {/* Right — image */}
-          <TiltCard glare maxTilt={5} className="res-image-col">
-            <div
-              style={{
-                position: "relative",
-                overflow: "hidden",
-                minHeight: 500,
-                height: "100%",
-              }}
-            >
-              <Image
-                src="/renders/modern_5bed_bungalow_day.jpg"
-                alt="Modern 5-Bedroom Residential Architecture — Elevation Studio"
-                fill
-                className="object-cover"
-                style={{ transition: "transform 1s ease" }}
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              {/* Floating Label */}
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 32,
-                  right: 32,
-                  padding: "10px 18px",
-                  background: "rgba(6,6,6,0.85)",
-                  backdropFilter: "blur(8px)",
-                  border: "1px solid var(--border)",
-                  fontFamily: "var(--font-dm-mono), monospace",
-                  fontSize: 10,
-                  letterSpacing: 3,
-                  textTransform: "uppercase",
-                  color: "var(--gold)",
-                }}
-              >
-                Bungalow · Villa · Duplex
+          {/* Right — image wrapped in TiltCard */}
+          <div className="res-image-col">
+            <TiltCard glare maxTilt={5} className="res-tilt-image">
+              <div className="res-img-inner">
+                <Image
+                  src="/renders/modern_5bed_bungalow_day.jpg"
+                  alt="Modern 5-Bedroom Residential Architecture — Elevation Studio"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="res-img-label res-img-label-right">
+                  Bungalow · Villa · Duplex
+                </div>
               </div>
-            </div>
-          </TiltCard>
+            </TiltCard>
+          </div>
+
         </div>
       </div>
 
       {/* ── 3. SERVICE 02 — image left / text right ── */}
-      <div style={{ borderTop: "1px solid var(--border)" }}>
-        <div
-          className="res-block-inner res-block-02"
-          style={{
-            maxWidth: 1300,
-            margin: "0 auto",
-            padding: "0 60px",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 0,
-            alignItems: "stretch",
-            minHeight: 680,
-          }}
-        >
-          {/* Left — image (reversed) */}
-          <TiltCard glare maxTilt={5} className="res-image-col res-image-left">
-            <div
-              style={{
-                position: "relative",
-                overflow: "hidden",
-                minHeight: 500,
-                height: "100%",
-              }}
-            >
-              <Image
-                src="/renders/residential_villa_facade.jpg"
-                alt="Luxury Residential Masterplan — Elevation Studio"
-                fill
-                className="object-cover"
-                style={{ transition: "transform 1s ease" }}
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 32,
-                  left: 32,
-                  padding: "10px 18px",
-                  background: "rgba(6,6,6,0.85)",
-                  backdropFilter: "blur(8px)",
-                  border: "1px solid var(--border)",
-                  fontFamily: "var(--font-dm-mono), monospace",
-                  fontSize: 10,
-                  letterSpacing: 3,
-                  textTransform: "uppercase",
-                  color: "var(--gold)",
-                }}
-              >
-                Villas · Compounds · Estates
-              </div>
-            </div>
-          </TiltCard>
+      <div className="res-block-border">
+        <div className="res-block-inner res-block-02">
 
-          {/* Right — content */}
-          <TiltCard glare maxTilt={4} className="res-content-col"
-            style={{
-              padding: "80px 0 80px 60px",
-              borderLeft: "1px solid var(--border)",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
+          {/* Left — image wrapped in TiltCard */}
+          <div className="res-image-col res-image-left">
+            <TiltCard glare maxTilt={5} className="res-tilt-image">
+              <div className="res-img-inner">
+                <Image
+                  src="/renders/residential_villa_facade.jpg"
+                  alt="Luxury Residential Masterplan — Elevation Studio"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="res-img-label res-img-label-left">
+                  Villas · Compounds · Estates
+                </div>
+              </div>
+            </TiltCard>
+          </div>
+
+          {/* Right — content (plain div — full column height) */}
+          <div className="res-content-col res-content-right">
             <Reveal direction="right" duration={0.8}>
               <div>
-                <div
-                  style={{
-                    fontFamily: "var(--font-bebas), sans-serif",
-                    fontSize: "clamp(64px, 9vw, 120px)",
-                    lineHeight: 1,
-                    color: "rgba(244,240,232,0.07)",
-                    userSelect: "none",
-                    marginBottom: -20,
-                  }}
-                >
-                  02
-                </div>
-
-                <div
-                  style={{
-                    width: 32,
-                    height: 2,
-                    background: "var(--gold)",
-                    marginBottom: 20,
-                  }}
-                />
-
-                <h3
-                  style={{
-                    fontFamily: "var(--font-bebas), sans-serif",
-                    fontSize: "clamp(28px, 3.5vw, 48px)",
-                    letterSpacing: 1,
-                    color: "var(--white)",
-                    marginBottom: 12,
-                    lineHeight: 1,
-                  }}
-                >
-                  Residential Masterplan
-                </h3>
-
-                <div
-                  style={{
-                    fontFamily: "var(--font-dm-mono), monospace",
-                    fontSize: 13,
-                    color: "var(--gold)",
-                    letterSpacing: 1,
-                    marginBottom: 20,
-                  }}
-                >
-                  Starting from ₦4.5M
-                </div>
-
-                <p
-                  style={{
-                    fontFamily: "var(--font-cormorant), serif",
-                    fontSize: 18,
-                    fontStyle: "italic",
-                    color: "var(--white-dim)",
-                    lineHeight: 1.7,
-                    marginBottom: 36,
-                    maxWidth: 420,
-                  }}
-                >
+                <div className="res-block-num" aria-hidden>02</div>
+                <div className="res-gold-bar" />
+                <h3 className="res-service-title">Residential Masterplan</h3>
+                <div className="res-price">Starting from ₦4.5M</div>
+                <p className="res-service-desc">
                   For luxury homes, villas, private compounds and larger residential
                   projects. A complete site-to-structure masterplan.
                 </p>
-
-                <ul
-                  style={{
-                    listStyle: "none",
-                    padding: 0,
-                    margin: 0,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 10,
-                  }}
-                >
-                  {SERVICE_02_INCLUDES.map((item, i) => (
-                    <li
-                      key={i}
-                      style={{
-                        fontFamily: "var(--font-syne), sans-serif",
-                        fontSize: 13,
-                        color: "rgba(244,240,232,0.75)",
-                        display: "flex",
-                        alignItems: "flex-start",
-                        gap: 10,
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      <span
-                        style={{
-                          color: "var(--gold)",
-                          flexShrink: 0,
-                          marginTop: 2,
-                          fontSize: 8,
-                        }}
-                      >
-                        ◆
-                      </span>
-                      {item}
-                    </li>
-                  ))}
+                <ul className="res-includes-list">
+                  {SERVICE_02_INCLUDES.map((item, i) => <CheckItem key={i} text={item} />)}
                 </ul>
               </div>
-
               <div style={{ marginTop: 48 }}>
                 <Magnetic strength={0.2}>
                   <Link
@@ -482,91 +208,27 @@ export function ResidentialServices() {
                 </Magnetic>
               </div>
             </Reveal>
-          </TiltCard>
+          </div>
+
         </div>
       </div>
 
       {/* ── 4. WORKFLOW ── */}
-      <div
-        style={{
-          borderTop: "1px solid var(--border)",
-          background: "var(--steel)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1300,
-            margin: "0 auto",
-            padding: "80px 60px",
-          }}
-        >
+      <div className="res-workflow-section">
+        <div className="res-workflow-wrap">
           <Reveal direction="up" duration={0.7}>
-            <div
-              style={{
-                fontFamily: "var(--font-dm-mono), monospace",
-                fontSize: 10,
-                letterSpacing: 5,
-                textTransform: "uppercase",
-                color: "var(--muted)",
-                marginBottom: 48,
-                display: "flex",
-                alignItems: "center",
-                gap: 14,
-              }}
-            >
-              <span
-                style={{
-                  display: "inline-block",
-                  width: 28,
-                  height: 1,
-                  background: "var(--border)",
-                }}
-              />
+            <div className="res-eyebrow res-eyebrow-muted">
+              <span className="res-eyebrow-line res-eyebrow-line-dim" />
               How It Works
             </div>
 
             <div className="res-workflow-grid">
-              {WORKFLOW_STAGES.map((stage, i) => (
-                <TiltCard key={stage.num} glare maxTilt={6} className="res-workflow-step">
-                  {/* Number */}
-                  <div
-                    style={{
-                      fontFamily: "var(--font-bebas), sans-serif",
-                      fontSize: "clamp(48px, 6vw, 72px)",
-                      lineHeight: 1,
-                      color: "var(--white)",
-                      marginBottom: 8,
-                    }}
-                  >
-                    {stage.num}
-                  </div>
-                  {/* Connector line */}
-                  <div className="res-workflow-connector" />
-                  {/* Name */}
-                  <div
-                    style={{
-                      fontFamily: "var(--font-dm-mono), monospace",
-                      fontSize: 11,
-                      letterSpacing: 3,
-                      textTransform: "uppercase",
-                      color: "var(--gold)",
-                      marginBottom: 10,
-                    }}
-                  >
-                    {stage.name}
-                  </div>
-                  {/* Description */}
-                  <div
-                    style={{
-                      fontFamily: "var(--font-syne), sans-serif",
-                      fontSize: 13,
-                      color: "var(--muted)",
-                      lineHeight: 1.6,
-                      maxWidth: 200,
-                    }}
-                  >
-                    {stage.desc}
-                  </div>
+              {WORKFLOW_STAGES.map((stage) => (
+                <TiltCard key={stage.num} glare maxTilt={8} className="res-workflow-step">
+                  <div className="res-wf-num">{stage.num}</div>
+                  <div className="res-wf-connector" />
+                  <div className="res-wf-name">{stage.name}</div>
+                  <div className="res-wf-desc">{stage.desc}</div>
                 </TiltCard>
               ))}
             </div>
@@ -575,41 +237,10 @@ export function ResidentialServices() {
       </div>
 
       {/* ── 5. PRICING NOTE ── */}
-      <div
-        style={{
-          borderTop: "1px solid var(--border)",
-          background: "var(--black)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1300,
-            margin: "0 auto",
-            padding: "32px 60px",
-            display: "flex",
-            alignItems: "center",
-            gap: 24,
-          }}
-          className="res-pricing-note"
-        >
-          <span
-            style={{
-              display: "inline-block",
-              width: 20,
-              height: 1,
-              background: "var(--border)",
-              flexShrink: 0,
-            }}
-          />
-          <p
-            style={{
-              fontFamily: "var(--font-cormorant), serif",
-              fontSize: 15,
-              fontStyle: "italic",
-              color: "var(--muted)",
-              lineHeight: 1.6,
-            }}
-          >
+      <div className="res-pricing-band">
+        <div className="res-pricing-inner">
+          <span className="res-pricing-dash" />
+          <p className="res-pricing-text">
             Final professional fees depend on project size, complexity, site conditions
             and required deliverables.
           </p>
@@ -617,99 +248,31 @@ export function ResidentialServices() {
       </div>
 
       {/* ── 6. FINAL CTA ── */}
-      <div
-        style={{
-          borderTop: "1px solid var(--border)",
-          background: "var(--off-black)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1300,
-            margin: "0 auto",
-            padding: "100px 60px",
-            display: "grid",
-            gridTemplateColumns: "1fr auto",
-            gap: 60,
-            alignItems: "center",
-          }}
-          className="res-cta-grid"
-        >
+      <div className="res-cta-band">
+        <div className="res-cta-inner">
+
           {/* Left copy */}
           <Reveal direction="up" duration={0.8}>
-            <div>
-              <div
-                style={{
-                  fontFamily: "var(--font-dm-mono), monospace",
-                  fontSize: 10,
-                  letterSpacing: 5,
-                  textTransform: "uppercase",
-                  color: "var(--gold)",
-                  marginBottom: 20,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 14,
-                }}
-              >
-                <span
-                  style={{
-                    display: "inline-block",
-                    width: 28,
-                    height: 1,
-                    background: "var(--gold)",
-                  }}
-                />
+            <div className="res-cta-copy">
+              <div className="res-eyebrow">
+                <span className="res-eyebrow-line" />
                 Start Your Residential Project
               </div>
-
-              <h3
-                style={{
-                  fontFamily: "var(--font-bebas), sans-serif",
-                  fontSize: "clamp(40px, 5.5vw, 80px)",
-                  lineHeight: 0.92,
-                  color: "var(--white)",
-                  letterSpacing: 1,
-                  marginBottom: 24,
-                }}
-              >
-                Start Your
-                <br />
+              <h3 className="res-cta-heading">
+                Start Your<br />
                 <span style={{ color: "var(--gold)" }}>Residential Project</span>
               </h3>
-
-              <p
-                style={{
-                  fontFamily: "var(--font-cormorant), serif",
-                  fontSize: "clamp(16px, 1.5vw, 20px)",
-                  fontStyle: "italic",
-                  color: "var(--white-dim)",
-                  lineHeight: 1.7,
-                  maxWidth: 520,
-                }}
-              >
+              <p className="res-cta-body">
                 Tell us about your project, your plot and the kind of home you want to
                 create. We begin by understanding your vision before we begin designing it.
               </p>
             </div>
           </Reveal>
 
-          {/* Right CTAs */}
+          {/* Right CTAs — TiltCard on the card panel only */}
           <Reveal direction="right" duration={0.8} delay={0.15}>
             <TiltCard glare maxTilt={5}>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 16,
-                  alignItems: "flex-end",
-                  minWidth: 240,
-                  padding: "28px 32px",
-                  background: "rgba(255,255,255,0.02)",
-                  border: "1px solid var(--border)",
-                  borderRadius: 4,
-                }}
-                className="res-cta-buttons"
-              >
+              <div className="res-cta-card">
                 <Magnetic strength={0.25}>
                   <Link
                     href="#contact?service=residential-architecture"
@@ -732,105 +295,373 @@ export function ResidentialServices() {
                   href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20would%20like%20to%20discuss%20a%20residential%20architecture%20project."
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    fontFamily: "var(--font-dm-mono), monospace",
-                    fontSize: 11,
-                    letterSpacing: 2,
-                    textTransform: "uppercase",
-                    color: "var(--muted)",
-                    textDecoration: "none",
-                    transition: "color 0.2s",
-                    whiteSpace: "nowrap",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+                  className="res-wa-link"
                 >
                   WhatsApp Consultation ↗
                 </a>
               </div>
             </TiltCard>
           </Reveal>
+
         </div>
       </div>
 
-      {/* ── Responsive CSS ── */}
+      {/* ── SCOPED STYLES ── */}
       <style>{`
-        @media (max-width: 900px) {
-          .res-header-wrap {
-            padding: 72px 24px 56px !important;
-          }
-          .res-block-inner {
-            grid-template-columns: 1fr !important;
-            padding: 0 24px !important;
-          }
-          .res-block-01 .res-image-col,
-          .res-block-02 .res-image-col {
-            order: -1 !important;
-            min-height: 320px !important;
-            border-right: none !important;
-            border-left: none !important;
-            border-bottom: 1px solid var(--border) !important;
-          }
-          .res-block-02 .res-image-left {
-            order: -1 !important;
-          }
-          .res-content-col {
-            padding: 48px 0 48px 0 !important;
-            border-right: none !important;
-            border-left: none !important;
-          }
-          .res-workflow-grid {
-            grid-template-columns: 1fr 1fr !important;
-          }
-          .res-cta-grid {
-            grid-template-columns: 1fr !important;
-            padding: 72px 24px !important;
-          }
-          .res-cta-buttons {
-            align-items: flex-start !important;
-          }
-          .res-pricing-note {
-            padding: 28px 24px !important;
-          }
+        /* ─── Header ─── */
+        .res-header-wrap {
+          max-width: 1300px;
+          margin: 0 auto;
+          padding: 100px 60px 80px;
         }
-        @media (max-width: 560px) {
-          .res-block-inner {
-            padding: 0 16px !important;
-          }
-          .res-workflow-grid {
-            grid-template-columns: 1fr !important;
-          }
+        .res-eyebrow {
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 10px;
+          letter-spacing: 5px;
+          text-transform: uppercase;
+          color: var(--gold);
+          margin-bottom: 24px;
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+        .res-eyebrow-muted {
+          color: var(--muted);
+          margin-bottom: 48px;
+        }
+        .res-eyebrow-line {
+          display: inline-block;
+          width: 28px;
+          height: 1px;
+          background: var(--gold);
+          flex-shrink: 0;
+        }
+        .res-eyebrow-line-dim {
+          background: var(--border);
+        }
+        .res-heading {
+          font-family: var(--font-bebas), sans-serif;
+          font-size: clamp(48px, 7vw, 96px);
+          line-height: 0.92;
+          color: var(--white);
+          letter-spacing: 1px;
+          margin-bottom: 24px;
+        }
+        .res-subtitle {
+          font-family: var(--font-cormorant), serif;
+          font-size: clamp(16px, 1.6vw, 22px);
+          font-style: italic;
+          color: var(--white-dim);
+          max-width: 560px;
+          line-height: 1.6;
+        }
+
+        /* ─── Service Blocks ─── */
+        .res-block-border {
+          border-top: 1px solid var(--border);
+        }
+        .res-block-inner {
+          max-width: 1300px;
+          margin: 0 auto;
+          padding: 0 60px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0;
+          align-items: stretch;
+          min-height: 640px;
+        }
+
+        /* Content columns — plain divs, never tilted */
+        .res-content-col {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 80px 0;
+        }
+        .res-content-left {
+          padding-right: 60px;
+          border-right: 1px solid var(--border);
+        }
+        .res-content-right {
+          padding-left: 60px;
+          border-left: 1px solid var(--border);
+        }
+
+        .res-block-num {
+          font-family: var(--font-bebas), sans-serif;
+          font-size: clamp(64px, 9vw, 120px);
+          line-height: 1;
+          color: rgba(244,240,232,0.07);
+          user-select: none;
+          margin-bottom: -20px;
+        }
+        .res-gold-bar {
+          width: 32px;
+          height: 2px;
+          background: var(--gold);
+          margin-bottom: 20px;
+        }
+        .res-service-title {
+          font-family: var(--font-bebas), sans-serif;
+          font-size: clamp(28px, 3.5vw, 48px);
+          letter-spacing: 1px;
+          color: var(--white);
+          margin-bottom: 12px;
+          line-height: 1;
+        }
+        .res-price {
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 13px;
+          color: var(--gold);
+          letter-spacing: 1px;
+          margin-bottom: 20px;
+        }
+        .res-service-desc {
+          font-family: var(--font-cormorant), serif;
+          font-size: 18px;
+          font-style: italic;
+          color: var(--white-dim);
+          line-height: 1.7;
+          margin-bottom: 36px;
+          max-width: 420px;
+        }
+        .res-includes-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        /* Image columns — get the TiltCard treatment */
+        .res-image-col {
+          position: relative;
+          overflow: hidden;
+          min-height: 420px;
+        }
+        .res-tilt-image {
+          height: 100%;
+          width: 100%;
+        }
+        .res-img-inner {
+          position: relative;
+          overflow: hidden;
+          height: 100%;
+          min-height: 420px;
+        }
+        .res-img-label {
+          position: absolute;
+          bottom: 28px;
+          padding: 10px 18px;
+          background: rgba(6,6,6,0.85);
+          backdrop-filter: blur(8px);
+          border: 1px solid var(--border);
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 10px;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: var(--gold);
+        }
+        .res-img-label-right { right: 28px; }
+        .res-img-label-left  { left: 28px; }
+
+        /* ─── Workflow ─── */
+        .res-workflow-section {
+          border-top: 1px solid var(--border);
+          background: var(--steel);
+        }
+        .res-workflow-wrap {
+          max-width: 1300px;
+          margin: 0 auto;
+          padding: 80px 60px;
         }
         .res-workflow-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 0;
-          position: relative;
+          gap: 16px;
         }
         .res-workflow-step {
-          padding: 0 32px 0 0;
-          position: relative;
+          padding: 28px 24px;
+          border: 1px solid var(--border);
+          border-radius: 4px;
         }
-        .res-workflow-connector {
+        .res-wf-num {
+          font-family: var(--font-bebas), sans-serif;
+          font-size: clamp(40px, 5vw, 64px);
+          line-height: 1;
+          color: var(--white);
+          margin-bottom: 8px;
+        }
+        .res-wf-connector {
           width: 100%;
           height: 1px;
           background: var(--border);
-          margin: 16px 0 24px;
+          margin: 12px 0 20px;
           position: relative;
         }
-        .res-workflow-connector::after {
+        .res-wf-connector::after {
           content: "";
           position: absolute;
-          right: -6px;
+          right: 0;
           top: -3px;
           width: 6px;
           height: 6px;
           border-radius: 50%;
           background: var(--gold);
-          border: 1px solid var(--gold);
         }
-        .res-block-inner .res-image-col:hover img {
-          transform: scale(1.04);
+        .res-wf-name {
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 10px;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: var(--gold);
+          margin-bottom: 10px;
+        }
+        .res-wf-desc {
+          font-family: var(--font-syne), sans-serif;
+          font-size: 13px;
+          color: var(--muted);
+          line-height: 1.6;
+        }
+
+        /* ─── Pricing note ─── */
+        .res-pricing-band {
+          border-top: 1px solid var(--border);
+          background: var(--black);
+        }
+        .res-pricing-inner {
+          max-width: 1300px;
+          margin: 0 auto;
+          padding: 28px 60px;
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        }
+        .res-pricing-dash {
+          display: inline-block;
+          width: 20px;
+          height: 1px;
+          background: var(--border);
+          flex-shrink: 0;
+        }
+        .res-pricing-text {
+          font-family: var(--font-cormorant), serif;
+          font-size: 15px;
+          font-style: italic;
+          color: var(--muted);
+          line-height: 1.6;
+        }
+
+        /* ─── CTA ─── */
+        .res-cta-band {
+          border-top: 1px solid var(--border);
+          background: var(--off-black, #0d0d0d);
+        }
+        .res-cta-inner {
+          max-width: 1300px;
+          margin: 0 auto;
+          padding: 100px 60px;
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 60px;
+          align-items: center;
+        }
+        .res-cta-copy { max-width: 560px; }
+        .res-cta-heading {
+          font-family: var(--font-bebas), sans-serif;
+          font-size: clamp(40px, 5.5vw, 80px);
+          line-height: 0.92;
+          color: var(--white);
+          letter-spacing: 1px;
+          margin: 0 0 24px;
+        }
+        .res-cta-body {
+          font-family: var(--font-cormorant), serif;
+          font-size: clamp(16px, 1.5vw, 20px);
+          font-style: italic;
+          color: var(--white-dim);
+          line-height: 1.7;
+        }
+        .res-cta-card {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          align-items: stretch;
+          min-width: 240px;
+          padding: 32px;
+          background: rgba(255,255,255,0.02);
+          border: 1px solid var(--border);
+          border-radius: 4px;
+        }
+        .res-wa-link {
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 11px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: var(--muted);
+          text-decoration: none;
+          transition: color 0.2s;
+          text-align: center;
+        }
+        .res-wa-link:hover { color: var(--gold); }
+
+        /* ═══════════════════════════════════
+           RESPONSIVE BREAKPOINTS
+        ═══════════════════════════════════ */
+
+        /* Tablet — ≤ 1024px */
+        @media (max-width: 1024px) {
+          .res-header-wrap   { padding: 72px 40px 60px; }
+          .res-block-inner   { padding: 0 40px; min-height: 0; }
+          .res-content-left  { padding: 60px 40px 60px 0; }
+          .res-content-right { padding: 60px 0 60px 40px; }
+          .res-workflow-wrap { padding: 60px 40px; }
+          .res-pricing-inner { padding: 24px 40px; }
+          .res-cta-inner     { padding: 80px 40px; gap: 40px; }
+          .res-workflow-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Mobile — ≤ 768px: stack all blocks vertically */
+        @media (max-width: 768px) {
+          .res-header-wrap   { padding: 60px 24px 48px; }
+
+          .res-block-inner {
+            grid-template-columns: 1fr;
+            padding: 0;
+            min-height: 0;
+          }
+
+          /* Image always on top when stacked */
+          .res-image-col       { order: -1; min-height: 280px; }
+          .res-image-col.res-image-left { order: -1; }
+          .res-img-inner       { min-height: 280px; }
+
+          /* Content cols — reset borders, full-width padding */
+          .res-content-col   { padding: 48px 24px 48px; }
+          .res-content-left  { border-right: none; border-top: 1px solid var(--border); }
+          .res-content-right { border-left: none; border-top: 1px solid var(--border); }
+
+          /* Workflow */
+          .res-workflow-wrap  { padding: 48px 24px; }
+          .res-workflow-grid  { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+          /* Pricing */
+          .res-pricing-inner  { padding: 20px 24px; }
+
+          /* CTA */
+          .res-cta-inner {
+            grid-template-columns: 1fr;
+            padding: 60px 24px;
+            gap: 32px;
+          }
+          .res-cta-card { min-width: 0; }
+        }
+
+        /* Small mobile — ≤ 480px */
+        @media (max-width: 480px) {
+          .res-workflow-grid  { grid-template-columns: 1fr; }
+          .res-service-desc   { font-size: 16px; }
         }
       `}</style>
     </section>
