@@ -19,6 +19,40 @@
   --bridge-accent: #4ecba0;
 }
 
+/* ── Light-mode sections ──────────────────────────────
+   When html background is white, sections with
+   data-bg="light" flip their card/surface colours
+   so text remains legible.
+───────────────────────────────────────────────────── */
+[data-bg="light"] {
+  --black:       #f5f3ef;
+  --off-black:   #ede9e3;
+  --steel:       #e8e4dd;
+  --steel-mid:   #ddd9d2;
+  --steel-light: #ccc7bf;
+  --border:      #c8c3bb;
+  --white:       #1a1814;
+  --white-dim:   rgba(26, 24, 20, 0.65);
+  --white-ghost: rgba(26, 24, 20, 0.08);
+  --muted:       #6b6560;
+  color: #1a1814;
+}
+
+/* Ensure dark sections never inherit light vars */
+[data-bg="dark"] {
+  --black:       #060606;
+  --off-black:   #0e0e0e;
+  --steel:       #161618;
+  --steel-mid:   #222224;
+  --steel-light: #2e2e32;
+  --border:      #333336;
+  --white:       #f4f0e8;
+  --white-dim:   rgba(244, 240, 232, 0.6);
+  --white-ghost: rgba(244, 240, 232, 0.12);
+  --muted:       #6e6b64;
+  color: #f4f0e8;
+}
+
 *,
 *::before,
 *::after {
@@ -35,10 +69,10 @@ body {
 
 html {
   scroll-behavior: smooth;
+  background: #060606;
 }
 
 body {
-  background: var(--black);
   color: var(--white);
   font-family: var(--font-syne), sans-serif;
   font-weight: 400;

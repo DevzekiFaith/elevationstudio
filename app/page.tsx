@@ -17,6 +17,7 @@ import { BlueprintSlider } from "@/components/BlueprintSlider";
 import { useCurrency } from "@/components/CurrencyContext";
 import { CurrencyToggle } from "@/components/CurrencyToggle";
 import { ResidentialServices } from "@/components/ResidentialServices";
+import { ScrollBackground } from "@/components/ScrollBackground";
 
 export default function Home() {
   const { formatPrice, currency } = useCurrency();
@@ -29,9 +30,10 @@ export default function Home() {
   return (
     <>
       <Nav />
+      <ScrollBackground />
 
       {/* Hero Section with Parallax Depth */}
-      <section className="hero relative overflow-hidden">
+      <section className="hero relative overflow-hidden" data-bg="dark">
         <ParallaxLayer speed={-0.35} className="absolute inset-0 pointer-events-none">
           <div className="hero-bg" />
           <div className="hero-grid opacity-60" />
@@ -166,7 +168,7 @@ export default function Home() {
       <BrandFlow />
 
       <Reveal direction="up" duration={0.7}>
-        <section className="services relative overflow-hidden" id="services">
+        <section className="services relative overflow-hidden" id="services" data-bg="light">
           <ParallaxLayer speed={0.15} className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
             <div className="ambient-orb ambient-orb-gold w-[450px] h-[450px] opacity-10" />
           </ParallaxLayer>
@@ -327,7 +329,7 @@ export default function Home() {
 
       {/* Packages Section with Interactive 3D Tilt Cards and Dynamic Currency State */}
       <Reveal direction="up" duration={0.8}>
-        <section className="packages relative overflow-hidden" id="packages">
+        <section className="packages relative overflow-hidden" id="packages" data-bg="dark">
           <ParallaxLayer speed={-0.2} className="absolute left-0 top-1/3 pointer-events-none">
             <div className="ambient-orb ambient-orb-gold w-[500px] h-[500px] opacity-15" />
           </ParallaxLayer>
@@ -543,7 +545,7 @@ export default function Home() {
       <ResidentialServices />
 
       <Reveal direction="up">
-        <section className="markets" id="markets">
+        <section className="markets" id="markets" data-bg="light">
           <div className="section-tag">Who We Serve</div>
           <div
             style={{
@@ -621,7 +623,7 @@ export default function Home() {
       </Reveal>
 
       <Reveal direction="up">
-        <section className="process" id="process">
+        <section className="process" id="process" data-bg="dark">
           <div className="process-inner">
             <div className="section-tag">How We Work</div>
             <div
@@ -680,7 +682,7 @@ export default function Home() {
 
       {/* The Strategic Bridge Section */}
       <Reveal direction="zoom">
-        <section className="bridge-section relative overflow-hidden" id="bridge">
+        <section className="bridge-section relative overflow-hidden" id="bridge" data-bg="light">
           <ParallaxLayer speed={0.25} className="absolute right-[-100px] bottom-[-100px] pointer-events-none">
             <div className="ambient-orb ambient-orb-bridge w-[600px] h-[600px] opacity-25" />
           </ParallaxLayer>
@@ -746,7 +748,7 @@ export default function Home() {
       </Reveal>
 
       <Reveal direction="up">
-        <section className="payment" id="payment">
+        <section className="payment" id="payment" data-bg="dark">
           <div className="payment-inner">
             <div className="section-tag">Payment Structure</div>
             <div
@@ -813,7 +815,7 @@ export default function Home() {
       <Testimonials />
 
       <Reveal direction="zoom">
-        <section className="cta-section relative overflow-hidden" id="contact">
+        <section className="cta-section relative overflow-hidden" id="contact" data-bg="light">
           <ParallaxLayer speed={-0.3} className="absolute inset-0 pointer-events-none">
             <div className="cta-bg" />
             <div className="ambient-orb ambient-orb-gold w-[600px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
@@ -854,7 +856,7 @@ export default function Home() {
       </Reveal>
 
       <Reveal direction="up">
-        <section id="qr-access" style={{ padding: "80px 48px 40px", background: "#060606" }}>
+        <section id="qr-access" data-bg="dark" style={{ padding: "80px 48px 40px", background: "#060606" }}>
           <QRCodeCard />
         </section>
       </Reveal>

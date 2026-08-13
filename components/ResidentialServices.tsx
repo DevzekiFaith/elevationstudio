@@ -75,6 +75,7 @@ export function ResidentialServices() {
   return (
     <section
       id="residential"
+      data-bg="dark"
       style={{
         background: "var(--black)",
         borderTop: "1px solid var(--border)",
