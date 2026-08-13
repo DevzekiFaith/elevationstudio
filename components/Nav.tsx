@@ -39,12 +39,12 @@ export function Nav() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-0 left-0 right-0 z-[100] px-4 sm:px-6 lg:px-8 py-4 pointer-events-none"
+        className="fixed top-0 left-0 right-0 z-[100] px-4 sm:px-6 lg:px-6 xl:px-10 py-4 pointer-events-none"
       >
         {/* Using a grid with auto-1fr-auto to ensure mathematical centering of navigation links */}
         <div
           className={`
-            max-w-[1440px] mx-auto pointer-events-auto
+            w-full pointer-events-auto
             grid grid-cols-[auto_1fr_auto] items-center
             px-5 sm:px-6 lg:px-8 py-3 lg:py-3.5
             rounded-full transition-all duration-500 border
