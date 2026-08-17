@@ -322,7 +322,55 @@ export function ResidentialServices() {
         </div>
       </div>
 
-      {/* ── 5. PRICING NOTE ── */}
+      {/* ── 5. RESIDENTIAL PAYMENT TERMS ── */}
+      <div className="res-payment-section">
+        <div className="res-payment-wrap">
+          <Reveal direction="up" duration={0.7}>
+            <div className="res-eyebrow res-eyebrow-muted">
+              <span className="res-eyebrow-line res-eyebrow-line-dim" />
+              Terms & Schedule
+            </div>
+
+            <h3 className="res-payment-heading">
+              Residential <span style={{ color: "var(--gold)" }}>Payment Terms</span>
+            </h3>
+
+            <div className="res-payment-grid">
+              <TiltCard glare maxTilt={5}>
+                <div className="res-payment-card h-full">
+                  <div className="res-payment-card-label">Option 01: Architecture</div>
+                  <div className="res-payment-split">70 / 30</div>
+                  <div className="res-payment-desc">
+                    70% commitment deposit to commence design work. 30% balance upon final design approval, prior to full blueprint and document handover.
+                  </div>
+                </div>
+              </TiltCard>
+
+              <TiltCard glare maxTilt={5}>
+                <div className="res-payment-card h-full">
+                  <div className="res-payment-card-label">Option 02: Masterplan</div>
+                  <div className="res-payment-split">70 / 30</div>
+                  <div className="res-payment-desc">
+                    70% commitment deposit to commence site planning. 30% balance upon final masterplan approval, prior to structural/document handover.
+                  </div>
+                </div>
+              </TiltCard>
+
+              <TiltCard glare maxTilt={5}>
+                <div className="res-payment-card res-off-category h-full">
+                  <div className="res-payment-card-label">Off-Category: Concept Plan</div>
+                  <div className="res-payment-split">70 / 30</div>
+                  <div className="res-payment-desc">
+                    Starting from <strong>₦600,000</strong>. Designed for clients seeking conceptual floor layouts and zoning only (excludes 3D rendering and structural engineering docs).
+                  </div>
+                </div>
+              </TiltCard>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+
+      {/* ── 6. PRICING NOTE ── */}
       <div className="res-pricing-band">
         <div className="res-pricing-inner">
           <span className="res-pricing-dash" />
@@ -333,7 +381,7 @@ export function ResidentialServices() {
         </div>
       </div>
 
-      {/* ── 6. FINAL CTA ── */}
+      {/* ── 7. FINAL CTA ── */}
       <div className="res-cta-band">
         <div className="res-cta-inner">
 
@@ -673,6 +721,85 @@ export function ResidentialServices() {
           line-height: 1.6;
         }
 
+        /* ─── Residential Payment Schedule ─── */
+        .res-payment-section {
+          border-top: 1px solid var(--border);
+          background: var(--black);
+        }
+        .res-payment-wrap {
+          max-width: 1300px;
+          margin: 0 auto;
+          padding: 80px 60px;
+        }
+        .res-payment-heading {
+          font-family: var(--font-bebas), sans-serif;
+          font-size: clamp(36px, 5vw, 64px);
+          line-height: 0.9;
+          color: var(--white);
+          margin-bottom: 40px;
+        }
+        .res-payment-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+        .res-payment-card {
+          background: linear-gradient(145deg, #0e0e12 0%, #060608 100%);
+          padding: 40px 32px;
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .res-payment-card:hover {
+          border-color: rgba(212, 168, 67, 0.4);
+          transform: translateY(-4px);
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 168, 67, 0.1);
+        }
+        .res-payment-card-label {
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 11px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: var(--gold);
+          margin-bottom: 24px;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .res-payment-card-label::before {
+          content: "◆";
+          font-size: 8px;
+        }
+        .res-payment-split {
+          font-family: var(--font-bebas), sans-serif;
+          font-size: 56px;
+          color: #ffffff;
+          line-height: 1;
+          margin-bottom: 16px;
+          letter-spacing: 1px;
+          text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .res-payment-desc {
+          font-size: 13.5px;
+          color: var(--muted);
+          line-height: 1.7;
+        }
+        .res-payment-card.res-off-category {
+          background: linear-gradient(145deg, rgba(212, 168, 67, 0.04) 0%, rgba(14, 14, 18, 0.98) 100%);
+          border: 1px solid rgba(212, 168, 67, 0.3);
+        }
+        .res-payment-card.res-off-category .res-payment-card-label {
+          color: #ffffff;
+        }
+        .res-payment-card.res-off-category .res-payment-card-label::before {
+          color: var(--gold);
+        }
+
         /* ─── Pricing note ─── */
         .res-pricing-band {
           border-top: 1px solid var(--border);
@@ -768,6 +895,9 @@ export function ResidentialServices() {
           .res-pricing-inner { padding: 24px 40px; }
           .res-cta-inner     { padding: 80px 40px; gap: 40px; }
           .res-workflow-grid { grid-template-columns: repeat(2, 1fr); }
+          .res-payment-wrap  { padding: 60px 40px; }
+          .res-payment-grid  { grid-template-columns: 1fr 1fr; }
+          .res-payment-card.res-off-category { grid-column: span 2; }
         }
 
         /* Mobile — ≤ 768px: stack all blocks vertically */
@@ -794,6 +924,11 @@ export function ResidentialServices() {
           .res-workflow-wrap  { padding: 48px 24px; }
           .res-workflow-grid  { grid-template-columns: 1fr 1fr; gap: 12px; }
 
+          /* Payment Terms */
+          .res-payment-wrap  { padding: 48px 24px; }
+          .res-payment-grid  { grid-template-columns: 1fr; gap: 16px; }
+          .res-payment-card.res-off-category { grid-column: span 1; }
+
           /* Pricing */
           .res-pricing-inner  { padding: 20px 24px; }
 
@@ -810,6 +945,8 @@ export function ResidentialServices() {
         @media (max-width: 480px) {
           .res-workflow-grid  { grid-template-columns: 1fr; }
           .res-service-desc   { font-size: 16px; }
+          .res-payment-wrap   { padding: 40px 20px; }
+          .res-payment-card   { padding: 32px 24px; }
           .res-material-switcher-bar {
             top: 12px;
             left: 12px;

@@ -339,7 +339,7 @@ export default function Home() {
             <div className="packages-top flex flex-wrap justify-between items-end gap-6 mb-12">
               <div>
                 <div className="pkg-title">
-                  OUR
+                  OUR PRIMARY
                   <br />
                   <span style={{ color: "var(--gold)" }}>PACKAGES</span>
                 </div>
@@ -506,6 +506,74 @@ export default function Home() {
                   </div>
                 </div>
               </TiltCard>
+            </div>
+
+            {/* Corporate Payment Milestone Schedule */}
+            <div className="pkg-payment-schedule mt-20 pt-16 border-t border-white/5">
+              <div className="flex flex-wrap justify-between items-end gap-6 mb-8">
+                <div>
+                  <div className="section-tag mb-3">Milestone Schedule</div>
+                  <h3
+                    className="pkg-payment-title"
+                    style={{
+                      fontFamily: "var(--font-bebas), sans-serif",
+                      fontSize: "clamp(36px, 5vw, 64px)",
+                      lineHeight: 0.9,
+                      margin: 0,
+                    }}
+                  >
+                    PAYMENT <span style={{ color: "var(--gold)" }}>TERMS</span>
+                  </h3>
+                </div>
+                <div
+                  className="pkg-payment-subtitle"
+                  style={{
+                    fontSize: 14,
+                    color: "var(--muted)",
+                    maxWidth: 400,
+                    lineHeight: 1.7,
+                  }}
+                >
+                  Standard project financing terms mapped to delivery phases. Custom retainer adjustments available upon executive review.
+                </div>
+              </div>
+
+              <div className="payment-grid">
+                <TiltCard glare maxTilt={5}>
+                  <div className="payment-card h-full">
+                    <div className="payment-card-label">Packages 01 & 02</div>
+                    <div className="payment-split">50 / 50</div>
+                    <div className="payment-desc">
+                      50% deposit to commence work. 50% on final delivery before
+                      handover. No exceptions.
+                    </div>
+                  </div>
+                </TiltCard>
+
+                <TiltCard glare maxTilt={5}>
+                  <div className="payment-card h-full">
+                    <div className="payment-card-label">Package 03</div>
+                    <div className="payment-split">40/30/30</div>
+                    <div className="payment-desc">
+                      40% on signing. 30% at design approval milestone. 30% on
+                      project completion and handover.
+                    </div>
+                  </div>
+                </TiltCard>
+
+                <TiltCard glare maxTilt={5}>
+                  <div className="payment-card bridge-pay h-full">
+                    <div className="payment-card-label">
+                      Package 04 — Master Plan
+                    </div>
+                    <div className="payment-split">30/30/40</div>
+                    <div className="payment-desc">
+                      30% on signing. 30% at midpoint. 40% structured as monthly
+                      retainer across the 6–12 month partnership.
+                    </div>
+                  </div>
+                </TiltCard>
+              </div>
             </div>
 
             {/* Executive Payment & Retainer Scoping Disclosure */}
@@ -748,70 +816,6 @@ export default function Home() {
         </section>
       </Reveal>
 
-      <Reveal direction="up">
-        <section className="payment" id="payment" data-bg="dark">
-          <div className="payment-inner">
-            <div className="section-tag">Payment Structure</div>
-            <div
-              style={{
-                fontFamily: "var(--font-bebas), sans-serif",
-                fontSize: "clamp(52px, 8vw, 100px)",
-                lineHeight: 0.9,
-                marginBottom: 0,
-              }}
-            >
-              TERMS & <span style={{ color: "var(--gold)" }}>SCHEDULE</span>
-            </div>
-
-            <div className="payment-grid">
-              <TiltCard glare maxTilt={5}>
-                <div className="payment-card h-full">
-                  <div className="payment-card-label">Packages 01 & 02</div>
-                  <div className="payment-split">50 / 50</div>
-                  <div className="payment-desc">
-                    50% deposit to commence work. 50% on final delivery before
-                    handover. No exceptions.
-                  </div>
-                </div>
-              </TiltCard>
-
-              <TiltCard glare maxTilt={5}>
-                <div className="payment-card h-full">
-                  <div className="payment-card-label">Package 03</div>
-                  <div className="payment-split">40/30/30</div>
-                  <div className="payment-desc">
-                    40% on signing. 30% at design approval milestone. 30% on
-                    project completion and handover.
-                  </div>
-                </div>
-              </TiltCard>
-
-              <TiltCard glare maxTilt={5}>
-                <div className="payment-card bridge-pay h-full">
-                  <div className="payment-card-label">
-                    Package 04 — Master Plan
-                  </div>
-                  <div className="payment-split">30/30/40</div>
-                  <div className="payment-desc">
-                    30% on signing. 30% at midpoint. 40% structured as monthly
-                    retainer across the 6–12 month partnership.
-                  </div>
-                </div>
-              </TiltCard>
-            </div>
-
-            <div className="payment-bank-notice">
-              <svg className="payment-bank-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                <path d="M9 12l2 2 4-4"/>
-              </svg>
-              <div className="payment-bank-text">
-                <strong>Executive Governance &amp; Proposal Assurance:</strong> Formal project proposals, milestone schedules, and verified corporate settlement accounts are issued exclusively upon brief review. Quotes remain valid for 30 days from proposal issuance. Retainer clients receive priority calendar scheduling and a dedicated lead architect.
-              </div>
-            </div>
-          </div>
-        </section>
-      </Reveal>
 
       <Testimonials />
 
