@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "./Reveal";
@@ -10,6 +11,36 @@ import { TiltCard } from "./TiltCard";
    Residential & Private Client Services
    Editorial alternating layout — premium
 ───────────────────────────────────────── */
+
+const SERVICE_01_MATERIALS = [
+  {
+    id: "day",
+    label: "DAYTIME MONOLITHIC FACADE",
+    badge: "5-Bed Bungalow · Grand Portico",
+    src: "/renders/modern_5bed_bungalow_day.jpg",
+    alt: "Modern 5-Bedroom Residential Architecture — Elevation Studio",
+    link: "/renders/24",
+  },
+  {
+    id: "evening",
+    label: "EVENING ILLUMINATION",
+    badge: "5-Bed Bungalow · LED Nightscape",
+    src: "/renders/modern_5bed_bungalow_evening.jpg",
+    alt: "Modern 5-Bedroom Bungalow Evening Illumination — Elevation Studio",
+    link: "/renders/25",
+  },
+];
+
+const SERVICE_02_MATERIALS = [
+  {
+    id: "villa_facade",
+    label: "PRIMARY FACADE MASTERPLAN",
+    badge: "Villas · Compounds · Estates",
+    src: "/renders/residential_villa_facade.jpg",
+    alt: "Luxury Residential Masterplan — Elevation Studio",
+    link: "/renders/1",
+  },
+];
 
 const SERVICE_01_INCLUDES = [
   "Discovery & client brief",
@@ -72,6 +103,12 @@ function CheckItem({ text }: { text: string }) {
 }
 
 export function ResidentialServices() {
+  const [s1MatIndex, setS1MatIndex] = useState(0);
+  const [s2MatIndex, setS2MatIndex] = useState(0);
+
+  const curS1 = SERVICE_01_MATERIALS[s1MatIndex];
+  const curS2 = SERVICE_02_MATERIALS[s2MatIndex];
+
   return (
     <section
       id="residential"
@@ -124,7 +161,7 @@ export function ResidentialServices() {
                   {SERVICE_01_INCLUDES.map((item, i) => <CheckItem key={i} text={item} />)}
                 </ul>
               </div>
-              <div style={{ marginTop: 48 }}>
+              <div style={{ marginTop: 48, display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center" }}>
                 <Magnetic strength={0.2}>
                   <Link
                     href="#contact?service=residential-architecture"
@@ -134,23 +171,47 @@ export function ResidentialServices() {
                     Start This Project
                   </Link>
                 </Magnetic>
+                <Link
+                  href={curS1.link}
+                  className="res-explore-link"
+                >
+                  Explore 3D Concept ↗
+                </Link>
               </div>
             </Reveal>
           </div>
 
-          {/* Right — image wrapped in TiltCard */}
+          {/* Right — image wrapped in TiltCard with Material Switcher */}
           <div className="res-image-col">
             <TiltCard glare maxTilt={5} className="res-tilt-image">
-              <div className="res-img-inner">
+              <div className="res-img-inner group">
                 <Image
-                  src="/renders/modern_5bed_bungalow_day.jpg"
-                  alt="Modern 5-Bedroom Residential Architecture — Elevation Studio"
+                  key={curS1.src}
+                  src={curS1.src}
+                  alt={curS1.alt}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
+
+                {/* Top Material Variation Switcher */}
+                {SERVICE_01_MATERIALS.length > 1 && (
+                  <div className="res-material-switcher-bar">
+                    {SERVICE_01_MATERIALS.map((m, idx) => (
+                      <button
+                        key={m.id}
+                        type="button"
+                        onClick={() => setS1MatIndex(idx)}
+                        className={`res-mat-tab ${s1MatIndex === idx ? "active" : ""}`}
+                      >
+                        <span className="res-mat-dot">◆</span> {m.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+
                 <div className="res-img-label res-img-label-right">
-                  Bungalow · Villa · Duplex
+                  {curS1.badge}
                 </div>
               </div>
             </TiltCard>
@@ -163,19 +224,37 @@ export function ResidentialServices() {
       <div className="res-block-border">
         <div className="res-block-inner res-block-02">
 
-          {/* Left — image wrapped in TiltCard */}
+          {/* Left — image wrapped in TiltCard with Material Switcher */}
           <div className="res-image-col res-image-left">
             <TiltCard glare maxTilt={5} className="res-tilt-image">
-              <div className="res-img-inner">
+              <div className="res-img-inner group">
                 <Image
-                  src="/renders/residential_villa_facade.jpg"
-                  alt="Luxury Residential Masterplan — Elevation Studio"
+                  key={curS2.src}
+                  src={curS2.src}
+                  alt={curS2.alt}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
+
+                {/* Top Material Variation Switcher */}
+                {SERVICE_02_MATERIALS.length > 1 && (
+                  <div className="res-material-switcher-bar">
+                    {SERVICE_02_MATERIALS.map((m, idx) => (
+                      <button
+                        key={m.id}
+                        type="button"
+                        onClick={() => setS2MatIndex(idx)}
+                        className={`res-mat-tab ${s2MatIndex === idx ? "active" : ""}`}
+                      >
+                        <span className="res-mat-dot">◆</span> {m.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+
                 <div className="res-img-label res-img-label-left">
-                  Villas · Compounds · Estates
+                  {curS2.badge}
                 </div>
               </div>
             </TiltCard>
@@ -197,7 +276,7 @@ export function ResidentialServices() {
                   {SERVICE_02_INCLUDES.map((item, i) => <CheckItem key={i} text={item} />)}
                 </ul>
               </div>
-              <div style={{ marginTop: 48 }}>
+              <div style={{ marginTop: 48, display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center" }}>
                 <Magnetic strength={0.2}>
                   <Link
                     href="#contact?service=residential-masterplan"
@@ -207,6 +286,12 @@ export function ResidentialServices() {
                     Start This Project
                   </Link>
                 </Magnetic>
+                <Link
+                  href={curS2.link}
+                  className="res-explore-link"
+                >
+                  Explore 3D Concept ↗
+                </Link>
               </div>
             </Reveal>
           </div>
@@ -435,11 +520,30 @@ export function ResidentialServices() {
           gap: 10px;
         }
 
+        .res-explore-link {
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 11px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: var(--gold);
+          text-decoration: none;
+          padding: 10px 16px;
+          border: 1px solid var(--border);
+          background: rgba(255,255,255,0.02);
+          border-radius: 4px;
+          transition: all 0.25s ease;
+        }
+        .res-explore-link:hover {
+          border-color: var(--gold);
+          background: rgba(212,168,67,0.1);
+          color: #fff;
+        }
+
         /* Image columns — get the TiltCard treatment */
         .res-image-col {
           position: relative;
           overflow: hidden;
-          min-height: 420px;
+          min-height: 440px;
         }
         .res-tilt-image {
           height: 100%;
@@ -449,13 +553,56 @@ export function ResidentialServices() {
           position: relative;
           overflow: hidden;
           height: 100%;
-          min-height: 420px;
+          min-height: 440px;
+        }
+        .res-material-switcher-bar {
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          right: 20px;
+          z-index: 20;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+        .res-mat-tab {
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 9px;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          padding: 7px 12px;
+          background: rgba(6,6,6,0.85);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255,255,255,0.15);
+          color: var(--white-dim, #ccc);
+          border-radius: 4px;
+          cursor: pointer;
+          transition: all 0.25s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .res-mat-tab:hover {
+          border-color: var(--gold);
+          color: var(--gold);
+        }
+        .res-mat-tab.active {
+          background: rgba(212,168,67,0.22);
+          border-color: var(--gold);
+          color: var(--gold);
+          font-weight: bold;
+          box-shadow: 0 0 12px rgba(212,168,67,0.3);
+        }
+        .res-mat-dot {
+          font-size: 7px;
+          color: var(--gold);
         }
         .res-img-label {
           position: absolute;
-          bottom: 28px;
+          bottom: 24px;
+          z-index: 20;
           padding: 10px 18px;
-          background: rgba(6,6,6,0.85);
+          background: rgba(6,6,6,0.88);
           backdrop-filter: blur(8px);
           border: 1px solid var(--border);
           font-family: var(--font-dm-mono), monospace;
@@ -464,8 +611,8 @@ export function ResidentialServices() {
           text-transform: uppercase;
           color: var(--gold);
         }
-        .res-img-label-right { right: 28px; }
-        .res-img-label-left  { left: 28px; }
+        .res-img-label-right { right: 24px; }
+        .res-img-label-left  { left: 24px; }
 
         /* ─── Workflow ─── */
         .res-workflow-section {
@@ -659,10 +806,28 @@ export function ResidentialServices() {
           .res-cta-card { min-width: 0; }
         }
 
-        /* Small mobile — ≤ 480px */
+          /* Small mobile — ≤ 480px */
         @media (max-width: 480px) {
           .res-workflow-grid  { grid-template-columns: 1fr; }
           .res-service-desc   { font-size: 16px; }
+          .res-material-switcher-bar {
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            gap: 6px;
+          }
+          .res-mat-tab {
+            font-size: 8px;
+            padding: 5px 8px;
+            letter-spacing: 1px;
+          }
+          .res-img-label {
+            bottom: 12px;
+            padding: 6px 12px;
+            font-size: 9px;
+          }
+          .res-img-label-right { right: 12px; }
+          .res-img-label-left  { left: 12px; }
         }
       `}</style>
     </section>

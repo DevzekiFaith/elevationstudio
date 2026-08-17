@@ -13,6 +13,32 @@ export interface RenderItem {
 
 export const RENDERS: RenderItem[] = [
   {
+    id: "26",
+    title: "Modern 5-Bedroom Luxury Residence — Alternative Material Finish & Timber Screen Elevation",
+    category: "residential",
+    categoryLabel: "RESIDENTIAL ARCHITECTURE · MATERIAL EXPLORATION",
+    location: "LEKKI PHASE 1 / OGUN-LAGOS RESIDENTIAL CORRIDOR, NIGERIA",
+    image: "/renders/modern_5bed_alternative_materials.jpg",
+    accentColor: "#efc558",
+    specs: [
+      "5 En-Suite Master Bedrooms with Private Ante-Rooms & Balconies",
+      "Alternative Material Expression: Natural Timber Screening & Cedar Soffit Cladding",
+      "Sculpted Angular Cantilever Upper Deck with Perimeter LED Strip Contour",
+      "Double-Height Curtain Wall Glass Stairwell with Suspended Pendant Light",
+      "Bespoke Fluted Hardwood Entrance Pivot Door with Dual Ironmongery Handles",
+      "Interlocked Stone Driveway Courtyard with Cypress & Exotic Foliage Landscaping",
+    ],
+    description:
+      "A flagship architectural material exploration of the modern 5-bedroom luxury residence, incorporating rich vertical timber privacy screens, warm wood-paneled cantilever soffits, continuous linear LED contour illumination, a soaring double-height glass stairwell, and tailored dusk landscaping.",
+    architecturalHighlights: [
+      "Alternative material exploration pairing natural hardwood timber slats and cedar soffits with crisp white render",
+      "Sculpted continuous linear LED contour illumination framing the cantilevered second-story balcony and ground entryway",
+      "Double-height acoustic glass curtain wall revealing the sculptural interior floating staircase",
+      "Custom-crafted solid hardwood entrance pivot door accented by vertical architectural handle hardware",
+      "Integrated multi-tier exterior lighting including perimeter wall sconces, step strip lights, and cypress garden uplights",
+    ],
+  },
+  {
     id: "24",
     title: "Modern 5-Bedroom Luxury Bungalow Villa — Daytime Facade & Grand Portico",
     category: "residential",

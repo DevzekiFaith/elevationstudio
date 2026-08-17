@@ -34,6 +34,7 @@ export default function Home() {
 
       {/* Hero Section with Parallax Depth */}
       <section className="hero relative overflow-hidden" data-bg="dark">
+
         <ParallaxLayer speed={-0.35} className="absolute inset-0 pointer-events-none">
           <div className="hero-bg" />
           <div className="hero-grid opacity-60" />
