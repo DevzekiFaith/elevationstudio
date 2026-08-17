@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Reveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
 import { TiltCard } from "./TiltCard";
+import { useCurrency } from "./CurrencyContext";
 
 /* ─────────────────────────────────────────
    Residential & Private Client Services
@@ -103,6 +104,7 @@ function CheckItem({ text }: { text: string }) {
 }
 
 export function ResidentialServices() {
+  const { formatResidentialPrice } = useCurrency();
   const [s1MatIndex, setS1MatIndex] = useState(0);
   const [s2MatIndex, setS2MatIndex] = useState(0);
 
@@ -152,7 +154,7 @@ export function ResidentialServices() {
                 <div className="res-block-num" aria-hidden>01</div>
                 <div className="res-gold-bar" />
                 <h3 className="res-service-title">Residential Architecture</h3>
-                <div className="res-price">Starting from ₦1.5M</div>
+                <div className="res-price">{formatResidentialPrice("architecture")}</div>
                 <p className="res-service-desc">
                   For bungalows, duplexes and private homes. A complete architectural
                   design experience from your first brief to final renders.
@@ -267,7 +269,7 @@ export function ResidentialServices() {
                 <div className="res-block-num" aria-hidden>02</div>
                 <div className="res-gold-bar" />
                 <h3 className="res-service-title">Residential Masterplan</h3>
-                <div className="res-price">Starting from ₦4.5M</div>
+                <div className="res-price">{formatResidentialPrice("masterplan")}</div>
                 <p className="res-service-desc">
                   For luxury homes, villas, private compounds and larger residential
                   projects. A complete site-to-structure masterplan.
@@ -361,7 +363,7 @@ export function ResidentialServices() {
                   <div className="res-payment-card-label">Off-Category: Concept Plan</div>
                   <div className="res-payment-split">70 / 30</div>
                   <div className="res-payment-desc">
-                    Starting from <strong>₦600,000</strong>. Designed for clients seeking conceptual floor layouts and zoning only (excludes 3D rendering and structural engineering docs).
+                    {formatResidentialPrice("concept")}. Designed for clients seeking conceptual floor layouts and zoning only (excludes 3D rendering and structural engineering docs).
                   </div>
                 </div>
               </TiltCard>
