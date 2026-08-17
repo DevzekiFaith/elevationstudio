@@ -133,7 +133,7 @@ export const RENDERS: RenderItem[] = [
       "Subtropical Landscaping & Outdoor Student Assembly Grounds",
     ],
     description:
-      "A flagship modern educational campus masterplan delivering a complete institutional ecosystem — engineered from initial feasibility research and strategic branding to digital visibility platforms and full 3D spatial space design. Integrates Nursery, Primary, and Secondary academic wings around a vibrant recreational courtyard, featuring a dedicated multi-purpose meeting hall with staff room, equipped playground with basketball court, and seamless multi-tier circulation staircases.",
+      "A flagship modern educational campus masterplan delivering a complete institutional ecosystem — engineered from initial feasibility research and strategic branding to digital visibility platforms and full 3D spatial design. Integrates Nursery, Primary, and Secondary academic wings around a vibrant recreational courtyard, featuring a dedicated multi-purpose meeting hall with staff room, equipped playground with basketball court, and seamless multi-tier circulation staircases.",
     architecturalHighlights: [
       "Turnkey institutional ecosystem integration — bridging feasibility research, strategic brand identity, digital visibility, and 3D spatial architecture",
       "Zoned multi-level academic blocks engineered for optimal student movement, ventilation, and age-group separation",
@@ -160,9 +160,9 @@ export const RENDERS: RenderItem[] = [
       "Safety-Compliant Perimeter Fencing & Stairwell Guardrails",
     ],
     description:
-      "An evening architectural rendering of the modern school campus showcasing the full institutional ecosystem in motion — from spatial space design and ambient courtyard lighting to digital visibility systems and cohesive brand integration. Highlights outdoor student recreational amenities, staff administrative block, and a serene academic atmosphere.",
+      "An evening architectural rendering of the modern school campus showcasing the full institutional ecosystem in motion — from spatial design and ambient courtyard lighting to digital visibility systems and cohesive brand integration. Highlights outdoor student recreational amenities, staff administrative block, and a serene academic atmosphere.",
     architecturalHighlights: [
-      "Comprehensive ecosystem rollout — uniting spatial space design, brand identity, digital presence, and operational spatial strategy",
+      "Comprehensive ecosystem rollout — uniting spatial design, brand identity, digital presence, and operational spatial strategy",
       "Warm architectural accent lighting illuminating ground-level walkways, stairwells, and classroom entryways",
       "Multi-purpose outdoor recreational zone combining natural grass turf, basketball hoop, and swing sets",
       "Efficient architectural circulation connecting the staff room, meeting hall, and all three learning sections",

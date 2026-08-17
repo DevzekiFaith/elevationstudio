@@ -279,7 +279,7 @@ export function BrandFlow() {
               onClick={() => openProjectDetails(activeProjectIdx)}
               style={{ "--ac-color": activeProject.accentColor } as React.CSSProperties}
             >
-              EXPLORE DECREE <span>→</span>
+              EXPLORE DOSSIER <span>→</span>
             </button>
           </div>
 
@@ -306,7 +306,7 @@ export function BrandFlow() {
                   <div className="pf-preview-content">
                     <span className="pf-preview-sector">{proj.sector}</span>
                     <h4 className="pf-preview-name">{proj.name}</h4>
-                    <span className="pf-preview-action">EXPLORE DECREE →</span>
+                    <span className="pf-preview-action">EXPLORE DOSSIER →</span>
                   </div>
                 </div>
               );

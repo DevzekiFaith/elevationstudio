@@ -37,7 +37,7 @@ export function RenderGallery() {
               </h2>
             </div>
             <p className="rg-subtitle">
-              From modern educational campuses to luxury residential villas, commercial plazas, and sports grounds — we manage the complete project ecosystem, from feasibility research and strategic branding to digital visibility and 3D spatial space design.
+              From modern educational campuses to luxury residential villas, commercial plazas, and sports grounds — we manage the complete project ecosystem, from feasibility research and strategic branding to digital visibility and 3D spatial design.
             </p>
           </div>
 
@@ -122,7 +122,7 @@ export function RenderGallery() {
                           href={`/renders/${render.id}`}
                           className="flex-1 py-3 px-4 bg-[var(--gold)]/10 hover:bg-[var(--gold)] text-[var(--gold)] hover:text-[#060606] border border-[var(--gold-border)] rounded-lg text-[11px] font-mono tracking-wider font-semibold text-center transition-all shadow-sm"
                         >
-                          FULL HD PAGE →
+                          EXPLORE CONCEPT →
                         </Link>
                         <button
                           type="button"
