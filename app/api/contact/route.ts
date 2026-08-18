@@ -135,16 +135,15 @@ export async function POST(req: NextRequest) {
       </head>
       <body>
         <div class="container">
-          <!-- Luxury Architectural Brand Bar -->
-          <div style="height: 4px; background-color: #d4a843;"></div>
-          <div style="background-color: #0d111b; padding: 28px 24px; text-align: center; border-bottom: 2px solid #d4a843;">
-            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 800; letter-spacing: 4px; color: #ffffff; text-transform: uppercase; margin-bottom: 6px;">
-              ELEVATION <span style="color: #d4a843;">STUDIO</span>
-            </div>
-            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 9px; letter-spacing: 2.5px; color: #8a8a93; text-transform: uppercase;">
-              BRAND &bull; DIGITAL &bull; SPACE &bull; CULTURE
-            </div>
+          <!-- Architectural Sketch Banner (Top) -->
+          <div style="width: 100%; max-height: 130px; overflow: hidden; background-color: #f8fafc; line-height: 0;">
+            <img src="https://cdn.jsdelivr.net/gh/DevzekiFaith/elevationstudio@main/public/email_hero.jpg" alt="Elevation Studio Architecture" width="600" style="width: 100%; max-width: 600px; height: 130px; object-fit: cover; display: block; border: 0;" />
           </div>
+          <!-- Elevation Studio Logo Bar (Below Image) -->
+          <div style="background-color: #0d111b; padding: 18px 24px; text-align: center; border-bottom: 2px solid #d4a843;">
+            <img src="https://cdn.jsdelivr.net/gh/DevzekiFaith/elevationstudio@main/public/email_logo.png" alt="Elevation Studio" width="130" style="width: 130px; height: auto; display: block; margin: 0 auto; border: 0;" />
+          </div>
+          <!-- Subtitle Bar -->
           <div style="padding: 12px 24px; background-color: #f8fafc; text-align: center; border-bottom: 1px solid #e2e8f0;">
             <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 2.5px; color: #64748b; text-transform: uppercase; line-height: 1; font-weight: 600;">Project Commission Brief</p>
           </div>
@@ -298,16 +297,15 @@ export async function POST(req: NextRequest) {
       </head>
       <body>
         <div class="container">
-          <!-- Luxury Architectural Brand Bar -->
-          <div style="height: 4px; background-color: #d4a843;"></div>
-          <div style="background-color: #0d111b; padding: 28px 24px; text-align: center; border-bottom: 2px solid #d4a843;">
-            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 800; letter-spacing: 4px; color: #ffffff; text-transform: uppercase; margin-bottom: 6px;">
-              ELEVATION <span style="color: #d4a843;">STUDIO</span>
-            </div>
-            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 9px; letter-spacing: 2.5px; color: #8a8a93; text-transform: uppercase;">
-              BRAND &bull; DIGITAL &bull; SPACE &bull; CULTURE
-            </div>
+          <!-- Architectural Sketch Banner (Top) -->
+          <div style="width: 100%; max-height: 130px; overflow: hidden; background-color: #f8fafc; line-height: 0;">
+            <img src="https://cdn.jsdelivr.net/gh/DevzekiFaith/elevationstudio@main/public/email_hero.jpg" alt="Elevation Studio Architecture" width="600" style="width: 100%; max-width: 600px; height: 130px; object-fit: cover; display: block; border: 0;" />
           </div>
+          <!-- Elevation Studio Logo Bar (Below Image) -->
+          <div style="background-color: #0d111b; padding: 18px 24px; text-align: center; border-bottom: 2px solid #d4a843;">
+            <img src="https://cdn.jsdelivr.net/gh/DevzekiFaith/elevationstudio@main/public/email_logo.png" alt="Elevation Studio" width="130" style="width: 130px; height: auto; display: block; margin: 0 auto; border: 0;" />
+          </div>
+          <!-- Subtitle Bar -->
           <div style="padding: 12px 24px; background-color: #f8fafc; text-align: center; border-bottom: 1px solid #e2e8f0;">
             <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 2.5px; color: #64748b; text-transform: uppercase; line-height: 1; font-weight: 600;">Project Brief Confirmation</p>
           </div>
