@@ -59,6 +59,26 @@ export async function POST(req: NextRequest) {
 
     const resend = new Resend(apiKey);
 
+    // ── Read images as base64 data URIs (renders in 100% of email clients,
+    //    never appears as a downloadable attachment) ──────────────────────
+    const heroPath = path.join(process.cwd(), "public", "email_hero.jpg");
+    const logoPath = path.join(process.cwd(), "public", "email_logo.png");
+
+    const heroDataUri = fs.existsSync(heroPath)
+      ? `data:image/jpeg;base64,${fs.readFileSync(heroPath).toString("base64")}`
+      : "";
+    const logoDataUri = fs.existsSync(logoPath)
+      ? `data:image/png;base64,${fs.readFileSync(logoPath).toString("base64")}`
+      : "";
+
+    // Hero img tag — only rendered when we have a valid data URI
+    const heroImg = heroDataUri
+      ? `<img src="${heroDataUri}" alt="Architecture Concept" style="width:100%;height:120px;object-fit:cover;display:block;" />`
+      : `<div style="width:100%;height:6px;background:#d4a843;"></div>`;
+    const logoImg = logoDataUri
+      ? `<img src="${logoDataUri}" alt="Elevation Studio" style="width:120px;height:auto;display:block;margin:0 auto;" />`
+      : `<span style="font-family:sans-serif;font-size:18px;color:#d4a843;font-weight:bold;letter-spacing:3px;">ELEVATION STUDIO</span>`;
+
     const emailHtml = `
       <!DOCTYPE html>
       <html>
@@ -136,12 +156,12 @@ export async function POST(req: NextRequest) {
       <body>
         <div class="container">
           <!-- Hero Architectural Image Upward -->
-          <div style="width: 100%; max-height: 120px; overflow: hidden;">
-            <img src="cid:email_hero" alt="Architecture Concept" style="width: 100%; height: 120px; object-fit: cover; display: block;" />
+          <div style="width:100%;max-height:120px;overflow:hidden;line-height:0;">
+            ${heroImg}
           </div>
           <!-- Elevation Studio Logo Downward -->
-          <div style="background-color: #0d111b; padding: 16px 0; text-align: center; border-bottom: 2px solid #d4a843;">
-            <img src="cid:email_logo" alt="Elevation Studio" style="width: 120px; height: auto; display: block; margin: 0 auto;" />
+          <div style="background-color:#0d111b;padding:16px 0;text-align:center;border-bottom:2px solid #d4a843;">
+            ${logoImg}
           </div>
           <div style="padding: 14px 32px; background-color: #ffffff; text-align: center; border-bottom: 1px solid #e2e8f0;">
             <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #64748b; text-transform: uppercase; line-height: 1; font-weight: 600;">Project Commission Brief</p>
@@ -297,12 +317,12 @@ export async function POST(req: NextRequest) {
       <body>
         <div class="container">
           <!-- Hero Architectural Image Upward -->
-          <div style="width: 100%; max-height: 120px; overflow: hidden;">
-            <img src="cid:email_hero" alt="Architecture Concept" style="width: 100%; height: 120px; object-fit: cover; display: block;" />
+          <div style="width:100%;max-height:120px;overflow:hidden;line-height:0;">
+            ${heroImg}
           </div>
           <!-- Elevation Studio Logo Downward -->
-          <div style="background-color: #0d111b; padding: 16px 0; text-align: center; border-bottom: 2px solid #d4a843;">
-            <img src="cid:email_logo" alt="Elevation Studio" style="width: 120px; height: auto; display: block; margin: 0 auto;" />
+          <div style="background-color:#0d111b;padding:16px 0;text-align:center;border-bottom:2px solid #d4a843;">
+            ${logoImg}
           </div>
           <div style="padding: 14px 32px; background-color: #ffffff; text-align: center; border-bottom: 1px solid #e2e8f0;">
             <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #64748b; text-transform: uppercase; line-height: 1; font-weight: 600;">Project Brief Confirmation</p>
@@ -338,34 +358,7 @@ export async function POST(req: NextRequest) {
 
     const safeCompanyName = (company || "Client").replace(/[^a-zA-Z0-9_-]/g, "_");
 
-    const heroPath = path.join(process.cwd(), "public", "email_hero.jpg");
-    const logoPath = path.join(process.cwd(), "public", "email_logo.png");
-
-    const inlineAttachments: Array<{
-      filename: string;
-      content: string;
-      contentType: string;
-      content_id: string;
-    }> = [];
-
-    if (fs.existsSync(heroPath)) {
-      inlineAttachments.push({
-        filename: "email_hero.jpg",
-        content: fs.readFileSync(heroPath).toString("base64"),
-        contentType: "image/jpeg",
-        content_id: "email_hero",
-      });
-    }
-
-    if (fs.existsSync(logoPath)) {
-      inlineAttachments.push({
-        filename: "email_logo.png",
-        content: fs.readFileSync(logoPath).toString("base64"),
-        contentType: "image/png",
-        content_id: "email_logo",
-      });
-    }
-
+    // Only attach the PDF — images are embedded as data URIs in the HTML
     const pdfAttachment = pdfBuffer ? [
       {
         filename: `Elevation_Studio_Brief_${safeCompanyName}.pdf`,
@@ -373,8 +366,6 @@ export async function POST(req: NextRequest) {
         contentType: "application/pdf",
       }
     ] : [];
-
-    const allAttachments = [...pdfAttachment, ...inlineAttachments];
 
     let studioRes = null;
     let clientRes = null;
@@ -386,7 +377,7 @@ export async function POST(req: NextRequest) {
         replyTo: email,
         subject: `New Project Inquiry — ${company} (${packageName})`,
         html: emailHtml,
-        attachments: allAttachments,
+        attachments: pdfAttachment,
       });
     } catch (err) {
       console.error("Failed sending email to studio:", err);
@@ -398,7 +389,7 @@ export async function POST(req: NextRequest) {
         to: email,
         subject: `Project Commission Brief — Elevation Studio`,
         html: clientEmailHtml,
-        attachments: allAttachments,
+        attachments: pdfAttachment,
       });
     } catch (err) {
       console.error("Failed sending email to client:", err);
