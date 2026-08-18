@@ -594,16 +594,16 @@ export default function Home() {
                 <div className="pkg-retainer-btn-wrapper">
                   <Magnetic strength={0.3}>
                     <a
-                      href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20would%20like%20to%20schedule%20an%20Executive%20Discovery%20Consultation."
+                      href="https://meet.google.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="pkg-retainer-btn"
                     >
-                      <span>BOOK DISCOVERY SESSION</span>
+                      <span>BOOK GOOGLE MEET SESSION</span>
                       <span className="pkg-retainer-arrow">→</span>
                     </a>
                   </Magnetic>
-                  <span className="pkg-retainer-subnote">DIRECT EXECUTIVE DESK • 24H RESPONSE</span>
+                  <span className="pkg-retainer-subnote">GOOGLE MEET CONSULTATION • EXECUTIVE DESK</span>
                 </div>
               </div>
             </div>
