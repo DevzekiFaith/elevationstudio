@@ -346,10 +346,13 @@ export async function POST(req: NextRequest) {
 
     const fromEmail = process.env.NEXT_PUBLIC_FROM_EMAIL || "Elevation Studio <support@mindvestglobalresources.com.ng>";
 
+    const safeCompanyName = (company || "Client").replace(/[^a-zA-Z0-9_-]/g, "_");
+
     const attachments = pdfBuffer ? [
       {
-        filename: `Elevation_Studio_Brief_${company.replace(/\s+/g, "_")}.pdf`,
+        filename: `Elevation_Studio_Brief_${safeCompanyName}.pdf`,
         content: pdfBuffer.toString("base64"),
+        contentType: "application/pdf",
       }
     ] : [];
 

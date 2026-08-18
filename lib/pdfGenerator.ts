@@ -108,7 +108,7 @@ export async function generateBriefPDF(data: BriefData): Promise<Buffer> {
         }
       };
 
-      const baseRange = getPackagePriceRange(data.packageId);
+      const baseRange = getPackagePriceRange(data.packageId || "");
 
       doc.fillColor(muted)
         .font("Helvetica")
@@ -116,7 +116,7 @@ export async function generateBriefPDF(data: BriefData): Promise<Buffer> {
         .text(`Baseline Scope: ${baseRange}    |    Client Selected Budget: `, 70, highlightBoxY + 40, { lineBreak: false })
         .fillColor(gold)
         .font("Helvetica-Bold")
-        .text(data.budgetRange);
+        .text(data.budgetRange || "—");
 
       doc.y = highlightBoxY + 84;
 
