@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { generateBriefPDF } from "@/lib/pdfGenerator";
+import fs from "fs";
+import path from "path";
 
 export async function POST(req: NextRequest) {
   try {
@@ -135,11 +137,11 @@ export async function POST(req: NextRequest) {
         <div class="container">
           <!-- Hero Architectural Image Upward -->
           <div style="width: 100%; max-height: 120px; overflow: hidden;">
-            <img src="${baseUrl}/email_hero.jpg" alt="Architecture Concept" style="width: 100%; height: 120px; object-fit: cover; display: block;" />
+            <img src="cid:email_hero" alt="Architecture Concept" style="width: 100%; height: 120px; object-fit: cover; display: block;" />
           </div>
           <!-- Elevation Studio Logo Downward -->
           <div style="background-color: #0d111b; padding: 16px 0; text-align: center; border-bottom: 2px solid #d4a843;">
-            <img src="${baseUrl}/email_logo.png" alt="Elevation Studio" style="width: 120px; height: auto; display: block; margin: 0 auto;" />
+            <img src="cid:email_logo" alt="Elevation Studio" style="width: 120px; height: auto; display: block; margin: 0 auto;" />
           </div>
           <div style="padding: 14px 32px; background-color: #ffffff; text-align: center; border-bottom: 1px solid #e2e8f0;">
             <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #64748b; text-transform: uppercase; line-height: 1; font-weight: 600;">Project Commission Brief</p>
@@ -296,11 +298,11 @@ export async function POST(req: NextRequest) {
         <div class="container">
           <!-- Hero Architectural Image Upward -->
           <div style="width: 100%; max-height: 120px; overflow: hidden;">
-            <img src="${baseUrl}/email_hero.jpg" alt="Architecture Concept" style="width: 100%; height: 120px; object-fit: cover; display: block;" />
+            <img src="cid:email_hero" alt="Architecture Concept" style="width: 100%; height: 120px; object-fit: cover; display: block;" />
           </div>
           <!-- Elevation Studio Logo Downward -->
           <div style="background-color: #0d111b; padding: 16px 0; text-align: center; border-bottom: 2px solid #d4a843;">
-            <img src="${baseUrl}/email_logo.png" alt="Elevation Studio" style="width: 120px; height: auto; display: block; margin: 0 auto;" />
+            <img src="cid:email_logo" alt="Elevation Studio" style="width: 120px; height: auto; display: block; margin: 0 auto;" />
           </div>
           <div style="padding: 14px 32px; background-color: #ffffff; text-align: center; border-bottom: 1px solid #e2e8f0;">
             <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #64748b; text-transform: uppercase; line-height: 1; font-weight: 600;">Project Brief Confirmation</p>
@@ -336,13 +338,43 @@ export async function POST(req: NextRequest) {
 
     const safeCompanyName = (company || "Client").replace(/[^a-zA-Z0-9_-]/g, "_");
 
-    const attachments = pdfBuffer ? [
+    const heroPath = path.join(process.cwd(), "public", "email_hero.jpg");
+    const logoPath = path.join(process.cwd(), "public", "email_logo.png");
+
+    const inlineAttachments: Array<{
+      filename: string;
+      content: string;
+      contentType: string;
+      content_id: string;
+    }> = [];
+
+    if (fs.existsSync(heroPath)) {
+      inlineAttachments.push({
+        filename: "email_hero.jpg",
+        content: fs.readFileSync(heroPath).toString("base64"),
+        contentType: "image/jpeg",
+        content_id: "email_hero",
+      });
+    }
+
+    if (fs.existsSync(logoPath)) {
+      inlineAttachments.push({
+        filename: "email_logo.png",
+        content: fs.readFileSync(logoPath).toString("base64"),
+        contentType: "image/png",
+        content_id: "email_logo",
+      });
+    }
+
+    const pdfAttachment = pdfBuffer ? [
       {
         filename: `Elevation_Studio_Brief_${safeCompanyName}.pdf`,
         content: pdfBuffer.toString("base64"),
         contentType: "application/pdf",
       }
     ] : [];
+
+    const allAttachments = [...pdfAttachment, ...inlineAttachments];
 
     let studioRes = null;
     let clientRes = null;
@@ -354,7 +386,7 @@ export async function POST(req: NextRequest) {
         replyTo: email,
         subject: `New Project Inquiry — ${company} (${packageName})`,
         html: emailHtml,
-        attachments,
+        attachments: allAttachments,
       });
     } catch (err) {
       console.error("Failed sending email to studio:", err);
@@ -366,7 +398,7 @@ export async function POST(req: NextRequest) {
         to: email,
         subject: `Project Commission Brief — Elevation Studio`,
         html: clientEmailHtml,
-        attachments,
+        attachments: allAttachments,
       });
     } catch (err) {
       console.error("Failed sending email to client:", err);
