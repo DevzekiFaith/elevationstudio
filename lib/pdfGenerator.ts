@@ -1,4 +1,6 @@
 import PDFDocument from "pdfkit";
+import fs from "fs";
+import path from "path";
 
 export interface BriefData {
   name: string;
@@ -43,22 +45,28 @@ export async function generateBriefPDF(data: BriefData): Promise<Buffer> {
       // ─── HEADER BAND (Off-Black background block) ───
       doc.rect(0, 0, 595.28, 120).fill(darkBg);
 
-      // Gold dot (circle)
-      doc.circle(60, 60, 5).fill(gold);
+      const logoPath = path.join(process.cwd(), "public", "email_logo.png");
+      if (fs.existsSync(logoPath)) {
+        doc.image(logoPath, 50, 18, { width: 85 });
+      } else {
+        doc.circle(60, 60, 5).fill(gold);
+        doc.fillColor("#ffffff")
+          .font("Helvetica-Bold")
+          .fontSize(22)
+          .text("ELEVATION", 75, 48, { lineBreak: false })
+          .fillColor(gold)
+          .text(" STUDIO", { lineBreak: false });
+      }
 
-      // ELEVATION STUDIO text
-      doc.fillColor("#ffffff")
+      doc.fillColor(gold)
         .font("Helvetica-Bold")
-        .fontSize(22)
-        .text("ELEVATION", 75, 48, { lineBreak: false })
-        .fillColor(gold)
-        .text(" STUDIO", { lineBreak: false });
+        .fontSize(13)
+        .text("OFFICIAL COMMISSION BRIEF", 330, 42, { align: "right", width: 215 });
 
-      // Subtitle
       doc.fillColor(muted)
         .font("Helvetica")
-        .fontSize(10)
-        .text("OFFICIAL COMMISSION BRIEF SUMMARY", 75, 78);
+        .fontSize(9)
+        .text("Elevation Studio · Integrated Architecture", 330, 62, { align: "right", width: 215 });
 
       // ─── DOCUMENT TITLE ───
       doc.y = 150;
