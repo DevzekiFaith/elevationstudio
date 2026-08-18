@@ -59,26 +59,6 @@ export async function POST(req: NextRequest) {
 
     const resend = new Resend(apiKey);
 
-    // ── Read images as base64 data URIs (renders in 100% of email clients,
-    //    never appears as a downloadable attachment) ──────────────────────
-    const heroPath = path.join(process.cwd(), "public", "email_hero.jpg");
-    const logoPath = path.join(process.cwd(), "public", "email_logo.png");
-
-    const heroDataUri = fs.existsSync(heroPath)
-      ? `data:image/jpeg;base64,${fs.readFileSync(heroPath).toString("base64")}`
-      : "";
-    const logoDataUri = fs.existsSync(logoPath)
-      ? `data:image/png;base64,${fs.readFileSync(logoPath).toString("base64")}`
-      : "";
-
-    // Hero img tag — only rendered when we have a valid data URI
-    const heroImg = heroDataUri
-      ? `<img src="${heroDataUri}" alt="Architecture Concept" style="width:100%;height:120px;object-fit:cover;display:block;" />`
-      : `<div style="width:100%;height:6px;background:#d4a843;"></div>`;
-    const logoImg = logoDataUri
-      ? `<img src="${logoDataUri}" alt="Elevation Studio" style="width:120px;height:auto;display:block;margin:0 auto;" />`
-      : `<span style="font-family:sans-serif;font-size:18px;color:#d4a843;font-weight:bold;letter-spacing:3px;">ELEVATION STUDIO</span>`;
-
     const emailHtml = `
       <!DOCTYPE html>
       <html>
@@ -155,16 +135,18 @@ export async function POST(req: NextRequest) {
       </head>
       <body>
         <div class="container">
-          <!-- Hero Architectural Image Upward -->
-          <div style="width:100%;max-height:120px;overflow:hidden;line-height:0;">
-            ${heroImg}
+          <!-- Luxury Architectural Brand Bar -->
+          <div style="height: 4px; background-color: #d4a843;"></div>
+          <div style="background-color: #0d111b; padding: 28px 24px; text-align: center; border-bottom: 2px solid #d4a843;">
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 800; letter-spacing: 4px; color: #ffffff; text-transform: uppercase; margin-bottom: 6px;">
+              ELEVATION <span style="color: #d4a843;">STUDIO</span>
+            </div>
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 9px; letter-spacing: 2.5px; color: #8a8a93; text-transform: uppercase;">
+              BRAND &bull; DIGITAL &bull; SPACE &bull; CULTURE
+            </div>
           </div>
-          <!-- Elevation Studio Logo Downward -->
-          <div style="background-color:#0d111b;padding:16px 0;text-align:center;border-bottom:2px solid #d4a843;">
-            ${logoImg}
-          </div>
-          <div style="padding: 14px 32px; background-color: #ffffff; text-align: center; border-bottom: 1px solid #e2e8f0;">
-            <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #64748b; text-transform: uppercase; line-height: 1; font-weight: 600;">Project Commission Brief</p>
+          <div style="padding: 12px 24px; background-color: #f8fafc; text-align: center; border-bottom: 1px solid #e2e8f0;">
+            <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 2.5px; color: #64748b; text-transform: uppercase; line-height: 1; font-weight: 600;">Project Commission Brief</p>
           </div>
           
           <div class="content">
@@ -316,16 +298,18 @@ export async function POST(req: NextRequest) {
       </head>
       <body>
         <div class="container">
-          <!-- Hero Architectural Image Upward -->
-          <div style="width:100%;max-height:120px;overflow:hidden;line-height:0;">
-            ${heroImg}
+          <!-- Luxury Architectural Brand Bar -->
+          <div style="height: 4px; background-color: #d4a843;"></div>
+          <div style="background-color: #0d111b; padding: 28px 24px; text-align: center; border-bottom: 2px solid #d4a843;">
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 800; letter-spacing: 4px; color: #ffffff; text-transform: uppercase; margin-bottom: 6px;">
+              ELEVATION <span style="color: #d4a843;">STUDIO</span>
+            </div>
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 9px; letter-spacing: 2.5px; color: #8a8a93; text-transform: uppercase;">
+              BRAND &bull; DIGITAL &bull; SPACE &bull; CULTURE
+            </div>
           </div>
-          <!-- Elevation Studio Logo Downward -->
-          <div style="background-color:#0d111b;padding:16px 0;text-align:center;border-bottom:2px solid #d4a843;">
-            ${logoImg}
-          </div>
-          <div style="padding: 14px 32px; background-color: #ffffff; text-align: center; border-bottom: 1px solid #e2e8f0;">
-            <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #64748b; text-transform: uppercase; line-height: 1; font-weight: 600;">Project Brief Confirmation</p>
+          <div style="padding: 12px 24px; background-color: #f8fafc; text-align: center; border-bottom: 1px solid #e2e8f0;">
+            <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 2.5px; color: #64748b; text-transform: uppercase; line-height: 1; font-weight: 600;">Project Brief Confirmation</p>
           </div>
           
           <div class="content">
