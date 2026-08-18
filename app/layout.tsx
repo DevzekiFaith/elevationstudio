@@ -9,6 +9,7 @@ import "./globals.css";
 import { CustomCursor } from "@/components/CustomCursor";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { CurrencyProvider } from "@/components/CurrencyContext";
+import { Analytics } from "@vercel/analytics/next";
 
 const bebas = Bebas_Neue({
   weight: "400",
@@ -219,6 +220,7 @@ export default function RootLayout({
           <ScrollProgress />
           <CustomCursor />
           {children}
+          <Analytics />
         </CurrencyProvider>
       </body>
     </html>
