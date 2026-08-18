@@ -14,6 +14,7 @@ export async function POST(req: NextRequest) {
       location,
       packageName,
       packageCode,
+      packageId,
       industry,
       projectDescription,
       coreProblem,
@@ -264,6 +265,83 @@ export async function POST(req: NextRequest) {
       </html>
     `;
 
+    const clientEmailHtml = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <style>
+          body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #060608;
+            color: #f4f0e8;
+            margin: 0;
+            padding: 40px 20px;
+          }
+          .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #0e0e12;
+            border: 1px solid #1f1f27;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+          }
+          .content {
+            padding: 32px;
+          }
+          .footer {
+            background-color: #08080a;
+            padding: 24px;
+            text-align: center;
+            border-top: 1px solid #1f1f27;
+            font-size: 11px;
+            color: #8a8a93;
+          }
+          .footer a {
+            color: #d4a843;
+            text-decoration: none;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div style="background-color: #0d111b; padding: 24px 0 0; text-align: center;">
+            <img src="${baseUrl}/email_logo.png" alt="Elevation Studio" style="width: 140px; height: auto; display: block; margin: 0 auto 16px;" />
+            <div style="width: 100%; border-bottom: 2px solid #d4a843;">
+              <img src="${baseUrl}/email_hero.jpg" alt="Architecture Concept" style="width: 100%; height: auto; display: block;" />
+            </div>
+            <div style="padding: 16px 32px; background-color: #08080a; text-align: center; border-bottom: 1px solid #1f1f27;">
+              <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #8a8a93; text-transform: uppercase; line-height: 1;">Project Brief Confirmation</p>
+            </div>
+          </div>
+          
+          <div class="content" style="padding: 32px 40px;">
+            <h2 style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 18px; color: #ffffff; margin: 0 0 16px; font-weight: 600;">Dear ${name.split(" ")[0]},</h2>
+            <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; color: #f4f0e8; line-height: 1.6; margin: 0 0 16px;">
+              Thank you for initiating a project with Elevation Studio. We have successfully registered your commission parameters and our partners are currently reviewing the scope.
+            </p>
+            <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; color: #f4f0e8; line-height: 1.6; margin: 0 0 24px;">
+              We have compiled your selection details into an official **Project Brief PDF** which is attached to this email for your personal download and records.
+            </p>
+            <div style="background: rgba(212, 168, 67, 0.05); border-left: 2px solid #d4a843; padding: 16px; border-radius: 0 4px 4px 0; margin-bottom: 24px;">
+              <div style="font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #8a8a93; margin-bottom: 4px;">Registered Scope</div>
+              <div style="font-size: 15px; color: #ffffff; font-weight: bold;">${packageName}</div>
+              <div style="font-size: 12px; color: #d4a843; margin-top: 4px; font-weight: 500;">Selected Scale: ${budgetRange || "—"}</div>
+            </div>
+            <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; color: #8a8a93; line-height: 1.6; margin: 0;">
+              A partner will reach out to you directly to align on the next steps and schedule your design consultation.
+            </p>
+          </div>
+          
+          <div class="footer">
+            Sent securely via Resend from <a href="https://elevationstudio.ng">elevationstudio.ng</a>
+          </div>
+        </div>
+      </body>
+      </html>
+    `;
+
     const fromEmail = process.env.NEXT_PUBLIC_FROM_EMAIL || "Elevation Studio <support@mindvestglobalresources.com.ng>";
 
     const attachments = pdfBuffer ? [
@@ -273,16 +351,35 @@ export async function POST(req: NextRequest) {
       }
     ] : [];
 
-    const data = await resend.emails.send({
-      from: fromEmail,
-      to: ["support@mindvestglobalresources.com.ng", email],
-      replyTo: email,
-      subject: `New Project Inquiry — ${company} (${packageName})`,
-      html: emailHtml,
-      attachments,
-    });
+    let studioRes = null;
+    let clientRes = null;
 
-    return NextResponse.json({ success: true, data });
+    try {
+      studioRes = await resend.emails.send({
+        from: fromEmail,
+        to: "support@mindvestglobalresources.com.ng",
+        replyTo: email,
+        subject: `New Project Inquiry — ${company} (${packageName})`,
+        html: emailHtml,
+        attachments,
+      });
+    } catch (err) {
+      console.error("Failed sending email to studio:", err);
+    }
+
+    try {
+      clientRes = await resend.emails.send({
+        from: fromEmail,
+        to: email,
+        subject: `Project Commission Brief — Elevation Studio`,
+        html: clientEmailHtml,
+        attachments,
+      });
+    } catch (err) {
+      console.error("Failed sending email to client:", err);
+    }
+
+    return NextResponse.json({ success: true, studioData: studioRes, clientData: clientRes });
   } catch (error) {
     console.error("Resend API Route Error:", error);
     return NextResponse.json(

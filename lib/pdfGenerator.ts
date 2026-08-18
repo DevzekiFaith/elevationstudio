@@ -9,6 +9,7 @@ export interface BriefData {
   location: string;
   packageName: string;
   packageCode: string;
+  packageId: string;
   industry: string;
   projectDescription: string;
   coreProblem: string;
@@ -82,20 +83,42 @@ export async function generateBriefPDF(data: BriefData): Promise<Buffer> {
 
       // ─── HIGHLIGHT BOX: Selected Scope ───
       const highlightBoxY = doc.y;
-      doc.rect(50, highlightBoxY, 495.28, 48).fill(lightBg);
-      doc.rect(50, highlightBoxY, 4, 48).fill(gold);
+      doc.rect(50, highlightBoxY, 495.28, 64).fill(lightBg);
+      doc.rect(50, highlightBoxY, 4, 64).fill(gold);
 
       doc.fillColor(muted)
         .font("Helvetica-Bold")
-        .fontSize(9)
+        .fontSize(8)
         .text("SELECTED SCOPE", 70, highlightBoxY + 10);
 
       doc.fillColor(charcoal)
         .font("Helvetica-Bold")
-        .fontSize(14)
-        .text(`${data.packageName} (${data.packageCode})`, 70, highlightBoxY + 24);
+        .fontSize(13)
+        .text(`${data.packageName}`, 70, highlightBoxY + 22);
 
-      doc.y = highlightBoxY + 68;
+      const getPackagePriceRange = (pkgId: string): string => {
+        switch (pkgId) {
+          case "1": return "₦500K — ₦2M";
+          case "2": return "₦1.5M — ₦5M";
+          case "3": return "₦5M — ₦20M";
+          case "4": return "₦15M — ₦50M+";
+          case "res-arch": return "Starting from ₦1.5M";
+          case "res-master": return "Starting from ₦4.5M";
+          default: return "Custom Quote";
+        }
+      };
+
+      const baseRange = getPackagePriceRange(data.packageId);
+
+      doc.fillColor(muted)
+        .font("Helvetica")
+        .fontSize(9.5)
+        .text(`Baseline Scope: ${baseRange}    |    Client Selected Budget: `, 70, highlightBoxY + 40, { lineBreak: false })
+        .fillColor(gold)
+        .font("Helvetica-Bold")
+        .text(data.budgetRange);
+
+      doc.y = highlightBoxY + 84;
 
       // Helper function to draw section titles
       const drawSectionTitle = (title: string) => {

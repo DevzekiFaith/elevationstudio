@@ -242,6 +242,7 @@ function ContactFormInner() {
           location: fields.location.trim(),
           packageName: selectedPkg.name,
           packageCode: selectedPkg.code,
+          packageId: selectedPkg.id,
           industry: fields.industry.trim(),
           projectDescription: fields.projectDescription.trim(),
           coreProblem: fields.coreProblem.trim(),
