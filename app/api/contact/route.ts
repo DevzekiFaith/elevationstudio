@@ -266,7 +266,7 @@ export async function POST(req: NextRequest) {
       </html>
     `;
 
-    const fromEmail = process.env.NEXT_PUBLIC_FROM_EMAIL || "Elevation Studio Inquiries <support@mindvestglobalresources.com.ng>";
+    const fromEmail = process.env.NEXT_PUBLIC_FROM_EMAIL || "Elevation Studio <support@mindvestglobalresources.com.ng>";
 
     const attachments = pdfBuffer ? [
       {

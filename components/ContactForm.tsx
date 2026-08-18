@@ -70,6 +70,19 @@ const BUDGET_STEPS = [
   "₦50M+",
 ];
 
+const BUDGET_DESCRIPTIONS = [
+  "Ideal for conceptual sketches, floor plans, and foundational space layouts.",
+  "Ideal for standard private residential renovations and detailed 3D interior design.",
+  "Ideal for complete private bungalows, duplex structures, and site layout designs.",
+  "Ideal for luxury villa designs, private family compounds, and advanced spatial rendering.",
+  "Ideal for high-end boutique hotels, compound masterplanning, and structural engineering.",
+  "Ideal for large-scale multi-unit housing estates and commercial building layouts.",
+  "Ideal for premium resort layouts, industrial masterplans, and public space designs.",
+  "Ideal for complete commercial complexes, structural frameworks, and masterplanning.",
+  "Ideal for large-scale urban design, shopping centers, and mixed-use estate plans.",
+  "Bespoke enterprise contracts, institutional blueprints, and full-service estate execution.",
+];
+
 const TIMELINES = [
   "ASAP / urgent",
   "1–3 months",
@@ -127,7 +140,18 @@ function ContactFormInner() {
     }
   }, [searchParams]);
 
+  const handlePackageChange = (id: string) => {
+    let defaultBudgetIdx = 0;
+    if (id === "2" || id === "res-arch") defaultBudgetIdx = 2; // ₦2M – ₦3.5M
+    if (id === "3" || id === "res-master") defaultBudgetIdx = 4; // ₦5M – ₦8M
+    if (id === "4") defaultBudgetIdx = 8; // ₦30M – ₦50M
 
+    setFields((f) => ({
+      ...f,
+      packageId: id,
+      budgetIndex: defaultBudgetIdx,
+    }));
+  };
 
   const progress = useMemo(() => {
     return [1, 2, 3, 4].map((s) => ({
@@ -170,7 +194,6 @@ function ContactFormInner() {
 
   const validateStep3 = () => {
     const e: Record<string, string> = {};
-    if (!fields.timeline) e.timeline = "Select a timeline";
     if (!fields.decisionMaker.trim()) e.decisionMaker = "Required";
     if (!fields.priorExperience.trim()) e.priorExperience = "Required";
     setErrors(e);
@@ -313,7 +336,7 @@ function ContactFormInner() {
               key={p.id}
               type="button"
               className={`contact-preview-card ${fields.packageId === p.id ? "active" : ""} ${p.bridge ? "bridge" : ""}`.trim()}
-              onClick={() => set("packageId", p.id)}
+              onClick={() => handlePackageChange(p.id)}
             >
               <div className="cp-name">{p.name}</div>
               <div className="cp-range">{p.range}</div>
@@ -472,7 +495,7 @@ function ContactFormInner() {
                         name="package"
                         id={`pkg-${p.id}`}
                         checked={fields.packageId === p.id}
-                        onChange={() => set("packageId", p.id)}
+                        onChange={() => handlePackageChange(p.id)}
                       />
                       <label htmlFor={`pkg-${p.id}`}>
                         <strong>{p.name}</strong>
@@ -531,8 +554,11 @@ function ContactFormInner() {
               <p className="form-step-hint">Step 3 of 4 — how you&apos;re resourcing this.</p>
 
               <div className="form-field">
-                <label>Budget range *</label>
-                <div className="budget-slider-wrap">
+                <div className="budget-slider-container">
+                  <div className="budget-slider-header">
+                    <span className="budget-slider-label">Investment Range</span>
+                    <span className="budget-slider-value">{BUDGET_STEPS[fields.budgetIndex]}</span>
+                  </div>
                   <input
                     type="range"
                     className="budget-slider"
@@ -540,33 +566,27 @@ function ContactFormInner() {
                     max={BUDGET_STEPS.length - 1}
                     step={1}
                     value={fields.budgetIndex}
+                    style={{ "--value-percent": `${(fields.budgetIndex / (BUDGET_STEPS.length - 1)) * 100}%` } as React.CSSProperties}
                     onChange={(e) =>
                       set("budgetIndex", Number.parseInt(e.target.value, 10))
                     }
                   />
-                  <div className="budget-display">
-                    {BUDGET_STEPS[fields.budgetIndex]}
+                  <div className="budget-slider-ticks">
+                    <span>Min: ₦500K</span>
+                    <span className="slider-tick-mid">₦8M</span>
+                    <span>Max: ₦50M+</span>
+                  </div>
+                  <div className="budget-description-box">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="description-icon">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                      <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span><strong>Project Scope:</strong> {BUDGET_DESCRIPTIONS[fields.budgetIndex]}</span>
                   </div>
                 </div>
-              </div>
-
-              <div className={`form-field ${errors.timeline ? "error" : ""}`}>
-                <label>Timeline *</label>
-                <div className="timeline-options">
-                  {TIMELINES.map((t) => (
-                    <button
-                      key={t}
-                      type="button"
-                      className={`timeline-btn ${fields.timeline === t ? "selected" : ""}`}
-                      onClick={() => set("timeline", t)}
-                    >
-                      {t}
-                    </button>
-                  ))}
-                </div>
-                {errors.timeline && (
-                  <div className="field-error">{errors.timeline}</div>
-                )}
               </div>
 
               <div className="form-grid full">
