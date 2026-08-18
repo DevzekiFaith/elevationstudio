@@ -27,6 +27,10 @@ export async function POST(req: NextRequest) {
       additionalNotes,
     } = body;
 
+    const host = req.headers.get("host") || "elevationstudio.ng";
+    const protocol = host.includes("localhost") ? "http" : "https";
+    const baseUrl = `${protocol}://${host}`;
+
     // Validate essential fields
     if (!name || !email || !company) {
       return NextResponse.json(
@@ -143,20 +147,14 @@ export async function POST(req: NextRequest) {
       </head>
       <body>
         <div class="container">
-          <div class="header">
-            <table align="center" cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto 12px; border-collapse: collapse;">
-              <tr>
-                <td style="vertical-align: middle; padding-right: 10px; line-height: 1;">
-                  <div style="width: 10px; height: 10px; border-radius: 50%; background-color: #d4a843;"></div>
-                </td>
-                <td style="vertical-align: middle; line-height: 1;">
-                  <span style="font-family: 'Bebas Neue', Impact, 'Arial Black', sans-serif; font-size: 24px; font-weight: bold; letter-spacing: 3px; color: #ffffff; text-transform: uppercase;">
-                    ELEVATION <span style="color: #d4a843;">STUDIO</span>
-                  </span>
-                </td>
-              </tr>
-            </table>
-            <p>Project Commission Brief</p>
+          <div style="background-color: #0d111b; padding: 24px 0 0; text-align: center;">
+            <img src="${baseUrl}/email_logo.png" alt="Elevation Studio" style="width: 140px; height: auto; display: block; margin: 0 auto 16px;" />
+            <div style="width: 100%; border-bottom: 2px solid #d4a843;">
+              <img src="${baseUrl}/email_hero.jpg" alt="Architecture Concept" style="width: 100%; height: auto; display: block;" />
+            </div>
+            <div style="padding: 16px 32px; background-color: #08080a; text-align: center; border-bottom: 1px solid #1f1f27;">
+              <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #8a8a93; text-transform: uppercase; line-height: 1;">Project Commission Brief</p>
+            </div>
           </div>
           
           <div class="content">
