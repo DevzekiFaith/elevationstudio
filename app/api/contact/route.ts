@@ -65,39 +65,19 @@ export async function POST(req: NextRequest) {
         <style>
           body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #060608;
-            color: #f4f0e8;
+            background-color: #f4f5f7;
+            color: #1e293b;
             margin: 0;
             padding: 40px 20px;
           }
           .container {
             max-width: 600px;
             margin: 0 auto;
-            background-color: #0e0e12;
-            border: 1px solid #1f1f27;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-          }
-          .header {
-            background-color: #08080a;
-            padding: 32px;
-            border-bottom: 1px solid #1f1f27;
-            text-align: center;
-          }
-          .header h1 {
-            margin: 0;
-            font-size: 20px;
-            letter-spacing: 4px;
-            color: #d4a843;
-            text-transform: uppercase;
-          }
-          .header p {
-            margin: 8px 0 0;
-            font-size: 11px;
-            letter-spacing: 2px;
-            color: #8a8a93;
-            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
           }
           .content {
             padding: 32px;
@@ -106,10 +86,11 @@ export async function POST(req: NextRequest) {
             font-size: 11px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #d4a843;
-            border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+            color: #b38624;
+            border-bottom: 1px solid #f3ebd8;
             padding-bottom: 8px;
             margin: 24px 0 16px;
+            font-weight: bold;
           }
           .field {
             margin-bottom: 16px;
@@ -118,51 +99,56 @@ export async function POST(req: NextRequest) {
             font-size: 10px;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: #8a8a93;
+            color: #64748b;
             margin-bottom: 4px;
+            font-weight: 600;
           }
           .field-value {
             font-size: 14px;
-            color: #f4f0e8;
+            color: #0f172a;
             line-height: 1.5;
+            font-weight: 500;
           }
           .highlight {
-            background: rgba(212, 168, 67, 0.05);
-            border-left: 2px solid #d4a843;
-            padding: 12px 16px;
-            border-radius: 0 4px 4px 0;
+            background-color: #fdfbf7;
+            border: 1px solid #f3ebd8;
+            border-left: 3px solid #d4a843;
+            padding: 14px 18px;
+            border-radius: 4px;
           }
           .footer {
-            background-color: #08080a;
+            background-color: #f8fafc;
             padding: 24px;
             text-align: center;
-            border-top: 1px solid #1f1f27;
+            border-top: 1px solid #e2e8f0;
             font-size: 11px;
-            color: #8a8a93;
+            color: #64748b;
           }
           .footer a {
-            color: #d4a843;
+            color: #b38624;
             text-decoration: none;
+            font-weight: 600;
           }
         </style>
       </head>
       <body>
         <div class="container">
-          <!-- Compact Branded Header -->
-          <div style="background-color: #0d111b; padding: 16px 0; text-align: center; border-bottom: 1px solid #1f1f27;">
-            <img src="${baseUrl}/email_logo.png" alt="Elevation Studio" style="width: 120px; height: auto; display: block; margin: 0 auto;" />
-          </div>
-          <div style="width: 100%; max-height: 120px; overflow: hidden; border-bottom: 2px solid #d4a843;">
+          <!-- Hero Architectural Image Upward -->
+          <div style="width: 100%; max-height: 120px; overflow: hidden;">
             <img src="${baseUrl}/email_hero.jpg" alt="Architecture Concept" style="width: 100%; height: 120px; object-fit: cover; display: block;" />
           </div>
-          <div style="padding: 16px 32px; background-color: #08080a; text-align: center; border-bottom: 1px solid #1f1f27;">
-            <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #8a8a93; text-transform: uppercase; line-height: 1;">Project Commission Brief</p>
+          <!-- Elevation Studio Logo Downward -->
+          <div style="background-color: #0d111b; padding: 16px 0; text-align: center; border-bottom: 2px solid #d4a843;">
+            <img src="${baseUrl}/email_logo.png" alt="Elevation Studio" style="width: 120px; height: auto; display: block; margin: 0 auto;" />
+          </div>
+          <div style="padding: 14px 32px; background-color: #ffffff; text-align: center; border-bottom: 1px solid #e2e8f0;">
+            <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #64748b; text-transform: uppercase; line-height: 1; font-weight: 600;">Project Commission Brief</p>
           </div>
           
           <div class="content">
             <div class="field highlight">
               <div class="field-label">Selected Scope</div>
-              <div class="field-value" style="font-weight: bold; font-size: 16px; color: #ffffff;">
+              <div class="field-value" style="font-weight: bold; font-size: 16px; color: #0f172a;">
                 ${packageName} (${packageCode})
               </div>
             </div>
@@ -176,7 +162,7 @@ export async function POST(req: NextRequest) {
                 </td>
                 <td width="50%" style="padding-bottom: 12px; vertical-align: top;">
                   <div class="field-label">Email Address</div>
-                  <div class="field-value"><a href="mailto:${email}" style="color: #d4a843; text-decoration: none;">${email}</a></div>
+                  <div class="field-value"><a href="mailto:${email}" style="color: #b38624; text-decoration: none; font-weight: 600;">${email}</a></div>
                 </td>
               </tr>
               <tr>
@@ -210,7 +196,7 @@ export async function POST(req: NextRequest) {
                 </td>
                 <td width="50%" style="padding-bottom: 12px; vertical-align: top;">
                   <div class="field-label">Budget Scale</div>
-                  <div class="field-value" style="color: #ffffff; font-weight: bold;">${budgetRange || "—"}</div>
+                  <div class="field-value" style="color: #b38624; font-weight: bold;">${budgetRange || "—"}</div>
                 </td>
               </tr>
               <tr>
@@ -227,12 +213,12 @@ export async function POST(req: NextRequest) {
 
             <div class="field" style="margin-top: 12px;">
               <div class="field-label">The Core Challenge / Objective</div>
-              <div class="field-value" style="white-space: pre-wrap; background-color: #08080a; padding: 12px; border-radius: 4px; border: 1px solid #1f1f27;">${coreProblem || "—"}</div>
+              <div class="field-value" style="white-space: pre-wrap; background-color: #f8fafc; padding: 12px; border-radius: 4px; border: 1px solid #e2e8f0; color: #1e293b;">${coreProblem || "—"}</div>
             </div>
 
             <div class="field">
               <div class="field-label">Project Description & Detail</div>
-              <div class="field-value" style="white-space: pre-wrap; background-color: #08080a; padding: 12px; border-radius: 4px; border: 1px solid #1f1f27;">${projectDescription || "—"}</div>
+              <div class="field-value" style="white-space: pre-wrap; background-color: #f8fafc; padding: 12px; border-radius: 4px; border: 1px solid #e2e8f0; color: #1e293b;">${projectDescription || "—"}</div>
             </div>
 
             <div class="section-title">Background & Assets</div>
@@ -246,7 +232,7 @@ export async function POST(req: NextRequest) {
             </div>
             <div class="field">
               <div class="field-label">Inspiration URL References</div>
-              <div class="field-value">${inspirationUrl ? '<a href="' + inspirationUrl + '" target="_blank" style="color: #d4a843; text-decoration: none;">' + inspirationUrl + '</a>' : "—"}</div>
+              <div class="field-value">${inspirationUrl ? '<a href="' + inspirationUrl + '" target="_blank" style="color: #b38624; text-decoration: none; font-weight: 600;">' + inspirationUrl + '</a>' : "—"}</div>
             </div>
             <div class="field">
               <div class="field-label">Referral Source</div>
@@ -254,7 +240,7 @@ export async function POST(req: NextRequest) {
             </div>
             <div class="field" style="margin-top: 16px;">
               <div class="field-label">Additional Comments</div>
-              <div class="field-value" style="white-space: pre-wrap; background-color: #08080a; padding: 12px; border-radius: 4px; border: 1px solid #1f1f27;">${additionalNotes || "—"}</div>
+              <div class="field-value" style="white-space: pre-wrap; background-color: #f8fafc; padding: 12px; border-radius: 4px; border: 1px solid #e2e8f0; color: #1e293b;">${additionalNotes || "—"}</div>
             </div>
           </div>
           
@@ -274,64 +260,66 @@ export async function POST(req: NextRequest) {
         <style>
           body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #060608;
-            color: #f4f0e8;
+            background-color: #f4f5f7;
+            color: #1e293b;
             margin: 0;
             padding: 40px 20px;
           }
           .container {
             max-width: 600px;
             margin: 0 auto;
-            background-color: #0e0e12;
-            border: 1px solid #1f1f27;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
           }
           .content {
-            padding: 32px;
+            padding: 32px 40px;
           }
           .footer {
-            background-color: #08080a;
+            background-color: #f8fafc;
             padding: 24px;
             text-align: center;
-            border-top: 1px solid #1f1f27;
+            border-top: 1px solid #e2e8f0;
             font-size: 11px;
-            color: #8a8a93;
+            color: #64748b;
           }
           .footer a {
-            color: #d4a843;
+            color: #b38624;
             text-decoration: none;
+            font-weight: 600;
           }
         </style>
       </head>
       <body>
         <div class="container">
-          <!-- Compact Branded Header -->
-          <div style="background-color: #0d111b; padding: 16px 0; text-align: center; border-bottom: 1px solid #1f1f27;">
-            <img src="${baseUrl}/email_logo.png" alt="Elevation Studio" style="width: 120px; height: auto; display: block; margin: 0 auto;" />
-          </div>
-          <div style="width: 100%; max-height: 120px; overflow: hidden; border-bottom: 2px solid #d4a843;">
+          <!-- Hero Architectural Image Upward -->
+          <div style="width: 100%; max-height: 120px; overflow: hidden;">
             <img src="${baseUrl}/email_hero.jpg" alt="Architecture Concept" style="width: 100%; height: 120px; object-fit: cover; display: block;" />
           </div>
-          <div style="padding: 16px 32px; background-color: #08080a; text-align: center; border-bottom: 1px solid #1f1f27;">
-            <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #8a8a93; text-transform: uppercase; line-height: 1;">Project Brief Confirmation</p>
+          <!-- Elevation Studio Logo Downward -->
+          <div style="background-color: #0d111b; padding: 16px 0; text-align: center; border-bottom: 2px solid #d4a843;">
+            <img src="${baseUrl}/email_logo.png" alt="Elevation Studio" style="width: 120px; height: auto; display: block; margin: 0 auto;" />
+          </div>
+          <div style="padding: 14px 32px; background-color: #ffffff; text-align: center; border-bottom: 1px solid #e2e8f0;">
+            <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #64748b; text-transform: uppercase; line-height: 1; font-weight: 600;">Project Brief Confirmation</p>
           </div>
           
-          <div class="content" style="padding: 32px 40px;">
-            <h2 style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 18px; color: #ffffff; margin: 0 0 16px; font-weight: 600;">Dear ${name.split(" ")[0]},</h2>
-            <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; color: #f4f0e8; line-height: 1.6; margin: 0 0 16px;">
+          <div class="content">
+            <h2 style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 18px; color: #0f172a; margin: 0 0 16px; font-weight: 600;">Dear ${name.split(" ")[0]},</h2>
+            <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; color: #334155; line-height: 1.6; margin: 0 0 16px;">
               Thank you for initiating a project with Elevation Studio. We have successfully registered your commission parameters and our partners are currently reviewing the scope.
             </p>
-            <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; color: #f4f0e8; line-height: 1.6; margin: 0 0 24px;">
+            <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; color: #334155; line-height: 1.6; margin: 0 0 24px;">
               We have compiled your selection details into an official **Project Brief PDF** which is attached to this email for your personal download and records.
             </p>
-            <div style="background: rgba(212, 168, 67, 0.05); border-left: 2px solid #d4a843; padding: 16px; border-radius: 0 4px 4px 0; margin-bottom: 24px;">
-              <div style="font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #8a8a93; margin-bottom: 4px;">Registered Scope</div>
-              <div style="font-size: 15px; color: #ffffff; font-weight: bold;">${packageName}</div>
-              <div style="font-size: 12px; color: #d4a843; margin-top: 4px; font-weight: 500;">Selected Scale: ${budgetRange || "—"}</div>
+            <div style="background-color: #fdfbf7; border: 1px solid #f3ebd8; border-left: 3px solid #d4a843; padding: 16px; border-radius: 4px; margin-bottom: 24px;">
+              <div style="font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #64748b; margin-bottom: 4px; font-weight: 600;">Registered Scope</div>
+              <div style="font-size: 15px; color: #0f172a; font-weight: bold;">${packageName}</div>
+              <div style="font-size: 12px; color: #b38624; margin-top: 4px; font-weight: 600;">Selected Scale: ${budgetRange || "—"}</div>
             </div>
-            <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; color: #8a8a93; line-height: 1.6; margin: 0;">
+            <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; color: #64748b; line-height: 1.6; margin: 0;">
               A partner will reach out to you directly to align on the next steps and schedule your design consultation.
             </p>
           </div>
