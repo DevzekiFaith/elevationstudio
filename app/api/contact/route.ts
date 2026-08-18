@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { generateBriefPDF } from "@/lib/pdfGenerator";
 
 export async function POST(req: NextRequest) {
   try {
@@ -42,6 +43,12 @@ export async function POST(req: NextRequest) {
         { status: 500 }
       );
     }
+
+    // Generate dynamic PDF commission brief summary
+    const pdfBuffer = await generateBriefPDF(body).catch((err) => {
+      console.error("PDF Generation failed:", err);
+      return null;
+    });
 
     const resend = new Resend(apiKey);
 
@@ -261,12 +268,20 @@ export async function POST(req: NextRequest) {
 
     const fromEmail = process.env.NEXT_PUBLIC_FROM_EMAIL || "Elevation Studio Inquiries <support@mindvestglobalresources.com.ng>";
 
+    const attachments = pdfBuffer ? [
+      {
+        filename: `Elevation_Studio_Brief_${company.replace(/\s+/g, "_")}.pdf`,
+        content: pdfBuffer,
+      }
+    ] : [];
+
     const data = await resend.emails.send({
       from: fromEmail,
-      to: "support@mindvestglobalresources.com.ng",
+      to: ["support@mindvestglobalresources.com.ng", email],
       replyTo: email,
       subject: `New Project Inquiry — ${company} (${packageName})`,
       html: emailHtml,
+      attachments,
     });
 
     return NextResponse.json({ success: true, data });
