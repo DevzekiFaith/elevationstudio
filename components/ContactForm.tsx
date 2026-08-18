@@ -92,7 +92,7 @@ const TIMELINES = [
   "Flexible / exploring",
 ] as const;
 
-type Step = 1 | 2 | 3 | 4;
+type Step = 1 | 2;
 
 const initialFields = {
   name: "",
@@ -154,7 +154,7 @@ function ContactFormInner() {
   };
 
   const progress = useMemo(() => {
-    return [1, 2, 3, 4].map((s) => ({
+    return [1, 2].map((s) => ({
       num: s as Step,
       done: s < step,
       active: s === step,
@@ -172,19 +172,6 @@ function ContactFormInner() {
 
   const validateStep1 = () => {
     const e: Record<string, string> = {};
-    if (!fields.name.trim()) e.name = "Required";
-    if (!fields.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email))
-      e.email = "Valid email required";
-    if (!fields.phone.trim()) e.phone = "Required";
-    if (!fields.role.trim()) e.role = "Required";
-    if (!fields.company.trim()) e.company = "Required";
-    if (!fields.location.trim()) e.location = "Required";
-    setErrors(e);
-    return Object.keys(e).length === 0;
-  };
-
-  const validateStep2 = () => {
-    const e: Record<string, string> = {};
     if (!fields.industry.trim()) e.industry = "Required";
     if (!fields.projectDescription.trim()) e.projectDescription = "Required";
     if (!fields.coreProblem.trim()) e.coreProblem = "Required";
@@ -192,16 +179,17 @@ function ContactFormInner() {
     return Object.keys(e).length === 0;
   };
 
-  const validateStep3 = () => {
+  const validateStep2 = () => {
     const e: Record<string, string> = {};
+    if (!fields.name.trim()) e.name = "Required";
+    if (!fields.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email))
+      e.email = "Valid email required";
+    if (!fields.phone.trim()) e.phone = "Required";
+    if (!fields.role.trim()) e.role = "Required";
+    if (!fields.company.trim()) e.company = "Required";
+    if (!fields.location.trim()) e.location = "Required";
     if (!fields.decisionMaker.trim()) e.decisionMaker = "Required";
     if (!fields.priorExperience.trim()) e.priorExperience = "Required";
-    setErrors(e);
-    return Object.keys(e).length === 0;
-  };
-
-  const validateStep4 = () => {
-    const e: Record<string, string> = {};
     if (!fields.referralSource.trim()) e.referralSource = "Required";
     if (
       fields.inspirationUrl.trim() &&
@@ -214,19 +202,20 @@ function ContactFormInner() {
   };
 
   const goNext = () => {
-    if (step === 1 && !validateStep1()) return;
-    if (step === 2 && !validateStep2()) return;
-    if (step === 3 && !validateStep3()) return;
-    if (step < 4) setStep((s) => (s + 1) as Step);
+    if (step === 1 && validateStep1()) {
+      setStep(2);
+    }
   };
 
   const goBack = () => {
-    if (step > 1) setStep((s) => (s - 1) as Step);
+    if (step === 2) {
+      setStep(1);
+    }
   };
 
   const handleSubmit = async (ev: React.FormEvent) => {
     ev.preventDefault();
-    if (!validateStep4()) return;
+    if (!validateStep2()) return;
     setSubmitting(true);
     setSubmitError(null);
     try {
@@ -297,8 +286,6 @@ function ContactFormInner() {
               <strong>Package:</strong> {selectedPkg.code}
               <br />
               <strong>Budget band:</strong> {BUDGET_STEPS[fields.budgetIndex]}
-              <br />
-              <strong>Timeline:</strong> {fields.timeline}
               <br />
               <strong>Industry:</strong> {fields.industry}
               <br />
@@ -388,7 +375,7 @@ function ContactFormInner() {
       </aside>
 
       <div className="contact-main">
-        <form onSubmit={step === 4 ? handleSubmit : (e) => e.preventDefault()}>
+        <form onSubmit={step === 2 ? handleSubmit : (e) => e.preventDefault()}>
           <div className="form-progress">
             {progress.map((p) => (
               <div
@@ -400,8 +387,116 @@ function ContactFormInner() {
 
           {step === 1 && (
             <>
-              <div className="form-step-title">About you</div>
-              <p className="form-step-hint">Step 1 of 4 — who we&apos;re partnering with.</p>
+              <div className="form-step-title">Your Project</div>
+              <p className="form-step-hint">Step 1 of 2 — package focus, scope & resourcing.</p>
+
+              <div className="form-field" style={{ marginBottom: 24 }}>
+                <label>Package *</label>
+                <div className="package-radios">
+                  {PACKAGES.map((p) => (
+                    <div
+                      key={p.id}
+                      className={`package-radio ${p.bridge ? "bridge" : ""}`.trim()}
+                    >
+                      <input
+                        type="radio"
+                        name="package"
+                        id={`pkg-${p.id}`}
+                        checked={fields.packageId === p.id}
+                        onChange={() => handlePackageChange(p.id)}
+                      />
+                      <label htmlFor={`pkg-${p.id}`}>
+                        <strong>{p.name}</strong>
+                        {p.short} · {p.range}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="form-field" style={{ marginBottom: 24 }}>
+                <div className="budget-slider-container">
+                  <div className="budget-slider-header">
+                    <span className="budget-slider-label">Investment Range</span>
+                    <span className="budget-slider-value">{BUDGET_STEPS[fields.budgetIndex]}</span>
+                  </div>
+                  <input
+                    type="range"
+                    className="budget-slider"
+                    min={0}
+                    max={BUDGET_STEPS.length - 1}
+                    step={1}
+                    value={fields.budgetIndex}
+                    style={{ "--value-percent": `${(fields.budgetIndex / (BUDGET_STEPS.length - 1)) * 100}%` } as React.CSSProperties}
+                    onChange={(e) =>
+                      set("budgetIndex", Number.parseInt(e.target.value, 10))
+                    }
+                  />
+                  <div className="budget-slider-ticks">
+                    <span>Min: ₦500K</span>
+                    <span className="slider-tick-mid">₦8M</span>
+                    <span>Max: ₦50M+</span>
+                  </div>
+                  <div className="budget-description-box">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="description-icon">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                      <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span><strong>Project Scope:</strong> {BUDGET_DESCRIPTIONS[fields.budgetIndex]}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="form-grid full">
+                <div className={`form-field ${errors.industry ? "error" : ""}`}>
+                  <label htmlFor="industry">Industry / sector *</label>
+                  <input
+                    id="industry"
+                    value={fields.industry}
+                    onChange={(e) => set("industry", e.target.value)}
+                  />
+                  {errors.industry && (
+                    <div className="field-error">{errors.industry}</div>
+                  )}
+                </div>
+                <div
+                  className={`form-field ${errors.projectDescription ? "error" : ""}`}
+                >
+                  <label htmlFor="projectDescription">Project description *</label>
+                  <textarea
+                    id="projectDescription"
+                    value={fields.projectDescription}
+                    onChange={(e) => set("projectDescription", e.target.value)}
+                  />
+                  {errors.projectDescription && (
+                    <div className="field-error">{errors.projectDescription}</div>
+                  )}
+                </div>
+                <div
+                  className={`form-field ${errors.coreProblem ? "error" : ""}`}
+                >
+                  <label htmlFor="coreProblem">Core problem to solve *</label>
+                  <textarea
+                    id="coreProblem"
+                    value={fields.coreProblem}
+                    onChange={(e) => set("coreProblem", e.target.value)}
+                  />
+                  {errors.coreProblem && (
+                    <div className="field-error">{errors.coreProblem}</div>
+                  )}
+                </div>
+              </div>
+            </>
+          )}
+
+          {step === 2 && (
+            <>
+              <div className="form-step-title">Client Profile & Context</div>
+              <p className="form-step-hint">Step 2 of 2 — stakeholder profile, context & submission.</p>
+              
               <div className="form-grid">
                 <div className={`form-field ${errors.name ? "error" : ""}`}>
                   <label htmlFor="name">Full name *</label>
@@ -474,126 +569,33 @@ function ContactFormInner() {
                     <div className="field-error">{errors.location}</div>
                   )}
                 </div>
-              </div>
-            </>
-          )}
-
-          {step === 2 && (
-            <>
-              <div className="form-step-title">Your project</div>
-              <p className="form-step-hint">Step 2 of 4 — scope and intent.</p>
-
-              <div className="form-field" style={{ marginBottom: 24 }}>
-                <label>Package *</label>
-                <div className="package-radios">
-                  {PACKAGES.map((p) => (
-                    <div
-                      key={p.id}
-                      className={`package-radio ${p.bridge ? "bridge" : ""}`.trim()}
-                    >
-                      <input
-                        type="radio"
-                        name="package"
-                        id={`pkg-${p.id}`}
-                        checked={fields.packageId === p.id}
-                        onChange={() => handlePackageChange(p.id)}
-                      />
-                      <label htmlFor={`pkg-${p.id}`}>
-                        <strong>{p.name}</strong>
-                        {p.short} · {p.range}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="form-grid full">
-                <div className={`form-field ${errors.industry ? "error" : ""}`}>
-                  <label htmlFor="industry">Industry / sector *</label>
+                <div className={`form-field ${errors.referralSource ? "error" : ""}`}>
+                  <label htmlFor="referralSource">How did you hear about us? *</label>
                   <input
-                    id="industry"
-                    value={fields.industry}
-                    onChange={(e) => set("industry", e.target.value)}
+                    id="referralSource"
+                    value={fields.referralSource}
+                    onChange={(e) => set("referralSource", e.target.value)}
                   />
-                  {errors.industry && (
-                    <div className="field-error">{errors.industry}</div>
+                  {errors.referralSource && (
+                    <div className="field-error">{errors.referralSource}</div>
                   )}
                 </div>
-                <div
-                  className={`form-field ${errors.projectDescription ? "error" : ""}`}
-                >
-                  <label htmlFor="projectDescription">Project description *</label>
-                  <textarea
-                    id="projectDescription"
-                    value={fields.projectDescription}
-                    onChange={(e) => set("projectDescription", e.target.value)}
-                  />
-                  {errors.projectDescription && (
-                    <div className="field-error">{errors.projectDescription}</div>
-                  )}
-                </div>
-                <div
-                  className={`form-field ${errors.coreProblem ? "error" : ""}`}
-                >
-                  <label htmlFor="coreProblem">Core problem to solve *</label>
-                  <textarea
-                    id="coreProblem"
-                    value={fields.coreProblem}
-                    onChange={(e) => set("coreProblem", e.target.value)}
-                  />
-                  {errors.coreProblem && (
-                    <div className="field-error">{errors.coreProblem}</div>
-                  )}
-                </div>
-              </div>
-            </>
-          )}
-
-          {step === 3 && (
-            <>
-              <div className="form-step-title">Investment & timeline</div>
-              <p className="form-step-hint">Step 3 of 4 — how you&apos;re resourcing this.</p>
-
-              <div className="form-field">
-                <div className="budget-slider-container">
-                  <div className="budget-slider-header">
-                    <span className="budget-slider-label">Investment Range</span>
-                    <span className="budget-slider-value">{BUDGET_STEPS[fields.budgetIndex]}</span>
-                  </div>
+                <div className={`form-field ${errors.inspirationUrl ? "error" : ""}`}>
+                  <label htmlFor="inspirationUrl">Inspiration URL (optional)</label>
                   <input
-                    type="range"
-                    className="budget-slider"
-                    min={0}
-                    max={BUDGET_STEPS.length - 1}
-                    step={1}
-                    value={fields.budgetIndex}
-                    style={{ "--value-percent": `${(fields.budgetIndex / (BUDGET_STEPS.length - 1)) * 100}%` } as React.CSSProperties}
-                    onChange={(e) =>
-                      set("budgetIndex", Number.parseInt(e.target.value, 10))
-                    }
+                    id="inspirationUrl"
+                    placeholder="https://"
+                    value={fields.inspirationUrl}
+                    onChange={(e) => set("inspirationUrl", e.target.value)}
                   />
-                  <div className="budget-slider-ticks">
-                    <span>Min: ₦500K</span>
-                    <span className="slider-tick-mid">₦8M</span>
-                    <span>Max: ₦50M+</span>
-                  </div>
-                  <div className="budget-description-box">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="description-icon">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                      <polyline points="14 2 14 8 20 8"></polyline>
-                      <line x1="16" y1="13" x2="8" y2="13"></line>
-                      <line x1="16" y1="17" x2="8" y2="17"></line>
-                      <polyline points="10 9 9 9 8 9"></polyline>
-                    </svg>
-                    <span><strong>Project Scope:</strong> {BUDGET_DESCRIPTIONS[fields.budgetIndex]}</span>
-                  </div>
+                  {errors.inspirationUrl && (
+                    <div className="field-error">{errors.inspirationUrl}</div>
+                  )}
                 </div>
               </div>
 
-              <div className="form-grid full">
-                <div
-                  className={`form-field ${errors.decisionMaker ? "error" : ""}`}
-                >
+              <div className="form-grid full" style={{ marginTop: 12 }}>
+                <div className={`form-field ${errors.decisionMaker ? "error" : ""}`}>
                   <label htmlFor="decisionMaker">Decision-maker context *</label>
                   <textarea
                     id="decisionMaker"
@@ -605,9 +607,7 @@ function ContactFormInner() {
                     <div className="field-error">{errors.decisionMaker}</div>
                   )}
                 </div>
-                <div
-                  className={`form-field ${errors.priorExperience ? "error" : ""}`}
-                >
+                <div className={`form-field ${errors.priorExperience ? "error" : ""}`}>
                   <label htmlFor="priorExperience">Prior agency / build experience *</label>
                   <textarea
                     id="priorExperience"
@@ -619,28 +619,6 @@ function ContactFormInner() {
                     <div className="field-error">{errors.priorExperience}</div>
                   )}
                 </div>
-              </div>
-            </>
-          )}
-
-          {step === 4 && (
-            <>
-              <div className="form-step-title">Final details</div>
-              <p className="form-step-hint">Step 4 of 4 — context and references.</p>
-              <div className="form-grid full">
-                <div
-                  className={`form-field ${errors.referralSource ? "error" : ""}`}
-                >
-                  <label htmlFor="referralSource">How did you hear about us? *</label>
-                  <input
-                    id="referralSource"
-                    value={fields.referralSource}
-                    onChange={(e) => set("referralSource", e.target.value)}
-                  />
-                  {errors.referralSource && (
-                    <div className="field-error">{errors.referralSource}</div>
-                  )}
-                </div>
                 <div className="form-field">
                   <label htmlFor="existingAssets">Existing brand / design assets</label>
                   <textarea
@@ -649,20 +627,6 @@ function ContactFormInner() {
                     value={fields.existingAssets}
                     onChange={(e) => set("existingAssets", e.target.value)}
                   />
-                </div>
-                <div
-                  className={`form-field ${errors.inspirationUrl ? "error" : ""}`}
-                >
-                  <label htmlFor="inspirationUrl">Inspiration URL (optional)</label>
-                  <input
-                    id="inspirationUrl"
-                    placeholder="https://"
-                    value={fields.inspirationUrl}
-                    onChange={(e) => set("inspirationUrl", e.target.value)}
-                  />
-                  {errors.inspirationUrl && (
-                    <div className="field-error">{errors.inspirationUrl}</div>
-                  )}
                 </div>
                 <div className="form-field">
                   <label htmlFor="additionalNotes">Anything else we should know?</label>
@@ -690,7 +654,7 @@ function ContactFormInner() {
             ) : (
               <span />
             )}
-            {step < 4 ? (
+            {step < 2 ? (
               <button type="button" className="btn-primary" onClick={goNext}>
                 Continue
               </button>
