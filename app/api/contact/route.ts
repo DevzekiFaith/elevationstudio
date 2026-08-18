@@ -148,14 +148,15 @@ export async function POST(req: NextRequest) {
       </head>
       <body>
         <div class="container">
-          <div style="background-color: #0d111b; padding: 24px 0 0; text-align: center;">
-            <img src="${baseUrl}/email_logo.png" alt="Elevation Studio" style="width: 140px; height: auto; display: block; margin: 0 auto 16px;" />
-            <div style="width: 100%; border-bottom: 2px solid #d4a843;">
-              <img src="${baseUrl}/email_hero.jpg" alt="Architecture Concept" style="width: 100%; height: auto; display: block;" />
-            </div>
-            <div style="padding: 16px 32px; background-color: #08080a; text-align: center; border-bottom: 1px solid #1f1f27;">
-              <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #8a8a93; text-transform: uppercase; line-height: 1;">Project Commission Brief</p>
-            </div>
+          <!-- Compact Branded Header -->
+          <div style="background-color: #0d111b; padding: 16px 0; text-align: center; border-bottom: 1px solid #1f1f27;">
+            <img src="${baseUrl}/email_logo.png" alt="Elevation Studio" style="width: 120px; height: auto; display: block; margin: 0 auto;" />
+          </div>
+          <div style="width: 100%; max-height: 120px; overflow: hidden; border-bottom: 2px solid #d4a843;">
+            <img src="${baseUrl}/email_hero.jpg" alt="Architecture Concept" style="width: 100%; height: 120px; object-fit: cover; display: block;" />
+          </div>
+          <div style="padding: 16px 32px; background-color: #08080a; text-align: center; border-bottom: 1px solid #1f1f27;">
+            <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #8a8a93; text-transform: uppercase; line-height: 1;">Project Commission Brief</p>
           </div>
           
           <div class="content">
@@ -306,14 +307,15 @@ export async function POST(req: NextRequest) {
       </head>
       <body>
         <div class="container">
-          <div style="background-color: #0d111b; padding: 24px 0 0; text-align: center;">
-            <img src="${baseUrl}/email_logo.png" alt="Elevation Studio" style="width: 140px; height: auto; display: block; margin: 0 auto 16px;" />
-            <div style="width: 100%; border-bottom: 2px solid #d4a843;">
-              <img src="${baseUrl}/email_hero.jpg" alt="Architecture Concept" style="width: 100%; height: auto; display: block;" />
-            </div>
-            <div style="padding: 16px 32px; background-color: #08080a; text-align: center; border-bottom: 1px solid #1f1f27;">
-              <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #8a8a93; text-transform: uppercase; line-height: 1;">Project Brief Confirmation</p>
-            </div>
+          <!-- Compact Branded Header -->
+          <div style="background-color: #0d111b; padding: 16px 0; text-align: center; border-bottom: 1px solid #1f1f27;">
+            <img src="${baseUrl}/email_logo.png" alt="Elevation Studio" style="width: 120px; height: auto; display: block; margin: 0 auto;" />
+          </div>
+          <div style="width: 100%; max-height: 120px; overflow: hidden; border-bottom: 2px solid #d4a843;">
+            <img src="${baseUrl}/email_hero.jpg" alt="Architecture Concept" style="width: 100%; height: 120px; object-fit: cover; display: block;" />
+          </div>
+          <div style="padding: 16px 32px; background-color: #08080a; text-align: center; border-bottom: 1px solid #1f1f27;">
+            <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; letter-spacing: 3px; color: #8a8a93; text-transform: uppercase; line-height: 1;">Project Brief Confirmation</p>
           </div>
           
           <div class="content" style="padding: 32px 40px;">
@@ -347,7 +349,7 @@ export async function POST(req: NextRequest) {
     const attachments = pdfBuffer ? [
       {
         filename: `Elevation_Studio_Brief_${company.replace(/\s+/g, "_")}.pdf`,
-        content: pdfBuffer,
+        content: pdfBuffer.toString("base64"),
       }
     ] : [];
 
