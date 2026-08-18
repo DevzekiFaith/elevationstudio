@@ -127,7 +127,7 @@ function ContactFormInner() {
     }
   }, [searchParams]);
 
-  const formId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID;
+
 
   const progress = useMemo(() => {
     return [1, 2, 3, 4].map((s) => ({
@@ -201,57 +201,40 @@ function ContactFormInner() {
     if (step > 1) setStep((s) => (s - 1) as Step);
   };
 
-  const buildFormData = () => {
-    const fd = new FormData();
-    const pkg = PACKAGES.find((p) => p.id === fields.packageId)!;
-    fd.append("name", fields.name.trim());
-    fd.append("email", fields.email.trim());
-    fd.append("_replyto", fields.email.trim());
-    fd.append("phone", fields.phone.trim());
-    fd.append("role", fields.role.trim());
-    fd.append("company", fields.company.trim());
-    fd.append("location", fields.location.trim());
-    fd.append("package", pkg.code);
-    fd.append("industry", fields.industry.trim());
-    fd.append("project_description", fields.projectDescription.trim());
-    fd.append("core_problem", fields.coreProblem.trim());
-    fd.append("budget_range", BUDGET_STEPS[fields.budgetIndex] ?? "");
-    fd.append("timeline", fields.timeline);
-    fd.append("decision_maker", fields.decisionMaker.trim());
-    fd.append("prior_experience", fields.priorExperience.trim());
-    fd.append("referral_source", fields.referralSource.trim());
-    fd.append("existing_assets", fields.existingAssets.trim());
-    fd.append("inspiration_url", fields.inspirationUrl.trim());
-    fd.append("additional_notes", fields.additionalNotes.trim());
-    fd.append(
-      "_subject",
-      `New inquiry — ${fields.company.trim()} (${pkg.name})`,
-    );
-    return fd;
-  };
-
   const handleSubmit = async (ev: React.FormEvent) => {
     ev.preventDefault();
     if (!validateStep4()) return;
-    if (!formId) {
-      setSubmitError(
-        "Form is not connected yet. Add NEXT_PUBLIC_FORMSPREE_FORM_ID to your environment.",
-      );
-      return;
-    }
     setSubmitting(true);
     setSubmitError(null);
     try {
-      const res = await fetch(`https://formspree.io/f/${formId}`, {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: buildFormData(),
-        headers: { Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: fields.name.trim(),
+          email: fields.email.trim(),
+          phone: fields.phone.trim(),
+          role: fields.role.trim(),
+          company: fields.company.trim(),
+          location: fields.location.trim(),
+          packageName: selectedPkg.name,
+          packageCode: selectedPkg.code,
+          industry: fields.industry.trim(),
+          projectDescription: fields.projectDescription.trim(),
+          coreProblem: fields.coreProblem.trim(),
+          budgetRange: BUDGET_STEPS[fields.budgetIndex] ?? "",
+          timeline: fields.timeline,
+          decisionMaker: fields.decisionMaker.trim(),
+          priorExperience: fields.priorExperience.trim(),
+          referralSource: fields.referralSource.trim(),
+          existingAssets: fields.existingAssets.trim(),
+          inspirationUrl: fields.inspirationUrl.trim(),
+          additionalNotes: fields.additionalNotes.trim(),
+        }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        throw new Error(
-          (data as { error?: string }).error || "Submission failed",
-        );
+        throw new Error(data.error || "Submission failed");
       }
       setSuccess(true);
     } catch (err) {
@@ -275,11 +258,11 @@ function ContactFormInner() {
         </div>
         <div className="contact-main">
           <div className="success-panel">
-            <h2>Received. A human will review this.</h2>
+            <h2>Brief Received.</h2>
             <p>
-              Thank you, {fields.name.split(" ")[0]}. Your brief is in our
-              queue — not an automated ticket. Expect a thoughtful reply at{" "}
-              <strong style={{ color: "var(--white)" }}>{fields.email}</strong>.
+              Thank you, {fields.name.split(" ")[0]}. Your commission details have been registered. 
+              Our partners are already reviewing your project parameters. Expect a 
+              thoughtful response at <strong style={{ color: "var(--white)" }}>{fields.email}</strong>.
             </p>
             <div className="success-summary">
               <strong>Summary</strong>
@@ -340,7 +323,7 @@ function ContactFormInner() {
 
         <div className="contact-detail-block">
           <div className="footer-contact-label">Email Inquiries</div>
-          <a href="mailto:mindvestglobalresources@gmail.com">mindvestglobalresources@gmail.com</a>
+          <a href="mailto:support@mindvestglobalresources.com.ng">support@mindvestglobalresources.com.ng</a>
           <div className="footer-contact-label" style={{ marginTop: 16 }}>
             Direct WhatsApp / Phone
           </div>

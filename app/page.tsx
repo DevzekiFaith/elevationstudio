@@ -926,10 +926,10 @@ export default function Home() {
               <div className="footer-contact-label">Email</div>
               <div className="footer-contact-value">
                 <a
-                  href="mailto:mindvestglobalresources@gmail.com"
+                  href="mailto:support@mindvestglobalresources.com.ng"
                   style={{ color: "inherit", textDecoration: "none" }}
                 >
-                  mindvestglobalresources@gmail.com
+                  support@mindvestglobalresources.com.ng
                 </a>
               </div>
             </div>

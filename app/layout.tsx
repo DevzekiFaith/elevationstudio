@@ -130,7 +130,7 @@ const jsonLd = {
     "https://mindvestglobalresources.com.ng",
   ],
   telephone: "+2349119059859",
-  email: "mindvestglobalresources@gmail.com",
+  email: "support@mindvestglobalresources.com.ng",
   priceRange: "₦500,000 - ₦50,000,000+",
   address: {
     "@type": "PostalAddress",
