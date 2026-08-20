@@ -92,6 +92,29 @@ const TIMELINES = [
   "Flexible / exploring",
 ] as const;
 
+const GOALS_LIST = [
+  {
+    id: "brand",
+    title: "Brand Visual Identity",
+    desc: "Logo system, custom colour palette, guidelines, and visual assets",
+  },
+  {
+    id: "web",
+    title: "Digital Web Engineering",
+    desc: "Custom React/Next.js/TypeScript websites and secure web tools",
+  },
+  {
+    id: "space",
+    title: "Space & Architectural Concept",
+    desc: "High-end 3D interior design concepts, layout planning & Revit renders",
+  },
+  {
+    id: "culture",
+    title: "Culture & Team Transformation",
+    desc: "Leadership programs and human architecture alignment partnerships",
+  },
+];
+
 type Step = 1 | 2;
 
 const initialFields = {
@@ -124,20 +147,37 @@ function ContactFormInner() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
 
+  const [selectedGoals, setSelectedGoals] = useState<string[]>(["brand"]);
+
   useEffect(() => {
     const pkg = searchParams?.get("package") || searchParams?.get("pkg");
-    if (pkg && ["1", "2", "3", "4", "res-arch", "res-master"].includes(pkg)) {
-      let defaultBudgetIdx = 0;
-      if (pkg === "2" || pkg === "res-arch") defaultBudgetIdx = 2; // ₦2M – ₦3.5M
-      if (pkg === "3" || pkg === "res-master") defaultBudgetIdx = 4; // ₦5M – ₦8M
-      if (pkg === "4") defaultBudgetIdx = 8; // ₦30M – ₦50M
+    const industryParam = searchParams?.get("industry");
 
-      setFields((f) => ({
-        ...f,
-        packageId: pkg,
-        budgetIndex: defaultBudgetIdx,
-      }));
-    }
+    setFields((f) => {
+      const next = { ...f };
+      if (industryParam) {
+        if (industryParam === "developer") next.industry = "Real Estate Developers";
+        else if (industryParam === "corporate") next.industry = "Corridor Corporations";
+        else if (industryParam === "diaspora") next.industry = "Diaspora Founders";
+        else if (industryParam === "government") next.industry = "Gov & Institutions";
+        else next.industry = industryParam;
+      }
+      if (pkg && ["1", "2", "3", "4", "res-arch", "res-master"].includes(pkg)) {
+        let defaultBudgetIdx = 0;
+        if (pkg === "2" || pkg === "res-arch") defaultBudgetIdx = 2;
+        if (pkg === "3" || pkg === "res-master") defaultBudgetIdx = 4;
+        if (pkg === "4") defaultBudgetIdx = 8;
+        next.packageId = pkg;
+        next.budgetIndex = defaultBudgetIdx;
+
+        // Set matching goals
+        if (pkg === "1") setSelectedGoals(["brand"]);
+        else if (pkg === "2") setSelectedGoals(["brand", "web"]);
+        else if (pkg === "3") setSelectedGoals(["brand", "web", "space"]);
+        else if (pkg === "4") setSelectedGoals(["brand", "web", "space", "culture"]);
+      }
+      return next;
+    });
   }, [searchParams]);
 
   const handlePackageChange = (id: string) => {
@@ -149,6 +189,54 @@ function ContactFormInner() {
     setFields((f) => ({
       ...f,
       packageId: id,
+      budgetIndex: defaultBudgetIdx,
+    }));
+
+    // Sync goals based on package manual click
+    if (id === "1") {
+      setSelectedGoals(["brand"]);
+    } else if (id === "2") {
+      setSelectedGoals(["brand", "web"]);
+    } else if (id === "3") {
+      setSelectedGoals(["brand", "web", "space"]);
+    } else if (id === "4") {
+      setSelectedGoals(["brand", "web", "space", "culture"]);
+    }
+  };
+
+  const handleGoalToggle = (goalId: string) => {
+    let nextGoals = [...selectedGoals];
+    if (nextGoals.includes(goalId)) {
+      nextGoals = nextGoals.filter((g) => g !== goalId);
+    } else {
+      nextGoals.push(goalId);
+    }
+    
+    // Ensure at least one goal remains selected
+    if (nextGoals.length === 0) {
+      nextGoals = ["brand"];
+    }
+
+    setSelectedGoals(nextGoals);
+
+    // Calculate dynamic Package recommendation
+    let targetPkgId = "1";
+    if (nextGoals.includes("culture")) {
+      targetPkgId = "4";
+    } else if (nextGoals.includes("space")) {
+      targetPkgId = "3";
+    } else if (nextGoals.includes("web")) {
+      targetPkgId = "2";
+    }
+
+    let defaultBudgetIdx = 0;
+    if (targetPkgId === "2") defaultBudgetIdx = 2;
+    if (targetPkgId === "3") defaultBudgetIdx = 4;
+    if (targetPkgId === "4") defaultBudgetIdx = 8;
+
+    setFields((f) => ({
+      ...f,
+      packageId: targetPkgId,
       budgetIndex: defaultBudgetIdx,
     }));
   };
@@ -390,27 +478,44 @@ function ContactFormInner() {
               <div className="form-step-title">Your Project</div>
               <p className="form-step-hint">Step 1 of 2 — package focus, scope & resourcing.</p>
 
-              <div className="form-field" style={{ marginBottom: 24 }}>
-                <label>Package *</label>
-                <div className="package-radios">
-                  {PACKAGES.map((p) => (
-                    <div
-                      key={p.id}
-                      className={`package-radio ${p.bridge ? "bridge" : ""}`.trim()}
-                    >
-                      <input
-                        type="radio"
-                        name="package"
-                        id={`pkg-${p.id}`}
-                        checked={fields.packageId === p.id}
-                        onChange={() => handlePackageChange(p.id)}
-                      />
-                      <label htmlFor={`pkg-${p.id}`}>
-                        <strong>{p.name}</strong>
-                        {p.short} · {p.range}
-                      </label>
-                    </div>
-                  ))}
+              <div className="form-field" style={{ marginBottom: 32 }}>
+                <label>What do you need resolved? (Select all that apply) *</label>
+                <div className="goals-grid">
+                  {GOALS_LIST.map((g) => {
+                    const isChecked = selectedGoals.includes(g.id);
+                    return (
+                      <button
+                        key={g.id}
+                        type="button"
+                        className={`goal-card ${isChecked ? "checked" : ""}`}
+                        onClick={() => handleGoalToggle(g.id)}
+                        style={{ border: "none", outline: "none", font: "inherit", background: "none" }}
+                      >
+                        <div className="goal-checkbox">
+                          {isChecked && <span className="goal-checkbox-mark">✓</span>}
+                        </div>
+                        <div className="goal-info">
+                          <span className="goal-title">{g.title}</span>
+                          <span className="goal-desc">{g.desc}</span>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+                
+                <div style={{
+                  background: "rgba(212, 168, 67, 0.05)",
+                  border: "1px dashed rgba(212, 168, 67, 0.2)",
+                  borderRadius: "6px",
+                  padding: "16px",
+                  fontSize: "13px",
+                  color: "var(--muted)",
+                  lineHeight: "1.5",
+                  marginTop: "-16px",
+                  marginBottom: "24px"
+                }}>
+                  Based on your goals, we dynamically align your project to:{" "}
+                  <strong style={{ color: "var(--white)" }}>{selectedPkg.code}</strong>.
                 </div>
               </div>
 

@@ -18,6 +18,8 @@ import { useCurrency } from "@/components/CurrencyContext";
 import { CurrencyToggle } from "@/components/CurrencyToggle";
 import { ResidentialServices } from "@/components/ResidentialServices";
 import { ScrollBackground } from "@/components/ScrollBackground";
+import { MarketsSelector } from "@/components/MarketsSelector";
+import { WarmWelcome } from "@/components/WarmWelcome";
 
 export default function Home() {
   const { formatPrice, currency } = useCurrency();
@@ -86,6 +88,19 @@ export default function Home() {
             
             <Reveal direction="up" duration={0.8} delay={0.2}>
               <div className="hero-headline">
+                <span style={{
+                  fontFamily: "var(--font-dm-mono), monospace",
+                  fontSize: "clamp(12px, 1.5vw, 16px)",
+                  color: "var(--muted)",
+                  display: "block",
+                  marginBottom: "16px",
+                  textTransform: "uppercase",
+                  letterSpacing: "4px",
+                  fontWeight: 500,
+                  lineHeight: 1.2
+                }}>
+                  Welcome to our studio
+                </span>
                 BUILD
                 <br />
                 <span className="line2">DIFFERENT</span>
@@ -166,7 +181,9 @@ export default function Home() {
         </div>
       </section>
 
-      <BrandFlow />
+      <WarmWelcome />
+
+      <MarketsSelector />
 
       <Reveal direction="up" duration={0.7}>
         <section className="services relative overflow-hidden" id="services" data-bg="light">
@@ -279,6 +296,10 @@ export default function Home() {
           </div>
         </section>
       </Reveal>
+
+      <ResidentialServices />
+
+      <BrandFlow />
 
       {/* 2D Blueprint vs 3D Render Comparison Slider - Hidden until custom blueprint assets are assigned */}
       {/* <BlueprintSlider /> */}
@@ -507,9 +528,20 @@ export default function Home() {
                 </div>
               </TiltCard>
             </div>
+          </div>
+        </section>
+      </Reveal>
 
+      {/* Dynamic Payment Terms & Retainer Scoping Section */}
+      <Reveal direction="up">
+        <section className="payment-terms-section relative overflow-hidden" id="payment-terms" data-bg="dark" style={{ background: "#060606", padding: "100px 60px 120px" }}>
+          <ParallaxLayer speed={-0.1} className="absolute right-0 top-1/3 pointer-events-none">
+            <div className="ambient-orb ambient-orb-gold w-[400px] h-[400px] opacity-10" />
+          </ParallaxLayer>
+
+          <div className="max-w-[1300px] mx-auto">
             {/* Corporate Payment Milestone Schedule */}
-            <div className="pkg-payment-schedule mt-20 pt-16 border-t border-white/5">
+            <div className="pkg-payment-schedule mt-0 pt-0">
               <div className="flex flex-wrap justify-between items-end gap-6 mb-8">
                 <div>
                   <div className="section-tag mb-3">Milestone Schedule</div>
@@ -607,86 +639,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      </Reveal>
-
-      <ResidentialServices />
-
-      <Reveal direction="up">
-        <section className="markets" id="markets" data-bg="light">
-          <div className="section-tag">Who We Serve</div>
-          <div
-            style={{
-              fontFamily: "var(--font-bebas), sans-serif",
-              fontSize: "clamp(52px, 8vw, 100px)",
-              lineHeight: 0.9,
-            }}
-          >
-            GLOBAL REACH, <span style={{ color: "var(--gold)" }}>LOCAL BASE</span>
-          </div>
-
-          <div className="markets-grid">
-            <TiltCard glare maxTilt={6}>
-              <div className="market h-full">
-                <div className="market-num">01</div>
-                <div className="market-name">
-                  Global Reach
-                  <br />
-                  Serve Wherever You Are
-                </div>
-                <div className="market-region">Any Location / Base Globally</div>
-                <ul className="market-items">
-                  <li>We serve individuals and companies from any location of their base</li>
-                  <li>Seamless remote integration, workflow collaboration, and digital engineering</li>
-                  <li>African diaspora businesses wanting authentic, high-impact design intelligence</li>
-                  <li>Startups, NGOs, and remote-first companies scaling their digital footprint</li>
-                </ul>
-              </div>
-            </TiltCard>
-
-            <TiltCard glare maxTilt={6}>
-              <div className="market h-full">
-                <div className="market-num">02</div>
-                <div className="market-name">
-                  Local Base
-                  <br />
-                  Ogun — Lagos Corridor
-                </div>
-                <div className="market-region">Our Operational Headquarters</div>
-                <ul className="market-items">
-                  <li>Retaining the Ogun - Lagos corridor as our headquarters and operational hub</li>
-                  <li>Real estate developers — brand identity, web design, and spatial concepts</li>
-                  <li>Manufacturing and industrial corridor corporations upgrading visual assets</li>
-                  <li>Hospitality, retail, and commercial developments across the corridor</li>
-                </ul>
-              </div>
-            </TiltCard>
-
-            <TiltCard glare maxTilt={6}>
-              <div className="market h-full">
-                <div className="market-num">03</div>
-                <div className="market-name">
-                  Government &
-                  <br />
-                  Institutional
-                </div>
-                <div className="market-region">Federal, State & Public Sector</div>
-                <ul className="market-items">
-                  <li>
-                    State agencies modernising visual identity and secure citizen portals
-                  </li>
-                  <li>
-                    Educational institutions — brand, digital systems, and space design
-                  </li>
-                  <li>Feeds into Mindvest Global partnership strategy for public infrastructure</li>
-                </ul>
-              </div>
-            </TiltCard>
-          </div>
-
-          <div style={{ marginTop: 48 }}>
-            <LocationMap />
           </div>
         </section>
       </Reveal>
@@ -857,6 +809,12 @@ export default function Home() {
               </Magnetic>
             </div>
           </div>
+        </section>
+      </Reveal>
+
+      <Reveal direction="up">
+        <section className="markets-map-container" style={{ padding: "120px 60px", maxWidth: 1300, margin: "0 auto" }} data-bg="light">
+          <LocationMap />
         </section>
       </Reveal>
 
