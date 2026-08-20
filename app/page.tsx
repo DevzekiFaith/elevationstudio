@@ -534,7 +534,7 @@ export default function Home() {
 
       {/* Dynamic Payment Terms & Retainer Scoping Section */}
       <Reveal direction="up">
-        <section className="payment-terms-section relative overflow-hidden" id="payment-terms" data-bg="dark" style={{ background: "#060606", padding: "100px 60px 120px" }}>
+        <section className="payment-terms-section relative overflow-hidden" id="payment-terms" data-bg="dark">
           <ParallaxLayer speed={-0.1} className="absolute right-0 top-1/3 pointer-events-none">
             <div className="ambient-orb ambient-orb-gold w-[400px] h-[400px] opacity-10" />
           </ParallaxLayer>
@@ -813,13 +813,13 @@ export default function Home() {
       </Reveal>
 
       <Reveal direction="up">
-        <section className="markets-map-container" style={{ padding: "120px 60px", maxWidth: 1300, margin: "0 auto" }} data-bg="light">
+        <section className="markets-map-container" data-bg="light">
           <LocationMap />
         </section>
       </Reveal>
 
       <Reveal direction="up">
-        <section id="qr-access" data-bg="dark" style={{ padding: "80px 48px 40px", background: "#060606" }}>
+        <section id="qr-access" data-bg="dark">
           <QRCodeCard />
         </section>
       </Reveal>

@@ -2019,6 +2019,22 @@ nav {
   margin: 0 auto;
 }
 
+.payment-terms-section {
+  padding: 100px 60px 120px;
+  background: #060606;
+}
+
+.markets-map-container {
+  padding: 120px 60px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+#qr-access {
+  padding: 80px 48px 40px;
+  background: #060606;
+}
+
 /* Tabs Navigation for Who We Serve */
 .markets-tabs-nav {
   display: flex;
@@ -3336,35 +3352,64 @@ footer {
   color: var(--gold);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px), (hover: none), (pointer: coarse) {
+  body {
+    cursor: auto !important;
+  }
+  .cursor,
+  .cursor-ring {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1024px) {
   nav {
-    padding: 20px 24px;
+    padding: 16px 20px;
   }
 
   .nav-links {
     display: none;
   }
+}
 
+@media (max-width: 900px) {
   .hero {
-    padding: 0 24px 60px;
+    padding: 130px 24px 60px;
+    min-height: auto;
   }
 
   .hero-headline {
-    font-size: 72px;
+    font-size: clamp(44px, 11vw, 76px);
+    line-height: 0.92;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   .about {
-    padding: 80px 24px;
+    padding: 72px 24px;
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
   }
 
   .services {
-    padding: 0 24px 80px;
+    padding: 60px 24px 80px;
+  }
+
+  .services-headline {
+    font-size: clamp(38px, 7vw, 64px);
   }
 
   .service-item {
-    grid-template-columns: 60px 1fr;
+    grid-template-columns: 50px 1fr;
+    gap: 16px;
+    padding: 32px 0;
+  }
+
+  .service-name {
+    font-size: 32px;
   }
 
   .service-tags {
@@ -3372,118 +3417,398 @@ footer {
   }
 
   .packages {
-    padding: 80px 24px;
+    padding: 72px 24px;
+  }
+
+  .pkg-title {
+    font-size: clamp(40px, 7vw, 64px);
   }
 
   .pkg-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
 
-  .warm-welcome {
-    padding: 80px 24px;
+  .payment-terms-section {
+    padding: 60px 24px 80px;
   }
 
-  .welcome-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .welcome-card {
-    padding: 32px;
-  }
-
-  .markets {
-    padding: 80px 24px;
-  }
-
-  .market-detail-card {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 40px 24px;
-  }
-
-  .goals-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .process {
-    padding: 80px 24px;
-  }
-
-  .process-steps {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .bridge-section {
-    padding: 80px 24px;
-    grid-template-columns: 1fr;
-  }
-
-  .payment {
-    padding: 80px 24px;
+  .pkg-payment-title {
+    font-size: clamp(32px, 6vw, 48px);
   }
 
   .payment-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  .cta-section {
-    padding: 80px 24px;
-  }
-
-  footer {
-    padding: 60px 24px;
-  }
-
-  .footer-top {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .footer-bottom {
+  .pkg-retainer-body {
     flex-direction: column;
-    align-items: flex-start;
+    gap: 20px;
+    align-items: stretch;
   }
 
-  body {
-    cursor: auto;
+  .pkg-retainer-btn-wrapper {
+    width: 100%;
   }
 
-  .cursor,
-  .cursor-ring {
-    display: none;
+  .pkg-retainer-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .warm-welcome {
+    padding: 72px 24px;
+  }
+
+  .welcome-headline {
+    font-size: clamp(40px, 7.5vw, 68px);
+  }
+
+  .welcome-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .welcome-card {
+    padding: 28px 24px;
+  }
+
+  .markets {
+    padding: 72px 24px;
+  }
+
+  .markets-tabs-nav {
+    gap: 8px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+  }
+
+  .markets-tab-btn {
+    padding: 12px 16px;
+    font-size: 11px;
+  }
+
+  .market-detail-card {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 36px 24px;
+  }
+
+  .market-num {
+    font-size: 64px;
+    margin-bottom: 12px;
+  }
+
+  .market-card-title {
+    font-size: 28px;
+  }
+
+  .goals-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .process {
+    padding: 72px 24px;
+  }
+
+  .process-steps {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 
   .p-step-arrow {
     display: none;
   }
 
-  .contact-page {
+  .bridge-section {
+    padding: 72px 24px;
     grid-template-columns: 1fr;
-    padding: 88px 24px 48px;
+    gap: 40px;
+  }
+
+  .cta-section {
+    padding: 72px 24px;
+  }
+
+  .cta-title {
+    font-size: clamp(48px, 9vw, 80px);
+  }
+
+  .cta-actions {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .markets-map-container {
+    padding: 60px 24px;
+  }
+
+  #qr-access {
+    padding: 60px 24px 40px;
+  }
+
+  .testimonials-section {
+    padding: 72px 24px;
+  }
+
+  footer {
+    padding: 60px 24px 40px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* Contact page mobile ordering: Form first, Sidebar info second */
+  .contact-page {
+    display: flex;
+    flex-direction: column;
+    padding: 96px 24px 48px;
+    gap: 40px;
+  }
+
+  .contact-main {
+    order: 1;
+    width: 100%;
   }
 
   .contact-sidebar {
+    order: 2;
+    width: 100%;
     position: relative;
     top: 0;
+    margin-top: 16px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .contact-preview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 
   .form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .pkg-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .pkg-card {
+    padding: 28px 20px;
+  }
+
+  .process-steps {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .about-right {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .contact-preview-grid {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 600px) {
-  .pkg-grid {
-    grid-template-columns: 1fr;
+  .hero {
+    padding: 110px 18px 48px;
   }
 
-  .process-steps {
-    grid-template-columns: 1fr;
+  .hero-headline {
+    font-size: clamp(38px, 11vw, 64px);
   }
 
-  .about-right {
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .hero-actions a,
+  .hero-actions button {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .markets-tabs-nav {
+    display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .markets-tab-btn {
+    padding: 10px 8px;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  .service-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 24px 0;
+  }
+
+  .contact-page {
+    padding: 88px 16px 40px;
+  }
+
+  .form-nav-btns {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-nav-btns button {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .cta-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .cta-actions a,
+  .cta-actions button {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .whatsapp-popup {
+    width: calc(100vw - 32px);
+    right: 0;
+  }
+
+  .whatsapp-floating-wrap {
+    right: 14px;
+    bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 96px 16px 40px;
+  }
+
+  .hero-headline {
+    font-size: clamp(34px, 10.5vw, 52px);
+  }
+
+  .warm-welcome {
+    padding: 50px 16px;
+  }
+
+  .welcome-card {
+    padding: 20px 16px;
+  }
+
+  .welcome-statement-box {
+    padding: 18px 14px;
+  }
+
+  .markets {
+    padding: 50px 16px;
+  }
+
+  .market-detail-card {
+    padding: 20px 16px;
+    border-radius: 8px;
+  }
+
+  .market-card-title {
+    font-size: 22px;
+  }
+
+  .services {
+    padding: 40px 16px 60px;
+  }
+
+  .payment-terms-section {
+    padding: 50px 16px 60px;
+  }
+
+  .process {
+    padding: 50px 16px;
+  }
+
+  .p-step {
+    padding: 28px 18px;
+  }
+
+  .bridge-section {
+    padding: 50px 16px;
+  }
+
+  .cta-section {
+    padding: 50px 16px;
+  }
+
+  .markets-map-container {
+    padding: 40px 16px;
+  }
+
+  #qr-access {
+    padding: 40px 16px 28px;
+  }
+
+  .testimonials-section {
+    padding: 50px 16px;
+  }
+
+  footer {
+    padding: 48px 16px 32px;
+  }
+
+  .goal-card {
+    padding: 14px 12px;
+    gap: 12px;
+  }
+
+  .goal-title {
+    font-size: 14px;
+  }
+
+  .goal-desc {
+    font-size: 11px;
+  }
+
+  .budget-slider-container {
+    padding: 14px 12px;
+  }
+
+  .budget-slider-ticks {
+    font-size: 7.5px;
+  }
+
+  .review-modal-card {
+    padding: 16px 14px;
+  }
+
+  .review-modal-title {
+    font-size: 20px;
   }
 }
 

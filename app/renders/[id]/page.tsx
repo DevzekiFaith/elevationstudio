@@ -86,9 +86,9 @@ export default async function RenderDetailPage({ params }: PageProps) {
         </div>
 
         {/* ULTRA-LARGE IMMERSIVE HD VIEWPORT CONTAINER */}
-        <section className="max-w-[1600px] mx-auto px-4 md:px-8 mb-16">
+        <section className="max-w-[1600px] mx-auto px-3 sm:px-6 md:px-8 mb-12 sm:mb-16">
           <Reveal direction="zoom" duration={0.7}>
-            <div className="relative w-full h-[60vh] md:h-[82vh] min-h-[480px] rounded-2xl overflow-hidden border border-[#333336] shadow-[0_25px_80px_rgba(0,0,0,0.85)] group">
+            <div className="relative w-full h-[45vh] sm:h-[60vh] md:h-[82vh] min-h-[300px] sm:min-h-[400px] md:min-h-[480px] rounded-xl sm:rounded-2xl overflow-hidden border border-[#333336] shadow-[0_25px_80px_rgba(0,0,0,0.85)] group">
               <Image
                 src={render.image}
                 alt={render.title}
@@ -100,18 +100,18 @@ export default async function RenderDetailPage({ params }: PageProps) {
               <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-transparent to-black/30 opacity-70 pointer-events-none" />
 
               {/* Category & Location Badges */}
-              <div className="absolute top-6 left-6 md:top-8 md:left-8 z-10 flex flex-wrap gap-3">
-                <span className="px-4 py-2 bg-[#060606]/80 backdrop-blur-md border border-[var(--gold-border)] rounded text-[11px] font-mono tracking-widest text-[var(--gold)] uppercase shadow-lg">
+              <div className="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8 z-10 flex flex-wrap gap-2 sm:gap-3">
+                <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-[#060606]/80 backdrop-blur-md border border-[var(--gold-border)] rounded text-[10px] sm:text-[11px] font-mono tracking-widest text-[var(--gold)] uppercase shadow-lg">
                   {render.categoryLabel}
                 </span>
-                <span className="px-4 py-2 bg-[#060606]/80 backdrop-blur-md border border-white/10 rounded text-[11px] font-mono tracking-widest text-[#f4f0e8]/80 uppercase">
+                <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-[#060606]/80 backdrop-blur-md border border-white/10 rounded text-[10px] sm:text-[11px] font-mono tracking-widest text-[#f4f0e8]/80 uppercase">
                   {render.location}
                 </span>
               </div>
 
               {/* Overlay Bottom Title Banner */}
-              <div className="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10 md:right-10 z-10">
-                <h1 className="text-[clamp(36px,5.5vw,84px)] font-bebas leading-[0.92] text-white tracking-wide drop-shadow-md">
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 md:bottom-10 md:left-10 md:right-10 z-10">
+                <h1 className="text-[clamp(28px,6vw,84px)] font-bebas leading-[0.92] text-white tracking-wide drop-shadow-md">
                   {render.title}
                 </h1>
               </div>
@@ -120,7 +120,7 @@ export default async function RenderDetailPage({ params }: PageProps) {
         </section>
 
         {/* SPECIFICATIONS & ARCHITECTURAL BREAKDOWN */}
-        <section className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 mb-16 sm:mb-20">
           <div className="lg:col-span-7 flex flex-col gap-8">
             <Reveal direction="up" delay={0.1}>
               <div>
