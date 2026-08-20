@@ -303,7 +303,7 @@ export function Testimonials() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.4 }}
-                  className="relative w-full aspect-[4/3] sm:aspect-[16/11] md:aspect-[16/10] rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#0f1118] group"
+                  className="relative w-full min-h-[360px] sm:min-h-[400px] aspect-[4/4.5] sm:aspect-[16/11] md:aspect-[16/10] rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#0f1118] group"
                 >
                   {/* Background Client Photo */}
                   <Image
@@ -315,27 +315,27 @@ export function Testimonials() {
                     sizes="(max-width: 1024px) 100vw, 720px"
                   />
                   {/* Atmospheric gradient overlay for readable typography */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#060608] via-transparent to-black/65 opacity-90 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#060608] via-black/40 to-black/75 opacity-90 pointer-events-none" />
 
-                  {/* Top Left Overlay: Name & Role/Company subtitle (e.g. Kiara Washington -> Why Kiara is a good fit) */}
-                  <div className="absolute top-6 left-6 sm:top-8 sm:left-8 z-10 max-w-[80%]">
-                    <h4 className="font-syne font-bold text-2xl sm:text-3xl text-white tracking-wide mb-1 drop-shadow-md">
+                  {/* Top Left Overlay: Name & Role/Company subtitle */}
+                  <div className="absolute top-4 left-4 sm:top-8 sm:left-8 z-10 max-w-[calc(100%-85px)]">
+                    <h4 className="font-syne font-bold text-xl sm:text-2xl lg:text-3xl text-white tracking-wide mb-1 drop-shadow-md">
                       {active.author}
                     </h4>
                     <Link
                       href={active.packageHref || "/#packages"}
-                      className="inline-flex items-center gap-1.5 font-mono text-xs sm:text-sm text-[var(--gold)] hover:text-white uppercase tracking-wider transition-colors drop-shadow-sm"
+                      className="inline-flex items-center gap-1.5 font-mono text-[11px] sm:text-sm text-[var(--gold)] hover:text-white uppercase tracking-wider transition-colors drop-shadow-sm line-clamp-1"
                     >
                       <span>→ {active.role} · {active.company}</span>
                     </Link>
                   </div>
 
                   {/* Arrow Navigation Floating Top Right */}
-                  <div className="absolute top-6 right-6 z-20 flex gap-2">
+                  <div className="absolute top-4 right-4 sm:top-8 sm:right-8 z-20 flex gap-2">
                     <button
                       type="button"
                       onClick={handlePrev}
-                      className="w-9 h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 hover:border-[var(--gold)] text-white hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer"
+                      className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 hover:border-[var(--gold)] text-white hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-sm"
                       aria-label="Previous story"
                     >
                       ←
@@ -343,18 +343,18 @@ export function Testimonials() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="w-9 h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 hover:border-[var(--gold)] text-white hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer"
+                      className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 hover:border-[var(--gold)] text-white hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-sm"
                       aria-label="Next story"
                     >
                       →
                     </button>
                   </div>
 
-                  {/* Bottom Overlay Tag Bar: Pill badges row (Good fit, AI/ML, Enterprise, Rated ★ 4/4) */}
-                  <div className="absolute bottom-5 left-5 right-5 sm:bottom-7 sm:left-7 sm:right-7 z-10 flex flex-wrap items-center justify-between gap-2">
-                    <div className="flex flex-wrap items-center gap-2">
-                      {/* Highlighted First Pill (like '👍 Good fit' in sample) */}
-                      <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white text-black font-sans text-xs font-semibold rounded-full shadow-lg">
+                  {/* Bottom Overlay Tag Bar: Pill badges row */}
+                  <div className="absolute bottom-3 left-3 right-3 sm:bottom-7 sm:left-7 sm:right-7 z-10 flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                      {/* Highlighted First Pill */}
+                      <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 bg-white text-black font-sans text-[11px] sm:text-xs font-semibold rounded-full shadow-lg">
                         <span>👍</span>
                         <span>{active.tag}</span>
                       </span>
@@ -363,7 +363,7 @@ export function Testimonials() {
                       {active.pills.map((pill, i) => (
                         <span
                           key={i}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0e1017]/80 backdrop-blur-md border border-white/20 text-zinc-200 font-mono text-[11px] rounded-full"
+                          className="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-[#0e1017]/85 backdrop-blur-md border border-white/20 text-zinc-200 font-mono text-[10px] sm:text-[11px] rounded-full"
                         >
                           <span>{pill.icon}</span>
                           <span>{pill.label}</span>
@@ -371,8 +371,8 @@ export function Testimonials() {
                       ))}
                     </div>
 
-                    {/* Far Right Rating Pill (like 'Rated ★ 4/4' in sample) */}
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-black/75 backdrop-blur-md border border-white/20 text-zinc-200 font-mono text-xs rounded-full">
+                    {/* Far Right Rating Pill */}
+                    <span className="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-black/80 backdrop-blur-md border border-white/20 text-zinc-200 font-mono text-[11px] sm:text-xs rounded-full">
                       <span>Rated</span>
                       <span className="text-[var(--gold)] font-bold">★ 5.0</span>
                     </span>

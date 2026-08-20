@@ -5801,7 +5801,8 @@ footer {
 /* Smartphone Mockup Chassis & Screen */
 .phone-chassis {
   position: relative;
-  width: 290px;
+  width: min(290px, 100%);
+  max-width: 100%;
   height: 570px;
   background: #17171d;
   border-radius: 48px;
@@ -5810,6 +5811,29 @@ footer {
   box-shadow: 0 25px 80px rgba(212, 168, 67, 0.35), 0 10px 40px rgba(0, 0, 0, 0.9);
   margin: 0 auto;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 480px) {
+  .phone-chassis {
+    width: min(280px, calc(100vw - 32px));
+    height: 530px;
+    border-radius: 40px;
+    padding: 10px;
+  }
+
+  .phone-screen {
+    border-radius: 30px;
+    padding: 12px 10px;
+  }
+
+  .phone-qr-image {
+    width: 145px !important;
+    height: 145px !important;
+  }
+
+  .phone-qr-stage {
+    padding: 12px;
+  }
 }
 
 .phone-chassis:hover {

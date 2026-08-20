@@ -541,9 +541,9 @@ export default function Home() {
 
           <div className="max-w-[1300px] mx-auto">
             {/* Corporate Payment Milestone Schedule */}
-            <div className="pkg-payment-schedule mt-0 pt-0">
-              <div className="flex flex-wrap justify-between items-end gap-6 mb-8">
-                <div>
+            <div className="pkg-payment-schedule mt-0 pt-0 w-full max-w-[1300px] mx-auto">
+              <div className="flex flex-col lg:items-center lg:text-center gap-4 mb-10 max-w-3xl lg:mx-auto">
+                <div className="flex flex-col items-start lg:items-center">
                   <div className="section-tag mb-3">Milestone Schedule</div>
                   <h3
                     className="pkg-payment-title"
@@ -562,7 +562,7 @@ export default function Home() {
                   style={{
                     fontSize: 14,
                     color: "var(--muted)",
-                    maxWidth: 400,
+                    maxWidth: 560,
                     lineHeight: 1.7,
                   }}
                 >

@@ -135,7 +135,7 @@ export default async function RenderDetailPage({ params }: PageProps) {
 
             {render.architecturalHighlights && render.architecturalHighlights.length > 0 && (
               <Reveal direction="up" delay={0.2}>
-                <div className="p-8 sm:p-10 bg-[#0e0e12] border border-white/10 rounded-2xl glow-card-border">
+                <div className="p-5 sm:p-8 md:p-10 bg-[#0e0e12] border border-white/10 rounded-2xl glow-card-border">
                   <h3 className="font-bebas text-2xl sm:text-3xl text-[var(--gold)] tracking-wider mb-5">
                     SPATIAL ENGINEERING HIGHLIGHTS
                   </h3>
@@ -155,7 +155,7 @@ export default async function RenderDetailPage({ params }: PageProps) {
           <div className="lg:col-span-5 flex flex-col gap-8">
             <Reveal direction="up" delay={0.3}>
               <TiltCard glare maxTilt={5}>
-                <div className="p-8 sm:p-10 bg-[#0e0e12] border border-white/10 rounded-2xl flex flex-col gap-6">
+                <div className="p-5 sm:p-8 md:p-10 bg-[#0e0e12] border border-white/10 rounded-2xl flex flex-col gap-6">
                   <div className="font-mono text-xs tracking-[3px] text-[var(--gold)] uppercase border-b border-white/10 pb-4 font-semibold">
                     TECHNICAL SPECIFICATIONS
                   </div>
@@ -190,28 +190,28 @@ export default async function RenderDetailPage({ params }: PageProps) {
         </section>
 
         {/* BOTTOM PREVIOUS / NEXT PROJECT NAVIGATION */}
-        <section className="max-w-[1400px] mx-auto px-6 md:px-12 border-t border-[#333336] pt-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 border-t border-[#333336] pt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <Link
               href={`/renders/${prevRender.id}`}
-              className="p-6 bg-[#0e0e10] border border-[#333336] hover:border-[var(--gold-border)] rounded-xl transition-all group flex flex-col gap-2"
+              className="p-4 sm:p-6 bg-[#0e0e10] border border-[#333336] hover:border-[var(--gold-border)] rounded-xl transition-all group flex flex-col gap-2"
             >
               <span className="font-mono text-[10px] tracking-widest text-[var(--muted)] uppercase group-hover:text-[var(--gold)] transition-colors">
                 ← PREVIOUS SPATIAL CONCEPT
               </span>
-              <span className="font-bebas text-2xl text-white group-hover:text-[var(--gold)] transition-colors truncate">
+              <span className="font-bebas text-xl sm:text-2xl text-white group-hover:text-[var(--gold)] transition-colors truncate">
                 {prevRender.title}
               </span>
             </Link>
 
             <Link
               href={`/renders/${nextRender.id}`}
-              className="p-6 bg-[#0e0e10] border border-[#333336] hover:border-[var(--gold-border)] rounded-xl transition-all group flex flex-col items-end text-right gap-2"
+              className="p-4 sm:p-6 bg-[#0e0e10] border border-[#333336] hover:border-[var(--gold-border)] rounded-xl transition-all group flex flex-col sm:items-end sm:text-right gap-2"
             >
               <span className="font-mono text-[10px] tracking-widest text-[var(--muted)] uppercase group-hover:text-[var(--gold)] transition-colors">
                 NEXT SPATIAL CONCEPT →
               </span>
-              <span className="font-bebas text-2xl text-white group-hover:text-[var(--gold)] transition-colors truncate">
+              <span className="font-bebas text-xl sm:text-2xl text-white group-hover:text-[var(--gold)] transition-colors truncate">
                 {nextRender.title}
               </span>
             </Link>

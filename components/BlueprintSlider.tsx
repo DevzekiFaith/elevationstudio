@@ -65,28 +65,28 @@ export function BlueprintSlider({
   return (
     <Reveal direction="up" duration={0.8}>
       <section
-        className="blueprint-slider-section relative py-24 px-6 md:px-16 bg-[#060606] text-[#f4f0e8] border-t border-b border-[#333336] overflow-hidden"
+        className="blueprint-slider-section relative py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-16 bg-[#060606] text-[#f4f0e8] border-t border-b border-[#333336] overflow-hidden"
         id="blueprint-compare"
       >
         <div className="blueprint-slider-inner max-w-[1300px] mx-auto">
           {/* Header */}
-          <div className="blueprint-slider-header flex flex-wrap justify-between items-end mb-12 gap-6">
+          <div className="blueprint-slider-header flex flex-wrap justify-between items-end mb-8 sm:mb-12 gap-4 sm:gap-6">
             <div>
               <div
-                className="section-tag mb-4 flex items-center gap-3 text-[10px] tracking-[4px] uppercase text-[#d4a843]"
+                className="section-tag mb-3 sm:mb-4 flex items-center gap-3 text-[10px] tracking-[4px] uppercase text-[#d4a843]"
                 style={{ fontFamily: "var(--font-dm-mono), monospace" }}
               >
                 Spatial Engineering Proof
               </div>
               <h2
-                className="blueprint-slider-title text-[clamp(44px,6.5vw,88px)] leading-[0.92] text-[#f4f0e8] m-0"
+                className="blueprint-slider-title text-[clamp(36px,6.5vw,88px)] leading-[0.92] text-[#f4f0e8] m-0"
                 style={{ fontFamily: "var(--font-bebas), sans-serif" }}
               >
                 2D BLUEPRINT <span style={{ color: "var(--gold)" }}>VS</span> 3D RENDER
               </h2>
             </div>
             <p
-              className="blueprint-slider-sub text-[clamp(17px,1.8vw,22px)] italic text-[rgba(244,240,232,0.6)] max-w-[480px] leading-[1.5]"
+              className="blueprint-slider-sub text-[clamp(15px,1.8vw,22px)] italic text-[rgba(244,240,232,0.6)] max-w-[480px] leading-[1.5]"
               style={{ fontFamily: "var(--font-cormorant), serif" }}
             >
               {subtitle}
@@ -96,7 +96,7 @@ export function BlueprintSlider({
           {/* Interactive Split-View Comparison Container */}
           <div
             ref={containerRef}
-            className="blueprint-slider-container relative w-full aspect-[16/9] min-h-[380px] md:min-h-[480px] rounded-xl overflow-hidden border border-[#333336] select-none cursor-col-resize shadow-[0_20px_60px_rgba(0,0,0,0.7)]"
+            className="blueprint-slider-container relative w-full aspect-[4/3] sm:aspect-[16/9] min-h-[260px] sm:min-h-[360px] md:min-h-[480px] rounded-xl overflow-hidden border border-[#333336] select-none cursor-col-resize shadow-[0_20px_60px_rgba(0,0,0,0.7)]"
             onMouseDown={(e) => {
               setIsDragging(true);
               handleMove(e.clientX);
@@ -117,7 +117,7 @@ export function BlueprintSlider({
                 priority
               />
               <div
-                className="blueprint-badge right-badge absolute top-6 right-6 z-10 px-4 py-2 bg-[rgba(6,6,6,0.85)] backdrop-blur-md border border-[rgba(78,203,160,0.4)] rounded text-[10px] tracking-[2px] text-[#4ecba0]"
+                className="blueprint-badge right-badge absolute top-3 right-3 sm:top-6 sm:right-6 z-10 px-2.5 sm:px-4 py-1 sm:py-2 bg-[rgba(6,6,6,0.85)] backdrop-blur-md border border-[rgba(78,203,160,0.4)] rounded text-[8.5px] sm:text-[10px] tracking-[1.5px] sm:tracking-[2px] text-[#4ecba0]"
                 style={{ fontFamily: "var(--font-dm-mono), monospace" }}
               >
                 ◆ 3D SPATIAL RENDER
@@ -138,10 +138,10 @@ export function BlueprintSlider({
                 priority
               />
               <div
-                className="blueprint-badge left-badge absolute top-6 left-6 z-10 px-4 py-2 bg-[rgba(6,6,6,0.85)] backdrop-blur-md border border-[rgba(212,168,67,0.4)] rounded text-[10px] tracking-[2px] text-[#d4a843]"
+                className="blueprint-badge left-badge absolute top-3 left-3 sm:top-6 sm:left-6 z-10 px-2.5 sm:px-4 py-1 sm:py-2 bg-[rgba(6,6,6,0.85)] backdrop-blur-md border border-[rgba(212,168,67,0.4)] rounded text-[8.5px] sm:text-[10px] tracking-[1.5px] sm:tracking-[2px] text-[#d4a843]"
                 style={{ fontFamily: "var(--font-dm-mono), monospace" }}
               >
-                ◆ 2D ARCHITECTURAL BLUEPRINT
+                ◆ 2D BLUEPRINT
               </div>
             </div>
 
