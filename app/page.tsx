@@ -180,16 +180,16 @@ export default function Home() {
                     href="https://www.homecare.com.ng"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-ghost border-[var(--gold-border)] text-white hover:border-[var(--gold)] hover:text-[var(--gold)] flex items-center gap-2.5 group transition-all"
+                    className="btn-ghost border-[var(--gold-border)] text-white hover:border-emerald-400 hover:text-emerald-400 flex items-center gap-2.5 group transition-all"
                   >
-                    {/* HomeCare Squircle Lightning Logo Icon */}
-                    <div className="w-5 h-5 rounded bg-[#090b10] border border-white/20 flex items-center justify-center shrink-0">
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="white" stroke="white" strokeWidth="0.5"/>
+                    {/* Unfilled Green Stroke Lightning Logo Icon */}
+                    <div className="w-5 h-5 rounded bg-[#040507] border border-emerald-500/40 flex items-center justify-center shrink-0">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="none"/>
                       </svg>
                     </div>
                     <span>HomeCare Services</span>
-                    <span className="text-sm text-[var(--gold)] font-mono transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    <span className="text-sm text-emerald-400 font-mono transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                       ↗
                     </span>
                   </a>
@@ -198,70 +198,89 @@ export default function Home() {
             </Reveal>
           </div>
 
-          {/* High-Converting HomeCare Sales Showcase Banner at the Base of Hero Page */}
+          {/* LUXURY REDESIGNED HOMECARE SHOWCASE CARD AT BASE OF HERO */}
           <Reveal direction="up" duration={0.8} delay={0.6}>
-            <div className="mt-10 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-[#0c0d12] via-[#090a0f] to-[#050608] border border-[var(--gold-border)]/50 shadow-[0_20px_50px_rgba(0,0,0,0.8)] relative overflow-hidden group">
+            <div className="mt-10 p-6 md:p-7 rounded-3xl bg-gradient-to-r from-[#0d0e14] via-[#090a0e] to-[#060709] border border-[var(--gold-border)]/60 shadow-[0_25px_60px_rgba(0,0,0,0.85)] relative overflow-hidden group">
               
-              {/* Background Glow Accents */}
-              <div className="absolute -right-20 -top-20 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
-
+              {/* Subtle Glow Lighting Background Effects */}
+              <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-emerald-500/15 transition-all duration-700" />
+              <div className="absolute bottom-0 left-0 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
+              
               <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
                 
+                {/* Brand Logo + Organized Value Copy */}
                 <div className="flex items-start gap-4 max-w-3xl">
-                  {/* HomeCare Lightning Bolt Badge Logo */}
-                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-[#090b10] border border-white/25 flex items-center justify-center shadow-2xl shrink-0 group-hover:border-[var(--gold)] transition-colors">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="white" stroke="white" strokeWidth="0.5" strokeLinejoin="round"/>
+                  {/* Unfilled Green Stroke Squircle Logo Icon */}
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-[#040507] border border-emerald-500/50 flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.2)] shrink-0 group-hover:border-emerald-400 transition-colors duration-300">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="none"/>
                     </svg>
                   </div>
 
-                  <div>
-                    <div className="flex items-center gap-2.5 flex-wrap mb-1.5">
-                      <span className="font-mono text-sm tracking-widest text-white font-extrabold uppercase">
+                  <div className="space-y-1.5">
+                    {/* Header Row: Name + URL + Live Status Badge */}
+                    <div className="flex items-center gap-2.5 flex-wrap">
+                      <span className="font-mono text-lg tracking-tight text-white font-black uppercase">
                         Home<span className="text-[var(--gold)]">Care</span>
                       </span>
-                      <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 text-[var(--gold)] border border-[var(--gold-border)] uppercase font-semibold tracking-wider">
-                        Official Engineering & Maintenance Partner
+                      <span className="text-xs font-mono text-emerald-400 font-bold">
+                        www.homecare.com.ng
                       </span>
-                      <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase font-semibold tracking-wider">
-                        ✓ 100% Escrow Protection
+                      <span className="inline-flex items-center gap-1.5 text-[10px] font-mono px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 uppercase font-semibold tracking-wider">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        100% Escrow Protection
                       </span>
                     </div>
 
-                    <h4 className="text-xl md:text-2xl font-serif text-white font-bold leading-tight mb-2">
-                      Verified Home Inspection, Structural Audits & Priority Service Fixes
+                    {/* Catchy Headline */}
+                    <h4 className="text-lg md:text-xl font-heading font-extrabold text-white tracking-tight leading-snug">
+                      Professional Home Inspection & Service Fixes
                     </h4>
 
+                    {/* Short Copy */}
                     <p className="text-xs md:text-sm text-slate-300 leading-relaxed font-sans max-w-2xl">
-                      Planning property acquisition or urgent facility repairs? Protect your investment with <strong>HomeCare</strong> — Nigeria’s premier network for structural foundation checks, dampness & roof leak audits, electrical load testing, and rapid artisan dispatch.
+                      Fast property inspection audits & instant master artisan dispatch across Nigeria.
                     </p>
 
-                    <div className="flex items-center gap-4 flex-wrap mt-3 text-xs font-mono text-slate-400">
-                      <span className="flex items-center gap-1.5 text-amber-400">⚡ Rapid 2-Min Booking</span>
-                      <span className="flex items-center gap-1.5 text-sky-400">🛡️ Certified Master Artisans</span>
-                      <span className="flex items-center gap-1.5 text-emerald-400">🔒 Zero Advance Risk Escrow</span>
+                    {/* Unfilled Green Stroke Feature Pillars */}
+                    <div className="flex items-center gap-3 sm:gap-4 flex-wrap pt-1 text-[11px] font-mono font-semibold text-slate-300">
+                      <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="none"/>
+                        </svg>
+                        <span>2-Min Booking</span>
+                      </span>
+
+                      <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none"/>
+                        </svg>
+                        <span>Vetted Artisans</span>
+                      </span>
+
+                      <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" fill="none"/>
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4" fill="none"/>
+                        </svg>
+                        <span>Safe Escrow</span>
+                      </span>
                     </div>
                   </div>
                 </div>
 
-                {/* Call to Action Button */}
-                <div className="flex flex-col sm:flex-row lg:flex-col items-stretch lg:items-end gap-2 w-full lg:w-auto shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-white/10">
-                  <a
-                    href="https://www.homecare.com.ng"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs tracking-widest uppercase font-extrabold rounded-xl transition-all flex items-center justify-center gap-2.5 shadow-xl group/btn whitespace-nowrap"
-                  >
-                    <span>VISIT WWW.HOMECARE.COM.NG</span>
-                    <span className="text-base transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-0.5">
-                      ↗
-                    </span>
-                  </a>
-                  <span className="text-[11px] font-mono text-slate-400 text-center lg:text-right">
-                    Fast response · Vetted artisans
+                {/* High-Conversion CTA Button */}
+                <a
+                  href="https://www.homecare.com.ng"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full lg:w-auto px-6 py-4 bg-gradient-to-r from-[var(--gold)] via-amber-400 to-[var(--gold-bright)] hover:brightness-110 text-[#060606] font-mono text-xs tracking-widest uppercase font-black rounded-2xl transition-all duration-300 flex items-center justify-center gap-2.5 shadow-[0_10px_30px_rgba(212,175,55,0.25)] group/btn whitespace-nowrap shrink-0"
+                >
+                  <span>VISIT WWW.HOMECARE.COM.NG</span>
+                  <span className="text-base transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-0.5">
+                    ↗
                   </span>
-                </div>
+                </a>
 
               </div>
             </div>
@@ -944,17 +963,17 @@ export default function Home() {
                 href="https://www.homecare.com.ng"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-between gap-3 px-4 py-2.5 bg-[#0e0e10] hover:bg-[var(--gold)]/10 border border-[var(--gold-border)] rounded-lg text-xs font-mono text-white transition-colors group"
+                className="inline-flex items-center justify-between gap-3 px-4 py-2.5 bg-[#0e0e10] hover:bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-xs font-mono text-white transition-colors group"
               >
                 <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded bg-[#090b10] border border-white/20 flex items-center justify-center shrink-0">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="white" stroke="white" strokeWidth="0.5"/>
+                  <div className="w-5 h-5 rounded bg-[#040507] border border-emerald-500/40 flex items-center justify-center shrink-0">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="none"/>
                     </svg>
                   </div>
                   <span>HomeCare Inspection & Fixes</span>
                 </div>
-                <strong className="text-[var(--gold)] font-bold">www.homecare.com.ng ↗</strong>
+                <strong className="text-emerald-400 font-bold">www.homecare.com.ng ↗</strong>
               </a>
             </div>
           </div>
