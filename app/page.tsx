@@ -164,7 +164,7 @@ export default function Home() {
             </Reveal>
 
             <Reveal direction="up" duration={0.7} delay={0.5}>
-              <div className="hero-actions flex items-center gap-4">
+              <div className="hero-actions flex flex-wrap items-center gap-4">
                 <Magnetic strength={0.3}>
                   <a href="#packages" className="btn-primary">
                     View Packages
@@ -175,9 +175,97 @@ export default function Home() {
                     Start a Project
                   </Link>
                 </Magnetic>
+                <Magnetic strength={0.3}>
+                  <a
+                    href="https://www.homecare.com.ng"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-ghost border-[var(--gold-border)] text-white hover:border-[var(--gold)] hover:text-[var(--gold)] flex items-center gap-2.5 group transition-all"
+                  >
+                    {/* HomeCare Squircle Lightning Logo Icon */}
+                    <div className="w-5 h-5 rounded bg-[#090b10] border border-white/20 flex items-center justify-center shrink-0">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="white" stroke="white" strokeWidth="0.5"/>
+                      </svg>
+                    </div>
+                    <span>HomeCare Services</span>
+                    <span className="text-sm text-[var(--gold)] font-mono transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                      ↗
+                    </span>
+                  </a>
+                </Magnetic>
               </div>
             </Reveal>
           </div>
+
+          {/* High-Converting HomeCare Sales Showcase Banner at the Base of Hero Page */}
+          <Reveal direction="up" duration={0.8} delay={0.6}>
+            <div className="mt-10 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-[#0c0d12] via-[#090a0f] to-[#050608] border border-[var(--gold-border)]/50 shadow-[0_20px_50px_rgba(0,0,0,0.8)] relative overflow-hidden group">
+              
+              {/* Background Glow Accents */}
+              <div className="absolute -right-20 -top-20 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                
+                <div className="flex items-start gap-4 max-w-3xl">
+                  {/* HomeCare Lightning Bolt Badge Logo */}
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-[#090b10] border border-white/25 flex items-center justify-center shadow-2xl shrink-0 group-hover:border-[var(--gold)] transition-colors">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="white" stroke="white" strokeWidth="0.5" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center gap-2.5 flex-wrap mb-1.5">
+                      <span className="font-mono text-sm tracking-widest text-white font-extrabold uppercase">
+                        Home<span className="text-[var(--gold)]">Care</span>
+                      </span>
+                      <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 text-[var(--gold)] border border-[var(--gold-border)] uppercase font-semibold tracking-wider">
+                        Official Engineering & Maintenance Partner
+                      </span>
+                      <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase font-semibold tracking-wider">
+                        ✓ 100% Escrow Protection
+                      </span>
+                    </div>
+
+                    <h4 className="text-xl md:text-2xl font-serif text-white font-bold leading-tight mb-2">
+                      Verified Home Inspection, Structural Audits & Priority Service Fixes
+                    </h4>
+
+                    <p className="text-xs md:text-sm text-slate-300 leading-relaxed font-sans max-w-2xl">
+                      Planning property acquisition or urgent facility repairs? Protect your investment with <strong>HomeCare</strong> — Nigeria’s premier network for structural foundation checks, dampness & roof leak audits, electrical load testing, and rapid artisan dispatch.
+                    </p>
+
+                    <div className="flex items-center gap-4 flex-wrap mt-3 text-xs font-mono text-slate-400">
+                      <span className="flex items-center gap-1.5 text-amber-400">⚡ Rapid 2-Min Booking</span>
+                      <span className="flex items-center gap-1.5 text-sky-400">🛡️ Certified Master Artisans</span>
+                      <span className="flex items-center gap-1.5 text-emerald-400">🔒 Zero Advance Risk Escrow</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Call to Action Button */}
+                <div className="flex flex-col sm:flex-row lg:flex-col items-stretch lg:items-end gap-2 w-full lg:w-auto shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-white/10">
+                  <a
+                    href="https://www.homecare.com.ng"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs tracking-widest uppercase font-extrabold rounded-xl transition-all flex items-center justify-center gap-2.5 shadow-xl group/btn whitespace-nowrap"
+                  >
+                    <span>VISIT WWW.HOMECARE.COM.NG</span>
+                    <span className="text-base transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-0.5">
+                      ↗
+                    </span>
+                  </a>
+                  <span className="text-[11px] font-mono text-slate-400 text-center lg:text-right">
+                    Fast response · Vetted artisans
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -841,7 +929,7 @@ export default function Home() {
             >
               Elevation Studio — A Subsidiary of Mindvest Global Resources LLC
             </a>
-            <div className="mt-4">
+            <div className="mt-4 flex flex-col gap-2">
               <a
                 href="https://instagram.com/elevationstudio.ng"
                 target="_blank"
@@ -850,6 +938,23 @@ export default function Home() {
               >
                 <span>📸 Follow on Instagram:</span>
                 <strong className="text-white group-hover:text-[var(--gold)]">@elevationstudio.ng ↗</strong>
+              </a>
+
+              <a
+                href="https://www.homecare.com.ng"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-between gap-3 px-4 py-2.5 bg-[#0e0e10] hover:bg-[var(--gold)]/10 border border-[var(--gold-border)] rounded-lg text-xs font-mono text-white transition-colors group"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 rounded bg-[#090b10] border border-white/20 flex items-center justify-center shrink-0">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="white" stroke="white" strokeWidth="0.5"/>
+                    </svg>
+                  </div>
+                  <span>HomeCare Inspection & Fixes</span>
+                </div>
+                <strong className="text-[var(--gold)] font-bold">www.homecare.com.ng ↗</strong>
               </a>
             </div>
           </div>
@@ -862,6 +967,11 @@ export default function Home() {
               </li>
               <li>
                 <a href="#packages">Packages</a>
+              </li>
+              <li>
+                <a href="https://www.homecare.com.ng" target="_blank" rel="noopener noreferrer" className="text-[var(--gold)] font-bold">
+                  HomeCare (www.homecare.com.ng) ↗
+                </a>
               </li>
               <li>
                 <a href="#markets">Who We Serve</a>
