@@ -102,9 +102,22 @@ export default function Home() {
                   Welcome to our studio
                 </span>
                 BUILD
-                <br />
-                <span className="line2">DIFFERENT</span>
-                <span className="gold-word pulse-glow">.</span>
+                <div className="w-full">
+                  <div className="inline-block">
+                    <span className="line2" style={{ display: "inline" }}>DIFFERENT</span>
+                    <span className="gold-word pulse-glow">.</span>
+                  </div>
+                  <span
+                    className="block text-left ml-0 sm:ml-8 md:ml-[8rem] lg:ml-[12rem] mt-2 md:mt-3 mb-6 uppercase tracking-[3px] sm:tracking-[4px] font-medium text-[var(--gold)] max-w-full"
+                    style={{
+                      fontFamily: "var(--font-dm-mono), monospace",
+                      fontSize: "clamp(11px, 1.3vw, 16px)",
+                      lineHeight: 1.2
+                    }}
+                  >
+                    Just do it
+                  </span>
+                </div>
               </div>
             </Reveal>
           </div>
