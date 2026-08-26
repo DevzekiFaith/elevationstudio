@@ -28,7 +28,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
     name: "THE FOUNDATION",
     subtitle: "Brand Identity Only",
     description: "A foundational identity system crafted for clarity, authority, and architectural distinction.",
-    range: "₦500K — ₦2M",
+    range: "From ₦500K",
     paymentSplit: "50 / 50",
     paymentDesc: "50% deposit to commence work. 50% on final delivery before handover.",
     baseInclude: "Core Brand Identity",
@@ -49,7 +49,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
         details: ["Comprehensive brand identity PDF manual", "Business card & letterhead digital templates", "Email signature layout"]
       }
     ],
-    cta: "REQUEST PROPOSAL",
+    cta: "START A PROJECT",
     ctaHref: "/contact?package=1"
   },
   {
@@ -59,7 +59,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
     name: "THE STRUCTURE",
     subtitle: "Brand + Digital + Presence",
     description: "A complete digital and local transformation of how your business is seen, discovered, experienced, and remembered online.",
-    range: "₦1.5M — ₦5M",
+    range: "From ₦1.5M",
     paymentSplit: "50 / 50",
     paymentDesc: "50% deposit to commence work. 50% on final delivery before handover.",
     baseInclude: "Everything in Foundation",
@@ -97,7 +97,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
         ]
       }
     ],
-    cta: "REQUEST PROPOSAL",
+    cta: "START A PROJECT",
     ctaHref: "/contact?package=2"
   },
   {
@@ -107,7 +107,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
     name: "THE ELEVATION",
     subtitle: "Brand + Digital + Space",
     description: "Connecting visual identity, digital presence, and custom 3D spatial architectural transformation.",
-    range: "₦5M — ₦20M",
+    range: "Investment from ₦5M",
     paymentSplit: "40 / 30 / 30",
     paymentDesc: "40% on signing. 30% at design approval milestone. 30% on project completion and handover.",
     baseInclude: "Everything in Structure",
@@ -141,7 +141,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
         ]
       }
     ],
-    cta: "REQUEST PROPOSAL",
+    cta: "START A PROJECT",
     ctaHref: "/contact?package=3"
   },
   {
@@ -151,7 +151,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
     name: "THE MASTER PLAN",
     subtitle: "Brand + Digital + Space + Culture",
     description: "End-to-end organisational transformation combining architecture, digital engineering, and Mindvest culture development.",
-    range: "₦15M — ₦50M+",
+    range: "Investment from ₦15M",
     paymentSplit: "30 / 30 / 40",
     paymentDesc: "30% on signing. 30% at midpoint. 40% structured as monthly retainer across the 6–12 month partnership.",
     baseInclude: "Everything in Elevation",
@@ -167,7 +167,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
         details: ["Dedicated lead architect oversight", "Quarterly culture & digital audits", "Continuous brand governance"]
       }
     ],
-    cta: "COMMISSION BRIEF",
+    cta: "START A PROJECT",
     ctaHref: "/contact?package=4"
   }
 ];

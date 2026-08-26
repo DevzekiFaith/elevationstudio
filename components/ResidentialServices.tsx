@@ -170,7 +170,7 @@ export function ResidentialServices() {
                     className="btn-primary"
                     style={{ display: "inline-block" }}
                   >
-                    Start This Project
+                    Start a Project
                   </Link>
                 </Magnetic>
                 <Link
@@ -285,7 +285,7 @@ export function ResidentialServices() {
                     className="btn-primary"
                     style={{ display: "inline-block" }}
                   >
-                    Start This Project
+                    Start a Project
                   </Link>
                 </Magnetic>
                 <Link
@@ -377,8 +377,7 @@ export function ResidentialServices() {
         <div className="res-pricing-inner">
           <span className="res-pricing-dash" />
           <p className="res-pricing-text">
-            Final professional fees depend on project size, complexity, site conditions
-            and required deliverables.
+            Every project is individually assessed and professionally priced according to scope, complexity, site conditions and required deliverables.
           </p>
         </div>
       </div>
@@ -415,7 +414,7 @@ export function ResidentialServices() {
                     className="btn-primary"
                     style={{ display: "block", textAlign: "center", whiteSpace: "nowrap" }}
                   >
-                    Residential Architecture
+                    Start a Project
                   </Link>
                 </Magnetic>
                 <Magnetic strength={0.25}>
@@ -424,7 +423,7 @@ export function ResidentialServices() {
                     className="btn-ghost"
                     style={{ display: "block", textAlign: "center", whiteSpace: "nowrap" }}
                   >
-                    Residential Masterplan
+                    Request a Project Proposal
                   </Link>
                 </Magnetic>
                 <a

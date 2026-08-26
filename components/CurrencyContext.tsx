@@ -15,25 +15,25 @@ const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined
 
 // Original static strings for Naira to guarantee no visual changes for NGN
 const NGN_STATIC_DATA = {
-  1: { min: "₦500K", max: "— ₦2,000,000" },
-  2: { min: "₦1.5M", max: "— ₦5,000,000" },
-  3: { min: "₦5M", max: "— ₦20,000,000" },
-  4: { min: "₦15M", max: "— ₦50,000,000+" },
+  1: { min: "From ₦500K", max: "" },
+  2: { min: "From ₦1.5M", max: "" },
+  3: { min: "Investment from ₦5M", max: "" },
+  4: { min: "Investment from ₦15M", max: "" },
 };
 
 // Base prices in NGN for dynamic USD/GBP conversion calculations
 const BASE_PRICES_NGN = {
-  1: { min: 500000, max: 2000000, hasPlus: false },
-  2: { min: 1500000, max: 5000000, hasPlus: false },
-  3: { min: 5000000, max: 20000000, hasPlus: false },
-  4: { min: 15000000, max: 50000000, hasPlus: true },
+  1: { min: 500000, isInvestment: false },
+  2: { min: 1500000, isInvestment: false },
+  3: { min: 5000000, isInvestment: true },
+  4: { min: 15000000, isInvestment: true },
 };
 
 // Original static strings for Naira Residential Services
 const RESIDENTIAL_STATIC_DATA = {
-  architecture: "Starting from ₦1.5M",
-  masterplan: "Starting from ₦4.5M",
-  concept: "Starting from ₦600,000",
+  architecture: "From ₦1.5M",
+  masterplan: "From ₦4.5M",
+  concept: "From ₦600K",
 };
 
 // Base prices in NGN for dynamic USD/GBP Residential calculations
@@ -60,8 +60,8 @@ function roundSmart(value: number): number {
 export function CurrencyProvider({ children }: { children: ReactNode }) {
   const [currency, setCurrency] = useState<Currency>("NGN");
   const [rates, setRates] = useState({
-    USD: 1354.84, // Offline fallback (August 2026 official rate)
-    GBP: 1836.00, // Offline fallback (August 2026 interbank rate)
+    USD: 1354.84, // Offline fallback (official rate)
+    GBP: 1836.00, // Offline fallback (interbank rate)
   });
 
   useEffect(() => {
@@ -100,17 +100,15 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
     const rate = rates[currency];
 
     const rawMin = base.min / rate;
-    const rawMax = base.max / rate;
-
     const roundedMin = roundSmart(rawMin);
-    const roundedMax = roundSmart(rawMax);
-
     const symbol = currency === "USD" ? "$" : "£";
+    const formattedAmount = symbol + roundedMin.toLocaleString("en-US");
 
-    const formattedMin = symbol + roundedMin.toLocaleString("en-US");
-    const formattedMax = `— ${symbol}${roundedMax.toLocaleString("en-US")}${base.hasPlus ? "+" : ""}`;
+    const formattedMin = base.isInvestment
+      ? `Investment from ${formattedAmount}`
+      : `From ${formattedAmount}`;
 
-    return { min: formattedMin, max: formattedMax };
+    return { min: formattedMin, max: "" };
   };
 
   const formatResidentialPrice = (resPkgId: "architecture" | "masterplan" | "concept") => {
@@ -126,7 +124,7 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
     const symbol = currency === "USD" ? "$" : "£";
     const formatted = symbol + rounded.toLocaleString("en-US");
 
-    return `Starting from ${formatted}`;
+    return `From ${formatted}`;
   };
 
   return (

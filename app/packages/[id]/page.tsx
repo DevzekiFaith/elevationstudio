@@ -106,9 +106,9 @@ export default async function PackageDetailPage({ params }: PageProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-10 bg-[#11141c] p-4 sm:p-7 rounded-xl border border-white/10 shadow-inner">
             <div className="p-1 sm:p-2">
               <div className="font-mono text-[10px] tracking-widest text-[var(--muted)] uppercase mb-2">
-                ESTIMATED INVESTMENT RANGE
+                STARTING INVESTMENT
               </div>
-              <div className="font-bebas text-2xl sm:text-4xl text-[var(--gold)] tracking-wide">
+              <div className="font-mono text-sm sm:text-base text-[var(--gold)] font-bold tracking-wider">
                 {pkg.range}
               </div>
             </div>

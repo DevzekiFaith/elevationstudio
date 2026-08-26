@@ -106,12 +106,12 @@ export async function generateBriefPDF(data: BriefData): Promise<Buffer> {
 
       const getPackagePriceRange = (pkgId: string): string => {
         switch (pkgId) {
-          case "1": return "₦500K — ₦2M";
-          case "2": return "₦1.5M — ₦5M";
-          case "3": return "₦5M — ₦20M";
-          case "4": return "₦15M — ₦50M+";
-          case "res-arch": return "Starting from ₦1.5M";
-          case "res-master": return "Starting from ₦4.5M";
+          case "1": return "From ₦500K";
+          case "2": return "From ₦1.5M";
+          case "3": return "Investment from ₦5M";
+          case "4": return "Investment from ₦15M";
+          case "res-arch": return "From ₦1.5M";
+          case "res-master": return "From ₦4.5M";
           default: return "Custom Quote";
         }
       };

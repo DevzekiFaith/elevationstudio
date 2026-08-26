@@ -12,7 +12,7 @@ const PACKAGES = [
     code: "Package 01 — The Foundation",
     name: "The Foundation",
     short: "Brand identity only",
-    range: "₦500K — ₦2M",
+    range: "From ₦500K",
     bridge: false,
   },
   {
@@ -20,7 +20,7 @@ const PACKAGES = [
     code: "Package 02 — The Structure",
     name: "The Structure",
     short: "Brand + Digital + Presence",
-    range: "₦1.5M — ₦5M",
+    range: "From ₦1.5M",
     bridge: false,
   },
   {
@@ -28,7 +28,7 @@ const PACKAGES = [
     code: "Package 03 — The Elevation",
     name: "The Elevation",
     short: "Brand + Digital + Space",
-    range: "₦5M — ₦20M",
+    range: "Investment from ₦5M",
     bridge: false,
   },
   {
@@ -36,7 +36,7 @@ const PACKAGES = [
     code: "Package 04 — The Master Plan",
     name: "The Master Plan",
     short: "Full transformation",
-    range: "₦15M — ₦50M+",
+    range: "Investment from ₦15M",
     bridge: true,
   },
   {
@@ -44,7 +44,7 @@ const PACKAGES = [
     code: "Residential Architecture",
     name: "Residential Architecture",
     short: "Modern Bungalows, Duplexes & Private Homes",
-    range: "Starting from ₦1.5M",
+    range: "From ₦1.5M",
     bridge: false,
   },
   {
@@ -52,7 +52,7 @@ const PACKAGES = [
     code: "Residential Masterplan",
     name: "Residential Masterplan",
     short: "Luxury Villas, Compounds & Multiple Buildings",
-    range: "Starting from ₦4.5M",
+    range: "From ₦4.5M",
     bridge: false,
   },
 ] as const;

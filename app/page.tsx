@@ -391,32 +391,32 @@ export default function Home() {
           <div className="packages-inner">
             <div className="packages-top flex flex-wrap justify-between items-end gap-6 mb-12">
               <div>
+                <div className="section-tag mb-3">Service Packages</div>
                 <div className="pkg-title">
                   OUR PRIMARY
                   <br />
-                  <span style={{ color: "var(--gold)" }}>PACKAGES</span>
+                  <span style={{ color: "var(--gold)" }}>COMMISSIONS</span>
                 </div>
               </div>
 
-              <div className="flex flex-col items-end gap-3">
+              <div className="flex flex-col items-start md:items-end gap-3">
                 <div className="flex items-center gap-3">
                   <span className="text-[10px] font-mono tracking-widest text-[var(--muted)] uppercase">
-                    CURRENCY TOGGLE:
+                    CURRENCY:
                   </span>
                   <CurrencyToggle />
                 </div>
-                <div
+                <p
                   style={{
-                    fontSize: 14,
-                    color: "var(--muted)",
-                    maxWidth: 340,
-                    lineHeight: 1.7,
-                    textAlign: "right",
+                    fontSize: 13,
+                    color: "rgba(244,240,232,0.7)",
+                    maxWidth: 440,
+                    lineHeight: 1.6,
                   }}
+                  className="md:text-right"
                 >
-                  Each tier builds on the last. Showing figures in{" "}
-                  <span className="text-[var(--gold)] font-mono font-bold">{currency}</span>. Enter where your business is.
-                </div>
+                  Every project is individually assessed and professionally priced according to scope, complexity, site conditions and required deliverables.
+                </p>
               </div>
             </div>
 
@@ -438,14 +438,13 @@ export default function Home() {
                     </ul>
                   </div>
                   <div className="pkg-card-bottom">
-                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE ({currency})</div>
+                    <div className="pkg-card-tag">STARTING INVESTMENT ({currency})</div>
                     <div>
                       <div className="pkg-card-price">{p1.min}</div>
-                      <div className="pkg-card-range">{p1.max}</div>
                     </div>
                     <Magnetic strength={0.2}>
                       <Link href="/contact?package=1" className="pkg-card-cta">
-                        <span>REQUEST PROPOSAL</span>
+                        <span>START A PROJECT</span>
                         <span>→</span>
                       </Link>
                     </Magnetic>
@@ -474,14 +473,13 @@ export default function Home() {
                     </Link>
                   </div>
                   <div className="pkg-card-bottom">
-                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE ({currency})</div>
+                    <div className="pkg-card-tag">STARTING INVESTMENT ({currency})</div>
                     <div>
                       <div className="pkg-card-price">{p2.min}</div>
-                      <div className="pkg-card-range">{p2.max}</div>
                     </div>
                     <Magnetic strength={0.2}>
                       <Link href="/contact?package=2" className="pkg-card-cta">
-                        <span>REQUEST PROPOSAL</span>
+                        <span>START A PROJECT</span>
                         <span>→</span>
                       </Link>
                     </Magnetic>
@@ -510,14 +508,13 @@ export default function Home() {
                     </Link>
                   </div>
                   <div className="pkg-card-bottom">
-                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE ({currency})</div>
+                    <div className="pkg-card-tag">ESTIMATED INVESTMENT ({currency})</div>
                     <div>
                       <div className="pkg-card-price">{p3.min}</div>
-                      <div className="pkg-card-range">{p3.max}</div>
                     </div>
                     <Magnetic strength={0.2}>
                       <Link href="/contact?package=3" className="pkg-card-cta">
-                        <span>REQUEST PROPOSAL</span>
+                        <span>START A PROJECT</span>
                         <span>→</span>
                       </Link>
                     </Magnetic>
@@ -545,14 +542,13 @@ export default function Home() {
                     </ul>
                   </div>
                   <div className="pkg-card-bottom">
-                    <div className="pkg-card-tag">ESTIMATED INVESTMENT RANGE ({currency})</div>
+                    <div className="pkg-card-tag">ESTIMATED INVESTMENT ({currency})</div>
                     <div>
                       <div className="pkg-card-price">{p4.min}</div>
-                      <div className="pkg-card-range">{p4.max}</div>
                     </div>
                     <Magnetic strength={0.25}>
                       <Link href="/contact?package=4" className="pkg-card-cta">
-                        <span>COMMISSION BRIEF</span>
+                        <span>START A PROJECT</span>
                         <span>→</span>
                       </Link>
                     </Magnetic>
