@@ -873,32 +873,66 @@ export default function Home() {
             >
               Elevation Studio — A Subsidiary of Mindvest Global Resources LLC
             </a>
-            <div className="mt-4 flex flex-col gap-2">
+            {/* Luxury Quick-Access Direct Channels */}
+            <div className="mt-6 flex flex-col gap-3 max-w-[420px]">
+              {/* Instagram Card */}
               <a
                 href="https://instagram.com/elevationstudio.ng"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-[#0e0e10] hover:bg-[var(--gold)]/10 border border-[var(--gold-border)] rounded-lg text-xs font-mono text-[var(--gold)] transition-colors group"
+                className="group relative flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-[#0d0e14] via-[#0a0b10] to-[#07080b] border border-[var(--gold-border)]/50 hover:border-[var(--gold)] shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_4px_25px_rgba(212,175,55,0.15)] transition-all duration-300 overflow-hidden"
               >
-                <span>📸 Follow on Instagram:</span>
-                <strong className="text-white group-hover:text-[var(--gold)]">@elevationstudio.ng ↗</strong>
+                <div className="absolute inset-0 bg-gradient-to-r from-[var(--gold)]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                <div className="flex items-center gap-3.5 relative z-10">
+                  <div className="w-9 h-9 rounded-lg bg-[#14151d] border border-[var(--gold-border)]/80 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:border-[var(--gold)] transition-all shadow-inner">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--gold)]">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="font-mono text-[10px] text-[var(--gold)] tracking-widest uppercase font-semibold flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
+                      Follow on Instagram
+                    </div>
+                    <div className="font-mono text-xs md:text-[13px] text-white font-bold tracking-wide group-hover:text-[var(--gold-bright)] transition-colors">
+                      @elevationstudio.ng
+                    </div>
+                  </div>
+                </div>
+                <div className="w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs text-[var(--gold)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-[var(--gold)] group-hover:text-black group-hover:border-[var(--gold)] transition-all relative z-10">
+                  ↗
+                </div>
               </a>
 
+              {/* HomeCare Partner Card */}
               <a
                 href="https://www.homecare.com.ng"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-between gap-3 px-4 py-2.5 bg-[#0e0e10] hover:bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-xs font-mono text-white transition-colors group"
+                className="group relative flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-[#07130f] via-[#080d0d] to-[#060709] border border-emerald-500/30 hover:border-emerald-400 shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_4px_25px_rgba(16,185,129,0.2)] transition-all duration-300 overflow-hidden"
               >
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded bg-[#040507] border border-emerald-500/40 flex items-center justify-center shrink-0">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="none"/>
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                <div className="flex items-center gap-3.5 relative z-10">
+                  <div className="w-9 h-9 rounded-lg bg-[#040907] border border-emerald-500/50 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:border-emerald-400 transition-all shadow-inner">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="none" />
                     </svg>
                   </div>
-                  <span>HomeCare Inspection & Fixes</span>
+                  <div>
+                    <div className="font-mono text-[10px] text-emerald-400 tracking-widest uppercase font-semibold flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      HomeCare Inspection & Fixes
+                    </div>
+                    <div className="font-mono text-xs md:text-[13px] text-white font-bold tracking-wide group-hover:text-emerald-300 transition-colors">
+                      www.homecare.com.ng
+                    </div>
+                  </div>
                 </div>
-                <strong className="text-emerald-400 font-bold">www.homecare.com.ng ↗</strong>
+                <div className="w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-xs text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-emerald-400 group-hover:text-black group-hover:border-emerald-400 transition-all relative z-10">
+                  ↗
+                </div>
               </a>
             </div>
           </div>

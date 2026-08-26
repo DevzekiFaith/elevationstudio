@@ -44,12 +44,27 @@ export function LocationMap({ height = "420px" }: { height?: string }) {
         attributionControl: true
       });
 
-      // Use CartoDB Dark Matter tiles (premium dark theme matching Elevation Studio)
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: "abcd",
-        maxZoom: 20
-      }).addTo(mapInstance);
+      // If CARTO API key is provided, use CARTO tiles; otherwise use Esri ArcGIS Dark Gray Canvas (100% free, no API key required, zero throttling)
+      const cartoKey = process.env.NEXT_PUBLIC_CARTO_API_KEY;
+
+      if (cartoKey) {
+        L.tileLayer(`https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?api_key=${cartoKey}`, {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+          subdomains: "abcd",
+          maxZoom: 20
+        }).addTo(mapInstance);
+      } else {
+        // Esri ArcGIS Dark Gray Base
+        L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
+          attribution: '&copy; <a href="https://www.esri.com/">Esri</a> &copy; OpenStreetMap',
+          maxZoom: 16
+        }).addTo(mapInstance);
+
+        // Esri ArcGIS Dark Gray Labels & Roads overlay
+        L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}", {
+          maxZoom: 16
+        }).addTo(mapInstance);
+      }
 
       // Custom Zoom Control at the bottom right
       L.control.zoom({ position: "bottomright" }).addTo(mapInstance);
