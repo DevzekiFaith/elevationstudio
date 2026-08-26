@@ -83,7 +83,7 @@ export default function Home() {
           {/* Top Label & Massive Headline */}
           <div>
             <Reveal direction="down" duration={0.6} delay={0.1}>
-              <div className="hero-label">Elevation Studio · Est. 2026</div>
+              <div className="hero-label">Elevation Studio · Est. 2012</div>
             </Reveal>
             
             <Reveal direction="up" duration={0.8} delay={0.2}>
