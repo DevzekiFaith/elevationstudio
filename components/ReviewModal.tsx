@@ -9,6 +9,7 @@ export interface ReviewData {
   role: string;
   company: string;
   location: string;
+  avatar?: string;
   rating: number;
   packageUsed: string;
   quote: string;
@@ -62,6 +63,26 @@ export function ReviewModal({ isOpen, onClose, onReviewSubmitted, initialTab = "
     }
   };
 
+  const getAuthorAvatar = (name: string): string => {
+    const nameLower = name.toLowerCase();
+    if (nameLower.includes("praise") || nameLower.includes("chidubem")) {
+      return "/testimonials/praise_chidubem.png";
+    }
+    if (nameLower.includes("rotimi") || nameLower.includes("adebayo")) {
+      return "/testimonials/rotimi_adebayo.png";
+    }
+    if (nameLower.includes("toluwanimi") || nameLower.includes("alabi")) {
+      return "/testimonials/toluwanimi_alabi.png";
+    }
+    if (nameLower.includes("kenneth") || nameLower.includes("nnamdi")) {
+      return "/testimonials/kenneth_nnamdi.png";
+    }
+    if (nameLower.includes("folake") || nameLower.includes("ogundele")) {
+      return "/testimonials/folake_ogundele.png";
+    }
+    return "/testimonials/praise_chidubem.png";
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg("");
@@ -83,6 +104,7 @@ export function ReviewModal({ isOpen, onClose, onReviewSubmitted, initialTab = "
       role: role.trim() || "Client Partner",
       company: company.trim() || "Independent Project",
       location: location.trim() || "Lagos, Nigeria",
+      avatar: getAuthorAvatar(author.trim()),
       rating,
       packageUsed,
       quote: quote.trim(),

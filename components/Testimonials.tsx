@@ -49,6 +49,27 @@ const FEATURED_REVIEWS: ReviewItem[] = [
   },
   {
     id: 2,
+    author: "Praise Chidubem",
+    role: "Creative Director & Co-Founder",
+    company: "Aura Prime Developments & Spatial Media",
+    location: "Epe / Lekki Expressway Corridor, Lagos",
+    avatar: "/testimonials/praise_chidubem.png",
+    headline: "Transformative 3D spatial fidelity and brand engineering",
+    quote:
+      "Elevation Studio translated our luxury residential estate vision into immaculate spatial 3D concepts and a high-converting web architecture. The alignment between our brand identity and physical structures was completely seamless.",
+    statValue: "98%",
+    statLabel: "Client Investor Conversion Rate",
+    tag: "Spatial Fit",
+    packageUsed: "Package 03 — The Elevation",
+    packageHref: "/packages/3",
+    pills: [
+      { icon: "✦", label: "Spatial Concepts" },
+      { icon: "🌐", label: "Digital Platform" },
+      { icon: "🏆", label: "Brand System" },
+    ],
+  },
+  {
+    id: 3,
     author: "Toluwanimi Alabi",
     role: "Operations Director",
     company: "Volta Luxury Boutique Hotel Group",
@@ -69,7 +90,7 @@ const FEATURED_REVIEWS: ReviewItem[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     author: "Dr. Kenneth Nnamdi",
     role: "Head of Digital Transformation",
     company: "Meridian Public Service & Civic Solutions",
@@ -90,7 +111,7 @@ const FEATURED_REVIEWS: ReviewItem[] = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     author: "Chief Mrs. Folake Ogundele",
     role: "Founder & Managing Director",
     company: "Ogundele Commercial Assets & Retail Parks",
@@ -117,6 +138,28 @@ export function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTab, setModalTab] = useState<"form" | "qr">("form");
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  const resolveAvatar = (authorName: string, customAvatar?: string): string => {
+    if (customAvatar && customAvatar.trim()) return customAvatar;
+    const nameLower = (authorName || "").toLowerCase();
+    if (nameLower.includes("praise") || nameLower.includes("chidubem")) {
+      return "/testimonials/praise_chidubem.png";
+    }
+    if (nameLower.includes("rotimi") || nameLower.includes("adebayo")) {
+      return "/testimonials/rotimi_adebayo.png";
+    }
+    if (nameLower.includes("toluwanimi") || nameLower.includes("alabi")) {
+      return "/testimonials/toluwanimi_alabi.png";
+    }
+    if (nameLower.includes("kenneth") || nameLower.includes("nnamdi")) {
+      return "/testimonials/kenneth_nnamdi.png";
+    }
+    if (nameLower.includes("folake") || nameLower.includes("ogundele")) {
+      return "/testimonials/folake_ogundele.png";
+    }
+    return "/testimonials/praise_chidubem.png";
+  };
 
   const loadReviews = () => {
     try {
@@ -129,17 +172,17 @@ export function Testimonials() {
           role: item.role,
           company: item.company,
           location: item.location,
-          avatar: "/testimonials/rotimi_adebayo.png", // fallback image container
+          avatar: resolveAvatar(item.author, (item as { avatar?: string }).avatar),
           headline: `Verified Client Partnership — ${item.company}`,
           quote: item.quote,
-          statValue: "5.0 ★",
+          statValue: `${item.rating || 5}.0 ★`,
           statLabel: "Direct Verified Client Feedback",
           tag: "Client Feedback",
           packageUsed: item.packageUsed,
           packageHref: "/#packages",
           pills: [
             { icon: "✓", label: "Verified Partner" },
-            { icon: "★", label: "5.0 Star Rating" },
+            { icon: "★", label: `${item.rating || 5}.0 Star Rating` },
           ],
           isUserSubmitted: true,
         }));
@@ -186,34 +229,52 @@ export function Testimonials() {
     setActiveIndex((prev) => (prev - 1 + reviewsList.length) % reviewsList.length);
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 45) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    setTouchStartX(null);
+  };
+
   return (
     <Reveal direction="up" duration={0.7}>
       <section
-        className="testimonials-section relative py-20 sm:py-28 md:py-36 px-4 sm:px-8 md:px-12 lg:px-20 border-t border-b border-[#232630] bg-[#070709] overflow-hidden"
+        className="testimonials-section relative py-16 sm:py-24 md:py-32 lg:py-36 px-4 sm:px-8 md:px-12 lg:px-20 border-t border-b border-[#232630] bg-[#070709] overflow-hidden"
         id="testimonials"
       >
         {/* Subtle Ambient Golden Glow */}
-        <div className="absolute top-1/3 left-1/3 w-[500px] h-[300px] bg-[radial-gradient(ellipse_at_center,rgba(212,168,67,0.05)_0%,transparent_70%)] pointer-events-none blur-3xl" />
+        <div className="absolute top-1/3 left-1/3 w-[320px] sm:w-[500px] h-[200px] sm:h-[300px] bg-[radial-gradient(ellipse_at_center,rgba(212,168,67,0.06)_0%,transparent_70%)] pointer-events-none blur-3xl" />
 
         <div className="testimonials-inner max-w-[1320px] mx-auto relative z-10">
           
           {/* Top Bar Header & Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12 sm:mb-16 pb-6 border-b border-[#1f222e]">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 sm:mb-14 pb-4 sm:pb-6 border-b border-[#1f222e]">
             <div className="flex items-center gap-3">
-              <span className="font-mono text-xs tracking-[3px] text-[var(--gold)] uppercase font-semibold flex items-center gap-2">
+              <span className="font-mono text-[11px] sm:text-xs tracking-[2.5px] sm:tracking-[3px] text-[var(--gold)] uppercase font-semibold flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[var(--gold)] animate-pulse" />
-                CLIENT PROOF & GLOBAL REVIEWS
+                CLIENT PROOF &amp; GLOBAL REVIEWS
               </span>
             </div>
 
-            <div className="flex items-center gap-3 w-full sm:w-auto">
+            <div className="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
               <button
                 type="button"
                 onClick={() => {
                   setModalTab("form");
                   setIsModalOpen(true);
                 }}
-                className="flex-1 sm:flex-initial px-4 py-2.5 bg-[var(--gold)] hover:bg-[#e2bd47] text-black font-mono text-xs font-bold uppercase tracking-wider rounded-lg transition-all shadow-md flex items-center justify-center gap-1.5"
+                className="flex-1 sm:flex-initial px-3.5 sm:px-4 py-2 sm:py-2.5 bg-[var(--gold)] hover:bg-[#e2bd47] text-black font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider rounded-lg transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer active:scale-98"
               >
                 <span>★</span>
                 <span>Write Review</span>
@@ -225,7 +286,7 @@ export function Testimonials() {
                   setModalTab("qr");
                   setIsModalOpen(true);
                 }}
-                className="flex-1 sm:flex-initial px-4 py-2.5 bg-[#12141c] hover:bg-[#181a24] border border-[#2d3142] hover:border-[var(--gold-border)] text-zinc-300 hover:text-[var(--gold)] font-mono text-xs font-semibold uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-1.5"
+                className="flex-1 sm:flex-initial px-3.5 sm:px-4 py-2 sm:py-2.5 bg-[#12141c] hover:bg-[#181a24] border border-[#2d3142] hover:border-[var(--gold-border)] text-zinc-300 hover:text-[var(--gold)] font-mono text-[11px] sm:text-xs font-semibold uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-98"
               >
                 <span>📱</span>
                 <span>Scan QR</span>
@@ -234,10 +295,10 @@ export function Testimonials() {
           </div>
 
           {/* MAIN 2-COLUMN STRUCTURE MATCHING USER'S SAMPLE */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             
             {/* LEFT COLUMN: Headline, Story Copy, Pill Stepper, Large Metric Stat */}
-            <div className="lg:col-span-5 flex flex-col justify-between h-full py-1">
+            <div className="lg:col-span-5 flex flex-col justify-between h-full py-1 order-2 lg:order-1">
               <div>
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -247,26 +308,26 @@ export function Testimonials() {
                     exit={{ opacity: 0, y: -15 }}
                     transition={{ duration: 0.35 }}
                   >
-                    <h3 className="font-syne font-bold text-2xl sm:text-3xl lg:text-[36px] text-white leading-[1.2] mb-4">
+                    <h3 className="font-syne font-bold text-xl sm:text-2xl lg:text-[34px] text-white leading-[1.25] mb-3 sm:mb-4">
                       {active.headline}
                     </h3>
-                    <p className="font-sans text-sm sm:text-base text-zinc-300 leading-relaxed mb-6 font-normal">
+                    <p className="font-sans text-xs sm:text-sm lg:text-base text-zinc-300 leading-relaxed mb-5 sm:mb-6 font-normal">
                       &ldquo;{active.quote}&rdquo;
                     </p>
                   </motion.div>
                 </AnimatePresence>
 
-                {/* Pill Slider Stepper Dots (exact match to sample) */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#12141c] border border-white/15 rounded-full mb-8">
+                {/* Pill Slider Stepper Dots (exact match to sample with touch friendly areas) */}
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 bg-[#12141c] border border-white/15 rounded-full mb-6 sm:mb-8">
                   {reviewsList.map((_, idx) => (
                     <button
                       key={idx}
                       type="button"
                       onClick={() => setActiveIndex(idx)}
                       aria-label={`Go to client review ${idx + 1}`}
-                      className={`transition-all duration-300 rounded-full ${
+                      className={`transition-all duration-300 rounded-full cursor-pointer ${
                         idx === activeIndex
-                          ? "w-8 h-2 bg-[var(--gold)]"
+                          ? "w-7 sm:w-8 h-2 bg-[var(--gold)]"
                           : "w-2 h-2 bg-zinc-600 hover:bg-zinc-400"
                       }`}
                     />
@@ -274,7 +335,7 @@ export function Testimonials() {
                 </div>
               </div>
 
-              {/* Large Metric Stat at Bottom Left (e.g. 70% Interview rate in sample) */}
+              {/* Large Metric Stat at Bottom Left */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active.id + "-stat"}
@@ -282,20 +343,24 @@ export function Testimonials() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.35 }}
-                  className="pt-6 border-t border-white/10 flex items-baseline gap-4"
+                  className="pt-4 sm:pt-6 border-t border-white/10 flex items-baseline gap-3 sm:gap-4"
                 >
-                  <div className="font-bebas text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-none">
+                  <div className="font-bebas text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-none">
                     {active.statValue}
                   </div>
-                  <div className="font-mono text-xs sm:text-sm text-zinc-400 uppercase tracking-wider leading-tight max-w-[200px]">
+                  <div className="font-mono text-[10px] sm:text-xs text-zinc-400 uppercase tracking-wider leading-tight max-w-[220px]">
                     {active.statLabel}
                   </div>
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            {/* RIGHT COLUMN: The Clean Rounded Visual Card with Overlays */}
-            <div className="lg:col-span-7">
+            {/* RIGHT COLUMN: The Clean Rounded Visual Card with Overlays & Mobile Touch Swipe */}
+            <div 
+              className="lg:col-span-7 order-1 lg:order-2"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active.id}
@@ -303,7 +368,7 @@ export function Testimonials() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.4 }}
-                  className="relative w-full min-h-[360px] sm:min-h-[400px] aspect-[4/4.5] sm:aspect-[16/11] md:aspect-[16/10] rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#0f1118] group"
+                  className="relative w-full min-h-[340px] sm:min-h-[380px] md:min-h-[420px] aspect-[4/4.6] sm:aspect-[16/11] md:aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#0f1118] group"
                 >
                   {/* Background Client Photo */}
                   <Image
@@ -312,30 +377,30 @@ export function Testimonials() {
                     fill
                     priority
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
-                    sizes="(max-width: 1024px) 100vw, 720px"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 720px"
                   />
                   {/* Atmospheric gradient overlay for readable typography */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#060608] via-black/40 to-black/75 opacity-90 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#060608] via-black/45 to-black/75 opacity-90 pointer-events-none" />
 
                   {/* Top Left Overlay: Name & Role/Company subtitle */}
-                  <div className="absolute top-4 left-4 sm:top-8 sm:left-8 z-10 max-w-[calc(100%-85px)]">
-                    <h4 className="font-syne font-bold text-xl sm:text-2xl lg:text-3xl text-white tracking-wide mb-1 drop-shadow-md">
+                  <div className="absolute top-3.5 left-3.5 sm:top-7 sm:left-7 z-10 max-w-[calc(100%-80px)]">
+                    <h4 className="font-syne font-bold text-lg sm:text-2xl lg:text-3xl text-white tracking-wide mb-0.5 sm:mb-1 drop-shadow-md">
                       {active.author}
                     </h4>
                     <Link
                       href={active.packageHref || "/#packages"}
-                      className="inline-flex items-center gap-1.5 font-mono text-[11px] sm:text-sm text-[var(--gold)] hover:text-white uppercase tracking-wider transition-colors drop-shadow-sm line-clamp-1"
+                      className="inline-flex items-center gap-1.5 font-mono text-[10px] sm:text-xs lg:text-sm text-[var(--gold)] hover:text-white uppercase tracking-wider transition-colors drop-shadow-sm line-clamp-1"
                     >
                       <span>→ {active.role} · {active.company}</span>
                     </Link>
                   </div>
 
                   {/* Arrow Navigation Floating Top Right */}
-                  <div className="absolute top-4 right-4 sm:top-8 sm:right-8 z-20 flex gap-2">
+                  <div className="absolute top-3.5 right-3.5 sm:top-7 sm:right-7 z-20 flex gap-1.5 sm:gap-2">
                     <button
                       type="button"
                       onClick={handlePrev}
-                      className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 hover:border-[var(--gold)] text-white hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-sm"
+                      className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 hover:border-[var(--gold)] text-white hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-xs sm:text-sm active:scale-95"
                       aria-label="Previous story"
                     >
                       ←
@@ -343,7 +408,7 @@ export function Testimonials() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 hover:border-[var(--gold)] text-white hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-sm"
+                      className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 hover:border-[var(--gold)] text-white hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-xs sm:text-sm active:scale-95"
                       aria-label="Next story"
                     >
                       →
@@ -351,10 +416,10 @@ export function Testimonials() {
                   </div>
 
                   {/* Bottom Overlay Tag Bar: Pill badges row */}
-                  <div className="absolute bottom-3 left-3 right-3 sm:bottom-7 sm:left-7 sm:right-7 z-10 flex flex-wrap items-center justify-between gap-2">
-                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                  <div className="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-6 sm:left-6 sm:right-6 z-10 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2">
+                    <div className="flex flex-wrap items-center gap-1 sm:gap-2">
                       {/* Highlighted First Pill */}
-                      <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 bg-white text-black font-sans text-[11px] sm:text-xs font-semibold rounded-full shadow-lg">
+                      <span className="inline-flex items-center gap-1 px-2 sm:px-3 py-0.5 sm:py-1 bg-white text-black font-sans text-[10px] sm:text-xs font-semibold rounded-full shadow-lg">
                         <span>👍</span>
                         <span>{active.tag}</span>
                       </span>
@@ -363,7 +428,7 @@ export function Testimonials() {
                       {active.pills.map((pill, i) => (
                         <span
                           key={i}
-                          className="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-[#0e1017]/85 backdrop-blur-md border border-white/20 text-zinc-200 font-mono text-[10px] sm:text-[11px] rounded-full"
+                          className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 bg-[#0e1017]/85 backdrop-blur-md border border-white/20 text-zinc-200 font-mono text-[9px] sm:text-[10.5px] rounded-full"
                         >
                           <span>{pill.icon}</span>
                           <span>{pill.label}</span>
@@ -372,7 +437,7 @@ export function Testimonials() {
                     </div>
 
                     {/* Far Right Rating Pill */}
-                    <span className="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-black/80 backdrop-blur-md border border-white/20 text-zinc-200 font-mono text-[11px] sm:text-xs rounded-full">
+                    <span className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/80 backdrop-blur-md border border-white/20 text-zinc-200 font-mono text-[10px] sm:text-xs rounded-full">
                       <span>Rated</span>
                       <span className="text-[var(--gold)] font-bold">★ 5.0</span>
                     </span>
@@ -383,7 +448,7 @@ export function Testimonials() {
           </div>
 
           {/* Bottom WhatsApp Direct Chat Conversion Link */}
-          <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-zinc-400">
+          <div className="mt-8 sm:mt-12 pt-4 sm:pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-[11px] sm:text-xs font-mono text-zinc-400">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>Verified Client Proof across Lagos, Ikoyi, VI, and Ogun Corridor</span>
