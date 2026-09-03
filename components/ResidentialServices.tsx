@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
 import { TiltCard } from "./TiltCard";
 import { useCurrency } from "./CurrencyContext";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 /* ─────────────────────────────────────────
    Residential & Private Client Services
@@ -102,6 +103,104 @@ function CheckItem({ text }: { text: string }) {
     </li>
   );
 }
+
+/* ─────────────────────────────────────────
+   CTA Band — Eden Oasis-style overlay effect
+   Background image + gold overlay + parallax scroll
+───────────────────────────────────────── */
+function ResCtaBand() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Aggressive travel range → clearly felt parallax depth effect
+  const rawY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
+  const y = useSpring(rawY, { stiffness: 60, damping: 18 });
+
+  return (
+    <div ref={sectionRef} className="res-cta-band">
+
+      {/* Parallax image layer */}
+      <motion.div
+        style={{ y, position: "absolute", inset: 0, scale: 1.18 }}
+        aria-hidden="true"
+      >
+        <Image
+          src="/renders/luxury_3d_interior_cta_bg.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="res-cta-bg-img"
+          priority
+        />
+      </motion.div>
+
+      {/* Gold warm overlay — the Eden Oasis effect in Elevation's brand palette */}
+      <div className="res-cta-overlay" />
+
+      {/* Content sits above both layers */}
+      <div className="res-cta-inner">
+
+        {/* Left copy */}
+        <Reveal direction="up" duration={0.8}>
+          <div className="res-cta-copy">
+            <div className="res-eyebrow">
+              <span className="res-eyebrow-line" />
+              Start Your Residential Project
+            </div>
+            <h3 className="res-cta-heading">
+              Start Your<br />
+              <span style={{ color: "var(--gold)" }}>Residential Project</span>
+            </h3>
+            <p className="res-cta-body">
+              Tell us about your project, your plot and the kind of home you want to
+              create. We begin by understanding your vision before we begin designing it.
+            </p>
+          </div>
+        </Reveal>
+
+        {/* Right CTAs — glassmorphic card floating over the background */}
+        <Reveal direction="right" duration={0.8} delay={0.15}>
+          <TiltCard glare maxTilt={5}>
+            <div className="res-cta-card">
+              <Magnetic strength={0.25}>
+                <Link
+                  href="/contact?service=residential-architecture"
+                  className="btn-primary"
+                  style={{ display: "block", textAlign: "center", whiteSpace: "nowrap" }}
+                >
+                  Start a Project
+                </Link>
+              </Magnetic>
+              <Magnetic strength={0.25}>
+                <Link
+                  href="/contact?service=residential-masterplan"
+                  className="btn-ghost"
+                  style={{ display: "block", textAlign: "center", whiteSpace: "nowrap" }}
+                >
+                  Request a Project Proposal
+                </Link>
+              </Magnetic>
+              <a
+                href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20would%20like%20to%20discuss%20a%20residential%20architecture%20project."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="res-wa-link"
+              >
+                WhatsApp Consultation ↗
+              </a>
+            </div>
+          </TiltCard>
+        </Reveal>
+
+      </div>
+    </div>
+  );
+}
+
 
 export function ResidentialServices() {
   const { formatResidentialPrice } = useCurrency();
@@ -383,63 +482,8 @@ export function ResidentialServices() {
       </div>
 
       {/* ── 7. FINAL CTA ── */}
-      <div className="res-cta-band">
-        <div className="res-cta-inner">
+      <ResCtaBand />
 
-          {/* Left copy */}
-          <Reveal direction="up" duration={0.8}>
-            <div className="res-cta-copy">
-              <div className="res-eyebrow">
-                <span className="res-eyebrow-line" />
-                Start Your Residential Project
-              </div>
-              <h3 className="res-cta-heading">
-                Start Your<br />
-                <span style={{ color: "var(--gold)" }}>Residential Project</span>
-              </h3>
-              <p className="res-cta-body">
-                Tell us about your project, your plot and the kind of home you want to
-                create. We begin by understanding your vision before we begin designing it.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Right CTAs — TiltCard on the card panel only */}
-          <Reveal direction="right" duration={0.8} delay={0.15}>
-            <TiltCard glare maxTilt={5}>
-              <div className="res-cta-card">
-                <Magnetic strength={0.25}>
-                  <Link
-                    href="#contact?service=residential-architecture"
-                    className="btn-primary"
-                    style={{ display: "block", textAlign: "center", whiteSpace: "nowrap" }}
-                  >
-                    Start a Project
-                  </Link>
-                </Magnetic>
-                <Magnetic strength={0.25}>
-                  <Link
-                    href="#contact?service=residential-masterplan"
-                    className="btn-ghost"
-                    style={{ display: "block", textAlign: "center", whiteSpace: "nowrap" }}
-                  >
-                    Request a Project Proposal
-                  </Link>
-                </Magnetic>
-                <a
-                  href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20would%20like%20to%20discuss%20a%20residential%20architecture%20project."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="res-wa-link"
-                >
-                  WhatsApp Consultation ↗
-                </a>
-              </div>
-            </TiltCard>
-          </Reveal>
-
-        </div>
-      </div>
 
       {/* ── SCOPED STYLES ── */}
       <style>{`
@@ -829,12 +873,36 @@ export function ResidentialServices() {
           line-height: 1.6;
         }
 
-        /* ─── CTA ─── */
+        /* ─── CTA (Eden Oasis–style overlay section) ─── */
         .res-cta-band {
+          position: relative;
           border-top: 1px solid var(--border);
-          background: var(--off-black, #0d0d0d);
+          overflow: hidden;
+        }
+        /* Parallax image layer — sits behind everything */
+        .res-cta-bg-layer {
+          position: absolute !important;
+          inset: -15% 0;
+          z-index: 0;
+        }
+        .res-cta-bg-img {
+          object-fit: cover;
+          object-position: center 40%;
+        }
+        /* Gold warm overlay — the key Eden Oasis effect */
+        .res-cta-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            120deg,
+            rgba(180, 128, 20, 0.78) 0%,
+            rgba(140, 90, 10, 0.82) 50%,
+            rgba(20, 16, 8, 0.88) 100%
+          );
         }
         .res-cta-inner {
+          position: relative;
+          z-index: 2;
           max-width: 1300px;
           margin: 0 auto;
           padding: 100px 60px;
@@ -856,7 +924,7 @@ export function ResidentialServices() {
           font-family: var(--font-cormorant), serif;
           font-size: clamp(16px, 1.5vw, 20px);
           font-style: italic;
-          color: var(--white-dim);
+          color: rgba(255,255,255,0.85);
           line-height: 1.7;
         }
         .res-cta-card {
@@ -866,8 +934,10 @@ export function ResidentialServices() {
           align-items: stretch;
           min-width: 240px;
           padding: 32px;
-          background: rgba(255,255,255,0.02);
-          border: 1px solid var(--border);
+          background: rgba(6, 6, 6, 0.72);
+          backdrop-filter: blur(18px);
+          -webkit-backdrop-filter: blur(18px);
+          border: 1px solid rgba(212, 168, 67, 0.25);
           border-radius: 4px;
         }
         .res-wa-link {
