@@ -152,7 +152,8 @@ function ResCtaBand() {
               B2C · Start Your Residential Project
             </div>
             <h3 className="res-cta-heading">
-              Start Your<br />
+              Start Your{" "}
+              <br className="hidden sm:inline" />
               <span style={{ color: "var(--gold)" }}>Residential Project</span>
             </h3>
             <p className="res-cta-body">
@@ -164,22 +165,20 @@ function ResCtaBand() {
 
         {/* Right CTAs — glassmorphic card floating over the background */}
         <Reveal direction="right" duration={0.8} delay={0.15}>
-          <TiltCard glare maxTilt={5}>
+          <TiltCard glare maxTilt={5} className="w-full">
             <div className="res-cta-card">
-              <Magnetic strength={0.25}>
+              <Magnetic strength={0.25} className="w-full">
                 <Link
                   href="/contact?service=residential-architecture"
-                  className="btn-primary"
-                  style={{ display: "block", textAlign: "center", whiteSpace: "nowrap" }}
+                  className="btn-primary res-cta-btn"
                 >
                   Start a Project
                 </Link>
               </Magnetic>
-              <Magnetic strength={0.25}>
+              <Magnetic strength={0.25} className="w-full">
                 <Link
                   href="/contact?service=residential-masterplan"
-                  className="btn-ghost"
-                  style={{ display: "block", textAlign: "center", whiteSpace: "nowrap" }}
+                  className="btn-ghost res-cta-btn"
                 >
                   Request a Project Proposal
                 </Link>
@@ -901,9 +900,9 @@ export function ResidentialServices() {
           inset: 0;
           background: linear-gradient(
             120deg,
-            rgba(180, 128, 20, 0.78) 0%,
-            rgba(140, 90, 10, 0.82) 50%,
-            rgba(20, 16, 8, 0.88) 100%
+            rgba(215, 140, 20, 0.44) 0%,
+            rgba(165, 95, 12, 0.50) 48%,
+            rgba(16, 12, 6, 0.68) 100%
           );
         }
         .res-cta-inner {
@@ -925,13 +924,15 @@ export function ResidentialServices() {
           color: var(--white);
           letter-spacing: 1px;
           margin: 0 0 24px;
+          text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
         }
         .res-cta-body {
           font-family: var(--font-cormorant), serif;
           font-size: clamp(16px, 1.5vw, 20px);
           font-style: italic;
-          color: rgba(255,255,255,0.85);
+          color: rgba(255,255,255,0.92);
           line-height: 1.7;
+          text-shadow: 0 1px 8px rgba(0, 0, 0, 0.65);
         }
         .res-cta-card {
           display: flex;
@@ -945,6 +946,17 @@ export function ResidentialServices() {
           -webkit-backdrop-filter: blur(18px);
           border: 1px solid rgba(212, 168, 67, 0.25);
           border-radius: 4px;
+          box-sizing: border-box;
+          width: 100%;
+          max-width: 100%;
+        }
+        .res-cta-btn {
+          display: block;
+          width: 100%;
+          text-align: center;
+          padding: 16px 24px;
+          box-sizing: border-box;
+          word-break: normal;
         }
         .res-wa-link {
           font-family: var(--font-dm-mono), monospace;
@@ -1012,14 +1024,49 @@ export function ResidentialServices() {
           /* CTA */
           .res-cta-inner {
             grid-template-columns: 1fr;
-            padding: 60px 24px;
-            gap: 32px;
+            padding: 56px 20px;
+            gap: 28px;
           }
-          .res-cta-card { min-width: 0; }
+          .res-cta-heading {
+            font-size: clamp(32px, 8vw, 48px);
+            line-height: 1.05;
+            margin: 0 0 16px;
+            word-break: break-word;
+          }
+          .res-cta-body {
+            font-size: 16px;
+            line-height: 1.6;
+          }
+          .res-cta-card {
+            min-width: 0;
+            width: 100%;
+            padding: 24px 18px;
+            gap: 14px;
+          }
+          .res-cta-btn {
+            padding: 14px 16px;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+          }
         }
 
-          /* Small mobile — ≤ 480px */
+        /* Small mobile — ≤ 480px */
         @media (max-width: 480px) {
+          .res-cta-inner {
+            padding: 44px 16px;
+            gap: 24px;
+          }
+          .res-cta-heading {
+            font-size: clamp(28px, 8.5vw, 38px);
+          }
+          .res-cta-card {
+            padding: 20px 14px;
+          }
+          .res-cta-btn {
+            padding: 13px 12px;
+            font-size: 10px;
+            letter-spacing: 1px;
+          }
           .res-workflow-grid  { grid-template-columns: 1fr; }
           .res-service-desc   { font-size: 16px; }
           .res-payment-wrap   { padding: 40px 20px; }
