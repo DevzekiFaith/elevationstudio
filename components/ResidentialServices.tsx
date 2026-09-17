@@ -147,14 +147,14 @@ function ResCtaBand() {
         {/* Left copy */}
         <Reveal direction="up" duration={0.8}>
           <div className="res-cta-copy">
-            <div className="res-eyebrow">
-              <span className="res-eyebrow-line" />
+            <div className="res-eyebrow" style={{ color: "#ffffff", textShadow: "0 1px 8px rgba(0,0,0,0.7)" }}>
+              <span className="res-eyebrow-line" style={{ background: "#ffffff" }} />
               B2C · Start Your Residential Project
             </div>
             <h3 className="res-cta-heading">
               Start Your{" "}
               <br className="hidden sm:inline" />
-              <span style={{ color: "var(--gold)" }}>Residential Project</span>
+              <span style={{ color: "#08090c", textShadow: "none" }}>Residential Project</span>
             </h3>
             <p className="res-cta-body">
               Tell us about your project, your plot and the kind of home you want to
@@ -917,6 +917,13 @@ export function ResidentialServices() {
           align-items: center;
         }
         .res-cta-copy { max-width: 560px; }
+        .res-cta-copy .res-eyebrow {
+          color: #ffffff !important;
+          text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+        }
+        .res-cta-copy .res-eyebrow-line {
+          background: #ffffff !important;
+        }
         .res-cta-heading {
           font-family: var(--font-bebas), sans-serif;
           font-size: clamp(40px, 5.5vw, 80px);
