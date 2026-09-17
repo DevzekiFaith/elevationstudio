@@ -65,7 +65,7 @@ export function ReviewModal({ isOpen, onClose, onReviewSubmitted, initialTab = "
 
   const getAuthorAvatar = (name: string): string => {
     const nameLower = name.toLowerCase();
-    if (nameLower.includes("praise") || nameLower.includes("chidubem")) {
+    if (nameLower.includes("ikenna") || nameLower.includes("nwosu") || nameLower.includes("praise") || nameLower.includes("chidubem")) {
       return "/testimonials/praise_chidubem.png";
     }
     if (nameLower.includes("rotimi") || nameLower.includes("adebayo")) {

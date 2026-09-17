@@ -49,7 +49,7 @@ const FEATURED_REVIEWS: ReviewItem[] = [
   },
   {
     id: 2,
-    author: "Praise Chidubem",
+    author: "Ikenna Nwosu",
     role: "Creative Director & Co-Founder",
     company: "Aura Prime Developments & Spatial Media",
     location: "Epe / Lekki Expressway Corridor, Lagos",
@@ -143,7 +143,7 @@ export function Testimonials() {
   const resolveAvatar = (authorName: string, customAvatar?: string): string => {
     if (customAvatar && customAvatar.trim()) return customAvatar;
     const nameLower = (authorName || "").toLowerCase();
-    if (nameLower.includes("praise") || nameLower.includes("chidubem")) {
+    if (nameLower.includes("ikenna") || nameLower.includes("nwosu") || nameLower.includes("praise") || nameLower.includes("chidubem")) {
       return "/testimonials/praise_chidubem.png";
     }
     if (nameLower.includes("rotimi") || nameLower.includes("adebayo")) {

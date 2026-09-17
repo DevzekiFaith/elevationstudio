@@ -9,48 +9,54 @@ import { LocationMap } from "./LocationMap";
 const PACKAGES = [
   {
     id: "1",
-    code: "Package 01 — The Foundation",
+    code: "Package 01 · B2B — The Foundation",
     name: "The Foundation",
+    tier: "B2B",
     short: "Brand identity only",
     range: "From ₦500K",
     bridge: false,
   },
   {
     id: "2",
-    code: "Package 02 — The Structure",
+    code: "Package 02 · B2B — The Structure",
     name: "The Structure",
+    tier: "B2B",
     short: "Brand + Digital + Presence",
     range: "From ₦1.5M",
     bridge: false,
   },
   {
     id: "3",
-    code: "Package 03 — The Elevation",
+    code: "Package 03 · B2B — The Elevation",
     name: "The Elevation",
+    tier: "B2B",
     short: "Brand + Digital + Space",
     range: "Investment from ₦5M",
     bridge: false,
   },
   {
     id: "4",
-    code: "Package 04 — The Master Plan",
+    code: "Package 04 · B2B — The Master Plan",
     name: "The Master Plan",
+    tier: "B2B",
     short: "Full transformation",
     range: "Investment from ₦15M",
     bridge: true,
   },
   {
     id: "res-arch",
-    code: "Residential Architecture",
+    code: "Residential Architecture · B2C",
     name: "Residential Architecture",
+    tier: "B2C",
     short: "Modern Bungalows, Duplexes & Private Homes",
     range: "From ₦1.5M",
     bridge: false,
   },
   {
     id: "res-master",
-    code: "Residential Masterplan",
+    code: "Residential Masterplan · B2C",
     name: "Residential Masterplan",
+    tier: "B2C",
     short: "Luxury Villas, Compounds & Multiple Buildings",
     range: "From ₦4.5M",
     bridge: false,
@@ -414,6 +420,12 @@ function ContactFormInner() {
               className={`contact-preview-card ${fields.packageId === p.id ? "active" : ""} ${p.bridge ? "bridge" : ""}`.trim()}
               onClick={() => handlePackageChange(p.id)}
             >
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+                <span style={{ fontSize: 9, fontFamily: "var(--font-space-mono)", letterSpacing: "1px", color: "var(--gold)", textTransform: "uppercase" }}>
+                  {p.tier}
+                </span>
+                {p.bridge && <span style={{ fontSize: 9, color: "var(--gold)" }}>★ Flagship</span>}
+              </div>
               <div className="cp-name">{p.name}</div>
               <div className="cp-range">{p.range}</div>
             </button>

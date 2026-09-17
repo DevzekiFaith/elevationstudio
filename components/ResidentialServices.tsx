@@ -149,7 +149,7 @@ function ResCtaBand() {
           <div className="res-cta-copy">
             <div className="res-eyebrow">
               <span className="res-eyebrow-line" />
-              Start Your Residential Project
+              B2C · Start Your Residential Project
             </div>
             <h3 className="res-cta-heading">
               Start Your<br />
@@ -225,7 +225,7 @@ export function ResidentialServices() {
         <Reveal direction="up" duration={0.7}>
           <div className="res-eyebrow">
             <span className="res-eyebrow-line" />
-            Residential &amp; Private Client Services
+            B2C · Residential &amp; Private Client Services
           </div>
 
           <h2 className="res-heading">
@@ -237,7 +237,7 @@ export function ResidentialServices() {
 
           <p className="res-subtitle">
             Bespoke space planning, floor plans, 3D visualization and compound masterplanning
-            — crafted for private property owners and residential developers across Nigeria.
+            — crafted for private property owners, diaspora builders, and luxury homeowners across Nigeria.
           </p>
         </Reveal>
       </div>
@@ -252,6 +252,9 @@ export function ResidentialServices() {
               <div>
                 <div className="res-block-num" aria-hidden>01</div>
                 <div className="res-gold-bar" />
+                <div className="text-[10px] font-mono tracking-widest text-[var(--gold)] uppercase mb-1">
+                  B2C Commission · Private Homes
+                </div>
                 <h3 className="res-service-title">Residential Architecture</h3>
                 <div className="res-price">{formatResidentialPrice("architecture")}</div>
                 <p className="res-service-desc">
@@ -367,6 +370,9 @@ export function ResidentialServices() {
               <div>
                 <div className="res-block-num" aria-hidden>02</div>
                 <div className="res-gold-bar" />
+                <div className="text-[10px] font-mono tracking-widest text-[var(--gold)] uppercase mb-1">
+                  B2C Commission · Masterplan
+                </div>
                 <h3 className="res-service-title">Residential Masterplan</h3>
                 <div className="res-price">{formatResidentialPrice("masterplan")}</div>
                 <p className="res-service-desc">

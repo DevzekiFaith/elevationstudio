@@ -391,7 +391,9 @@ export default function Home() {
           <div className="packages-inner">
             <div className="packages-top flex flex-wrap justify-between items-end gap-6 mb-12">
               <div>
-                <div className="section-tag mb-3">Service Packages</div>
+                <div className="section-tag mb-3">
+                  <span className="text-[var(--gold)] font-semibold">B2B</span> · Corporate &amp; Commercial Commissions
+                </div>
                 <div className="pkg-title">
                   OUR PRIMARY
                   <br />
@@ -415,7 +417,7 @@ export default function Home() {
                   }}
                   className="md:text-right"
                 >
-                  Every project is individually assessed and professionally priced according to scope, complexity, site conditions and required deliverables.
+                  Engineered for commercial developers, corporations, and enterprise founders. Every project is individually assessed and professionally priced according to scope, complexity, site conditions and required deliverables.
                 </p>
               </div>
             </div>
@@ -425,7 +427,7 @@ export default function Home() {
                 <div className="pkg-card h-full">
                   <div className="pkg-card-top">
                     <div className="flex justify-between items-center mb-2">
-                      <div className="pkg-card-num">Package 01</div>
+                      <div className="pkg-card-num">Package 01 · B2B</div>
                       <CurrencyToggle />
                     </div>
                     <div className="pkg-card-name">THE FOUNDATION</div>
@@ -456,7 +458,7 @@ export default function Home() {
                 <div className="pkg-card h-full">
                   <div className="pkg-card-top">
                     <div className="flex justify-between items-center mb-2">
-                      <div className="pkg-card-num">Package 02</div>
+                      <div className="pkg-card-num">Package 02 · B2B</div>
                       <CurrencyToggle />
                     </div>
                     <div className="pkg-card-name">THE STRUCTURE</div>
@@ -491,7 +493,7 @@ export default function Home() {
                 <div className="pkg-card h-full">
                   <div className="pkg-card-top">
                     <div className="flex justify-between items-center mb-2">
-                      <div className="pkg-card-num">Package 03</div>
+                      <div className="pkg-card-num">Package 03 · B2B</div>
                       <CurrencyToggle />
                     </div>
                     <div className="pkg-card-name">THE ELEVATION</div>
@@ -527,7 +529,7 @@ export default function Home() {
                   <div className="bridge-label">Flagship</div>
                   <div className="pkg-card-top">
                     <div className="flex justify-between items-center mb-2">
-                      <div className="pkg-card-num">Package 04</div>
+                      <div className="pkg-card-num">Package 04 · B2B</div>
                       <CurrencyToggle />
                     </div>
                     <div className="pkg-card-name">THE MASTER PLAN</div>
