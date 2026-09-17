@@ -154,7 +154,7 @@ function ResCtaBand() {
             <h3 className="res-cta-heading">
               Start Your{" "}
               <br className="hidden sm:inline" />
-              <span style={{ color: "#08090c", textShadow: "none" }}>Residential Project</span>
+              <span style={{ color: "rgba(255, 255, 255, 0.65)" }}>Residential Project</span>
             </h3>
             <p className="res-cta-body">
               Tell us about your project, your plot and the kind of home you want to
