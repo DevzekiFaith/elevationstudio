@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { getPackageBySlug, PACKAGES_DATA } from "@/lib/packagesData";
 import { Nav } from "@/components/Nav";
 import { Magnetic } from "@/components/Magnetic";
+import { PackagePriceBadge } from "@/components/PackagePriceBadge";
+import { CurrencyToggle } from "@/components/CurrencyToggle";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -75,14 +77,17 @@ export default async function PackageDetailPage({ params }: PageProps) {
               </span>
             </div>
 
-            <Link
-              href="/#packages"
-              className="group flex items-center gap-2 font-mono text-xs tracking-widest text-[#a0a4b0] hover:text-white uppercase transition-colors px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10"
-              title="Close modal and return to packages section"
-            >
-              <span>CLOSE</span>
-              <span className="text-[var(--gold)] group-hover:rotate-90 transition-transform duration-300">✕</span>
-            </Link>
+            <div className="flex items-center gap-3">
+              <CurrencyToggle />
+              <Link
+                href="/#packages"
+                className="group flex items-center gap-2 font-mono text-xs tracking-widest text-[#a0a4b0] hover:text-white uppercase transition-colors px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10"
+                title="Close modal and return to packages section"
+              >
+                <span>CLOSE</span>
+                <span className="text-[var(--gold)] group-hover:rotate-90 transition-transform duration-300">✕</span>
+              </Link>
+            </div>
           </div>
 
           {/* Package Title & Subtitle */}
@@ -109,7 +114,7 @@ export default async function PackageDetailPage({ params }: PageProps) {
                 STARTING INVESTMENT
               </div>
               <div className="font-mono text-sm sm:text-base text-[var(--gold)] font-bold tracking-wider">
-                {pkg.range}
+                <PackagePriceBadge pkgId={pkg.id} fallback={pkg.range} />
               </div>
             </div>
             <div className="p-1 sm:p-2 border-t sm:border-t-0 sm:border-l border-white/10 pt-4 sm:pt-0 sm:pl-6">
