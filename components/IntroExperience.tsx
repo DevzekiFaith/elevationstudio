@@ -201,7 +201,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
       <div className="fixed bottom-[-10%] left-[-5%] w-[450px] h-[450px] bg-emerald-500/[0.04] blur-[120px] rounded-full pointer-events-none" />
 
       {/* Sleek Minimal Header - Frosted Neo-Glass */}
-      <header className="relative z-40 w-full px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 py-4 sm:py-5 bg-[#070709]/50 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.4)] flex items-center justify-between gap-4">
+      <header className="relative z-40 w-full px-6 py-4 sm:py-5 bg-[#070709]/50 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.4)] flex items-center justify-between gap-4">
         <div className="flex items-center">
           <span className="font-bebas text-xl sm:text-2xl text-zinc-300 tracking-widest leading-none">
             ELEVATION <span className="text-[var(--gold)]">STUDIO</span>
@@ -219,10 +219,10 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
       </header>
 
       {/* MAIN VISUAL HERO & SHOWCASE */}
-      <main className="relative z-20 flex-1 w-full max-w-[1580px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 py-8 sm:py-12 lg:py-16 flex flex-col gap-10 sm:gap-14 lg:gap-16">
+      <main className="relative z-20 flex-1 w-full max-w-[1580px] mx-auto px-6 py-8 sm:py-12 lg:py-16 flex flex-col gap-10 sm:gap-14 lg:gap-16">
         
         {/* PUNCHY HERO MARKETING ONE-LINER */}
-        <div className="text-center max-w-4xl mx-auto flex flex-col items-center gap-3 px-4">
+        <div className="text-center max-w-4xl mx-auto flex flex-col items-center gap-3 px-2">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/[0.025] backdrop-blur-xl rounded-full text-[9.5px] sm:text-[10px] font-mono text-[var(--gold)] tracking-widest uppercase shadow-[0_4px_20px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)]">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
             <span className="text-white font-bold">B2C</span> · Elevation Studio · Residential Architecture
@@ -480,7 +480,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
       </main>
 
       {/* Minimal Footer */}
-      <footer className="relative z-20 w-full px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 py-6 bg-[#060608]/80 backdrop-blur-lg flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] font-mono text-zinc-500">
+      <footer className="relative z-20 w-full px-6 py-6 bg-[#060608]/80 backdrop-blur-lg flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] font-mono text-zinc-500">
         <div>© 2026 Elevation Studio</div>
         <div className="text-[var(--gold)]">www.elevationstudiong.com.ng</div>
       </footer>
