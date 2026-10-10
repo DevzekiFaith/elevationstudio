@@ -120,14 +120,14 @@ export function RenderGallery() {
                       <div className="p-5 pt-4 border-t border-white/10 flex gap-3 mt-auto">
                         <Link
                           href={`/renders/${render.id}`}
-                          className="flex-1 py-3 px-4 bg-[var(--gold)]/10 hover:bg-[var(--gold)] text-[var(--gold)] hover:text-[#060606] border border-[var(--gold-border)] rounded-[4px] text-[11px] font-mono tracking-wider font-semibold text-center transition-all shadow-sm"
+                          className="flex-1 py-3 px-4 bg-[var(--gold)]/10 hover:bg-[var(--gold)] text-[var(--gold)] hover:text-[#060606] border border-[var(--gold-border)] rounded-full text-[11px] font-mono tracking-wider font-semibold text-center transition-all shadow-sm"
                         >
                           EXPLORE CONCEPT →
                         </Link>
                         <button
                           type="button"
                           onClick={() => setSelectedRender(render)}
-                          className="py-3 px-4 bg-[#141419] border border-white/15 hover:border-white/40 text-white rounded-[4px] text-[11px] font-mono tracking-wider transition-all"
+                          className="py-3 px-4 bg-[#141419] border border-white/15 hover:border-white/40 text-white rounded-full text-[11px] font-mono tracking-wider transition-all"
                         >
                           SPECS
                         </button>
@@ -168,7 +168,7 @@ export function RenderGallery() {
                     />
                     <Link
                       href={`/renders/${selectedRender.id}`}
-                      className="absolute bottom-4 right-4 py-2 px-4 bg-[#060606]/85 backdrop-blur-md border border-[var(--gold)] text-[var(--gold)] font-mono text-[10px] tracking-widest rounded shadow-xl uppercase hover:bg-[var(--gold)] hover:text-[#060606] transition-all z-20"
+                      className="absolute bottom-4 right-4 py-2 px-4 bg-[#060606]/85 backdrop-blur-md border border-[var(--gold)] text-[var(--gold)] font-mono text-[10px] tracking-widest rounded-full shadow-xl uppercase hover:bg-[var(--gold)] hover:text-[#060606] transition-all z-20"
                     >
                       EXPAND FULL HD VIEW ↗
                     </Link>
@@ -205,7 +205,7 @@ export function RenderGallery() {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="py-3 px-4 bg-transparent border border-[var(--gold-border)] text-[var(--gold)] hover:bg-[var(--gold)]/10 font-mono text-[11px] tracking-wider text-center rounded uppercase transition-all"
+                      className="py-3 px-4 bg-transparent border border-[var(--gold-border)] text-[var(--gold)] hover:bg-[var(--gold)]/10 font-mono text-[11px] tracking-wider text-center rounded-full uppercase transition-all"
                     >
                       INQUIRE ON WHATSAPP (09119059859) →
                     </a>

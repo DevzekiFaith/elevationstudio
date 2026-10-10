@@ -245,14 +245,14 @@ export function QRCodeCard({ compact = false }: { compact?: boolean }) {
             <div className="flex flex-wrap gap-2.5 mt-2 justify-center sm:justify-start">
               <button
                 type="button"
-                className="px-4 py-2 bg-[var(--gold)]/10 hover:bg-[var(--gold)] text-[var(--gold)] hover:text-[#060606] border border-[var(--gold-border)] rounded-[3px] font-mono text-xs tracking-wider transition-colors font-semibold"
+                className="px-4 py-2 bg-[var(--gold)]/10 hover:bg-[var(--gold)] text-[var(--gold)] hover:text-[#060606] border border-[var(--gold-border)] rounded-full font-mono text-xs tracking-wider transition-colors font-semibold"
                 onClick={handleCopyLink}
               >
                 {copiedLink ? "✓ Link Copied" : "Copy Link"}
               </button>
               <button
                 type="button"
-                className="px-4 py-2 bg-[#141418] hover:bg-white/10 text-white border border-white/15 rounded-[3px] font-mono text-xs tracking-wider transition-colors"
+                className="px-4 py-2 bg-[#141418] hover:bg-white/10 text-white border border-white/15 rounded-full font-mono text-xs tracking-wider transition-colors"
                 onClick={handleDownloadPhoneQR}
               >
                 {isGenerating ? "Preparing..." : "Download Phone QR"}
@@ -331,7 +331,7 @@ export function QRCodeCard({ compact = false }: { compact?: boolean }) {
           {/* Action Controls & Details Side Panel */}
           <div className="lg:col-span-6 flex flex-col gap-6">
             <div className="qr-actions-card">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[var(--gold)]/10 border border-[var(--gold-border)] rounded-[3px] text-xs font-mono text-[var(--gold)] w-fit uppercase">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[var(--gold)]/10 border border-[var(--gold-border)] rounded-full text-xs font-mono text-[var(--gold)] w-fit uppercase">
                 <span className="w-2 h-2 rounded-full bg-[var(--gold)] animate-pulse" />
                 <span>Ready for Print Collateral, Pitch Decks & Socials</span>
               </div>

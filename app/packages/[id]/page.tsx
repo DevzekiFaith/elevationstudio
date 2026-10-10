@@ -189,7 +189,7 @@ export default async function PackageDetailPage({ params }: PageProps) {
             <Magnetic strength={0.2}>
               <Link
                 href={pkg.ctaHref}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-4 px-8 py-4 bg-[var(--gold)] hover:bg-[#e2bd47] text-black font-mono text-xs tracking-widest uppercase font-semibold rounded-sm transition-all duration-300 shadow-[0_4px_25px_rgba(212,175,55,0.3)] hover:shadow-[0_6px_32px_rgba(212,175,55,0.45)] transform hover:-translate-y-0.5"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-4 px-8 py-4 bg-[var(--gold)] hover:bg-[#e2bd47] text-black font-mono text-xs tracking-widest uppercase font-semibold rounded-full transition-all duration-300 shadow-[0_4px_25px_rgba(212,175,55,0.3)] hover:shadow-[0_6px_32px_rgba(212,175,55,0.45)] transform hover:-translate-y-0.5"
               >
                 <span>{pkg.cta}</span>
                 <span>→</span>

@@ -195,7 +195,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
         <button
           type="button"
           onClick={handleSeamlessEnter}
-          className="px-3.5 sm:px-5 py-2 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-widest rounded-[3px] transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 shadow-[0_4px_20px_rgba(212,168,67,0.25)]"
+          className="px-3.5 sm:px-5 py-2 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-widest rounded-full transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 shadow-[0_4px_20px_rgba(212,168,67,0.25)]"
         >
           <span>Enter Website</span>
           <span>→</span>
@@ -207,8 +207,8 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
         
         {/* PUNCHY HERO MARKETING ONE-LINER */}
         <div className="text-center max-w-4xl mx-auto flex flex-col items-center gap-2 px-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/[0.025] backdrop-blur-xl rounded-[3px] text-[9.5px] sm:text-[10px] font-mono text-[var(--gold)] tracking-widest uppercase shadow-[0_4px_20px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)]">
-            <span className="w-1.5 h-1.5 rounded-[1px] bg-[var(--gold)] animate-pulse" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/[0.025] backdrop-blur-xl rounded-full text-[9.5px] sm:text-[10px] font-mono text-[var(--gold)] tracking-widest uppercase shadow-[0_4px_20px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
             <span className="text-white font-bold">B2C</span> · Elevation Studio · Residential Architecture
           </div>
 
@@ -249,7 +249,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
 
                 {/* Tag Pill */}
                 <div className="absolute top-2.5 sm:top-3.5 left-2.5 sm:left-3.5 z-20">
-                  <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/50 backdrop-blur-xl rounded-[3px] text-[9px] sm:text-[10px] font-mono text-[var(--gold)] uppercase tracking-wider font-semibold shadow-[0_8px_24px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.12)]">
+                  <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/50 backdrop-blur-xl rounded-full text-[9px] sm:text-[10px] font-mono text-[var(--gold)] uppercase tracking-wider font-semibold shadow-[0_8px_24px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.12)]">
                     B2C · {currentItem.number} · {currentItem.tag}
                   </span>
                 </div>
@@ -264,7 +264,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                       prevSlide();
                     }}
                     aria-label="Previous archetype"
-                    className="w-7 sm:w-8 h-7 sm:h-8 rounded-[3px] bg-black/50 hover:bg-black/80 backdrop-blur-xl text-zinc-300 hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-xs active:scale-95 shadow-[0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.12)]"
+                    className="w-7 sm:w-8 h-7 sm:h-8 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-xl text-zinc-300 hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-xs active:scale-95 shadow-[0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.12)]"
                   >
                     ←
                   </button>
@@ -276,7 +276,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                       nextSlide();
                     }}
                     aria-label="Next archetype"
-                    className="w-7 sm:w-8 h-7 sm:h-8 rounded-[3px] bg-black/50 hover:bg-black/80 backdrop-blur-xl text-zinc-300 hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-xs active:scale-95 shadow-[0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.12)]"
+                    className="w-7 sm:w-8 h-7 sm:h-8 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-xl text-zinc-300 hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-xs active:scale-95 shadow-[0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.12)]"
                   >
                     →
                   </button>
@@ -304,7 +304,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                     setIsAutoplay(false);
                     setActiveTab(idx);
                   }}
-                  className={`p-1.5 sm:p-2.5 rounded-[4px] transition-all text-left flex items-center justify-between cursor-pointer backdrop-blur-2xl ${
+                  className={`p-1.5 sm:p-2.5 rounded-full transition-all text-left flex items-center justify-between cursor-pointer backdrop-blur-2xl ${
                     idx === activeTab
                       ? "bg-white/[0.08] text-[var(--gold)] font-bold shadow-[0_4px_20px_rgba(255,255,255,0.14),inset_0_1px_1px_rgba(255,255,255,0.35)] scale-[1.01]"
                       : "bg-white/[0.025] text-zinc-400 hover:text-zinc-200 hover:bg-white/[0.06] shadow-[0_4px_16px_rgba(255,255,255,0.05),inset_0_1px_1px_rgba(255,255,255,0.12)] hover:shadow-[0_6px_22px_rgba(255,255,255,0.1)]"
@@ -374,7 +374,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                     href={`https://wa.me/2349119059859?text=${encodeURIComponent(currentItem.whatsappPrompt)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-2.5 px-3.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-[10.5px] font-bold uppercase tracking-wider rounded-[3px] text-center transition-all flex items-center justify-center gap-1.5 active:scale-95 shadow-[0_4px_20px_rgba(212,168,67,0.25)]"
+                    className="flex-1 py-2.5 px-3.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-[10.5px] font-bold uppercase tracking-wider rounded-full text-center transition-all flex items-center justify-center gap-1.5 active:scale-95 shadow-[0_4px_20px_rgba(212,168,67,0.25)]"
                   >
                     <span>Discuss Concept</span>
                     <span>→</span>
@@ -383,7 +383,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                   <button
                     type="button"
                     onClick={handleSeamlessEnter}
-                    className="py-2.5 px-3.5 bg-white/[0.03] hover:bg-white/[0.07] backdrop-blur-xl text-zinc-300 hover:text-white font-mono text-[10.5px] uppercase tracking-wider rounded-[3px] transition-all cursor-pointer shadow-[0_4px_16px_rgba(255,255,255,0.04),inset_0_1px_1px_rgba(255,255,255,0.08)] text-center"
+                    className="py-2.5 px-3.5 bg-white/[0.03] hover:bg-white/[0.07] backdrop-blur-xl text-zinc-300 hover:text-white font-mono text-[10.5px] uppercase tracking-wider rounded-full transition-all cursor-pointer shadow-[0_4px_16px_rgba(255,255,255,0.04),inset_0_1px_1px_rgba(255,255,255,0.08)] text-center"
                   >
                     Enter Studio
                   </button>
@@ -442,7 +442,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
             <button
               type="button"
               onClick={handleSeamlessEnter}
-              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-xs font-bold uppercase tracking-widest rounded-[3px] transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-2 shadow-[0_4px_25px_rgba(212,168,67,0.3)]"
+              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-xs font-bold uppercase tracking-widest rounded-full transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-2 shadow-[0_4px_25px_rgba(212,168,67,0.3)]"
             >
               <span>Explore Full Website</span>
               <span>→</span>
@@ -454,7 +454,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-3 sm:py-3.5 bg-emerald-950/30 hover:bg-emerald-900/50 backdrop-blur-xl text-emerald-400 font-mono text-xs uppercase tracking-wider rounded-[3px] transition-all flex items-center justify-center gap-1.5 shadow-[0_8px_24px_rgba(6,78,59,0.25)]"
+              className="px-5 py-3 sm:py-3.5 bg-emerald-950/30 hover:bg-emerald-900/50 backdrop-blur-xl text-emerald-400 font-mono text-xs uppercase tracking-wider rounded-full transition-all flex items-center justify-center gap-1.5 shadow-[0_8px_24px_rgba(6,78,59,0.25)]"
             >
               <span>WhatsApp Direct</span>
               <span>↗</span>

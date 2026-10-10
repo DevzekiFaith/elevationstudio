@@ -964,7 +964,7 @@ export function ResidentialServices() {
           padding: 10px 16px;
           border: 1px solid var(--border);
           background: rgba(255,255,255,0.02);
-          border-radius: 4px;
+          border-radius: 9999px;
           transition: all 0.25s ease;
         }
         .res-explore-link:hover {
@@ -1009,7 +1009,7 @@ export function ResidentialServices() {
           backdrop-filter: blur(10px);
           border: 1px solid rgba(255,255,255,0.15);
           color: var(--white-dim, #ccc);
-          border-radius: 4px;
+          border-radius: 9999px;
           cursor: pointer;
           transition: all 0.25s ease;
           display: inline-flex;
@@ -1161,7 +1161,7 @@ export function ResidentialServices() {
           text-decoration: none;
           padding: 6px 12px;
           border: 1px solid rgba(212, 168, 67, 0.3);
-          border-radius: 4px;
+          border-radius: 9999px;
           transition: all 0.2s ease;
         }
         .res-table-cta:hover {
@@ -1461,6 +1461,7 @@ export function ResidentialServices() {
           width: 100%;
           text-align: center;
           padding: 14px 20px;
+          border-radius: 9999px;
           box-sizing: border-box;
           word-break: normal;
         }

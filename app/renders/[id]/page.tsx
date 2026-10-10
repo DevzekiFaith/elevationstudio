@@ -177,7 +177,7 @@ export default async function RenderDetailPage({ params }: PageProps) {
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full py-4 px-6 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs tracking-[2px] uppercase font-bold rounded-[4px] text-center block transition-all shadow-lg shadow-[var(--gold)]/20"
+                        className="w-full py-4 px-6 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs tracking-[2px] uppercase font-bold rounded-full text-center block transition-all shadow-lg shadow-[var(--gold)]/20"
                       >
                         COMMISSION SIMILAR 3D SCOPE →
                       </a>
