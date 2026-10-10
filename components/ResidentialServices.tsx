@@ -1039,6 +1039,7 @@ export function ResidentialServices() {
           background: rgba(6,6,6,0.88);
           backdrop-filter: blur(8px);
           border: 1px solid var(--border);
+          border-radius: 9999px;
           font-family: var(--font-dm-mono), monospace;
           font-size: 9px;
           letter-spacing: 2px;
@@ -1061,7 +1062,7 @@ export function ResidentialServices() {
         .res-matrix-table-container {
           overflow-x: auto;
           border: 1px solid var(--border);
-          border-radius: 8px;
+          border-radius: 20px;
           background: #0d0d12;
         }
         .res-matrix-table {
@@ -1103,8 +1104,8 @@ export function ResidentialServices() {
           text-transform: uppercase;
           color: #060606;
           background: var(--gold);
-          padding: 2px 7px;
-          border-radius: 2px;
+          padding: 3px 9px;
+          border-radius: 9999px;
           font-weight: bold;
           margin-bottom: 6px;
         }
@@ -1159,7 +1160,7 @@ export function ResidentialServices() {
           text-transform: uppercase;
           color: var(--gold);
           text-decoration: none;
-          padding: 6px 12px;
+          padding: 6px 14px;
           border: 1px solid rgba(212, 168, 67, 0.3);
           border-radius: 9999px;
           transition: all 0.2s ease;
@@ -1200,7 +1201,7 @@ export function ResidentialServices() {
           background: linear-gradient(145deg, #0e0e14 0%, #08080a 100%);
           padding: 28px 24px;
           border: 1px solid var(--border);
-          border-radius: 6px;
+          border-radius: 20px;
           box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
         .res-value-num {
@@ -1246,7 +1247,7 @@ export function ResidentialServices() {
         .res-workflow-step {
           padding: 22px 20px;
           border: 1px solid var(--border);
-          border-radius: 4px;
+          border-radius: 20px;
         }
         .res-wf-num {
           font-family: var(--font-bebas), sans-serif;
@@ -1313,7 +1314,7 @@ export function ResidentialServices() {
           background: linear-gradient(145deg, #0e0e12 0%, #060608 100%);
           padding: 28px 24px;
           border: 1px solid var(--border);
-          border-radius: 8px;
+          border-radius: 20px;
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           display: flex;
@@ -1451,7 +1452,7 @@ export function ResidentialServices() {
           backdrop-filter: blur(18px);
           -webkit-backdrop-filter: blur(18px);
           border: 1px solid rgba(212, 168, 67, 0.25);
-          border-radius: 6px;
+          border-radius: 24px;
           box-sizing: border-box;
           width: 100%;
           max-width: 100%;

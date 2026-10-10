@@ -1616,7 +1616,7 @@ nav {
   padding: 3px 8px;
   text-transform: uppercase;
   transition: all 0.2s;
-  border-radius: 4px;
+  border-radius: 9999px;
 }
 
 .service-item:hover .service-tag {
@@ -1680,7 +1680,7 @@ nav {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 20px;
   padding: 0;
   position: relative;
   overflow: hidden;
@@ -1794,7 +1794,7 @@ nav {
   padding: 5px 12px;
   background: rgba(212, 175, 55, 0.06);
   border: 1px solid rgba(212, 175, 55, 0.2);
-  border-radius: 3px;
+  border-radius: 9999px;
   font-family: var(--font-dm-mono), monospace;
   font-size: 9px;
   letter-spacing: 1.5px;
@@ -1886,7 +1886,7 @@ nav {
   justify-content: space-between;
   width: 100%;
   margin-top: 8px;
-  padding: 12px 16px;
+  padding: 12px 18px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--white);
@@ -1895,7 +1895,7 @@ nav {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   text-decoration: none;
-  border-radius: 3px;
+  border-radius: 9999px;
   transition: all 0.25s ease;
 }
 
@@ -1932,7 +1932,7 @@ nav {
   background: radial-gradient(circle at 10% 20%, rgba(212, 168, 67, 0.08) 0%, rgba(14, 14, 18, 0.96) 50%, rgba(8, 8, 10, 0.98) 100%);
   border: 1px solid rgba(212, 168, 67, 0.35);
   border-top: 2px solid var(--gold);
-  border-radius: 4px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1966,7 +1966,7 @@ nav {
   padding: 6px 14px;
   background: rgba(212, 168, 67, 0.08);
   border: 1px solid rgba(212, 168, 67, 0.3);
-  border-radius: 3px;
+  border-radius: 9999px;
   font-family: var(--font-dm-mono), monospace;
   font-size: 10px;
   letter-spacing: 2px;
@@ -2090,7 +2090,8 @@ nav {
   font-family: var(--font-dm-mono), monospace;
   font-size: 8px;
   letter-spacing: 2px;
-  padding: 4px 10px;
+  padding: 4px 12px;
+  border-radius: 9999px;
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -2162,7 +2163,7 @@ nav {
 .market-detail-card {
   background: var(--steel);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 4px;
+  border-radius: 24px;
   padding: 56px var(--gutter);
   display: grid;
   grid-template-columns: 1.1fr 1.3fr;
@@ -2295,7 +2296,7 @@ nav {
 .goal-card {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 4px;
+  border-radius: 16px;
   padding: 20px;
   cursor: pointer;
   text-align: left;
@@ -2321,7 +2322,7 @@ nav {
   width: 20px;
   height: 20px;
   border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 3px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2395,7 +2396,7 @@ nav {
   background: rgba(255, 255, 255, 0.01);
   border: 1px solid rgba(255, 255, 255, 0.04);
   padding: 24px 28px;
-  border-radius: 4px;
+  border-radius: 20px;
 }
 
 .welcome-text {
@@ -2416,7 +2417,7 @@ nav {
   -webkit-backdrop-filter: blur(16px);
   border: none;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 20px 45px rgba(0, 0, 0, 0.6);
-  border-radius: 4px;
+  border-radius: 20px;
   padding: 32px 24px;
   position: relative;
   overflow: hidden;
@@ -2656,7 +2657,7 @@ nav {
   background: linear-gradient(145deg, #0e0e12 0%, #060608 100%);
   padding: 44px 36px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 4px;
+  border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
@@ -2719,7 +2720,7 @@ nav {
   background: radial-gradient(circle at 10% 20%, rgba(212, 168, 67, 0.06) 0%, rgba(14, 14, 18, 0.96) 50%, rgba(8, 8, 10, 0.98) 100%);
   padding: 28px 36px;
   border: 1px solid rgba(212, 168, 67, 0.3);
-  border-radius: 4px;
+  border-radius: 20px;
   display: flex;
   gap: 20px;
   align-items: flex-start;
@@ -5385,21 +5386,21 @@ footer {
   gap: 1px;
   background: #0e0e10;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1px;
-  border-radius: 2px;
+  padding: 2px 4px;
+  border-radius: 9999px;
   position: relative;
-  height: 22px;
+  height: 24px;
 }
 
 .currency-toggle-btn {
   position: relative;
-  padding: 0 8px;
+  padding: 0 10px;
   height: 100%;
   background: transparent;
   border: none;
   color: #6e6b64;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 9999px;
   transition: color 0.2s ease;
   display: flex;
   align-items: center;
@@ -5421,7 +5422,7 @@ footer {
   inset: 0;
   background: rgba(212, 168, 67, 0.18);
   border: 1px solid rgba(212, 168, 67, 0.4);
-  border-radius: 2px;
+  border-radius: 9999px;
   z-index: 1;
   box-shadow: none;
 }

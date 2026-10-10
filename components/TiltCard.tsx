@@ -76,13 +76,13 @@ export function TiltCard({
           scale,
           transformStyle: "preserve-3d",
         }}
-        className="relative h-full w-full rounded-[4px] overflow-hidden transition-shadow duration-300"
+        className="relative h-full w-full rounded-[20px] overflow-hidden transition-shadow duration-300"
       >
         {children}
 
         {glare && (
           <div
-            className="pointer-events-none absolute inset-0 rounded-[4px] transition-opacity duration-300 z-30"
+            className="pointer-events-none absolute inset-0 rounded-[20px] transition-opacity duration-300 z-30"
             style={{
               background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(255,255,255,0.22) 0%, rgba(212,168,67,0.08) 45%, transparent 70%)`,
               opacity: glarePos.opacity,
