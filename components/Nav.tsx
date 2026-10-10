@@ -28,7 +28,7 @@ export function Nav() {
     { label: "Services", href: "#services" },
     { label: "3D Renders", href: "#renders" },
     { label: "B2C Residential", href: "#residential" },
-    { label: "B2B Packages", href: "#packages" },
+    { label: "B2B Commissions", href: "#packages" },
     { label: "Process", href: "#process" },
     { label: "Client Stories", href: "#testimonials" },
   ];

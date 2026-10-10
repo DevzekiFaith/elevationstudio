@@ -318,7 +318,7 @@ export function ResidentialServices() {
           <div className="flex flex-wrap justify-between items-center gap-4 mb-4">
             <div className="res-eyebrow" style={{ margin: 0 }}>
               <span className="res-eyebrow-line" />
-              Residential Architectural Design
+              <span className="text-[var(--gold)] font-bold mr-1">B2C</span> · Residential Architectural Design
             </div>
             <div className="flex items-center gap-3">
               <span className="text-[10px] font-mono tracking-widest text-[var(--muted)] uppercase">
@@ -351,7 +351,7 @@ export function ResidentialServices() {
                 <div className="res-block-num" aria-hidden>01</div>
                 <div className="res-gold-bar" />
                 <div className="text-[10px] font-mono tracking-widest text-[var(--gold)] uppercase mb-1">
-                  Residential Design · Package A
+                  B2C · Residential Design · Package A
                 </div>
                 <h3 className="res-service-title">Residential Concept Design</h3>
                 <div className="res-price">{formatResidentialPrice("concept")}</div>
@@ -467,7 +467,7 @@ export function ResidentialServices() {
                 <div className="res-block-num" aria-hidden>02</div>
                 <div className="res-gold-bar" />
                 <div className="text-[10px] font-mono tracking-widest text-[var(--gold)] uppercase mb-1">
-                  Residential Design · Package B
+                  B2C · Residential Design · Package B
                 </div>
                 <h3 className="res-service-title">Complete Residential Architecture</h3>
                 <div className="res-price">{formatResidentialPrice("architecture")}</div>
@@ -513,7 +513,7 @@ export function ResidentialServices() {
                 <div className="res-block-num" aria-hidden>03</div>
                 <div className="res-gold-bar" />
                 <div className="text-[10px] font-mono tracking-widest text-[var(--gold)] uppercase mb-1">
-                  Residential Design · Package C
+                  B2C · Residential Design · Package C
                 </div>
                 <h3 className="res-service-title">Residential Masterplan</h3>
                 <div className="res-price">{formatResidentialPrice("masterplan")}</div>
@@ -594,7 +594,7 @@ export function ResidentialServices() {
             </div>
 
             <h3 className="res-section-title">
-              Compare <span style={{ color: "var(--gold)" }}>Residential Packages</span>
+              Compare <span style={{ color: "var(--gold)" }}>B2C Residential Packages</span>
             </h3>
             <p className="res-section-sub">
               Understand the exact difference in deliverables, project stage, and design scope so you can choose the right starting point for your property.

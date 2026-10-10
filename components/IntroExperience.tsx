@@ -209,7 +209,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
         <div className="text-center max-w-4xl mx-auto flex flex-col items-center gap-2 px-2">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/[0.025] backdrop-blur-xl rounded-[3px] text-[9.5px] sm:text-[10px] font-mono text-[var(--gold)] tracking-widest uppercase shadow-[0_4px_20px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)]">
             <span className="w-1.5 h-1.5 rounded-[1px] bg-[var(--gold)] animate-pulse" />
-            Elevation Studio · Residential Architecture
+            <span className="text-white font-bold">B2C</span> · Elevation Studio · Residential Architecture
           </div>
 
           <h1 className="font-syne font-semibold text-sm sm:text-base lg:text-xl text-zinc-300 tracking-[0.14em] sm:tracking-[0.16em] uppercase max-w-3xl leading-relaxed">
@@ -250,7 +250,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                 {/* Tag Pill */}
                 <div className="absolute top-2.5 sm:top-3.5 left-2.5 sm:left-3.5 z-20">
                   <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/50 backdrop-blur-xl rounded-[3px] text-[9px] sm:text-[10px] font-mono text-[var(--gold)] uppercase tracking-wider font-semibold shadow-[0_8px_24px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.12)]">
-                    {currentItem.number} · {currentItem.tag}
+                    B2C · {currentItem.number} · {currentItem.tag}
                   </span>
                 </div>
 
@@ -330,7 +330,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
               >
                 <div>
                   <div className="font-mono text-[9.5px] sm:text-[10px] text-[var(--gold)] uppercase tracking-widest mb-1">
-                    CONCEPT {currentItem.number} OF 05
+                    B2C CONCEPT {currentItem.number} OF 05
                   </div>
                   <h2 className="font-bebas text-xl sm:text-2xl md:text-3xl text-zinc-200 tracking-wide leading-none mb-1">
                     {currentItem.title}

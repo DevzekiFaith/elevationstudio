@@ -427,7 +427,7 @@ export default function Home() {
                   <span className="text-[var(--gold)] font-semibold">B2B</span> · Corporate &amp; Commercial Commissions
                 </div>
                 <div className="pkg-title">
-                  OUR PRIMARY
+                  OUR B2B
                   <br />
                   <span style={{ color: "var(--gold)" }}>COMMISSIONS</span>
                 </div>

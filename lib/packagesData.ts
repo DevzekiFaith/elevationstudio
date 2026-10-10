@@ -24,7 +24,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
   {
     id: "1",
     slugs: ["1", "foundation"],
-    num: "Package 01",
+    num: "B2B Commission · Package 01",
     name: "THE FOUNDATION",
     subtitle: "Brand Identity Only",
     description: "A foundational identity system crafted for clarity, authority, and architectural distinction.",
@@ -55,7 +55,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
   {
     id: "2",
     slugs: ["2", "structure"],
-    num: "Package 02",
+    num: "B2B Commission · Package 02",
     name: "THE STRUCTURE",
     subtitle: "Brand + Digital + Presence",
     description: "A complete digital and local transformation of how your business is seen, discovered, experienced, and remembered online.",
@@ -103,7 +103,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
   {
     id: "3",
     slugs: ["3", "elevation"],
-    num: "Package 03",
+    num: "B2B Commission · Package 03",
     name: "THE ELEVATION",
     subtitle: "Brand + Digital + Space",
     description: "Connecting visual identity, digital presence, and custom 3D spatial architectural transformation.",
@@ -147,7 +147,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
   {
     id: "4",
     slugs: ["4", "master-plan"],
-    num: "Package 04",
+    num: "B2B Commission · Package 04",
     name: "THE MASTER PLAN",
     subtitle: "Brand + Digital + Space + Culture",
     description: "End-to-end organisational transformation combining architecture, digital engineering, and Mindvest culture development.",
@@ -173,7 +173,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
   {
     id: "res-concept",
     slugs: ["res-concept", "concept", "concept-planning", "space-planning"],
-    num: "Residential · Package A",
+    num: "B2C Residential · Package A",
     name: "RESIDENTIAL CONCEPT DESIGN",
     subtitle: "Floor Layout & Façade Concept",
     description: "Give your home a clear architectural direction before committing to a complete design. Translates your space requirements and preferred style into a considered floor layout and architectural façade concept.",
@@ -216,7 +216,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
   {
     id: "res-arch",
     slugs: ["res-arch", "residential-architecture", "architecture", "private-home"],
-    num: "Residential · Package B",
+    num: "B2C Residential · Package B",
     name: "COMPLETE RESIDENTIAL ARCHITECTURE",
     subtitle: "Principal Private Residential Design",
     description: "For bungalows, duplexes, and private homes. Complete concept development, façade styling, detailed elevations, and 3D photorealistic visualisations.",
@@ -259,7 +259,7 @@ export const PACKAGES_DATA: PackageDetail[] = [
   {
     id: "res-master",
     slugs: ["res-master", "residential-masterplan", "masterplan", "estate-compound"],
-    num: "Residential · Package C",
+    num: "B2C Residential · Package C",
     name: "RESIDENTIAL MASTERPLAN",
     subtitle: "Luxury Estates, Villas & Private Compounds",
     description: "For luxury estates, multi-building family compounds, and residential developments requiring comprehensive site coordination, entrance design, and compound masterplanning.",

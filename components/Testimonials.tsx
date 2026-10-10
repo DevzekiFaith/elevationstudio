@@ -53,7 +53,7 @@ const FEATURED_REVIEWS: ReviewItem[] = [
     role: "Creative Director & Co-Founder",
     company: "Aura Prime Developments & Spatial Media",
     location: "Epe / Lekki Expressway Corridor, Lagos",
-    avatar: "/testimonials/praise_chidubem.png",
+    avatar: "/testimonials/ikenna_nwosu.png",
     headline: "Transformative 3D spatial fidelity and brand engineering",
     quote:
       "Elevation Studio translated our luxury residential estate vision into immaculate spatial 3D concepts and a high-converting web architecture. The alignment between our brand identity and physical structures was completely seamless.",
@@ -143,8 +143,8 @@ export function Testimonials() {
   const resolveAvatar = (authorName: string, customAvatar?: string): string => {
     if (customAvatar && customAvatar.trim()) return customAvatar;
     const nameLower = (authorName || "").toLowerCase();
-    if (nameLower.includes("ikenna") || nameLower.includes("nwosu") || nameLower.includes("praise") || nameLower.includes("chidubem")) {
-      return "/testimonials/praise_chidubem.png";
+    if (nameLower.includes("ikenna") || nameLower.includes("nwosu")) {
+      return "/testimonials/ikenna_nwosu.png";
     }
     if (nameLower.includes("rotimi") || nameLower.includes("adebayo")) {
       return "/testimonials/rotimi_adebayo.png";
@@ -158,7 +158,7 @@ export function Testimonials() {
     if (nameLower.includes("folake") || nameLower.includes("ogundele")) {
       return "/testimonials/folake_ogundele.png";
     }
-    return "/testimonials/praise_chidubem.png";
+    return "/testimonials/ikenna_nwosu.png";
   };
 
   const loadReviews = () => {

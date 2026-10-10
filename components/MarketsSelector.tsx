@@ -94,7 +94,9 @@ export function MarketsSelector() {
 
   return (
     <section className="markets" id="markets" data-bg="dark">
-      <div className="section-tag">Who We Serve</div>
+      <div className="section-tag">
+        <span className="text-[var(--gold)] font-bold mr-1">B2B</span> · Enterprise & Commercial Markets
+      </div>
       <div
         style={{
           fontFamily: "var(--font-bebas), sans-serif",
