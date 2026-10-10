@@ -201,7 +201,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
       <div className="fixed bottom-[-10%] left-[-5%] w-[450px] h-[450px] bg-emerald-500/[0.04] blur-[120px] rounded-full pointer-events-none" />
 
       {/* Sleek Minimal Header - Frosted Neo-Glass */}
-      <header className="relative z-40 w-full px-5 sm:px-10 lg:px-16 xl:px-20 py-4 bg-[#070709]/50 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.4)] flex items-center justify-between gap-4">
+      <header className="relative z-40 w-full px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 py-4 sm:py-5 bg-[#070709]/50 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.4)] flex items-center justify-between gap-4">
         <div className="flex items-center">
           <span className="font-bebas text-xl sm:text-2xl text-zinc-300 tracking-widest leading-none">
             ELEVATION <span className="text-[var(--gold)]">STUDIO</span>
@@ -211,7 +211,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
         <button
           type="button"
           onClick={handleSeamlessEnter}
-          className="px-3.5 sm:px-5 py-2 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-widest rounded-full transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 shadow-[0_4px_20px_rgba(212,168,67,0.25)]"
+          className="px-4 sm:px-6 py-2.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-widest rounded-full transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 shadow-[0_4px_20px_rgba(212,168,67,0.25)]"
         >
           <span>Enter Website</span>
           <span>→</span>
@@ -219,11 +219,11 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
       </header>
 
       {/* MAIN VISUAL HERO & SHOWCASE */}
-      <main className="relative z-20 flex-1 w-full max-w-[1580px] mx-auto px-5 sm:px-10 lg:px-16 xl:px-20 py-6 sm:py-10 flex flex-col gap-8 sm:gap-12">
+      <main className="relative z-20 flex-1 w-full max-w-[1580px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 py-8 sm:py-12 lg:py-16 flex flex-col gap-10 sm:gap-14 lg:gap-16">
         
         {/* PUNCHY HERO MARKETING ONE-LINER */}
-        <div className="text-center max-w-4xl mx-auto flex flex-col items-center gap-2 px-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/[0.025] backdrop-blur-xl rounded-full text-[9.5px] sm:text-[10px] font-mono text-[var(--gold)] tracking-widest uppercase shadow-[0_4px_20px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)]">
+        <div className="text-center max-w-4xl mx-auto flex flex-col items-center gap-3 px-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/[0.025] backdrop-blur-xl rounded-full text-[9.5px] sm:text-[10px] font-mono text-[var(--gold)] tracking-widest uppercase shadow-[0_4px_20px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)]">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
             <span className="text-white font-bold">B2C</span> · Elevation Studio · Residential Architecture
           </div>
@@ -234,12 +234,12 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
         </div>
 
         {/* ─── SHOWCASE: GRAND VISUAL ON LEFT, SLEEK COMPACT CARD ON RIGHT ─── */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           
           {/* LEFT: GRAND HIGH-RES VIEWPORT WITH INTERACTIVE FRAME TILT */}
-          <div className="lg:col-span-7 xl:col-span-8 flex flex-col justify-between gap-3 sm:gap-4">
+          <div className="lg:col-span-7 xl:col-span-8 flex flex-col justify-between gap-4 sm:gap-5">
             <TiltCard maxTilt={5} glare={true} className="w-full h-full">
-              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-[6px] overflow-hidden bg-[#0a0b10]/40 backdrop-blur-2xl shadow-[0_30px_70px_rgba(0,0,0,0.8),0_0_35px_rgba(255,255,255,0.03),inset_0_1px_1px_rgba(255,255,255,0.12)] group">
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-[20px] overflow-hidden bg-[#0a0b10]/40 backdrop-blur-2xl shadow-[0_30px_70px_rgba(0,0,0,0.8),0_0_35px_rgba(255,255,255,0.03),inset_0_1px_1px_rgba(255,255,255,0.12)] group">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentItem.id}
@@ -264,14 +264,14 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                 </AnimatePresence>
 
                 {/* Tag Pill */}
-                <div className="absolute top-2.5 sm:top-3.5 left-2.5 sm:left-3.5 z-20">
-                  <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/50 backdrop-blur-xl rounded-full text-[9px] sm:text-[10px] font-mono text-[var(--gold)] uppercase tracking-wider font-semibold shadow-[0_8px_24px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.12)]">
+                <div className="absolute top-4 sm:top-5 left-4 sm:left-5 z-20">
+                  <span className="px-3 py-1 bg-black/50 backdrop-blur-xl rounded-full text-[9px] sm:text-[10px] font-mono text-[var(--gold)] uppercase tracking-wider font-semibold shadow-[0_8px_24px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.12)]">
                     B2C · {currentItem.number} · {currentItem.tag}
                   </span>
                 </div>
 
                 {/* Arrows Top Right */}
-                <div className="absolute top-2.5 sm:top-3.5 right-2.5 sm:right-3.5 z-20 flex items-center gap-1 sm:gap-1.5">
+                <div className="absolute top-4 sm:top-5 right-4 sm:right-5 z-20 flex items-center gap-1.5 sm:gap-2">
                   <button
                     type="button"
                     onClick={(e) => {
@@ -280,7 +280,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                       prevSlide();
                     }}
                     aria-label="Previous archetype"
-                    className="w-7 sm:w-8 h-7 sm:h-8 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-xl text-zinc-300 hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-xs active:scale-95 shadow-[0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.12)]"
+                    className="w-8 sm:w-9 h-8 sm:h-9 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-xl text-zinc-300 hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-xs active:scale-95 shadow-[0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.12)]"
                   >
                     ←
                   </button>
@@ -292,14 +292,14 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                       nextSlide();
                     }}
                     aria-label="Next archetype"
-                    className="w-7 sm:w-8 h-7 sm:h-8 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-xl text-zinc-300 hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-xs active:scale-95 shadow-[0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.12)]"
+                    className="w-8 sm:w-9 h-8 sm:h-9 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-xl text-zinc-300 hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-xs active:scale-95 shadow-[0_8px_24px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.12)]"
                   >
                     →
                   </button>
                 </div>
 
                 {/* Bottom Caption Overlay */}
-                <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 sm:right-3 z-20 p-2.5 sm:p-3 bg-black/50 backdrop-blur-2xl rounded-[4px] shadow-[0_12px_36px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.1)] flex items-center justify-between">
+                <div className="absolute bottom-4 sm:bottom-5 left-4 sm:left-5 right-4 sm:right-5 z-20 p-3 sm:p-4 bg-black/50 backdrop-blur-2xl rounded-[14px] shadow-[0_12px_36px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.1)] flex items-center justify-between">
                   <div className="font-syne font-bold text-[11px] sm:text-xs md:text-sm text-zinc-300 truncate pr-2">
                     {currentItem.subtitle}
                   </div>
@@ -311,7 +311,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
             </TiltCard>
 
             {/* Thumbnail Pills Strip with Neuglassmorphism and Light White Shadow */}
-            <div className="grid grid-cols-5 gap-1 sm:gap-2 w-full">
+            <div className="grid grid-cols-5 gap-2 sm:gap-3 w-full my-1">
               {HOME_ARCHETYPES.map((item, idx) => (
                 <button
                   key={item.id}
@@ -320,7 +320,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                     setIsAutoplay(false);
                     setActiveTab(idx);
                   }}
-                  className={`p-1.5 sm:p-2.5 rounded-full transition-all text-left flex items-center justify-between cursor-pointer backdrop-blur-2xl ${
+                  className={`p-2 sm:p-3 rounded-full transition-all text-left flex items-center justify-between cursor-pointer backdrop-blur-2xl ${
                     idx === activeTab
                       ? "bg-white/[0.08] text-[var(--gold)] font-bold shadow-[0_4px_20px_rgba(255,255,255,0.14),inset_0_1px_1px_rgba(255,255,255,0.35)] scale-[1.01]"
                       : "bg-white/[0.025] text-zinc-400 hover:text-zinc-200 hover:bg-white/[0.06] shadow-[0_4px_16px_rgba(255,255,255,0.05),inset_0_1px_1px_rgba(255,255,255,0.12)] hover:shadow-[0_6px_22px_rgba(255,255,255,0.1)]"
@@ -342,28 +342,28 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.35 }}
-                className="p-4 sm:p-6 bg-[#0e0f16]/30 backdrop-blur-2xl rounded-[6px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_25px_60px_rgba(0,0,0,0.7),0_2px_20px_rgba(255,255,255,0.02)] flex flex-col justify-between gap-4 h-full max-w-[420px] w-full mx-auto lg:mx-0"
+                className="p-6 sm:p-8 lg:p-9 bg-[#0e0f16]/40 backdrop-blur-2xl rounded-[20px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_25px_60px_rgba(0,0,0,0.7),0_2px_20px_rgba(255,255,255,0.02)] flex flex-col justify-between gap-5 h-full max-w-[460px] w-full mx-auto lg:mx-0"
               >
                 <div>
                   <div className="font-mono text-[9.5px] sm:text-[10px] text-[var(--gold)] uppercase tracking-widest mb-1">
                     B2C CONCEPT {currentItem.number} OF 05
                   </div>
-                  <h2 className="font-bebas text-xl sm:text-2xl md:text-3xl text-zinc-200 tracking-wide leading-none mb-1">
+                  <h2 className="font-bebas text-2xl sm:text-3xl md:text-4xl text-zinc-200 tracking-wide leading-none mb-1.5">
                     {currentItem.title}
                   </h2>
-                  <div className="font-serif italic text-xs sm:text-sm text-[var(--gold)] mb-2.5">
+                  <div className="font-serif italic text-xs sm:text-sm text-[var(--gold)] mb-3">
                     &ldquo;{currentItem.subtitle}&rdquo;
                   </div>
-                  <p className="font-sans text-[11.5px] sm:text-xs text-zinc-400 leading-relaxed font-light mb-3.5 max-w-[360px]">
+                  <p className="font-sans text-[11.5px] sm:text-xs text-zinc-400 leading-relaxed font-light mb-4 max-w-[380px]">
                     {currentItem.shortDesc}
                   </p>
 
                   {/* Highlights List Box */}
-                  <div className="p-3 bg-white/[0.02] backdrop-blur-xl rounded-[4px] mb-3.5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_8px_24px_rgba(255,255,255,0.03)]">
-                    <div className="font-mono text-[9px] text-[var(--gold)] uppercase tracking-widest mb-1.5 font-semibold">
+                  <div className="p-4 sm:p-5 bg-white/[0.025] backdrop-blur-xl rounded-[16px] mb-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_8px_24px_rgba(255,255,255,0.03)]">
+                    <div className="font-mono text-[9px] text-[var(--gold)] uppercase tracking-widest mb-2 font-semibold">
                       KEY DELIVERABLES:
                     </div>
-                    <ul className="flex flex-col gap-1">
+                    <ul className="flex flex-col gap-1.5">
                       {currentItem.highlights.map((point, i) => (
                         <li key={i} className="flex items-center gap-2 text-[11px] sm:text-[11.5px] text-zinc-300">
                           <span className="text-[var(--gold)] text-[9px]">◆</span>
@@ -374,9 +374,9 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                   </div>
 
                   {/* Specs Pill Row */}
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-2.5">
                     {currentItem.specs.map((sp, i) => (
-                      <div key={i} className="p-2 bg-white/[0.02] backdrop-blur-xl rounded-[4px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.06),0_6px_20px_rgba(255,255,255,0.03)]">
+                      <div key={i} className="p-2.5 sm:p-3 bg-white/[0.025] backdrop-blur-xl rounded-[12px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.06),0_6px_20px_rgba(255,255,255,0.03)]">
                         <div className="font-mono text-[8px] text-zinc-500 uppercase">{sp.label}</div>
                         <div className="font-mono text-[10px] sm:text-[10.5px] text-zinc-300 font-semibold">{sp.value}</div>
                       </div>
@@ -385,12 +385,12 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                 </div>
 
                 {/* Action Buttons */}
-                <div className="pt-2.5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                   <a
                     href={`https://wa.me/2349119059859?text=${encodeURIComponent(currentItem.whatsappPrompt)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-2.5 px-3.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-[10.5px] font-bold uppercase tracking-wider rounded-full text-center transition-all flex items-center justify-center gap-1.5 active:scale-95 shadow-[0_4px_20px_rgba(212,168,67,0.25)]"
+                    className="flex-1 py-3 px-4 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-[10.5px] font-bold uppercase tracking-wider rounded-full text-center transition-all flex items-center justify-center gap-1.5 active:scale-95 shadow-[0_4px_20px_rgba(212,168,67,0.25)]"
                   >
                     <span>Discuss Concept</span>
                     <span>→</span>
@@ -399,7 +399,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                   <button
                     type="button"
                     onClick={handleSeamlessEnter}
-                    className="py-2.5 px-3.5 bg-white/[0.03] hover:bg-white/[0.07] backdrop-blur-xl text-zinc-300 hover:text-white font-mono text-[10.5px] uppercase tracking-wider rounded-full transition-all cursor-pointer shadow-[0_4px_16px_rgba(255,255,255,0.04),inset_0_1px_1px_rgba(255,255,255,0.08)] text-center"
+                    className="py-3 px-4 bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-xl text-zinc-300 hover:text-white font-mono text-[10.5px] uppercase tracking-wider rounded-full transition-all cursor-pointer shadow-[0_4px_16px_rgba(255,255,255,0.04),inset_0_1px_1px_rgba(255,255,255,0.08)] text-center active:scale-95"
                   >
                     Enter Studio
                   </button>
@@ -410,24 +410,24 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
         </div>
 
         {/* ─── 4-STEP CLIENT PROCESS: NEO-GLASS STRIP WITH LIGHT WHITE SHADOW ─── */}
-        <div className="p-5 sm:p-8 bg-[#0e0f16]/30 backdrop-blur-2xl rounded-[6px] shadow-[0_20px_50px_rgba(0,0,0,0.6),0_2px_20px_rgba(255,255,255,0.04),inset_0_1px_1px_rgba(255,255,255,0.12)]">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+        <div className="p-6 sm:p-10 lg:p-12 bg-[#0e0f16]/40 backdrop-blur-2xl rounded-[24px] shadow-[0_25px_60px_rgba(0,0,0,0.6),0_2px_20px_rgba(255,255,255,0.04),inset_0_1px_1px_rgba(255,255,255,0.12)]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-8">
             <div>
               <span className="font-mono text-[9px] sm:text-[9.5px] text-[var(--gold)] uppercase tracking-widest font-semibold">
                 OUR CLIENT DELIVERY STANDARD
               </span>
-              <h3 className="font-bebas text-xl sm:text-2xl md:text-3xl text-zinc-200 tracking-wide">
+              <h3 className="font-bebas text-2xl sm:text-3xl md:text-4xl text-zinc-200 tracking-wide mt-1">
                 4-STEP CLIENT SATISFACTION PROCESS
               </h3>
             </div>
-            <span className="font-mono text-[10px] text-zinc-500">Zero Surprises · 100% Transparency</span>
+            <span className="font-mono text-[10px] sm:text-[11px] text-zinc-500">Zero Surprises · 100% Transparency</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {SATISFACTION_PROCESS.map((proc, i) => (
               <div
                 key={i}
-                className="p-3.5 sm:p-4 bg-white/[0.025] hover:bg-white/[0.055] backdrop-blur-xl rounded-[4px] shadow-[0_8px_25px_rgba(255,255,255,0.04),inset_0_1px_1px_rgba(255,255,255,0.15)] hover:shadow-[0_12px_32px_rgba(255,255,255,0.09),inset_0_1px_1px_rgba(255,255,255,0.25)] transition-all flex flex-col gap-1.5 group"
+                className="p-4 sm:p-6 bg-white/[0.03] hover:bg-white/[0.06] backdrop-blur-xl rounded-[18px] shadow-[0_8px_25px_rgba(255,255,255,0.04),inset_0_1px_1px_rgba(255,255,255,0.15)] hover:shadow-[0_12px_32px_rgba(255,255,255,0.09),inset_0_1px_1px_rgba(255,255,255,0.25)] transition-all flex flex-col gap-2 group"
               >
                 <div className="font-mono text-base sm:text-lg text-[var(--gold)] font-bold">
                   {proc.step}
@@ -444,21 +444,21 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
         </div>
 
         {/* ─── BOTTOM MINIMAL GATEWAY: NEO-GLASS CARD ─── */}
-        <div className="p-6 sm:p-8 bg-[#0e0f16]/30 backdrop-blur-2xl rounded-[6px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_30px_70px_rgba(0,0,0,0.7)] text-center flex flex-col items-center gap-4">
+        <div className="p-8 sm:p-12 lg:p-14 bg-[#0e0f16]/40 backdrop-blur-2xl rounded-[24px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_30px_70px_rgba(0,0,0,0.7)] text-center flex flex-col items-center gap-6">
           <div>
-            <h3 className="font-bebas text-xl sm:text-2xl lg:text-3xl text-zinc-200 tracking-wider leading-none">
+            <h3 className="font-bebas text-2xl sm:text-3xl lg:text-4xl text-zinc-200 tracking-wider leading-none">
               READY TO BUILD YOUR DREAM HOME?
             </h3>
-            <p className="font-sans text-xs text-zinc-400 mt-1 max-w-xl mx-auto font-light">
+            <p className="font-sans text-xs sm:text-sm text-zinc-400 mt-2 max-w-xl mx-auto font-light leading-relaxed">
               See our transparent house packages, view realistic 3D plans, or chat directly with our lead architect.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full max-w-sm sm:max-w-none">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full max-w-sm sm:max-w-none">
             <button
               type="button"
               onClick={handleSeamlessEnter}
-              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-xs font-bold uppercase tracking-widest rounded-full transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-2 shadow-[0_4px_25px_rgba(212,168,67,0.3)]"
+              className="px-7 sm:px-8 py-3.5 sm:py-4 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-xs font-bold uppercase tracking-widest rounded-full transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-2 shadow-[0_4px_25px_rgba(212,168,67,0.3)]"
             >
               <span>Explore Full Website</span>
               <span>→</span>
@@ -470,7 +470,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-3 sm:py-3.5 bg-emerald-950/30 hover:bg-emerald-900/50 backdrop-blur-xl text-emerald-400 font-mono text-xs uppercase tracking-wider rounded-full transition-all flex items-center justify-center gap-1.5 shadow-[0_8px_24px_rgba(6,78,59,0.25)]"
+              className="px-6 sm:px-7 py-3.5 sm:py-4 bg-emerald-950/30 hover:bg-emerald-900/50 backdrop-blur-xl text-emerald-400 font-mono text-xs uppercase tracking-wider rounded-full transition-all flex items-center justify-center gap-1.5 shadow-[0_8px_24px_rgba(6,78,59,0.25)]"
             >
               <span>WhatsApp Direct</span>
               <span>↗</span>
@@ -480,7 +480,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
       </main>
 
       {/* Minimal Footer */}
-      <footer className="relative z-20 w-full px-5 sm:px-10 lg:px-16 xl:px-20 py-4 bg-[#060608]/80 backdrop-blur-lg flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] font-mono text-zinc-500">
+      <footer className="relative z-20 w-full px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 py-6 bg-[#060608]/80 backdrop-blur-lg flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] font-mono text-zinc-500">
         <div>© 2026 Elevation Studio</div>
         <div className="text-[var(--gold)]">www.elevationstudiong.com.ng</div>
       </footer>
