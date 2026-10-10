@@ -1,12 +1,17 @@
-import { IntroExperience } from "@/components/IntroExperience";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Intro & Spatial Living Concepts | Elevation Studio",
-  description:
-    "Explore Elevation Studio's premier architectural home concepts, 3D spatial planning, and our 4-step client satisfaction delivery process.",
-};
+import { IntroExperience } from "@/components/IntroExperience";
+import { useRouter } from "next/navigation";
 
 export default function IntroPage() {
-  return <IntroExperience />;
+  const router = useRouter();
+
+  const handleEnterStudio = () => {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("es_intro_seen", "true");
+    }
+    router.push("/");
+  };
+
+  return <IntroExperience onEnterStudio={handleEnterStudio} />;
 }

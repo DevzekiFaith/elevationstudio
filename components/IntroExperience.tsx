@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { TiltCard } from "@/components/TiltCard";
 
@@ -120,6 +121,7 @@ const SATISFACTION_PROCESS = [
 ];
 
 export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void }) {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState(0);
   const [isTransitioningOut, setIsTransitioningOut] = useState(false);
   const [isAutoplay, setIsAutoplay] = useState(true);
@@ -157,13 +159,27 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [nextSlide, prevSlide]);
 
-  const handleSeamlessEnter = () => {
+  const handleSeamlessEnter = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("es_intro_seen", "true");
+    }
     setIsTransitioningOut(true);
     setTimeout(() => {
       if (onEnterStudio) {
         onEnterStudio();
+      } else {
+        router.push("/");
+        setTimeout(() => {
+          if (typeof window !== "undefined" && window.location.pathname.startsWith("/intro")) {
+            window.location.href = "/";
+          }
+        }, 150);
       }
-    }, 500);
+    }, 300);
   };
 
   const currentItem = HOME_ARCHETYPES[activeTab];
@@ -213,7 +229,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
           </div>
 
           <h1 className="font-syne font-semibold text-sm sm:text-base lg:text-xl text-zinc-300 tracking-[0.14em] sm:tracking-[0.16em] uppercase max-w-3xl leading-relaxed">
-            Beautiful Homes Designed for <span className="text-[var(--gold)] font-bold">Total Peace of Mind</span>
+            Welcome Home to <span className="text-[var(--gold)] font-bold">Peace of Mind</span>
           </h1>
         </div>
 
