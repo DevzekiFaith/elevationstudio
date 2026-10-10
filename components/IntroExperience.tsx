@@ -211,10 +211,10 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
         <button
           type="button"
           onClick={handleSeamlessEnter}
-          className="px-4 sm:px-6 py-2.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-widest rounded-full transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 shadow-[0_4px_20px_rgba(212,168,67,0.25)]"
+          className="px-5 sm:px-7 py-2.5 sm:py-3 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.16em] sm:tracking-[0.2em] rounded-full transition-all duration-300 flex items-center gap-2 cursor-pointer active:scale-95 hover:scale-105 shadow-[0_4px_24px_rgba(212,168,67,0.4),0_0_15px_rgba(212,168,67,0.2)] hover:shadow-[0_6px_30px_rgba(212,168,67,0.6)]"
         >
           <span>Enter Website</span>
-          <span>→</span>
+          <span className="text-sm font-black transition-transform duration-300 group-hover:translate-x-1">→</span>
         </button>
       </header>
 
@@ -399,7 +399,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                   <button
                     type="button"
                     onClick={handleSeamlessEnter}
-                    className="py-3 px-4 bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-xl text-zinc-300 hover:text-white font-mono text-[10.5px] uppercase tracking-wider rounded-full transition-all cursor-pointer shadow-[0_4px_16px_rgba(255,255,255,0.04),inset_0_1px_1px_rgba(255,255,255,0.08)] text-center active:scale-95"
+                    className="py-3 sm:py-3.5 px-5 sm:px-6 bg-white/[0.05] hover:bg-white/[0.12] border border-white/15 hover:border-[var(--gold-border)] text-white hover:text-[var(--gold)] backdrop-blur-xl font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 cursor-pointer shadow-[0_4px_18px_rgba(255,255,255,0.05),inset_0_1px_1px_rgba(255,255,255,0.15)] text-center active:scale-95 hover:scale-[1.02]"
                   >
                     Enter Studio
                   </button>
@@ -458,10 +458,10 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
             <button
               type="button"
               onClick={handleSeamlessEnter}
-              className="px-7 sm:px-8 py-3.5 sm:py-4 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-xs font-bold uppercase tracking-widest rounded-full transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-2 shadow-[0_4px_25px_rgba(212,168,67,0.3)]"
+              className="px-8 sm:px-10 py-4 sm:py-4.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.18em] sm:tracking-[0.22em] rounded-full transition-all duration-300 active:scale-95 hover:scale-[1.03] cursor-pointer flex items-center justify-center gap-2.5 shadow-[0_8px_32px_rgba(212,168,67,0.45)] hover:shadow-[0_12px_45px_rgba(212,168,67,0.65)]"
             >
               <span>Explore Full Website</span>
-              <span>→</span>
+              <span className="text-base font-black">→</span>
             </button>
 
             <a
