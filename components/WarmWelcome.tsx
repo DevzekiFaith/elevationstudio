@@ -33,7 +33,7 @@ const GUARANTEES: GuaranteeItem[] = [
 
 export function WarmWelcome() {
   return (
-    <section className="warm-welcome relative overflow-hidden" id="welcome" data-bg="light">
+    <section className="warm-welcome relative overflow-hidden" id="welcome" data-bg="dark">
       {/* Soft Ambient Gold Glows */}
       <div className="absolute right-0 top-1/4 pointer-events-none">
         <div className="ambient-orb ambient-orb-gold w-[350px] h-[350px] opacity-10" />

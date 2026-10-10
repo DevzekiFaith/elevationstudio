@@ -7,29 +7,49 @@ import { Reveal } from "./Reveal";
 import { Magnetic } from "./Magnetic";
 import { TiltCard } from "./TiltCard";
 import { useCurrency } from "./CurrencyContext";
+import { CurrencyToggle } from "./CurrencyToggle";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 /* ─────────────────────────────────────────
-   Residential & Private Client Services
-   Editorial alternating layout — premium
+   Residential Architecture Services
+   Three Clearly Differentiated Offers
 ───────────────────────────────────────── */
 
-const SERVICE_01_MATERIALS = [
+const SERVICE_00_MATERIALS = [
   {
-    id: "day",
-    label: "DAYTIME MONOLITHIC FACADE",
-    badge: "5-Bed Bungalow · Grand Portico",
+    id: "bungalow_day",
+    label: "5-BEDROOM BUNGALOW CONCEPT",
+    badge: "5-Bed Bungalow · Conceptual Façade",
     src: "/renders/modern_5bed_bungalow_day.jpg",
-    alt: "Modern 5-Bedroom Residential Architecture — Elevation Studio",
+    alt: "Modern 5-Bedroom Bungalow Concept — Elevation Studio",
     link: "/renders/24",
   },
   {
-    id: "evening",
+    id: "bungalow_evening",
     label: "EVENING ILLUMINATION",
     badge: "5-Bed Bungalow · LED Nightscape",
     src: "/renders/modern_5bed_bungalow_evening.jpg",
     alt: "Modern 5-Bedroom Bungalow Evening Illumination — Elevation Studio",
     link: "/renders/25",
+  },
+];
+
+const SERVICE_01_MATERIALS = [
+  {
+    id: "duplex_twilight",
+    label: "EXECUTIVE LUXURY DUPLEX",
+    badge: "2-Story Luxury Duplex · Full Façade & Detailing",
+    src: "/renders/modern_duplex_residence.jpg",
+    alt: "Executive 2-Story Luxury Duplex — Elevation Studio",
+    link: "/renders/26",
+  },
+  {
+    id: "terrace_duplex",
+    label: "MULTI-UNIT TERRACE DUPLEX",
+    badge: "Terrace Duplex · Integrated Lighting & Carport",
+    src: "/renders/luxury_terrace_duplex_estate.jpg",
+    alt: "Multi-Unit Terrace Duplex Estate — Elevation Studio",
+    link: "/renders/2",
   },
 ];
 
@@ -42,38 +62,107 @@ const SERVICE_02_MATERIALS = [
     alt: "Luxury Residential Masterplan — Elevation Studio",
     link: "/renders/1",
   },
+  {
+    id: "twin_villa",
+    label: "COMPOUND PLANNING",
+    badge: "Multi-Structure Residential",
+    src: "/renders/twin_villa_estate.jpg",
+    alt: "Twin Villa Residential Masterplan — Elevation Studio",
+    link: "/renders/2",
+  },
+];
+
+const SERVICE_00_INCLUDES = [
+  "Review of your design brief & spatial requirements",
+  "Conceptual floor plan and space arrangement",
+  "Architectural façade concept",
+  "Digital design presentation",
+  "One consolidated revision round",
+  "Clear progression path toward complete architectural design",
 ];
 
 const SERVICE_01_INCLUDES = [
-  "Discovery & client brief",
-  "Space planning and floor plans",
+  "Discovery and client brief consultation",
+  "Space planning and detailed floor plans",
   "Architectural concept and façade design",
   "Materials and finish direction",
   "Elevations and key sections",
   "Detailed 3D model",
-  "3–5 high-quality exterior visualizations",
+  "3–5 high-quality exterior visualisations",
   "Up to 2 revision rounds",
   "Final presentation package",
 ];
 
 const SERVICE_02_INCLUDES = [
-  "Everything in Residential Architecture",
-  "Advanced architectural development",
-  "Site and compound planning",
-  "Entrance and landscape concept",
+  "Everything in Complete Residential Architecture",
+  "Advanced architectural development for multiple structures",
+  "Site and compound planning & building placement",
+  "Entrance, gatehouse and boundary wall concept",
+  "Landscape concept and vehicular/pedestrian circulation",
   "Exterior lighting direction",
   "Premium material direction",
-  "6–10 high-quality visualizations",
+  "6–10 high-quality visualisations",
   "Selected interior concept direction",
   "Up to 3 revision rounds",
-  "Premium final presentation package",
+  "Premium final presentation dossier",
+];
+
+const COMPARISON_ROWS = [
+  {
+    dimension: "Intended Customer",
+    p0: "Homeowners & diaspora clients establishing design direction before full commitment",
+    p1: "Homeowners building a private bungalow, duplex, or single residence",
+    p2: "Property owners building luxury villas, family compounds, or multi-structure estates",
+  },
+  {
+    dimension: "Project Scope",
+    p0: "Single residential structure layout & architectural concept",
+    p1: "Comprehensive design of a single private residence",
+    p2: "Multi-structure compound, large villa estate, or masterplanned site",
+  },
+  {
+    dimension: "Floor Plans & Layout",
+    p0: "Conceptual floor plan & room arrangement",
+    p1: "Detailed 2D floor plans & space planning",
+    p2: "Multi-structure floor plans & compound zoning",
+  },
+  {
+    dimension: "Façade & Elevations",
+    p0: "Architectural façade concept",
+    p1: "Full custom façade design, elevations & key sections",
+    p2: "Site-wide architectural façade coordination",
+  },
+  {
+    dimension: "3D Visualisations",
+    p0: "Digital presentation (visualisations excluded)",
+    p1: "3–5 high-quality exterior visualisations",
+    p2: "6–10 high-quality exterior & selected interior visualisations",
+  },
+  {
+    dimension: "Site & Compound Scope",
+    p0: "Basic building footprint on plot",
+    p1: "Standard plot layout & building placement",
+    p2: "Complete compound masterplan, gatehouse, access & landscape concepts",
+  },
+  {
+    dimension: "Revision Allowance",
+    p0: "1 consolidated revision round",
+    p1: "Up to 2 revision rounds",
+    p2: "Up to 3 revision rounds",
+  },
+  {
+    dimension: "Scope Classification",
+    p0: "Concept-design stage (not full construction docs)",
+    p1: "Complete architectural design package",
+    p2: "Executive masterplan & render package",
+  },
 ];
 
 const WORKFLOW_STAGES = [
-  { num: "01", name: "Discovery", desc: "Understanding your site, vision and brief." },
-  { num: "02", name: "Architecture", desc: "Spatial planning, massing and concept." },
-  { num: "03", name: "Design", desc: "Renders, façade and material refinement." },
-  { num: "04", name: "Build", desc: "Final drawings, model and handover pack." },
+  { num: "01", name: "Brief & Discovery", desc: "Understanding your plot, space requirements, lifestyle, and vision." },
+  { num: "02", name: "Architecture & Layout", desc: "Developing spatial flow, room relationships, and architectural massing." },
+  { num: "03", name: "Design & Refinement", desc: "3D modelling, façade styling, material palettes, and agreed revisions." },
+  { num: "04", name: "Handover Pack", desc: "Final drawings, presentation pack, and milestone handover." },
 ];
 
 function CheckItem({ text }: { text: string }) {
@@ -82,7 +171,7 @@ function CheckItem({ text }: { text: string }) {
       style={{
         fontFamily: "var(--font-syne), sans-serif",
         fontSize: 13,
-        color: "rgba(244,240,232,0.75)",
+        color: "rgba(244,240,232,0.85)",
         display: "flex",
         alignItems: "flex-start",
         gap: 10,
@@ -93,20 +182,19 @@ function CheckItem({ text }: { text: string }) {
         style={{
           color: "var(--gold)",
           flexShrink: 0,
-          marginTop: 2,
+          marginTop: 3,
           fontSize: 8,
         }}
       >
         ◆
       </span>
-      {text}
+      <span>{text}</span>
     </li>
   );
 }
 
 /* ─────────────────────────────────────────
    CTA Band — Eden Oasis-style overlay effect
-   Background image + gold overlay + parallax scroll
 ───────────────────────────────────────── */
 function ResCtaBand() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -116,13 +204,11 @@ function ResCtaBand() {
     offset: ["start end", "end start"],
   });
 
-  // Aggressive travel range → clearly felt parallax depth effect
   const rawY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
   const y = useSpring(rawY, { stiffness: 60, damping: 18 });
 
   return (
     <div ref={sectionRef} className="res-cta-band">
-
       {/* Parallax image layer */}
       <motion.div
         style={{ y, position: "absolute", inset: 0, scale: 1.18 }}
@@ -138,49 +224,56 @@ function ResCtaBand() {
         />
       </motion.div>
 
-      {/* Gold warm overlay — the Eden Oasis effect in Elevation's brand palette */}
+      {/* Gold warm overlay */}
       <div className="res-cta-overlay" />
 
-      {/* Content sits above both layers */}
+      {/* Content */}
       <div className="res-cta-inner">
-
         {/* Left copy */}
         <Reveal direction="up" duration={0.8}>
           <div className="res-cta-copy">
             <div className="res-eyebrow" style={{ color: "#ffffff", textShadow: "0 1px 8px rgba(0,0,0,0.7)" }}>
               <span className="res-eyebrow-line" style={{ background: "#ffffff" }} />
-              B2C · Start Your Residential Project
+              Residential Project Enquiries
             </div>
             <h3 className="res-cta-heading">
               Start Your{" "}
               <br className="hidden sm:inline" />
-              <span style={{ color: "rgba(255, 255, 255, 0.65)" }}>Residential Project</span>
+              <span style={{ color: "rgba(255, 255, 255, 0.75)" }}>Residential Project</span>
             </h3>
             <p className="res-cta-body">
-              Tell us about your project, your plot and the kind of home you want to
-              create. We begin by understanding your vision before we begin designing it.
+              Tell us about your plot, proposed home, space requirements, and vision. We will review your project parameters and confirm the appropriate scope and quotation.
             </p>
           </div>
         </Reveal>
 
-        {/* Right CTAs — glassmorphic card floating over the background */}
+        {/* Right CTAs */}
         <Reveal direction="right" duration={0.8} delay={0.15}>
           <TiltCard glare maxTilt={5} className="w-full">
             <div className="res-cta-card">
               <Magnetic strength={0.25} className="w-full">
                 <Link
-                  href="/contact?service=residential-architecture"
+                  href="/contact?package=res-arch"
                   className="btn-primary res-cta-btn"
                 >
-                  Start a Project
+                  Complete Architecture (₦1.5M) →
                 </Link>
               </Magnetic>
               <Magnetic strength={0.25} className="w-full">
                 <Link
-                  href="/contact?service=residential-masterplan"
+                  href="/contact?package=res-concept"
+                  className="btn-ghost res-cta-btn text-[11px]"
+                  style={{ borderColor: "rgba(212,168,67,0.35)", color: "var(--gold)" }}
+                >
+                  Concept Design (₦600K) →
+                </Link>
+              </Magnetic>
+              <Magnetic strength={0.25} className="w-full">
+                <Link
+                  href="/contact?package=res-master"
                   className="btn-ghost res-cta-btn"
                 >
-                  Request a Project Proposal
+                  Residential Masterplan (₦4.5M) →
                 </Link>
               </Magnetic>
               <a
@@ -194,18 +287,18 @@ function ResCtaBand() {
             </div>
           </TiltCard>
         </Reveal>
-
       </div>
     </div>
   );
 }
 
-
 export function ResidentialServices() {
   const { formatResidentialPrice } = useCurrency();
+  const [s0MatIndex, setS0MatIndex] = useState(0);
   const [s1MatIndex, setS1MatIndex] = useState(0);
   const [s2MatIndex, setS2MatIndex] = useState(0);
 
+  const curS0 = SERVICE_00_MATERIALS[s0MatIndex];
   const curS1 = SERVICE_01_MATERIALS[s1MatIndex];
   const curS2 = SERVICE_02_MATERIALS[s2MatIndex];
 
@@ -222,60 +315,68 @@ export function ResidentialServices() {
       {/* ── 1. SECTION HEADER ── */}
       <div className="res-header-wrap">
         <Reveal direction="up" duration={0.7}>
-          <div className="res-eyebrow">
-            <span className="res-eyebrow-line" />
-            B2C · Residential &amp; Private Client Services
+          <div className="flex flex-wrap justify-between items-center gap-4 mb-4">
+            <div className="res-eyebrow" style={{ margin: 0 }}>
+              <span className="res-eyebrow-line" />
+              Residential Architectural Design
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-[10px] font-mono tracking-widest text-[var(--muted)] uppercase">
+                CURRENCY:
+              </span>
+              <CurrencyToggle />
+            </div>
           </div>
 
           <h2 className="res-heading">
             Modern homes, designed
             <br />
-            from{" "}
-            <span style={{ color: "var(--gold)" }}>vision</span> to architectural clarity.
+            from <span style={{ color: "var(--gold)" }}>vision</span> to architectural clarity.
           </h2>
 
           <p className="res-subtitle">
-            Bespoke space planning, floor plans, 3D visualization and compound masterplanning
-            — crafted for private property owners, diaspora builders, and luxury homeowners across Nigeria.
+            Bespoke space planning, floor plans, 3D visualization, and compound masterplanning
+            — structured for private homeowners, landowners, and diaspora clients building across Nigeria.
           </p>
         </Reveal>
       </div>
 
-      {/* ── 2. SERVICE 01 — text left / image right ── */}
+      {/* ── 2. PACKAGE 01 — RESIDENTIAL CONCEPT DESIGN (text left / image right) ── */}
       <div className="res-block-border">
         <div className="res-block-inner res-block-01">
-
-          {/* Left — content (plain div — full column height) */}
+          {/* Left — content */}
           <div className="res-content-col res-content-left">
             <Reveal direction="left" duration={0.8}>
               <div>
                 <div className="res-block-num" aria-hidden>01</div>
                 <div className="res-gold-bar" />
                 <div className="text-[10px] font-mono tracking-widest text-[var(--gold)] uppercase mb-1">
-                  B2C Commission · Private Homes
+                  Residential Design · Package A
                 </div>
-                <h3 className="res-service-title">Residential Architecture</h3>
-                <div className="res-price">{formatResidentialPrice("architecture")}</div>
+                <h3 className="res-service-title">Residential Concept Design</h3>
+                <div className="res-price">{formatResidentialPrice("concept")}</div>
                 <p className="res-service-desc">
-                  For bungalows, duplexes and private homes. A complete architectural
-                  design experience from your first brief to final renders.
+                  Give your home a clear architectural direction before committing to a complete design. This service helps you translate your ideas, space requirements, and preferred style into a considered floor layout and façade concept.
                 </p>
+                <div className="res-purpose-badge">
+                  <strong>Scope Note:</strong> This is a concept-design stage, not a complete construction-documentation package. Ideal for establishing design direction before proceeding to full architectural documentation.
+                </div>
                 <ul className="res-includes-list">
-                  {SERVICE_01_INCLUDES.map((item, i) => <CheckItem key={i} text={item} />)}
+                  {SERVICE_00_INCLUDES.map((item, i) => <CheckItem key={i} text={item} />)}
                 </ul>
               </div>
-              <div style={{ marginTop: 48, display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center" }}>
+              <div style={{ marginTop: 40, display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center" }}>
                 <Magnetic strength={0.2}>
                   <Link
-                    href="#contact?service=residential-architecture"
+                    href="/contact?package=res-concept"
                     className="btn-primary"
                     style={{ display: "inline-block" }}
                   >
-                    Start a Project
+                    Request Concept Design
                   </Link>
                 </Magnetic>
                 <Link
-                  href={curS1.link}
+                  href={curS0.link}
                   className="res-explore-link"
                 >
                   Explore 3D Concept ↗
@@ -284,8 +385,48 @@ export function ResidentialServices() {
             </Reveal>
           </div>
 
-          {/* Right — image wrapped in TiltCard with Material Switcher */}
+          {/* Right — image */}
           <div className="res-image-col">
+            <TiltCard glare maxTilt={5} className="res-tilt-image">
+              <div className="res-img-inner group">
+                <Image
+                  key={curS0.src}
+                  src={curS0.src}
+                  alt={curS0.alt}
+                  fill
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+
+                {SERVICE_00_MATERIALS.length > 1 && (
+                  <div className="res-material-switcher-bar">
+                    {SERVICE_00_MATERIALS.map((m, idx) => (
+                      <button
+                        key={m.id}
+                        type="button"
+                        onClick={() => setS0MatIndex(idx)}
+                        className={`res-mat-tab ${s0MatIndex === idx ? "active" : ""}`}
+                      >
+                        <span className="res-mat-dot">◆</span> {m.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                <div className="res-img-label res-img-label-right">
+                  {curS0.badge}
+                </div>
+              </div>
+            </TiltCard>
+          </div>
+        </div>
+      </div>
+
+      {/* ── 3. PACKAGE 02 — COMPLETE RESIDENTIAL ARCHITECTURE (image left / text right) ── */}
+      <div className="res-block-border">
+        <div className="res-block-inner res-block-02">
+          {/* Left — image with Day/Evening switcher */}
+          <div className="res-image-col res-image-left">
             <TiltCard glare maxTilt={5} className="res-tilt-image">
               <div className="res-img-inner group">
                 <Image
@@ -297,7 +438,6 @@ export function ResidentialServices() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
 
-                {/* Top Material Variation Switcher */}
                 {SERVICE_01_MATERIALS.length > 1 && (
                   <div className="res-material-switcher-bar">
                     {SERVICE_01_MATERIALS.map((m, idx) => (
@@ -313,22 +453,102 @@ export function ResidentialServices() {
                   </div>
                 )}
 
-                <div className="res-img-label res-img-label-right">
+                <div className="res-img-label res-img-label-left">
                   {curS1.badge}
                 </div>
               </div>
             </TiltCard>
           </div>
 
+          {/* Right — content */}
+          <div className="res-content-col res-content-right">
+            <Reveal direction="right" duration={0.8}>
+              <div>
+                <div className="res-block-num" aria-hidden>02</div>
+                <div className="res-gold-bar" />
+                <div className="text-[10px] font-mono tracking-widest text-[var(--gold)] uppercase mb-1">
+                  Residential Design · Package B
+                </div>
+                <h3 className="res-service-title">Complete Residential Architecture</h3>
+                <div className="res-price">{formatResidentialPrice("architecture")}</div>
+                <p className="res-service-desc">
+                  The principal residential design offer for homeowners planning a bungalow, duplex or single residence. A comprehensive architectural design engagement from initial brief to 3D visualisations and presentation drawings.
+                </p>
+                <div className="res-purpose-badge">
+                  <strong>Scope Distinction:</strong> Extends concept design into full exterior façade development, technical elevations, key sections, materials direction, and 3–5 high-quality exterior visualisations.
+                </div>
+                <ul className="res-includes-list">
+                  {SERVICE_01_INCLUDES.map((item, i) => <CheckItem key={i} text={item} />)}
+                </ul>
+              </div>
+              <div style={{ marginTop: 40, display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center" }}>
+                <Magnetic strength={0.2}>
+                  <Link
+                    href="/contact?package=res-arch"
+                    className="btn-primary"
+                    style={{ display: "inline-block" }}
+                  >
+                    Get a Project Quotation
+                  </Link>
+                </Magnetic>
+                <Link
+                  href={curS1.link}
+                  className="res-explore-link"
+                >
+                  Explore 3D Concept ↗
+                </Link>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
 
-      {/* ── 3. SERVICE 02 — image left / text right ── */}
+      {/* ── 4. PACKAGE 03 — RESIDENTIAL MASTERPLAN (text left / image right) ── */}
       <div className="res-block-border">
-        <div className="res-block-inner res-block-02">
+        <div className="res-block-inner res-block-01">
+          {/* Left — content */}
+          <div className="res-content-col res-content-left">
+            <Reveal direction="left" duration={0.8}>
+              <div>
+                <div className="res-block-num" aria-hidden>03</div>
+                <div className="res-gold-bar" />
+                <div className="text-[10px] font-mono tracking-widest text-[var(--gold)] uppercase mb-1">
+                  Residential Design · Package C
+                </div>
+                <h3 className="res-service-title">Residential Masterplan</h3>
+                <div className="res-price">{formatResidentialPrice("masterplan")}</div>
+                <p className="res-service-desc">
+                  For luxury private estates, multi-building family compounds, and residential projects requiring extensive site coordination, entrance design, compound zoning, and nighttime illumination direction.
+                </p>
+                <div className="res-purpose-badge">
+                  <strong>Scope Distinction:</strong> Comprehensive site-wide coordination for multiple structures, gatehouses, boundary architecture, vehicular/pedestrian circulation, and 6–10 visualisations.
+                </div>
+                <ul className="res-includes-list">
+                  {SERVICE_02_INCLUDES.map((item, i) => <CheckItem key={i} text={item} />)}
+                </ul>
+              </div>
+              <div style={{ marginTop: 40, display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center" }}>
+                <Magnetic strength={0.2}>
+                  <Link
+                    href="/contact?package=res-master"
+                    className="btn-primary"
+                    style={{ display: "inline-block" }}
+                  >
+                    Discuss Your Masterplan
+                  </Link>
+                </Magnetic>
+                <Link
+                  href={curS2.link}
+                  className="res-explore-link"
+                >
+                  Explore 3D Masterplan ↗
+                </Link>
+              </div>
+            </Reveal>
+          </div>
 
-          {/* Left — image wrapped in TiltCard with Material Switcher */}
-          <div className="res-image-col res-image-left">
+          {/* Right — image */}
+          <div className="res-image-col">
             <TiltCard glare maxTilt={5} className="res-tilt-image">
               <div className="res-img-inner group">
                 <Image
@@ -340,7 +560,6 @@ export function ResidentialServices() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
 
-                {/* Top Material Variation Switcher */}
                 {SERVICE_02_MATERIALS.length > 1 && (
                   <div className="res-material-switcher-bar">
                     {SERVICE_02_MATERIALS.map((m, idx) => (
@@ -356,63 +575,148 @@ export function ResidentialServices() {
                   </div>
                 )}
 
-                <div className="res-img-label res-img-label-left">
+                <div className="res-img-label res-img-label-right">
                   {curS2.badge}
                 </div>
               </div>
             </TiltCard>
           </div>
-
-          {/* Right — content (plain div — full column height) */}
-          <div className="res-content-col res-content-right">
-            <Reveal direction="right" duration={0.8}>
-              <div>
-                <div className="res-block-num" aria-hidden>02</div>
-                <div className="res-gold-bar" />
-                <div className="text-[10px] font-mono tracking-widest text-[var(--gold)] uppercase mb-1">
-                  B2C Commission · Masterplan
-                </div>
-                <h3 className="res-service-title">Residential Masterplan</h3>
-                <div className="res-price">{formatResidentialPrice("masterplan")}</div>
-                <p className="res-service-desc">
-                  For luxury homes, villas, private compounds and larger residential
-                  projects. A complete site-to-structure masterplan.
-                </p>
-                <ul className="res-includes-list">
-                  {SERVICE_02_INCLUDES.map((item, i) => <CheckItem key={i} text={item} />)}
-                </ul>
-              </div>
-              <div style={{ marginTop: 48, display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center" }}>
-                <Magnetic strength={0.2}>
-                  <Link
-                    href="#contact?service=residential-masterplan"
-                    className="btn-primary"
-                    style={{ display: "inline-block" }}
-                  >
-                    Start a Project
-                  </Link>
-                </Magnetic>
-                <Link
-                  href={curS2.link}
-                  className="res-explore-link"
-                >
-                  Explore 3D Concept ↗
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-
         </div>
       </div>
 
-      {/* ── 4. WORKFLOW ── */}
+      {/* ── 5. RESPONSIVE COMPARISON MATRIX ── */}
+      <div className="res-matrix-section">
+        <div className="res-matrix-wrap">
+          <Reveal direction="up" duration={0.7}>
+            <div className="res-eyebrow res-eyebrow-muted">
+              <span className="res-eyebrow-line res-eyebrow-line-dim" />
+              Direct Package Comparison
+            </div>
+
+            <h3 className="res-section-title">
+              Compare <span style={{ color: "var(--gold)" }}>Residential Packages</span>
+            </h3>
+            <p className="res-section-sub">
+              Understand the exact difference in deliverables, project stage, and design scope so you can choose the right starting point for your property.
+            </p>
+
+            <div className="res-matrix-table-container">
+              <table className="res-matrix-table">
+                <thead>
+                  <tr>
+                    <th className="res-th-feature">Scope Dimension</th>
+                    <th className="res-th-pkg">
+                      <div className="res-th-tag">Package A · Concept Stage</div>
+                      <div className="res-th-name">Concept Design</div>
+                      <div className="res-th-price">{formatResidentialPrice("concept")}</div>
+                    </th>
+                    <th className="res-th-pkg res-th-featured">
+                      <div className="res-th-badge">★ Principal Design</div>
+                      <div className="res-th-tag">Package B · Full Private Home</div>
+                      <div className="res-th-name">Complete Architecture</div>
+                      <div className="res-th-price">{formatResidentialPrice("architecture")}</div>
+                    </th>
+                    <th className="res-th-pkg">
+                      <div className="res-th-tag">Package C · Compounds &amp; Estates</div>
+                      <div className="res-th-name">Residential Masterplan</div>
+                      <div className="res-th-price">{formatResidentialPrice("masterplan")}</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {COMPARISON_ROWS.map((row, idx) => (
+                    <tr key={idx}>
+                      <td className="res-td-feature">{row.dimension}</td>
+                      <td className="res-td-val">{row.p0}</td>
+                      <td className="res-td-val res-td-featured">{row.p1}</td>
+                      <td className="res-td-val">{row.p2}</td>
+                    </tr>
+                  ))}
+                  <tr>
+                    <td className="res-td-feature">Next Step</td>
+                    <td className="res-td-val">
+                      <Link href="/contact?package=res-concept" className="res-table-cta">
+                        Request Concept →
+                      </Link>
+                    </td>
+                    <td className="res-td-val res-td-featured">
+                      <Link href="/contact?package=res-arch" className="res-table-cta primary">
+                        Get Quotation →
+                      </Link>
+                    </td>
+                    <td className="res-td-val">
+                      <Link href="/contact?package=res-master" className="res-table-cta">
+                        Discuss Masterplan →
+                      </Link>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+
+      {/* ── 6. SCOPE CLARITY & VALUE SECTION ── */}
+      <div className="res-value-section">
+        <div className="res-value-wrap">
+          <Reveal direction="up" duration={0.7}>
+            <div className="res-eyebrow res-eyebrow-muted">
+              <span className="res-eyebrow-line res-eyebrow-line-dim" />
+              Design Process &amp; Scope Clarity
+            </div>
+
+            <h3 className="res-section-title">
+              Clarity Before <span style={{ color: "var(--gold)" }}>Construction</span>
+            </h3>
+
+            <div className="res-value-grid">
+              <TiltCard glare maxTilt={5}>
+                <div className="res-value-card h-full">
+                  <div className="res-value-num">01</div>
+                  <h4 className="res-value-title">Informed Spatial Decisions</h4>
+                  <p className="res-value-desc">
+                    A considered architectural design process ensures room sizes, privacy zones, natural ventilation, and daylighting are resolved on paper before site excavation begins.
+                  </p>
+                </div>
+              </TiltCard>
+
+              <TiltCard glare maxTilt={5}>
+                <div className="res-value-card h-full">
+                  <div className="res-value-num">02</div>
+                  <h4 className="res-value-title">Structured Design Progression</h4>
+                  <p className="res-value-desc">
+                    If you are not yet ready for full technical drawings, you can start with <strong>Residential Concept Design (₦600K)</strong> to establish your layout and architectural style.
+                  </p>
+                </div>
+              </TiltCard>
+
+              <TiltCard glare maxTilt={5}>
+                <div className="res-value-card h-full">
+                  <div className="res-value-num">03</div>
+                  <h4 className="res-value-title">Transparent Scope &amp; Revisions</h4>
+                  <p className="res-value-desc">
+                    Every package comes with clearly specified deliverables and built-in revision allowances. The scope and expectations are documented before work begins.
+                  </p>
+                </div>
+              </TiltCard>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+
+      {/* ── 7. WORKFLOW ── */}
       <div className="res-workflow-section">
         <div className="res-workflow-wrap">
           <Reveal direction="up" duration={0.7}>
             <div className="res-eyebrow res-eyebrow-muted">
               <span className="res-eyebrow-line res-eyebrow-line-dim" />
-              How It Works
+              Delivery Workflow
             </div>
+
+            <h3 className="res-section-title" style={{ marginBottom: 32 }}>
+              How We Work <span style={{ color: "var(--gold)" }}>Together</span>
+            </h3>
 
             <div className="res-workflow-grid">
               {WORKFLOW_STAGES.map((stage) => (
@@ -428,13 +732,13 @@ export function ResidentialServices() {
         </div>
       </div>
 
-      {/* ── 5. RESIDENTIAL PAYMENT TERMS ── */}
+      {/* ── 8. RESIDENTIAL PAYMENT TERMS ── */}
       <div className="res-payment-section">
         <div className="res-payment-wrap">
           <Reveal direction="up" duration={0.7}>
             <div className="res-eyebrow res-eyebrow-muted">
               <span className="res-eyebrow-line res-eyebrow-line-dim" />
-              Terms & Schedule
+              Payment Terms &amp; Milestones
             </div>
 
             <h3 className="res-payment-heading">
@@ -444,30 +748,30 @@ export function ResidentialServices() {
             <div className="res-payment-grid">
               <TiltCard glare maxTilt={5}>
                 <div className="res-payment-card h-full">
-                  <div className="res-payment-card-label">Option 01: Architecture</div>
+                  <div className="res-payment-card-label">Package A: Concept Design</div>
                   <div className="res-payment-split">70 / 30</div>
                   <div className="res-payment-desc">
-                    70% commitment deposit to commence design work. 30% balance upon final design approval, prior to full blueprint and document handover.
+                    70% commencement deposit to begin layout planning. 30% final payment upon concept design approval before presentation handover.
                   </div>
                 </div>
               </TiltCard>
 
               <TiltCard glare maxTilt={5}>
                 <div className="res-payment-card h-full">
-                  <div className="res-payment-card-label">Option 02: Masterplan</div>
+                  <div className="res-payment-card-label">Package B: Complete Architecture</div>
                   <div className="res-payment-split">70 / 30</div>
                   <div className="res-payment-desc">
-                    70% commitment deposit to commence site planning. 30% balance upon final masterplan approval, prior to structural/document handover.
+                    70% commencement deposit to start architectural design and 3D modelling. 30% final payment following final design approval before full package handover.
                   </div>
                 </div>
               </TiltCard>
 
               <TiltCard glare maxTilt={5}>
-                <div className="res-payment-card res-off-category h-full">
-                  <div className="res-payment-card-label">Off-Category: Concept Plan</div>
+                <div className="res-payment-card h-full">
+                  <div className="res-payment-card-label">Package C: Masterplan</div>
                   <div className="res-payment-split">70 / 30</div>
                   <div className="res-payment-desc">
-                    {formatResidentialPrice("concept")}. Designed for clients seeking conceptual floor layouts and zoning only (excludes 3D rendering and structural engineering docs).
+                    70% commencement deposit to begin site planning and multi-structure design. 30% final payment upon masterplan approval before dossier handover.
                   </div>
                 </div>
               </TiltCard>
@@ -476,46 +780,45 @@ export function ResidentialServices() {
         </div>
       </div>
 
-      {/* ── 6. PRICING NOTE ── */}
+      {/* ── 9. PRICING NOTE ── */}
       <div className="res-pricing-band">
         <div className="res-pricing-inner">
           <span className="res-pricing-dash" />
           <p className="res-pricing-text">
-            Every project is individually assessed and professionally priced according to scope, complexity, site conditions and required deliverables.
+            All prices represent starting figures. Every project is individually assessed and quoted based on agreed project requirements, plot conditions, building complexity, and required deliverables.
           </p>
         </div>
       </div>
 
-      {/* ── 7. FINAL CTA ── */}
+      {/* ── 10. FINAL CTA BAND ── */}
       <ResCtaBand />
-
 
       {/* ── SCOPED STYLES ── */}
       <style>{`
         /* ─── Header ─── */
         .res-header-wrap {
-          max-width: 1300px;
+          max-width: calc(var(--container) + var(--gutter) * 2);
           margin: 0 auto;
-          padding: 100px 60px 80px;
+          padding: 44px var(--gutter) 20px;
         }
         .res-eyebrow {
           font-family: var(--font-dm-mono), monospace;
           font-size: 10px;
-          letter-spacing: 5px;
+          letter-spacing: 3.5px;
           text-transform: uppercase;
           color: var(--gold);
-          margin-bottom: 24px;
+          margin-bottom: 12px;
           display: flex;
           align-items: center;
-          gap: 14px;
+          gap: 10px;
         }
         .res-eyebrow-muted {
           color: var(--muted);
-          margin-bottom: 48px;
+          margin-bottom: 12px;
         }
         .res-eyebrow-line {
           display: inline-block;
-          width: 28px;
+          width: 20px;
           height: 1px;
           background: var(--gold);
           flex-shrink: 0;
@@ -525,19 +828,37 @@ export function ResidentialServices() {
         }
         .res-heading {
           font-family: var(--font-bebas), sans-serif;
-          font-size: clamp(48px, 7vw, 96px);
-          line-height: 0.92;
+          font-size: clamp(30px, 4.2vw, 52px);
+          line-height: 1.02;
           color: var(--white);
-          letter-spacing: 1px;
-          margin-bottom: 24px;
+          letter-spacing: 0.5px;
+          margin-bottom: 12px;
         }
         .res-subtitle {
           font-family: var(--font-cormorant), serif;
-          font-size: clamp(16px, 1.6vw, 22px);
+          font-size: clamp(14.5px, 1.2vw, 17.5px);
           font-style: italic;
           color: var(--white-dim);
-          max-width: 560px;
-          line-height: 1.6;
+          max-width: 640px;
+          line-height: 1.5;
+        }
+
+        .res-section-title {
+          font-family: var(--font-bebas), sans-serif;
+          font-size: clamp(26px, 3.2vw, 40px);
+          line-height: 1.02;
+          color: var(--white);
+          letter-spacing: 0.5px;
+          margin-bottom: 8px;
+        }
+        .res-section-sub {
+          font-family: var(--font-cormorant), serif;
+          font-size: 15.5px;
+          font-style: italic;
+          color: var(--muted);
+          max-width: 600px;
+          line-height: 1.5;
+          margin-bottom: 24px;
         }
 
         /* ─── Service Blocks ─── */
@@ -545,69 +866,84 @@ export function ResidentialServices() {
           border-top: 1px solid var(--border);
         }
         .res-block-inner {
-          max-width: 1300px;
+          max-width: calc(var(--container) + var(--gutter) * 2);
           margin: 0 auto;
-          padding: 0 60px;
+          padding: 0 var(--gutter);
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 0;
           align-items: stretch;
-          min-height: 640px;
+          min-height: auto;
         }
 
-        /* Content columns — plain divs, never tilted */
+        /* Content columns */
         .res-content-col {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          padding: 80px 0;
+          padding: 36px 0;
         }
         .res-content-left {
-          padding-right: 60px;
+          padding-right: 36px;
           border-right: 1px solid var(--border);
         }
         .res-content-right {
-          padding-left: 60px;
+          padding-left: 36px;
           border-left: 1px solid var(--border);
         }
 
         .res-block-num {
           font-family: var(--font-bebas), sans-serif;
-          font-size: clamp(64px, 9vw, 120px);
+          font-size: clamp(40px, 5vw, 64px);
           line-height: 1;
           color: rgba(244,240,232,0.07);
           user-select: none;
-          margin-bottom: -20px;
+          margin-bottom: -10px;
         }
         .res-gold-bar {
-          width: 32px;
+          width: 28px;
           height: 2px;
           background: var(--gold);
-          margin-bottom: 20px;
+          margin-bottom: 16px;
         }
         .res-service-title {
           font-family: var(--font-bebas), sans-serif;
-          font-size: clamp(28px, 3.5vw, 48px);
-          letter-spacing: 1px;
+          font-size: clamp(24px, 2.5vw, 34px);
+          letter-spacing: 0.5px;
           color: var(--white);
-          margin-bottom: 12px;
-          line-height: 1;
+          margin-bottom: 8px;
+          line-height: 1.05;
         }
         .res-price {
           font-family: var(--font-dm-mono), monospace;
           font-size: 13px;
           color: var(--gold);
-          letter-spacing: 1px;
-          margin-bottom: 20px;
+          letter-spacing: 0.5px;
+          margin-bottom: 14px;
         }
         .res-service-desc {
           font-family: var(--font-cormorant), serif;
-          font-size: 18px;
+          font-size: 16px;
           font-style: italic;
           color: var(--white-dim);
-          line-height: 1.7;
-          margin-bottom: 36px;
-          max-width: 420px;
+          line-height: 1.6;
+          margin-bottom: 16px;
+          max-width: 480px;
+        }
+        .res-purpose-badge {
+          background: rgba(212, 168, 67, 0.06);
+          border-left: 2px solid var(--gold);
+          padding: 8px 12px;
+          border-radius: 0 4px 4px 0;
+          font-family: var(--font-syne), sans-serif;
+          font-size: 12px;
+          color: rgba(244, 240, 232, 0.9);
+          line-height: 1.5;
+          margin-bottom: 20px;
+          max-width: 480px;
+        }
+        .res-purpose-badge strong {
+          color: var(--gold);
         }
         .res-includes-list {
           list-style: none;
@@ -637,11 +973,11 @@ export function ResidentialServices() {
           color: #fff;
         }
 
-        /* Image columns — get the TiltCard treatment */
+        /* Image columns */
         .res-image-col {
           position: relative;
           overflow: hidden;
-          min-height: 440px;
+          min-height: 400px;
         }
         .res-tilt-image {
           height: 100%;
@@ -651,7 +987,7 @@ export function ResidentialServices() {
           position: relative;
           overflow: hidden;
           height: 100%;
-          min-height: 440px;
+          min-height: 400px;
         }
         .res-material-switcher-bar {
           position: absolute;
@@ -697,20 +1033,200 @@ export function ResidentialServices() {
         }
         .res-img-label {
           position: absolute;
-          bottom: 24px;
+          bottom: 20px;
           z-index: 20;
-          padding: 10px 18px;
+          padding: 8px 14px;
           background: rgba(6,6,6,0.88);
           backdrop-filter: blur(8px);
           border: 1px solid var(--border);
           font-family: var(--font-dm-mono), monospace;
-          font-size: 10px;
-          letter-spacing: 3px;
+          font-size: 9px;
+          letter-spacing: 2px;
           text-transform: uppercase;
           color: var(--gold);
         }
-        .res-img-label-right { right: 24px; }
-        .res-img-label-left  { left: 24px; }
+        .res-img-label-right { right: 20px; }
+        .res-img-label-left  { left: 20px; }
+
+        /* ─── Comparison Matrix Table ─── */
+        .res-matrix-section {
+          border-top: 1px solid var(--border);
+          background: #08080c;
+        }
+        .res-matrix-wrap {
+          max-width: calc(var(--container) + var(--gutter) * 2);
+          margin: 0 auto;
+          padding: 56px var(--gutter);
+        }
+        .res-matrix-table-container {
+          overflow-x: auto;
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          background: #0d0d12;
+        }
+        .res-matrix-table {
+          width: 100%;
+          border-collapse: collapse;
+          text-align: left;
+          min-width: 780px;
+        }
+        .res-matrix-table th,
+        .res-matrix-table td {
+          padding: 16px 20px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+          vertical-align: top;
+        }
+        .res-th-feature {
+          width: 25%;
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 10.5px;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          color: var(--muted);
+          background: #09090e;
+        }
+        .res-th-pkg {
+          width: 25%;
+          background: #0d0d12;
+          border-left: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .res-th-featured {
+          background: rgba(212, 168, 67, 0.05) !important;
+          border-left: 1px solid rgba(212, 168, 67, 0.3) !important;
+          border-right: 1px solid rgba(212, 168, 67, 0.3) !important;
+        }
+        .res-th-badge {
+          display: inline-block;
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 8.5px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          color: #060606;
+          background: var(--gold);
+          padding: 2px 7px;
+          border-radius: 2px;
+          font-weight: bold;
+          margin-bottom: 6px;
+        }
+        .res-th-tag {
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 8.5px;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+          color: var(--muted);
+          margin-bottom: 4px;
+        }
+        .res-th-name {
+          font-family: var(--font-bebas), sans-serif;
+          font-size: 20px;
+          letter-spacing: 0.5px;
+          color: var(--white);
+          margin-bottom: 4px;
+          line-height: 1.1;
+        }
+        .res-th-price {
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 12px;
+          color: var(--gold);
+          font-weight: bold;
+        }
+        .res-td-feature {
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 11px;
+          letter-spacing: 0.5px;
+          color: var(--white);
+          background: #09090e;
+          font-weight: 500;
+        }
+        .res-td-val {
+          font-family: var(--font-syne), sans-serif;
+          font-size: 12.5px;
+          color: rgba(244, 240, 232, 0.8);
+          line-height: 1.5;
+          border-left: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .res-td-featured {
+          background: rgba(212, 168, 67, 0.02) !important;
+          border-left: 1px solid rgba(212, 168, 67, 0.2) !important;
+          border-right: 1px solid rgba(212, 168, 67, 0.2) !important;
+          color: #ffffff !important;
+        }
+        .res-table-cta {
+          display: inline-block;
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 10px;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+          color: var(--gold);
+          text-decoration: none;
+          padding: 6px 12px;
+          border: 1px solid rgba(212, 168, 67, 0.3);
+          border-radius: 4px;
+          transition: all 0.2s ease;
+        }
+        .res-table-cta:hover {
+          background: rgba(212, 168, 67, 0.15);
+          border-color: var(--gold);
+          color: #fff;
+        }
+        .res-table-cta.primary {
+          background: var(--gold);
+          color: #060606;
+          border-color: var(--gold);
+          font-weight: bold;
+        }
+        .res-table-cta.primary:hover {
+          background: #fff;
+          border-color: #fff;
+          color: #060606;
+        }
+
+        /* ─── Scope Value Section ─── */
+        .res-value-section {
+          border-top: 1px solid var(--border);
+          background: #060608;
+        }
+        .res-value-wrap {
+          max-width: calc(var(--container) + var(--gutter) * 2);
+          margin: 0 auto;
+          padding: 56px var(--gutter);
+        }
+        .res-value-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+        .res-value-card {
+          background: linear-gradient(145deg, #0e0e14 0%, #08080a 100%);
+          padding: 28px 24px;
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        .res-value-num {
+          font-family: var(--font-dm-mono), monospace;
+          font-size: 11px;
+          color: var(--gold);
+          letter-spacing: 1.5px;
+          margin-bottom: 12px;
+        }
+        .res-value-title {
+          font-family: var(--font-bebas), sans-serif;
+          font-size: 22px;
+          letter-spacing: 0.5px;
+          color: var(--white);
+          margin-bottom: 10px;
+          line-height: 1.1;
+        }
+        .res-value-desc {
+          font-family: var(--font-syne), sans-serif;
+          font-size: 12.5px;
+          color: var(--muted);
+          line-height: 1.6;
+        }
+        .res-value-desc strong {
+          color: var(--white);
+        }
 
         /* ─── Workflow ─── */
         .res-workflow-section {
@@ -718,9 +1234,9 @@ export function ResidentialServices() {
           background: var(--steel);
         }
         .res-workflow-wrap {
-          max-width: 1300px;
+          max-width: calc(var(--container) + var(--gutter) * 2);
           margin: 0 auto;
-          padding: 80px 60px;
+          padding: 56px var(--gutter);
         }
         .res-workflow-grid {
           display: grid;
@@ -728,22 +1244,22 @@ export function ResidentialServices() {
           gap: 16px;
         }
         .res-workflow-step {
-          padding: 28px 24px;
+          padding: 22px 20px;
           border: 1px solid var(--border);
           border-radius: 4px;
         }
         .res-wf-num {
           font-family: var(--font-bebas), sans-serif;
-          font-size: clamp(40px, 5vw, 64px);
+          font-size: clamp(32px, 4vw, 48px);
           line-height: 1;
           color: var(--white);
-          margin-bottom: 8px;
+          margin-bottom: 6px;
         }
         .res-wf-connector {
           width: 100%;
           height: 1px;
           background: var(--border);
-          margin: 12px 0 20px;
+          margin: 10px 0 16px;
           position: relative;
         }
         .res-wf-connector::after {
@@ -758,17 +1274,17 @@ export function ResidentialServices() {
         }
         .res-wf-name {
           font-family: var(--font-dm-mono), monospace;
-          font-size: 10px;
-          letter-spacing: 3px;
+          font-size: 9.5px;
+          letter-spacing: 2px;
           text-transform: uppercase;
           color: var(--gold);
-          margin-bottom: 10px;
+          margin-bottom: 8px;
         }
         .res-wf-desc {
           font-family: var(--font-syne), sans-serif;
-          font-size: 13px;
+          font-size: 12.5px;
           color: var(--muted);
-          line-height: 1.6;
+          line-height: 1.55;
         }
 
         /* ─── Residential Payment Schedule ─── */
@@ -777,25 +1293,25 @@ export function ResidentialServices() {
           background: var(--black);
         }
         .res-payment-wrap {
-          max-width: 1300px;
+          max-width: calc(var(--container) + var(--gutter) * 2);
           margin: 0 auto;
-          padding: 80px 60px;
+          padding: 56px var(--gutter);
         }
         .res-payment-heading {
           font-family: var(--font-bebas), sans-serif;
-          font-size: clamp(36px, 5vw, 64px);
-          line-height: 0.9;
+          font-size: clamp(28px, 3.5vw, 44px);
+          line-height: 0.95;
           color: var(--white);
-          margin-bottom: 40px;
+          margin-bottom: 28px;
         }
         .res-payment-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
+          gap: 16px;
         }
         .res-payment-card {
           background: linear-gradient(145deg, #0e0e12 0%, #060608 100%);
-          padding: 40px 32px;
+          padding: 28px 24px;
           border: 1px solid var(--border);
           border-radius: 8px;
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -811,11 +1327,11 @@ export function ResidentialServices() {
         }
         .res-payment-card-label {
           font-family: var(--font-dm-mono), monospace;
-          font-size: 11px;
-          letter-spacing: 2px;
+          font-size: 10px;
+          letter-spacing: 1.5px;
           text-transform: uppercase;
           color: var(--gold);
-          margin-bottom: 24px;
+          margin-bottom: 16px;
           font-weight: 600;
           display: flex;
           align-items: center;
@@ -823,31 +1339,21 @@ export function ResidentialServices() {
         }
         .res-payment-card-label::before {
           content: "◆";
-          font-size: 8px;
+          font-size: 7px;
         }
         .res-payment-split {
           font-family: var(--font-bebas), sans-serif;
-          font-size: 56px;
+          font-size: 40px;
           color: #ffffff;
           line-height: 1;
-          margin-bottom: 16px;
-          letter-spacing: 1px;
+          margin-bottom: 12px;
+          letter-spacing: 0.5px;
           text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
         .res-payment-desc {
-          font-size: 13.5px;
+          font-size: 12.5px;
           color: var(--muted);
-          line-height: 1.7;
-        }
-        .res-payment-card.res-off-category {
-          background: linear-gradient(145deg, rgba(212, 168, 67, 0.04) 0%, rgba(14, 14, 18, 0.98) 100%);
-          border: 1px solid rgba(212, 168, 67, 0.3);
-        }
-        .res-payment-card.res-off-category .res-payment-card-label {
-          color: #ffffff;
-        }
-        .res-payment-card.res-off-category .res-payment-card-label::before {
-          color: var(--gold);
+          line-height: 1.6;
         }
 
         /* ─── Pricing note ─── */
@@ -856,12 +1362,12 @@ export function ResidentialServices() {
           background: var(--black);
         }
         .res-pricing-inner {
-          max-width: 1300px;
+          max-width: calc(var(--container) + var(--gutter) * 2);
           margin: 0 auto;
-          padding: 28px 60px;
+          padding: 22px var(--gutter);
           display: flex;
           align-items: center;
-          gap: 20px;
+          gap: 16px;
         }
         .res-pricing-dash {
           display: inline-block;
@@ -872,29 +1378,22 @@ export function ResidentialServices() {
         }
         .res-pricing-text {
           font-family: var(--font-cormorant), serif;
-          font-size: 15px;
+          font-size: 14.5px;
           font-style: italic;
           color: var(--muted);
-          line-height: 1.6;
+          line-height: 1.5;
         }
 
-        /* ─── CTA (Eden Oasis–style overlay section) ─── */
+        /* ─── CTA Band ─── */
         .res-cta-band {
           position: relative;
           border-top: 1px solid var(--border);
           overflow: hidden;
         }
-        /* Parallax image layer — sits behind everything */
-        .res-cta-bg-layer {
-          position: absolute !important;
-          inset: -15% 0;
-          z-index: 0;
-        }
         .res-cta-bg-img {
           object-fit: cover;
           object-position: center 40%;
         }
-        /* Gold warm overlay — the key Eden Oasis effect */
         .res-cta-overlay {
           position: absolute;
           inset: 0;
@@ -908,12 +1407,12 @@ export function ResidentialServices() {
         .res-cta-inner {
           position: relative;
           z-index: 2;
-          max-width: 1300px;
+          max-width: calc(var(--container) + var(--gutter) * 2);
           margin: 0 auto;
-          padding: 100px 60px;
+          padding: 64px var(--gutter);
           display: grid;
           grid-template-columns: 1fr auto;
-          gap: 60px;
+          gap: 40px;
           align-items: center;
         }
         .res-cta-copy { max-width: 560px; }
@@ -944,15 +1443,15 @@ export function ResidentialServices() {
         .res-cta-card {
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 14px;
           align-items: stretch;
-          min-width: 240px;
+          min-width: 280px;
           padding: 32px;
-          background: rgba(6, 6, 6, 0.72);
+          background: rgba(6, 6, 6, 0.8);
           backdrop-filter: blur(18px);
           -webkit-backdrop-filter: blur(18px);
           border: 1px solid rgba(212, 168, 67, 0.25);
-          border-radius: 4px;
+          border-radius: 6px;
           box-sizing: border-box;
           width: 100%;
           max-width: 100%;
@@ -961,7 +1460,7 @@ export function ResidentialServices() {
           display: block;
           width: 100%;
           text-align: center;
-          padding: 16px 24px;
+          padding: 14px 20px;
           box-sizing: border-box;
           word-break: normal;
         }
@@ -974,6 +1473,7 @@ export function ResidentialServices() {
           text-decoration: none;
           transition: color 0.2s;
           text-align: center;
+          margin-top: 4px;
         }
         .res-wa-link:hover { color: var(--gold); }
 
@@ -981,24 +1481,24 @@ export function ResidentialServices() {
            RESPONSIVE BREAKPOINTS
         ═══════════════════════════════════ */
 
-        /* Tablet — ≤ 1024px */
         @media (max-width: 1024px) {
-          .res-header-wrap   { padding: 72px 40px 60px; }
-          .res-block-inner   { padding: 0 40px; min-height: 0; }
-          .res-content-left  { padding: 60px 40px 60px 0; }
-          .res-content-right { padding: 60px 0 60px 40px; }
-          .res-workflow-wrap { padding: 60px 40px; }
-          .res-pricing-inner { padding: 24px 40px; }
-          .res-cta-inner     { padding: 80px 40px; gap: 40px; }
+          .res-header-wrap   { padding: 44px 24px 24px; }
+          .res-block-inner   { padding: 0 24px; min-height: 0; }
+          .res-content-left  { padding: 40px 24px 40px 0; }
+          .res-content-right { padding: 40px 0 40px 24px; }
+          .res-matrix-wrap   { padding: 44px 24px; }
+          .res-value-wrap    { padding: 44px 24px; }
+          .res-value-grid    { grid-template-columns: 1fr; }
+          .res-workflow-wrap { padding: 44px 24px; }
+          .res-pricing-inner { padding: 20px 24px; }
+          .res-cta-inner     { padding: 48px 24px; gap: 32px; }
           .res-workflow-grid { grid-template-columns: repeat(2, 1fr); }
-          .res-payment-wrap  { padding: 60px 40px; }
-          .res-payment-grid  { grid-template-columns: 1fr 1fr; }
-          .res-payment-card.res-off-category { grid-column: span 2; }
+          .res-payment-wrap  { padding: 44px 24px; }
+          .res-payment-grid  { grid-template-columns: 1fr; }
         }
 
-        /* Mobile — ≤ 768px: stack all blocks vertically */
         @media (max-width: 768px) {
-          .res-header-wrap   { padding: 60px 24px 48px; }
+          .res-header-wrap   { padding: 36px 16px 20px; }
 
           .res-block-inner {
             grid-template-columns: 1fr;
@@ -1006,96 +1506,94 @@ export function ResidentialServices() {
             min-height: 0;
           }
 
-          /* Image always on top when stacked */
-          .res-image-col       { order: -1; min-height: 280px; }
+          .res-image-col       { order: -1; min-height: 260px; }
           .res-image-col.res-image-left { order: -1; }
-          .res-img-inner       { min-height: 280px; }
+          .res-img-inner       { min-height: 260px; }
 
-          /* Content cols — reset borders, full-width padding */
-          .res-content-col   { padding: 48px 24px 48px; }
+          .res-content-col   { padding: 28px 16px 32px; }
           .res-content-left  { border-right: none; border-top: 1px solid var(--border); }
           .res-content-right { border-left: none; border-top: 1px solid var(--border); }
 
-          /* Workflow */
-          .res-workflow-wrap  { padding: 48px 24px; }
-          .res-workflow-grid  { grid-template-columns: 1fr 1fr; gap: 12px; }
+          .res-matrix-wrap   { padding: 36px 16px; }
+          .res-value-wrap    { padding: 36px 16px; }
+          .res-workflow-wrap  { padding: 36px 16px; }
+          .res-workflow-grid  { grid-template-columns: 1fr 1fr; gap: 10px; }
 
-          /* Payment Terms */
-          .res-payment-wrap  { padding: 48px 24px; }
-          .res-payment-grid  { grid-template-columns: 1fr; gap: 16px; }
-          .res-payment-card.res-off-category { grid-column: span 1; }
+          .res-payment-wrap  { padding: 36px 16px; }
+          .res-payment-grid  { grid-template-columns: 1fr; gap: 14px; }
 
-          /* Pricing */
-          .res-pricing-inner  { padding: 20px 24px; }
+          .res-pricing-inner  { padding: 16px 16px; }
 
-          /* CTA */
           .res-cta-inner {
             grid-template-columns: 1fr;
-            padding: 56px 20px;
-            gap: 28px;
+            padding: 40px 16px;
+            gap: 24px;
           }
           .res-cta-heading {
-            font-size: clamp(32px, 8vw, 48px);
+            font-size: clamp(30px, 7.5vw, 44px);
             line-height: 1.05;
-            margin: 0 0 16px;
+            margin: 0 0 14px;
             word-break: break-word;
           }
           .res-cta-body {
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.6;
           }
           .res-cta-card {
             min-width: 0;
             width: 100%;
-            padding: 24px 18px;
-            gap: 14px;
+            padding: 20px 16px;
+            gap: 10px;
           }
           .res-cta-btn {
-            padding: 14px 16px;
+            padding: 11px 14px;
             font-size: 11px;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
           }
         }
 
-        /* Small mobile — ≤ 480px */
         @media (max-width: 480px) {
+          .res-header-wrap   { padding: 28px 14px 16px; }
+          .res-content-col   { padding: 24px 14px; }
+          .res-matrix-wrap   { padding: 28px 14px; }
+          .res-value-wrap    { padding: 28px 14px; }
+          .res-workflow-wrap { padding: 28px 14px; }
+          .res-workflow-grid  { grid-template-columns: 1fr; }
+          .res-service-desc   { font-size: 15px; }
+          .res-payment-wrap   { padding: 28px 14px; }
+          .res-payment-card   { padding: 20px 16px; }
           .res-cta-inner {
-            padding: 44px 16px;
-            gap: 24px;
+            padding: 32px 14px;
+            gap: 20px;
           }
           .res-cta-heading {
-            font-size: clamp(28px, 8.5vw, 38px);
+            font-size: clamp(26px, 8vw, 36px);
           }
           .res-cta-card {
-            padding: 20px 14px;
+            padding: 16px 12px;
           }
           .res-cta-btn {
-            padding: 13px 12px;
+            padding: 10px 12px;
             font-size: 10px;
-            letter-spacing: 1px;
           }
-          .res-workflow-grid  { grid-template-columns: 1fr; }
-          .res-service-desc   { font-size: 16px; }
-          .res-payment-wrap   { padding: 40px 20px; }
-          .res-payment-card   { padding: 32px 24px; }
           .res-material-switcher-bar {
-            top: 12px;
-            left: 12px;
-            right: 12px;
+            top: 10px;
+            left: 10px;
+            right: 10px;
             gap: 6px;
           }
           .res-mat-tab {
             font-size: 8px;
-            padding: 5px 8px;
-            letter-spacing: 1px;
+            padding: 4px 7px;
+            letter-spacing: 0.8px;
           }
           .res-img-label {
-            bottom: 12px;
-            padding: 6px 12px;
-            font-size: 9px;
+            bottom: 10px;
+            padding: 5px 10px;
+            font-size: 8.5px;
           }
-          .res-img-label-right { right: 12px; }
-          .res-img-label-left  { left: 12px; }
+          .res-img-label-right { right: 10px; }
+          .res-img-label-left  { left: 10px; }
         }
       `}</style>
     </section>

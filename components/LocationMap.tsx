@@ -126,7 +126,7 @@ export function LocationMap({ height = "420px" }: { height?: string }) {
   return (
     <div
       style={{ height }}
-      className="relative w-full rounded-2xl overflow-hidden border border-[#333336] bg-[#0c0c0e] shadow-2xl"
+      className="relative w-full rounded-[6px] overflow-hidden border border-[#333336] bg-[#0c0c0e] shadow-2xl"
     >
       <div ref={mapRef} className="w-full h-full" style={{ zIndex: 1 }} />
 

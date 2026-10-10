@@ -20,9 +20,30 @@ import { ResidentialServices } from "@/components/ResidentialServices";
 import { ScrollBackground } from "@/components/ScrollBackground";
 import { MarketsSelector } from "@/components/MarketsSelector";
 import { WarmWelcome } from "@/components/WarmWelcome";
+import { IntroExperience } from "@/components/IntroExperience";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const { formatPrice, currency } = useCurrency();
+  const [showIntro, setShowIntro] = useState(true);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hasSeen = sessionStorage.getItem("es_intro_seen");
+      const urlParams = new URLSearchParams(window.location.search);
+      if (hasSeen === "true" || window.location.hash || urlParams.get("skipIntro") === "true") {
+        setShowIntro(false);
+      }
+    }
+  }, []);
+
+  const handleEnterStudio = () => {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("es_intro_seen", "true");
+    }
+    setShowIntro(false);
+  };
 
   const p1 = formatPrice(1);
   const p2 = formatPrice(2);
@@ -30,9 +51,20 @@ export default function Home() {
   const p4 = formatPrice(4);
 
   return (
-    <>
-      <Nav />
-      <ScrollBackground />
+    <AnimatePresence mode="wait">
+      {showIntro ? (
+        <IntroExperience key="intro-view" onEnterStudio={handleEnterStudio} />
+      ) : (
+        <motion.div
+          key="main-studio-view"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="min-h-screen w-full bg-[#060608] text-[#f4f0e8] relative"
+        >
+          <Nav />
+          <ScrollBackground />
 
       {/* Hero Section with Parallax Depth */}
       <section className="hero relative overflow-hidden" data-bg="dark">
@@ -79,7 +111,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-content relative z-10 max-w-[1400px] mx-auto flex flex-col gap-8 pt-8 md:pt-14 mt-4">
+        <div className="hero-content relative z-10 max-w-[var(--container)] mx-auto flex flex-col gap-8 pt-8 md:pt-14 mt-4">
           {/* Top Label & Massive Headline */}
           <div>
             <Reveal direction="down" duration={0.6} delay={0.1}>
@@ -125,7 +157,7 @@ export default function Home() {
           {/* GRAND FLEXED 3D ARCHITECTURAL RENDER SHOWCASE */}
           <Reveal direction="zoom" duration={0.8} delay={0.3}>
             <TiltCard glare maxTilt={5} className="w-full">
-              <div className="relative w-full rounded-2xl overflow-hidden border border-[#333336] shadow-[0_25px_70px_rgba(0,0,0,0.9)] group glow-card-border">
+              <div className="relative w-full rounded-[4px] overflow-hidden border border-[#333336] shadow-[0_25px_70px_rgba(0,0,0,0.9)] group glow-card-border">
                 <div className="relative aspect-[16/9] md:aspect-[21/9] w-full min-h-[340px] md:min-h-[460px]">
                   <Image
                     src="/hero_architectural_render.jpg"
@@ -140,13 +172,13 @@ export default function Home() {
 
                 {/* Top Floating Badge */}
                 <div className="absolute top-4 left-4 md:top-6 md:left-6 z-10 flex gap-2">
-                  <span className="px-3.5 py-1.5 bg-[#060606]/85 backdrop-blur-md border border-[var(--gold-border)] rounded text-[10px] md:text-[11px] font-mono tracking-widest text-[var(--gold)] uppercase shadow-lg">
+                  <span className="px-3.5 py-1.5 bg-[#060606]/85 backdrop-blur-md border border-[var(--gold-border)] rounded-[3px] text-[10px] md:text-[11px] font-mono tracking-widest text-[var(--gold)] uppercase shadow-lg">
                     FEATURED 3D SPATIAL ARCHITECTURE
                   </span>
                 </div>
 
                 {/* Bottom Info Overlay */}
-                <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 z-10 flex flex-wrap justify-between items-end gap-4 bg-[#0a0a0c]/85 backdrop-blur-md p-4 md:p-6 rounded-xl border border-white/10">
+                <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 z-10 flex flex-wrap justify-between items-end gap-4 bg-[#0a0a0c]/85 backdrop-blur-md p-4 md:p-6 rounded-[4px] border border-white/10">
                   <div>
                     <div className="font-mono text-[10px] md:text-[11px] tracking-widest text-[var(--gold)] uppercase mb-1">
                       OGUN–LAGOS CORRIDOR
@@ -157,7 +189,7 @@ export default function Home() {
                   </div>
                   <Link
                     href="/renders/1"
-                    className="px-4 py-2.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-[11px] tracking-wider uppercase font-semibold rounded transition-colors whitespace-nowrap shadow-md"
+                    className="px-4 py-2.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-[11px] tracking-wider uppercase font-semibold rounded-[3px] transition-colors whitespace-nowrap shadow-md"
                   >
                     EXPLORE FULL HD CONCEPT ↗
                   </Link>
@@ -218,7 +250,7 @@ export default function Home() {
       <MarketsSelector />
 
       <Reveal direction="up" duration={0.7}>
-        <section className="services relative overflow-hidden" id="services" data-bg="light">
+        <section className="services relative overflow-hidden" id="services" data-bg="dark">
           <ParallaxLayer speed={0.15} className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
             <div className="ambient-orb ambient-orb-gold w-[450px] h-[450px] opacity-10" />
           </ParallaxLayer>
@@ -569,9 +601,9 @@ export default function Home() {
             <div className="ambient-orb ambient-orb-gold w-[400px] h-[400px] opacity-10" />
           </ParallaxLayer>
 
-          <div className="max-w-[1300px] mx-auto">
+          <div className="max-w-[var(--container)] mx-auto">
             {/* Corporate Payment Milestone Schedule */}
-            <div className="pkg-payment-schedule mt-0 pt-0 w-full max-w-[1300px] mx-auto">
+            <div className="pkg-payment-schedule mt-0 pt-0 w-full max-w-[var(--container)] mx-auto">
               <div className="flex flex-col lg:items-center lg:text-center gap-4 mb-10 max-w-3xl lg:mx-auto">
                 <div className="flex flex-col items-start lg:items-center">
                   <div className="section-tag mb-3">Milestone Schedule</div>
@@ -733,7 +765,7 @@ export default function Home() {
 
       {/* The Strategic Bridge Section */}
       <Reveal direction="zoom">
-        <section className="bridge-section relative overflow-hidden" id="bridge" data-bg="light">
+        <section className="bridge-section relative overflow-hidden" id="bridge" data-bg="dark">
           <ParallaxLayer speed={0.25} className="absolute right-[-100px] bottom-[-100px] pointer-events-none">
             <div className="ambient-orb ambient-orb-bridge w-[600px] h-[600px] opacity-25" />
           </ParallaxLayer>
@@ -802,7 +834,7 @@ export default function Home() {
       <Testimonials />
 
       <Reveal direction="zoom">
-        <section className="cta-section relative overflow-hidden" id="contact" data-bg="light">
+        <section className="cta-section relative overflow-hidden" id="contact" data-bg="dark">
           <ParallaxLayer speed={-0.3} className="absolute inset-0 pointer-events-none">
             <div className="cta-bg" />
             <div className="ambient-orb ambient-orb-gold w-[600px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
@@ -843,7 +875,7 @@ export default function Home() {
       </Reveal>
 
       <Reveal direction="up">
-        <section className="markets-map-container" data-bg="light">
+        <section className="markets-map-container" data-bg="dark">
           <LocationMap />
         </section>
       </Reveal>
@@ -878,20 +910,20 @@ export default function Home() {
                 href="https://instagram.com/elevationstudio.ng"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-[#0d0e14] via-[#0a0b10] to-[#07080b] border border-[var(--gold-border)]/50 hover:border-[var(--gold)] shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_4px_25px_rgba(212,175,55,0.15)] transition-all duration-300 overflow-hidden"
+                className="group relative flex items-center justify-between p-3.5 rounded-[4px] bg-gradient-to-r from-[#0d0e14] via-[#0a0b10] to-[#07080b] border border-[var(--gold-border)]/50 hover:border-[var(--gold)] shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_4px_25px_rgba(212,175,55,0.15)] transition-all duration-300 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[var(--gold)]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                 <div className="flex items-center gap-3.5 relative z-10">
-                  <div className="w-9 h-9 rounded-lg bg-[#14151d] border border-[var(--gold-border)]/80 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:border-[var(--gold)] transition-all shadow-inner">
+                  <div className="w-9 h-9 rounded-[3px] bg-[#14151d] border border-[var(--gold-border)]/80 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:border-[var(--gold)] transition-all shadow-inner">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--gold)]">
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                      <rect x="2" y="2" width="20" height="20" rx="2" ry="2" />
                       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                       <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                     </svg>
                   </div>
                   <div>
                     <div className="font-mono text-[10px] text-[var(--gold)] tracking-widest uppercase font-semibold flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
+                      <span className="w-1.5 h-1.5 rounded-[2px] bg-[var(--gold)] animate-pulse" />
                       Follow on Instagram
                     </div>
                     <div className="font-mono text-xs md:text-[13px] text-white font-bold tracking-wide group-hover:text-[var(--gold-bright)] transition-colors">
@@ -899,7 +931,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs text-[var(--gold)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-[var(--gold)] group-hover:text-black group-hover:border-[var(--gold)] transition-all relative z-10">
+                <div className="w-7 h-7 rounded-[3px] bg-white/5 border border-white/10 flex items-center justify-center text-xs text-[var(--gold)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-[var(--gold)] group-hover:text-black group-hover:border-[var(--gold)] transition-all relative z-10">
                   ↗
                 </div>
               </a>
@@ -909,18 +941,18 @@ export default function Home() {
                 href="https://www.homecare.com.ng"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-[#07130f] via-[#080d0d] to-[#060709] border border-emerald-500/30 hover:border-emerald-400 shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_4px_25px_rgba(16,185,129,0.2)] transition-all duration-300 overflow-hidden"
+                className="group relative flex items-center justify-between p-3.5 rounded-[4px] bg-gradient-to-r from-[#07130f] via-[#080d0d] to-[#060709] border border-emerald-500/30 hover:border-emerald-400 shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_4px_25px_rgba(16,185,129,0.2)] transition-all duration-300 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                 <div className="flex items-center gap-3.5 relative z-10">
-                  <div className="w-9 h-9 rounded-lg bg-[#040907] border border-emerald-500/50 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:border-emerald-400 transition-all shadow-inner">
+                  <div className="w-9 h-9 rounded-[3px] bg-[#040907] border border-emerald-500/50 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:border-emerald-400 transition-all shadow-inner">
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="none" />
                     </svg>
                   </div>
                   <div>
                     <div className="font-mono text-[10px] text-emerald-400 tracking-widest uppercase font-semibold flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="w-1.5 h-1.5 rounded-[2px] bg-emerald-400 animate-pulse" />
                       HomeCare Inspection & Fixes
                     </div>
                     <div className="font-mono text-xs md:text-[13px] text-white font-bold tracking-wide group-hover:text-emerald-300 transition-colors">
@@ -928,7 +960,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-xs text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-emerald-400 group-hover:text-black group-hover:border-emerald-400 transition-all relative z-10">
+                <div className="w-7 h-7 rounded-[3px] bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-xs text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-emerald-400 group-hover:text-black group-hover:border-emerald-400 transition-all relative z-10">
                   ↗
                 </div>
               </a>
@@ -1030,6 +1062,8 @@ export default function Home() {
       </footer>
 
       <WhatsAppButton />
-    </>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

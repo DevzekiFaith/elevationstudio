@@ -44,6 +44,15 @@ const PACKAGES = [
     bridge: true,
   },
   {
+    id: "res-concept",
+    code: "Concept & Space Planning · B2C",
+    name: "Concept & Space Planning",
+    tier: "B2C",
+    short: "Floor Layouts, Zoning & Spatial Discovery",
+    range: "From ₦600K",
+    bridge: false,
+  },
+  {
     id: "res-arch",
     code: "Residential Architecture · B2C",
     name: "Residential Architecture",
@@ -156,8 +165,14 @@ function ContactFormInner() {
   const [selectedGoals, setSelectedGoals] = useState<string[]>(["brand"]);
 
   useEffect(() => {
-    const pkg = searchParams?.get("package") || searchParams?.get("pkg");
+    const rawPkg = searchParams?.get("package") || searchParams?.get("pkg") || searchParams?.get("service");
     const industryParam = searchParams?.get("industry");
+
+    // Normalize package aliases
+    let targetPkg = rawPkg;
+    if (rawPkg === "residential-concept" || rawPkg === "concept") targetPkg = "res-concept";
+    if (rawPkg === "residential-architecture" || rawPkg === "architecture") targetPkg = "res-arch";
+    if (rawPkg === "residential-masterplan" || rawPkg === "masterplan") targetPkg = "res-master";
 
     setFields((f) => {
       const next = { ...f };
@@ -165,22 +180,27 @@ function ContactFormInner() {
         if (industryParam === "developer") next.industry = "Real Estate Developers";
         else if (industryParam === "corporate") next.industry = "Corridor Corporations";
         else if (industryParam === "diaspora") next.industry = "Diaspora Founders";
+        else if (industryParam === "homeowner") next.industry = "Private Homeowner / Landowner";
         else if (industryParam === "government") next.industry = "Gov & Institutions";
         else next.industry = industryParam;
       }
-      if (pkg && ["1", "2", "3", "4", "res-arch", "res-master"].includes(pkg)) {
+      if (targetPkg && ["1", "2", "3", "4", "res-concept", "res-arch", "res-master"].includes(targetPkg)) {
         let defaultBudgetIdx = 0;
-        if (pkg === "2" || pkg === "res-arch") defaultBudgetIdx = 2;
-        if (pkg === "3" || pkg === "res-master") defaultBudgetIdx = 4;
-        if (pkg === "4") defaultBudgetIdx = 8;
-        next.packageId = pkg;
+        if (targetPkg === "res-concept") defaultBudgetIdx = 0; // ₦500K – ₦1M
+        if (targetPkg === "2" || targetPkg === "res-arch") defaultBudgetIdx = 2; // ₦2M – ₦3.5M
+        if (targetPkg === "3" || targetPkg === "res-master") defaultBudgetIdx = 4; // ₦5M – ₦8M
+        if (targetPkg === "4") defaultBudgetIdx = 8; // ₦30M – ₦50M
+        next.packageId = targetPkg;
         next.budgetIndex = defaultBudgetIdx;
 
         // Set matching goals
-        if (pkg === "1") setSelectedGoals(["brand"]);
-        else if (pkg === "2") setSelectedGoals(["brand", "web"]);
-        else if (pkg === "3") setSelectedGoals(["brand", "web", "space"]);
-        else if (pkg === "4") setSelectedGoals(["brand", "web", "space", "culture"]);
+        if (targetPkg === "1") setSelectedGoals(["brand"]);
+        else if (targetPkg === "2") setSelectedGoals(["brand", "web"]);
+        else if (targetPkg === "3") setSelectedGoals(["brand", "web", "space"]);
+        else if (targetPkg === "4") setSelectedGoals(["brand", "web", "space", "culture"]);
+        else if (targetPkg === "res-concept" || targetPkg === "res-arch" || targetPkg === "res-master") {
+          setSelectedGoals(["space"]);
+        }
       }
       return next;
     });
@@ -188,6 +208,7 @@ function ContactFormInner() {
 
   const handlePackageChange = (id: string) => {
     let defaultBudgetIdx = 0;
+    if (id === "res-concept") defaultBudgetIdx = 0; // ₦500K – ₦1M
     if (id === "2" || id === "res-arch") defaultBudgetIdx = 2; // ₦2M – ₦3.5M
     if (id === "3" || id === "res-master") defaultBudgetIdx = 4; // ₦5M – ₦8M
     if (id === "4") defaultBudgetIdx = 8; // ₦30M – ₦50M
@@ -207,6 +228,8 @@ function ContactFormInner() {
       setSelectedGoals(["brand", "web", "space"]);
     } else if (id === "4") {
       setSelectedGoals(["brand", "web", "space", "culture"]);
+    } else if (id === "res-concept" || id === "res-arch" || id === "res-master") {
+      setSelectedGoals(["space"]);
     }
   };
 
@@ -569,9 +592,10 @@ function ContactFormInner() {
 
               <div className="form-grid full">
                 <div className={`form-field ${errors.industry ? "error" : ""}`}>
-                  <label htmlFor="industry">Industry / sector *</label>
+                  <label htmlFor="industry">Sector / Client Type *</label>
                   <input
                     id="industry"
+                    placeholder="e.g. Private Homeowner, Diaspora Builder, Real Estate Developer, Hospitality"
                     value={fields.industry}
                     onChange={(e) => set("industry", e.target.value)}
                   />
@@ -582,9 +606,10 @@ function ContactFormInner() {
                 <div
                   className={`form-field ${errors.projectDescription ? "error" : ""}`}
                 >
-                  <label htmlFor="projectDescription">Project description *</label>
+                  <label htmlFor="projectDescription">Project Description &amp; Scope *</label>
                   <textarea
                     id="projectDescription"
+                    placeholder="e.g. 5-bedroom private duplex in Lekki, modern bungalow in Ogun, boutique hotel, brand + web presence..."
                     value={fields.projectDescription}
                     onChange={(e) => set("projectDescription", e.target.value)}
                   />
@@ -595,9 +620,10 @@ function ContactFormInner() {
                 <div
                   className={`form-field ${errors.coreProblem ? "error" : ""}`}
                 >
-                  <label htmlFor="coreProblem">Core problem to solve *</label>
+                  <label htmlFor="coreProblem">Primary Goals &amp; Requirements *</label>
                   <textarea
                     id="coreProblem"
+                    placeholder="e.g. Need efficient space planning, custom façade styling, photorealistic 3D renders, compound masterplan, or brand identity..."
                     value={fields.coreProblem}
                     onChange={(e) => set("coreProblem", e.target.value)}
                   />
@@ -611,14 +637,15 @@ function ContactFormInner() {
 
           {step === 2 && (
             <>
-              <div className="form-step-title">Client Profile & Context</div>
-              <p className="form-step-hint">Step 2 of 2 — stakeholder profile, context & submission.</p>
+              <div className="form-step-title">Client Profile &amp; Contact Details</div>
+              <p className="form-step-hint">Step 2 of 2 — contact information, project context &amp; submission.</p>
               
               <div className="form-grid">
                 <div className={`form-field ${errors.name ? "error" : ""}`}>
-                  <label htmlFor="name">Full name *</label>
+                  <label htmlFor="name">Full Name *</label>
                   <input
                     id="name"
+                    placeholder="e.g. Olumide Adeleke"
                     value={fields.name}
                     onChange={(e) => set("name", e.target.value)}
                     autoComplete="name"
@@ -628,10 +655,11 @@ function ContactFormInner() {
                   )}
                 </div>
                 <div className={`form-field ${errors.email ? "error" : ""}`}>
-                  <label htmlFor="email">Email *</label>
+                  <label htmlFor="email">Email Address *</label>
                   <input
                     id="email"
                     type="email"
+                    placeholder="e.g. olumide@example.com"
                     value={fields.email}
                     onChange={(e) => set("email", e.target.value)}
                     autoComplete="email"
@@ -641,9 +669,10 @@ function ContactFormInner() {
                   )}
                 </div>
                 <div className={`form-field ${errors.phone ? "error" : ""}`}>
-                  <label htmlFor="phone">Phone *</label>
+                  <label htmlFor="phone">Phone / WhatsApp *</label>
                   <input
                     id="phone"
+                    placeholder="e.g. +234 800 000 0000"
                     value={fields.phone}
                     onChange={(e) => set("phone", e.target.value)}
                     autoComplete="tel"
@@ -653,9 +682,10 @@ function ContactFormInner() {
                   )}
                 </div>
                 <div className={`form-field ${errors.role ? "error" : ""}`}>
-                  <label htmlFor="role">Your role *</label>
+                  <label htmlFor="role">Your Role / Title *</label>
                   <input
                     id="role"
+                    placeholder="e.g. Property Owner, Founder, Director, Project Sponsor"
                     value={fields.role}
                     onChange={(e) => set("role", e.target.value)}
                   />
@@ -664,9 +694,10 @@ function ContactFormInner() {
                   )}
                 </div>
                 <div className={`form-field ${errors.company ? "error" : ""}`}>
-                  <label htmlFor="company">Company / organisation *</label>
+                  <label htmlFor="company">Company / Private Residence *</label>
                   <input
                     id="company"
+                    placeholder="e.g. Private Residence / Self or Company Name"
                     value={fields.company}
                     onChange={(e) => set("company", e.target.value)}
                     autoComplete="organization"
@@ -676,9 +707,10 @@ function ContactFormInner() {
                   )}
                 </div>
                 <div className={`form-field ${errors.location ? "error" : ""}`}>
-                  <label htmlFor="location">Location *</label>
+                  <label htmlFor="location">Project / Client Location *</label>
                   <input
                     id="location"
+                    placeholder="e.g. Lagos, Abuja, Ogun, London UK, Houston USA..."
                     value={fields.location}
                     onChange={(e) => set("location", e.target.value)}
                   />
@@ -690,6 +722,7 @@ function ContactFormInner() {
                   <label htmlFor="referralSource">How did you hear about us? *</label>
                   <input
                     id="referralSource"
+                    placeholder="e.g. Instagram, Referral, Google, Website..."
                     value={fields.referralSource}
                     onChange={(e) => set("referralSource", e.target.value)}
                   />
@@ -713,10 +746,10 @@ function ContactFormInner() {
 
               <div className="form-grid full" style={{ marginTop: 12 }}>
                 <div className={`form-field ${errors.decisionMaker ? "error" : ""}`}>
-                  <label htmlFor="decisionMaker">Decision-maker context *</label>
+                  <label htmlFor="decisionMaker">Decision-Maker Context *</label>
                   <textarea
                     id="decisionMaker"
-                    placeholder="Who signs off, internal stakeholders, approval path…"
+                    placeholder="e.g. Self, Couple / Family, Board, or Executive Team"
                     value={fields.decisionMaker}
                     onChange={(e) => set("decisionMaker", e.target.value)}
                   />
@@ -725,10 +758,10 @@ function ContactFormInner() {
                   )}
                 </div>
                 <div className={`form-field ${errors.priorExperience ? "error" : ""}`}>
-                  <label htmlFor="priorExperience">Prior agency / build experience *</label>
+                  <label htmlFor="priorExperience">Prior Design or Building Experience *</label>
                   <textarea
                     id="priorExperience"
-                    placeholder="What worked or didn’t before?"
+                    placeholder="e.g. First-time builder, worked with local draftsmen before, or looking for premium design quality..."
                     value={fields.priorExperience}
                     onChange={(e) => set("priorExperience", e.target.value)}
                   />

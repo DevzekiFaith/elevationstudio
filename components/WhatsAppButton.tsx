@@ -104,7 +104,7 @@ export function WhatsAppButton() {
           href="https://instagram.com/elevationstudio.ng"
           target="_blank"
           rel="noopener noreferrer"
-          className="whatsapp-launcher bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:opacity-95 text-white flex items-center gap-2 px-4 py-3 rounded-full shadow-2xl transition-all border border-white/20 cursor-pointer"
+          className="whatsapp-launcher bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:opacity-95 text-white flex items-center gap-2 px-4 py-3 rounded-[4px] shadow-2xl transition-all border border-white/20 cursor-pointer"
           title="Follow Elevation Studio on Instagram (@elevationstudio.ng)"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

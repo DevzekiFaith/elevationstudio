@@ -256,7 +256,7 @@ export function Testimonials() {
         {/* Subtle Ambient Golden Glow */}
         <div className="absolute top-1/3 left-1/3 w-[320px] sm:w-[500px] h-[200px] sm:h-[300px] bg-[radial-gradient(ellipse_at_center,rgba(212,168,67,0.06)_0%,transparent_70%)] pointer-events-none blur-3xl" />
 
-        <div className="testimonials-inner max-w-[1320px] mx-auto relative z-10">
+        <div className="testimonials-inner max-w-[var(--container)] mx-auto relative z-10">
           
           {/* Top Bar Header & Action Buttons */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 sm:mb-14 pb-4 sm:pb-6 border-b border-[#1f222e]">
@@ -274,7 +274,7 @@ export function Testimonials() {
                   setModalTab("form");
                   setIsModalOpen(true);
                 }}
-                className="flex-1 sm:flex-initial px-3.5 sm:px-4 py-2 sm:py-2.5 bg-[var(--gold)] hover:bg-[#e2bd47] text-black font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider rounded-lg transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer active:scale-98"
+                className="flex-1 sm:flex-initial px-3.5 sm:px-4 py-2 sm:py-2.5 bg-[var(--gold)] hover:bg-[#e2bd47] text-black font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider rounded-[4px] transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer active:scale-98"
               >
                 <span>★</span>
                 <span>Write Review</span>
@@ -286,7 +286,7 @@ export function Testimonials() {
                   setModalTab("qr");
                   setIsModalOpen(true);
                 }}
-                className="flex-1 sm:flex-initial px-3.5 sm:px-4 py-2 sm:py-2.5 bg-[#12141c] hover:bg-[#181a24] border border-[#2d3142] hover:border-[var(--gold-border)] text-zinc-300 hover:text-[var(--gold)] font-mono text-[11px] sm:text-xs font-semibold uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-98"
+                className="flex-1 sm:flex-initial px-3.5 sm:px-4 py-2 sm:py-2.5 bg-[#12141c] hover:bg-[#181a24] border border-[#2d3142] hover:border-[var(--gold-border)] text-zinc-300 hover:text-[var(--gold)] font-mono text-[11px] sm:text-xs font-semibold uppercase tracking-wider rounded-[4px] transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-98"
               >
                 <span>📱</span>
                 <span>Scan QR</span>
@@ -318,14 +318,14 @@ export function Testimonials() {
                 </AnimatePresence>
 
                 {/* Pill Slider Stepper Dots (exact match to sample with touch friendly areas) */}
-                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 bg-[#12141c] border border-white/15 rounded-full mb-6 sm:mb-8">
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 bg-[#12141c] border border-white/15 rounded-[4px] mb-6 sm:mb-8">
                   {reviewsList.map((_, idx) => (
                     <button
                       key={idx}
                       type="button"
                       onClick={() => setActiveIndex(idx)}
                       aria-label={`Go to client review ${idx + 1}`}
-                      className={`transition-all duration-300 rounded-full cursor-pointer ${
+                      className={`transition-all duration-300 rounded-[2px] cursor-pointer ${
                         idx === activeIndex
                           ? "w-7 sm:w-8 h-2 bg-[var(--gold)]"
                           : "w-2 h-2 bg-zinc-600 hover:bg-zinc-400"
@@ -368,7 +368,7 @@ export function Testimonials() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.4 }}
-                  className="relative w-full min-h-[340px] sm:min-h-[380px] md:min-h-[420px] aspect-[4/4.6] sm:aspect-[16/11] md:aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#0f1118] group"
+                  className="relative w-full min-h-[340px] sm:min-h-[380px] md:min-h-[420px] aspect-[4/4.6] sm:aspect-[16/11] md:aspect-[16/10] rounded-[6px] overflow-hidden border border-white/15 shadow-2xl bg-[#0f1118] group"
                 >
                   {/* Background Client Photo */}
                   <Image
@@ -400,7 +400,7 @@ export function Testimonials() {
                     <button
                       type="button"
                       onClick={handlePrev}
-                      className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 hover:border-[var(--gold)] text-white hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-xs sm:text-sm active:scale-95"
+                      className="w-7 h-7 sm:w-9 sm:h-9 rounded-[4px] bg-black/60 backdrop-blur-md border border-white/20 hover:border-[var(--gold)] text-white hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-xs sm:text-sm active:scale-95"
                       aria-label="Previous story"
                     >
                       ←
@@ -408,7 +408,7 @@ export function Testimonials() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 hover:border-[var(--gold)] text-white hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-xs sm:text-sm active:scale-95"
+                      className="w-7 h-7 sm:w-9 sm:h-9 rounded-[4px] bg-black/60 backdrop-blur-md border border-white/20 hover:border-[var(--gold)] text-white hover:text-[var(--gold)] flex items-center justify-center transition-all cursor-pointer text-xs sm:text-sm active:scale-95"
                       aria-label="Next story"
                     >
                       →
@@ -419,7 +419,7 @@ export function Testimonials() {
                   <div className="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-6 sm:left-6 sm:right-6 z-10 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2">
                     <div className="flex flex-wrap items-center gap-1 sm:gap-2">
                       {/* Highlighted First Pill */}
-                      <span className="inline-flex items-center gap-1 px-2 sm:px-3 py-0.5 sm:py-1 bg-white text-black font-sans text-[10px] sm:text-xs font-semibold rounded-full shadow-lg">
+                      <span className="inline-flex items-center gap-1 px-2 sm:px-3 py-0.5 sm:py-1 bg-white text-black font-sans text-[10px] sm:text-xs font-semibold rounded-[3px] shadow-lg">
                         <span>👍</span>
                         <span>{active.tag}</span>
                       </span>
@@ -428,7 +428,7 @@ export function Testimonials() {
                       {active.pills.map((pill, i) => (
                         <span
                           key={i}
-                          className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 bg-[#0e1017]/85 backdrop-blur-md border border-white/20 text-zinc-200 font-mono text-[9px] sm:text-[10.5px] rounded-full"
+                          className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 bg-[#0e1017]/85 backdrop-blur-md border border-white/20 text-zinc-200 font-mono text-[9px] sm:text-[10.5px] rounded-[3px]"
                         >
                           <span>{pill.icon}</span>
                           <span>{pill.label}</span>
@@ -437,7 +437,7 @@ export function Testimonials() {
                     </div>
 
                     {/* Far Right Rating Pill */}
-                    <span className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/80 backdrop-blur-md border border-white/20 text-zinc-200 font-mono text-[10px] sm:text-xs rounded-full">
+                    <span className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 bg-black/80 backdrop-blur-md border border-white/20 text-zinc-200 font-mono text-[10px] sm:text-xs rounded-[3px]">
                       <span>Rated</span>
                       <span className="text-[var(--gold)] font-bold">★ 5.0</span>
                     </span>

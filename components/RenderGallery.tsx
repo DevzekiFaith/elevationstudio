@@ -27,7 +27,7 @@ export function RenderGallery() {
   return (
     <Reveal>
       <section className="render-gallery-section py-20 sm:py-28 md:py-36 px-6 md:px-16 lg:px-24" id="renders">
-        <div className="render-gallery-inner max-w-[1400px] mx-auto">
+        <div className="render-gallery-inner max-w-[var(--container)] mx-auto">
           {/* Section Header */}
           <div className="rg-header-bar">
             <div>
@@ -120,14 +120,14 @@ export function RenderGallery() {
                       <div className="p-5 pt-4 border-t border-white/10 flex gap-3 mt-auto">
                         <Link
                           href={`/renders/${render.id}`}
-                          className="flex-1 py-3 px-4 bg-[var(--gold)]/10 hover:bg-[var(--gold)] text-[var(--gold)] hover:text-[#060606] border border-[var(--gold-border)] rounded-lg text-[11px] font-mono tracking-wider font-semibold text-center transition-all shadow-sm"
+                          className="flex-1 py-3 px-4 bg-[var(--gold)]/10 hover:bg-[var(--gold)] text-[var(--gold)] hover:text-[#060606] border border-[var(--gold-border)] rounded-[4px] text-[11px] font-mono tracking-wider font-semibold text-center transition-all shadow-sm"
                         >
                           EXPLORE CONCEPT →
                         </Link>
                         <button
                           type="button"
                           onClick={() => setSelectedRender(render)}
-                          className="py-3 px-4 bg-[#141419] border border-white/15 hover:border-white/40 text-white rounded-lg text-[11px] font-mono tracking-wider transition-all"
+                          className="py-3 px-4 bg-[#141419] border border-white/15 hover:border-white/40 text-white rounded-[4px] text-[11px] font-mono tracking-wider transition-all"
                         >
                           SPECS
                         </button>

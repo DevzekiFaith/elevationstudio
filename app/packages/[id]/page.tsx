@@ -63,12 +63,12 @@ export default async function PackageDetailPage({ params }: PageProps) {
       <main className="min-h-screen bg-[#060709]/95 backdrop-blur-2xl text-[#f4f0e8] pt-24 sm:pt-32 pb-16 sm:pb-28 px-3 sm:px-8 md:px-12 flex items-center justify-center relative overflow-y-auto">
         
         {/* Dynamic Modal Window with Generous Spacing & Padding */}
-        <div className="relative w-full max-w-3xl bg-[#0c0e13] border border-[#232630] hover:border-[var(--gold-border)] rounded-2xl shadow-[0_30px_90px_rgba(0,0,0,0.95)] p-4 sm:p-8 md:p-12 my-4 sm:my-10 transition-all duration-300">
+        <div className="relative w-full max-w-3xl bg-[#0c0e13] border border-[#232630] hover:border-[var(--gold-border)] rounded-[6px] shadow-[0_30px_90px_rgba(0,0,0,0.95)] p-4 sm:p-8 md:p-12 my-4 sm:my-10 transition-all duration-300">
           
           {/* Top Bar with Number & Close Button */}
           <div className="flex flex-wrap justify-between items-center pb-5 sm:pb-6 border-b border-[#1f222a] mb-6 sm:mb-8 gap-3 sm:gap-4">
             <div className="flex items-center gap-2.5 sm:gap-3">
-              <span className="font-mono text-xs tracking-widest text-[var(--gold)] uppercase font-semibold px-2.5 sm:px-3 py-1 rounded bg-[var(--gold)]/10 border border-[var(--gold)]/20">
+              <span className="font-mono text-xs tracking-widest text-[var(--gold)] uppercase font-semibold px-2.5 sm:px-3 py-1 rounded-[3px] bg-[var(--gold)]/10 border border-[var(--gold)]/20">
                 {pkg.num}
               </span>
               <span className="text-xs font-mono text-[var(--muted)]">•</span>
@@ -81,7 +81,7 @@ export default async function PackageDetailPage({ params }: PageProps) {
               <CurrencyToggle />
               <Link
                 href="/#packages"
-                className="group flex items-center gap-2 font-mono text-xs tracking-widest text-[#a0a4b0] hover:text-white uppercase transition-colors px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10"
+                className="group flex items-center gap-2 font-mono text-xs tracking-widest text-[#a0a4b0] hover:text-white uppercase transition-colors px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-[4px] bg-white/5 hover:bg-white/10 border border-white/10"
                 title="Close modal and return to packages section"
               >
                 <span>CLOSE</span>
@@ -101,14 +101,14 @@ export default async function PackageDetailPage({ params }: PageProps) {
           </div>
 
           {/* Description Block */}
-          <div className="p-4 sm:p-6 mb-8 sm:mb-10 border-l-4 border-[var(--gold)] bg-[#131620] rounded-r-xl">
+          <div className="p-4 sm:p-6 mb-8 sm:mb-10 border-l-4 border-[var(--gold)] bg-[#131620] rounded-r-[4px]">
             <p className="font-cormorant text-base sm:text-xl text-[#e0deda] leading-relaxed">
               {pkg.description}
             </p>
           </div>
 
           {/* Pricing & Milestone Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-10 bg-[#11141c] p-4 sm:p-7 rounded-xl border border-white/10 shadow-inner">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-10 bg-[#11141c] p-4 sm:p-7 rounded-[4px] border border-white/10 shadow-inner">
             <div className="p-1 sm:p-2">
               <div className="font-mono text-[10px] tracking-widest text-[var(--muted)] uppercase mb-2">
                 STARTING INVESTMENT
@@ -131,7 +131,7 @@ export default async function PackageDetailPage({ params }: PageProps) {
           </div>
 
           {/* Base Inclusion */}
-          <div className="mb-6 sm:mb-8 p-3.5 sm:p-4 px-4 sm:px-6 bg-[#12151e] rounded-lg border border-white/5">
+          <div className="mb-6 sm:mb-8 p-3.5 sm:p-4 px-4 sm:px-6 bg-[#12151e] rounded-[4px] border border-white/5">
             <div className="font-mono text-xs text-[var(--muted)] flex flex-wrap items-center gap-2">
               <span className="text-[var(--gold)] font-bold">—</span>
               <span>BASE FOUNDATION:</span>
@@ -144,7 +144,7 @@ export default async function PackageDetailPage({ params }: PageProps) {
             {pkg.pillars.map((pillar, idx) => (
               <div
                 key={idx}
-                className="p-4 sm:p-7 rounded-xl bg-[#141722] border border-white/10 hover:border-[var(--gold-border)] transition-all duration-300 shadow-md"
+                className="p-4 sm:p-7 rounded-[4px] bg-[#141722] border border-white/10 hover:border-[var(--gold-border)] transition-all duration-300 shadow-md"
               >
                 <div className="flex items-center gap-3 mb-2">
                   <span className="font-mono text-xs text-[var(--gold)] font-bold px-2 py-0.5 rounded bg-[var(--gold)]/10">

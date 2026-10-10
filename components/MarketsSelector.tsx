@@ -93,7 +93,7 @@ export function MarketsSelector() {
   const currentSegment = SEGMENTS.find((s) => s.id === activeTab)!;
 
   return (
-    <section className="markets" id="markets" data-bg="light">
+    <section className="markets" id="markets" data-bg="dark">
       <div className="section-tag">Who We Serve</div>
       <div
         style={{

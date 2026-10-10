@@ -169,6 +169,136 @@ export const PACKAGES_DATA: PackageDetail[] = [
     ],
     cta: "START A PROJECT",
     ctaHref: "/contact?package=4"
+  },
+  {
+    id: "res-concept",
+    slugs: ["res-concept", "concept", "concept-planning", "space-planning"],
+    num: "Residential · Package A",
+    name: "RESIDENTIAL CONCEPT DESIGN",
+    subtitle: "Floor Layout & Façade Concept",
+    description: "Give your home a clear architectural direction before committing to a complete design. Translates your space requirements and preferred style into a considered floor layout and architectural façade concept.",
+    range: "From ₦600K",
+    paymentSplit: "70 / 30",
+    paymentDesc: "70% commitment deposit to commence layout planning. 30% final balance upon concept approval prior to digital presentation handover.",
+    baseInclude: "Spatial Feasibility & Floor Layouts",
+    pillars: [
+      {
+        title: "BRIEF REVIEW & SPATIAL CONSULTATION",
+        sub: "Client spatial consultation & lifestyle requirements",
+        details: [
+          "Review of design brief, space requirements & lifestyle priorities",
+          "Plot orientation and solar/wind path review",
+          "Building footprint & spatial arrangement optimization"
+        ]
+      },
+      {
+        title: "2D FLOOR PLANS & SPACE ARRANGEMENT",
+        sub: "Functional zoning and room circulation flow",
+        details: [
+          "Conceptual floor plan and space arrangement",
+          "Room flow, privacy zoning & circulation mapping",
+          "Spatial dimensioning & furniture placement guide"
+        ]
+      },
+      {
+        title: "FAÇADE CONCEPT & PRESENTATION",
+        sub: "Architectural façade concept & digital presentation",
+        details: [
+          "Architectural façade concept and style direction",
+          "Digital design presentation dossier",
+          "One consolidated revision round"
+        ]
+      }
+    ],
+    cta: "REQUEST CONCEPT DESIGN",
+    ctaHref: "/contact?package=res-concept"
+  },
+  {
+    id: "res-arch",
+    slugs: ["res-arch", "residential-architecture", "architecture", "private-home"],
+    num: "Residential · Package B",
+    name: "COMPLETE RESIDENTIAL ARCHITECTURE",
+    subtitle: "Principal Private Residential Design",
+    description: "For bungalows, duplexes, and private homes. Complete concept development, façade styling, detailed elevations, and 3D photorealistic visualisations.",
+    range: "From ₦1.5M",
+    paymentSplit: "70 / 30",
+    paymentDesc: "70% commitment deposit to commence architectural design and 3D modeling. 30% final balance upon final design approval prior to blueprint and render pack handover.",
+    baseInclude: "Everything in Concept & Space Planning",
+    pillars: [
+      {
+        title: "ARCHITECTURAL FAÇADE & ELEVATIONS",
+        sub: "Custom exterior design & technical drawings",
+        details: [
+          "Detailed 2D floor plans, elevations & key sections",
+          "Custom exterior façade styling & massing articulation",
+          "Door/window schedules & structural opening intent"
+        ]
+      },
+      {
+        title: "3D MODEL & PHOTOREALISTIC RENDERS",
+        sub: "High-resolution digital visualisations",
+        details: [
+          "Detailed 3D architectural digital model",
+          "3–5 high-quality exterior visualisations",
+          "Daytime and evening illumination studies"
+        ]
+      },
+      {
+        title: "FINISH DIRECTION & REVISIONS",
+        sub: "Material specifications & presentation pack",
+        details: [
+          "Exterior materials, cladding & finish direction",
+          "Up to 2 comprehensive revision rounds",
+          "Final high-resolution digital presentation pack"
+        ]
+      }
+    ],
+    cta: "GET A PROJECT QUOTATION",
+    ctaHref: "/contact?package=res-arch"
+  },
+  {
+    id: "res-master",
+    slugs: ["res-master", "residential-masterplan", "masterplan", "estate-compound"],
+    num: "Residential · Package C",
+    name: "RESIDENTIAL MASTERPLAN",
+    subtitle: "Luxury Estates, Villas & Private Compounds",
+    description: "For luxury estates, multi-building family compounds, and residential developments requiring comprehensive site coordination, entrance design, and compound masterplanning.",
+    range: "From ₦4.5M",
+    paymentSplit: "70 / 30",
+    paymentDesc: "70% commitment deposit to commence compound planning and multi-structure coordination. 30% balance upon final masterplan sign-off prior to executive dossier handover.",
+    baseInclude: "Everything in Complete Architecture",
+    pillars: [
+      {
+        title: "COMPOUND & SITE MASTERPLANNING",
+        sub: "Multi-structure zoning & access coordination",
+        details: [
+          "Comprehensive site layout and building placement",
+          "Vehicular driveway, parking & pedestrian circulation",
+          "Gatehouse, perimeter wall & grand entrance design"
+        ]
+      },
+      {
+        title: "EXTERIOR LIGHTING & LANDSCAPE",
+        sub: "Integrated landscape & illumination concepts",
+        details: [
+          "Landscape concept design & green buffer zones",
+          "Nighttime exterior illumination & lighting direction",
+          "Premium material and texture finish schedules"
+        ]
+      },
+      {
+        title: "EXPANDED RENDERS & INTERIOR DIRECTION",
+        sub: "Comprehensive visualization dossier",
+        details: [
+          "6–10 high-quality photorealistic visualisations",
+          "Selected interior concept and spatial direction",
+          "Up to 3 comprehensive revision rounds",
+          "Executive masterplan presentation dossier"
+        ]
+      }
+    ],
+    cta: "DISCUSS YOUR MASTERPLAN",
+    ctaHref: "/contact?package=res-master"
   }
 ];
 

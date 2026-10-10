@@ -88,7 +88,7 @@ export default async function RenderDetailPage({ params }: PageProps) {
         {/* ULTRA-LARGE IMMERSIVE HD VIEWPORT CONTAINER */}
         <section className="max-w-[1600px] mx-auto px-3 sm:px-6 md:px-8 mb-12 sm:mb-16">
           <Reveal direction="zoom" duration={0.7}>
-            <div className="relative w-full h-[45vh] sm:h-[60vh] md:h-[82vh] min-h-[300px] sm:min-h-[400px] md:min-h-[480px] rounded-xl sm:rounded-2xl overflow-hidden border border-[#333336] shadow-[0_25px_80px_rgba(0,0,0,0.85)] group">
+            <div className="relative w-full h-[45vh] sm:h-[60vh] md:h-[82vh] min-h-[300px] sm:min-h-[400px] md:min-h-[480px] rounded-[6px] overflow-hidden border border-[#333336] shadow-[0_25px_80px_rgba(0,0,0,0.85)] group">
               <Image
                 src={render.image}
                 alt={render.title}
@@ -101,10 +101,10 @@ export default async function RenderDetailPage({ params }: PageProps) {
 
               {/* Category & Location Badges */}
               <div className="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8 z-10 flex flex-wrap gap-2 sm:gap-3">
-                <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-[#060606]/80 backdrop-blur-md border border-[var(--gold-border)] rounded text-[10px] sm:text-[11px] font-mono tracking-widest text-[var(--gold)] uppercase shadow-lg">
+                <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-[#060606]/80 backdrop-blur-md border border-[var(--gold-border)] rounded-[3px] text-[10px] sm:text-[11px] font-mono tracking-widest text-[var(--gold)] uppercase shadow-lg">
                   {render.categoryLabel}
                 </span>
-                <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-[#060606]/80 backdrop-blur-md border border-white/10 rounded text-[10px] sm:text-[11px] font-mono tracking-widest text-[#f4f0e8]/80 uppercase">
+                <span className="px-3 sm:px-4 py-1.5 sm:py-2 bg-[#060606]/80 backdrop-blur-md border border-white/10 rounded-[3px] text-[10px] sm:text-[11px] font-mono tracking-widest text-[#f4f0e8]/80 uppercase">
                   {render.location}
                 </span>
               </div>
@@ -135,7 +135,7 @@ export default async function RenderDetailPage({ params }: PageProps) {
 
             {render.architecturalHighlights && render.architecturalHighlights.length > 0 && (
               <Reveal direction="up" delay={0.2}>
-                <div className="p-5 sm:p-8 md:p-10 bg-[#0e0e12] border border-white/10 rounded-2xl glow-card-border">
+                <div className="p-5 sm:p-8 md:p-10 bg-[#0e0e12] border border-white/10 rounded-[6px] glow-card-border">
                   <h3 className="font-bebas text-2xl sm:text-3xl text-[var(--gold)] tracking-wider mb-5">
                     SPATIAL ENGINEERING HIGHLIGHTS
                   </h3>
@@ -155,7 +155,7 @@ export default async function RenderDetailPage({ params }: PageProps) {
           <div className="lg:col-span-5 flex flex-col gap-8">
             <Reveal direction="up" delay={0.3}>
               <TiltCard glare maxTilt={5}>
-                <div className="p-5 sm:p-8 md:p-10 bg-[#0e0e12] border border-white/10 rounded-2xl flex flex-col gap-6">
+                <div className="p-5 sm:p-8 md:p-10 bg-[#0e0e12] border border-white/10 rounded-[6px] flex flex-col gap-6">
                   <div className="font-mono text-xs tracking-[3px] text-[var(--gold)] uppercase border-b border-white/10 pb-4 font-semibold">
                     TECHNICAL SPECIFICATIONS
                   </div>
@@ -177,7 +177,7 @@ export default async function RenderDetailPage({ params }: PageProps) {
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full py-4 px-6 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs tracking-[2px] uppercase font-bold rounded-xl text-center block transition-all shadow-lg shadow-[var(--gold)]/20"
+                        className="w-full py-4 px-6 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs tracking-[2px] uppercase font-bold rounded-[4px] text-center block transition-all shadow-lg shadow-[var(--gold)]/20"
                       >
                         COMMISSION SIMILAR 3D SCOPE →
                       </a>
@@ -194,7 +194,7 @@ export default async function RenderDetailPage({ params }: PageProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <Link
               href={`/renders/${prevRender.id}`}
-              className="p-4 sm:p-6 bg-[#0e0e10] border border-[#333336] hover:border-[var(--gold-border)] rounded-xl transition-all group flex flex-col gap-2"
+              className="p-4 sm:p-6 bg-[#0e0e10] border border-[#333336] hover:border-[var(--gold-border)] rounded-[4px] transition-all group flex flex-col gap-2"
             >
               <span className="font-mono text-[10px] tracking-widest text-[var(--muted)] uppercase group-hover:text-[var(--gold)] transition-colors">
                 ← PREVIOUS SPATIAL CONCEPT
@@ -206,7 +206,7 @@ export default async function RenderDetailPage({ params }: PageProps) {
 
             <Link
               href={`/renders/${nextRender.id}`}
-              className="p-4 sm:p-6 bg-[#0e0e10] border border-[#333336] hover:border-[var(--gold-border)] rounded-xl transition-all group flex flex-col sm:items-end sm:text-right gap-2"
+              className="p-4 sm:p-6 bg-[#0e0e10] border border-[#333336] hover:border-[var(--gold-border)] rounded-[4px] transition-all group flex flex-col sm:items-end sm:text-right gap-2"
             >
               <span className="font-mono text-[10px] tracking-widest text-[var(--muted)] uppercase group-hover:text-[var(--gold)] transition-colors">
                 NEXT SPATIAL CONCEPT →

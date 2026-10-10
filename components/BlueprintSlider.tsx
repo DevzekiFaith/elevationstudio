@@ -68,7 +68,7 @@ export function BlueprintSlider({
         className="blueprint-slider-section relative py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-16 bg-[#060606] text-[#f4f0e8] border-t border-b border-[#333336] overflow-hidden"
         id="blueprint-compare"
       >
-        <div className="blueprint-slider-inner max-w-[1300px] mx-auto">
+        <div className="blueprint-slider-inner max-w-[var(--container)] mx-auto">
           {/* Header */}
           <div className="blueprint-slider-header flex flex-wrap justify-between items-end mb-8 sm:mb-12 gap-4 sm:gap-6">
             <div>
@@ -96,7 +96,7 @@ export function BlueprintSlider({
           {/* Interactive Split-View Comparison Container */}
           <div
             ref={containerRef}
-            className="blueprint-slider-container relative w-full aspect-[4/3] sm:aspect-[16/9] min-h-[260px] sm:min-h-[360px] md:min-h-[480px] rounded-xl overflow-hidden border border-[#333336] select-none cursor-col-resize shadow-[0_20px_60px_rgba(0,0,0,0.7)]"
+            className="blueprint-slider-container relative w-full aspect-[4/3] sm:aspect-[16/9] min-h-[260px] sm:min-h-[360px] md:min-h-[480px] rounded-[4px] overflow-hidden border border-[#333336] select-none cursor-col-resize shadow-[0_20px_60px_rgba(0,0,0,0.7)]"
             onMouseDown={(e) => {
               setIsDragging(true);
               handleMove(e.clientX);

@@ -24,6 +24,7 @@ export function Nav() {
   }, [mobileMenuOpen]);
 
   const navItems = [
+    { label: "Intro Concepts", href: "/intro" },
     { label: "Services", href: "#services" },
     { label: "3D Renders", href: "#renders" },
     { label: "B2C Residential", href: "#residential" },
@@ -47,7 +48,7 @@ export function Nav() {
             w-full pointer-events-auto
             grid grid-cols-[auto_1fr_auto] items-center
             px-5 sm:px-6 lg:px-8 py-3 lg:py-3.5
-            rounded-full transition-all duration-500 border
+            rounded-[4px] transition-all duration-500 border
             ${
               scrolled || mobileMenuOpen
                 ? "bg-[#09090d]/95 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] border-[var(--gold-border)]/40"
@@ -61,7 +62,7 @@ export function Nav() {
             className="flex items-center gap-2.5 group shrink-0"
             onClick={() => setMobileMenuOpen(false)}
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-[var(--gold)] group-hover:scale-125 transition-transform duration-300" />
+            <span className="w-2.5 h-2.5 rounded-[2px] bg-[var(--gold)] group-hover:scale-125 transition-transform duration-300" />
             <span className="font-bebas text-lg sm:text-xl lg:text-2xl tracking-[2.5px] text-white leading-none">
               ELEVATION <span className="text-[var(--gold)]">STUDIO</span>
             </span>
@@ -71,14 +72,14 @@ export function Nav() {
           {/* Using a div instead of a nav tag to avoid conflicting with the global `nav` selector in globals.css */}
           <div className="hidden lg:flex items-center justify-center">
             <ul 
-              className="relative flex items-center gap-1 p-1 bg-white/[0.03] rounded-full border border-white/5"
+              className="relative flex items-center gap-1 p-1 bg-white/[0.03] rounded-[4px] border border-white/5"
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {navItems.map((item, idx) => (
                 <li key={item.label} className="relative">
                   <a
                     href={item.href}
-                    className="relative z-10 block px-4 py-2 font-mono text-[11px] xl:text-xs tracking-wider uppercase transition-colors duration-300 rounded-full"
+                    className="relative z-10 block px-4 py-2 font-mono text-[11px] xl:text-xs tracking-wider uppercase transition-colors duration-300 rounded-[3px]"
                     style={{
                       color: hoveredIndex === idx ? "var(--white)" : "var(--white-dim)"
                     }}
@@ -92,7 +93,7 @@ export function Nav() {
                     {hoveredIndex === idx && (
                       <motion.span
                         layoutId="nav-hover-pill"
-                        className="absolute inset-0 bg-white/5 border border-white/10 rounded-full z-0"
+                        className="absolute inset-0 bg-white/5 border border-white/10 rounded-[3px] z-0"
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
@@ -117,7 +118,7 @@ export function Nav() {
                 <button
                   type="button"
                   onClick={() => setReviewModalOpen(true)}
-                  className="px-4 py-2 bg-white/5 hover:bg-[var(--gold)]/10 text-white hover:text-[var(--gold)] rounded-full font-mono text-[11px] xl:text-xs tracking-wider transition-all duration-300 border border-white/10 hover:border-[var(--gold-border)]"
+                  className="px-4 py-2 bg-white/5 hover:bg-[var(--gold)]/10 text-white hover:text-[var(--gold)] rounded-[4px] font-mono text-[11px] xl:text-xs tracking-wider transition-all duration-300 border border-white/10 hover:border-[var(--gold-border)]"
                   title="Submit a verified client review"
                 >
                   Review Us
@@ -129,7 +130,7 @@ export function Nav() {
                   href="https://instagram.com/elevationstudio.ng"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3.5 py-2 bg-[#0d0d11] hover:bg-white/10 text-white/80 rounded-full font-mono text-[11px] xl:text-xs tracking-wider transition-colors border border-white/5"
+                  className="px-3.5 py-2 bg-[#0d0d11] hover:bg-white/10 text-white/80 rounded-[4px] font-mono text-[11px] xl:text-xs tracking-wider transition-colors border border-white/5"
                   title="Follow on Instagram"
                 >
                   IG
@@ -141,7 +142,7 @@ export function Nav() {
                   href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20interested%20in%20discussing%20a%20project."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3.5 py-2 bg-[#0d0d11] hover:bg-emerald-950/50 text-emerald-400 rounded-full font-mono text-[11px] xl:text-xs tracking-wider transition-colors border border-emerald-950/40"
+                  className="px-3.5 py-2 bg-[#0d0d11] hover:bg-emerald-950/50 text-emerald-400 rounded-[4px] font-mono text-[11px] xl:text-xs tracking-wider transition-colors border border-emerald-950/40"
                   title="WhatsApp Chat"
                 >
                   Chat
@@ -151,7 +152,7 @@ export function Nav() {
               <Magnetic strength={0.2}>
                 <Link
                   href="/contact"
-                  className="px-5 py-2.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-[11px] xl:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md shadow-[var(--gold)]/10 hover:scale-[1.02]"
+                  className="px-5 py-2.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-[11px] xl:text-xs font-bold uppercase tracking-wider rounded-[4px] transition-all duration-300 shadow-md shadow-[var(--gold)]/10 hover:scale-[1.02]"
                 >
                   Start a Project →
                 </Link>
@@ -162,7 +163,7 @@ export function Nav() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden flex items-center justify-center p-2.5 rounded-full bg-white/[0.04] border border-white/10 text-white hover:text-[var(--gold)] hover:border-[var(--gold-border)] transition-colors"
+              className="lg:hidden flex items-center justify-center p-2.5 rounded-[4px] bg-white/[0.04] border border-white/10 text-white hover:text-[var(--gold)] hover:border-[var(--gold-border)] transition-colors"
               aria-label="Toggle Navigation Menu"
             >
               <div className="w-5 h-4 relative flex flex-col justify-between items-center">
@@ -225,7 +226,7 @@ export function Nav() {
                     setMobileMenuOpen(false);
                     setReviewModalOpen(true);
                   }}
-                  className="w-full py-4 rounded-full bg-white/5 hover:bg-white/10 text-white font-mono text-xs tracking-widest uppercase border border-white/10 transition-all duration-300"
+                  className="w-full py-4 rounded-[4px] bg-white/5 hover:bg-white/10 text-white font-mono text-xs tracking-widest uppercase border border-white/10 transition-all duration-300"
                 >
                   Write a Client Review
                 </button>
@@ -233,7 +234,7 @@ export function Nav() {
                 <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full py-4 rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs font-bold tracking-widest uppercase text-center shadow-lg shadow-[var(--gold)]/10 transition-all duration-300"
+                  className="w-full py-4 rounded-[4px] bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs font-bold tracking-widest uppercase text-center shadow-lg shadow-[var(--gold)]/10 transition-all duration-300"
                 >
                   Start a Project →
                 </Link>
@@ -244,7 +245,7 @@ export function Nav() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="py-3 rounded-full bg-[#121217] text-emerald-400 font-mono text-xs tracking-wider text-center border border-emerald-950 transition-colors flex items-center justify-center"
+                    className="py-3 rounded-[4px] bg-[#121217] text-emerald-400 font-mono text-xs tracking-wider text-center border border-emerald-950 transition-colors flex items-center justify-center"
                   >
                     WHATSAPP
                   </a>
@@ -253,7 +254,7 @@ export function Nav() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="py-3 rounded-full bg-[#121217] text-[var(--gold)] font-mono text-xs tracking-wider text-center border border-[var(--gold-border)]/20 transition-colors flex items-center justify-center"
+                    className="py-3 rounded-[4px] bg-[#121217] text-[var(--gold)] font-mono text-xs tracking-wider text-center border border-[var(--gold-border)]/20 transition-colors flex items-center justify-center"
                   >
                     INSTAGRAM
                   </a>
