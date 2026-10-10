@@ -311,7 +311,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
             </TiltCard>
 
             {/* Thumbnail Pills Strip with Neuglassmorphism and Light White Shadow */}
-            <div className="grid grid-cols-5 gap-2 sm:gap-3 w-full my-1">
+            <div className="grid grid-cols-5 gap-1.5 sm:gap-3 w-full my-1">
               {HOME_ARCHETYPES.map((item, idx) => (
                 <button
                   key={item.id}
@@ -320,7 +320,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                     setIsAutoplay(false);
                     setActiveTab(idx);
                   }}
-                  className={`p-2 sm:p-3 rounded-full transition-all text-left flex items-center justify-between cursor-pointer backdrop-blur-2xl ${
+                  className={`p-2 sm:p-3 rounded-full transition-all text-left flex items-center justify-center md:justify-between cursor-pointer backdrop-blur-2xl ${
                     idx === activeTab
                       ? "bg-white/[0.08] text-[var(--gold)] font-bold shadow-[0_4px_20px_rgba(255,255,255,0.14),inset_0_1px_1px_rgba(255,255,255,0.35)] scale-[1.01]"
                       : "bg-white/[0.025] text-zinc-400 hover:text-zinc-200 hover:bg-white/[0.06] shadow-[0_4px_16px_rgba(255,255,255,0.05),inset_0_1px_1px_rgba(255,255,255,0.12)] hover:shadow-[0_6px_22px_rgba(255,255,255,0.1)]"
@@ -342,13 +342,13 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.35 }}
-                className="p-6 sm:p-8 lg:p-9 bg-[#0e0f16]/40 backdrop-blur-2xl rounded-[20px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_25px_60px_rgba(0,0,0,0.7),0_2px_20px_rgba(255,255,255,0.02)] flex flex-col justify-between gap-5 h-full max-w-[460px] w-full mx-auto lg:mx-0"
+                className="p-5 sm:p-8 lg:p-9 bg-[#0e0f16]/40 backdrop-blur-2xl rounded-[20px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_25px_60px_rgba(0,0,0,0.7),0_2px_20px_rgba(255,255,255,0.02)] flex flex-col justify-between gap-5 h-full max-w-[460px] w-full mx-auto lg:mx-0"
               >
                 <div>
                   <div className="font-mono text-[9.5px] sm:text-[10px] text-[var(--gold)] uppercase tracking-widest mb-1">
                     B2C CONCEPT {currentItem.number} OF 05
                   </div>
-                  <h2 className="font-bebas text-2xl sm:text-3xl md:text-4xl text-zinc-200 tracking-wide leading-none mb-1.5">
+                  <h2 className="font-bebas text-xl sm:text-3xl md:text-4xl text-zinc-200 tracking-wide leading-none mb-1.5">
                     {currentItem.title}
                   </h2>
                   <div className="font-serif italic text-xs sm:text-sm text-[var(--gold)] mb-3">
