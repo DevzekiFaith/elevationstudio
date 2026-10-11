@@ -65,6 +65,9 @@ export function ReviewModal({ isOpen, onClose, onReviewSubmitted, initialTab = "
 
   const getAuthorAvatar = (name: string): string => {
     const nameLower = name.toLowerCase();
+    if (nameLower.includes("somto") || nameLower.includes("okafor") || nameLower.includes("praise") || nameLower.includes("chidubem") || nameLower.includes("ubor")) {
+      return "/testimonials/somto_okafor.png";
+    }
     if (nameLower.includes("ikenna") || nameLower.includes("nwosu")) {
       return "/testimonials/ikenna_nwosu.png";
     }
@@ -80,7 +83,7 @@ export function ReviewModal({ isOpen, onClose, onReviewSubmitted, initialTab = "
     if (nameLower.includes("folake") || nameLower.includes("ogundele")) {
       return "/testimonials/folake_ogundele.png";
     }
-    return "/testimonials/ikenna_nwosu.png";
+    return "/testimonials/somto_okafor.png";
   };
 
   const handleSubmit = async (e: React.FormEvent) => {

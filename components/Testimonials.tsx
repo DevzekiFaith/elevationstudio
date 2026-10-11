@@ -49,11 +49,11 @@ const FEATURED_REVIEWS: ReviewItem[] = [
   },
   {
     id: 2,
-    author: "Ikenna Nwosu",
+    author: "Somtochukwu Okafor",
     role: "Creative Director & Co-Founder",
     company: "Aura Prime Developments & Spatial Media",
     location: "Epe / Lekki Expressway Corridor, Lagos",
-    avatar: "/testimonials/ikenna_nwosu.png",
+    avatar: "/testimonials/somto_okafor.png",
     headline: "Transformative 3D spatial fidelity and brand engineering",
     quote:
       "Elevation Studio translated our luxury residential estate vision into immaculate spatial 3D concepts and a high-converting web architecture. The alignment between our brand identity and physical structures was completely seamless.",
@@ -66,6 +66,27 @@ const FEATURED_REVIEWS: ReviewItem[] = [
       { icon: "✦", label: "Spatial Concepts" },
       { icon: "🌐", label: "Digital Platform" },
       { icon: "🏆", label: "Brand System" },
+    ],
+  },
+  {
+    id: "ikenna-nwosu",
+    author: "Ikenna Nwosu",
+    role: "Managing Partner & Principal",
+    company: "Nwosu & Associates Luxury Realty",
+    location: "Ikoyi & Lekki Phase 1, Lagos, Nigeria",
+    avatar: "/testimonials/ikenna_nwosu.png",
+    headline: "Flawless spatial fidelity and high-converting investor portals",
+    quote:
+      "Elevation Studio elevated our entire property portfolio presentation. The 3D architectural renders and seamless web interface established instant institutional credibility with private equity and diaspora investors.",
+    statValue: "4.8x",
+    statLabel: "Increase in Diaspora Investor Engagement",
+    tag: "Real Estate Fit",
+    packageUsed: "Package 03 — The Elevation",
+    packageHref: "/packages/3",
+    pills: [
+      { icon: "🏛", label: "Luxury Realty" },
+      { icon: "⚡", label: "Investor Portal" },
+      { icon: "✦", label: "Spatial Renders" },
     ],
   },
   {
@@ -143,6 +164,9 @@ export function Testimonials() {
   const resolveAvatar = (authorName: string, customAvatar?: string): string => {
     if (customAvatar && customAvatar.trim()) return customAvatar;
     const nameLower = (authorName || "").toLowerCase();
+    if (nameLower.includes("somto") || nameLower.includes("okafor") || nameLower.includes("praise") || nameLower.includes("chidubem") || nameLower.includes("ubor")) {
+      return "/testimonials/somto_okafor.png";
+    }
     if (nameLower.includes("ikenna") || nameLower.includes("nwosu")) {
       return "/testimonials/ikenna_nwosu.png";
     }
@@ -158,15 +182,41 @@ export function Testimonials() {
     if (nameLower.includes("folake") || nameLower.includes("ogundele")) {
       return "/testimonials/folake_ogundele.png";
     }
-    return "/testimonials/ikenna_nwosu.png";
+    return "/testimonials/somto_okafor.png";
   };
 
   const loadReviews = () => {
     try {
       const storedRaw = localStorage.getItem("elevation_global_reviews");
       if (storedRaw) {
-        const parsed: ReviewData[] = JSON.parse(storedRaw);
-        const mappedUserReviews: ReviewItem[] = parsed.map((item) => ({
+        let parsed: ReviewData[] = JSON.parse(storedRaw);
+        let modified = false;
+
+        // Auto-migrate any previously saved client review containing "praise", "chidubem", or "ubor"
+        parsed = parsed.map((item) => {
+          const lower = (item.author || "").toLowerCase();
+          if (lower.includes("praise") || lower.includes("chidubem") || lower.includes("ubor")) {
+            modified = true;
+            return {
+              ...item,
+              author: "Somtochukwu Okafor",
+              avatar: "/testimonials/somto_okafor.png",
+            };
+          }
+          return item;
+        });
+
+        if (modified) {
+          localStorage.setItem("elevation_global_reviews", JSON.stringify(parsed));
+        }
+
+        // Deduplicate against featured review authors so users don't see duplicate cards
+        const featuredAuthors = new Set(FEATURED_REVIEWS.map((r) => r.author.toLowerCase()));
+        const uniqueUserReviews = parsed.filter(
+          (item) => !featuredAuthors.has((item.author || "").trim().toLowerCase())
+        );
+
+        const mappedUserReviews: ReviewItem[] = uniqueUserReviews.map((item) => ({
           id: item.id,
           author: item.author,
           role: item.role,
