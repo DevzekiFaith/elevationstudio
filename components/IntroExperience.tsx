@@ -354,7 +354,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
             </div>
           </div>
 
-          {/* RIGHT: FLEXIBLE & ADAPTIVE SPECIFICATION NEO-GLASS CARD */}
+          {/* RIGHT: FLEXIBLE & SPACIOUS SPECIFICATION NEO-GLASS CARD */}
           <div className="lg:col-span-5 xl:col-span-5 2xl:col-span-4 flex flex-col justify-between h-full w-full">
             <AnimatePresence mode="wait">
               <motion.div
@@ -363,56 +363,64 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.35 }}
-                className="p-5 sm:p-7 lg:p-8 bg-[#0e0f16]/45 backdrop-blur-2xl border border-white/[0.08] rounded-[20px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_25px_60px_rgba(0,0,0,0.7),0_2px_20px_rgba(212,168,67,0.03)] flex flex-col justify-between gap-5 h-full w-full"
+                className="p-6 sm:p-8 lg:p-9 bg-[#0e0f16]/55 backdrop-blur-2xl border border-white/[0.08] rounded-[22px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_25px_60px_rgba(0,0,0,0.7),0_2px_20px_rgba(212,168,67,0.03)] flex flex-col justify-between h-full w-full"
               >
-                <div>
-                  <div className="font-mono text-[9.5px] sm:text-[10px] text-[var(--gold)] uppercase tracking-widest mb-1.5 font-semibold">
+                {/* TOP CONTENT BLOCK WITH EXPANDED SPACING */}
+                <div className="flex flex-col">
+                  {/* Concept Tag */}
+                  <div className="font-mono text-[9.5px] sm:text-[10px] text-[var(--gold)] uppercase tracking-[0.18em] font-semibold mb-2">
                     B2C CONCEPT {currentItem.number} OF 05
                   </div>
-                  <h2 className="font-bebas text-2xl sm:text-3xl md:text-4xl text-zinc-100 tracking-wide leading-none mb-1.5">
+
+                  {/* Main Title with Top & Bottom Breathing Room */}
+                  <h2 className="font-bebas text-2xl sm:text-3xl lg:text-[34px] text-zinc-100 tracking-wide leading-[1.1] mb-2 sm:mb-2.5">
                     {currentItem.title}
                   </h2>
-                  <div className="font-serif italic text-xs sm:text-sm text-[var(--gold)] mb-3 opacity-90">
+
+                  {/* Subtitle Quote */}
+                  <div className="font-serif italic text-xs sm:text-[13px] text-[var(--gold)] opacity-90 tracking-wide mb-4">
                     &ldquo;{currentItem.subtitle}&rdquo;
                   </div>
-                  <p className="font-sans text-[11.5px] sm:text-xs text-zinc-400 leading-relaxed font-light mb-4">
+
+                  {/* Short Description */}
+                  <p className="font-sans text-xs sm:text-[12.5px] text-zinc-300/85 leading-[1.65] font-light mb-6">
                     {currentItem.shortDesc}
                   </p>
 
-                  {/* Highlights List Box */}
-                  <div className="p-4 sm:p-4.5 bg-white/[0.025] border border-white/[0.06] backdrop-blur-xl rounded-[16px] mb-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)]">
-                    <div className="font-mono text-[9px] text-[var(--gold)] uppercase tracking-widest mb-2 font-bold flex items-center gap-1.5">
-                      <span className="w-1 h-1 rounded-full bg-[var(--gold)]" />
-                      KEY DELIVERABLES:
+                  {/* Highlights List Box with Dedicated Top & Bottom Padding */}
+                  <div className="p-4 sm:p-5 bg-white/[0.025] border border-white/[0.06] backdrop-blur-xl rounded-[16px] mb-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)]">
+                    <div className="font-mono text-[9px] sm:text-[9.5px] text-[var(--gold)] uppercase tracking-[0.14em] font-bold flex items-center gap-1.5 mb-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)]" />
+                      KEY DELIVERABLES
                     </div>
-                    <ul className="flex flex-col gap-1.5">
+                    <ul className="flex flex-col gap-2.5">
                       {currentItem.highlights.map((point, i) => (
-                        <li key={i} className="flex items-center gap-2 text-[11px] sm:text-[11.5px] text-zinc-300">
-                          <span className="text-[var(--gold)] text-[9px] drop-shadow-[0_0_6px_rgba(212,168,67,0.5)]">◆</span>
-                          <span>{point}</span>
+                        <li key={i} className="flex items-start gap-2.5 text-[11.5px] sm:text-xs text-zinc-200 leading-relaxed">
+                          <span className="text-[var(--gold)] text-[10px] drop-shadow-[0_0_6px_rgba(212,168,67,0.5)] shrink-0 mt-[2px]">◆</span>
+                          <span className="font-normal">{point}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* Specs Pill Row */}
-                  <div className="grid grid-cols-2 gap-2 sm:gap-2.5">
+                  {/* Specs Pill Row with Generous Spacing */}
+                  <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-6">
                     {currentItem.specs.map((sp, i) => (
-                      <div key={i} className="p-2.5 sm:p-3 bg-white/[0.025] border border-white/[0.06] backdrop-blur-xl rounded-[12px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)]">
-                        <div className="font-mono text-[8px] text-zinc-500 uppercase tracking-wider">{sp.label}</div>
-                        <div className="font-mono text-[10px] sm:text-[10.5px] text-zinc-200 font-semibold mt-0.5">{sp.value}</div>
+                      <div key={i} className="p-3 sm:p-3.5 bg-white/[0.025] border border-white/[0.06] backdrop-blur-xl rounded-[14px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)] flex flex-col gap-1">
+                        <div className="font-mono text-[8.5px] text-zinc-400 uppercase tracking-wider">{sp.label}</div>
+                        <div className="font-mono text-[10.5px] sm:text-[11px] text-zinc-100 font-semibold">{sp.value}</div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                {/* Bottom Action Buttons with Top Divider & Spacious Padding */}
+                <div className="pt-5 border-t border-white/[0.06] flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                   <a
                     href={`https://wa.me/2349119059859?text=${encodeURIComponent(currentItem.whatsappPrompt)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-3 px-4 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-[10.5px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full text-center transition-all flex items-center justify-center gap-1.5 active:scale-95 shadow-[0_4px_20px_rgba(212,168,67,0.3)] hover:scale-[1.02]"
+                    className="flex-1 py-3.5 px-5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-[11px] sm:text-[11.5px] font-bold uppercase tracking-wider rounded-full text-center transition-all flex items-center justify-center gap-1.5 active:scale-95 shadow-[0_4px_20px_rgba(212,168,67,0.3)] hover:scale-[1.02]"
                   >
                     <span>Discuss Concept</span>
                     <span>→</span>
@@ -421,7 +429,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                   <button
                     type="button"
                     onClick={handleSeamlessEnter}
-                    className="py-3 sm:py-3.5 px-5 sm:px-6 bg-white/[0.05] hover:bg-white/[0.12] border border-white/15 hover:border-[var(--gold-border)] text-white hover:text-[var(--gold)] backdrop-blur-xl font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 cursor-pointer shadow-[0_4px_18px_rgba(255,255,255,0.05),inset_0_1px_1px_rgba(255,255,255,0.15)] text-center active:scale-95 hover:scale-[1.02]"
+                    className="py-3.5 px-6 bg-white/[0.05] hover:bg-white/[0.12] border border-white/15 hover:border-[var(--gold-border)] text-white hover:text-[var(--gold)] backdrop-blur-xl font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 cursor-pointer shadow-[0_4px_18px_rgba(255,255,255,0.05),inset_0_1px_1px_rgba(255,255,255,0.15)] text-center active:scale-95 hover:scale-[1.02]"
                   >
                     Enter Studio
                   </button>
