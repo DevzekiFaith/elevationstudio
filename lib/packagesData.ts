@@ -58,42 +58,46 @@ export const PACKAGES_DATA: PackageDetail[] = [
     num: "B2B Commission · Package 02",
     name: "THE STRUCTURE",
     subtitle: "Brand + Digital + Presence",
-    description: "A complete digital and local transformation of how your business is seen, discovered, experienced, and remembered online.",
+    description: "We give your business a complete professional look, build you a fast custom website, and make sure new clients can easily find you on Google and Google Maps.",
     range: "From ₦1.5M",
-    paymentSplit: "50 / 50",
-    paymentDesc: "50% deposit to commence work. 50% on final delivery before handover.",
-    baseInclude: "Everything in Foundation",
+    paymentSplit: "50% To Start / 50% On Handover",
+    paymentDesc: "50% deposit to start work. 50% final balance when the project is finished and approved.",
+    baseInclude: "Full Brand Identity System (Package 01)",
     pillars: [
       {
-        title: "LOCAL PRESENCE",
-        sub: "Google presence optimisation & digital discovery",
+        title: "GET FOUND ON GOOGLE & MAPS",
+        sub: "Make it easy for local clients to discover your business when searching online",
         details: [
-          "Google Business Profile optimisation",
-          "Local digital presence optimisation",
-          "Business information and services optimisation",
-          "Google-to-website customer journey mapping",
-          "Website & profile visual consistency",
-          "Local competitor presence review"
+          "Complete Google Business Profile and Google Maps setup & verification",
+          "Optimized to rank higher so nearby customers find you before competitors",
+          "Direct click-to-call, WhatsApp chat, and driving directions for easy customer contact",
+          "Smooth link connecting your Google profile directly to your website",
+          "Consistent business name, phone number, and address across the internet",
+          "Review of local competitors to ensure your business looks more credible and attractive"
         ]
       },
       {
-        title: "DIGITAL ENGINEERING",
-        sub: "Custom website design & development",
+        title: "CUSTOM HIGH-SPEED WEBSITE",
+        sub: "A fast, beautiful website designed to turn visitors into paying clients",
         details: [
-          "Custom Next.js web application",
-          "Responsive mobile-first interface",
-          "High-performance SEO architecture",
-          "Speed & accessibility engineering"
+          "100% custom-built website tailored to your brand (no slow, generic templates)",
+          "Fully responsive design that looks stunning on iPhones, Androids, tablets, and laptops",
+          "Built-in Google SEO so your pages appear clearly in search engine results",
+          "Photo gallery and portfolio showcase to display your best projects and services",
+          "Direct WhatsApp inquiry buttons and instant contact forms for new customer leads",
+          "Fast page loading speeds so visitors never leave out of frustration"
         ]
       },
       {
-        title: "DIGITAL ASSETS & SYSTEMS",
-        sub: "Social media templates & email marketing setup",
+        title: "SOCIAL MEDIA & CLIENT INQUIRIES",
+        sub: "Ready-to-use branded social posts and automated replies so you never miss a lead",
         details: [
-          "Modular social grid templates",
-          "Custom digital campaign banners",
-          "Automated onboarding email templates",
-          "CRM subscriber capture integration"
+          "Set of matching social media post and story templates for Instagram and LinkedIn",
+          "Eye-catching digital promo banners for special announcements and campaigns",
+          "Automated welcome email sent instantly whenever a client fills out your contact form",
+          "Customer contact capture system that safely stores names, emails, and phone numbers",
+          "Easy email notifications sent straight to your phone when someone asks for a quote",
+          "Step-by-step guidance on how to manage your inquiries easily"
         ]
       }
     ],

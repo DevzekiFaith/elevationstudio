@@ -496,13 +496,13 @@ export default function Home() {
                     <div className="pkg-card-name">THE STRUCTURE</div>
                     <div className="pkg-card-subtitle">Brand + Digital + Presence</div>
                     <ul className="pkg-card-includes">
-                      <li>Everything in Foundation</li>
-                      <li className="new">Local presence &amp; Google optimisation</li>
-                      <li className="new">Website design &amp; custom engineering</li>
-                      <li className="new">Social media &amp; email marketing setup</li>
+                      <li>Full Brand Identity System (Package 01)</li>
+                      <li className="new">Google Search &amp; Google Maps Setup</li>
+                      <li className="new">Custom Fast Mobile &amp; Desktop Website</li>
+                      <li className="new">Social Media Templates &amp; Automated Inquiries</li>
                     </ul>
                     <Link href="/packages/2" className="pkg-hover-badge group" title="Open full Package 02 detail modal">
-                      <span>OPEN FULL SCOPE MODAL</span>
+                      <span>VIEW FULL PACKAGE DETAILS</span>
                       <span className="group-hover:translate-x-0.5 transition-transform">✦</span>
                     </Link>
                   </div>
