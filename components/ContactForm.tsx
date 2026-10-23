@@ -458,6 +458,12 @@ function ContactFormInner() {
         <div className="contact-detail-block">
           <div className="footer-contact-label">Email Inquiries</div>
           <a href="mailto:support@mindvestglobalresources.com.ng">support@mindvestglobalresources.com.ng</a>
+          <div style={{ marginTop: 6, fontSize: "12px", color: "var(--muted)" }}>
+            Alternative:{" "}
+            <a href="mailto:lightwavesupport@gmail.com" style={{ color: "var(--white-dim)", textDecoration: "none" }}>
+              lightwavesupport@gmail.com
+            </a>
+          </div>
           <div className="footer-contact-label" style={{ marginTop: 16 }}>
             Direct WhatsApp / Phone
           </div>

@@ -353,9 +353,14 @@ export async function POST(req: NextRequest) {
     let clientRes = null;
 
     try {
+      const studioRecipients = [
+        "support@mindvestglobalresources.com.ng",
+        process.env.ALT_STUDIO_EMAIL || "lightwavesupport@gmail.com"
+      ];
+
       studioRes = await resend.emails.send({
         from: fromEmail,
-        to: "support@mindvestglobalresources.com.ng",
+        to: studioRecipients,
         replyTo: email,
         subject: `New Project Inquiry — ${company} (${packageName})`,
         html: emailHtml,

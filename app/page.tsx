@@ -20,30 +20,9 @@ import { ResidentialServices } from "@/components/ResidentialServices";
 import { ScrollBackground } from "@/components/ScrollBackground";
 import { MarketsSelector } from "@/components/MarketsSelector";
 import { WarmWelcome } from "@/components/WarmWelcome";
-import { IntroExperience } from "@/components/IntroExperience";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const { formatPrice, currency } = useCurrency();
-  const [showIntro, setShowIntro] = useState(true);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const hasSeen = sessionStorage.getItem("es_intro_seen");
-      const urlParams = new URLSearchParams(window.location.search);
-      if (hasSeen === "true" || window.location.hash || urlParams.get("skipIntro") === "true") {
-        setShowIntro(false);
-      }
-    }
-  }, []);
-
-  const handleEnterStudio = () => {
-    if (typeof window !== "undefined") {
-      sessionStorage.setItem("es_intro_seen", "true");
-    }
-    setShowIntro(false);
-  };
 
   const p1 = formatPrice(1);
   const p2 = formatPrice(2);
@@ -51,20 +30,9 @@ export default function Home() {
   const p4 = formatPrice(4);
 
   return (
-    <AnimatePresence mode="wait">
-      {showIntro ? (
-        <IntroExperience key="intro-view" onEnterStudio={handleEnterStudio} />
-      ) : (
-        <motion.div
-          key="main-studio-view"
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="min-h-screen w-full bg-[#060608] text-[#f4f0e8] relative"
-        >
-          <Nav />
-          <ScrollBackground />
+    <div className="min-h-screen w-full bg-[#060608] text-[#f4f0e8] relative">
+      <Nav />
+      <ScrollBackground />
 
       {/* Hero Section with Parallax Depth */}
       <section className="hero relative overflow-hidden" data-bg="dark">
@@ -158,16 +126,17 @@ export default function Home() {
           <Reveal direction="zoom" duration={0.8} delay={0.3}>
             <TiltCard glare maxTilt={5} className="w-full">
               <div className="relative w-full rounded-[4px] overflow-hidden border border-[#333336] shadow-[0_25px_70px_rgba(0,0,0,0.9)] group glow-card-border">
-                <div className="relative aspect-[16/9] md:aspect-[21/9] w-full min-h-[340px] md:min-h-[460px]">
+                <div className="relative aspect-[16/9] w-full min-h-[360px] md:min-h-[520px]">
                   <Image
                     src="/hero_architectural_render.jpg"
                     alt="Featured 3D Spatial Architecture — Elevation Studio"
                     fill
                     priority
+                    quality={95}
                     className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.02]"
-                    sizes="100vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1400px) 95vw, 1600px"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-transparent to-black/30 opacity-75 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-transparent to-black/20 opacity-65 pointer-events-none" />
                 </div>
 
                 {/* Top Floating Badge */}
@@ -1007,6 +976,15 @@ export default function Home() {
                 >
                   support@mindvestglobalresources.com.ng
                 </a>
+                <div style={{ marginTop: "4px", fontSize: "11px", color: "var(--muted)" }}>
+                  Alt:{" "}
+                  <a
+                    href="mailto:lightwavesupport@gmail.com"
+                    style={{ color: "var(--white-dim)", textDecoration: "none" }}
+                  >
+                    lightwavesupport@gmail.com
+                  </a>
+                </div>
               </div>
             </div>
             <div className="footer-contact-item">
@@ -1062,8 +1040,6 @@ export default function Home() {
       </footer>
 
       <WhatsAppButton />
-        </motion.div>
-      )}
-    </AnimatePresence>
+    </div>
   );
 }

@@ -24,7 +24,6 @@ export function Nav() {
   }, [mobileMenuOpen]);
 
   const navItems = [
-    { label: "Intro Concepts", href: "/intro" },
     { label: "Services", href: "#services" },
     { label: "3D Renders", href: "#renders" },
     { label: "B2C Residential", href: "#residential" },

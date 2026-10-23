@@ -185,170 +185,136 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
           </p>
         </div>
 
-        {/* Flexible 2-Column Showcase */}
-        <div className="w-full flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8 items-stretch">
-          {/* LEFT: 8K CINEMATIC VIEWPORT */}
-          <div className="w-full lg:w-7/12 flex flex-col gap-2.5 sm:gap-3">
-            <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[220px] sm:min-h-[300px] lg:min-h-[360px] rounded-2xl overflow-hidden bg-[#0c0d14] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] group">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentItem.id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="absolute inset-0 w-full h-full"
-                >
-                  <Image
-                    src={currentItem.image}
-                    alt={currentItem.title}
-                    fill
-                    priority
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 95vw, 60vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#060608]/90 via-transparent to-black/30 pointer-events-none" />
-                </motion.div>
-              </AnimatePresence>
+        {/* Full-Width Cinematic Viewport Showcase */}
+        <div className="w-full max-w-5xl mx-auto flex flex-col gap-4 sm:gap-6 items-center">
+          {/* 8K CINEMATIC VIEWPORT */}
+          <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] lg:aspect-[21/10] min-h-[260px] sm:min-h-[380px] lg:min-h-[480px] rounded-2xl md:rounded-3xl overflow-hidden bg-[#0c0d14] border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.85)] group">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentItem.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="absolute inset-0 w-full h-full"
+              >
+                <Image
+                  src={currentItem.image}
+                  alt={currentItem.title}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 1200px"
+                  className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060608]/90 via-transparent to-black/30 pointer-events-none" />
+              </motion.div>
+            </AnimatePresence>
 
-              {/* Tag Pill */}
-              <div className="absolute top-3 left-3 sm:top-3.5 sm:left-3.5 z-20">
-                <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 bg-black/80 backdrop-blur-md border border-white/10 rounded-full text-[8.5px] sm:text-[10px] font-mono text-[var(--gold)] uppercase tracking-wider font-semibold shadow-md">
-                  {currentItem.number} · {currentItem.category}
-                </span>
-              </div>
-
-              {/* Arrows */}
-              <div className="absolute top-3 right-3 sm:top-3.5 sm:right-3.5 z-20 flex items-center gap-1.5">
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsAutoplay(false);
-                    prevSlide();
-                  }}
-                  aria-label="Previous"
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/80 hover:bg-black text-zinc-300 hover:text-[var(--gold)] border border-white/10 flex items-center justify-center transition-all cursor-pointer text-xs active:scale-95 shadow-md"
-                >
-                  ←
-                </button>
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsAutoplay(false);
-                    nextSlide();
-                  }}
-                  aria-label="Next"
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/80 hover:bg-black text-zinc-300 hover:text-[var(--gold)] border border-white/10 flex items-center justify-center transition-all cursor-pointer text-xs active:scale-95 shadow-md"
-                >
-                  →
-                </button>
-              </div>
-
-              {/* Minimal Bottom Bar */}
-              <div className="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-3 sm:left-3 sm:right-3 z-20 px-3 py-2 sm:px-3.5 sm:py-2.5 bg-black/85 backdrop-blur-md border border-white/10 rounded-xl shadow-lg flex items-center justify-between text-[11px] sm:text-xs">
-                <span className="font-mono text-zinc-300 truncate font-medium pr-2">
-                  {currentItem.title}
-                </span>
-                <span className="font-mono text-[10px] sm:text-[11px] text-[var(--gold)] font-bold shrink-0">
-                  {currentItem.number} / 05
-                </span>
-              </div>
+            {/* Tag Pill */}
+            <div className="absolute top-3.5 left-3.5 sm:top-5 sm:left-5 z-20">
+              <span className="px-3 py-1 sm:px-3.5 sm:py-1.5 bg-black/80 backdrop-blur-md border border-white/10 rounded-full text-[9px] sm:text-[11px] font-mono text-[var(--gold)] uppercase tracking-wider font-semibold shadow-md">
+                {currentItem.number} · {currentItem.category}
+              </span>
             </div>
 
-            {/* Thumbnail Selector Rail - Touch Friendly */}
-            <div className="grid grid-cols-5 gap-1 sm:gap-2 w-full">
-              {HOME_ARCHETYPES.map((item, idx) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => {
-                    setIsAutoplay(false);
-                    setActiveTab(idx);
-                  }}
-                  className={`relative overflow-hidden py-2 px-1 sm:px-2 rounded-xl transition-all text-center flex flex-col items-center justify-center cursor-pointer border min-h-[40px] sm:min-h-[44px] ${
-                    idx === activeTab
-                      ? "bg-zinc-800/90 border-[var(--gold)] text-[var(--gold)] font-bold shadow-[0_4px_16px_rgba(212,168,67,0.2)]"
-                      : "bg-[#0c0d14]/80 border-white/5 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60"
-                  }`}
-                >
-                  <span className="font-mono text-[9px] sm:text-[10px]">{item.number}</span>
-                  <span className="font-sans text-[8px] sm:text-[9.5px] truncate max-w-full hidden sm:inline">
-                    {item.category.split(" ")[0]}
-                  </span>
+            {/* Prev / Next Arrows */}
+            <div className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 z-20 flex items-center gap-2">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsAutoplay(false);
+                  prevSlide();
+                }}
+                aria-label="Previous Archetype"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/80 hover:bg-black text-zinc-300 hover:text-[var(--gold)] border border-white/10 flex items-center justify-center transition-all cursor-pointer text-sm active:scale-95 shadow-md"
+              >
+                ←
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsAutoplay(false);
+                  nextSlide();
+                }}
+                aria-label="Next Archetype"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/80 hover:bg-black text-zinc-300 hover:text-[var(--gold)] border border-white/10 flex items-center justify-center transition-all cursor-pointer text-sm active:scale-95 shadow-md"
+              >
+                →
+              </button>
+            </div>
 
-                  {idx === activeTab && isAutoplay && (
-                    <motion.span
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--gold)]"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 6, ease: "linear" }}
-                      key={`progress-${activeTab}`}
-                    />
-                  )}
-                </button>
-              ))}
+            {/* Minimal Bottom Overlay Bar */}
+            <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 z-20 px-4 py-3 sm:px-5 sm:py-3.5 bg-black/85 backdrop-blur-md border border-white/10 rounded-xl sm:rounded-2xl shadow-lg flex items-center justify-between text-xs sm:text-sm">
+              <div className="flex items-center gap-3 truncate pr-2">
+                <span className="font-bebas text-base sm:text-2xl text-white tracking-wide truncate">
+                  {currentItem.title}
+                </span>
+                <span className="hidden md:inline text-zinc-400 font-mono text-xs truncate">
+                  — {currentItem.tagline}
+                </span>
+              </div>
+              <span className="font-mono text-xs sm:text-sm text-[var(--gold)] font-bold shrink-0">
+                {currentItem.number} / 05
+              </span>
             </div>
           </div>
 
-          {/* RIGHT: COMPACT, ELEGANT DETAIL CARD - RESPONSIVE */}
-          <div className="w-full lg:w-5/12 flex flex-col">
-            <div className="flex-1 p-4.5 sm:p-6 lg:p-7 bg-[#0c0d14] border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] flex flex-col justify-between gap-4 sm:gap-6">
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-2 sm:mb-3">
-                  <span className="font-mono text-[9px] sm:text-[9.5px] text-[var(--gold)] uppercase tracking-widest font-semibold">
-                    {currentItem.category}
-                  </span>
-                  <span className="font-mono text-[9px] sm:text-[9.5px] text-zinc-500">
-                    {currentItem.number} of 05
-                  </span>
-                </div>
+          {/* Thumbnail Selector Rail */}
+          <div className="grid grid-cols-5 gap-1.5 sm:gap-2.5 w-full">
+            {HOME_ARCHETYPES.map((item, idx) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => {
+                  setIsAutoplay(false);
+                  setActiveTab(idx);
+                }}
+                className={`relative overflow-hidden py-2.5 px-2 sm:px-3 rounded-xl transition-all text-center flex flex-col items-center justify-center cursor-pointer border min-h-[46px] sm:min-h-[52px] ${
+                  idx === activeTab
+                    ? "bg-zinc-800/90 border-[var(--gold)] text-[var(--gold)] font-bold shadow-[0_4px_16px_rgba(212,168,67,0.25)]"
+                    : "bg-[#0c0d14]/80 border-white/5 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60"
+                }`}
+              >
+                <span className="font-mono text-[10px] sm:text-xs">{item.number}</span>
+                <span className="font-sans text-[9px] sm:text-[11px] truncate max-w-full hidden sm:inline">
+                  {item.category}
+                </span>
 
-                <h2 className="font-bebas text-2xl sm:text-3xl lg:text-4xl text-zinc-100 tracking-wide leading-none mb-2 sm:mb-3">
-                  {currentItem.title}
-                </h2>
+                {idx === activeTab && isAutoplay && (
+                  <motion.span
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--gold)]"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 6, ease: "linear" }}
+                    key={`progress-${activeTab}`}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
 
-                <p className="font-sans text-xs sm:text-sm text-zinc-300 leading-relaxed font-light mb-4 sm:mb-6">
-                  {currentItem.tagline}
-                </p>
+          {/* Centered Direct Actions */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full pt-2">
+            <button
+              type="button"
+              onClick={handleSeamlessEnter}
+              className="w-full sm:w-auto min-w-[200px] min-h-[48px] py-3 px-8 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full transition-all cursor-pointer flex items-center justify-center gap-2 shadow-[0_4px_22px_rgba(212,168,67,0.35)] hover:shadow-[0_6px_28px_rgba(212,168,67,0.5)] active:scale-95"
+            >
+              <span>Enter Studio Website</span>
+              <span>→</span>
+            </button>
 
-                {/* Minimalist Feature Pills */}
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2 sm:mb-4">
-                  {currentItem.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-[#12131c] border border-white/5 rounded-lg font-mono text-[9.5px] sm:text-[10px] text-zinc-300 flex items-center gap-1.5"
-                    >
-                      <span className="text-[var(--gold)] text-[7px] sm:text-[8px]">◆</span>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Direct Actions - Touch Accessible */}
-              <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 pt-2">
-                <button
-                  type="button"
-                  onClick={handleSeamlessEnter}
-                  className="w-full sm:flex-1 min-h-[46px] py-3 px-5 sm:px-6 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-black font-mono text-xs font-bold uppercase tracking-wider rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 shadow-[0_4px_18px_rgba(212,168,67,0.35)] active:scale-95"
-                >
-                  <span>Enter Studio</span>
-                  <span>→</span>
-                </button>
-
-                <a
-                  href={`https://wa.me/2349119059859?text=${encodeURIComponent(currentItem.whatsappPrompt)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto min-h-[46px] py-3 px-5 bg-[#161724] hover:bg-[#1f2133] text-zinc-300 hover:text-[var(--gold)] border border-white/10 font-mono text-xs font-semibold uppercase tracking-wider rounded-xl transition-all text-center flex items-center justify-center gap-1.5 active:scale-95"
-                >
-                  <span>Consult</span>
-                  <span>↗</span>
-                </a>
-              </div>
-            </div>
+            <a
+              href={`https://wa.me/2349119059859?text=${encodeURIComponent(currentItem.whatsappPrompt)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto min-h-[48px] py-3 px-6 bg-[#161724] hover:bg-[#1f2133] text-zinc-300 hover:text-[var(--gold)] border border-white/10 font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full transition-all text-center flex items-center justify-center gap-2 active:scale-95"
+            >
+              <span>Consult on WhatsApp</span>
+              <span>↗</span>
+            </a>
           </div>
         </div>
       </main>
