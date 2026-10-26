@@ -341,7 +341,7 @@ nav {
 .hero-sub {
   font-family: var(--font-cormorant), serif;
   font-size: clamp(16px, 1.5vw, 20px);
-  font-style: italic;
+  font-style: normal;
   color: var(--white-dim);
   max-width: 500px;
   line-height: 1.5;

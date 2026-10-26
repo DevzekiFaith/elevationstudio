@@ -54,7 +54,7 @@ export default async function PackageDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const whatsappMessage = `Hello Elevation Studio, I am interested in commissioning ${pkg.name} (${pkg.num}) and would like to review terms.`;
+  const whatsappMessage = `Hello Elevation Studio, I would like to discuss budget flexibility and scope calibration for ${pkg.name} (${pkg.num}).`;
 
   return (
     <>
@@ -186,6 +186,31 @@ export default async function PackageDetailPage({ params }: PageProps) {
                   </div>
                 )}
 
+                {/* Budget Flexibility & Calibration Note */}
+                <div className="mb-6 p-3.5 sm:p-4 rounded-xl bg-gradient-to-r from-[#121520] to-[#0c0e17] border border-[var(--gold)]/20 flex items-start gap-3">
+                  <div className="w-7 h-7 rounded-lg bg-[var(--gold)]/10 border border-[var(--gold)]/30 flex items-center justify-center shrink-0 mt-0.5 text-[var(--gold)]">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <line x1="4" y1="21" x2="4" y2="14" />
+                      <line x1="4" y1="10" x2="4" y2="3" />
+                      <line x1="12" y1="21" x2="12" y2="12" />
+                      <line x1="12" y1="8" x2="12" y2="3" />
+                      <line x1="20" y1="21" x2="20" y2="16" />
+                      <line x1="20" y1="12" x2="20" y2="3" />
+                      <line x1="1" y1="14" x2="7" y2="14" />
+                      <line x1="9" y1="8" x2="15" y2="8" />
+                      <line x1="17" y1="16" x2="23" y2="16" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="font-mono text-[11px] font-semibold text-white tracking-wide uppercase flex items-center gap-1.5">
+                      <span>Tailored to Fit Your Project Budget</span>
+                    </div>
+                    <p className="font-sans text-xs text-zinc-400 mt-1 leading-relaxed">
+                      All commissions are modular. If your plot, scope, or milestone schedule differs from this baseline, our team is open to discussion and calibrating deliverables to match your budget.
+                    </p>
+                  </div>
+                </div>
+
                 {/* Action CTAs */}
                 <div className="flex flex-col gap-3">
                   <Link
@@ -200,10 +225,24 @@ export default async function PackageDetailPage({ params }: PageProps) {
                     href={`https://wa.me/2349119059859?text=${encodeURIComponent(whatsappMessage)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3.5 px-6 bg-[#161824] hover:bg-[#1d2030] text-zinc-300 hover:text-[var(--gold)] border border-white/10 font-mono text-xs font-semibold uppercase tracking-wider rounded-xl transition-all text-center flex items-center justify-center gap-2 active:scale-95"
+                    className="w-full py-3.5 px-6 bg-[#161824] hover:bg-[#1d2030] text-zinc-200 hover:text-[var(--gold)] border border-white/10 hover:border-[var(--gold)]/30 font-mono text-xs font-semibold uppercase tracking-wider rounded-xl transition-all text-center flex items-center justify-center gap-2 active:scale-95 group"
                   >
-                    <span>Direct WhatsApp Consult</span>
-                    <span>↗</span>
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-[var(--gold)] group-hover:scale-110 transition-transform"
+                      aria-hidden="true"
+                    >
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                    <span>Discuss Budget Flexibility</span>
+                    <span className="text-[var(--gold)] font-bold">↗</span>
                   </a>
                 </div>
               </div>

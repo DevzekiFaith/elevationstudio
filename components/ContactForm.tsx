@@ -13,7 +13,7 @@ const PACKAGES = [
     name: "The Foundation",
     tier: "B2B",
     short: "Brand identity only",
-    range: "From ₦500K",
+    range: "From ₦500K · Open to Discussion",
     bridge: false,
   },
   {
@@ -22,7 +22,7 @@ const PACKAGES = [
     name: "The Structure",
     tier: "B2B",
     short: "Brand + Digital + Presence",
-    range: "From ₦1.5M",
+    range: "From ₦1.5M · Open to Discussion",
     bridge: false,
   },
   {
@@ -31,7 +31,7 @@ const PACKAGES = [
     name: "The Elevation",
     tier: "B2B",
     short: "Brand + Digital + Space",
-    range: "Investment from ₦5M",
+    range: "Investment from ₦5M · Open to Discussion",
     bridge: false,
   },
   {
@@ -40,7 +40,7 @@ const PACKAGES = [
     name: "The Master Plan",
     tier: "B2B",
     short: "Full transformation",
-    range: "Investment from ₦15M",
+    range: "Investment from ₦15M · Open to Discussion",
     bridge: true,
   },
   {
@@ -49,7 +49,7 @@ const PACKAGES = [
     name: "Concept & Space Planning",
     tier: "B2C",
     short: "Floor Layouts, Zoning & Spatial Discovery",
-    range: "From ₦600K",
+    range: "From ₦600K · Open to Discussion",
     bridge: false,
   },
   {
@@ -58,7 +58,7 @@ const PACKAGES = [
     name: "Residential Architecture",
     tier: "B2C",
     short: "Modern Bungalows, Duplexes & Private Homes",
-    range: "From ₦1.5M",
+    range: "From ₦1.5M · Open to Discussion",
     bridge: false,
   },
   {
@@ -67,7 +67,7 @@ const PACKAGES = [
     name: "Residential Masterplan",
     tier: "B2C",
     short: "Luxury Villas, Compounds & Multiple Buildings",
-    range: "From ₦4.5M",
+    range: "From ₦4.5M · Open to Discussion",
     bridge: false,
   },
 ] as const;
@@ -468,12 +468,12 @@ function ContactFormInner() {
             Direct WhatsApp / Phone
           </div>
           <a
-            href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20interested%20in%20initiating%20a%20project."
+            href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20would%20like%20to%20discuss%20budget%20flexibility%20and%20project%20scope."
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "var(--gold)", fontWeight: 500 }}
           >
-            09119059859 (WhatsApp Chat) →
+            09119059859 (Discuss Budget Flexibility) →
           </a>
           <div className="footer-contact-label" style={{ marginTop: 16 }}>
             Instagram
@@ -592,6 +592,12 @@ function ContactFormInner() {
                       <polyline points="10 9 9 9 8 9"></polyline>
                     </svg>
                     <span><strong>Project Scope:</strong> {BUDGET_DESCRIPTIONS[fields.budgetIndex]}</span>
+                  </div>
+                  <div className="budget-description-box" style={{ marginTop: 8, background: "rgba(212, 168, 67, 0.05)", borderColor: "rgba(212, 168, 67, 0.22)" }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="description-icon">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                    <span><strong style={{ color: "var(--gold)" }}>Fit Your Project Budget:</strong> All scopes and milestone plans are calibrated to fit your project budget. Open to discussion.</span>
                   </div>
                 </div>
               </div>

@@ -256,7 +256,7 @@ function ResCtaBand() {
                   href="/contact?package=res-arch"
                   className="btn-primary res-cta-btn"
                 >
-                  Complete Architecture (₦1.5M) →
+                  Complete Architecture (From ₦1.5M) →
                 </Link>
               </Magnetic>
               <Magnetic strength={0.25} className="w-full">
@@ -265,7 +265,7 @@ function ResCtaBand() {
                   className="btn-ghost res-cta-btn text-[11px]"
                   style={{ borderColor: "rgba(212,168,67,0.35)", color: "var(--gold)" }}
                 >
-                  Concept Design (₦600K) →
+                  Concept Design (From ₦600K) →
                 </Link>
               </Magnetic>
               <Magnetic strength={0.25} className="w-full">
@@ -273,17 +273,27 @@ function ResCtaBand() {
                   href="/contact?package=res-master"
                   className="btn-ghost res-cta-btn"
                 >
-                  Residential Masterplan (₦4.5M) →
+                  Residential Masterplan (From ₦4.5M) →
                 </Link>
               </Magnetic>
               <a
-                href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20would%20like%20to%20discuss%20a%20residential%20architecture%20project."
+                href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20would%20like%20to%20discuss%20budget%20flexibility%20and%20scope%20for%20a%20residential%20architecture%20project."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="res-wa-link"
+                className="res-wa-link flex items-center justify-center gap-2"
               >
-                WhatsApp Consultation ↗
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                </svg>
+                <span>Discuss Budget Flexibility on WhatsApp</span>
+                <span>↗</span>
               </a>
+              <div className="text-[10px] font-mono text-zinc-400 text-center mt-1.5 flex items-center justify-center gap-1.5">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Calibrated to fit your project budget</span>
+              </div>
             </div>
           </TiltCard>
         </Reveal>
@@ -354,7 +364,15 @@ export function ResidentialServices() {
                   B2C · Residential Design · Package A
                 </div>
                 <h3 className="res-service-title">Residential Concept Design</h3>
-                <div className="res-price">{formatResidentialPrice("concept")}</div>
+                <div className="res-price flex items-center flex-wrap gap-2.5">
+                  <span>{formatResidentialPrice("concept")}</span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/25 text-[var(--gold)] font-mono text-[9.5px] tracking-wider uppercase font-semibold">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                    Open to Discussion
+                  </span>
+                </div>
                 <p className="res-service-desc">
                   Give your home a clear architectural direction before committing to a complete design. This service helps you translate your ideas, space requirements, and preferred style into a considered floor layout and façade concept.
                 </p>
@@ -470,7 +488,15 @@ export function ResidentialServices() {
                   B2C · Residential Design · Package B
                 </div>
                 <h3 className="res-service-title">Complete Residential Architecture</h3>
-                <div className="res-price">{formatResidentialPrice("architecture")}</div>
+                <div className="res-price flex items-center flex-wrap gap-2.5">
+                  <span>{formatResidentialPrice("architecture")}</span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/25 text-[var(--gold)] font-mono text-[9.5px] tracking-wider uppercase font-semibold">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                    Open to Discussion
+                  </span>
+                </div>
                 <p className="res-service-desc">
                   The principal residential design offer for homeowners planning a bungalow, duplex or single residence. A comprehensive architectural design engagement from initial brief to 3D visualisations and presentation drawings.
                 </p>
@@ -516,7 +542,15 @@ export function ResidentialServices() {
                   B2C · Residential Design · Package C
                 </div>
                 <h3 className="res-service-title">Residential Masterplan</h3>
-                <div className="res-price">{formatResidentialPrice("masterplan")}</div>
+                <div className="res-price flex items-center flex-wrap gap-2.5">
+                  <span>{formatResidentialPrice("masterplan")}</span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/25 text-[var(--gold)] font-mono text-[9.5px] tracking-wider uppercase font-semibold">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                    Open to Discussion
+                  </span>
+                </div>
                 <p className="res-service-desc">
                   For luxury private estates, multi-building family compounds, and residential projects requiring extensive site coordination, entrance design, compound zoning, and nighttime illumination direction.
                 </p>
@@ -609,17 +643,20 @@ export function ResidentialServices() {
                       <div className="res-th-tag">Package A · Concept Stage</div>
                       <div className="res-th-name">Concept Design</div>
                       <div className="res-th-price">{formatResidentialPrice("concept")}</div>
+                      <div className="text-[9px] font-mono text-[var(--gold)] uppercase tracking-wider mt-1 opacity-90">Open to Discussion</div>
                     </th>
                     <th className="res-th-pkg res-th-featured">
                       <div className="res-th-badge">★ Principal Design</div>
                       <div className="res-th-tag">Package B · Full Private Home</div>
                       <div className="res-th-name">Complete Architecture</div>
                       <div className="res-th-price">{formatResidentialPrice("architecture")}</div>
+                      <div className="text-[9px] font-mono text-[var(--gold)] uppercase tracking-wider mt-1 opacity-90">Open to Discussion</div>
                     </th>
                     <th className="res-th-pkg">
                       <div className="res-th-tag">Package C · Compounds &amp; Estates</div>
                       <div className="res-th-name">Residential Masterplan</div>
                       <div className="res-th-price">{formatResidentialPrice("masterplan")}</div>
+                      <div className="text-[9px] font-mono text-[var(--gold)] uppercase tracking-wider mt-1 opacity-90">Open to Discussion</div>
                     </th>
                   </tr>
                 </thead>
@@ -686,7 +723,7 @@ export function ResidentialServices() {
                   <div className="res-value-num">02</div>
                   <h4 className="res-value-title">Structured Design Progression</h4>
                   <p className="res-value-desc">
-                    If you are not yet ready for full technical drawings, you can start with <strong>Residential Concept Design (₦600K)</strong> to establish your layout and architectural style.
+                    If you are not yet ready for full technical drawings, you can start with <strong>Residential Concept Design (From ₦600K · Open to Discussion)</strong>. All scopes are calibrated to fit your project budget.
                   </p>
                 </div>
               </TiltCard>

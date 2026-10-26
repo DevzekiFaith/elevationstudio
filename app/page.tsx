@@ -170,10 +170,21 @@ export default function Home() {
           {/* Subtext & Action CTAs Below the Flexed Image */}
           <div className="hero-bottom flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mt-2">
             <Reveal direction="up" duration={0.7} delay={0.4}>
-              <div className="hero-sub text-lg md:text-2xl font-serif italic max-w-[640px]">
-                Nigeria&apos;s premier studio fusing brand design, digital engineering,
-                spatial 3D architecture, and cultural transformation under one
-                roof.
+              <div>
+                <div className="hero-sub text-lg md:text-2xl font-serif max-w-[640px]">
+                  Nigeria&apos;s premier studio fusing brand design, digital engineering,
+                  spatial 3D architecture, and cultural transformation under one
+                  roof.
+                </div>
+                <div className="mt-3 flex items-center flex-wrap gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/25 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                    Open to Discussion
+                  </span>
+                  <span className="text-[11px] font-mono text-zinc-400">· Calibrated to fit your project budget</span>
+                </div>
               </div>
             </Reveal>
 
@@ -444,6 +455,12 @@ export default function Home() {
                     <div className="pkg-card-tag">STARTING INVESTMENT ({currency})</div>
                     <div>
                       <div className="pkg-card-price">{p1.min}</div>
+                      <div className="pkg-card-range flex items-center gap-1.5 text-[var(--gold)] mt-1.5">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                        </svg>
+                        <span className="font-semibold uppercase tracking-wider text-[10px]">Open to Discussion</span>
+                      </div>
                     </div>
                     <Magnetic strength={0.2}>
                       <Link href="/contact?package=1" className="pkg-card-cta">
@@ -479,6 +496,12 @@ export default function Home() {
                     <div className="pkg-card-tag">STARTING INVESTMENT ({currency})</div>
                     <div>
                       <div className="pkg-card-price">{p2.min}</div>
+                      <div className="pkg-card-range flex items-center gap-1.5 text-[var(--gold)] mt-1.5">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                        </svg>
+                        <span className="font-semibold uppercase tracking-wider text-[10px]">Open to Discussion</span>
+                      </div>
                     </div>
                     <Magnetic strength={0.2}>
                       <Link href="/contact?package=2" className="pkg-card-cta">
@@ -514,6 +537,12 @@ export default function Home() {
                     <div className="pkg-card-tag">ESTIMATED INVESTMENT ({currency})</div>
                     <div>
                       <div className="pkg-card-price">{p3.min}</div>
+                      <div className="pkg-card-range flex items-center gap-1.5 text-[var(--gold)] mt-1.5">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                        </svg>
+                        <span className="font-semibold uppercase tracking-wider text-[10px]">Open to Discussion</span>
+                      </div>
                     </div>
                     <Magnetic strength={0.2}>
                       <Link href="/contact?package=3" className="pkg-card-cta">
@@ -548,6 +577,12 @@ export default function Home() {
                     <div className="pkg-card-tag">ESTIMATED INVESTMENT ({currency})</div>
                     <div>
                       <div className="pkg-card-price">{p4.min}</div>
+                      <div className="pkg-card-range flex items-center gap-1.5 text-emerald-400 mt-1.5">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                        </svg>
+                        <span className="font-semibold uppercase tracking-wider text-[10px]">Open to Discussion</span>
+                      </div>
                     </div>
                     <Magnetic strength={0.25}>
                       <Link href="/contact?package=4" className="pkg-card-cta">
