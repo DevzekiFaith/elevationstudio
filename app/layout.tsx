@@ -9,6 +9,7 @@ import "./globals.css";
 import { CustomCursor } from "@/components/CustomCursor";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { CurrencyProvider } from "@/components/CurrencyContext";
+import { HomecareSmartPopup } from "@/components/HomecareSmartPopup";
 import { Analytics } from "@vercel/analytics/next";
 
 const bebas = Bebas_Neue({
@@ -220,6 +221,7 @@ export default function RootLayout({
           <ScrollProgress />
           <CustomCursor />
           {children}
+          <HomecareSmartPopup />
           <Analytics />
         </CurrencyProvider>
       </body>
