@@ -4,138 +4,170 @@ import React, { useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import { Magnetic } from "@/components/Magnetic";
 
-const PRIMARY_SERVICES = [
-  { id: "arch-complete", title: "Complete Architecture Package", div: "Division 01 · Flagship Multidisciplinary", starting: "From ₦1.5M ($1,130)" },
-  { id: "3d-visuals", title: "Standalone 3D Visualization", div: "Division 02 · 4K Cinema Renders", starting: "From ₦500K ($375)" },
-  { id: "branding-digital", title: "Branding & Digital Platforms", div: "Division 03 · Next.js Web Portals", starting: "From ₦600K ($450)" },
-  { id: "workforce-dev", title: "Corporate Workforce Training", div: "Division 04 · Mindvest Global Alliance", starting: "Tailored Proposal" },
+const SERVICES = [
+  {
+    id: "arch",
+    name: "Complete Architecture",
+    price: "From ₦1.5M ($1,130)",
+    tag: "Drawings + Renders + Engineering",
+  },
+  {
+    id: "3d",
+    name: "3D Visualization",
+    price: "From ₦500K ($375)",
+    tag: "Cinema 4K Still Renders & Video",
+  },
+  {
+    id: "brand",
+    name: "Branding & Web",
+    price: "From ₦600K ($450)",
+    tag: "Brand Identity & Next.js Website",
+  },
+  {
+    id: "train",
+    name: "Corporate Training",
+    price: "Tailored Scope",
+    tag: "Mindvest Workforce Alliance",
+  },
 ];
 
-const PROJECT_TYPES = [
-  { id: "duplex", label: "Duplex / Luxury Residence" },
-  { id: "bungalow", label: "Bungalow Villa" },
-  { id: "commercial", label: "Commercial Plaza / Office" },
-  { id: "religious", label: "Church Auditorium" },
-  { id: "estate", label: "Estate Masterplan" },
-  { id: "hospitality", label: "Hotel / Event Pavilion" },
+const TYPOLOGIES = [
+  "Duplex / Luxury Residence",
+  "Bungalow Villa",
+  "Commercial Plaza",
+  "Church Auditorium",
+  "Estate Masterplan",
 ];
 
 export function BuildYourProject() {
-  const [service, setService] = useState<string>("arch-complete");
-  const [projectType, setProjectType] = useState<string>("duplex");
+  const [selectedService, setSelectedService] = useState(SERVICES[0]);
+  const [selectedTypology, setSelectedTypology] = useState(TYPOLOGIES[0]);
 
-  const currentService = PRIMARY_SERVICES.find((s) => s.id === service) || PRIMARY_SERVICES[0];
-  const currentType = PROJECT_TYPES.find((p) => p.id === projectType) || PROJECT_TYPES[0];
+  const whatsappMessage = `Hello Elevation Studio! I would like to get a quote:
+- Service: ${selectedService.name} (${selectedService.price})
+- Project Typology: ${selectedTypology}
+Please let me know your availability for a consultation.`;
 
-  const briefText = `Hello Elevation Studio! I would like to get a quotation:
-- Service: ${currentService.title} (${currentService.div})
-- Project Category: ${currentType.label}
-Please let me know your consultation schedule and quote.`;
-
-  const whatsappLink = `https://wa.me/2349119059859?text=${encodeURIComponent(briefText)}`;
+  const whatsappUrl = `https://wa.me/2349119059859?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <section id="build-project" className="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white">
+    <section
+      id="build-project"
+      className="py-20 sm:py-28 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/5 relative"
+    >
       <div className="w-full max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
           <Reveal direction="down" delay={0.1}>
-            <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-3">
-              Build Your Project Scope
-            </span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 font-mono text-[10px] uppercase tracking-widest text-white/70 font-semibold mb-3">
+              <span>✦</span> Instant Scope Estimator
+            </div>
           </Reveal>
           <Reveal direction="up" delay={0.2}>
-            <h2 className="font-syne text-4xl sm:text-6xl font-extrabold uppercase text-white leading-tight">
-              Choose What You Need. <br />
-              <span className="text-[var(--gold)]">Close in 2 Clicks.</span>
+            <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase text-white leading-tight">
+              Tailor Your <span className="text-[var(--gold)]">Scope</span>
             </h2>
           </Reveal>
           <Reveal direction="up" delay={0.3}>
-            <p className="font-sans text-base text-white/70 mt-4 font-light">
-              Select your service, choose your project type, and tap to submit directly on WhatsApp.
+            <p className="font-sans text-xs sm:text-sm text-white/60 font-light mt-2">
+              Select your discipline and project typology to claim a direct consultation on WhatsApp.
             </p>
           </Reveal>
         </div>
 
-        {/* 2-Step Fast Scope Card */}
-        <div className="rounded-none bg-[#0b0c12] border border-white/10 p-8 sm:p-14 shadow-2xl space-y-10 glow-card-border">
-          {/* Step 1: Service */}
-          <div>
-            <span className="font-mono text-xs uppercase tracking-wider text-[var(--gold)] font-bold block mb-4">
-              1. Select Service Division:
+        {/* Spacious, Elegant Estimator Container */}
+        <div className="rounded-none bg-[#0a0a0f] border border-white/[0.08] p-6 sm:p-10 lg:p-12 shadow-[0_25px_80px_rgba(0,0,0,0.95)]">
+          {/* Step 1: Service Tiles */}
+          <div className="mb-10">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-white/50 block mb-4">
+              01 · Select Discipline
             </span>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {PRIMARY_SERVICES.map((s) => (
-                <button
-                  key={s.id}
-                  onClick={() => setService(s.id)}
-                  className={`p-5 rounded-none text-left border transition-all cursor-pointer ${
-                    service === s.id
-                      ? "bg-[var(--gold)]/15 border-[var(--gold)] text-white shadow-[0_4px_25px_rgba(212,168,67,0.25)] scale-[1.02]"
-                      : "bg-white/[0.02] border-white/5 text-white/70 hover:bg-white/[0.04]"
-                  }`}
-                >
-                  <span className="font-syne text-base font-bold block mb-1">{s.title}</span>
-                  <div className="flex items-center justify-between text-[10px] font-mono mt-2 pt-2 border-t border-white/5">
-                    <span className="text-[var(--gold)] uppercase">{s.div.split("·")[0]}</span>
-                    <span className="text-white/60 font-semibold">{s.starting}</span>
-                  </div>
-                </button>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+              {SERVICES.map((s) => {
+                const isSelected = selectedService.id === s.id;
+                return (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => setSelectedService(s)}
+                    className={`p-5 rounded-none text-left transition-all duration-300 cursor-pointer ${
+                      isSelected
+                        ? "bg-white text-black shadow-[0_10px_30px_rgba(255,255,255,0.2)] font-bold scale-[1.02]"
+                        : "bg-white/[0.02] hover:bg-white/[0.05] border border-white/[0.06] text-white"
+                    }`}
+                  >
+                    <span className="font-syne text-sm sm:text-base font-bold block mb-1">
+                      {s.name}
+                    </span>
+                    <span
+                      className={`font-mono text-xs block mb-2 ${
+                        isSelected ? "text-neutral-800 font-bold" : "text-[var(--gold)]"
+                      }`}
+                    >
+                      {s.price}
+                    </span>
+                    <span
+                      className={`font-sans text-[11px] block leading-tight ${
+                        isSelected ? "text-neutral-700" : "text-white/50"
+                      }`}
+                    >
+                      {s.tag}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* Step 2: Project Type */}
-          <div>
-            <span className="font-mono text-xs uppercase tracking-wider text-[var(--gold)] font-bold block mb-4">
-              2. Choose Project Category:
+          {/* Step 2: Project Typology Pills */}
+          <div className="mb-10">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-white/50 block mb-4">
+              02 · Project Typology
             </span>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              {PROJECT_TYPES.map((pt) => (
-                <button
-                  key={pt.id}
-                  onClick={() => setProjectType(pt.id)}
-                  className={`py-4 px-4 rounded-none text-center font-syne text-xs font-semibold border transition-all cursor-pointer ${
-                    projectType === pt.id
-                      ? "bg-white text-black border-white font-bold scale-[1.03] shadow-lg"
-                      : "bg-white/[0.02] border-white/10 text-white/70 hover:bg-white/[0.05]"
-                  }`}
-                >
-                  {pt.label}
-                </button>
-              ))}
+            <div className="flex flex-wrap gap-2.5">
+              {TYPOLOGIES.map((typ) => {
+                const isSelected = selectedTypology === typ;
+                return (
+                  <button
+                    key={typ}
+                    type="button"
+                    onClick={() => setSelectedTypology(typ)}
+                    className={`px-5 py-2.5 rounded-full font-syne text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                      isSelected
+                        ? "bg-white text-black font-bold shadow-md"
+                        : "bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.08] text-white/70 hover:text-white"
+                    }`}
+                  >
+                    {typ}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* Big Instant Closing CTA Box with Magnetic Button */}
-          <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 bg-black/50 p-7 rounded-none border border-[var(--gold)]/40 shadow-inner">
-            <div className="text-center md:text-left">
-              <span className="font-mono text-[10px] uppercase text-[var(--gold)] font-bold block">
-                Selected Scope:
+          {/* Instant Closing Summary Bar */}
+          <div className="p-6 sm:p-7 rounded-none bg-black/60 border border-white/[0.08] flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-[0_15px_40px_rgba(0,0,0,0.7)]">
+            <div>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-1">
+                Selected Scope & Baseline
               </span>
-              <span className="font-syne text-lg font-bold text-white block mt-0.5">
-                {currentService.title} · {currentType.label}
-              </span>
-              <div className="flex flex-wrap items-center gap-3 mt-1.5 font-mono text-xs">
-                <span className="text-[var(--gold)] font-bold">
-                  Baseline Investment: {currentService.starting}
-                </span>
-                <span className="text-white/40">·</span>
-                <span className="text-white/60">
-                  Itemised Commercial Quotation upon site brief
-                </span>
+              <div className="font-syne text-lg sm:text-xl font-bold text-white">
+                {selectedService.name} · <span className="text-[var(--gold)]">{selectedTypology}</span>
+              </div>
+              <div className="font-mono text-xs text-white/60 mt-1">
+                Baseline Investment: <span className="text-white font-semibold">{selectedService.price}</span>
               </div>
             </div>
 
-            <Magnetic strength={0.25}>
+            <Magnetic strength={0.2}>
               <a
-                href={whatsappLink}
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-9 py-4.5 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-sm uppercase tracking-wider transition-all shadow-[0_4px_30px_rgba(16,185,129,0.45)] hover:scale-105 flex items-center justify-center gap-2.5 cursor-pointer inline-flex"
+                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-xs uppercase tracking-wider transition-all shadow-[0_4px_25px_rgba(16,185,129,0.35)] hover:scale-105 flex items-center justify-center gap-2 cursor-pointer inline-flex shrink-0"
               >
-                <span>CLAIM SCOPE ON WHATSAPP</span>
-                <span className="text-base">➔</span>
+                <span>Claim Scope on WhatsApp</span>
+                <span>→</span>
               </a>
             </Magnetic>
           </div>

@@ -24,34 +24,29 @@ export function WhoWeWorkWith() {
     >
       <div className="w-full max-w-7xl mx-auto">
         {/* Minimal Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-xl mx-auto mb-12 sm:mb-14">
           <Reveal direction="down" delay={0.1}>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 font-mono text-[10px] uppercase tracking-widest text-white/70 font-semibold mb-3">
-              <span>✦</span> Client Pathways
+              <span>✦</span> Client Portals
             </div>
           </Reveal>
           <Reveal direction="up" delay={0.2}>
             <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase text-white leading-tight">
-              B2C <span className="text-white/40">&</span> <span className="text-[var(--gold)]">B2B</span>
+              B2C <span className="text-white/30">&</span> <span className="text-[var(--gold)]">B2B</span>
             </h2>
-          </Reveal>
-          <Reveal direction="up" delay={0.3}>
-            <p className="font-sans text-xs sm:text-sm text-white/60 font-light mt-2">
-              Choose your profile for direct access to pricing and immediate consultation.
-            </p>
           </Reveal>
         </div>
 
-        {/* 2 Clear, High-Contrast Pathways (No Tab Switching, No Clutter) */}
+        {/* 2 Clean, Spacious Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {/* Pathway 1: B2C Private & Diaspora Homeowners */}
+          {/* Card 1: B2C */}
           <Reveal direction="up" delay={0.2}>
             <TiltCard maxTilt={5} glare className="h-full">
               <div className="p-8 sm:p-10 rounded-none bg-[#0c0d12] border border-white/[0.08] hover:border-white/20 transition-all duration-300 h-full flex flex-col justify-between shadow-[0_20px_60px_rgba(0,0,0,0.85)] hover:shadow-[0_25px_80px_rgba(0,0,0,0.98)] group">
                 <div>
-                  <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-white/[0.06]">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-white/70 font-bold px-2.5 py-1 bg-white/[0.06]">
-                      B2C · Private Clients & Diaspora
+                  <div className="flex items-center justify-between gap-3 mb-5 pb-3 border-b border-white/[0.06]">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-white/70 font-bold px-2 py-0.5 bg-white/[0.06]">
+                      B2C · Private & Diaspora
                     </span>
                     <span className="font-mono text-xs text-[var(--gold)] font-bold">
                       From ₦1.5M ($1,130)
@@ -63,38 +58,32 @@ export function WhoWeWorkWith() {
                   </h3>
 
                   <p className="font-sans text-xs sm:text-sm text-white/70 leading-relaxed font-light mb-8">
-                    Complete working drawings, 4K renders, and 100% remote transparency for private homes, luxury duplexes, and diaspora property owners before breaking ground.
+                    Contractor-ready working drawings, 4K renders, and 100% remote build oversight for homeowners across Nigeria and abroad.
                   </p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-white/[0.06]">
+                <div className="pt-4 border-t border-white/[0.06]">
                   <a
                     href={b2cWhatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-3.5 px-6 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-syne font-bold text-xs uppercase tracking-wider text-center transition-all shadow-[0_4px_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2"
+                    className="w-full py-3.5 px-6 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-syne font-bold text-xs uppercase tracking-wider text-center transition-all shadow-[0_4px_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2"
                   >
-                    <span>Discuss Private Home</span>
+                    <span>Discuss Private Home on WhatsApp</span>
                     <span>→</span>
-                  </a>
-                  <a
-                    href="#build-project"
-                    className="py-3.5 px-6 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/10 font-syne font-semibold text-xs uppercase tracking-wider text-center transition-all"
-                  >
-                    Calculate Scope
                   </a>
                 </div>
               </div>
             </TiltCard>
           </Reveal>
 
-          {/* Pathway 2: B2B Developers & Architecture Firms */}
+          {/* Card 2: B2B */}
           <Reveal direction="up" delay={0.3}>
             <TiltCard maxTilt={5} glare className="h-full">
               <div className="p-8 sm:p-10 rounded-none bg-[#0c0d12] border border-white/[0.08] hover:border-white/20 transition-all duration-300 h-full flex flex-col justify-between shadow-[0_20px_60px_rgba(0,0,0,0.85)] hover:shadow-[0_25px_80px_rgba(0,0,0,0.98)] group">
                 <div>
-                  <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-white/[0.06]">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--gold)] font-bold px-2.5 py-1 bg-[var(--gold)]/10">
+                  <div className="flex items-center justify-between gap-3 mb-5 pb-3 border-b border-white/[0.06]">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--gold)] font-bold px-2 py-0.5 bg-[var(--gold)]/10">
                       B2B · Developers & Studios
                     </span>
                     <span className="font-mono text-xs text-white/70 font-bold">
@@ -107,25 +96,19 @@ export function WhoWeWorkWith() {
                   </h3>
 
                   <p className="font-sans text-xs sm:text-sm text-white/70 leading-relaxed font-light mb-8">
-                    Cinematic 4K marketing animations that sell out off-plan phases, plus confidential white-label 3D rendering and structural/MEP detailing drafted to code under strict NDA.
+                    Cinematic 4K sales animations and confidential 3D/MEP detailing drafted to code under strict NDA for developers and architecture firms.
                   </p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-white/[0.06]">
+                <div className="pt-4 border-t border-white/[0.06]">
                   <a
                     href={b2bWhatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-3.5 px-6 rounded-full bg-white hover:bg-[var(--gold)] text-black font-syne font-bold text-xs uppercase tracking-wider text-center transition-all shadow-[0_4px_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2"
+                    className="w-full py-3.5 px-6 rounded-full bg-white hover:bg-[var(--gold)] text-black font-syne font-bold text-xs uppercase tracking-wider text-center transition-all shadow-[0_4px_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2"
                   >
-                    <span>Developer Partnership</span>
+                    <span>Discuss Developer Partnership</span>
                     <span>→</span>
-                  </a>
-                  <a
-                    href="#partnerships"
-                    className="py-3.5 px-6 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/10 font-syne font-semibold text-xs uppercase tracking-wider text-center transition-all"
-                  >
-                    View Alliance
                   </a>
                 </div>
               </div>
