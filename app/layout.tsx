@@ -225,7 +225,7 @@ const jsonLd = {
               name: "Division 01 — Complete Architectural Design Package",
               description: "Contractor-ready working drawings, structural/MEP sets, 4K renders, and municipal submission sets.",
             },
-            price: "1500000",
+            price: "750000",
             priceCurrency: "NGN",
           },
           {
@@ -235,7 +235,7 @@ const jsonLd = {
               name: "Division 02 — Standalone 3D Visualization & 4K Animation",
               description: "Photorealistic 3D exterior/interior renders and cinematic marketing walkthroughs.",
             },
-            price: "500000",
+            price: "250000",
             priceCurrency: "NGN",
           },
           {
@@ -245,7 +245,7 @@ const jsonLd = {
               name: "Division 03 — Branding & High-Performance Digital Platforms",
               description: "Brand identity systems, investor pitch collateral, and custom Next.js web portals.",
             },
-            price: "600000",
+            price: "300000",
             priceCurrency: "NGN",
           },
           {

@@ -29,24 +29,24 @@ const QUICK_ADDONS: CartItem[] = [
     id: "web-dev",
     title: "Estate Platform & Website Development",
     category: "Digital",
-    priceNgn: 600000,
-    priceUsd: 450,
+    priceNgn: 300000,
+    priceUsd: 225,
     deliverables: ["Custom domain setup", "Mobile responsive portal", "Investor deck integration"],
   },
   {
     id: "3d-walkthrough",
     title: "4K Photorealistic Cinema Walkthrough",
     category: "3D Visualization",
-    priceNgn: 500000,
-    priceUsd: 375,
+    priceNgn: 250000,
+    priceUsd: 190,
     deliverables: ["Full HD & 4K cinematic animation", "Social media video cuts", "Drone perspective"],
   },
   {
     id: "branding",
     title: "Complete Brand Identity System",
     category: "Branding",
-    priceNgn: 400000,
-    priceUsd: 300,
+    priceNgn: 200000,
+    priceUsd: 150,
     deliverables: ["Logo suite & typography", "Executive color system", "Signage & print templates"],
   },
 ];
@@ -107,7 +107,9 @@ export function CartDrawer() {
     if (ngn < 1000000) {
       return `₦${Math.round(ngn / 1000)}K (${ngn.toLocaleString()} NGN)`;
     }
-    return `₦${(ngn / 1000000).toFixed(1)}M (${ngn.toLocaleString()} NGN)`;
+    const inM = ngn / 1000000;
+    const mStr = inM % 1 === 0 ? inM.toString() : inM.toFixed(2).replace(/0$/, "");
+    return `₦${mStr}M (${ngn.toLocaleString()} NGN)`;
   };
 
   const formattedTotal =
@@ -117,7 +119,11 @@ export function CartDrawer() {
       ? `£${Math.round(totalUsd * 0.75).toLocaleString()}`
       : totalNgn < 1000000
       ? `₦${Math.round(totalNgn / 1000)}K (${totalNgn.toLocaleString()} NGN)`
-      : `₦${(totalNgn / 1000000).toFixed(1)}M (${totalNgn.toLocaleString()} NGN)`;
+      : (() => {
+          const inM = totalNgn / 1000000;
+          const mStr = inM % 1 === 0 ? inM.toString() : inM.toFixed(2).replace(/0$/, "");
+          return `₦${mStr}M (${totalNgn.toLocaleString()} NGN)`;
+        })();
 
   const handleWhatsAppCheckout = () => {
     const itemLines = items
@@ -142,7 +148,7 @@ ${projectNotes.trim() ? `• Project Notes: ${projectNotes.trim()}\n` : ""}
 *Selected Scope Deliverables (${itemCount} Item${itemCount === 1 ? "" : "s"}):*
 ${itemLines}
 
-*Total Estimated Baseline:* ${formattedTotal}
+*Total Estimated Baseline:* ${formattedTotal} (Open to Discussion)
 ---------------------------------------------
 Please review my detailed scope, confirm availability, and prepare the formal itemized contract.`;
 
@@ -494,9 +500,14 @@ Please review my detailed scope, confirm availability, and prepare the formal it
                     </span>
                   </div>
 
-                  <span className="font-syne text-2xl sm:text-3xl font-black text-[var(--gold)]">
-                    {formattedTotal}
-                  </span>
+                  <div className="text-right">
+                    <span className="font-syne text-2xl sm:text-3xl font-black text-[var(--gold)] block">
+                      {formattedTotal}
+                    </span>
+                    <span className="text-[10px] font-mono text-emerald-400 font-semibold uppercase tracking-wider block mt-0.5">
+                      Open to Discussion
+                    </span>
+                  </div>
                 </div>
 
                 {/* Checkout Mode Toggle */}

@@ -17,15 +17,15 @@ const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined
 // Calibrated to align with ₦500K, ₦1.5M, ₦5M, and ₦15M at standard baseline rate
 // and float upwards smoothly as the Dollar climbs.
 const BASE_PRICES_USD = {
-  1: { min: 375, isInvestment: false },
-  2: { min: 1130, isInvestment: false },
-  3: { min: 3760, isInvestment: true },
-  4: { min: 11300, isInvestment: true },
+  1: { min: 190, isInvestment: false },
+  2: { min: 565, isInvestment: false },
+  3: { min: 1880, isInvestment: true },
+  4: { min: 5650, isInvestment: true },
 };
 
 const RESIDENTIAL_BASE_USD = {
-  concept: 450,
-  architecture: 1130,
+  concept: 225,
+  architecture: 565,
   masterplan: 3380,
 };
 
@@ -76,14 +76,19 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Check cached rates first for zero-latency load
+    let timer: NodeJS.Timeout | undefined;
     try {
       const cached = localStorage.getItem(CACHE_KEY);
       if (cached) {
         const parsed = JSON.parse(cached);
         if (parsed && parsed.timestamp && Date.now() - parsed.timestamp < CACHE_TTL_MS) {
           if (parsed.rates && parsed.rates.NGN && parsed.rates.GBP) {
-            setRates(parsed.rates);
-            return;
+            timer = setTimeout(() => {
+              setRates(parsed.rates);
+            }, 0);
+            return () => {
+              if (timer) clearTimeout(timer);
+            };
           }
         }
       }

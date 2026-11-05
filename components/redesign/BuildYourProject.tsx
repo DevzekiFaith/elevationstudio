@@ -27,26 +27,26 @@ const TYPOLOGIES: TypologyOption[] = [
   {
     id: "bungalow",
     name: "Bungalow Villa",
-    priceNgn: 1200000,
-    priceUsd: 900,
+    priceNgn: 600000,
+    priceUsd: 450,
   },
   {
     id: "duplex",
     name: "Duplex / Luxury Residence",
-    priceNgn: 1500000,
-    priceUsd: 1130,
+    priceNgn: 750000,
+    priceUsd: 565,
   },
   {
     id: "commercial",
     name: "Commercial Plaza",
-    priceNgn: 2500000,
-    priceUsd: 1880,
+    priceNgn: 1250000,
+    priceUsd: 940,
   },
   {
     id: "church",
     name: "Church Auditorium",
-    priceNgn: 3500000,
-    priceUsd: 2630,
+    priceNgn: 1750000,
+    priceUsd: 1315,
   },
   {
     id: "masterplan",
@@ -61,27 +61,27 @@ const ADD_ONS: AddOn[] = [
     id: "web-dev",
     name: "Website Development",
     category: "Digital",
-    priceNgn: 600000,
-    priceUsd: 450,
-    priceFormatted: "+ ₦600K ($450)",
+    priceNgn: 300000,
+    priceUsd: 225,
+    priceFormatted: "+ ₦300K ($225)",
     desc: "Estate portal, sales landing page & fast digital presence.",
   },
   {
     id: "branding",
     name: "Brand Identity System",
     category: "Branding",
-    priceNgn: 400000,
-    priceUsd: 300,
-    priceFormatted: "+ ₦400K ($300)",
+    priceNgn: 200000,
+    priceUsd: 150,
+    priceFormatted: "+ ₦200K ($150)",
     desc: "Logo mark, typography, investor pitch deck & visual collateral.",
   },
   {
     id: "3d-walkthrough",
     name: "4K Cinema Walkthrough",
     category: "3D Visualization",
-    priceNgn: 500000,
-    priceUsd: 375,
-    priceFormatted: "+ ₦500K ($375)",
+    priceNgn: 250000,
+    priceUsd: 190,
+    priceFormatted: "+ ₦250K ($190)",
     desc: "Photorealistic 4K flythrough video for marketing and off-plan sales.",
   },
   {
@@ -146,7 +146,9 @@ export function BuildYourProject() {
     if (ngn < 1000000) {
       return `₦${Math.round(ngn / 1000)}K (${ngn.toLocaleString()} NGN)`;
     }
-    return `₦${(ngn / 1000000).toFixed(1)}M (${ngn.toLocaleString()} NGN)`;
+    const inM = ngn / 1000000;
+    const mStr = inM % 1 === 0 ? inM.toString() : inM.toFixed(2).replace(/0$/, "");
+    return `₦${mStr}M (${ngn.toLocaleString()} NGN)`;
   };
 
   const formatCompactPrice = (ngn: number, usd: number) => {
@@ -155,7 +157,9 @@ export function BuildYourProject() {
     if (ngn < 1000000) {
       return `₦${Math.round(ngn / 1000)}K ($${usd})`;
     }
-    return `₦${(ngn / 1000000).toFixed(1)}M ($${usd.toLocaleString()})`;
+    const inM = ngn / 1000000;
+    const mStr = inM % 1 === 0 ? inM.toString() : inM.toFixed(2).replace(/0$/, "");
+    return `₦${mStr}M ($${usd.toLocaleString()})`;
   };
 
   const formattedTotal = formatPrice(totalNgn, totalUsd);
@@ -163,7 +167,7 @@ export function BuildYourProject() {
   const whatsappMessage = `Hello Elevation Studio! I tailored a project scope on your website:
 - Primary Architecture: Complete Architectural Design Package (${selectedTypology.name}) — ${formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}
 - Selected Add-ons: ${selectedAddOns.length > 0 ? selectedAddOns.map((a) => a.name).join(", ") : "None (Core Architecture Only)"}
-- Estimated Baseline Investment: ${formattedTotal}
+- Estimated Baseline Investment: ${formattedTotal} (Open to Discussion)
 Please let me know your consultation schedule and formal quotation.`;
 
   const whatsappUrl = `https://wa.me/2349119059859?text=${encodeURIComponent(whatsappMessage)}`;
@@ -206,19 +210,27 @@ Please let me know your consultation schedule and formal quotation.`;
                   Included in Cart
                 </span>
               </div>
-              <span className="font-mono text-xs text-white/70">
-                Baseline:{" "}
-                <strong className="text-white font-bold ml-1 text-sm">
-                  {formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}
-                </strong>
-              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="font-mono text-xs text-white/70">
+                  Baseline:{" "}
+                  <strong className="text-white font-bold ml-1 text-sm">
+                    {formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}
+                  </strong>
+                </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/30 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
+                  <span>✦</span> Open to Discussion
+                </span>
+              </div>
             </div>
 
             <div className="p-6 sm:p-8 rounded-none bg-white/[0.02] border border-white/[0.05]">
-              <div className="mb-5">
+              <div className="mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <h3 className="font-syne text-xl sm:text-3xl font-black uppercase text-white tracking-wide">
                   Complete Architectural Design Package
                 </h3>
+                <span className="font-mono text-[11px] text-white/50 uppercase tracking-wider">
+                  Select Project Typology below:
+                </span>
               </div>
 
               {/* Second Layer: Interactive Typology Buttons with Direct Pricing */}
@@ -257,9 +269,14 @@ Please let me know your consultation schedule and formal quotation.`;
           {/* 02. OPTIONAL ADD-ONS: Digital, Branding, 3D Video, Training */}
           <div>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-white/[0.05]">
-              <span className="font-mono text-xs uppercase tracking-widest text-[var(--gold)] font-bold">
-                02 · Optional Add-Ons (Tap to Add to Cart)
-              </span>
+              <div className="flex items-center gap-2.5">
+                <span className="font-mono text-xs uppercase tracking-widest text-[var(--gold)] font-bold">
+                  02 · Optional Add-Ons (Tap to Add to Cart)
+                </span>
+                <span className="text-[10px] font-mono text-[var(--gold)] uppercase font-semibold">
+                  · Open to Discussion
+                </span>
+              </div>
               <button
                 type="button"
                 onClick={openCart}
@@ -354,11 +371,14 @@ Please let me know your consultation schedule and formal quotation.`;
                 )}
               </div>
 
-              <div className="font-mono text-xs text-white/60 pt-1">
-                Estimated Cart Total:{" "}
-                <strong className="text-white font-bold text-sm sm:text-base ml-1">
+              <div className="font-mono text-xs text-white/60 pt-1 flex flex-wrap items-center gap-2">
+                <span>Estimated Cart Total:</span>
+                <strong className="text-white font-bold text-sm sm:text-base">
                   {formattedTotal}
                 </strong>
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] tracking-wider uppercase font-semibold">
+                  Open to Discussion
+                </span>
               </div>
             </div>
 

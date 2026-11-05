@@ -40,8 +40,8 @@ const DEFAULT_PRIMARY_ITEM: CartItem = {
   title: "Complete Architecture & Engineering Package",
   category: "Architecture",
   typology: "Duplex / Luxury Residence",
-  priceNgn: 1500000,
-  priceUsd: 1130,
+  priceNgn: 750000,
+  priceUsd: 565,
   deliverables: [
     "Working drawing sets & floor plans",
     "Licensed structural & MEP calculations",
@@ -121,8 +121,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
   ) => {
     setItems((prev) => {
       const hasPrimary = prev.some((i) => i.isPrimary);
-      const updatedPriceNgn = priceNgn ?? 1500000;
-      const updatedPriceUsd = priceUsd ?? 1130;
+      const updatedPriceNgn = priceNgn ?? 750000;
+      const updatedPriceUsd = priceUsd ?? 565;
       const updatedDeliverables = deliverables ?? [
         "Working drawing sets & floor plans",
         "Licensed structural & MEP calculations",

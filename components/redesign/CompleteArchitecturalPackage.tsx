@@ -79,9 +79,12 @@ export function CompleteArchitecturalPackage() {
                       <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block font-bold mb-1">
                         Starting Baseline ({currency})
                       </span>
-                      <div className="flex items-baseline gap-3">
+                      <div className="flex flex-wrap items-center gap-3">
                         <span className="font-syne text-4xl sm:text-5xl font-black text-[var(--gold)] tracking-tight">
                           {archPrice}
+                        </span>
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/25 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
+                          ✦ Open to Discussion
                         </span>
                         <span className="font-mono text-xs text-white/70 uppercase">
                           All 8 Disciplines
