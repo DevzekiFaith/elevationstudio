@@ -40,7 +40,7 @@ export function CompleteArchitecturalPackage() {
   return (
     <section
       id="flagship"
-      className="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#08080c] text-white border-t border-white/5 relative overflow-hidden"
+      className="py-16 sm:py-24 md:py-32 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#08080c] text-white border-t border-white/5 relative overflow-hidden w-full"
     >
       {/* Subtle ambient orb */}
       <div className="ambient-orb ambient-orb-gold w-[600px] h-[600px] -top-32 -right-32 opacity-20 pointer-events-none" />
@@ -48,10 +48,10 @@ export function CompleteArchitecturalPackage() {
       <div className="w-full max-w-7xl mx-auto relative z-10">
         {/* Flagship Hero Card with 3D Physics */}
         <TiltCard maxTilt={4} glare className="w-full">
-          <div className="rounded-none bg-[#0c0d14] border border-white/[0.08] hover:border-white/20 transition-all duration-300 p-8 sm:p-12 lg:p-16 shadow-[0_25px_80px_rgba(0,0,0,0.95)] overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="rounded-none bg-[#0c0d14] border border-white/[0.08] hover:border-white/20 transition-all duration-300 p-4 sm:p-8 md:p-12 lg:p-16 shadow-[0_25px_80px_rgba(0,0,0,0.95)] overflow-hidden w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
               {/* Left Column: Bold Offer */}
-              <div className="lg:col-span-7 space-y-7">
+              <div className="lg:col-span-7 space-y-6 sm:space-y-7">
                 <Reveal direction="down" delay={0.1}>
                   <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-white/80 font-mono text-xs uppercase tracking-widest font-semibold">
                     <span>✦</span> Flagship Package · Division 01
@@ -60,27 +60,27 @@ export function CompleteArchitecturalPackage() {
 
                 {/* Monumental Bold Headline */}
                 <Reveal direction="up" delay={0.2}>
-                  <h2 className="font-syne text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-[1.05]">
+                  <h2 className="font-syne text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-[1.05]">
                     Complete Architectural <br />
                     <span className="text-[var(--gold)]">Design Package</span>
                   </h2>
                 </Reveal>
 
                 <Reveal direction="up" delay={0.25}>
-                  <p className="font-sans text-base sm:text-lg text-white/85 font-normal leading-relaxed max-w-xl">
+                  <p className="font-sans text-sm sm:text-base md:text-lg text-white/85 font-normal leading-relaxed max-w-xl">
                     Contractor-ready working drawings and photorealistic 4K renders in one coordinated package.
                   </p>
                 </Reveal>
 
                 {/* Bold Starting Price Card */}
                 <Reveal direction="up" delay={0.3}>
-                  <div className="p-6 rounded-none bg-black/60 border border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-5 shadow-[0_15px_40px_rgba(0,0,0,0.7)]">
+                  <div className="p-4 sm:p-6 rounded-none bg-black/60 border border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-5 shadow-[0_15px_40px_rgba(0,0,0,0.7)] w-full">
                     <div>
                       <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block font-bold mb-1">
                         Starting Baseline ({currency})
                       </span>
-                      <div className="flex flex-wrap items-center gap-3">
-                        <span className="font-syne text-4xl sm:text-5xl font-black text-[var(--gold)] tracking-tight">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                        <span className="font-syne text-3xl sm:text-5xl font-black text-[var(--gold)] tracking-tight">
                           {archPrice}
                         </span>
                         <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/25 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
@@ -92,7 +92,7 @@ export function CompleteArchitecturalPackage() {
                       </div>
                     </div>
 
-                    <div className="shrink-0 sm:border-l sm:border-white/10 sm:pl-6">
+                    <div className="shrink-0 sm:border-l sm:border-white/10 sm:pl-6 pt-3 sm:pt-0 border-t border-white/10 sm:border-t-0">
                       <div className="text-[10px] font-mono text-white/40 uppercase mb-1.5">Currency:</div>
                       <CurrencyToggle />
                     </div>
@@ -101,19 +101,19 @@ export function CompleteArchitecturalPackage() {
 
                 {/* Core Deliverable Pillars (Bolder, fewer words) */}
                 <Reveal direction="up" delay={0.35}>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-1 w-full">
                     {CORE_DELIVERABLES.map((item) => (
                       <div
                         key={item.title}
-                        className="p-4 rounded-none bg-white/[0.02] border border-white/5 hover:border-white/15 transition-colors"
+                        className="p-3.5 sm:p-4 rounded-none bg-white/[0.02] border border-white/5 hover:border-white/15 transition-colors"
                       >
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-emerald-400 font-bold text-sm">✓</span>
-                          <span className="font-syne font-bold text-sm text-white">
+                          <span className="font-syne font-bold text-xs sm:text-sm text-white">
                             {item.title}
                           </span>
                         </div>
-                        <p className="font-sans text-xs text-white/60 font-light pl-5">
+                        <p className="font-sans text-[11px] sm:text-xs text-white/60 font-light pl-5">
                           {item.subtitle}
                         </p>
                       </div>
@@ -122,23 +122,23 @@ export function CompleteArchitecturalPackage() {
                 </Reveal>
 
                 {/* Direct High-Conversion Closing CTAs */}
-                <Reveal direction="up" delay={0.4} className="pt-2 flex flex-wrap items-center gap-4">
-                  <Magnetic strength={0.25}>
+                <Reveal direction="up" delay={0.4} className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full">
+                  <Magnetic strength={0.25} className="w-full sm:w-auto">
                     <a
                       href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-9 py-4.5 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-sm uppercase tracking-wider transition-all flex items-center gap-2 shadow-[0_6px_30px_rgba(16,185,129,0.35)] hover:scale-105 cursor-pointer inline-flex"
+                      className="w-full sm:w-auto px-8 sm:px-9 py-4 sm:py-4.5 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-xs sm:text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-[0_6px_30px_rgba(16,185,129,0.35)] hover:scale-105 cursor-pointer inline-flex"
                     >
                       <span>Claim Package on WhatsApp</span>
                       <span>→</span>
                     </a>
                   </Magnetic>
 
-                  <Magnetic strength={0.15}>
+                  <Magnetic strength={0.15} className="w-full sm:w-auto">
                     <a
                       href="#build-project"
-                      className="px-7 py-4.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.1] border border-white/10 text-white font-syne font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer inline-flex"
+                      className="w-full sm:w-auto px-6 sm:px-7 py-4 sm:py-4.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.1] border border-white/10 text-white font-syne font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer inline-flex items-center justify-center"
                     >
                       Configure Scope
                     </a>

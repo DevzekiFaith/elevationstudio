@@ -50,10 +50,10 @@ const DIVISIONS = [
 
 export function FourDivisions() {
   return (
-    <section id="divisions" className="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white">
+    <section id="divisions" className="py-16 sm:py-24 md:py-32 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white w-full">
       <div className="w-full max-w-7xl mx-auto">
         {/* Header with Big Bold Text */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-white/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 pb-6 sm:pb-8 border-b border-white/10 w-full">
           <div>
             <Reveal direction="down" delay={0.1}>
               <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-3">
@@ -61,21 +61,21 @@ export function FourDivisions() {
               </span>
             </Reveal>
             <Reveal direction="up" delay={0.2}>
-              <h2 className="font-syne text-4xl sm:text-6xl font-extrabold uppercase text-white leading-tight">
+              <h2 className="font-syne text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase text-white leading-tight">
                 Specialized Services. <br />
                 <span className="text-[var(--gold)]">One Standard of Excellence.</span>
               </h2>
             </Reveal>
           </div>
           <Reveal direction="left" delay={0.3}>
-            <p className="font-sans text-base text-white/75 max-w-md font-light leading-relaxed">
+            <p className="font-sans text-xs sm:text-base text-white/75 max-w-md font-light leading-relaxed">
               Hire us for a single deliverable or an entire turnkey venture. Choose only what you need.
             </p>
           </Reveal>
         </div>
 
         {/* 4 Clean Visual Cards Grid with 3D Tilt & Glare Animations */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-7 w-full">
           {DIVISIONS.map((div, idx) => (
             <Reveal key={div.num} direction="up" delay={0.1 * idx}>
               <TiltCard maxTilt={8} glare className="h-full">

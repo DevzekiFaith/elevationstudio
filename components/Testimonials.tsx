@@ -303,7 +303,7 @@ export function Testimonials() {
   return (
     <Reveal direction="up" duration={0.7} className="w-full">
       <section
-        className="testimonials-section relative py-16 sm:py-24 md:py-32 px-6 sm:px-10 lg:px-16 xl:px-20 border-t border-b border-[#232630] bg-[#070709] overflow-hidden"
+        className="testimonials-section relative py-16 sm:py-24 md:py-32 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 border-t border-b border-[#232630] bg-[#070709] overflow-hidden w-full"
         id="testimonials"
       >
         {/* Subtle Ambient Golden Glow */}

@@ -14,7 +14,7 @@ export function HeroRedesign() {
     );
 
   return (
-    <section className="hero relative min-h-[92vh] sm:min-h-[95vh] flex flex-col justify-between pt-24 sm:pt-36 pb-12 sm:pb-16 px-5 sm:px-10 lg:px-16 xl:px-20 overflow-hidden bg-[#060608] text-white" data-bg="dark">
+    <section className="hero relative min-h-[92vh] sm:min-h-[95vh] flex flex-col justify-between pt-24 sm:pt-36 pb-12 sm:pb-16 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 overflow-hidden bg-[#060608] text-white w-full" data-bg="dark">
       {/* Background Parallax Depth & Ambient Orbs */}
       <ParallaxLayer speed={-0.3} className="absolute inset-0 pointer-events-none">
         <div className="hero-bg" />

@@ -32,9 +32,9 @@ export function ProfessionalPartnerships() {
   ];
 
   return (
-    <section id="partnerships" className="relative py-24 sm:py-32 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/5">
+    <section id="partnerships" className="relative py-16 sm:py-24 md:py-32 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/5 w-full">
       <div className="w-full max-w-7xl mx-auto">
-        <div className="relative rounded-none overflow-hidden bg-gradient-to-br from-[#0c0d14] via-[#08090e] to-[#040406] border border-white/[0.08] p-8 sm:p-14 lg:p-16 shadow-[0_25px_80px_rgba(0,0,0,0.95)]">
+        <div className="relative rounded-none overflow-hidden bg-gradient-to-br from-[#0c0d14] via-[#08090e] to-[#040406] border border-white/[0.08] p-4 sm:p-8 md:p-14 lg:p-16 shadow-[0_25px_80px_rgba(0,0,0,0.95)] w-full">
           {/* Subtle Ambient Glow */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--gold)]/10 rounded-full blur-3xl pointer-events-none" />
 

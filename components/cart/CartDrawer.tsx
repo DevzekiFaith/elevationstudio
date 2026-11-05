@@ -176,10 +176,10 @@ Please review my detailed scope, confirm availability, and prepare the formal it
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 32, stiffness: 320 }}
-            className="relative z-10 w-full max-w-[640px] h-full bg-[#08080c] border-l border-white/[0.08] text-white flex flex-col justify-between shadow-[0_25px_100px_rgba(0,0,0,0.98)] overflow-hidden"
+            className="relative z-10 w-full sm:max-w-[640px] h-full bg-[#08080c] border-l border-white/[0.08] text-white flex flex-col justify-between shadow-[0_25px_100px_rgba(0,0,0,0.98)] overflow-hidden"
           >
             {/* 1. Header with Generous Padding */}
-            <div className="px-8 sm:px-12 py-7 sm:py-8 border-b border-white/[0.06] flex items-center justify-between bg-black/50">
+            <div className="px-5 sm:px-12 py-5 sm:py-8 border-b border-white/[0.06] flex items-center justify-between bg-black/50">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/20 flex items-center justify-center">
                   <CartBagIcon className="w-5 h-5 text-[var(--gold)]" />
@@ -209,7 +209,7 @@ Please review my detailed scope, confirm availability, and prepare the formal it
             </div>
 
             {/* 2. Scrollable Body with Spacious Padding */}
-            <div className="flex-1 overflow-y-auto px-8 sm:px-12 py-8 sm:py-10 space-y-10">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-12 py-6 sm:py-10 space-y-8 sm:space-y-10">
               {items.length === 0 ? (
                 <div className="text-center py-24 space-y-5">
                   <div className="w-16 h-16 rounded-full bg-white/[0.03] border border-white/[0.08] flex items-center justify-center mx-auto text-[var(--gold)] shadow-lg">
@@ -489,7 +489,7 @@ Please review my detailed scope, confirm availability, and prepare the formal it
 
             {/* 3. Checkout Footer with Spacious Layout */}
             {items.length > 0 && (
-              <div className="px-8 sm:px-12 py-7 sm:py-8 border-t border-white/[0.08] bg-[#06060a]/95 space-y-5">
+              <div className="px-5 sm:px-12 py-5 sm:py-8 border-t border-white/[0.08] bg-[#06060a]/95 space-y-4 sm:space-y-5">
                 <div className="flex items-baseline justify-between pb-1">
                   <div>
                     <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-0.5">
