@@ -121,19 +121,19 @@ export function HeroRedesign() {
       <div className="relative z-10 w-full max-w-[var(--container-max)] mx-auto pt-10 mt-8 border-t border-white/10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 font-mono text-xs">
           <a href="#divisions" className="text-white/70 hover:text-[var(--gold)] transition-colors flex items-center gap-2 group">
-            <span className="text-[var(--gold)] font-bold group-hover:scale-110 transition-transform">01 //</span>
+            <span className="text-[var(--gold)] font-bold group-hover:scale-110 transition-transform">01 ·</span>
             <span className="uppercase tracking-wider">Architecture & Spatial</span>
           </a>
           <a href="#divisions" className="text-white/70 hover:text-[var(--gold)] transition-colors flex items-center gap-2 group">
-            <span className="text-[var(--gold)] font-bold group-hover:scale-110 transition-transform">02 //</span>
+            <span className="text-[var(--gold)] font-bold group-hover:scale-110 transition-transform">02 ·</span>
             <span className="uppercase tracking-wider">Engineering & 3D Visuals</span>
           </a>
           <a href="#divisions" className="text-white/70 hover:text-[var(--gold)] transition-colors flex items-center gap-2 group">
-            <span className="text-[var(--gold)] font-bold group-hover:scale-110 transition-transform">03 //</span>
+            <span className="text-[var(--gold)] font-bold group-hover:scale-110 transition-transform">03 ·</span>
             <span className="uppercase tracking-wider">Branding & Digital Web</span>
           </a>
           <a href="#divisions" className="text-white/70 hover:text-[var(--gold)] transition-colors flex items-center gap-2 group">
-            <span className="text-[var(--gold)] font-bold group-hover:scale-110 transition-transform">04 //</span>
+            <span className="text-[var(--gold)] font-bold group-hover:scale-110 transition-transform">04 ·</span>
             <span className="uppercase tracking-wider">Workforce Development</span>
           </a>
         </div>

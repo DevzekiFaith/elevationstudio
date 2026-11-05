@@ -1,13 +1,14 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useEffect, useRef, useState } from "react";
+
+// Coordinates centered on the Ogun — Lagos Corridor (Lagos-Ibadan Expressway / Berger Corridor)
+const LOCATION_COORDS: [number, number] = [6.6852, 3.4158];
 
 export function LocationMap({ height = "420px" }: { height?: string }) {
   const mapRef = useRef<HTMLDivElement>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
-
-  // Coordinates centered on the Ogun — Lagos Corridor (Lagos-Ibadan Expressway / Berger Corridor)
-  const location: [number, number] = [6.6852, 3.4158];
 
   useEffect(() => {
     if (!mapRef.current) return;
@@ -38,7 +39,7 @@ export function LocationMap({ height = "420px" }: { height?: string }) {
 
       const L = window.L;
       mapInstance = L.map(mapRef.current, {
-        center: location,
+        center: LOCATION_COORDS,
         zoom: 11,
         zoomControl: false,
         attributionControl: true
@@ -78,7 +79,7 @@ export function LocationMap({ height = "420px" }: { height?: string }) {
         popupAnchor: [0, -12]
       });
 
-      const marker = L.marker(location, { icon: customIcon }).addTo(mapInstance);
+      const marker = L.marker(LOCATION_COORDS, { icon: customIcon }).addTo(mapInstance);
 
       // Luxury dark info window/popup
       marker.bindPopup(`
@@ -126,7 +127,7 @@ export function LocationMap({ height = "420px" }: { height?: string }) {
   return (
     <div
       style={{ height }}
-      className="relative w-full rounded-[6px] overflow-hidden border border-[#333336] bg-[#0c0c0e] shadow-2xl"
+      className="relative w-full rounded-none overflow-hidden border border-white/10 bg-[#0c0c0e] shadow-2xl"
     >
       <div ref={mapRef} className="w-full h-full" style={{ zIndex: 1 }} />
 

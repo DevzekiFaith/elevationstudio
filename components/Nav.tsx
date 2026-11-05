@@ -30,6 +30,7 @@ export function Nav() {
     { label: "Build Scope", href: "#build-project" },
     { label: "Who We Serve", href: "#solutions" },
     { label: "Client Stories", href: "#testimonials" },
+    { label: "Location", href: "#location" },
   ];
 
   return (

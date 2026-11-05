@@ -35,7 +35,7 @@ export function StudioIntro() {
             <div className="p-8 rounded-none bg-white/[0.02] border border-white/10 hover:border-[var(--gold)]/40 transition-all h-full flex flex-col justify-between group">
               <div>
                 <span className="font-mono text-xs text-[var(--gold)] tracking-widest font-bold block mb-4">
-                  01 // COORDINATED COHESION
+                  01 · COORDINATED COHESION
                 </span>
                 <h3 className="font-syne text-xl font-bold uppercase text-white mb-3">
                   No Conflicting Drawings
@@ -54,7 +54,7 @@ export function StudioIntro() {
             <div className="p-8 rounded-none bg-white/[0.02] border border-white/10 hover:border-[var(--gold)]/40 transition-all h-full flex flex-col justify-between group">
               <div>
                 <span className="font-mono text-xs text-[var(--gold)] tracking-widest font-bold block mb-4">
-                  02 // MODULAR FLEXIBILITY
+                  02 · MODULAR FLEXIBILITY
                 </span>
                 <h3 className="font-syne text-xl font-bold uppercase text-white mb-3">
                   Never Forced to Bundle
@@ -73,7 +73,7 @@ export function StudioIntro() {
             <div className="p-8 rounded-none bg-white/[0.02] border border-white/10 hover:border-[var(--gold)]/40 transition-all h-full flex flex-col justify-between group">
               <div>
                 <span className="font-mono text-xs text-[var(--gold)] tracking-widest font-bold block mb-4">
-                  03 // COMMERCIAL VELOCITY
+                  03 · COMMERCIAL VELOCITY
                 </span>
                 <h3 className="font-syne text-xl font-bold uppercase text-white mb-3">
                   Designed for Return on Capital

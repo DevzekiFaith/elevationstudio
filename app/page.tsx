@@ -11,6 +11,7 @@ import { WhoWeWorkWith } from "@/components/redesign/WhoWeWorkWith";
 import { FinalCTASection } from "@/components/redesign/FinalCTASection";
 import { RenderGallery } from "@/components/RenderGallery";
 import { Testimonials } from "@/components/Testimonials";
+import { LocationMap } from "@/components/LocationMap";
 
 export default function Home() {
   return (
@@ -68,7 +69,38 @@ export default function Home() {
         <Testimonials />
       </section>
 
-      {/* 08. Big Bold Final Closing Section */}
+      {/* 08. Interactive Studio Location & Footprint Map */}
+      <section id="location" className="py-20 sm:py-28 px-4 sm:px-8 lg:px-16 xl:px-20 bg-[#08090e] border-t border-white/5 relative">
+        <div className="w-full max-w-[var(--container-max)] mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-white/10">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-2">
+                Operational Base · Physical & Remote Presence
+              </span>
+              <h2 className="font-syne text-3xl sm:text-5xl font-extrabold uppercase text-white leading-tight">
+                Studio Location & <br />
+                <span className="text-[var(--gold)]">Geographic Footprint</span>
+              </h2>
+            </div>
+            <div className="max-w-md font-sans text-xs sm:text-sm text-white/70 font-light space-y-2">
+              <p>
+                Strategically anchored along the <strong className="text-white font-semibold">Ogun — Lagos Corridor</strong> with coordinated project deliveries across Nigeria and global diaspora sites.
+              </p>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs text-[var(--gold)] pt-1">
+                <span>● Physical Consultations</span>
+                <span>● Site Dimension Verifications</span>
+                <span>● Worldwide Remote Delivery</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full">
+            <LocationMap height="480px" />
+          </div>
+        </div>
+      </section>
+
+      {/* 09. Big Bold Final Closing Section */}
       <FinalCTASection />
 
       {/* 09. Minimalist Studio Footer */}
@@ -128,6 +160,11 @@ export default function Home() {
               <li>
                 <a href="#flagship" className="hover:text-[var(--gold)] transition-colors">
                   Flagship Complete Pack
+                </a>
+              </li>
+              <li>
+                <a href="#location" className="hover:text-[var(--gold)] transition-colors">
+                  Studio Location Map
                 </a>
               </li>
             </ul>
