@@ -24,11 +24,11 @@ export function Nav() {
   }, [mobileMenuOpen]);
 
   const navItems = [
-    { label: "Services", href: "#services" },
-    { label: "3D Renders", href: "#renders" },
-    { label: "B2C Residential", href: "#residential" },
-    { label: "B2B Commissions", href: "#packages" },
-    { label: "Process", href: "#process" },
+    { label: "Divisions", href: "#divisions" },
+    { label: "Portfolio", href: "#renders" },
+    { label: "Flagship Pack", href: "#flagship" },
+    { label: "Build Scope", href: "#build-project" },
+    { label: "Who We Serve", href: "#solutions" },
     { label: "Client Stories", href: "#testimonials" },
   ];
 
@@ -41,7 +41,6 @@ export function Nav() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="fixed top-0 left-0 right-0 z-[100] px-4 sm:px-6 lg:px-6 xl:px-10 py-4 pointer-events-none"
       >
-        {/* Using a grid with auto-1fr-auto to ensure mathematical centering of navigation links */}
         <div
           className={`
             w-full pointer-events-auto
@@ -68,7 +67,6 @@ export function Nav() {
           </Link>
 
           {/* Navigation Links with sliding background highlight */}
-          {/* Using a div instead of a nav tag to avoid conflicting with the global `nav` selector in globals.css */}
           <div className="hidden lg:flex items-center justify-center">
             <ul 
               className="relative flex items-center gap-1 p-1 bg-white/[0.03] rounded-[4px] border border-white/5"
@@ -78,7 +76,7 @@ export function Nav() {
                 <li key={item.label} className="relative">
                   <a
                     href={item.href}
-                    className="relative z-10 block px-4 py-2 font-mono text-[11px] xl:text-xs tracking-wider uppercase transition-colors duration-300 rounded-[3px]"
+                    className="relative z-10 block px-3.5 py-2 font-mono text-[11px] xl:text-xs tracking-wider uppercase transition-colors duration-300 rounded-[3px]"
                     style={{
                       color: hoveredIndex === idx ? "var(--white)" : "var(--white-dim)"
                     }}
@@ -126,18 +124,6 @@ export function Nav() {
 
               <Magnetic strength={0.15}>
                 <a
-                  href="https://instagram.com/elevationstudio.ng"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3.5 py-2 bg-[#0d0d11] hover:bg-white/10 text-white/80 rounded-full font-mono text-[11px] xl:text-xs tracking-wider transition-colors border border-white/5"
-                  title="Follow on Instagram"
-                >
-                  IG
-                </a>
-              </Magnetic>
-
-              <Magnetic strength={0.15}>
-                <a
                   href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20interested%20in%20discussing%20a%20project."
                   target="_blank"
                   rel="noopener noreferrer"
@@ -149,12 +135,12 @@ export function Nav() {
               </Magnetic>
 
               <Magnetic strength={0.2}>
-                <Link
-                  href="/contact"
+                <a
+                  href="#build-project"
                   className="px-5 py-2.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-[11px] xl:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md shadow-[var(--gold)]/10 hover:scale-[1.02]"
                 >
-                  Start a Project →
-                </Link>
+                  Build Scope →
+                </a>
               </Magnetic>
             </div>
 
@@ -203,7 +189,7 @@ export function Nav() {
                     <a
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="font-bebas block py-3 sm:py-4 text-4xl sm:text-5xl md:text-6xl text-white hover:text-[var(--gold)] transition-colors tracking-widest"
+                      className="font-bebas block py-3 sm:py-4 text-3xl sm:text-4xl text-white hover:text-[var(--gold)] transition-colors tracking-widest"
                     >
                       {item.label}
                     </a>
@@ -230,13 +216,13 @@ export function Nav() {
                   Write a Client Review
                 </button>
 
-                <Link
-                  href="/contact"
+                <a
+                  href="#build-project"
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-full py-4 rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs font-bold tracking-widest uppercase text-center shadow-lg shadow-[var(--gold)]/10 transition-all duration-300"
                 >
-                  Start a Project →
-                </Link>
+                  Build Your Project Scope →
+                </a>
 
                 <div className="grid grid-cols-2 gap-3 w-full">
                   <a

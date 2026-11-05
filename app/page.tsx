@@ -1,1079 +1,185 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Nav } from "@/components/Nav";
-import { Reveal } from "@/components/Reveal";
-import { BrandFlow } from "@/components/BrandFlow";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { HeroRedesign } from "@/components/redesign/HeroRedesign";
+import { FourDivisions } from "@/components/redesign/FourDivisions";
+import { CompleteArchitecturalPackage } from "@/components/redesign/CompleteArchitecturalPackage";
+import { BuildYourProject } from "@/components/redesign/BuildYourProject";
+import { WhoWeWorkWith } from "@/components/redesign/WhoWeWorkWith";
+import { FinalCTASection } from "@/components/redesign/FinalCTASection";
 import { RenderGallery } from "@/components/RenderGallery";
 import { Testimonials } from "@/components/Testimonials";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { QRCodeCard } from "@/components/QRCodeCard";
-import { LocationMap } from "@/components/LocationMap";
-import { ParallaxLayer } from "@/components/ParallaxLayer";
-import { TiltCard } from "@/components/TiltCard";
-import { Magnetic } from "@/components/Magnetic";
-import { BlueprintSlider } from "@/components/BlueprintSlider";
-import { useCurrency } from "@/components/CurrencyContext";
-import { CurrencyToggle } from "@/components/CurrencyToggle";
-import { ResidentialServices } from "@/components/ResidentialServices";
-import { ScrollBackground } from "@/components/ScrollBackground";
-import { MarketsSelector } from "@/components/MarketsSelector";
-import { WarmWelcome } from "@/components/WarmWelcome";
 
 export default function Home() {
-  const { formatPrice, currency } = useCurrency();
-
-  const p1 = formatPrice(1);
-  const p2 = formatPrice(2);
-  const p3 = formatPrice(3);
-  const p4 = formatPrice(4);
-
   return (
-    <div className="min-h-screen w-full bg-[#060608] text-[#f4f0e8] relative">
+    <div className="min-h-screen w-full bg-[#060608] text-[#f4f0e8] relative selection:bg-[var(--gold)] selection:text-black">
+      {/* Global Navigation Header */}
       <Nav />
-      <ScrollBackground />
 
-      {/* Hero Section with Parallax Depth */}
-      <section className="hero relative overflow-hidden" data-bg="dark">
+      {/* 01. Hero Section: Big Bold Letters & Immediate Closing */}
+      <HeroRedesign />
 
-        <ParallaxLayer speed={-0.35} className="absolute inset-0 pointer-events-none">
-          <div className="hero-bg" />
-          <div className="hero-grid opacity-60" />
-          <div className="ambient-orb ambient-orb-gold w-[600px] h-[600px] -top-32 -right-32" />
-          <div className="ambient-orb ambient-orb-bridge w-[500px] h-[500px] bottom-0 -left-20" />
-        </ParallaxLayer>
+      {/* 02. The 4 Specialized Divisions (Clean Visual Cards) */}
+      <FourDivisions />
 
-        <div className="hero-ticker relative z-10">
-          <div className="ticker-inner">
-            <div className="ticker-item">
-              <span>◆</span> Brand Identity
+      {/* 03. Visual Proof: 3D Photorealistic Architectural Renders */}
+      <section id="renders" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#090a0f] border-t border-white/5">
+        <div className="max-w-6xl mx-auto mb-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-2">
+                Selected Works Archive
+              </span>
+              <h2 className="font-syne text-3xl sm:text-5xl font-extrabold uppercase text-white">
+                Featured 3D Renders & <br />
+                <span className="text-[var(--gold)]">Architectural Works</span>
+              </h2>
             </div>
-            <div className="ticker-item">
-              <span>◆</span> Digital Experience
-            </div>
-            <div className="ticker-item">
-              <span>◆</span> Space Design
-            </div>
-            <div className="ticker-item">
-              <span>◆</span> Culture Transformation
-            </div>
-            <div className="ticker-item">
-              <span>◆</span> Ogun — Lagos Corridor
-            </div>
-            <div className="ticker-item">
-              <span>◆</span> Brand Identity
-            </div>
-            <div className="ticker-item">
-              <span>◆</span> Digital Experience
-            </div>
-            <div className="ticker-item">
-              <span>◆</span> Space Design
-            </div>
-            <div className="ticker-item">
-              <span>◆</span> Culture Transformation
-            </div>
-            <div className="ticker-item">
-              <span>◆</span> Ogun — Lagos Corridor
-            </div>
+            <p className="font-sans text-xs sm:text-sm text-white/60 max-w-sm font-light">
+              Concept studies and commissioned residential and commercial projects across Nigeria and the diaspora.
+            </p>
           </div>
         </div>
-
-        <div className="hero-content relative z-10 max-w-[var(--container)] mx-auto flex flex-col gap-8 pt-8 md:pt-14 mt-4">
-          {/* Top Label & Massive Headline */}
-          <div>
-            <Reveal direction="down" duration={0.6} delay={0.1}>
-              <div className="hero-label">Elevation Studio · Est. 2012</div>
-            </Reveal>
-            
-            <Reveal direction="up" duration={0.8} delay={0.2}>
-              <div className="hero-headline">
-                <span style={{
-                  fontFamily: "var(--font-dm-mono), monospace",
-                  fontSize: "clamp(12px, 1.5vw, 16px)",
-                  color: "var(--muted)",
-                  display: "block",
-                  marginBottom: "16px",
-                  textTransform: "uppercase",
-                  letterSpacing: "4px",
-                  fontWeight: 500,
-                  lineHeight: 1.2
-                }}>
-                  Welcome to our studio
-                </span>
-                BUILD
-                <div className="w-full">
-                  <div className="inline-block">
-                    <span className="line2" style={{ display: "inline" }}>DIFFERENT</span>
-                    <span className="gold-word pulse-glow">.</span>
-                  </div>
-                  <span
-                    className="block text-left ml-0 sm:ml-8 md:ml-[8rem] lg:ml-[12rem] mt-2 md:mt-3 mb-6 uppercase tracking-[3px] sm:tracking-[4px] font-medium text-[var(--gold)] max-w-full"
-                    style={{
-                      fontFamily: "var(--font-dm-mono), monospace",
-                      fontSize: "clamp(11px, 1.3vw, 16px)",
-                      lineHeight: 1.2
-                    }}
-                  >
-                    Just do it
-                  </span>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* GRAND FLEXED 3D ARCHITECTURAL RENDER SHOWCASE */}
-          <Reveal direction="zoom" duration={0.8} delay={0.3}>
-            <TiltCard glare maxTilt={5} className="w-full">
-              <div className="relative w-full rounded-[4px] overflow-hidden border border-[#333336] shadow-[0_25px_70px_rgba(0,0,0,0.9)] group glow-card-border">
-                <div className="relative aspect-[16/9] w-full min-h-[360px] md:min-h-[520px]">
-                  <Image
-                    src="/hero_architectural_render.jpg"
-                    alt="Featured 3D Spatial Architecture — Elevation Studio"
-                    fill
-                    priority
-                    quality={95}
-                    className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.02]"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1400px) 95vw, 1600px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-transparent to-black/20 opacity-65 pointer-events-none" />
-                </div>
-
-                {/* Top Floating Badge */}
-                <div className="absolute top-4 left-4 md:top-6 md:left-6 z-10 flex gap-2">
-                  <span className="px-3.5 py-1.5 bg-[#060606]/85 backdrop-blur-md border border-[var(--gold-border)] rounded-[3px] text-[10px] md:text-[11px] font-mono tracking-widest text-[var(--gold)] uppercase shadow-lg">
-                    FEATURED 3D SPATIAL ARCHITECTURE
-                  </span>
-                </div>
-
-                {/* Bottom Info Overlay */}
-                <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 z-10 flex flex-wrap justify-between items-end gap-4 bg-[#0a0a0c]/85 backdrop-blur-md p-4 md:p-6 rounded-[4px] border border-white/10">
-                  <div>
-                    <div className="font-mono text-[10px] md:text-[11px] tracking-widest text-[var(--gold)] uppercase mb-1">
-                      OGUN–LAGOS CORRIDOR
-                    </div>
-                    <div className="font-bebas text-xl md:text-3xl text-white tracking-wide">
-                      5-Bedroom Modern Luxury Residence Masterplan
-                    </div>
-                  </div>
-                  <Link
-                    href="/renders/1"
-                    className="px-4 py-2.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-[11px] tracking-wider uppercase font-semibold rounded-[3px] transition-colors whitespace-nowrap shadow-md"
-                  >
-                    EXPLORE FULL HD CONCEPT ↗
-                  </Link>
-                </div>
-              </div>
-            </TiltCard>
-          </Reveal>
-
-          {/* Subtext & Action CTAs Below the Flexed Image */}
-          <div className="hero-bottom flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mt-2">
-            <Reveal direction="up" duration={0.7} delay={0.4}>
-              <div>
-                <div className="hero-sub text-lg md:text-2xl font-serif max-w-[640px]">
-                  Nigeria&apos;s premier studio fusing brand design, digital engineering,
-                  spatial 3D architecture, and cultural transformation under one
-                  roof.
-                </div>
-                <div className="mt-3 flex items-center flex-wrap gap-2">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/25 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                    </svg>
-                    Open to Discussion
-                  </span>
-                  <span className="text-[11px] font-mono text-zinc-400">· Calibrated to fit your project budget</span>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal direction="up" duration={0.7} delay={0.5}>
-              <div className="hero-actions flex flex-wrap items-center gap-4">
-                <Magnetic strength={0.3}>
-                  <a href="#packages" className="btn-primary">
-                    View Packages
-                  </a>
-                </Magnetic>
-                <Magnetic strength={0.3}>
-                  <Link href="/contact" className="btn-ghost">
-                    Start a Project
-                  </Link>
-                </Magnetic>
-                <Magnetic strength={0.3}>
-                  <a
-                    href="https://www.homecare.com.ng"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-ghost border-[var(--gold-border)] text-white hover:border-emerald-400 hover:text-emerald-400 flex items-center gap-2.5 group transition-all"
-                  >
-                    {/* Unfilled Green Stroke Lightning Logo Icon */}
-                    <div className="w-5 h-5 rounded-full bg-[#040507] border border-emerald-500/40 flex items-center justify-center shrink-0">
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
-                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="none"/>
-                      </svg>
-                    </div>
-                    <span>HomeCare Services</span>
-                    <span className="text-sm text-emerald-400 font-mono transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                      ↗
-                    </span>
-                  </a>
-                </Magnetic>
-              </div>
-            </Reveal>
-          </div>
-        </div>
+        <RenderGallery />
       </section>
 
-      <WarmWelcome />
+      {/* 04. Flagship Offer: Complete Architectural Design Package */}
+      <CompleteArchitecturalPackage />
 
-      <MarketsSelector />
+      {/* 05. 3-Click Scope Configurator: Build & Close on WhatsApp */}
+      <BuildYourProject />
 
-      <Reveal direction="up" duration={0.7}>
-        <section className="services relative overflow-hidden" id="services" data-bg="dark">
-          <ParallaxLayer speed={0.15} className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
-            <div className="ambient-orb ambient-orb-gold w-[450px] h-[450px] opacity-10" />
-          </ParallaxLayer>
+      {/* 06. Who We Serve: 4 Clean Client Pathways */}
+      <WhoWeWorkWith />
 
-          <div className="services-top">
-            <div>
-              <div className="section-tag">Capabilities</div>
-              <div className="services-headline">
-                FOUR DISCIPLINES,
-                <br />
-                <span className="gold">ONE ARCHITECTURE</span>
-              </div>
-            </div>
-            <div className="services-sub">
-              We operate as a single studio, not a group of contractors. Every
-              project benefits from all four views — giving you a brand that
-              lives comfortably in print, code, concrete, and culture.
-            </div>
-          </div>
-
-          <div className="section-divider" />
-
-          <div className="services-lead">
-            <div className="services-lead-num">04</div>
-            <div className="services-lead-text">
-              Pillars of execution. Every deliverable is engineered to last,
-              designed to outlast the brief.
-            </div>
-          </div>
-
-          <div className="service-list">
-            <Reveal direction="left" delay={0.1}>
-              <div className="service-item glow-card-border">
-                <div className="service-num">01</div>
-                <div className="service-body">
-                  <div className="service-name">BRAND IDENTITY</div>
-                  <div className="service-desc">
-                    Logo systems, colour language, typography, brand guidelines,
-                    and stationery. The visual architecture your business will
-                    speak from for decades.
-                  </div>
-                </div>
-                <div className="service-tags">
-                  <div className="service-tag">Logo Design</div>
-                  <div className="service-tag">Guidelines</div>
-                  <div className="service-tag">Stationery</div>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal direction="left" delay={0.2}>
-              <div className="service-item glow-card-border">
-                <div className="service-num">02</div>
-                <div className="service-body">
-                  <div className="service-name">DIGITAL ENGINEERING</div>
-                  <div className="service-desc">
-                    Website design and development, social media systems, email
-                    infrastructure. Built with React, Next.js, and TypeScript —
-                    not templates.
-                  </div>
-                </div>
-                <div className="service-tags">
-                  <div className="service-tag">Web Design</div>
-                  <div className="service-tag">Development</div>
-                  <div className="service-tag">Next.js</div>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal direction="left" delay={0.3}>
-              <div className="service-item glow-card-border">
-                <div className="service-num">03</div>
-                <div className="service-body">
-                  <div className="service-name">SPACE DESIGN</div>
-                  <div className="service-desc">
-                    Interior concepts, space-brand alignment, show apartment
-                    design. For businesses whose brand must translate into the
-                    physical rooms their customers enter.
-                  </div>
-                </div>
-                <div className="service-tags">
-                  <div className="service-tag">Interior Design</div>
-                  <div className="service-tag">Revit / Lumion</div>
-                  <div className="service-tag">BIM</div>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal direction="left" delay={0.4}>
-              <div className="service-item glow-card-border">
-                <div className="service-num">04</div>
-                <div className="service-body">
-                  <div className="service-name">CULTURE TRANSFORMATION</div>
-                  <div className="service-desc">
-                    Organisational culture programmes, leadership development, and
-                    6–12 month transformation partnerships — powered by Mindvest
-                    Global&apos;s Human Architecture Framework.
-                  </div>
-                </div>
-                <div className="service-tags">
-                  <div className="service-tag">Culture Design</div>
-                  <div className="service-tag">Leadership</div>
-                  <div className="service-tag">Mindvest</div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-      </Reveal>
-
-      <ResidentialServices />
-
-      <BrandFlow />
-
-      {/* 2D Blueprint vs 3D Render Comparison Slider - Hidden until custom blueprint assets are assigned */}
-      {/* <BlueprintSlider /> */}
-
-      <RenderGallery />
-
-      {/* <ResidentialServices /> */}
-
-      <div className="marquee-bar">
-        <div className="marquee-inner">
-          <div className="marquee-item">
-            Brand Identity <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Web Development <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Space Design <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Culture Architecture <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Digital Systems <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Interior Concepts <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Brand Identity <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Web Development <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Space Design <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Culture Architecture <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Digital Systems <div className="marquee-dot" />
-          </div>
-          <div className="marquee-item">
-            Interior Concepts <div className="marquee-dot" />
-          </div>
+      {/* 07. Verified Client Feedback */}
+      <section id="testimonials" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#060608] border-t border-white/5">
+        <div className="max-w-6xl mx-auto mb-10 text-center">
+          <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-2">
+            Client Verification
+          </span>
+          <h2 className="font-syne text-3xl sm:text-5xl font-extrabold uppercase text-white">
+            Client Stories & <br />
+            <span className="text-[var(--gold)]">Verified Reviews</span>
+          </h2>
         </div>
-      </div>
+        <Testimonials />
+      </section>
 
-      {/* Packages Section with Interactive 3D Tilt Cards and Dynamic Currency State */}
-      <Reveal direction="up" duration={0.8}>
-        <section className="packages relative overflow-hidden" id="packages" data-bg="dark">
-          <ParallaxLayer speed={-0.2} className="absolute left-0 top-1/3 pointer-events-none">
-            <div className="ambient-orb ambient-orb-gold w-[500px] h-[500px] opacity-15" />
-          </ParallaxLayer>
+      {/* 08. Big Bold Final Closing Section */}
+      <FinalCTASection />
 
-          <div className="packages-inner">
-            <div className="packages-top flex flex-wrap justify-between items-end gap-6 mb-12">
-              <div>
-                <div className="section-tag mb-3">
-                  <span className="text-[var(--gold)] font-semibold">B2B</span> · Corporate &amp; Commercial Commissions
-                </div>
-                <div className="pkg-title">
-                  OUR B2B
-                  <br />
-                  <span style={{ color: "var(--gold)" }}>COMMISSIONS</span>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-start md:items-end gap-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-[10px] font-mono tracking-widest text-[var(--muted)] uppercase">
-                    CURRENCY:
-                  </span>
-                  <CurrencyToggle />
-                </div>
-                <p
-                  style={{
-                    fontSize: 13,
-                    color: "rgba(244,240,232,0.7)",
-                    maxWidth: 440,
-                    lineHeight: 1.6,
-                  }}
-                  className="md:text-right"
-                >
-                  Engineered for commercial developers, corporations, and enterprise founders. Every project is individually assessed and professionally priced according to scope, complexity, site conditions and required deliverables.
-                </p>
-              </div>
-            </div>
-
-            <div className="pkg-grid">
-              <TiltCard glare maxTilt={7}>
-                <div className="pkg-card h-full">
-                  <div className="pkg-card-top">
-                    <div className="flex justify-between items-center mb-2">
-                      <div className="pkg-card-num">Package 01 · B2B</div>
-                      <CurrencyToggle />
-                    </div>
-                    <div className="pkg-card-name">THE FOUNDATION</div>
-                    <div className="pkg-card-subtitle">Brand Identity Only</div>
-                    <ul className="pkg-card-includes">
-                      <li className="new">Logo & master mark design</li>
-                      <li className="new">Colour system & typography</li>
-                      <li className="new">Brand guidelines document</li>
-                      <li className="new">Stationery suite</li>
-                    </ul>
-                  </div>
-                  <div className="pkg-card-bottom">
-                    <div className="pkg-card-tag">STARTING INVESTMENT ({currency})</div>
-                    <div>
-                      <div className="pkg-card-price">{p1.min}</div>
-                      <div className="pkg-card-range flex items-center gap-1.5 text-[var(--gold)] mt-1.5">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                        </svg>
-                        <span className="font-semibold uppercase tracking-wider text-[10px]">Open to Discussion</span>
-                      </div>
-                    </div>
-                    <Magnetic strength={0.2}>
-                      <Link href="/contact?package=1" className="pkg-card-cta">
-                        <span>START A PROJECT</span>
-                        <span>→</span>
-                      </Link>
-                    </Magnetic>
-                  </div>
-                </div>
-              </TiltCard>
-
-              <TiltCard glare maxTilt={7}>
-                <div className="pkg-card h-full">
-                  <div className="pkg-card-top">
-                    <div className="flex justify-between items-center mb-2">
-                      <div className="pkg-card-num">Package 02 · B2B</div>
-                      <CurrencyToggle />
-                    </div>
-                    <div className="pkg-card-name">THE STRUCTURE</div>
-                    <div className="pkg-card-subtitle">Brand + Digital + Presence</div>
-                    <ul className="pkg-card-includes">
-                      <li>Full Brand Identity System (Package 01)</li>
-                      <li className="new">Google Search &amp; Google Maps Setup</li>
-                      <li className="new">Custom Fast Mobile &amp; Desktop Website</li>
-                      <li className="new">Social Media Templates &amp; Automated Inquiries</li>
-                    </ul>
-                    <Link href="/packages/2" className="pkg-hover-badge group" title="Open full Package 02 detail modal">
-                      <span>VIEW FULL PACKAGE DETAILS</span>
-                      <span className="group-hover:translate-x-0.5 transition-transform">✦</span>
-                    </Link>
-                  </div>
-                  <div className="pkg-card-bottom">
-                    <div className="pkg-card-tag">STARTING INVESTMENT ({currency})</div>
-                    <div>
-                      <div className="pkg-card-price">{p2.min}</div>
-                      <div className="pkg-card-range flex items-center gap-1.5 text-[var(--gold)] mt-1.5">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                        </svg>
-                        <span className="font-semibold uppercase tracking-wider text-[10px]">Open to Discussion</span>
-                      </div>
-                    </div>
-                    <Magnetic strength={0.2}>
-                      <Link href="/contact?package=2" className="pkg-card-cta">
-                        <span>START A PROJECT</span>
-                        <span>→</span>
-                      </Link>
-                    </Magnetic>
-                  </div>
-                </div>
-              </TiltCard>
-
-              <TiltCard glare maxTilt={7}>
-                <div className="pkg-card h-full">
-                  <div className="pkg-card-top">
-                    <div className="flex justify-between items-center mb-2">
-                      <div className="pkg-card-num">Package 03 · B2B</div>
-                      <CurrencyToggle />
-                    </div>
-                    <div className="pkg-card-name">THE ELEVATION</div>
-                    <div className="pkg-card-subtitle">Brand + Digital + Space</div>
-                    <ul className="pkg-card-includes">
-                      <li>Everything in Structure</li>
-                      <li className="new">Space design consultation</li>
-                      <li className="new">Interior design concept &amp; docs</li>
-                      <li className="new">Space-brand alignment audit</li>
-                    </ul>
-                    <Link href="/packages/3" className="pkg-hover-badge group" title="Open full Package 03 detail modal">
-                      <span>OPEN FULL SCOPE MODAL</span>
-                      <span className="group-hover:translate-x-0.5 transition-transform">✦</span>
-                    </Link>
-                  </div>
-                  <div className="pkg-card-bottom">
-                    <div className="pkg-card-tag">ESTIMATED INVESTMENT ({currency})</div>
-                    <div>
-                      <div className="pkg-card-price">{p3.min}</div>
-                      <div className="pkg-card-range flex items-center gap-1.5 text-[var(--gold)] mt-1.5">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                        </svg>
-                        <span className="font-semibold uppercase tracking-wider text-[10px]">Open to Discussion</span>
-                      </div>
-                    </div>
-                    <Magnetic strength={0.2}>
-                      <Link href="/contact?package=3" className="pkg-card-cta">
-                        <span>START A PROJECT</span>
-                        <span>→</span>
-                      </Link>
-                    </Magnetic>
-                  </div>
-                </div>
-              </TiltCard>
-
-              <TiltCard glare maxTilt={8}>
-                <div className="pkg-card bridge h-full">
-                  <div className="bridge-label">Flagship</div>
-                  <div className="pkg-card-top">
-                    <div className="flex justify-between items-center mb-2">
-                      <div className="pkg-card-num">Package 04 · B2B</div>
-                      <CurrencyToggle />
-                    </div>
-                    <div className="pkg-card-name">THE MASTER PLAN</div>
-                    <div className="pkg-card-subtitle">
-                      Brand + Digital + Space + Culture
-                    </div>
-                    <ul className="pkg-card-includes">
-                      <li>Everything in Elevation</li>
-                      <li className="new">Mindvest culture transformation</li>
-                      <li className="new">Leadership development</li>
-                      <li className="new">6–12 month partnership</li>
-                    </ul>
-                  </div>
-                  <div className="pkg-card-bottom">
-                    <div className="pkg-card-tag">ESTIMATED INVESTMENT ({currency})</div>
-                    <div>
-                      <div className="pkg-card-price">{p4.min}</div>
-                      <div className="pkg-card-range flex items-center gap-1.5 text-emerald-400 mt-1.5">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                        </svg>
-                        <span className="font-semibold uppercase tracking-wider text-[10px]">Open to Discussion</span>
-                      </div>
-                    </div>
-                    <Magnetic strength={0.25}>
-                      <Link href="/contact?package=4" className="pkg-card-cta">
-                        <span>START A PROJECT</span>
-                        <span>→</span>
-                      </Link>
-                    </Magnetic>
-                  </div>
-                </div>
-              </TiltCard>
-            </div>
-          </div>
-        </section>
-      </Reveal>
-
-      {/* Dynamic Payment Terms & Retainer Scoping Section */}
-      <Reveal direction="up">
-        <section className="payment-terms-section relative overflow-hidden" id="payment-terms" data-bg="dark">
-          <ParallaxLayer speed={-0.1} className="absolute right-0 top-1/3 pointer-events-none">
-            <div className="ambient-orb ambient-orb-gold w-[400px] h-[400px] opacity-10" />
-          </ParallaxLayer>
-
-          <div className="max-w-[var(--container)] mx-auto">
-            {/* Corporate Payment Milestone Schedule */}
-            <div className="pkg-payment-schedule mt-0 pt-0 w-full max-w-[var(--container)] mx-auto">
-              <div className="flex flex-col lg:items-center lg:text-center gap-4 mb-10 max-w-3xl lg:mx-auto">
-                <div className="flex flex-col items-start lg:items-center">
-                  <div className="section-tag mb-3">Milestone Schedule</div>
-                  <h3
-                    className="pkg-payment-title"
-                    style={{
-                      fontFamily: "var(--font-bebas), sans-serif",
-                      fontSize: "clamp(36px, 5vw, 64px)",
-                      lineHeight: 0.9,
-                      margin: 0,
-                    }}
-                  >
-                    PAYMENT <span style={{ color: "var(--gold)" }}>TERMS</span>
-                  </h3>
-                </div>
-                <div
-                  className="pkg-payment-subtitle"
-                  style={{
-                    fontSize: 14,
-                    color: "var(--muted)",
-                    maxWidth: 560,
-                    lineHeight: 1.7,
-                  }}
-                >
-                  Standard project financing terms mapped to delivery phases. Custom retainer adjustments available upon executive review.
-                </div>
-              </div>
-
-              <div className="payment-grid">
-                <TiltCard glare maxTilt={5}>
-                  <div className="payment-card h-full">
-                    <div className="payment-card-label">Packages 01 & 02</div>
-                    <div className="payment-split">50 / 50</div>
-                    <div className="payment-desc">
-                      50% deposit to commence work. 50% on final delivery before
-                      handover. No exceptions.
-                    </div>
-                  </div>
-                </TiltCard>
-
-                <TiltCard glare maxTilt={5}>
-                  <div className="payment-card h-full">
-                    <div className="payment-card-label">Package 03</div>
-                    <div className="payment-split">40/30/30</div>
-                    <div className="payment-desc">
-                      40% on signing. 30% at design approval milestone. 30% on
-                      project completion and handover.
-                    </div>
-                  </div>
-                </TiltCard>
-
-                <TiltCard glare maxTilt={5}>
-                  <div className="payment-card bridge-pay h-full">
-                    <div className="payment-card-label">
-                      Package 04 — Master Plan
-                    </div>
-                    <div className="payment-split">30/30/40</div>
-                    <div className="payment-desc">
-                      30% on signing. 30% at midpoint. 40% structured as monthly
-                      retainer across the 6–12 month partnership.
-                    </div>
-                  </div>
-                </TiltCard>
-              </div>
-            </div>
-
-            {/* Executive Payment & Retainer Scoping Disclosure */}
-            <div className="pkg-retainer-disclosure">
-              <div className="pkg-retainer-badge">
-                <svg className="pkg-retainer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  <path d="M9 12l2 2 4-4"/>
-                </svg>
-                <span>CORPORATE RETAINER &amp; SCOPING DISCLOSURE ({currency})</span>
-              </div>
-
-              <div className="pkg-retainer-body">
-                <p className="pkg-retainer-text">
-                  All project figures represent <strong>customized investment ranges ({currency})</strong> based on client scale and deliverables. Formal project retainers, milestones, and <strong>verified corporate bank transfer details</strong> are issued exclusively via official Elevation Studio proposals upon brief review.
-                </p>
-
-                <div className="pkg-retainer-btn-wrapper">
-                  <Magnetic strength={0.3}>
-                    <a
-                      href="https://meet.google.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="pkg-retainer-btn"
-                    >
-                      <span>BOOK GOOGLE MEET SESSION</span>
-                      <span className="pkg-retainer-arrow">→</span>
-                    </a>
-                  </Magnetic>
-                  <span className="pkg-retainer-subnote">GOOGLE MEET CONSULTATION • EXECUTIVE DESK</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </Reveal>
-
-      <Reveal direction="up">
-        <section className="process" id="process" data-bg="dark">
-          <div className="process-inner">
-            <div className="section-tag">How We Work</div>
-            <div
-              style={{
-                fontFamily: "var(--font-bebas), sans-serif",
-                fontSize: "clamp(52px, 8vw, 100px)",
-                lineHeight: 0.9,
-              }}
-            >
-              THE <span style={{ color: "var(--gold)" }}>BUILD</span>
-              <br />
-              PROCESS
-            </div>
-
-            <div className="process-steps">
-              {[
-                {
-                  num: "01",
-                  name: "Discovery",
-                  desc: "Deep dive into your business, audience, and ambition. We don't design until we understand what you're building toward.",
-                },
-                {
-                  num: "02",
-                  name: "Architecture",
-                  desc: "Brand strategy, information architecture, spatial concepts. The blueprint before a single pixel is placed.",
-                },
-                {
-                  num: "03",
-                  name: "Design",
-                  desc: "Visual identity, web design, space concepts. Three rounds of refinement. Your feedback shapes every iteration.",
-                },
-                {
-                  num: "04",
-                  name: "Build",
-                  desc: "Development, production, handover. Everything documented, everything working, everything yours.",
-                },
-                {
-                  num: "05",
-                  name: "Elevate",
-                  desc: "For Package 4 clients — the transformation partnership begins. Culture, leadership, ongoing support.",
-                },
-              ].map((step, index) => (
-                <Reveal key={step.num} direction="up" delay={index * 0.1}>
-                  <div className="p-step h-full">
-                    <div className="p-step-num">{step.num}</div>
-                    <div className="p-step-name">{step.name}</div>
-                    <div className="p-step-desc">{step.desc}</div>
-                    {index < 4 && <div className="p-step-arrow">→</div>}
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      </Reveal>
-
-      {/* The Strategic Bridge Section */}
-      <Reveal direction="zoom">
-        <section className="bridge-section relative overflow-hidden" id="bridge" data-bg="dark">
-          <ParallaxLayer speed={0.25} className="absolute right-[-100px] bottom-[-100px] pointer-events-none">
-            <div className="ambient-orb ambient-orb-bridge w-[600px] h-[600px] opacity-25" />
-          </ParallaxLayer>
-
-          <div className="bridge-left">
-            <div className="section-tag">The Strategic Bridge</div>
-            <div className="bridge-title">
-              WHERE
-              <br />
-              DESIGN MEETS
-              <br />
-              <span className="green">TRANSFORMATION</span>
-            </div>
-            <p className="bridge-body">
-              No other agency in the Ogun/Lagos corridor — or frankly in Nigeria
-              — can offer what Package 4 delivers: a{" "}
-              <strong>
-                complete transformation of brand, digital presence, physical
-                space, and organisational culture
-              </strong>{" "}
-              under one roof.
+      {/* 09. Minimalist Studio Footer */}
+      <footer className="footer relative z-10 border-t border-white/10 bg-[#040406] text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-14 grid grid-cols-1 md:grid-cols-12 gap-10">
+          {/* Brand Info (5 cols) */}
+          <div className="md:col-span-5 space-y-4">
+            <Link href="/" className="inline-block">
+              <span className="font-bebas text-2xl tracking-[3px] text-white">
+                ELEVATION <span className="text-[var(--gold)]">STUDIO</span>
+              </span>
+            </Link>
+            <p className="font-sans text-xs sm:text-sm text-white/70 leading-relaxed font-light max-w-sm">
+              We design spaces, build digital platforms, and develop capabilities. Coordinated architecture and photorealistic visualization across Nigeria and diaspora corridors.
             </p>
-            <p className="bridge-body">
-              This is where Elevation Studio formally connects with{" "}
-              <strong>Mindvest Global&apos;s transformation intelligence</strong>{" "}
-              — combining architectural design thinking with the Human
-              Architecture Framework to reshape not just how a company looks,
-              but how its people show up.
-            </p>
-            <p
-              style={{
-                fontSize: 14,
-                color: "var(--muted)",
-                lineHeight: 1.7,
-              }}
-            >
-              Led by a founder who is simultaneously a trained architect, a
-              frontend engineer, and a transformation practitioner. This
-              position cannot be replicated without the same formation.
-            </p>
-          </div>
 
-          <div className="bridge-right">
-            <TiltCard glare maxTilt={8}>
-              <div className="h-full">
-                <div className="bridge-pkg-label">Package 04 — Flagship</div>
-                <div className="bridge-pkg-name">THE MASTER PLAN</div>
-                <ul className="bridge-pkg-includes">
-                  <li>Everything in The Elevation (Brand + Digital + Space)</li>
-                  <li>
-                    Mindvest Global organisational culture transformation programme
-                  </li>
-                  <li>Leadership development for the client&apos;s team</li>
-                  <li>6–12 month transformation partnership</li>
-                  <li>Quarterly culture audits and progress reviews</li>
-                </ul>
-                <div className="bridge-price">{p4.min}</div>
-                <div className="bridge-price-range">{p4.max}</div>
-              </div>
-            </TiltCard>
-          </div>
-        </section>
-      </Reveal>
-
-
-      <Testimonials />
-
-      <Reveal direction="zoom">
-        <section className="cta-section relative overflow-hidden" id="contact" data-bg="dark">
-          <ParallaxLayer speed={-0.3} className="absolute inset-0 pointer-events-none">
-            <div className="cta-bg" />
-            <div className="ambient-orb ambient-orb-gold w-[600px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-          </ParallaxLayer>
-
-          <div className="relative z-10">
-            <div className="cta-title">
-              READY TO
-              <br />
-              <span className="gold">BUILD</span>
-              <br />
-              <span className="stroke">SOMETHING</span>
-            </div>
-            <div className="cta-sub">
-              Tell us what you&apos;re building. We&apos;ll tell you how to build
-              it right.
-            </div>
-            <div className="cta-actions">
-              <Magnetic strength={0.35}>
-                <Link href="/contact" className="btn-primary">
-                  Start a Project
-                </Link>
-              </Magnetic>
-              <Magnetic strength={0.35}>
-                <a
-                  href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20ready%20to%20start%20a%20project%20brief."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-ghost"
-                  style={{ display: "inline-flex", alignItems: "center", gap: 8 }}
-                >
-                  Chat on WhatsApp (09119059859) →
-                </a>
-              </Magnetic>
-            </div>
-          </div>
-        </section>
-      </Reveal>
-
-      <Reveal direction="up">
-        <section className="markets-map-container" data-bg="dark">
-          <LocationMap />
-        </section>
-      </Reveal>
-
-      <Reveal direction="up">
-        <section id="qr-access" data-bg="dark">
-          <QRCodeCard />
-        </section>
-      </Reveal>
-
-      <footer id="footer">
-        <div className="footer-top">
-          <div>
-            <div className="footer-brand-name">
-              ELEVATION <span>STUDIO</span>
-            </div>
-            <div className="footer-tagline">
-              Brand. Digital. Space. Culture.
-            </div>
-            <a
-              href="https://mindvestglobalresources.com.ng"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-parent-link"
-            >
-              Elevation Studio — A Subsidiary of Mindvest Global Resources LLC
-            </a>
-            {/* Luxury Quick-Access Direct Channels */}
-            <div className="mt-6 flex flex-col gap-3 max-w-[420px]">
-              {/* Instagram Card */}
-              <a
-                href="https://instagram.com/elevationstudio.ng"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex items-center justify-between p-3.5 rounded-[4px] bg-gradient-to-r from-[#0d0e14] via-[#0a0b10] to-[#07080b] border border-[var(--gold-border)]/50 hover:border-[var(--gold)] shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_4px_25px_rgba(212,175,55,0.15)] transition-all duration-300 overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-[var(--gold)]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                <div className="flex items-center gap-3.5 relative z-10">
-                  <div className="w-9 h-9 rounded-[3px] bg-[#14151d] border border-[var(--gold-border)]/80 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:border-[var(--gold)] transition-all shadow-inner">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--gold)]">
-                      <rect x="2" y="2" width="20" height="20" rx="2" ry="2" />
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="font-mono text-[10px] text-[var(--gold)] tracking-widest uppercase font-semibold flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-[2px] bg-[var(--gold)] animate-pulse" />
-                      Follow on Instagram
-                    </div>
-                    <div className="font-mono text-xs md:text-[13px] text-white font-bold tracking-wide group-hover:text-[var(--gold-bright)] transition-colors">
-                      @elevationstudio.ng
-                    </div>
-                  </div>
-                </div>
-                <div className="w-7 h-7 rounded-[3px] bg-white/5 border border-white/10 flex items-center justify-center text-xs text-[var(--gold)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-[var(--gold)] group-hover:text-black group-hover:border-[var(--gold)] transition-all relative z-10">
-                  ↗
-                </div>
-              </a>
-
-              {/* HomeCare Partner Card */}
+            {/* Official HomeCare Partner Link */}
+            <div className="pt-1">
               <a
                 href="https://www.homecare.com.ng"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex items-center justify-between p-3.5 rounded-[4px] bg-gradient-to-r from-[#07130f] via-[#080d0d] to-[#060709] border border-emerald-500/30 hover:border-emerald-400 shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_4px_25px_rgba(16,185,129,0.2)] transition-all duration-300 overflow-hidden"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 text-xs font-mono text-emerald-400 transition-colors"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                <div className="flex items-center gap-3.5 relative z-10">
-                  <div className="w-9 h-9 rounded-[3px] bg-[#040907] border border-emerald-500/50 flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:border-emerald-400 transition-all shadow-inner">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="none" />
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="font-mono text-[10px] text-emerald-400 tracking-widest uppercase font-semibold flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-[2px] bg-emerald-400 animate-pulse" />
-                      HomeCare Inspection & Fixes
-                    </div>
-                    <div className="font-mono text-xs md:text-[13px] text-white font-bold tracking-wide group-hover:text-emerald-300 transition-colors">
-                      www.homecare.com.ng
-                    </div>
-                  </div>
-                </div>
-                <div className="w-7 h-7 rounded-[3px] bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-xs text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-emerald-400 group-hover:text-black group-hover:border-emerald-400 transition-all relative z-10">
-                  ↗
-                </div>
+                <span>✦ HomeCare Smart Living:</span>
+                <span className="underline">www.homecare.com.ng ↗</span>
               </a>
             </div>
           </div>
 
-          <div>
-            <div className="footer-col-title">Navigation</div>
-            <ul className="footer-links">
+          {/* Quick Links (3 cols) */}
+          <div className="md:col-span-3 space-y-2 font-mono text-xs">
+            <span className="font-syne text-xs uppercase tracking-widest text-white/40 font-bold block mb-3">
+              Divisions
+            </span>
+            <ul className="space-y-2 text-white/70">
               <li>
-                <a href="#services">Services</a>
-              </li>
-              <li>
-                <a href="#packages">Packages</a>
-              </li>
-              <li>
-                <a href="https://www.homecare.com.ng" target="_blank" rel="noopener noreferrer" className="text-[var(--gold)] font-bold">
-                  HomeCare (www.homecare.com.ng) ↗
+                <a href="#divisions" className="hover:text-[var(--gold)] transition-colors">
+                  01 Architecture & Spatial
                 </a>
               </li>
               <li>
-                <a href="#markets">Who We Serve</a>
+                <a href="#divisions" className="hover:text-[var(--gold)] transition-colors">
+                  02 Engineering & 3D Visuals
+                </a>
               </li>
               <li>
-                <a href="#process">Our Process</a>
+                <a href="#divisions" className="hover:text-[var(--gold)] transition-colors">
+                  03 Branding & Digital Web
+                </a>
               </li>
               <li>
-                <a href="#testimonials">Client Stories</a>
+                <a href="#divisions" className="hover:text-[var(--gold)] transition-colors">
+                  04 Workforce Training
+                </a>
               </li>
               <li>
-                <a href="#bridge">The Master Plan</a>
+                <a href="#flagship" className="hover:text-[var(--gold)] transition-colors">
+                  Flagship Complete Pack
+                </a>
               </li>
             </ul>
           </div>
 
-          <div>
-            <div className="footer-col-title">Contact</div>
-            <div className="footer-contact-item">
-              <div className="footer-contact-label">Email</div>
-              <div className="footer-contact-value">
-                <a
-                  href="mailto:support@mindvestglobalresources.com.ng"
-                  style={{ color: "inherit", textDecoration: "none" }}
-                >
-                  support@mindvestglobalresources.com.ng
-                </a>
-                <div style={{ marginTop: "4px", fontSize: "11px", color: "var(--muted)" }}>
-                  Alt:{" "}
-                  <a
-                    href="mailto:lightwavesupport@gmail.com"
-                    style={{ color: "var(--white-dim)", textDecoration: "none" }}
-                  >
-                    lightwavesupport@gmail.com
-                  </a>
-                </div>
-              </div>
+          {/* Direct Channels (4 cols) */}
+          <div className="md:col-span-4 space-y-3 font-mono text-xs text-white/70">
+            <span className="font-syne text-xs uppercase tracking-widest text-white/40 font-bold block mb-3">
+              Direct Contact
+            </span>
+            <div>
+              <span className="text-white/40 block text-[10px] uppercase">Principal Lead</span>
+              <span className="text-white font-semibold">Zeki Ubor</span>
             </div>
-            <div className="footer-contact-item">
-              <div className="footer-contact-label">WhatsApp Direct</div>
-              <div className="footer-contact-value">
-                <a
-                  href="https://wa.me/2349119059859"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "var(--gold)", textDecoration: "none" }}
-                >
-                  09119059859
-                </a>
-              </div>
+            <div>
+              <span className="text-white/40 block text-[10px] uppercase">Direct WhatsApp</span>
+              <a
+                href="https://wa.me/2349119059859"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--gold)] hover:underline"
+              >
+                +234 911 905 9859
+              </a>
             </div>
-            <div className="footer-contact-item">
-              <div className="footer-contact-label">Instagram</div>
-              <div className="footer-contact-value">
-                <a
-                  href="https://instagram.com/elevationstudio.ng"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "var(--gold)", textDecoration: "none" }}
-                >
-                  @elevationstudio.ng
-                </a>
-              </div>
-            </div>
-            <div className="footer-contact-item">
-              <div className="footer-contact-label">Location Base</div>
-              <div className="footer-contact-value">
-                Ogun — Lagos Corridor · Nigeria
-              </div>
-            </div>
-            <div className="footer-contact-item">
-              <div className="footer-contact-label">Principal</div>
-              <div className="footer-contact-value">Zeki Ubor</div>
+            <div>
+              <span className="text-white/40 block text-[10px] uppercase">Location Base</span>
+              <span className="text-white">Ogun — Lagos Corridor · Serving Nationally & Diaspora</span>
             </div>
           </div>
         </div>
 
-        <div className="footer-bottom">
-          <div className="footer-copy">
+        {/* Footer Bottom */}
+        <div className="border-t border-white/5 py-5 px-4 sm:px-6 lg:px-12 text-center sm:flex sm:justify-between sm:items-center max-w-6xl mx-auto font-mono text-[11px] text-white/40">
+          <div>
             © 2026 Elevation Studio · All Rights Reserved
           </div>
-          <div className="footer-mindvest">
-            Elevation Studio — A Subsidiary of{" "}
-            <a href="https://mindvestglobalresources.com.ng" target="_blank" rel="noopener noreferrer">
+          <div className="mt-2 sm:mt-0">
+            A Subsidiary of{" "}
+            <a
+              href="https://mindvestglobalresources.com.ng"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--gold)] hover:underline"
+            >
               Mindvest Global Resources LLC
             </a>
           </div>
         </div>
       </footer>
 
+      {/* Floating Priority WhatsApp Channel */}
       <WhatsAppButton />
     </div>
   );
