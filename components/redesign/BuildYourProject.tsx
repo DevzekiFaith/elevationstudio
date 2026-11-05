@@ -9,12 +9,8 @@ import { useCart } from "@/components/cart/CartContext";
 interface TypologyOption {
   id: string;
   name: string;
-  shortLabel: string;
-  categoryBadge: string;
   priceNgn: number;
   priceUsd: number;
-  summary: string;
-  deliverables: string[];
 }
 
 interface AddOn {
@@ -27,81 +23,36 @@ interface AddOn {
   desc: string;
 }
 
-const TYPOLOGY_OPTIONS: TypologyOption[] = [
+const TYPOLOGIES: TypologyOption[] = [
   {
     id: "bungalow",
     name: "Bungalow Villa",
-    shortLabel: "Bungalow",
-    categoryBadge: "Single Level",
     priceNgn: 1200000,
     priceUsd: 900,
-    summary: "Single-level residential layout, roof framing & full structural/MEP drawings.",
-    deliverables: [
-      "Working architectural floor plans & elevations",
-      "Roof truss & structural load calculations",
-      "Complete MEP & electrical distribution schematics",
-      "Photorealistic 4K exterior & interior renders",
-    ],
   },
   {
     id: "duplex",
     name: "Duplex / Luxury Residence",
-    shortLabel: "Duplex",
-    categoryBadge: "Multi-Storey",
     priceNgn: 1500000,
     priceUsd: 1130,
-    summary: "Multi-floor architectural sets, cantilever rebar calculations & 4K renders.",
-    deliverables: [
-      "Multi-level working drawings & sectional details",
-      "Suspended slab & cantilever structural calculations",
-      "Integrated mechanical & plumbing services layout",
-      "Photorealistic 4K day/dusk renders & interior stills",
-    ],
   },
   {
     id: "commercial",
-    name: "Commercial Plaza / Office",
-    shortLabel: "Commercial Plaza",
-    categoryBadge: "High-Yield Retail",
+    name: "Commercial Plaza",
     priceNgn: 2500000,
     priceUsd: 1880,
-    summary: "Multi-tenant circulation, parking layout, fire egress & municipal compliance.",
-    deliverables: [
-      "Tenant circulation, retail frontages & core layouts",
-      "Structural steel/concrete framing & heavy MEP sets",
-      "Fire safety egress, parking logistics & code review",
-      "Commercial-grade 4K exterior & retail perspective stills",
-    ],
   },
   {
     id: "church",
-    name: "Church Auditorium / Civic Hall",
-    shortLabel: "Church Auditorium",
-    categoryBadge: "Clear-Span Civic",
+    name: "Church Auditorium",
     priceNgn: 3500000,
     priceUsd: 2630,
-    summary: "Large-span structural steel calculations, acoustics, gallery mezzanine & egress.",
-    deliverables: [
-      "Column-free clear span structural truss calculations",
-      "Acoustic spatial layout & line-of-sight planning",
-      "Mezzanine gallery, altar rostrum & crowd egress sets",
-      "Monumental 4K exterior perspective & sanctuary lighting renders",
-    ],
   },
   {
     id: "masterplan",
-    name: "Estate Masterplan / Phased Terraces",
-    shortLabel: "Estate Masterplan",
-    categoryBadge: "Multi-Acre Site",
+    name: "Estate Masterplan",
     priceNgn: 4500000,
     priceUsd: 3380,
-    summary: "Site layout, road network, drainage coordination, prototype units & 3D animation.",
-    deliverables: [
-      "Comprehensive site layout, plot partitioning & setbacks",
-      "Road networks, storm drainage & utility easement coordination",
-      "Multiple residential prototype unit elevations & working sets",
-      "High-altitude 3D drone master visualization & site overview stills",
-    ],
   },
 ];
 
@@ -154,17 +105,17 @@ export function BuildYourProject() {
     itemCount,
   } = useCart();
 
-  // Find initial typology from primary cart item or fallback to Duplex
+  // Find initial typology from cart or fallback to Duplex
   const initialTypology =
-    TYPOLOGY_OPTIONS.find((t) =>
-      cartItems.some((i) => i.isPrimary && (i.typology === t.name || i.typology === t.shortLabel))
-    ) || TYPOLOGY_OPTIONS[1];
+    TYPOLOGIES.find((t) =>
+      cartItems.some((i) => i.isPrimary && i.typology === t.name)
+    ) || TYPOLOGIES[1];
 
   const [selectedTypology, setSelectedTypology] = useState<TypologyOption>(initialTypology);
 
   const handleSelectTypology = (typ: TypologyOption) => {
     setSelectedTypology(typ);
-    setPrimaryArchitectureTypology(typ.name, typ.priceNgn, typ.priceUsd, typ.deliverables);
+    setPrimaryArchitectureTypology(typ.name, typ.priceNgn, typ.priceUsd);
   };
 
   const handleToggleAddOn = (addon: AddOn) => {
@@ -182,7 +133,7 @@ export function BuildYourProject() {
 
   const selectedAddOns = ADD_ONS.filter((a) => isAddOnInCart(a.id));
 
-  // Calculate live total cart baseline based on the selected typology's exact price
+  // Dynamic baseline calculation
   const addOnsTotalNgn = selectedAddOns.reduce((acc, item) => acc + item.priceNgn, 0);
   const addOnsTotalUsd = selectedAddOns.reduce((acc, item) => acc + item.priceUsd, 0);
 
@@ -210,7 +161,7 @@ export function BuildYourProject() {
   const formattedTotal = formatPrice(totalNgn, totalUsd);
 
   const whatsappMessage = `Hello Elevation Studio! I tailored a project scope on your website:
-- Primary Architecture: Complete Architecture Package (${selectedTypology.name}) — ${formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}
+- Primary Architecture: Complete Architectural Design Package (${selectedTypology.name}) — ${formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}
 - Selected Add-ons: ${selectedAddOns.length > 0 ? selectedAddOns.map((a) => a.name).join(", ") : "None (Core Architecture Only)"}
 - Estimated Baseline Investment: ${formattedTotal}
 Please let me know your consultation schedule and formal quotation.`;
@@ -237,123 +188,68 @@ Please let me know your consultation schedule and formal quotation.`;
           </Reveal>
           <Reveal direction="up" delay={0.3}>
             <p className="font-sans text-xs sm:text-sm text-white/60 font-light mt-2 max-w-lg mx-auto">
-              Architecture is your primary foundation with distinct pricing per typology. Select optional add-ons below to add directly to your cart.
+              Select your project category below to check baseline investment, then add optional services to your cart.
             </p>
           </Reveal>
         </div>
 
         {/* Outer Container (Hairline Border & Deep Soft Shadow) */}
         <div className="rounded-none bg-[#0a0a0f] border border-white/[0.06] p-6 sm:p-10 lg:p-12 shadow-[0_25px_80px_rgba(0,0,0,0.95)] space-y-10">
-          {/* 01. PRIMARY FOUNDATION: Architecture with Dynamic Typology Pricing */}
+          {/* 01. PRIMARY FOUNDATION: Complete Architectural Design Package */}
           <div>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-white/[0.05]">
               <div className="flex items-center gap-2.5">
                 <span className="font-mono text-xs uppercase tracking-widest text-[var(--gold)] font-bold">
-                  01 · Primary Scope
+                  01 · Primary Foundation
                 </span>
                 <span className="font-mono text-[9px] uppercase tracking-wider text-black bg-[var(--gold)] font-bold px-2 py-0.5 rounded-full">
                   Included in Cart
                 </span>
               </div>
               <span className="font-mono text-xs text-white/70">
-                Selected Baseline:{" "}
-                <strong className="text-white font-semibold ml-1">
+                Baseline:{" "}
+                <strong className="text-white font-bold ml-1 text-sm">
                   {formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}
                 </strong>
               </span>
             </div>
 
-            <div className="p-6 rounded-none bg-white/[0.02] border border-white/[0.05] mb-5">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
-                <div>
-                  <h3 className="font-syne text-lg sm:text-xl font-bold uppercase text-white">
-                    Complete Architectural & Engineering Package
-                  </h3>
-                  <p className="font-sans text-xs sm:text-sm text-white/65 font-light mt-1">
-                    Click each project category to check its distinct baseline price and included engineering sets:
-                  </p>
-                </div>
+            <div className="p-6 sm:p-8 rounded-none bg-white/[0.02] border border-white/[0.05]">
+              <div className="mb-5">
+                <h3 className="font-syne text-xl sm:text-3xl font-black uppercase text-white tracking-wide">
+                  Complete Architectural Design Package
+                </h3>
               </div>
 
-              {/* Typology Interactive Selector Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
-                {TYPOLOGY_OPTIONS.map((typ) => {
+              {/* Second Layer: Interactive Typology Buttons with Direct Pricing */}
+              <div className="flex flex-wrap gap-2.5 sm:gap-3">
+                {TYPOLOGIES.map((typ) => {
                   const isSelected = selectedTypology.id === typ.id;
                   return (
                     <button
                       key={typ.id}
                       type="button"
                       onClick={() => handleSelectTypology(typ)}
-                      className={`p-4 rounded-none text-left transition-all duration-200 cursor-pointer flex flex-col justify-between border relative ${
+                      className={`px-4 sm:px-5 py-2.5 sm:py-3 rounded-full font-syne text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center gap-2.5 ${
                         isSelected
-                          ? "bg-white/[0.08] border-white/40 shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
-                          : "bg-white/[0.02] hover:bg-white/[0.05] border-white/[0.06]"
+                          ? "bg-white text-black font-black shadow-lg"
+                          : "bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.07] text-white/75 hover:text-white"
                       }`}
                     >
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between gap-1">
-                          <span className="font-mono text-[9px] uppercase tracking-wider text-[var(--gold)] font-bold">
-                            {typ.categoryBadge}
-                          </span>
-                          <div
-                            className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold transition-all ${
-                              isSelected
-                                ? "bg-[var(--gold)] text-black"
-                                : "border border-white/20 text-transparent"
-                            }`}
-                          >
-                            ✓
-                          </div>
-                        </div>
-
-                        <h4 className="font-syne text-sm font-bold text-white leading-snug">
-                          {typ.name}
-                        </h4>
-                      </div>
-
-                      <div className="pt-3 border-t border-white/[0.05] mt-3">
-                        <span
-                          className={`font-mono text-xs font-bold block ${
-                            isSelected ? "text-[var(--gold)]" : "text-white/70"
-                          }`}
-                        >
-                          {formatCompactPrice(typ.priceNgn, typ.priceUsd)}
-                        </span>
-                      </div>
+                      <span className={`text-xs font-bold ${isSelected ? "text-black" : "text-white/40"}`}>
+                        {isSelected ? "✓" : "○"}
+                      </span>
+                      <span>{typ.name}</span>
+                      <span
+                        className={`font-mono text-[11px] font-bold ${
+                          isSelected ? "text-neutral-900" : "text-[var(--gold)]"
+                        }`}
+                      >
+                        {formatCompactPrice(typ.priceNgn, typ.priceUsd)}
+                      </span>
                     </button>
                   );
                 })}
-              </div>
-
-              {/* Selected Typology Scope Breakdown Details */}
-              <div className="mt-4 p-4 rounded-none bg-black/40 border border-white/[0.05] space-y-2.5">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-white/50">
-                      Scope Selected:
-                    </span>
-                    <span className="font-syne text-xs font-bold text-white uppercase">
-                      {selectedTypology.name}
-                    </span>
-                  </div>
-                  <span className="font-mono text-xs text-[var(--gold)] font-bold">
-                    Baseline: {formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}
-                  </span>
-                </div>
-                <p className="font-sans text-xs text-white/65 font-light">
-                  {selectedTypology.summary}
-                </p>
-                <div className="flex flex-wrap gap-2 pt-1">
-                  {selectedTypology.deliverables.map((del, dIdx) => (
-                    <span
-                      key={dIdx}
-                      className="font-sans text-[11px] text-white/80 bg-white/[0.03] border border-white/[0.05] px-2.5 py-1 rounded-none leading-relaxed flex items-center gap-1.5"
-                    >
-                      <span className="text-[var(--gold)]">✓</span>
-                      <span>{del}</span>
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
           </div>
@@ -440,7 +336,7 @@ Please let me know your consultation schedule and formal quotation.`;
 
               <div className="flex flex-wrap items-center gap-2 text-xs">
                 <span className="px-2.5 py-1 bg-white/[0.06] border border-white/[0.06] font-syne font-semibold text-white">
-                  ✓ Architecture: {selectedTypology.name} (
+                  ✓ {selectedTypology.name} (
                   {formatCompactPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)})
                 </span>
                 {selectedAddOns.map((addon) => (
