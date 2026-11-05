@@ -42,7 +42,8 @@ export function LocationMap({ height = "420px" }: { height?: string }) {
         center: LOCATION_COORDS,
         zoom: 11,
         zoomControl: false,
-        attributionControl: true
+        attributionControl: true,
+        scrollWheelZoom: false,
       });
 
       // If CARTO API key is provided, use CARTO tiles; otherwise use Esri ArcGIS Dark Gray Canvas (100% free, no API key required, zero throttling)
