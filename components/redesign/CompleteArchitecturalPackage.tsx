@@ -32,7 +32,7 @@ export function CompleteArchitecturalPackage() {
       <div className="w-full max-w-[var(--container-max)] mx-auto relative z-10">
         {/* Flagship Hero Card with 3D Physics */}
         <TiltCard maxTilt={5} glare className="w-full">
-          <div className="rounded-3xl bg-[#0d0e16] border-2 border-[var(--gold)]/50 p-8 sm:p-14 lg:p-16 shadow-[0_25px_70px_rgba(0,0,0,0.9)] overflow-hidden glow-card-border">
+          <div className="rounded-none bg-[#0d0e16] border-2 border-[var(--gold)]/50 p-8 sm:p-14 lg:p-16 shadow-[0_25px_70px_rgba(0,0,0,0.9)] overflow-hidden glow-card-border">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Left Column: Offer Details */}
               <div className="lg:col-span-7 space-y-6">
@@ -63,7 +63,7 @@ export function CompleteArchitecturalPackage() {
                     </span>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-mono text-white/90">
                       {DISCIPLINES.map((d) => (
-                        <div key={d} className="flex items-center gap-2 p-2.5 rounded-lg bg-white/[0.03] border border-white/5 hover:border-[var(--gold)]/30 transition-colors">
+                        <div key={d} className="flex items-center gap-2 p-2.5 rounded-none bg-white/[0.03] border border-white/5 hover:border-[var(--gold)]/30 transition-colors">
                           <span className="text-emerald-400 font-bold">✓</span>
                           <span className="truncate">{d}</span>
                         </div>
@@ -99,7 +99,7 @@ export function CompleteArchitecturalPackage() {
 
               {/* Right Column: Visual Preview */}
               <div className="lg:col-span-5">
-                <div className="relative h-80 sm:h-96 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                <div className="relative h-80 sm:h-96 rounded-none overflow-hidden border border-white/10 shadow-2xl">
                   <Image
                     src="/renders/modern_5bed_bungalow_day.jpg"
                     alt="Complete Architecture Package"
@@ -108,7 +108,7 @@ export function CompleteArchitecturalPackage() {
                     sizes="(max-width: 1024px) 100vw, 40vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 font-mono text-xs text-white/95 bg-black/80 backdrop-blur-md px-4 py-3 rounded-xl border border-white/15">
+                  <div className="absolute bottom-4 left-4 right-4 font-mono text-xs text-white/95 bg-black/80 backdrop-blur-md px-4 py-3 rounded-none border border-white/15">
                     <span className="text-[var(--gold)] font-bold">● Full Coordination:</span> Architectural, Structural, MEP & 4K Walkthrough Set.
                   </div>
                 </div>

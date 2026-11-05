@@ -96,7 +96,7 @@ export function HomecareSmartPopup() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="relative w-full max-w-[520px] bg-[#0c0d14] border border-[var(--gold)]/40 rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.9)] z-10 text-white my-auto overflow-hidden"
+              className="relative w-full max-w-[520px] bg-[#0c0d14] border border-[var(--gold)]/40 rounded-none shadow-[0_25px_70px_rgba(0,0,0,0.9)] z-10 text-white my-auto overflow-hidden"
             >
               {/* ─────────────────────────────────────────────────────────────
                   HEADER IMAGE & LABEL TAG
@@ -138,7 +138,7 @@ export function HomecareSmartPopup() {
               ───────────────────────────────────────────────────────────── */}
               <div className="px-6 sm:px-10 pb-7 sm:pb-9 pt-2">
                 {/* Official HomeCare Link Row */}
-                <div className="flex items-center justify-between text-xs font-mono py-1.5 px-3 rounded-lg bg-white/[0.03] border border-white/10 mb-4">
+                <div className="flex items-center justify-between text-xs font-mono py-1.5 px-3 rounded-none bg-white/[0.03] border border-white/10 mb-4">
                   <span className="text-white/60 flex items-center gap-1.5">
                     <span className="text-[var(--gold)]">✦</span>
                     <span>HomeCare Smart Store:</span>
@@ -166,26 +166,26 @@ export function HomecareSmartPopup() {
 
                 {/* 4 Clear Design Inclusions */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-5">
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.03] border border-white/5 text-xs text-white/80">
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-none bg-white/[0.03] border border-white/5 text-xs text-white/80">
                     <span className="text-[var(--gold)] font-bold">✓</span>
                     <span>Bungalow & Duplex Designs</span>
                   </div>
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.03] border border-white/5 text-xs text-white/80">
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-none bg-white/[0.03] border border-white/5 text-xs text-white/80">
                     <span className="text-[var(--gold)] font-bold">✓</span>
                     <span>3D Realistic Renders & Walkthroughs</span>
                   </div>
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.03] border border-white/5 text-xs text-white/80">
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-none bg-white/[0.03] border border-white/5 text-xs text-white/80">
                     <span className="text-[var(--gold)] font-bold">✓</span>
                     <span>Complete Architectural Working Drawings</span>
                   </div>
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.03] border border-white/5 text-xs text-white/80">
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-none bg-white/[0.03] border border-white/5 text-xs text-white/80">
                     <span className="text-[var(--gold)] font-bold">✓</span>
                     <span>HomeCare Smart Home Integration</span>
                   </div>
                 </div>
 
                 {/* Promo Code Box */}
-                <div className="flex items-center justify-between p-3.5 rounded-xl bg-black/70 border border-[var(--gold)]/35 mb-5">
+                <div className="flex items-center justify-between p-3.5 rounded-none bg-black/70 border border-[var(--gold)]/35 mb-5">
                   <div>
                     <span className="font-mono text-[9px] uppercase tracking-wider text-white/50 block">
                       Use Promo Code

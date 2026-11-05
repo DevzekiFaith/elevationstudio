@@ -13,7 +13,7 @@ export function ProfessionalPartnerships() {
   return (
     <section id="partnerships" className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-12 bg-[#060608] text-white">
       <div className="max-w-7xl mx-auto">
-        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0e101b] via-[#090a10] to-[#060608] border border-[var(--gold)]/30 p-8 sm:p-14 shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
+        <div className="relative rounded-none overflow-hidden bg-gradient-to-br from-[#0e101b] via-[#090a10] to-[#060608] border border-[var(--gold)]/30 p-8 sm:p-14 shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
           {/* Subtle Ambient Glow */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--gold)]/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -35,7 +35,7 @@ export function ProfessionalPartnerships() {
 
               {/* 3 Partnership Models */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                <div className="p-4 rounded-none bg-white/[0.02] border border-white/5">
                   <span className="text-xl mb-1 block">🎨</span>
                   <h4 className="font-syne text-xs font-bold uppercase text-white mb-1">
                     Outsourced 3D Visuals
@@ -45,7 +45,7 @@ export function ProfessionalPartnerships() {
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                <div className="p-4 rounded-none bg-white/[0.02] border border-white/5">
                   <span className="text-xl mb-1 block">📐</span>
                   <h4 className="font-syne text-xs font-bold uppercase text-white mb-1">
                     Engineering Detailing
@@ -55,7 +55,7 @@ export function ProfessionalPartnerships() {
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                <div className="p-4 rounded-none bg-white/[0.02] border border-white/5">
                   <span className="text-xl mb-1 block">🤝</span>
                   <h4 className="font-syne text-xs font-bold uppercase text-white mb-1">
                     Developer Retainers
@@ -88,7 +88,7 @@ export function ProfessionalPartnerships() {
             </div>
 
             {/* Right Column: Visual Showcase */}
-            <div className="lg:col-span-5 relative h-80 sm:h-96 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+            <div className="lg:col-span-5 relative h-80 sm:h-96 rounded-none overflow-hidden border border-white/10 shadow-2xl">
               <Image
                 src="/renders/luxury_terrace_duplex_estate.jpg"
                 alt="B2B Developer Partnership Estate Rendering"
@@ -97,7 +97,7 @@ export function ProfessionalPartnerships() {
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-              <div className="absolute bottom-5 left-5 right-5 font-mono text-xs text-white/90 bg-black/70 backdrop-blur-md p-3 rounded-lg border border-white/10">
+              <div className="absolute bottom-5 left-5 right-5 font-mono text-xs text-white/90 bg-black/70 backdrop-blur-md p-3 rounded-none border border-white/10">
                 <span className="text-[var(--gold)] font-bold">Proven Case:</span> Multi-unit terrace duplex estate rendered for off-plan presales.
               </div>
             </div>

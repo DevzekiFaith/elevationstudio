@@ -66,7 +66,7 @@ export function InsightsSection() {
           {ARTICLES.map((art) => (
             <article
               key={art.title}
-              className="rounded-2xl bg-white/[0.02] border border-white/10 overflow-hidden hover:border-[var(--gold)]/40 transition-all flex flex-col justify-between group"
+              className="rounded-none bg-white/[0.02] border border-white/10 overflow-hidden hover:border-[var(--gold)]/40 transition-all flex flex-col justify-between group"
             >
               <div className="relative h-48 w-full overflow-hidden bg-black">
                 <Image

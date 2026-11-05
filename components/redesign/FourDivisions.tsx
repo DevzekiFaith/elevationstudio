@@ -75,7 +75,7 @@ export function FourDivisions() {
           {DIVISIONS.map((div, idx) => (
             <Reveal key={div.num} direction="up" delay={0.1 * idx}>
               <TiltCard maxTilt={8} glare className="h-full">
-                <div className="rounded-3xl bg-[#0b0c12] border border-white/10 hover:border-[var(--gold)]/60 transition-all overflow-hidden flex flex-col justify-between group shadow-xl h-full glow-card-border">
+                <div className="rounded-none bg-[#0b0c12] border border-white/10 hover:border-[var(--gold)]/60 transition-all overflow-hidden flex flex-col justify-between group shadow-xl h-full glow-card-border">
                   {/* Image Preview */}
                   <div className="relative h-60 w-full overflow-hidden bg-black">
                     <Image
@@ -88,11 +88,11 @@ export function FourDivisions() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c12] via-transparent to-transparent opacity-90" />
                     
                     <div className="absolute top-4 left-4 flex items-center gap-2">
-                      <span className="font-mono text-[10px] text-black bg-[var(--gold)] font-bold px-2.5 py-1 rounded-md shadow-md">
+                      <span className="font-mono text-[10px] text-black bg-[var(--gold)] font-bold px-2.5 py-1 rounded-none shadow-md">
                         DIV {div.num}
                       </span>
                       {div.flagship && (
-                        <span className="font-mono text-[9px] uppercase tracking-wider text-black bg-white font-black px-2 py-1 rounded-md shadow-md">
+                        <span className="font-mono text-[9px] uppercase tracking-wider text-black bg-white font-black px-2 py-1 rounded-none shadow-md">
                           FLAGSHIP
                         </span>
                       )}

@@ -58,7 +58,7 @@ Please let me know your consultation schedule and quote.`;
         </div>
 
         {/* 2-Step Fast Scope Card */}
-        <div className="rounded-3xl bg-[#0b0c12] border border-white/10 p-8 sm:p-14 shadow-2xl space-y-10 glow-card-border">
+        <div className="rounded-none bg-[#0b0c12] border border-white/10 p-8 sm:p-14 shadow-2xl space-y-10 glow-card-border">
           {/* Step 1: Service */}
           <div>
             <span className="font-mono text-xs uppercase tracking-wider text-[var(--gold)] font-bold block mb-4">
@@ -69,7 +69,7 @@ Please let me know your consultation schedule and quote.`;
                 <button
                   key={s.id}
                   onClick={() => setService(s.id)}
-                  className={`p-5 rounded-2xl text-left border transition-all cursor-pointer ${
+                  className={`p-5 rounded-none text-left border transition-all cursor-pointer ${
                     service === s.id
                       ? "bg-[var(--gold)]/15 border-[var(--gold)] text-white shadow-[0_4px_25px_rgba(212,168,67,0.25)] scale-[1.02]"
                       : "bg-white/[0.02] border-white/5 text-white/70 hover:bg-white/[0.04]"
@@ -92,7 +92,7 @@ Please let me know your consultation schedule and quote.`;
                 <button
                   key={pt.id}
                   onClick={() => setProjectType(pt.id)}
-                  className={`py-4 px-4 rounded-xl text-center font-syne text-xs font-semibold border transition-all cursor-pointer ${
+                  className={`py-4 px-4 rounded-none text-center font-syne text-xs font-semibold border transition-all cursor-pointer ${
                     projectType === pt.id
                       ? "bg-white text-black border-white font-bold scale-[1.03] shadow-lg"
                       : "bg-white/[0.02] border-white/10 text-white/70 hover:bg-white/[0.05]"
@@ -105,7 +105,7 @@ Please let me know your consultation schedule and quote.`;
           </div>
 
           {/* Big Instant Closing CTA Box with Magnetic Button */}
-          <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 bg-black/50 p-7 rounded-2xl border border-[var(--gold)]/40 shadow-inner">
+          <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 bg-black/50 p-7 rounded-none border border-[var(--gold)]/40 shadow-inner">
             <div className="text-center md:text-left">
               <span className="font-mono text-[10px] uppercase text-[var(--gold)] font-bold block">
                 Selected Scope:

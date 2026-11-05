@@ -32,7 +32,7 @@ export function StudioIntro() {
         {/* 3 Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Reveal direction="up" delay={0.1}>
-            <div className="p-8 rounded-xl bg-white/[0.02] border border-white/10 hover:border-[var(--gold)]/40 transition-all h-full flex flex-col justify-between group">
+            <div className="p-8 rounded-none bg-white/[0.02] border border-white/10 hover:border-[var(--gold)]/40 transition-all h-full flex flex-col justify-between group">
               <div>
                 <span className="font-mono text-xs text-[var(--gold)] tracking-widest font-bold block mb-4">
                   01 // COORDINATED COHESION
@@ -51,7 +51,7 @@ export function StudioIntro() {
           </Reveal>
 
           <Reveal direction="up" delay={0.2}>
-            <div className="p-8 rounded-xl bg-white/[0.02] border border-white/10 hover:border-[var(--gold)]/40 transition-all h-full flex flex-col justify-between group">
+            <div className="p-8 rounded-none bg-white/[0.02] border border-white/10 hover:border-[var(--gold)]/40 transition-all h-full flex flex-col justify-between group">
               <div>
                 <span className="font-mono text-xs text-[var(--gold)] tracking-widest font-bold block mb-4">
                   02 // MODULAR FLEXIBILITY
@@ -70,7 +70,7 @@ export function StudioIntro() {
           </Reveal>
 
           <Reveal direction="up" delay={0.3}>
-            <div className="p-8 rounded-xl bg-white/[0.02] border border-white/10 hover:border-[var(--gold)]/40 transition-all h-full flex flex-col justify-between group">
+            <div className="p-8 rounded-none bg-white/[0.02] border border-white/10 hover:border-[var(--gold)]/40 transition-all h-full flex flex-col justify-between group">
               <div>
                 <span className="font-mono text-xs text-[var(--gold)] tracking-widest font-bold block mb-4">
                   03 // COMMERCIAL VELOCITY

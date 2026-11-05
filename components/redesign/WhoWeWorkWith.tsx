@@ -57,7 +57,7 @@ export function WhoWeWorkWith() {
           {CLIENTS.map((c, idx) => (
             <Reveal key={c.role} direction="up" delay={0.1 * idx}>
               <TiltCard maxTilt={8} glare className="h-full">
-                <div className="p-7 rounded-3xl bg-white/[0.02] border border-white/10 hover:border-[var(--gold)]/50 transition-all flex flex-col justify-between group shadow-xl h-full glow-card-border">
+                <div className="p-7 rounded-none bg-white/[0.02] border border-white/10 hover:border-[var(--gold)]/50 transition-all flex flex-col justify-between group shadow-xl h-full glow-card-border">
                   <div>
                     <h3 className="font-syne text-xl font-bold uppercase text-white mb-1.5">
                       {c.role}
