@@ -5,10 +5,10 @@ import { Reveal } from "@/components/Reveal";
 import { Magnetic } from "@/components/Magnetic";
 
 const PRIMARY_SERVICES = [
-  { id: "arch-complete", title: "Complete Architecture Package", div: "Division 01 · Flagship Multidisciplinary" },
-  { id: "3d-visuals", title: "Standalone 3D Visualization", div: "Division 02 · 4K Cinema Renders" },
-  { id: "branding-digital", title: "Branding & Digital Platforms", div: "Division 03 · Next.js Web Portals" },
-  { id: "workforce-dev", title: "Corporate Workforce Training", div: "Division 04 · Mindvest Global Alliance" },
+  { id: "arch-complete", title: "Complete Architecture Package", div: "Division 01 · Flagship Multidisciplinary", starting: "From ₦1.5M ($1,130)" },
+  { id: "3d-visuals", title: "Standalone 3D Visualization", div: "Division 02 · 4K Cinema Renders", starting: "From ₦500K ($375)" },
+  { id: "branding-digital", title: "Branding & Digital Platforms", div: "Division 03 · Next.js Web Portals", starting: "From ₦600K ($450)" },
+  { id: "workforce-dev", title: "Corporate Workforce Training", div: "Division 04 · Mindvest Global Alliance", starting: "Tailored Proposal" },
 ];
 
 const PROJECT_TYPES = [
@@ -76,7 +76,10 @@ Please let me know your consultation schedule and quote.`;
                   }`}
                 >
                   <span className="font-syne text-base font-bold block mb-1">{s.title}</span>
-                  <span className="font-mono text-[10px] text-[var(--gold)] uppercase">{s.div}</span>
+                  <div className="flex items-center justify-between text-[10px] font-mono mt-2 pt-2 border-t border-white/5">
+                    <span className="text-[var(--gold)] uppercase">{s.div.split("·")[0]}</span>
+                    <span className="text-white/60 font-semibold">{s.starting}</span>
+                  </div>
                 </button>
               ))}
             </div>
@@ -113,9 +116,15 @@ Please let me know your consultation schedule and quote.`;
               <span className="font-syne text-lg font-bold text-white block mt-0.5">
                 {currentService.title} · {currentType.label}
               </span>
-              <span className="font-mono text-xs text-white/50 block mt-1">
-                Full In-House Coordinated Delivery & Direct Studio Principal Review
-              </span>
+              <div className="flex flex-wrap items-center gap-3 mt-1.5 font-mono text-xs">
+                <span className="text-[var(--gold)] font-bold">
+                  Baseline Investment: {currentService.starting}
+                </span>
+                <span className="text-white/40">·</span>
+                <span className="text-white/60">
+                  Itemised Commercial Quotation upon site brief
+                </span>
+              </div>
             </div>
 
             <Magnetic strength={0.25}>

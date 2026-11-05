@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Magnetic } from "@/components/Magnetic";
 import { ReviewModal } from "@/components/ReviewModal";
+import { CurrencyToggle } from "@/components/CurrencyToggle";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -28,7 +29,7 @@ export function Nav() {
     { label: "Portfolio", href: "#renders" },
     { label: "Flagship Pack", href: "#flagship" },
     { label: "Build Scope", href: "#build-project" },
-    { label: "Who We Serve", href: "#solutions" },
+    { label: "B2B & B2C", href: "#solutions" },
     { label: "Client Stories", href: "#testimonials" },
     { label: "Location", href: "#location" },
   ];
@@ -110,6 +111,11 @@ export function Nav() {
 
           {/* Actions / CTA Section */}
           <div className="flex items-center justify-end gap-3 shrink-0">
+            {/* Desktop Currency Toggle */}
+            <div className="hidden sm:block">
+              <CurrencyToggle />
+            </div>
+
             {/* Desktop Buttons */}
             <div className="hidden lg:flex items-center gap-3">
               <Magnetic strength={0.15}>
@@ -202,6 +208,14 @@ export function Nav() {
             {/* Actions Section */}
             <div className="shrink-0 px-6 sm:px-10 pb-12 pt-6 border-t border-white/5 bg-[#08080c]/50">
               <div className="max-w-md mx-auto flex flex-col gap-4">
+                {/* Mobile Currency Switcher */}
+                <div className="flex items-center justify-between px-2 pb-2 border-b border-white/10">
+                  <span className="font-mono text-[10px] tracking-widest text-white/50 uppercase">
+                    Select Currency
+                  </span>
+                  <CurrencyToggle />
+                </div>
+
                 <span className="font-mono text-[9px] tracking-[4px] text-[var(--muted)] uppercase text-center mb-2">
                   DIRECT STUDIO CHANNELS
                 </span>

@@ -11,6 +11,7 @@ const DIVISIONS = [
     title: "Architecture & Spatial Design",
     flagship: true,
     tag: "Bungalows · Duplexes · Plazas · Churches",
+    price: "From ₦1.5M ($1,130)",
     image: "/renders/modern_duplex_residence.jpg",
     ctaText: "Get Architecture Quote",
     ctaHref: "#build-project",
@@ -20,6 +21,7 @@ const DIVISIONS = [
     title: "Engineering & 3D Visualization",
     flagship: false,
     tag: "Photorealistic 3D · 4K Walkthroughs · MEP",
+    price: "From ₦500K ($375)",
     image: "/renders/modern_5bed_bungalow_evening.jpg",
     ctaText: "Outsource 3D Renders",
     ctaHref: "#build-project",
@@ -29,6 +31,7 @@ const DIVISIONS = [
     title: "Branding & Digital Platforms",
     flagship: false,
     tag: "Next.js Web Platforms · Estate Portals",
+    price: "From ₦600K ($450)",
     image: "/renders/commercial_plaza_facade.jpg",
     ctaText: "Build Digital Platform",
     ctaHref: "#build-project",
@@ -38,6 +41,7 @@ const DIVISIONS = [
     title: "Workforce & Corporate Training",
     flagship: false,
     tag: "Capacity Building · Powered by Mindvest",
+    price: "Tailored Corporate Proposal",
     image: "/renders/corporate_lobby_corridor.jpg",
     ctaText: "Book Corporate Training",
     ctaHref: "#build-project",
@@ -108,6 +112,11 @@ export function FourDivisions() {
                       <span className="font-mono text-xs text-white/55 block">
                         {div.tag}
                       </span>
+                    </div>
+
+                    <div className="pt-2 border-t border-white/5 flex items-center justify-between font-mono text-[11px]">
+                      <span className="text-white/45 uppercase">Baseline Fee:</span>
+                      <span className="text-[var(--gold)] font-bold">{div.price}</span>
                     </div>
 
                     <a

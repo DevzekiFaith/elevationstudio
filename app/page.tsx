@@ -8,6 +8,7 @@ import { FourDivisions } from "@/components/redesign/FourDivisions";
 import { CompleteArchitecturalPackage } from "@/components/redesign/CompleteArchitecturalPackage";
 import { BuildYourProject } from "@/components/redesign/BuildYourProject";
 import { WhoWeWorkWith } from "@/components/redesign/WhoWeWorkWith";
+import { ProfessionalPartnerships } from "@/components/redesign/ProfessionalPartnerships";
 import { FinalCTASection } from "@/components/redesign/FinalCTASection";
 import { RenderGallery } from "@/components/RenderGallery";
 import { Testimonials } from "@/components/Testimonials";
@@ -52,10 +53,13 @@ export default function Home() {
       {/* 05. 3-Click Scope Configurator: Build & Close on WhatsApp */}
       <BuildYourProject />
 
-      {/* 06. Who We Serve: 4 Clean Client Pathways */}
+      {/* 06. Customer Pathways: B2C & B2B Dual Portals */}
       <WhoWeWorkWith />
 
-      {/* 07. Verified Client Feedback */}
+      {/* 07. Dedicated B2B & Developer Partnership Section */}
+      <ProfessionalPartnerships />
+
+      {/* 08. Verified Client Feedback */}
       <section id="testimonials" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#060608] border-t border-white/5">
         <div className="max-w-6xl mx-auto mb-10 text-center">
           <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-2">
@@ -160,6 +164,16 @@ export default function Home() {
               <li>
                 <a href="#flagship" className="hover:text-[var(--gold)] transition-colors">
                   Flagship Complete Pack
+                </a>
+              </li>
+              <li>
+                <a href="#solutions" className="hover:text-[var(--gold)] transition-colors">
+                  B2C & B2B Pathways
+                </a>
+              </li>
+              <li>
+                <a href="#partnerships" className="hover:text-[var(--gold)] transition-colors">
+                  B2B Developer Alliance
                 </a>
               </li>
               <li>

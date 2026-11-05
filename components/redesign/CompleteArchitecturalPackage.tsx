@@ -5,6 +5,8 @@ import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { Magnetic } from "@/components/Magnetic";
 import { TiltCard } from "@/components/TiltCard";
+import { useCurrency } from "@/components/CurrencyContext";
+import { CurrencyToggle } from "@/components/CurrencyToggle";
 
 const DISCIPLINES = [
   "Architectural Design & Working Drawings",
@@ -18,10 +20,13 @@ const DISCIPLINES = [
 ];
 
 export function CompleteArchitecturalPackage() {
+  const { currency, formatResidentialPrice } = useCurrency();
+  const archPrice = formatResidentialPrice("architecture");
+
   const whatsappUrl =
     "https://wa.me/2349119059859?text=" +
     encodeURIComponent(
-      "Hello Elevation Studio! I am ready to discuss the Complete Architectural Design Package for my project."
+      `Hello Elevation Studio! I am ready to discuss the Complete Architectural Design Package (Starting from ${archPrice}) for my project.`
     );
 
   return (
@@ -53,6 +58,33 @@ export function CompleteArchitecturalPackage() {
                   <p className="font-sans text-base sm:text-lg text-white/80 font-light leading-relaxed">
                     One integrated fee. Coordinated by licensed architects and engineers. Zero site dimension clashes. Ready for municipal submission and construction tender.
                   </p>
+                </Reveal>
+
+                {/* Starting Investment Callout with Currency Toggle */}
+                <Reveal direction="up" delay={0.35}>
+                  <div className="p-5 rounded-none bg-black/60 border border-[var(--gold)]/40 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+                    <div>
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block font-bold mb-1">
+                        Starting Investment ({currency}) · Transparent Baseline:
+                      </span>
+                      <div className="flex items-baseline gap-2.5">
+                        <span className="font-syne text-3xl sm:text-4xl font-black text-[var(--gold)]">
+                          {archPrice}
+                        </span>
+                        <span className="font-mono text-xs text-white/70">
+                          Complete 8-Discipline Set
+                        </span>
+                      </div>
+                      <span className="font-sans text-[11px] text-white/50 block mt-1">
+                        Every project receives an itemised commercial quotation based on exact square metreage.
+                      </span>
+                    </div>
+
+                    <div className="shrink-0">
+                      <div className="text-[10px] font-mono text-white/40 uppercase mb-1">Currency:</div>
+                      <CurrencyToggle />
+                    </div>
+                  </div>
                 </Reveal>
 
                 {/* Clean Checklist */}
