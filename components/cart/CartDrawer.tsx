@@ -51,15 +51,40 @@ const QUICK_ADDONS: CartItem[] = [
   },
 ];
 
+const CLIENT_PROFILES = [
+  "Private Homeowner / Diaspora",
+  "Property Developer",
+  "Architecture Firm / Contractor",
+];
+
+const PLOT_SIZES = [
+  "Standard Plot (300 - 600 sqm)",
+  "Multi-Plot (1,000+ sqm)",
+  "Commercial / Acreage",
+  "Not Measured Yet",
+];
+
+const TIMELINES = [
+  "Immediate (0 - 30 days)",
+  "Planning (1 - 3 months)",
+  "Feasibility & Budgeting",
+];
+
 export function CartDrawer() {
   const { items, isOpen, closeCart, removeItem, addItem, itemCount, totalNgn, totalUsd, clearCart } =
     useCart();
   const { currency } = useCurrency();
 
-  // Checkout form fields
+  // Detailed client intake form fields
   const [clientName, setClientName] = useState("");
   const [clientPhone, setClientPhone] = useState("");
+  const [clientEmail, setClientEmail] = useState("");
   const [projectLocation, setProjectLocation] = useState("");
+  const [clientProfile, setClientProfile] = useState(CLIENT_PROFILES[0]);
+  const [plotSize, setPlotSize] = useState(PLOT_SIZES[0]);
+  const [targetTimeline, setTargetTimeline] = useState(TIMELINES[0]);
+  const [projectNotes, setProjectNotes] = useState("");
+
   const [checkoutMode, setCheckoutMode] = useState<"whatsapp" | "invoice">("whatsapp");
   const [invoiceRequested, setInvoiceRequested] = useState(false);
   const [referenceId] = useState("ES-2026-8492");
@@ -102,20 +127,24 @@ export function CartDrawer() {
       )
       .join("\n");
 
-    const message = `*ELEVATION STUDIO — ORDER CHECKOUT & SCOPE TRANSMISSION*
+    const message = `*ELEVATION STUDIO — OFFICIAL PROJECT SCOPE & ORDER TRANSMISSION*
 Ref ID: ${referenceId}
 ---------------------------------------------
-*Client Information:*
-Name: ${clientName.trim() || "Private Client"}
-Contact: ${clientPhone.trim() || "Not specified"}
-Project Location: ${projectLocation.trim() || "Nigeria / Diaspora"}
-
-*Selected Service Scope (${itemCount} Item${itemCount === 1 ? "" : "s"}):*
+*Client Information & Project Profile:*
+• Full Name: ${clientName.trim() || "Private Client"}
+• Phone / WhatsApp: ${clientPhone.trim() || "Not specified"}
+• Email: ${clientEmail.trim() || "Not specified"}
+• Project Location: ${projectLocation.trim() || "Nigeria / Diaspora"}
+• Client Category: ${clientProfile}
+• Approximate Plot Size: ${plotSize}
+• Target Timeline: ${targetTimeline}
+${projectNotes.trim() ? `• Project Notes: ${projectNotes.trim()}\n` : ""}
+*Selected Scope Deliverables (${itemCount} Item${itemCount === 1 ? "" : "s"}):*
 ${itemLines}
 
 *Total Estimated Baseline:* ${formattedTotal}
 ---------------------------------------------
-Please review my scope, confirm availability, and issue the formal itemized architectural contract.`;
+Please review my detailed scope, confirm availability, and prepare the formal itemized contract.`;
 
     const url = `https://wa.me/2349119059859?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
@@ -141,7 +170,7 @@ Please review my scope, confirm availability, and issue the formal itemized arch
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 32, stiffness: 320 }}
-            className="relative z-10 w-full max-w-[620px] h-full bg-[#08080c] border-l border-white/[0.08] text-white flex flex-col justify-between shadow-[0_25px_100px_rgba(0,0,0,0.98)] overflow-hidden"
+            className="relative z-10 w-full max-w-[640px] h-full bg-[#08080c] border-l border-white/[0.08] text-white flex flex-col justify-between shadow-[0_25px_100px_rgba(0,0,0,0.98)] overflow-hidden"
           >
             {/* 1. Header with Generous Padding */}
             <div className="px-8 sm:px-12 py-7 sm:py-8 border-b border-white/[0.06] flex items-center justify-between bg-black/50">
@@ -291,20 +320,21 @@ Please review my scope, confirm availability, and issue the formal itemized arch
                     </div>
                   </div>
 
-                  {/* Client Details Form with Clear Labels & Padding */}
-                  <div className="pt-4 space-y-4 border-t border-white/[0.06]">
+                  {/* Comprehensive Detailed Client Intake Form */}
+                  <div className="pt-4 space-y-6 border-t border-white/[0.06]">
                     <div>
-                      <span className="font-mono text-[11px] uppercase tracking-widest text-white/70 block font-bold mb-1">
+                      <span className="font-mono text-[11px] uppercase tracking-widest text-[var(--gold)] block font-bold mb-1">
                         Client Information & Delivery Destination:
                       </span>
-                      <p className="font-sans text-xs text-white/50 font-light">
+                      <p className="font-sans text-xs text-white/60 font-light">
                         Used to prepare your official itemized contract and schedule the architectural consultation.
                       </p>
                     </div>
 
+                    {/* Full Name & Phone */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="font-mono text-[10px] uppercase tracking-wider text-white/40 block mb-1.5">
+                        <label className="font-mono text-[10px] uppercase tracking-wider text-white/50 block mb-1.5 font-bold">
                           Full Name:
                         </label>
                         <input
@@ -312,42 +342,140 @@ Please review my scope, confirm availability, and issue the formal itemized arch
                           placeholder="e.g. Engr. Kunle Adeyemi"
                           value={clientName}
                           onChange={(e) => setClientName(e.target.value)}
-                          className="w-full px-4 py-3.5 rounded-none bg-[#0a0a10] border border-white/[0.08] text-white font-sans text-xs focus:outline-none focus:border-[var(--gold)]"
+                          className="w-full px-4 py-3.5 rounded-none bg-[#0a0a10] border border-white/[0.08] text-white font-sans text-xs focus:outline-none focus:border-[var(--gold)] transition-colors"
                         />
                       </div>
                       <div>
-                        <label className="font-mono text-[10px] uppercase tracking-wider text-white/40 block mb-1.5">
+                        <label className="font-mono text-[10px] uppercase tracking-wider text-white/50 block mb-1.5 font-bold">
                           Phone / WhatsApp:
                         </label>
                         <input
                           type="text"
-                          placeholder="e.g. +234 803 000 0000"
+                          placeholder="e.g. +234 803 000 0000 or UK/US"
                           value={clientPhone}
                           onChange={(e) => setClientPhone(e.target.value)}
-                          className="w-full px-4 py-3.5 rounded-none bg-[#0a0a10] border border-white/[0.08] text-white font-sans text-xs focus:outline-none focus:border-[var(--gold)]"
+                          className="w-full px-4 py-3.5 rounded-none bg-[#0a0a10] border border-white/[0.08] text-white font-sans text-xs focus:outline-none focus:border-[var(--gold)] transition-colors"
                         />
                       </div>
                     </div>
 
+                    {/* Email & Location */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="font-mono text-[10px] uppercase tracking-wider text-white/50 block mb-1.5 font-bold">
+                          Email Address (For PDF Invoice):
+                        </label>
+                        <input
+                          type="email"
+                          placeholder="e.g. client@example.com"
+                          value={clientEmail}
+                          onChange={(e) => setClientEmail(e.target.value)}
+                          className="w-full px-4 py-3.5 rounded-none bg-[#0a0a10] border border-white/[0.08] text-white font-sans text-xs focus:outline-none focus:border-[var(--gold)] transition-colors"
+                        />
+                      </div>
+                      <div>
+                        <label className="font-mono text-[10px] uppercase tracking-wider text-white/50 block mb-1.5 font-bold">
+                          Site / Project Location:
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="e.g. Lekki Phase 1, Lagos | Ogun Corridor | Abuja"
+                          value={projectLocation}
+                          onChange={(e) => setProjectLocation(e.target.value)}
+                          className="w-full px-4 py-3.5 rounded-none bg-[#0a0a10] border border-white/[0.08] text-white font-sans text-xs focus:outline-none focus:border-[var(--gold)] transition-colors"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Client Profile Category */}
                     <div>
-                      <label className="font-mono text-[10px] uppercase tracking-wider text-white/40 block mb-1.5">
-                        Site / Project Location:
+                      <label className="font-mono text-[10px] uppercase tracking-wider text-white/50 block mb-2 font-bold">
+                        Client Category:
                       </label>
-                      <input
-                        type="text"
-                        placeholder="e.g. Lekki Phase 1, Ogun Corridor, Abuja, or UK Diaspora"
-                        value={projectLocation}
-                        onChange={(e) => setProjectLocation(e.target.value)}
-                        className="w-full px-4 py-3.5 rounded-none bg-[#0a0a10] border border-white/[0.08] text-white font-sans text-xs focus:outline-none focus:border-[var(--gold)]"
+                      <div className="flex flex-wrap gap-2">
+                        {CLIENT_PROFILES.map((prof) => (
+                          <button
+                            key={prof}
+                            type="button"
+                            onClick={() => setClientProfile(prof)}
+                            className={`px-3.5 py-2 rounded-full font-syne text-[11px] uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                              clientProfile === prof
+                                ? "bg-white text-black font-bold shadow-sm"
+                                : "bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.07] text-white/70"
+                            }`}
+                          >
+                            {prof}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Approximate Plot Size */}
+                    <div>
+                      <label className="font-mono text-[10px] uppercase tracking-wider text-white/50 block mb-2 font-bold">
+                        Approximate Plot Dimensions:
+                      </label>
+                      <div className="flex flex-wrap gap-2">
+                        {PLOT_SIZES.map((size) => (
+                          <button
+                            key={size}
+                            type="button"
+                            onClick={() => setPlotSize(size)}
+                            className={`px-3.5 py-2 rounded-full font-syne text-[11px] uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                              plotSize === size
+                                ? "bg-white text-black font-bold shadow-sm"
+                                : "bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.07] text-white/70"
+                            }`}
+                          >
+                            {size}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Target Timeline */}
+                    <div>
+                      <label className="font-mono text-[10px] uppercase tracking-wider text-white/50 block mb-2 font-bold">
+                        Target Project Start Timeline:
+                      </label>
+                      <div className="flex flex-wrap gap-2">
+                        {TIMELINES.map((t) => (
+                          <button
+                            key={t}
+                            type="button"
+                            onClick={() => setTargetTimeline(t)}
+                            className={`px-3.5 py-2 rounded-full font-syne text-[11px] uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                              targetTimeline === t
+                                ? "bg-white text-black font-bold shadow-sm"
+                                : "bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.07] text-white/70"
+                            }`}
+                          >
+                            {t}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Optional Brief Notes */}
+                    <div>
+                      <label className="font-mono text-[10px] uppercase tracking-wider text-white/50 block mb-1.5 font-bold">
+                        Brief Project Notes / Architectural Requirements (Optional):
+                      </label>
+                      <textarea
+                        rows={2}
+                        placeholder="e.g. 5-bedroom duplex with cantilever terrace, rooftop lounge, and perimeter security lighting..."
+                        value={projectNotes}
+                        onChange={(e) => setProjectNotes(e.target.value)}
+                        className="w-full px-4 py-3 rounded-none bg-[#0a0a10] border border-white/[0.08] text-white font-sans text-xs focus:outline-none focus:border-[var(--gold)] transition-colors resize-none"
                       />
                     </div>
                   </div>
 
-                  {/* Studio Guarantees Badge */}
+                  {/* Clean Studio Guarantees Badge (COREN removed) */}
                   <div className="p-4 sm:p-5 rounded-none bg-white/[0.02] border border-white/[0.05] flex flex-wrap items-center justify-between gap-3 text-[10px] font-mono text-white/60">
-                    <span>✦ Registered COREN/ARCON Code</span>
                     <span>✦ Strict Mutual NDA</span>
-                    <span>✦ 100% Remote Assured</span>
+                    <span>✦ 100% Remote Project Assurance</span>
+                    <span>✦ Contractor-Ready Drawing Sets</span>
                   </div>
                 </>
               )}
