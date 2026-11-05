@@ -6,12 +6,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Magnetic } from "@/components/Magnetic";
 import { ReviewModal } from "@/components/ReviewModal";
 import { CurrencyToggle } from "@/components/CurrencyToggle";
+import { useCart } from "@/components/cart/CartContext";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [reviewModalOpen, setReviewModalOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const { openCart, itemCount } = useCart();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -41,29 +44,29 @@ export function Nav() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-0 left-0 right-0 z-[100] px-4 sm:px-6 lg:px-6 xl:px-10 py-4 pointer-events-none"
+        className="fixed top-0 left-0 right-0 z-[100] px-3.5 sm:px-6 lg:px-6 xl:px-10 py-3.5 sm:py-4 pointer-events-none"
       >
         <div
           className={`
             w-full pointer-events-auto
             grid grid-cols-[auto_1fr_auto] items-center
-            px-5 sm:px-6 lg:px-8 py-3 lg:py-3.5
+            px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-3.5
             rounded-[4px] transition-all duration-500 border
             ${
               scrolled || mobileMenuOpen
-                ? "bg-[#09090d]/95 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] border-[var(--gold-border)]/40"
-                : "bg-[#060608]/75 backdrop-blur-md shadow-lg border-white/5"
+                ? "bg-[#09090d]/95 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] border-white/10"
+                : "bg-[#060608]/80 backdrop-blur-md shadow-lg border-white/5"
             }
           `}
         >
           {/* Logo Section */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 group shrink-0"
+            className="flex items-center gap-2 group shrink-0"
             onClick={() => setMobileMenuOpen(false)}
           >
             <span className="w-2.5 h-2.5 rounded-[2px] bg-[var(--gold)] group-hover:scale-125 transition-transform duration-300" />
-            <span className="font-bebas text-lg sm:text-xl lg:text-2xl tracking-[2.5px] text-white leading-none">
+            <span className="font-bebas text-base sm:text-xl lg:text-2xl tracking-[2px] sm:tracking-[2.5px] text-white leading-none">
               ELEVATION <span className="text-[var(--gold)]">STUDIO</span>
             </span>
           </Link>
@@ -110,35 +113,38 @@ export function Nav() {
           </div>
 
           {/* Actions / CTA Section */}
-          <div className="flex items-center justify-end gap-3 shrink-0">
+          <div className="flex items-center justify-end gap-2 sm:gap-3 shrink-0">
             {/* Desktop Currency Toggle */}
             <div className="hidden sm:block">
               <CurrencyToggle />
             </div>
 
+            {/* Interactive Scope Cart Trigger Button */}
+            <Magnetic strength={0.15}>
+              <button
+                type="button"
+                onClick={openCart}
+                className="px-3 sm:px-3.5 py-1.5 sm:py-2 bg-white/[0.04] hover:bg-[var(--gold)] text-white hover:text-black rounded-full font-mono text-[11px] sm:text-xs tracking-wider transition-all duration-300 border border-white/10 flex items-center gap-2 cursor-pointer group shadow-sm"
+                title="Open Project Scope Cart"
+              >
+                <span className="hidden min-[400px]:inline">Cart</span>
+                <span className="w-5 h-5 rounded-full bg-[var(--gold)] group-hover:bg-black text-black group-hover:text-[var(--gold)] font-bold text-[10px] flex items-center justify-center transition-colors">
+                  {itemCount}
+                </span>
+              </button>
+            </Magnetic>
+
             {/* Desktop Buttons */}
-            <div className="hidden lg:flex items-center gap-3">
+            <div className="hidden lg:flex items-center gap-2.5">
               <Magnetic strength={0.15}>
                 <button
                   type="button"
                   onClick={() => setReviewModalOpen(true)}
-                  className="px-4 py-2 bg-white/5 hover:bg-[var(--gold)]/10 text-white hover:text-[var(--gold)] rounded-full font-mono text-[11px] xl:text-xs tracking-wider transition-all duration-300 border border-white/10 hover:border-[var(--gold-border)]"
+                  className="px-4 py-2 bg-white/5 hover:bg-[var(--gold)]/10 text-white hover:text-[var(--gold)] rounded-full font-mono text-[11px] xl:text-xs tracking-wider transition-all duration-300 border border-white/10"
                   title="Submit a verified client review"
                 >
                   Review Us
                 </button>
-              </Magnetic>
-
-              <Magnetic strength={0.15}>
-                <a
-                  href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20interested%20in%20discussing%20a%20project."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3.5 py-2 bg-[#0d0d11] hover:bg-emerald-950/50 text-emerald-400 rounded-full font-mono text-[11px] xl:text-xs tracking-wider transition-colors border border-emerald-950/40"
-                  title="WhatsApp Chat"
-                >
-                  Chat
-                </a>
               </Magnetic>
 
               <Magnetic strength={0.2}>
@@ -155,13 +161,13 @@ export function Nav() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden flex items-center justify-center p-2.5 rounded-full bg-white/[0.04] border border-white/10 text-white hover:text-[var(--gold)] hover:border-[var(--gold-border)] transition-colors"
+              className="lg:hidden flex items-center justify-center p-2 sm:p-2.5 rounded-full bg-white/[0.04] border border-white/10 text-white hover:text-[var(--gold)] transition-colors"
               aria-label="Toggle Navigation Menu"
             >
-              <div className="w-5 h-4 relative flex flex-col justify-between items-center">
-                <span className={`w-5 h-[1.5px] bg-current rounded-full transition-transform duration-300 ${mobileMenuOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
-                <span className={`w-4 h-[1.5px] bg-current rounded-full transition-opacity duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`} />
-                <span className={`w-5 h-[1.5px] bg-current rounded-full transition-transform duration-300 ${mobileMenuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+              <div className="w-4 sm:w-5 h-3.5 sm:h-4 relative flex flex-col justify-between items-center">
+                <span className={`w-4 sm:w-5 h-[1.5px] bg-current rounded-full transition-transform duration-300 ${mobileMenuOpen ? "rotate-45 translate-y-[6px] sm:translate-y-[7px]" : ""}`} />
+                <span className={`w-3 sm:w-4 h-[1.5px] bg-current rounded-full transition-opacity duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`} />
+                <span className={`w-4 sm:w-5 h-[1.5px] bg-current rounded-full transition-transform duration-300 ${mobileMenuOpen ? "-rotate-45 -translate-y-[6px] sm:-translate-y-[7px]" : ""}`} />
               </div>
             </button>
           </div>
@@ -177,26 +183,26 @@ export function Nav() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[99] lg:hidden bg-[#060609]/98 backdrop-blur-2xl flex flex-col justify-between overflow-y-auto"
-            style={{ paddingTop: "88px" }}
+            style={{ paddingTop: "84px" }}
           >
             {/* Nav links block */}
-            <div className="flex-1 flex flex-col items-center justify-center px-6 py-12">
-              <span className="font-mono text-[10px] tracking-[5px] text-[var(--gold)] uppercase mb-8 opacity-75">
+            <div className="flex-1 flex flex-col items-center justify-center px-6 py-8">
+              <span className="font-mono text-[10px] tracking-[4px] text-[var(--gold)] uppercase mb-6 opacity-75">
                 STUDIO NAVIGATION
               </span>
-              <ul className="flex flex-col items-center gap-4 sm:gap-6 md:gap-7 w-full max-w-md">
+              <ul className="flex flex-col items-center gap-3 sm:gap-5 w-full max-w-md">
                 {navItems.map((item, index) => (
                   <motion.li
                     key={item.label}
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.08, duration: 0.4 }}
+                    transition={{ delay: index * 0.06, duration: 0.35 }}
                     className="w-full text-center"
                   >
                     <a
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="font-bebas block py-3 sm:py-4 text-3xl sm:text-4xl text-white hover:text-[var(--gold)] transition-colors tracking-widest"
+                      className="font-bebas block py-2 sm:py-3 text-2xl sm:text-3xl text-white hover:text-[var(--gold)] transition-colors tracking-widest"
                     >
                       {item.label}
                     </a>
@@ -206,19 +212,28 @@ export function Nav() {
             </div>
 
             {/* Actions Section */}
-            <div className="shrink-0 px-6 sm:px-10 pb-12 pt-6 border-t border-white/5 bg-[#08080c]/50">
-              <div className="max-w-md mx-auto flex flex-col gap-4">
+            <div className="shrink-0 px-6 sm:px-10 pb-10 pt-5 border-t border-white/5 bg-[#08080c]/60">
+              <div className="max-w-md mx-auto flex flex-col gap-3.5">
                 {/* Mobile Currency Switcher */}
                 <div className="flex items-center justify-between px-2 pb-2 border-b border-white/10">
                   <span className="font-mono text-[10px] tracking-widest text-white/50 uppercase">
-                    Select Currency
+                    Currency
                   </span>
                   <CurrencyToggle />
                 </div>
 
-                <span className="font-mono text-[9px] tracking-[4px] text-[var(--muted)] uppercase text-center mb-2">
-                  DIRECT STUDIO CHANNELS
-                </span>
+                {/* Mobile View Cart CTA Button */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    openCart();
+                  }}
+                  className="w-full py-3.5 rounded-full bg-white text-black font-syne font-bold text-xs uppercase tracking-wider text-center shadow-lg transition-all flex items-center justify-center gap-2"
+                >
+                  <span>Open Scope Cart ({itemCount})</span>
+                  <span>→</span>
+                </button>
 
                 <button
                   type="button"
@@ -226,52 +241,21 @@ export function Nav() {
                     setMobileMenuOpen(false);
                     setReviewModalOpen(true);
                   }}
-                  className="w-full py-4 rounded-full bg-white/5 hover:bg-white/10 text-white font-mono text-xs tracking-widest uppercase border border-white/10 transition-all duration-300"
+                  className="w-full py-3 rounded-full bg-white/5 hover:bg-white/10 text-white font-mono text-xs tracking-wider uppercase border border-white/10 transition-all duration-300"
                 >
-                  Write a Client Review
+                  Write Client Review
                 </button>
-
-                <a
-                  href="#build-project"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full py-4 rounded-full bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-xs font-bold tracking-widest uppercase text-center shadow-lg shadow-[var(--gold)]/10 transition-all duration-300"
-                >
-                  Build Your Project Scope →
-                </a>
-
-                <div className="grid grid-cols-2 gap-3 w-full">
-                  <a
-                    href="https://wa.me/2349119059859?text=Hello%20Elevation%20Studio%2C%20I%20am%20interested%20in%20discussing%20a%20project."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="py-3 rounded-full bg-[#121217] text-emerald-400 font-mono text-xs tracking-wider text-center border border-emerald-950 transition-colors flex items-center justify-center"
-                  >
-                    WHATSAPP
-                  </a>
-                  <a
-                    href="https://instagram.com/elevationstudio.ng"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="py-3 rounded-full bg-[#121217] text-[var(--gold)] font-mono text-xs tracking-wider text-center border border-[var(--gold-border)]/20 transition-colors flex items-center justify-center"
-                  >
-                    INSTAGRAM
-                  </a>
-                </div>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Global Review Modal */}
+      {/* Review Modal */}
       <ReviewModal
         isOpen={reviewModalOpen}
         onClose={() => setReviewModalOpen(false)}
-        onReviewSubmitted={() => {
-          window.dispatchEvent(new Event("elevation_review_submitted"));
-        }}
+        initialTab="form"
       />
     </>
   );

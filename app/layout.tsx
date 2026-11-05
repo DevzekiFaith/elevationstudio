@@ -10,6 +10,8 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { CurrencyProvider } from "@/components/CurrencyContext";
 import { HomecareSmartPopup } from "@/components/HomecareSmartPopup";
+import { CartProvider } from "@/components/cart/CartContext";
+import { CartDrawer } from "@/components/cart/CartDrawer";
 import { Analytics } from "@vercel/analytics/next";
 
 const bebas = Bebas_Neue({
@@ -290,11 +292,14 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen antialiased overflow-x-hidden" suppressHydrationWarning>
         <CurrencyProvider>
-          <ScrollProgress />
-          <CustomCursor />
-          {children}
-          <HomecareSmartPopup />
-          <Analytics />
+          <CartProvider>
+            <ScrollProgress />
+            <CustomCursor />
+            {children}
+            <CartDrawer />
+            <HomecareSmartPopup />
+            <Analytics />
+          </CartProvider>
         </CurrencyProvider>
       </body>
     </html>
