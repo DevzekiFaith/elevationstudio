@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart, type CartItem } from "./CartContext";
 import { useCurrency } from "@/components/CurrencyContext";
@@ -64,6 +64,17 @@ export function CartDrawer() {
   const [invoiceRequested, setInvoiceRequested] = useState(false);
   const [referenceId] = useState("ES-2026-8492");
 
+  // Close on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) {
+        closeCart();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, closeCart]);
+
   const formatPrice = (ngn: number, usd: number) => {
     if (ngn === 0) return "Custom Quote";
     if (currency === "USD") return `$${usd.toLocaleString()}`;
@@ -114,68 +125,73 @@ Please review my scope, confirm availability, and issue the formal itemized arch
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[200] flex justify-end">
-          {/* Backdrop */}
+          {/* Backdrop with Soft Blur */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-black/85 backdrop-blur-md cursor-pointer"
             onClick={closeCart}
           />
 
-          {/* Slide-Over Drawer Container with Generous Padding */}
+          {/* Slide-Over Drawer Container with Wide Luxury Framing */}
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="relative z-10 w-full max-w-xl h-full bg-[#090a0f] border-l border-white/[0.08] text-white flex flex-col justify-between shadow-[0_25px_100px_rgba(0,0,0,0.98)] overflow-hidden"
+            transition={{ type: "spring", damping: 32, stiffness: 320 }}
+            className="relative z-10 w-full max-w-[620px] h-full bg-[#08080c] border-l border-white/[0.08] text-white flex flex-col justify-between shadow-[0_25px_100px_rgba(0,0,0,0.98)] overflow-hidden"
           >
-            {/* 1. Header with Cart Bag Icon & Generous Padding */}
-            <div className="px-7 sm:px-10 py-6 border-b border-white/[0.06] flex items-center justify-between bg-black/40">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/20 flex items-center justify-center">
-                  <CartBagIcon className="w-4 h-4 text-[var(--gold)]" />
+            {/* 1. Header with Generous Padding */}
+            <div className="px-8 sm:px-12 py-7 sm:py-8 border-b border-white/[0.06] flex items-center justify-between bg-black/50">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/20 flex items-center justify-center">
+                  <CartBagIcon className="w-5 h-5 text-[var(--gold)]" />
                 </div>
                 <div>
-                  <h2 className="font-syne text-lg sm:text-xl font-bold uppercase tracking-wider text-white">
+                  <span className="font-mono text-[9px] uppercase tracking-[3px] text-[var(--gold)] block mb-0.5 font-bold">
+                    Elevation Studio
+                  </span>
+                  <h2 className="font-syne text-xl sm:text-2xl font-extrabold uppercase tracking-wide text-white leading-none">
                     Project Scope Cart
                   </h2>
-                  <span className="font-mono text-[10px] text-white/50 tracking-wider">
-                    {itemCount} {itemCount === 1 ? "Service Collected" : "Services Collected"}
-                  </span>
                 </div>
               </div>
 
-              <button
-                type="button"
-                onClick={closeCart}
-                className="px-3.5 py-1.5 rounded-full bg-white/[0.04] hover:bg-white/10 border border-white/[0.08] text-white font-mono text-[11px] uppercase tracking-wider transition-all cursor-pointer"
-              >
-                ✕ Close
-              </button>
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-white/70 bg-white/[0.06] px-3 py-1 rounded-full">
+                  {itemCount} {itemCount === 1 ? "Item" : "Items"}
+                </span>
+                <button
+                  type="button"
+                  onClick={closeCart}
+                  className="px-3.5 py-1.5 rounded-full bg-white/[0.04] hover:bg-white/10 border border-white/[0.08] text-white font-mono text-[11px] uppercase tracking-wider transition-all cursor-pointer"
+                >
+                  ✕ Close
+                </button>
+              </div>
             </div>
 
-            {/* 2. Scrollable Body with Extra Padding */}
-            <div className="flex-1 overflow-y-auto px-7 sm:px-10 py-8 space-y-8">
+            {/* 2. Scrollable Body with Spacious Padding */}
+            <div className="flex-1 overflow-y-auto px-8 sm:px-12 py-8 sm:py-10 space-y-10">
               {items.length === 0 ? (
-                <div className="text-center py-20 space-y-5">
-                  <div className="w-14 h-14 rounded-full bg-white/[0.03] border border-white/[0.08] flex items-center justify-center mx-auto text-[var(--gold)]">
-                    <CartBagIcon className="w-6 h-6" />
+                <div className="text-center py-24 space-y-5">
+                  <div className="w-16 h-16 rounded-full bg-white/[0.03] border border-white/[0.08] flex items-center justify-center mx-auto text-[var(--gold)] shadow-lg">
+                    <CartBagIcon className="w-7 h-7" />
                   </div>
                   <div>
-                    <h3 className="font-syne text-xl font-bold text-white uppercase mb-1">
+                    <h3 className="font-syne text-2xl font-bold text-white uppercase mb-2">
                       Your Scope Cart is Empty
                     </h3>
-                    <p className="font-sans text-xs text-white/60 max-w-sm mx-auto font-light leading-relaxed">
-                      Select your primary architectural package or digital service to begin building your project quotation.
+                    <p className="font-sans text-xs sm:text-sm text-white/60 max-w-sm mx-auto font-light leading-relaxed">
+                      Select your primary architectural package or digital add-ons to build your customized project invoice.
                     </p>
                   </div>
                   <a
                     href="#build-project"
                     onClick={closeCart}
-                    className="inline-block px-7 py-3.5 rounded-full bg-[var(--gold)] text-black font-syne font-bold text-xs uppercase tracking-wider transition-all shadow-md mt-2"
+                    className="inline-block px-8 py-4 rounded-full bg-[var(--gold)] text-black font-syne font-bold text-xs uppercase tracking-wider transition-all shadow-md mt-3"
                   >
                     Build Scope Now →
                   </a>
@@ -183,24 +199,24 @@ Please review my scope, confirm availability, and issue the formal itemized arch
               ) : (
                 <>
                   {/* Scope Items List with Generous Spacing */}
-                  <div className="space-y-4">
+                  <div className="space-y-5">
                     <div className="flex items-center justify-between pb-1">
                       <span className="font-mono text-[11px] uppercase tracking-widest text-white/60 block font-bold">
-                        Collected Services:
+                        Collected Project Services:
                       </span>
                       <span className="font-mono text-[10px] text-white/40">
-                        {itemCount} item{itemCount === 1 ? "" : "s"}
+                        {itemCount} active deliverable{itemCount === 1 ? "" : "s"}
                       </span>
                     </div>
 
                     {items.map((item) => (
                       <div
                         key={item.id}
-                        className="p-6 rounded-none bg-white/[0.02] border border-white/[0.06] relative group hover:border-white/15 transition-all space-y-3"
+                        className="p-6 sm:p-7 rounded-none bg-[#0d0e15] border border-white/[0.06] relative group hover:border-white/20 transition-all space-y-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
                       >
                         <div className="flex items-start justify-between gap-4">
-                          <div>
-                            <span className="font-mono text-[9px] uppercase tracking-widest text-[var(--gold)] bg-[var(--gold)]/10 px-2.5 py-0.5 rounded-none font-bold inline-block mb-2">
+                          <div className="space-y-1">
+                            <span className="font-mono text-[9px] uppercase tracking-widest text-[var(--gold)] bg-[var(--gold)]/10 px-2.5 py-0.5 rounded-none font-bold inline-block">
                               {item.category}
                             </span>
                             <h4 className="font-syne text-base sm:text-lg font-bold text-white leading-snug">
@@ -224,11 +240,11 @@ Please review my scope, confirm availability, and issue the formal itemized arch
 
                         {/* Deliverables tags with comfortable padding */}
                         {item.deliverables && item.deliverables.length > 0 && (
-                          <div className="pt-3 border-t border-white/[0.04] flex flex-wrap gap-2">
+                          <div className="pt-3 border-t border-white/[0.05] flex flex-wrap gap-2">
                             {item.deliverables.map((del, dIdx) => (
                               <span
                                 key={dIdx}
-                                className="font-sans text-[11px] text-white/70 bg-white/[0.03] px-2.5 py-1 rounded-none leading-tight"
+                                className="font-sans text-[11px] text-white/75 bg-white/[0.04] px-3 py-1 rounded-none leading-relaxed"
                               >
                                 ✓ {del}
                               </span>
@@ -239,21 +255,21 @@ Please review my scope, confirm availability, and issue the formal itemized arch
                     ))}
                   </div>
 
-                  {/* Quick-Add Upsell Add-ons */}
-                  <div className="pt-3">
-                    <span className="font-mono text-[11px] uppercase tracking-widest text-white/60 block mb-3.5 font-bold">
+                  {/* Quick-Add Upsell Add-ons with Airy Padding */}
+                  <div className="pt-2">
+                    <span className="font-mono text-[11px] uppercase tracking-widest text-white/60 block mb-4 font-bold">
                       Add to Scope (+ 1 Tap):
                     </span>
 
-                    <div className="space-y-3">
+                    <div className="space-y-3.5">
                       {QUICK_ADDONS.filter((qa) => !items.some((i) => i.id === qa.id)).map(
                         (addon) => (
                           <div
                             key={addon.id}
-                            className="p-4 sm:p-4.5 rounded-none bg-black/40 border border-white/[0.05] flex items-center justify-between gap-4"
+                            className="p-5 sm:p-5.5 rounded-none bg-[#0a0b12] border border-white/[0.05] hover:border-white/10 transition-colors flex items-center justify-between gap-4"
                           >
-                            <div>
-                              <span className="font-syne text-xs sm:text-sm font-bold text-white block mb-0.5">
+                            <div className="space-y-0.5">
+                              <span className="font-syne text-sm font-bold text-white block">
                                 {addon.title}
                               </span>
                               <span className="font-mono text-[11px] text-[var(--gold)]">
@@ -264,7 +280,7 @@ Please review my scope, confirm availability, and issue the formal itemized arch
                             <button
                               type="button"
                               onClick={() => addItem(addon)}
-                              className="px-4 py-2 rounded-full bg-white/[0.05] hover:bg-white text-white hover:text-black font-mono text-[10px] uppercase tracking-wider transition-all cursor-pointer border border-white/10 shrink-0 flex items-center gap-1.5 shadow-sm"
+                              className="px-4.5 py-2.5 rounded-full bg-white/[0.06] hover:bg-white text-white hover:text-black font-mono text-[10px] uppercase tracking-wider transition-all cursor-pointer border border-white/10 shrink-0 flex items-center gap-1.5 shadow-sm"
                             >
                               <CartBagIcon className="w-3.5 h-3.5" />
                               <span>+ Add</span>
@@ -275,40 +291,60 @@ Please review my scope, confirm availability, and issue the formal itemized arch
                     </div>
                   </div>
 
-                  {/* Client Details for Official Order Placement */}
-                  <div className="pt-3 space-y-4 border-t border-white/[0.06]">
-                    <span className="font-mono text-[11px] uppercase tracking-widest text-white/60 block font-bold">
-                      Client Contact & Project Location:
-                    </span>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                      <input
-                        type="text"
-                        placeholder="Your Full Name"
-                        value={clientName}
-                        onChange={(e) => setClientName(e.target.value)}
-                        className="w-full px-4 py-3.5 rounded-none bg-black/50 border border-white/[0.08] text-white font-sans text-xs focus:outline-none focus:border-[var(--gold)]"
-                      />
-                      <input
-                        type="text"
-                        placeholder="WhatsApp / Phone Number"
-                        value={clientPhone}
-                        onChange={(e) => setClientPhone(e.target.value)}
-                        className="w-full px-4 py-3.5 rounded-none bg-black/50 border border-white/[0.08] text-white font-sans text-xs focus:outline-none focus:border-[var(--gold)]"
-                      />
+                  {/* Client Details Form with Clear Labels & Padding */}
+                  <div className="pt-4 space-y-4 border-t border-white/[0.06]">
+                    <div>
+                      <span className="font-mono text-[11px] uppercase tracking-widest text-white/70 block font-bold mb-1">
+                        Client Information & Delivery Destination:
+                      </span>
+                      <p className="font-sans text-xs text-white/50 font-light">
+                        Used to prepare your official itemized contract and schedule the architectural consultation.
+                      </p>
                     </div>
 
-                    <input
-                      type="text"
-                      placeholder="Project Location (e.g. Lekki Phase 1, Abuja, UK Diaspora)"
-                      value={projectLocation}
-                      onChange={(e) => setProjectLocation(e.target.value)}
-                      className="w-full px-4 py-3.5 rounded-none bg-black/50 border border-white/[0.08] text-white font-sans text-xs focus:outline-none focus:border-[var(--gold)]"
-                    />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="font-mono text-[10px] uppercase tracking-wider text-white/40 block mb-1.5">
+                          Full Name:
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="e.g. Engr. Kunle Adeyemi"
+                          value={clientName}
+                          onChange={(e) => setClientName(e.target.value)}
+                          className="w-full px-4 py-3.5 rounded-none bg-[#0a0a10] border border-white/[0.08] text-white font-sans text-xs focus:outline-none focus:border-[var(--gold)]"
+                        />
+                      </div>
+                      <div>
+                        <label className="font-mono text-[10px] uppercase tracking-wider text-white/40 block mb-1.5">
+                          Phone / WhatsApp:
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="e.g. +234 803 000 0000"
+                          value={clientPhone}
+                          onChange={(e) => setClientPhone(e.target.value)}
+                          className="w-full px-4 py-3.5 rounded-none bg-[#0a0a10] border border-white/[0.08] text-white font-sans text-xs focus:outline-none focus:border-[var(--gold)]"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="font-mono text-[10px] uppercase tracking-wider text-white/40 block mb-1.5">
+                        Site / Project Location:
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Lekki Phase 1, Ogun Corridor, Abuja, or UK Diaspora"
+                        value={projectLocation}
+                        onChange={(e) => setProjectLocation(e.target.value)}
+                        className="w-full px-4 py-3.5 rounded-none bg-[#0a0a10] border border-white/[0.08] text-white font-sans text-xs focus:outline-none focus:border-[var(--gold)]"
+                      />
+                    </div>
                   </div>
 
-                  {/* Studio Guarantees with Padding */}
-                  <div className="p-4 sm:p-4.5 rounded-none bg-white/[0.02] border border-white/[0.05] flex flex-wrap items-center justify-between gap-2.5 text-[10px] font-mono text-white/60">
+                  {/* Studio Guarantees Badge */}
+                  <div className="p-4 sm:p-5 rounded-none bg-white/[0.02] border border-white/[0.05] flex flex-wrap items-center justify-between gap-3 text-[10px] font-mono text-white/60">
                     <span>✦ Registered COREN/ARCON Code</span>
                     <span>✦ Strict Mutual NDA</span>
                     <span>✦ 100% Remote Assured</span>
@@ -317,16 +353,16 @@ Please review my scope, confirm availability, and issue the formal itemized arch
               )}
             </div>
 
-            {/* 3. Checkout Footer with Extra Padding */}
+            {/* 3. Checkout Footer with Spacious Layout */}
             {items.length > 0 && (
-              <div className="px-7 sm:px-10 py-7 border-t border-white/[0.06] bg-black/75 space-y-4">
-                <div className="flex items-baseline justify-between">
+              <div className="px-8 sm:px-12 py-7 sm:py-8 border-t border-white/[0.08] bg-[#06060a]/95 space-y-5">
+                <div className="flex items-baseline justify-between pb-1">
                   <div>
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-0.5">
                       Total Estimated Baseline
                     </span>
                     <span className="font-mono text-xs text-white/60">
-                      Itemised quotation confirmed upon site brief
+                      Confirmed upon site dimension brief
                     </span>
                   </div>
 
@@ -343,7 +379,7 @@ Please review my scope, confirm availability, and issue the formal itemized arch
                       setCheckoutMode("whatsapp");
                       setInvoiceRequested(false);
                     }}
-                    className={`flex-1 py-2 text-center transition-all cursor-pointer ${
+                    className={`flex-1 py-2.5 text-center transition-all cursor-pointer ${
                       checkoutMode === "whatsapp"
                         ? "bg-white text-black font-bold"
                         : "text-white/60 hover:text-white"
@@ -354,7 +390,7 @@ Please review my scope, confirm availability, and issue the formal itemized arch
                   <button
                     type="button"
                     onClick={() => setCheckoutMode("invoice")}
-                    className={`flex-1 py-2 text-center transition-all cursor-pointer ${
+                    className={`flex-1 py-2.5 text-center transition-all cursor-pointer ${
                       checkoutMode === "invoice"
                         ? "bg-white text-black font-bold"
                         : "text-white/60 hover:text-white"
@@ -368,16 +404,18 @@ Please review my scope, confirm availability, and issue the formal itemized arch
                   <button
                     type="button"
                     onClick={handleWhatsAppCheckout}
-                    className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-xs uppercase tracking-wider transition-all shadow-[0_4px_30px_rgba(16,185,129,0.4)] flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-4.5 px-7 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-[0_4px_30px_rgba(16,185,129,0.4)] flex items-center justify-center gap-2.5 cursor-pointer"
                   >
                     <CartBagIcon className="w-4 h-4" />
                     <span>Transmit Scope on WhatsApp</span>
                     <span>→</span>
                   </button>
                 ) : invoiceRequested ? (
-                  <div className="p-4 rounded-none bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-mono text-xs space-y-1">
-                    <div className="font-bold">✓ Invoice Request Registered: {referenceId}</div>
-                    <div className="text-[11px] text-white/80">
+                  <div className="p-4 sm:p-5 rounded-none bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-mono text-xs space-y-1.5">
+                    <div className="font-bold flex items-center gap-2">
+                      <span>✓</span> Invoice Request Registered: {referenceId}
+                    </div>
+                    <div className="text-[11px] text-white/80 leading-relaxed font-light">
                       Our commercial team has compiled your itemized bill. Transmit to WhatsApp or check your email for the verified PDF invoice.
                     </div>
                   </div>
@@ -388,7 +426,7 @@ Please review my scope, confirm availability, and issue the formal itemized arch
                       setInvoiceRequested(true);
                       handleWhatsAppCheckout();
                     }}
-                    className="w-full py-4 px-6 rounded-xl bg-white hover:bg-[var(--gold)] text-black font-syne font-black text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-4.5 px-7 rounded-xl bg-white hover:bg-[var(--gold)] text-black font-syne font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2.5 cursor-pointer"
                   >
                     <CartBagIcon className="w-4 h-4" />
                     <span>Generate & Transmit Invoice ({referenceId})</span>
