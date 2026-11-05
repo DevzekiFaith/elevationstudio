@@ -49,7 +49,7 @@ export function WhoWeWorkWith() {
                       B2C · Private & Diaspora
                     </span>
                     <span className="font-mono text-xs text-[var(--gold)] font-bold">
-                      From ₦1.5M ($1,130)
+                      From ₦750K ($565)
                     </span>
                   </div>
 

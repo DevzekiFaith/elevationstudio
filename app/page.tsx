@@ -46,26 +46,22 @@ export default function Home() {
 
       {/* 09. Interactive Studio Location & Footprint Map */}
       <section id="location" className="py-20 sm:py-28 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#08090e] border-t border-white/5 relative">
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-white/10">
-            <div>
-              <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-2">
-                Operational Base · Physical & Remote Presence
-              </span>
-              <h2 className="font-syne text-3xl sm:text-5xl font-extrabold uppercase text-white leading-tight">
-                Studio Location & <br />
-                <span className="text-[var(--gold)]">Geographic Footprint</span>
-              </h2>
-            </div>
-            <div className="max-w-md font-sans text-xs sm:text-sm text-white/70 font-light space-y-2">
-              <p>
-                Strategically anchored along the <strong className="text-white font-semibold">Ogun — Lagos Corridor</strong> with coordinated project deliveries across Nigeria and global diaspora sites.
-              </p>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs text-[var(--gold)] pt-1">
-                <span>● Physical Consultations</span>
-                <span>● Site Dimension Verifications</span>
-                <span>● Worldwide Remote Delivery</span>
-              </div>
+        <div className="w-full max-w-7xl mx-auto flex flex-col items-center">
+          <div className="w-full text-center max-w-2xl mx-auto mb-12 pb-6 border-b border-white/10">
+            <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-2">
+              Operational Base · Physical & Remote Presence
+            </span>
+            <h2 className="font-syne text-3xl sm:text-5xl font-extrabold uppercase text-white leading-tight mb-3">
+              Studio Location & <br />
+              <span className="text-[var(--gold)]">Geographic Footprint</span>
+            </h2>
+            <p className="font-sans text-xs sm:text-sm text-white/70 font-light max-w-xl mx-auto">
+              Strategically anchored along the <strong className="text-white font-semibold">Ogun — Lagos Corridor</strong> with coordinated project deliveries across Nigeria and global diaspora sites.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 font-mono text-xs text-[var(--gold)] pt-3">
+              <span>● Physical Consultations</span>
+              <span>● Site Dimension Verifications</span>
+              <span>● Worldwide Remote Delivery</span>
             </div>
           </div>
 
@@ -183,7 +179,7 @@ export default function Home() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-white/5 py-5 px-4 sm:px-6 lg:px-12 text-center sm:flex sm:justify-between sm:items-center max-w-6xl mx-auto font-mono text-[11px] text-white/40">
+        <div className="border-t border-white/5 py-5 px-4 sm:px-6 lg:px-12 text-center sm:flex sm:justify-between sm:items-center max-w-7xl mx-auto font-mono text-[11px] text-white/40">
           <div>
             © 2026 Elevation Studio · All Rights Reserved
           </div>

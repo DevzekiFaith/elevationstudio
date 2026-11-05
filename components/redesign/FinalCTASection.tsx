@@ -12,31 +12,31 @@ export function FinalCTASection() {
     );
 
   return (
-    <section className="py-28 sm:py-36 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/10 text-center relative overflow-hidden">
+    <section className="py-28 sm:py-36 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/10 text-center relative overflow-hidden flex flex-col items-center justify-center">
       {/* Ambient background glow */}
       <div className="ambient-orb ambient-orb-gold w-[700px] h-[700px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-25 pointer-events-none" />
 
-      <div className="w-full max-w-7xl mx-auto space-y-8 relative z-10">
-        <Reveal direction="down" delay={0.1}>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-[var(--gold)]/40 text-[var(--gold)] font-mono text-xs uppercase tracking-widest font-bold">
+      <div className="w-full max-w-5xl mx-auto space-y-8 relative z-10 flex flex-col items-center text-center">
+        <Reveal direction="down" delay={0.1} className="w-full flex justify-center text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-[var(--gold)]/40 text-[var(--gold)] font-mono text-xs uppercase tracking-widest font-bold mx-auto">
             ✦ Ready to Start?
           </div>
         </Reveal>
 
-        <Reveal direction="up" delay={0.2}>
-          <h2 className="font-syne text-5xl sm:text-7xl md:text-8xl font-extrabold uppercase tracking-tight text-white leading-tight">
+        <Reveal direction="up" delay={0.2} className="w-full flex justify-center text-center">
+          <h2 className="font-syne text-5xl sm:text-7xl md:text-8xl font-extrabold uppercase tracking-tight text-white leading-tight text-center mx-auto">
             Let’s Build <br />
             <span className="text-[var(--gold)]">Your Space.</span>
           </h2>
         </Reveal>
 
-        <Reveal direction="up" delay={0.3}>
-          <p className="font-sans text-lg sm:text-xl text-white/75 max-w-2xl mx-auto font-light leading-relaxed">
+        <Reveal direction="up" delay={0.3} className="w-full flex justify-center text-center">
+          <p className="font-sans text-lg sm:text-xl text-white/75 max-w-2xl mx-auto font-light leading-relaxed text-center">
             Bespoke architectural drawings, 3D animations, and turnkey engineering coordination.
           </p>
         </Reveal>
 
-        <Reveal direction="up" delay={0.4} className="pt-6 flex flex-wrap items-center justify-center gap-5">
+        <Reveal direction="up" delay={0.4} className="pt-6 flex flex-wrap items-center justify-center gap-5 w-full">
           <Magnetic strength={0.25}>
             <a
               href={whatsappUrl}

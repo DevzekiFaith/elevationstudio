@@ -45,7 +45,7 @@ export function RenderGallery() {
   });
 
   return (
-    <Reveal>
+    <Reveal className="w-full">
       <section
         className="render-gallery-section py-20 sm:py-28 md:py-36 px-6 sm:px-10 lg:px-16 xl:px-20 relative"
         id="renders"
