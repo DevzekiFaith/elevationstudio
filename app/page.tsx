@@ -27,25 +27,7 @@ export default function Home() {
       <FourDivisions />
 
       {/* 03. Visual Proof: 3D Photorealistic Architectural Renders */}
-      <section id="renders" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#090a0f] border-t border-white/5">
-        <div className="max-w-6xl mx-auto mb-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
-            <div>
-              <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-2">
-                Selected Works Archive
-              </span>
-              <h2 className="font-syne text-3xl sm:text-5xl font-extrabold uppercase text-white">
-                Featured 3D Renders & <br />
-                <span className="text-[var(--gold)]">Architectural Works</span>
-              </h2>
-            </div>
-            <p className="font-sans text-xs sm:text-sm text-white/60 max-w-sm font-light">
-              Concept studies and commissioned residential and commercial projects across Nigeria and the diaspora.
-            </p>
-          </div>
-        </div>
-        <RenderGallery />
-      </section>
+      <RenderGallery />
 
       {/* 04. Flagship Offer: Complete Architectural Design Package */}
       <CompleteArchitecturalPackage />
@@ -60,22 +42,11 @@ export default function Home() {
       <ProfessionalPartnerships />
 
       {/* 08. Verified Client Feedback */}
-      <section id="testimonials" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#060608] border-t border-white/5">
-        <div className="max-w-6xl mx-auto mb-10 text-center">
-          <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-2">
-            Client Verification
-          </span>
-          <h2 className="font-syne text-3xl sm:text-5xl font-extrabold uppercase text-white">
-            Client Stories & <br />
-            <span className="text-[var(--gold)]">Verified Reviews</span>
-          </h2>
-        </div>
-        <Testimonials />
-      </section>
+      <Testimonials />
 
-      {/* 08. Interactive Studio Location & Footprint Map */}
-      <section id="location" className="py-20 sm:py-28 px-4 sm:px-8 lg:px-16 xl:px-20 bg-[#08090e] border-t border-white/5 relative">
-        <div className="w-full max-w-[var(--container-max)] mx-auto">
+      {/* 09. Interactive Studio Location & Footprint Map */}
+      <section id="location" className="py-20 sm:py-28 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#08090e] border-t border-white/5 relative">
+        <div className="w-full max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-white/10">
             <div>
               <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-2">
@@ -104,12 +75,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 09. Big Bold Final Closing Section */}
+      {/* 10. Big Bold Final Closing Section */}
       <FinalCTASection />
 
-      {/* 09. Minimalist Studio Footer */}
+      {/* 11. Minimalist Studio Footer */}
       <footer className="footer relative z-10 border-t border-white/10 bg-[#040406] text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 py-14 grid grid-cols-1 md:grid-cols-12 gap-10">
+        <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-14 grid grid-cols-1 md:grid-cols-12 gap-10">
           {/* Brand Info (5 cols) */}
           <div className="md:col-span-5 space-y-4">
             <Link href="/" className="inline-block">

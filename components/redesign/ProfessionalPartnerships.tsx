@@ -11,8 +11,8 @@ export function ProfessionalPartnerships() {
     );
 
   return (
-    <section id="partnerships" className="relative py-24 sm:py-32 px-4 sm:px-8 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/5">
-      <div className="w-full max-w-[var(--container-max)] mx-auto">
+    <section id="partnerships" className="relative py-24 sm:py-32 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/5">
+      <div className="w-full max-w-7xl mx-auto">
         <div className="relative rounded-none overflow-hidden bg-gradient-to-br from-[#0e101b] via-[#090a10] to-[#060608] border border-[var(--gold)]/30 p-8 sm:p-14 shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
           {/* Subtle Ambient Glow */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--gold)]/10 rounded-full blur-3xl pointer-events-none" />

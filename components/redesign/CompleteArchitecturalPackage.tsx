@@ -30,11 +30,11 @@ export function CompleteArchitecturalPackage() {
     );
 
   return (
-    <section id="flagship" className="py-24 sm:py-32 px-4 sm:px-8 lg:px-16 xl:px-20 bg-[#090a0f] text-white border-t border-white/5 relative overflow-hidden">
+    <section id="flagship" className="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#090a0f] text-white border-t border-white/5 relative overflow-hidden">
       {/* Ambient background orb */}
       <div className="ambient-orb ambient-orb-gold w-[600px] h-[600px] -top-32 -right-32 opacity-25 pointer-events-none" />
 
-      <div className="w-full max-w-[var(--container-max)] mx-auto relative z-10">
+      <div className="w-full max-w-7xl mx-auto relative z-10">
         {/* Flagship Hero Card with 3D Physics */}
         <TiltCard maxTilt={5} glare className="w-full">
           <div className="rounded-none bg-[#0d0e16] border-2 border-[var(--gold)]/50 p-8 sm:p-14 lg:p-16 shadow-[0_25px_70px_rgba(0,0,0,0.9)] overflow-hidden glow-card-border">

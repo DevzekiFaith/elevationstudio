@@ -80,8 +80,8 @@ export function WhoWeWorkWith() {
   ];
 
   return (
-    <section id="solutions" className="py-24 sm:py-32 px-4 sm:px-8 lg:px-16 xl:px-20 bg-[#090a0f] text-white border-t border-white/5">
-      <div className="w-full max-w-[var(--container-max)] mx-auto">
+    <section id="solutions" className="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#090a0f] text-white border-t border-white/5">
+      <div className="w-full max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <Reveal direction="down" delay={0.1}>

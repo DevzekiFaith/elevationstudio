@@ -12,11 +12,11 @@ export function FinalCTASection() {
     );
 
   return (
-    <section className="py-28 sm:py-36 px-4 sm:px-8 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/10 text-center relative overflow-hidden">
+    <section className="py-28 sm:py-36 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/10 text-center relative overflow-hidden">
       {/* Ambient background glow */}
       <div className="ambient-orb ambient-orb-gold w-[700px] h-[700px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-25 pointer-events-none" />
 
-      <div className="w-full max-w-5xl mx-auto space-y-8 relative z-10">
+      <div className="w-full max-w-7xl mx-auto space-y-8 relative z-10">
         <Reveal direction="down" delay={0.1}>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-[var(--gold)]/40 text-[var(--gold)] font-mono text-xs uppercase tracking-widest font-bold">
             ✦ Ready to Start?

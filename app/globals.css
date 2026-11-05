@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --container: 100%;
-  --container-max: 1720px;
-  --gutter: clamp(16px, 3.5vw, 48px);
+  --container: 1280px;
+  --container-max: 1320px;
+  --gutter: clamp(24px, 4vw, 64px);
   --black: #08080c;
   --off-black: #0e0e12;
   --steel: #14141a;

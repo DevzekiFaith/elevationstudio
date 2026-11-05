@@ -50,8 +50,8 @@ const DIVISIONS = [
 
 export function FourDivisions() {
   return (
-    <section id="divisions" className="py-24 sm:py-32 px-4 sm:px-8 lg:px-16 xl:px-20 bg-[#060608] text-white">
-      <div className="w-full max-w-[var(--container-max)] mx-auto">
+    <section id="divisions" className="py-24 sm:py-32 px-6 sm:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white">
+      <div className="w-full max-w-7xl mx-auto">
         {/* Header with Big Bold Text */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-white/10">
           <div>

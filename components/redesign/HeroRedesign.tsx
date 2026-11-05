@@ -14,7 +14,7 @@ export function HeroRedesign() {
     );
 
   return (
-    <section className="hero relative min-h-[95vh] flex flex-col justify-between pt-28 sm:pt-36 pb-16 px-4 sm:px-8 lg:px-16 xl:px-20 overflow-hidden bg-[#060608] text-white" data-bg="dark">
+    <section className="hero relative min-h-[95vh] flex flex-col justify-between pt-28 sm:pt-36 pb-16 px-6 sm:px-10 lg:px-16 xl:px-20 overflow-hidden bg-[#060608] text-white" data-bg="dark">
       {/* Background Parallax Depth & Ambient Orbs */}
       <ParallaxLayer speed={-0.3} className="absolute inset-0 pointer-events-none">
         <div className="hero-bg" />
@@ -53,7 +53,7 @@ export function HeroRedesign() {
       </div>
 
       {/* Main Expansive Hero Body */}
-      <div className="relative z-10 w-full max-w-[var(--container-max)] mx-auto flex-grow flex flex-col justify-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex-grow flex flex-col justify-center">
         {/* Label Tag */}
         <Reveal direction="down" delay={0.1}>
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/60 border border-[var(--gold)]/40 backdrop-blur-md mb-6 shadow-lg shadow-[var(--gold)]/10">
@@ -118,7 +118,7 @@ export function HeroRedesign() {
       </div>
 
       {/* Free Full-Width Division Quick Ticker Bar */}
-      <div className="relative z-10 w-full max-w-[var(--container-max)] mx-auto pt-10 mt-8 border-t border-white/10">
+      <div className="relative z-10 w-full max-w-7xl mx-auto pt-10 mt-8 border-t border-white/10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 font-mono text-xs">
           <a href="#divisions" className="text-white/70 hover:text-[var(--gold)] transition-colors flex items-center gap-2 group">
             <span className="text-[var(--gold)] font-bold group-hover:scale-110 transition-transform">01 ·</span>

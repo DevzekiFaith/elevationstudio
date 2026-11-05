@@ -16,8 +16,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+type FilterCategory = "all" | "terrace" | "residential" | "commercial" | "event" | "interior" | "plaza" | "football" | "institutional";
+
 export function RenderGallery() {
-  const [filter, setFilter] = useState<"all" | "terrace" | "residential" | "commercial" | "event" | "interior" | "plaza" | "football" | "institutional">("all");
+  const [filter, setFilter] = useState<FilterCategory>("all");
   const [selectedRender, setSelectedRender] = useState<RenderItem | null>(null);
 
   const filteredRenders = RENDERS.filter(
@@ -26,8 +28,8 @@ export function RenderGallery() {
 
   return (
     <Reveal>
-      <section className="render-gallery-section py-20 sm:py-28 md:py-36 px-6 md:px-16 lg:px-24" id="renders">
-        <div className="render-gallery-inner max-w-[var(--container)] mx-auto">
+      <section className="render-gallery-section py-20 sm:py-28 md:py-36 px-6 sm:px-10 lg:px-16 xl:px-20" id="renders">
+        <div className="render-gallery-inner w-full max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="rg-header-bar">
             <div>
@@ -58,7 +60,7 @@ export function RenderGallery() {
                 key={tab.id}
                 type="button"
                 className={`rg-filter-btn ${filter === tab.id ? "active" : ""}`}
-                onClick={() => setFilter(tab.id as any)}
+                onClick={() => setFilter(tab.id as FilterCategory)}
               >
                 {tab.label}
               </button>
