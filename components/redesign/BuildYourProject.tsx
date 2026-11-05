@@ -6,6 +6,17 @@ import { Magnetic } from "@/components/Magnetic";
 import { useCurrency } from "@/components/CurrencyContext";
 import { useCart } from "@/components/cart/CartContext";
 
+interface TypologyOption {
+  id: string;
+  name: string;
+  shortLabel: string;
+  categoryBadge: string;
+  priceNgn: number;
+  priceUsd: number;
+  summary: string;
+  deliverables: string[];
+}
+
 interface AddOn {
   id: string;
   name: string;
@@ -16,12 +27,82 @@ interface AddOn {
   desc: string;
 }
 
-const TYPOLOGIES = [
-  "Duplex / Luxury Residence",
-  "Bungalow Villa",
-  "Commercial Plaza",
-  "Church Auditorium",
-  "Estate Masterplan",
+const TYPOLOGY_OPTIONS: TypologyOption[] = [
+  {
+    id: "bungalow",
+    name: "Bungalow Villa",
+    shortLabel: "Bungalow",
+    categoryBadge: "Single Level",
+    priceNgn: 1200000,
+    priceUsd: 900,
+    summary: "Single-level residential layout, roof framing & full structural/MEP drawings.",
+    deliverables: [
+      "Working architectural floor plans & elevations",
+      "Roof truss & structural load calculations",
+      "Complete MEP & electrical distribution schematics",
+      "Photorealistic 4K exterior & interior renders",
+    ],
+  },
+  {
+    id: "duplex",
+    name: "Duplex / Luxury Residence",
+    shortLabel: "Duplex",
+    categoryBadge: "Multi-Storey",
+    priceNgn: 1500000,
+    priceUsd: 1130,
+    summary: "Multi-floor architectural sets, cantilever rebar calculations & 4K renders.",
+    deliverables: [
+      "Multi-level working drawings & sectional details",
+      "Suspended slab & cantilever structural calculations",
+      "Integrated mechanical & plumbing services layout",
+      "Photorealistic 4K day/dusk renders & interior stills",
+    ],
+  },
+  {
+    id: "commercial",
+    name: "Commercial Plaza / Office",
+    shortLabel: "Commercial Plaza",
+    categoryBadge: "High-Yield Retail",
+    priceNgn: 2500000,
+    priceUsd: 1880,
+    summary: "Multi-tenant circulation, parking layout, fire egress & municipal compliance.",
+    deliverables: [
+      "Tenant circulation, retail frontages & core layouts",
+      "Structural steel/concrete framing & heavy MEP sets",
+      "Fire safety egress, parking logistics & code review",
+      "Commercial-grade 4K exterior & retail perspective stills",
+    ],
+  },
+  {
+    id: "church",
+    name: "Church Auditorium / Civic Hall",
+    shortLabel: "Church Auditorium",
+    categoryBadge: "Clear-Span Civic",
+    priceNgn: 3500000,
+    priceUsd: 2630,
+    summary: "Large-span structural steel calculations, acoustics, gallery mezzanine & egress.",
+    deliverables: [
+      "Column-free clear span structural truss calculations",
+      "Acoustic spatial layout & line-of-sight planning",
+      "Mezzanine gallery, altar rostrum & crowd egress sets",
+      "Monumental 4K exterior perspective & sanctuary lighting renders",
+    ],
+  },
+  {
+    id: "masterplan",
+    name: "Estate Masterplan / Phased Terraces",
+    shortLabel: "Estate Masterplan",
+    categoryBadge: "Multi-Acre Site",
+    priceNgn: 4500000,
+    priceUsd: 3380,
+    summary: "Site layout, road network, drainage coordination, prototype units & 3D animation.",
+    deliverables: [
+      "Comprehensive site layout, plot partitioning & setbacks",
+      "Road networks, storm drainage & utility easement coordination",
+      "Multiple residential prototype unit elevations & working sets",
+      "High-altitude 3D drone master visualization & site overview stills",
+    ],
+  },
 ];
 
 const ADD_ONS: AddOn[] = [
@@ -32,7 +113,7 @@ const ADD_ONS: AddOn[] = [
     priceNgn: 600000,
     priceUsd: 450,
     priceFormatted: "+ ₦600K ($450)",
-    desc: "Next.js estate portal, sales landing page & fast digital presence.",
+    desc: "Estate portal, sales landing page & fast digital presence.",
   },
   {
     id: "branding",
@@ -73,15 +154,17 @@ export function BuildYourProject() {
     itemCount,
   } = useCart();
 
-  const [selectedTypology, setSelectedTypology] = useState(TYPOLOGIES[0]);
+  // Find initial typology from primary cart item or fallback to Duplex
+  const initialTypology =
+    TYPOLOGY_OPTIONS.find((t) =>
+      cartItems.some((i) => i.isPrimary && (i.typology === t.name || i.typology === t.shortLabel))
+    ) || TYPOLOGY_OPTIONS[1];
 
-  // Base Architecture Price: ₦1.5M / $1,130
-  const baseArchNgn = 1500000;
-  const baseArchUsd = 1130;
+  const [selectedTypology, setSelectedTypology] = useState<TypologyOption>(initialTypology);
 
-  const handleSelectTypology = (typ: string) => {
+  const handleSelectTypology = (typ: TypologyOption) => {
     setSelectedTypology(typ);
-    setPrimaryArchitectureTypology(typ);
+    setPrimaryArchitectureTypology(typ.name, typ.priceNgn, typ.priceUsd, typ.deliverables);
   };
 
   const handleToggleAddOn = (addon: AddOn) => {
@@ -99,22 +182,35 @@ export function BuildYourProject() {
 
   const selectedAddOns = ADD_ONS.filter((a) => isAddOnInCart(a.id));
 
-  // Calculate live total cart baseline
+  // Calculate live total cart baseline based on the selected typology's exact price
   const addOnsTotalNgn = selectedAddOns.reduce((acc, item) => acc + item.priceNgn, 0);
   const addOnsTotalUsd = selectedAddOns.reduce((acc, item) => acc + item.priceUsd, 0);
 
-  const totalNgn = baseArchNgn + addOnsTotalNgn;
-  const totalUsd = baseArchUsd + addOnsTotalUsd;
+  const totalNgn = selectedTypology.priceNgn + addOnsTotalNgn;
+  const totalUsd = selectedTypology.priceUsd + addOnsTotalUsd;
 
-  const formattedTotal =
-    currency === "USD"
-      ? `$${totalUsd.toLocaleString()}`
-      : currency === "GBP"
-        ? `£${Math.round(totalUsd * 0.75).toLocaleString()}`
-        : `₦${(totalNgn / 1000000).toFixed(1)}M (${totalNgn.toLocaleString()} NGN)`;
+  const formatPrice = (ngn: number, usd: number) => {
+    if (currency === "USD") return `$${usd.toLocaleString()}`;
+    if (currency === "GBP") return `£${Math.round(usd * 0.75).toLocaleString()}`;
+    if (ngn < 1000000) {
+      return `₦${Math.round(ngn / 1000)}K (${ngn.toLocaleString()} NGN)`;
+    }
+    return `₦${(ngn / 1000000).toFixed(1)}M (${ngn.toLocaleString()} NGN)`;
+  };
+
+  const formatCompactPrice = (ngn: number, usd: number) => {
+    if (currency === "USD") return `$${usd.toLocaleString()}`;
+    if (currency === "GBP") return `£${Math.round(usd * 0.75).toLocaleString()}`;
+    if (ngn < 1000000) {
+      return `₦${Math.round(ngn / 1000)}K ($${usd})`;
+    }
+    return `₦${(ngn / 1000000).toFixed(1)}M ($${usd.toLocaleString()})`;
+  };
+
+  const formattedTotal = formatPrice(totalNgn, totalUsd);
 
   const whatsappMessage = `Hello Elevation Studio! I tailored a project scope on your website:
-- Primary Architecture: Complete Architecture Package (${selectedTypology})
+- Primary Architecture: Complete Architecture Package (${selectedTypology.name}) — ${formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}
 - Selected Add-ons: ${selectedAddOns.length > 0 ? selectedAddOns.map((a) => a.name).join(", ") : "None (Core Architecture Only)"}
 - Estimated Baseline Investment: ${formattedTotal}
 Please let me know your consultation schedule and formal quotation.`;
@@ -141,14 +237,14 @@ Please let me know your consultation schedule and formal quotation.`;
           </Reveal>
           <Reveal direction="up" delay={0.3}>
             <p className="font-sans text-xs sm:text-sm text-white/60 font-light mt-2 max-w-lg mx-auto">
-              Architecture is your primary foundation. Select optional add-ons below to add directly to your cart.
+              Architecture is your primary foundation with distinct pricing per typology. Select optional add-ons below to add directly to your cart.
             </p>
           </Reveal>
         </div>
 
         {/* Outer Container (Hairline Border & Deep Soft Shadow) */}
         <div className="rounded-none bg-[#0a0a0f] border border-white/[0.06] p-6 sm:p-10 lg:p-12 shadow-[0_25px_80px_rgba(0,0,0,0.95)] space-y-10">
-          {/* 01. PRIMARY FOUNDATION: Architecture */}
+          {/* 01. PRIMARY FOUNDATION: Architecture with Dynamic Typology Pricing */}
           <div>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-white/[0.05]">
               <div className="flex items-center gap-2.5">
@@ -159,8 +255,11 @@ Please let me know your consultation schedule and formal quotation.`;
                   Included in Cart
                 </span>
               </div>
-              <span className="font-mono text-xs text-white/60">
-                Baseline: <strong className="text-white font-semibold">From ₦1.5M ($1,130)</strong>
+              <span className="font-mono text-xs text-white/70">
+                Selected Baseline:{" "}
+                <strong className="text-white font-semibold ml-1">
+                  {formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}
+                </strong>
               </span>
             </div>
 
@@ -171,33 +270,89 @@ Please let me know your consultation schedule and formal quotation.`;
                     Complete Architectural & Engineering Package
                   </h3>
                   <p className="font-sans text-xs sm:text-sm text-white/65 font-light mt-1">
-                    Contractor-ready working drawings, structural/MEP calculations, and 4K photorealistic 3D renders.
+                    Click each project category to check its distinct baseline price and included engineering sets:
                   </p>
                 </div>
               </div>
 
-              {/* Typology Pills */}
-              <div>
-                <span className="font-mono text-[10px] uppercase tracking-wider text-white/40 block mb-2.5">
-                  Select Project Typology:
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {TYPOLOGIES.map((typ) => {
-                    const isSelected = selectedTypology === typ;
-                    return (
-                      <button
-                        key={typ}
-                        type="button"
-                        onClick={() => handleSelectTypology(typ)}
-                        className={`px-4 py-2 rounded-full font-syne text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer ${isSelected
-                            ? "bg-white text-black font-bold shadow-md"
-                            : "bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.06] text-white/70 hover:text-white"
+              {/* Typology Interactive Selector Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
+                {TYPOLOGY_OPTIONS.map((typ) => {
+                  const isSelected = selectedTypology.id === typ.id;
+                  return (
+                    <button
+                      key={typ.id}
+                      type="button"
+                      onClick={() => handleSelectTypology(typ)}
+                      className={`p-4 rounded-none text-left transition-all duration-200 cursor-pointer flex flex-col justify-between border relative ${
+                        isSelected
+                          ? "bg-white/[0.08] border-white/40 shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
+                          : "bg-white/[0.02] hover:bg-white/[0.05] border-white/[0.06]"
+                      }`}
+                    >
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between gap-1">
+                          <span className="font-mono text-[9px] uppercase tracking-wider text-[var(--gold)] font-bold">
+                            {typ.categoryBadge}
+                          </span>
+                          <div
+                            className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold transition-all ${
+                              isSelected
+                                ? "bg-[var(--gold)] text-black"
+                                : "border border-white/20 text-transparent"
+                            }`}
+                          >
+                            ✓
+                          </div>
+                        </div>
+
+                        <h4 className="font-syne text-sm font-bold text-white leading-snug">
+                          {typ.name}
+                        </h4>
+                      </div>
+
+                      <div className="pt-3 border-t border-white/[0.05] mt-3">
+                        <span
+                          className={`font-mono text-xs font-bold block ${
+                            isSelected ? "text-[var(--gold)]" : "text-white/70"
                           }`}
-                      >
-                        {typ}
-                      </button>
-                    );
-                  })}
+                        >
+                          {formatCompactPrice(typ.priceNgn, typ.priceUsd)}
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Selected Typology Scope Breakdown Details */}
+              <div className="mt-4 p-4 rounded-none bg-black/40 border border-white/[0.05] space-y-2.5">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-white/50">
+                      Scope Selected:
+                    </span>
+                    <span className="font-syne text-xs font-bold text-white uppercase">
+                      {selectedTypology.name}
+                    </span>
+                  </div>
+                  <span className="font-mono text-xs text-[var(--gold)] font-bold">
+                    Baseline: {formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}
+                  </span>
+                </div>
+                <p className="font-sans text-xs text-white/65 font-light">
+                  {selectedTypology.summary}
+                </p>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {selectedTypology.deliverables.map((del, dIdx) => (
+                    <span
+                      key={dIdx}
+                      className="font-sans text-[11px] text-white/80 bg-white/[0.03] border border-white/[0.05] px-2.5 py-1 rounded-none leading-relaxed flex items-center gap-1.5"
+                    >
+                      <span className="text-[var(--gold)]">✓</span>
+                      <span>{del}</span>
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
@@ -226,10 +381,11 @@ Please let me know your consultation schedule and formal quotation.`;
                   <div
                     key={addon.id}
                     onClick={() => handleToggleAddOn(addon)}
-                    className={`p-5 rounded-none text-left transition-all duration-200 cursor-pointer flex flex-col justify-between border ${isAdded
+                    className={`p-5 rounded-none text-left transition-all duration-200 cursor-pointer flex flex-col justify-between border ${
+                      isAdded
                         ? "bg-white/[0.06] border-white/30 shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
                         : "bg-white/[0.02] hover:bg-white/[0.04] border-white/[0.05]"
-                      }`}
+                    }`}
                   >
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-2">
@@ -237,8 +393,9 @@ Please let me know your consultation schedule and formal quotation.`;
                           {addon.category}
                         </span>
                         <span
-                          className={`font-mono text-xs font-bold ${isAdded ? "text-[var(--gold)]" : "text-white/60"
-                            }`}
+                          className={`font-mono text-xs font-bold ${
+                            isAdded ? "text-[var(--gold)]" : "text-white/60"
+                          }`}
                         >
                           {addon.priceFormatted}
                         </span>
@@ -255,10 +412,11 @@ Please let me know your consultation schedule and formal quotation.`;
 
                     <button
                       type="button"
-                      className={`w-full py-2 px-3 rounded-full font-mono text-[10px] uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 ${isAdded
+                      className={`w-full py-2 px-3 rounded-full font-mono text-[10px] uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 ${
+                        isAdded
                           ? "bg-white text-black font-bold shadow-sm"
                           : "bg-white/[0.04] text-white/70 hover:text-white border border-white/[0.06]"
-                        }`}
+                      }`}
                     >
                       <span>{isAdded ? "✓ Added to Cart" : "+ Add to Cart"}</span>
                     </button>
@@ -282,7 +440,8 @@ Please let me know your consultation schedule and formal quotation.`;
 
               <div className="flex flex-wrap items-center gap-2 text-xs">
                 <span className="px-2.5 py-1 bg-white/[0.06] border border-white/[0.06] font-syne font-semibold text-white">
-                  ✓ Architecture: {selectedTypology}
+                  ✓ Architecture: {selectedTypology.name} (
+                  {formatCompactPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)})
                 </span>
                 {selectedAddOns.map((addon) => (
                   <span

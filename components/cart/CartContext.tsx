@@ -18,7 +18,12 @@ interface CartContextType {
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
   toggleAddOn: (item: CartItem) => void;
-  setPrimaryArchitectureTypology: (typology: string) => void;
+  setPrimaryArchitectureTypology: (
+    typology: string,
+    priceNgn?: number,
+    priceUsd?: number,
+    deliverables?: string[]
+  ) => void;
   clearCart: () => void;
   isOpen: boolean;
   openCart: () => void;
@@ -108,9 +113,23 @@ export function CartProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  const setPrimaryArchitectureTypology = (typology: string) => {
+  const setPrimaryArchitectureTypology = (
+    typology: string,
+    priceNgn?: number,
+    priceUsd?: number,
+    deliverables?: string[]
+  ) => {
     setItems((prev) => {
       const hasPrimary = prev.some((i) => i.isPrimary);
+      const updatedPriceNgn = priceNgn ?? 1500000;
+      const updatedPriceUsd = priceUsd ?? 1130;
+      const updatedDeliverables = deliverables ?? [
+        "Working drawing sets & floor plans",
+        "Licensed structural & MEP calculations",
+        "Photorealistic 4K exterior/interior renders",
+        "Municipal planning submission compliance",
+      ];
+
       if (hasPrimary) {
         return prev.map((i) =>
           i.isPrimary
@@ -118,6 +137,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
                 ...i,
                 typology,
                 title: `Complete Architectural Package — ${typology}`,
+                priceNgn: updatedPriceNgn,
+                priceUsd: updatedPriceUsd,
+                deliverables: updatedDeliverables,
               }
             : i
         );
@@ -127,6 +149,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
           ...DEFAULT_PRIMARY_ITEM,
           typology,
           title: `Complete Architectural Package — ${typology}`,
+          priceNgn: updatedPriceNgn,
+          priceUsd: updatedPriceUsd,
+          deliverables: updatedDeliverables,
         },
         ...prev,
       ];
