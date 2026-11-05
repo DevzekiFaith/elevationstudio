@@ -110,8 +110,8 @@ export function BuildYourProject() {
     currency === "USD"
       ? `$${totalUsd.toLocaleString()}`
       : currency === "GBP"
-      ? `£${Math.round(totalUsd * 0.75).toLocaleString()}`
-      : `₦${(totalNgn / 1000000).toFixed(1)}M (${totalNgn.toLocaleString()} NGN)`;
+        ? `£${Math.round(totalUsd * 0.75).toLocaleString()}`
+        : `₦${(totalNgn / 1000000).toFixed(1)}M (${totalNgn.toLocaleString()} NGN)`;
 
   const whatsappMessage = `Hello Elevation Studio! I tailored a project scope on your website:
 - Primary Architecture: Complete Architecture Package (${selectedTypology})
@@ -189,11 +189,10 @@ Please let me know your consultation schedule and formal quotation.`;
                         key={typ}
                         type="button"
                         onClick={() => handleSelectTypology(typ)}
-                        className={`px-4 py-2 rounded-full font-syne text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer ${
-                          isSelected
+                        className={`px-4 py-2 rounded-full font-syne text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer ${isSelected
                             ? "bg-white text-black font-bold shadow-md"
                             : "bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.06] text-white/70 hover:text-white"
-                        }`}
+                          }`}
                       >
                         {typ}
                       </button>
@@ -227,11 +226,10 @@ Please let me know your consultation schedule and formal quotation.`;
                   <div
                     key={addon.id}
                     onClick={() => handleToggleAddOn(addon)}
-                    className={`p-5 rounded-none text-left transition-all duration-200 cursor-pointer flex flex-col justify-between border ${
-                      isAdded
+                    className={`p-5 rounded-none text-left transition-all duration-200 cursor-pointer flex flex-col justify-between border ${isAdded
                         ? "bg-white/[0.06] border-white/30 shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
                         : "bg-white/[0.02] hover:bg-white/[0.04] border-white/[0.05]"
-                    }`}
+                      }`}
                   >
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-2">
@@ -239,9 +237,8 @@ Please let me know your consultation schedule and formal quotation.`;
                           {addon.category}
                         </span>
                         <span
-                          className={`font-mono text-xs font-bold ${
-                            isAdded ? "text-[var(--gold)]" : "text-white/60"
-                          }`}
+                          className={`font-mono text-xs font-bold ${isAdded ? "text-[var(--gold)]" : "text-white/60"
+                            }`}
                         >
                           {addon.priceFormatted}
                         </span>
@@ -258,11 +255,10 @@ Please let me know your consultation schedule and formal quotation.`;
 
                     <button
                       type="button"
-                      className={`w-full py-2 px-3 rounded-full font-mono text-[10px] uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 ${
-                        isAdded
+                      className={`w-full py-2 px-3 rounded-full font-mono text-[10px] uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 ${isAdded
                           ? "bg-white text-black font-bold shadow-sm"
                           : "bg-white/[0.04] text-white/70 hover:text-white border border-white/[0.06]"
-                      }`}
+                        }`}
                     >
                       <span>{isAdded ? "✓ Added to Cart" : "+ Add to Cart"}</span>
                     </button>
@@ -317,6 +313,9 @@ Please let me know your consultation schedule and formal quotation.`;
                 onClick={openCart}
                 className="px-6 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 font-syne font-bold text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2"
               >
+                <svg className="w-4 h-4 text-[var(--gold)]" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
                 <span>Review Cart & Invoice Details</span>
                 <span>↗</span>
               </button>

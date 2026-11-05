@@ -127,6 +127,9 @@ export function Nav() {
                 className="px-3 sm:px-3.5 py-1.5 sm:py-2 bg-white/[0.04] hover:bg-[var(--gold)] text-white hover:text-black rounded-full font-mono text-[11px] sm:text-xs tracking-wider transition-all duration-300 border border-white/10 flex items-center gap-2 cursor-pointer group shadow-sm"
                 title="Open Project Scope Cart"
               >
+                <svg className="w-3.5 h-3.5 text-[var(--gold)] group-hover:text-black transition-colors" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
                 <span className="hidden min-[400px]:inline">Cart</span>
                 <span className="w-5 h-5 rounded-full bg-[var(--gold)] group-hover:bg-black text-black group-hover:text-[var(--gold)] font-bold text-[10px] flex items-center justify-center transition-colors">
                   {itemCount}
