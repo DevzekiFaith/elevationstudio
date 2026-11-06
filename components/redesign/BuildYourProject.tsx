@@ -263,6 +263,12 @@ Please let me know your consultation schedule and formal quotation.`;
                   );
                 })}
               </div>
+
+              {/* Micro Scope Benchmark Note (Compact & Subtle) */}
+              <div className="pt-3 mt-3 border-t border-white/[0.04] flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-white/45">
+                <span>* Standard footprint (up to 4–5 beds / standard plot)</span>
+                <span className="text-[var(--gold)]/80">✦ Custom compounds quoted upon brief</span>
+              </div>
             </div>
           </div>
 

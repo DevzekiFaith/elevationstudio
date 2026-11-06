@@ -90,6 +90,9 @@ export function CompleteArchitecturalPackage() {
                           All 8 Disciplines
                         </span>
                       </div>
+                      <span className="font-mono text-[10px] text-white/45 block mt-2 tracking-wide">
+                        ✦ &lt; 1% of total build cost · Safeguards 100% of construction spend
+                      </span>
                     </div>
 
                     <div className="shrink-0 sm:border-l sm:border-white/10 sm:pl-6 pt-3 sm:pt-0 border-t border-white/10 sm:border-t-0">
