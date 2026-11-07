@@ -273,7 +273,7 @@ Please let me know your consultation schedule and formal quotation.`;
           </div>
 
           {/* 02. OPTIONAL ADD-ONS: Digital, Branding, 3D Video, Training */}
-          <div className="w-full">
+          <div className="w-full mt-10 sm:mt-14 lg:mt-16 pt-8 sm:pt-10 border-t border-white/[0.06]">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-white/[0.05]">
               <div className="flex items-center gap-2.5">
                 <span className="font-mono text-xs uppercase tracking-widest text-[var(--gold)] font-bold">
@@ -346,7 +346,7 @@ Please let me know your consultation schedule and formal quotation.`;
           </div>
 
           {/* 03. LIVE CART SUMMARY & DIRECT CLOSING BAR (Full Width & Touch-Friendly) */}
-          <div className="p-4 sm:p-6 lg:p-8 rounded-none bg-black/60 border border-white/[0.06] flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 shadow-[0_15px_40px_rgba(0,0,0,0.7)] w-full">
+          <div className="mt-8 sm:mt-12 p-4 sm:p-6 lg:p-8 rounded-none bg-black/60 border border-white/[0.06] flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 shadow-[0_15px_40px_rgba(0,0,0,0.7)] w-full">
             <div className="space-y-2 w-full lg:w-auto">
               <div className="flex items-center gap-2">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--gold)] font-bold">
