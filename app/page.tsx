@@ -51,12 +51,12 @@ export default function Home() {
       {/* 08. Verified Client Feedback */}
       <Testimonials />
 
-      {/* 09. Interactive Studio Location & Footprint Map */}
-      <section id="location" className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-gradient-to-b from-[#060608] via-[#08090e] to-[#060608] border-t border-white/[0.04] relative w-full overflow-hidden">
+      {/* 09. Interactive Studio Location & Footprint Map (Line-Free) */}
+      <section id="location" className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-gradient-to-b from-[#060608] via-[#08090e] to-[#060608] relative w-full overflow-hidden">
         {/* Subtle Ambient Studio Glow */}
         <div className="ambient-orb ambient-orb-gold w-[550px] h-[550px] -top-32 -left-20 opacity-15 pointer-events-none" />
         <div className="w-full max-w-7xl mx-auto flex flex-col items-center relative z-10">
-          <div className="w-full text-center max-w-2xl mx-auto mb-12 pb-6 border-b border-white/10">
+          <div className="w-full text-center max-w-2xl mx-auto mb-12 pb-6">
             <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-2">
               Operational Base · Physical & Remote Presence
             </span>
@@ -83,8 +83,8 @@ export default function Home() {
       {/* 10. Big Bold Final Closing Section */}
       <FinalCTASection />
 
-      {/* 11. Minimalist Studio Footer */}
-      <footer className="footer relative z-10 border-t border-white/10 bg-[#040406] text-white w-full">
+      {/* 11. Minimalist Studio Footer (Line-Free) */}
+      <footer className="footer relative z-10 bg-[#040406] text-white w-full">
         <div className="w-full max-w-7xl mx-auto px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 py-10 sm:py-14 grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10">
           {/* Brand Info (5 cols) */}
           <div className="md:col-span-5 space-y-4">

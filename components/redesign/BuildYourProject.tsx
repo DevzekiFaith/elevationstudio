@@ -186,7 +186,7 @@ Please let me know your consultation schedule and formal quotation.`
   return (
     <section
       id="build-project"
-      className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/[0.04] relative overflow-hidden w-full"
+      className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white relative overflow-hidden w-full"
     >
       {/* Subtle Ambient Lighting */}
       <div className="ambient-orb ambient-orb-gold w-[600px] h-[600px] -top-32 -left-32 opacity-15 pointer-events-none" />
@@ -195,7 +195,7 @@ Please let me know your consultation schedule and formal quotation.`
         {/* Section Header (Centered across all screen sizes) */}
         <div className="w-full max-w-2xl mx-auto mb-10 sm:mb-14 flex flex-col items-center justify-center text-center">
           <Reveal direction="down" delay={0.1} className="w-full flex justify-center text-center">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] font-mono text-[10px] uppercase tracking-widest text-white/70 font-semibold mb-3 mx-auto">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-white/[0.03] font-mono text-[10px] uppercase tracking-widest text-white/70 font-semibold mb-3 mx-auto">
               <span>✦</span> Custom Scope & Add-Ons
             </div>
           </Reveal>
@@ -211,17 +211,17 @@ Please let me know your consultation schedule and formal quotation.`
           </Reveal>
         </div>
 
-        {/* Outer Container (Fluid Luxury Architectural Shell) */}
-        <div className="rounded-2xl sm:rounded-3xl bg-[#0a0a0f]/90 border border-white/[0.08] backdrop-blur-xl p-4 sm:p-7 md:p-10 lg:p-12 shadow-[0_25px_80px_rgba(0,0,0,0.95)] w-full">
+        {/* Outer Container (Straight Corners, Seamless Line-Free Luxury Shell) */}
+        <div className="rounded-none bg-[#0a0a0f] p-4 sm:p-7 md:p-10 lg:p-12 shadow-[0_25px_80px_rgba(0,0,0,0.95)] w-full">
           {/* 01. PRIMARY FOUNDATION: Complete Architectural Design Package */}
           <div className="w-full mb-[1.5rem]">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-white/[0.05]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3">
               <div className="flex items-center gap-2.5">
                 <span className="font-mono text-xs uppercase tracking-widest text-[var(--gold)] font-bold">
                   01 · Primary Foundation
                 </span>
                 <span
-                  className={`font-mono text-[9px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full transition-colors ${
+                  className={`font-mono text-[9px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-none transition-colors ${
                     selectedTypology ? "text-black bg-[var(--gold)]" : "text-white/60 bg-white/10"
                   }`}
                 >
@@ -237,13 +237,13 @@ Please let me know your consultation schedule and formal quotation.`
                       : "Tap a typology below"}
                   </strong>
                 </span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/30 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-none bg-[var(--gold)]/10 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
                   <span>✦</span> Open to Discussion
                 </span>
               </div>
             </div>
 
-            <div className="p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/[0.05] w-full">
+            <div className="p-4 sm:p-6 lg:p-8 rounded-none bg-white/[0.02] w-full">
               <div className="mb-4 sm:mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3">
                 <h3 className="font-syne text-lg sm:text-2xl lg:text-3xl font-black uppercase text-white tracking-wide">
                   Complete Architectural Design Package
@@ -262,10 +262,10 @@ Please let me know your consultation schedule and formal quotation.`
                       key={typ.id}
                       type="button"
                       onClick={() => handleSelectTypology(typ)}
-                      className={`w-full sm:w-auto px-4 sm:px-5 py-3 sm:py-3 rounded-full font-syne text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center justify-between sm:justify-start gap-2.5 ${
+                      className={`w-full sm:w-auto px-4 sm:px-5 py-3 sm:py-3 rounded-none font-syne text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center justify-between sm:justify-start gap-2.5 ${
                         isSelected
                           ? "bg-white text-black font-black shadow-lg"
-                          : "bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.07] text-white/75 hover:text-white"
+                          : "bg-white/[0.03] hover:bg-white/[0.08] text-white/75 hover:text-white"
                       }`}
                     >
                       <span className={`text-xs font-bold ${isSelected ? "text-black" : "text-white/40"}`}>
@@ -285,7 +285,7 @@ Please let me know your consultation schedule and formal quotation.`
               </div>
 
               {/* Micro Scope Benchmark Note (Compact & Subtle) */}
-              <div className="pt-3 mt-3 border-t border-white/[0.04] flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-white/45">
+              <div className="pt-3 mt-3 flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-white/45">
                 <span>* Standard footprint (up to 4–5 beds / standard plot)</span>
                 <span className="text-[var(--gold)]/80">✦ Custom compounds quoted upon brief</span>
               </div>
@@ -293,8 +293,8 @@ Please let me know your consultation schedule and formal quotation.`
           </div>
 
           {/* 02. OPTIONAL ADD-ONS: Digital, Branding, 3D Video, Training */}
-          <div className="w-full pt-6 border-t border-white/[0.06]">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-white/[0.05]">
+          <div className="w-full pt-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3">
               <div className="flex items-center gap-2.5">
                 <span className="font-mono text-xs uppercase tracking-widest text-[var(--gold)] font-bold">
                   02 · Optional Add-Ons (Tap to Add to Cart)
@@ -320,15 +320,15 @@ Please let me know your consultation schedule and formal quotation.`
                   <div
                     key={addon.id}
                     onClick={() => handleToggleAddOn(addon)}
-                    className={`p-4 sm:p-5 rounded-xl sm:rounded-2xl text-left transition-all duration-300 cursor-pointer flex flex-col justify-between border w-full ${
+                    className={`p-4 sm:p-5 rounded-none text-left transition-all duration-300 cursor-pointer flex flex-col justify-between w-full ${
                       isAdded
-                        ? "bg-white/[0.06] border-[var(--gold)]/40 shadow-[0_10px_30px_rgba(212,168,67,0.1)]"
-                        : "bg-white/[0.02] hover:bg-white/[0.05] border-white/[0.06] hover:border-white/20"
+                        ? "bg-white/[0.08] shadow-[0_10px_30px_rgba(212,168,67,0.15)]"
+                        : "bg-white/[0.02] hover:bg-white/[0.05]"
                     }`}
                   >
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-2">
-                        <span className="font-mono text-[9px] uppercase tracking-wider text-white/50 px-2 py-0.5 bg-white/[0.04]">
+                        <span className="font-mono text-[9px] uppercase tracking-wider text-white/50 px-2 py-0.5 bg-white/[0.04] rounded-none">
                           {addon.category}
                         </span>
                         <span
@@ -351,10 +351,10 @@ Please let me know your consultation schedule and formal quotation.`
 
                     <button
                       type="button"
-                      className={`w-full py-2.5 px-3 rounded-full font-mono text-[10px] uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer ${
+                      className={`w-full py-2.5 px-3 rounded-none font-mono text-[10px] uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer ${
                         isAdded
                           ? "bg-white text-black font-bold shadow-sm"
-                          : "bg-white/[0.04] text-white/70 hover:text-white border border-white/[0.06]"
+                          : "bg-white/[0.04] text-white/70 hover:text-white"
                       }`}
                     >
                       <span>{isAdded ? "✓ Added to Cart" : "+ Add to Cart"}</span>
@@ -365,8 +365,8 @@ Please let me know your consultation schedule and formal quotation.`
             </div>
           </div>
 
-          {/* 03. LIVE CART SUMMARY & DIRECT CLOSING BAR (Fluid Rounded Bar) */}
-          <div className="mt-8 sm:mt-12 p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl bg-black/70 border border-white/[0.08] backdrop-blur-md flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 shadow-[0_15px_40px_rgba(0,0,0,0.7)] w-full">
+          {/* 03. LIVE CART SUMMARY & DIRECT CLOSING BAR (Straight Corners, Seamless Line-Free Bar) */}
+          <div className="mt-8 sm:mt-12 p-4 sm:p-6 lg:p-8 rounded-none bg-black/80 backdrop-blur-md flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 shadow-[0_15px_40px_rgba(0,0,0,0.7)] w-full">
             <div className="space-y-2 w-full lg:w-auto">
               <div className="flex items-center gap-2">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--gold)] font-bold">
@@ -379,7 +379,7 @@ Please let me know your consultation schedule and formal quotation.`
 
               <div className="flex flex-wrap items-center gap-2 text-xs">
                 {selectedTypology && (
-                  <span className="px-2.5 py-1 bg-white/[0.06] border border-white/[0.06] font-syne font-semibold text-white">
+                  <span className="px-2.5 py-1 bg-white/[0.06] rounded-none font-syne font-semibold text-white">
                     ✓ {selectedTypology.name} (
                     {formatCompactPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)})
                   </span>
@@ -387,7 +387,7 @@ Please let me know your consultation schedule and formal quotation.`
                 {selectedAddOns.map((addon) => (
                   <span
                     key={addon.id}
-                    className="px-2.5 py-1 bg-white/[0.04] border border-white/[0.06] font-syne text-[var(--gold)] font-semibold flex items-center gap-1"
+                    className="px-2.5 py-1 bg-white/[0.04] rounded-none font-syne text-[var(--gold)] font-semibold flex items-center gap-1"
                   >
                     <span>+</span> {addon.name}
                   </span>
@@ -409,7 +409,7 @@ Please let me know your consultation schedule and formal quotation.`
                 <strong className="text-white font-bold text-sm sm:text-base">
                   {totalServicesCount > 0 ? formattedTotal : "₦0 ($0)"}
                 </strong>
-                <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] tracking-wider uppercase font-semibold">
+                <span className="px-2.5 py-0.5 rounded-none bg-emerald-500/10 text-emerald-400 font-mono text-[10px] tracking-wider uppercase font-semibold">
                   Open to Discussion
                 </span>
               </div>
@@ -419,7 +419,7 @@ Please let me know your consultation schedule and formal quotation.`
               <button
                 type="button"
                 onClick={openCart}
-                className="w-full sm:w-auto px-6 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 font-syne font-bold text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-4 rounded-none bg-white/5 hover:bg-white/10 text-white font-syne font-bold text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2"
               >
                 <svg className="w-4 h-4 text-[var(--gold)]" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -433,7 +433,7 @@ Please let me know your consultation schedule and formal quotation.`
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-xs uppercase tracking-wider transition-all shadow-[0_4px_25px_rgba(16,185,129,0.35)] hover:scale-105 flex items-center justify-center gap-2 cursor-pointer inline-flex"
+                  className="w-full sm:w-auto px-8 py-4 rounded-none bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-xs uppercase tracking-wider transition-all shadow-[0_4px_25px_rgba(16,185,129,0.35)] hover:scale-105 flex items-center justify-center gap-2 cursor-pointer inline-flex"
                 >
                   <span>Claim Scope on WhatsApp</span>
                   <span>→</span>

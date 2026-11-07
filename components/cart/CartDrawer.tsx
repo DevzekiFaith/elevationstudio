@@ -170,16 +170,16 @@ Please review my detailed scope, confirm availability, and prepare the formal it
             onClick={closeCart}
           />
 
-          {/* Slide-Over Drawer Container with Wide Luxury Framing */}
+          {/* Slide-Over Drawer Container with Wide Luxury Framing (Seamless Line-Free) */}
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 32, stiffness: 320 }}
-            className="relative z-10 w-full sm:max-w-[640px] h-full bg-[#08080c] border-l border-white/[0.08] text-white flex flex-col justify-between shadow-[0_25px_100px_rgba(0,0,0,0.98)] overflow-hidden"
+            className="relative z-10 w-full sm:max-w-[640px] h-full bg-[#08080c] text-white flex flex-col justify-between shadow-[0_25px_100px_rgba(0,0,0,0.98)] overflow-hidden"
           >
             {/* 1. Header with Generous Padding */}
-            <div className="px-5 sm:px-12 py-5 sm:py-8 border-b border-white/[0.06] flex items-center justify-between bg-black/50">
+            <div className="px-5 sm:px-12 py-5 sm:py-8 flex items-center justify-between bg-black/50">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/20 flex items-center justify-center">
                   <CartBagIcon className="w-5 h-5 text-[var(--gold)]" />
@@ -247,7 +247,7 @@ Please review my detailed scope, confirm availability, and prepare the formal it
                     {items.map((item) => (
                       <div
                         key={item.id}
-                        className="p-6 sm:p-7 rounded-none bg-[#0d0e15] border border-white/[0.06] relative group hover:border-white/20 transition-all space-y-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+                        className="p-6 sm:p-7 rounded-none bg-[#0d0e15] relative group transition-all space-y-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
                       >
                         <div className="flex items-start justify-between gap-4">
                           <div className="space-y-1">

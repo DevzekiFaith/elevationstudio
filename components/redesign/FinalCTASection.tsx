@@ -12,13 +12,13 @@ export function FinalCTASection() {
     );
 
   return (
-    <section className="py-20 sm:py-28 md:py-36 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/10 text-center relative overflow-hidden flex flex-col items-center justify-center w-full">
+    <section className="py-20 sm:py-28 md:py-36 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white text-center relative overflow-hidden flex flex-col items-center justify-center w-full">
       {/* Ambient background glow */}
       <div className="ambient-orb ambient-orb-gold w-[700px] h-[700px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-25 pointer-events-none" />
 
       <div className="w-full max-w-5xl mx-auto space-y-6 sm:space-y-8 relative z-10 flex flex-col items-center text-center">
         <Reveal direction="down" delay={0.1} className="w-full flex justify-center text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-[var(--gold)]/40 text-[var(--gold)] font-mono text-xs uppercase tracking-widest font-bold mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-none bg-white/[0.04] text-[var(--gold)] font-mono text-xs uppercase tracking-widest font-bold mx-auto">
             ✦ Ready to Start?
           </div>
         </Reveal>
@@ -42,7 +42,7 @@ export function FinalCTASection() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-xs sm:text-base uppercase tracking-wider transition-all flex items-center justify-center gap-3 shadow-[0_6px_35px_rgba(16,185,129,0.45)] hover:scale-105 cursor-pointer inline-flex"
+              className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 rounded-none bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-xs sm:text-base uppercase tracking-wider transition-all flex items-center justify-center gap-3 shadow-[0_6px_35px_rgba(16,185,129,0.45)] hover:scale-105 cursor-pointer inline-flex"
             >
               <span>Chat on WhatsApp (Direct)</span>
               <span className="text-base sm:text-lg">➔</span>
@@ -52,7 +52,7 @@ export function FinalCTASection() {
           <Magnetic strength={0.2} className="w-full sm:w-auto">
             <a
               href="#build-project"
-              className="w-full sm:w-auto px-7 sm:px-9 py-4 sm:py-5 rounded-2xl bg-[var(--gold)] hover:bg-[#e0b753] text-black font-syne font-bold text-xs sm:text-base uppercase tracking-wider transition-all hover:scale-105 shadow-[0_4px_25px_rgba(212,168,67,0.35)] cursor-pointer inline-flex items-center justify-center"
+              className="w-full sm:w-auto px-7 sm:px-9 py-4 sm:py-5 rounded-none bg-[var(--gold)] hover:bg-[#e0b753] text-black font-syne font-bold text-xs sm:text-base uppercase tracking-wider transition-all hover:scale-105 shadow-[0_4px_25px_rgba(212,168,67,0.35)] cursor-pointer inline-flex items-center justify-center"
             >
               Configure Scope
             </a>

@@ -117,8 +117,8 @@ export function HeroRedesign() {
         </Reveal>
       </div>
 
-      {/* Free Full-Width Division Quick Ticker Bar */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto pt-6 sm:pt-10 mt-6 sm:mt-8 border-t border-white/10">
+      {/* Free Full-Width Division Quick Ticker Bar (Seamless Line-Free) */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto pt-6 sm:pt-10 mt-6 sm:mt-8">
         <div className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 font-mono text-[11px] sm:text-xs">
           <a href="#divisions" className="text-white/70 hover:text-[var(--gold)] transition-colors flex items-center gap-2 group py-1">
             <span className="text-[var(--gold)] font-bold group-hover:scale-110 transition-transform">01 ·</span>

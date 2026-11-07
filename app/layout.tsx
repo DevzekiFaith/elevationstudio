@@ -12,6 +12,7 @@ import { CurrencyProvider } from "@/components/CurrencyContext";
 import { HomecareSmartPopup } from "@/components/HomecareSmartPopup";
 import { CartProvider } from "@/components/cart/CartContext";
 import { CartDrawer } from "@/components/cart/CartDrawer";
+import { PageSkeleton } from "@/components/PageSkeleton";
 import { Analytics } from "@vercel/analytics/next";
 
 const bebas = Bebas_Neue({
@@ -291,6 +292,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen antialiased overflow-x-hidden" suppressHydrationWarning>
+        <PageSkeleton />
         <CurrencyProvider>
           <CartProvider>
             <ScrollProgress />

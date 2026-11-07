@@ -46,14 +46,14 @@ export function CompleteArchitecturalPackage() {
       <div className="ambient-orb ambient-orb-gold w-[600px] h-[600px] -top-32 -right-32 opacity-20 pointer-events-none" />
 
       <div className="w-full max-w-7xl mx-auto relative z-10">
-        {/* Flagship Hero Card with 3D Physics */}
+        {/* Flagship Hero Card with 3D Physics (Straight Corners, Seamless Line-Free Luxury Shell) */}
         <TiltCard maxTilt={4} glare className="w-full">
-          <div className="rounded-2xl sm:rounded-3xl bg-[#0c0d14]/90 border border-white/[0.08] hover:border-white/20 backdrop-blur-xl transition-all duration-300 p-4 sm:p-8 md:p-12 lg:p-16 shadow-[0_25px_80px_rgba(0,0,0,0.95)] overflow-hidden w-full">
+          <div className="rounded-none bg-[#0c0d14] transition-all duration-300 p-4 sm:p-8 md:p-12 lg:p-16 shadow-[0_25px_80px_rgba(0,0,0,0.95)] overflow-hidden w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
               {/* Left Column: Bold Offer */}
               <div className="lg:col-span-7 space-y-6 sm:space-y-7">
                 <Reveal direction="down" delay={0.1}>
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-white/80 font-mono text-xs uppercase tracking-widest font-semibold">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-white/[0.04] text-white/80 font-mono text-xs uppercase tracking-widest font-semibold">
                     <span>✦</span> Flagship Package · Division 01
                   </div>
                 </Reveal>
@@ -72,9 +72,9 @@ export function CompleteArchitecturalPackage() {
                   </p>
                 </Reveal>
 
-                {/* Bold Starting Price Card */}
+                {/* Bold Starting Price Card (Straight, Line-Free) */}
                 <Reveal direction="up" delay={0.3}>
-                  <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-black/70 border border-white/[0.08] backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-5 shadow-[0_15px_40px_rgba(0,0,0,0.7)] w-full">
+                  <div className="p-4 sm:p-6 rounded-none bg-black/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-5 shadow-[0_15px_40px_rgba(0,0,0,0.7)] w-full">
                     <div>
                       <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block font-bold mb-1">
                         Starting Baseline ({currency})
@@ -83,7 +83,7 @@ export function CompleteArchitecturalPackage() {
                         <span className="font-syne text-3xl sm:text-5xl font-black text-[var(--gold)] tracking-tight">
                           {archPrice}
                         </span>
-                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/25 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-none bg-[var(--gold)]/10 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
                           ✦ Open to Discussion
                         </span>
                         <span className="font-mono text-xs text-white/70 uppercase">
@@ -95,20 +95,20 @@ export function CompleteArchitecturalPackage() {
                       </span>
                     </div>
 
-                    <div className="shrink-0 sm:border-l sm:border-white/10 sm:pl-6 pt-3 sm:pt-0 border-t border-white/10 sm:border-t-0">
+                    <div className="shrink-0 pt-3 sm:pt-0">
                       <div className="text-[10px] font-mono text-white/40 uppercase mb-1.5">Currency:</div>
                       <CurrencyToggle />
                     </div>
                   </div>
                 </Reveal>
 
-                {/* Core Deliverable Pillars (Bolder, fewer words) */}
+                {/* Core Deliverable Pillars (Straight, Line-Free) */}
                 <Reveal direction="up" delay={0.35}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-1 w-full">
                     {CORE_DELIVERABLES.map((item) => (
                       <div
                         key={item.title}
-                        className="p-3.5 sm:p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition-colors"
+                        className="p-3.5 sm:p-4 rounded-none bg-white/[0.02] hover:bg-white/[0.05] transition-colors"
                       >
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-emerald-400 font-bold text-sm">✓</span>
@@ -131,7 +131,7 @@ export function CompleteArchitecturalPackage() {
                       href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full sm:w-auto px-8 sm:px-9 py-4 sm:py-4.5 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-xs sm:text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-[0_6px_30px_rgba(16,185,129,0.35)] hover:scale-105 cursor-pointer inline-flex"
+                      className="w-full sm:w-auto px-8 sm:px-9 py-4 sm:py-4.5 rounded-none bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-xs sm:text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-[0_6px_30px_rgba(16,185,129,0.35)] hover:scale-105 cursor-pointer inline-flex"
                     >
                       <span>Claim Package on WhatsApp</span>
                       <span>→</span>
@@ -141,7 +141,7 @@ export function CompleteArchitecturalPackage() {
                   <Magnetic strength={0.15} className="w-full sm:w-auto">
                     <a
                       href="#build-project"
-                      className="w-full sm:w-auto px-6 sm:px-7 py-4 sm:py-4.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.1] border border-white/10 text-white font-syne font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer inline-flex items-center justify-center"
+                      className="w-full sm:w-auto px-6 sm:px-7 py-4 sm:py-4.5 rounded-none bg-white/[0.04] hover:bg-white/[0.1] text-white font-syne font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer inline-flex items-center justify-center"
                     >
                       Configure Scope
                     </a>
@@ -149,9 +149,9 @@ export function CompleteArchitecturalPackage() {
                 </Reveal>
               </div>
 
-              {/* Right Column: Visual Preview */}
+              {/* Right Column: Visual Preview (Straight, Line-Free) */}
               <div className="lg:col-span-5">
-                <div className="relative h-80 sm:h-[480px] rounded-xl sm:rounded-2xl overflow-hidden border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.85)] group">
+                <div className="relative h-80 sm:h-[480px] rounded-none overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.85)] group">
                   <Image
                     src="/renders/modern_5bed_bungalow_day.jpg"
                     alt="Complete Architecture Package"

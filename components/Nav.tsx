@@ -51,11 +51,11 @@ export function Nav() {
             w-full pointer-events-auto
             grid grid-cols-[auto_1fr_auto] items-center
             px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-3.5
-            rounded-[4px] transition-all duration-500 border
+            rounded-none transition-all duration-500
             ${
               scrolled || mobileMenuOpen
-                ? "bg-[#09090d]/95 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] border-white/10"
-                : "bg-[#060608]/80 backdrop-blur-md shadow-lg border-white/5"
+                ? "bg-[#09090d]/95 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.85)]"
+                : "bg-[#060608]/80 backdrop-blur-md shadow-lg"
             }
           `}
         >
@@ -74,7 +74,7 @@ export function Nav() {
           {/* Navigation Links with sliding background highlight */}
           <div className="hidden lg:flex items-center justify-center">
             <ul 
-              className="relative flex items-center gap-1 p-1 bg-white/[0.03] rounded-[4px] border border-white/5"
+              className="relative flex items-center gap-1 p-1 bg-white/[0.03] rounded-none"
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {navItems.map((item, idx) => (
@@ -95,7 +95,7 @@ export function Nav() {
                     {hoveredIndex === idx && (
                       <motion.span
                         layoutId="nav-hover-pill"
-                        className="absolute inset-0 bg-white/5 border border-white/10 rounded-[3px] z-0"
+                        className="absolute inset-0 bg-white/5 rounded-none z-0"
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
@@ -124,14 +124,14 @@ export function Nav() {
               <button
                 type="button"
                 onClick={openCart}
-                className="px-3 sm:px-3.5 py-1.5 sm:py-2 bg-white/[0.04] hover:bg-[var(--gold)] text-white hover:text-black rounded-full font-mono text-[11px] sm:text-xs tracking-wider transition-all duration-300 border border-white/10 flex items-center gap-2 cursor-pointer group shadow-sm"
+                className="px-3 sm:px-3.5 py-1.5 sm:py-2 bg-white/[0.04] hover:bg-[var(--gold)] text-white hover:text-black rounded-none font-mono text-[11px] sm:text-xs tracking-wider transition-all duration-300 flex items-center gap-2 cursor-pointer group shadow-sm"
                 title="Open Project Scope Cart"
               >
                 <svg className="w-3.5 h-3.5 text-[var(--gold)] group-hover:text-black transition-colors" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
                 <span className="hidden min-[400px]:inline">Cart</span>
-                <span className="w-5 h-5 rounded-full bg-[var(--gold)] group-hover:bg-black text-black group-hover:text-[var(--gold)] font-bold text-[10px] flex items-center justify-center transition-colors">
+                <span className="w-5 h-5 rounded-none bg-[var(--gold)] group-hover:bg-black text-black group-hover:text-[var(--gold)] font-bold text-[10px] flex items-center justify-center transition-colors">
                   {itemCount}
                 </span>
               </button>
@@ -143,7 +143,7 @@ export function Nav() {
                 <button
                   type="button"
                   onClick={() => setReviewModalOpen(true)}
-                  className="px-4 py-2 bg-white/5 hover:bg-[var(--gold)]/10 text-white hover:text-[var(--gold)] rounded-full font-mono text-[11px] xl:text-xs tracking-wider transition-all duration-300 border border-white/10"
+                  className="px-4 py-2 bg-white/5 hover:bg-[var(--gold)]/10 text-white hover:text-[var(--gold)] rounded-none font-mono text-[11px] xl:text-xs tracking-wider transition-all duration-300"
                   title="Submit a verified client review"
                 >
                   Review Us
@@ -153,7 +153,7 @@ export function Nav() {
               <Magnetic strength={0.2}>
                 <a
                   href="#build-project"
-                  className="px-5 py-2.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-[11px] xl:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-md shadow-[var(--gold)]/10 hover:scale-[1.02]"
+                  className="px-5 py-2.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-[11px] xl:text-xs font-bold uppercase tracking-wider rounded-none transition-all duration-300 shadow-md shadow-[var(--gold)]/10 hover:scale-[1.02]"
                 >
                   Build Scope →
                 </a>

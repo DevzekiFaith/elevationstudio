@@ -303,7 +303,7 @@ export function Testimonials() {
   return (
     <Reveal direction="up" duration={0.7} className="w-full">
       <section
-        className="testimonials-section relative py-16 sm:py-24 md:py-32 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 border-t border-b border-[#232630] bg-[#070709] overflow-hidden w-full"
+        className="testimonials-section relative py-16 sm:py-24 md:py-32 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#070709] overflow-hidden w-full"
         id="testimonials"
       >
         {/* Subtle Ambient Golden Glow */}
@@ -311,8 +311,8 @@ export function Testimonials() {
 
         <div className="testimonials-inner w-full max-w-7xl mx-auto relative z-10">
           
-          {/* Top Bar Header & Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 sm:mb-14 pb-4 sm:pb-6 border-b border-[#1f222e]">
+          {/* Top Bar Header & Action Buttons (Line-Free) */}
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 sm:mb-14 pb-4 sm:pb-6">
             <div className="flex items-center gap-3">
               <span className="font-mono text-[11px] sm:text-xs tracking-[2.5px] sm:tracking-[3px] text-[var(--gold)] uppercase font-semibold flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[var(--gold)] animate-pulse" />
@@ -421,7 +421,7 @@ export function Testimonials() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.4 }}
-                  className="relative w-full min-h-[340px] sm:min-h-[380px] md:min-h-[420px] aspect-[4/4.6] sm:aspect-[16/11] md:aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#0f1118] group"
+                  className="relative w-full min-h-[340px] sm:min-h-[380px] md:min-h-[420px] aspect-[4/4.6] sm:aspect-[16/11] md:aspect-[16/10] rounded-none overflow-hidden shadow-2xl bg-[#0f1118] group"
                 >
                   {/* Background Client Photo */}
                   <Image

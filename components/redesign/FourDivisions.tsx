@@ -52,8 +52,8 @@ export function FourDivisions() {
   return (
     <section id="divisions" className="py-16 sm:py-24 md:py-32 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white w-full">
       <div className="w-full max-w-7xl mx-auto">
-        {/* Header with Big Bold Text */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 pb-6 sm:pb-8 border-b border-white/10 w-full">
+        {/* Header with Big Bold Text (Seamless Line-Free) */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 pb-6 sm:pb-8 w-full">
           <div>
             <Reveal direction="down" delay={0.1}>
               <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-3">
@@ -74,12 +74,12 @@ export function FourDivisions() {
           </Reveal>
         </div>
 
-        {/* 4 Clean Visual Cards Grid with 3D Tilt & Glare Animations */}
+        {/* 4 Clean Visual Cards Grid with 3D Tilt & Glare Animations (Straight Corners, Line-Free) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-7 w-full">
           {DIVISIONS.map((div, idx) => (
             <Reveal key={div.num} direction="up" delay={0.1 * idx}>
               <TiltCard maxTilt={8} glare className="h-full">
-                <div className="rounded-2xl bg-[#0b0c12]/90 border border-white/10 hover:border-[var(--gold)]/60 transition-all overflow-hidden flex flex-col justify-between group shadow-xl h-full glow-card-border backdrop-blur-md">
+                <div className="rounded-none bg-[#0b0c12] overflow-hidden flex flex-col justify-between group shadow-xl h-full">
                   {/* Image Preview */}
                   <div className="relative h-60 w-full overflow-hidden bg-black">
                     <Image
@@ -92,11 +92,11 @@ export function FourDivisions() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c12] via-transparent to-transparent opacity-90" />
                     
                     <div className="absolute top-4 left-4 flex items-center gap-2">
-                      <span className="font-mono text-[10px] text-black bg-[var(--gold)] font-bold px-2.5 py-1 rounded-md shadow-md">
+                      <span className="font-mono text-[10px] text-black bg-[var(--gold)] font-bold px-2.5 py-1 rounded-none shadow-md">
                         DIV {div.num}
                       </span>
                       {div.flagship && (
-                        <span className="font-mono text-[9px] uppercase tracking-wider text-black bg-white font-black px-2 py-1 rounded-md shadow-md">
+                        <span className="font-mono text-[9px] uppercase tracking-wider text-black bg-white font-black px-2 py-1 rounded-none shadow-md">
                           FLAGSHIP
                         </span>
                       )}
@@ -114,14 +114,14 @@ export function FourDivisions() {
                       </span>
                     </div>
 
-                    <div className="pt-2 border-t border-white/5 flex items-center justify-between font-mono text-[11px]">
+                    <div className="pt-2 flex items-center justify-between font-mono text-[11px]">
                       <span className="text-white/45 uppercase">Baseline Fee:</span>
                       <span className="text-[var(--gold)] font-bold">{div.price}</span>
                     </div>
 
                     <a
                       href={div.ctaHref}
-                      className="w-full py-3.5 px-4 rounded-xl bg-white/[0.04] hover:bg-[var(--gold)] text-white hover:text-black border border-white/10 hover:border-[var(--gold)] font-syne font-bold text-xs uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md group-hover:shadow-[0_4px_20px_rgba(212,168,67,0.3)]"
+                      className="w-full py-3.5 px-4 rounded-none bg-white/[0.04] hover:bg-[var(--gold)] text-white hover:text-black font-syne font-bold text-xs uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md group-hover:shadow-[0_4px_20px_rgba(212,168,67,0.3)]"
                     >
                       <span>{div.ctaText}</span>
                       <span>→</span>

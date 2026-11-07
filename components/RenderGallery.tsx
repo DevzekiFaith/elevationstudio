@@ -66,7 +66,7 @@ export function RenderGallery() {
             </p>
           </div>
 
-          {/* Clean, Streamlined Category Filter Controls */}
+          {/* Clean, Streamlined Category Filter Controls (Straight Corners, Line-Free) */}
           <div className="flex flex-wrap gap-2.5 sm:gap-3 mb-10 sm:mb-12">
             {FILTER_TABS.map((tab) => {
               const isActive = filter === tab.id;
@@ -74,10 +74,10 @@ export function RenderGallery() {
                 <button
                   key={tab.id}
                   type="button"
-                  className={`px-5 py-2.5 rounded-full font-mono text-[11px] tracking-wider uppercase transition-all duration-300 cursor-pointer ${
+                  className={`px-5 py-2.5 rounded-none font-mono text-[11px] tracking-wider uppercase transition-all duration-300 cursor-pointer ${
                     isActive
                       ? "bg-white text-black font-bold shadow-[0_4px_20px_rgba(255,255,255,0.2)]"
-                      : "bg-[#0e0e12] text-white/70 hover:text-white border border-white/[0.08] hover:border-white/20 hover:bg-white/[0.04]"
+                      : "bg-[#0e0e12] text-white/70 hover:text-white hover:bg-white/[0.06]"
                   }`}
                   onClick={() => setFilter(tab.id)}
                 >
@@ -109,7 +109,7 @@ export function RenderGallery() {
               {filteredRenders.map((render) => (
                 <SwiperSlide key={render.id} className="h-auto">
                   <TiltCard glare maxTilt={6} className="h-full">
-                    <div className="group rounded-none bg-[#0a0a0e] border border-white/[0.08] hover:border-white/20 transition-all duration-300 h-full flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.85)] hover:shadow-[0_30px_80px_rgba(0,0,0,0.98)]">
+                    <div className="group rounded-none bg-[#0a0a0e] transition-all duration-300 h-full flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.85)] hover:shadow-[0_30px_80px_rgba(0,0,0,0.98)]">
                       <div
                         onClick={() => setSelectedRender(render)}
                         className="cursor-pointer flex-1 flex flex-col"
@@ -125,7 +125,7 @@ export function RenderGallery() {
                             priority={render.id === "0" || render.id === "1"}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0e] via-transparent to-transparent opacity-80" />
-                          <div className="absolute top-4 left-4 rounded-none bg-black/85 backdrop-blur-md border border-white/10 px-3 py-1 font-mono text-[9px] tracking-widest text-white/90 uppercase">
+                          <div className="absolute top-4 left-4 rounded-none bg-black/85 backdrop-blur-md px-3 py-1 font-mono text-[9px] tracking-widest text-white/90 uppercase">
                             {render.categoryLabel}
                           </div>
                         </div>
@@ -147,7 +147,7 @@ export function RenderGallery() {
                       <div className="p-5 pt-0 mt-auto">
                         <Link
                           href={`/renders/${render.id}`}
-                          className="w-full py-3 px-5 rounded-full bg-white/[0.04] hover:bg-white text-white hover:text-black border border-white/[0.08] hover:border-transparent font-syne font-bold text-xs tracking-wider text-center transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                          className="w-full py-3 px-5 rounded-none bg-white/[0.04] hover:bg-white text-white hover:text-black font-syne font-bold text-xs tracking-wider text-center transition-all duration-300 flex items-center justify-center gap-2 group/btn"
                         >
                           <span>EXPLORE 3D CONCEPT</span>
                           <span className="transition-transform group-hover/btn:translate-x-1">→</span>
