@@ -34,7 +34,7 @@ export function ProfessionalPartnerships() {
   return (
     <section id="partnerships" className="relative py-16 sm:py-24 md:py-32 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/5 w-full">
       <div className="w-full max-w-7xl mx-auto">
-        <div className="relative rounded-none overflow-hidden bg-gradient-to-br from-[#0c0d14] via-[#08090e] to-[#040406] border border-white/[0.08] p-4 sm:p-8 md:p-14 lg:p-16 shadow-[0_25px_80px_rgba(0,0,0,0.95)] w-full">
+        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-[#0c0d14]/90 via-[#08090e]/95 to-[#040406] border border-white/[0.08] backdrop-blur-xl p-4 sm:p-8 md:p-14 lg:p-16 shadow-[0_25px_80px_rgba(0,0,0,0.95)] w-full">
           {/* Subtle Ambient Glow */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--gold)]/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -65,7 +65,7 @@ export function ProfessionalPartnerships() {
                 {capabilities.map((c, idx) => (
                   <Reveal key={c.title} direction="up" delay={0.35 + idx * 0.1}>
                     <TiltCard maxTilt={6} glare className="h-full">
-                      <div className="p-5 rounded-none bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 transition-all duration-300 h-full flex flex-col justify-between shadow-[0_10px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
+                      <div className="p-5 rounded-xl sm:rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 transition-all duration-300 h-full flex flex-col justify-between shadow-[0_10px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
                         <div>
                           <span className="text-2xl mb-2.5 block">{c.icon}</span>
                           <h4 className="font-syne text-xs font-bold uppercase text-white mb-1.5 tracking-wide">
@@ -110,7 +110,7 @@ export function ProfessionalPartnerships() {
             <div className="lg:col-span-5">
               <Reveal direction="left" delay={0.3}>
                 <TiltCard maxTilt={6} glare className="w-full">
-                  <div className="relative h-80 sm:h-96 rounded-none overflow-hidden border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
+                  <div className="relative h-80 sm:h-96 rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
                     <Image
                       src="/renders/luxury_terrace_duplex_estate.jpg"
                       alt="B2B Developer Partnership Estate Rendering"
@@ -119,7 +119,7 @@ export function ProfessionalPartnerships() {
                       sizes="(max-width: 1024px) 100vw, 40vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-                    <div className="absolute bottom-5 left-5 right-5 font-mono text-xs text-white/90 bg-black/80 backdrop-blur-md p-3.5 rounded-none border border-white/10 shadow-lg">
+                    <div className="absolute bottom-5 left-5 right-5 font-mono text-xs text-white/90 bg-black/80 backdrop-blur-md p-3.5 rounded-xl border border-white/10 shadow-lg">
                       <span className="text-[var(--gold)] font-bold">Proven Case:</span> Multi-unit terrace estate rendered for off-plan investor presales.
                     </div>
                   </div>

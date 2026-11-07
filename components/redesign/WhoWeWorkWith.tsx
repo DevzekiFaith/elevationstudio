@@ -20,9 +20,12 @@ export function WhoWeWorkWith() {
   return (
     <section
       id="solutions"
-      className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#07070a] text-white border-t border-white/5 w-full"
+      className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#07070a] text-white border-t border-white/[0.04] relative overflow-hidden w-full"
     >
-      <div className="w-full max-w-7xl mx-auto">
+      {/* Subtle ambient lighting */}
+      <div className="ambient-orb ambient-orb-bridge w-[500px] h-[500px] -top-24 -right-24 opacity-15 pointer-events-none" />
+
+      <div className="w-full max-w-7xl mx-auto relative z-10">
         {/* Minimal Section Header (Centered across all screen sizes) */}
         <div className="w-full max-w-xl mx-auto mb-10 sm:mb-14 flex flex-col items-center justify-center text-center">
           <Reveal direction="down" delay={0.1} className="w-full flex justify-center text-center">
@@ -42,10 +45,10 @@ export function WhoWeWorkWith() {
           {/* Card 1: B2C */}
           <Reveal direction="up" delay={0.2}>
             <TiltCard maxTilt={5} glare className="h-full w-full">
-              <div className="p-5 sm:p-8 md:p-10 rounded-none bg-[#0c0d12] border border-white/[0.08] hover:border-white/20 transition-all duration-300 h-full flex flex-col justify-between shadow-[0_20px_60px_rgba(0,0,0,0.85)] hover:shadow-[0_25px_80px_rgba(0,0,0,0.98)] group w-full">
+              <div className="p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-[#0c0d12]/90 border border-white/[0.08] hover:border-white/20 backdrop-blur-xl transition-all duration-300 h-full flex flex-col justify-between shadow-[0_20px_60px_rgba(0,0,0,0.85)] hover:shadow-[0_25px_80px_rgba(0,0,0,0.98)] group w-full">
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-5 pb-3 border-b border-white/[0.06]">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-white/70 font-bold px-2 py-0.5 bg-white/[0.06]">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-white/70 font-bold px-2.5 py-0.5 bg-white/[0.06] rounded-full">
                       B2C · Private & Diaspora
                     </span>
                     <span className="font-mono text-xs text-[var(--gold)] font-bold">
@@ -80,10 +83,10 @@ export function WhoWeWorkWith() {
           {/* Card 2: B2B */}
           <Reveal direction="up" delay={0.3}>
             <TiltCard maxTilt={5} glare className="h-full w-full">
-              <div className="p-5 sm:p-8 md:p-10 rounded-none bg-[#0c0d12] border border-white/[0.08] hover:border-white/20 transition-all duration-300 h-full flex flex-col justify-between shadow-[0_20px_60px_rgba(0,0,0,0.85)] hover:shadow-[0_25px_80px_rgba(0,0,0,0.98)] group w-full">
+              <div className="p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-[#0c0d12]/90 border border-white/[0.08] hover:border-white/20 backdrop-blur-xl transition-all duration-300 h-full flex flex-col justify-between shadow-[0_20px_60px_rgba(0,0,0,0.85)] hover:shadow-[0_25px_80px_rgba(0,0,0,0.98)] group w-full">
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-5 pb-3 border-b border-white/[0.06]">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--gold)] font-bold px-2 py-0.5 bg-[var(--gold)]/10">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--gold)] font-bold px-2.5 py-0.5 bg-[var(--gold)]/10 rounded-full">
                       B2B · Developers & Studios
                     </span>
                     <span className="font-mono text-xs text-white/70 font-bold">

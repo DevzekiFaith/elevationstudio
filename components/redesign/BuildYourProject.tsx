@@ -175,9 +175,12 @@ Please let me know your consultation schedule and formal quotation.`;
   return (
     <section
       id="build-project"
-      className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/[0.04] relative w-full"
+      className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/[0.04] relative overflow-hidden w-full"
     >
-      <div className="w-full max-w-7xl mx-auto">
+      {/* Subtle Ambient Lighting */}
+      <div className="ambient-orb ambient-orb-gold w-[600px] h-[600px] -top-32 -left-32 opacity-15 pointer-events-none" />
+
+      <div className="w-full max-w-7xl mx-auto relative z-10">
         {/* Section Header (Centered across all screen sizes) */}
         <div className="w-full max-w-2xl mx-auto mb-10 sm:mb-14 flex flex-col items-center justify-center text-center">
           <Reveal direction="down" delay={0.1} className="w-full flex justify-center text-center">
@@ -197,8 +200,8 @@ Please let me know your consultation schedule and formal quotation.`;
           </Reveal>
         </div>
 
-        {/* Outer Container (Full Width Responsive Edge-to-Edge on Mobile) */}
-        <div className="rounded-none bg-[#0a0a0f] border border-white/[0.06] p-4 sm:p-7 md:p-10 lg:p-12 shadow-[0_25px_80px_rgba(0,0,0,0.95)] w-full">
+        {/* Outer Container (Fluid Luxury Architectural Shell) */}
+        <div className="rounded-2xl sm:rounded-3xl bg-[#0a0a0f]/90 border border-white/[0.08] backdrop-blur-xl p-4 sm:p-7 md:p-10 lg:p-12 shadow-[0_25px_80px_rgba(0,0,0,0.95)] w-full">
           {/* 01. PRIMARY FOUNDATION: Complete Architectural Design Package */}
           <div className="w-full mb-[1.5rem]">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-white/[0.05]">
@@ -223,7 +226,7 @@ Please let me know your consultation schedule and formal quotation.`;
               </div>
             </div>
 
-            <div className="p-4 sm:p-6 lg:p-8 rounded-none bg-white/[0.02] border border-white/[0.05] w-full">
+            <div className="p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/[0.05] w-full">
               <div className="mb-4 sm:mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3">
                 <h3 className="font-syne text-lg sm:text-2xl lg:text-3xl font-black uppercase text-white tracking-wide">
                   Complete Architectural Design Package
@@ -300,10 +303,10 @@ Please let me know your consultation schedule and formal quotation.`;
                   <div
                     key={addon.id}
                     onClick={() => handleToggleAddOn(addon)}
-                    className={`p-4 sm:p-5 rounded-none text-left transition-all duration-200 cursor-pointer flex flex-col justify-between border w-full ${
+                    className={`p-4 sm:p-5 rounded-xl sm:rounded-2xl text-left transition-all duration-300 cursor-pointer flex flex-col justify-between border w-full ${
                       isAdded
-                        ? "bg-white/[0.06] border-white/30 shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
-                        : "bg-white/[0.02] hover:bg-white/[0.04] border-white/[0.05]"
+                        ? "bg-white/[0.06] border-[var(--gold)]/40 shadow-[0_10px_30px_rgba(212,168,67,0.1)]"
+                        : "bg-white/[0.02] hover:bg-white/[0.05] border-white/[0.06] hover:border-white/20"
                     }`}
                   >
                     <div>
@@ -345,8 +348,8 @@ Please let me know your consultation schedule and formal quotation.`;
             </div>
           </div>
 
-          {/* 03. LIVE CART SUMMARY & DIRECT CLOSING BAR (Full Width & Touch-Friendly) */}
-          <div className="mt-8 sm:mt-12 p-4 sm:p-6 lg:p-8 rounded-none bg-black/60 border border-white/[0.06] flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 shadow-[0_15px_40px_rgba(0,0,0,0.7)] w-full">
+          {/* 03. LIVE CART SUMMARY & DIRECT CLOSING BAR (Fluid Rounded Bar) */}
+          <div className="mt-8 sm:mt-12 p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl bg-black/70 border border-white/[0.08] backdrop-blur-md flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 shadow-[0_15px_40px_rgba(0,0,0,0.7)] w-full">
             <div className="space-y-2 w-full lg:w-auto">
               <div className="flex items-center gap-2">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--gold)] font-bold">

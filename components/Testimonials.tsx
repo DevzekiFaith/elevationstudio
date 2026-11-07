@@ -421,7 +421,7 @@ export function Testimonials() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.4 }}
-                  className="relative w-full min-h-[340px] sm:min-h-[380px] md:min-h-[420px] aspect-[4/4.6] sm:aspect-[16/11] md:aspect-[16/10] rounded-none overflow-hidden border border-white/15 shadow-2xl bg-[#0f1118] group"
+                  className="relative w-full min-h-[340px] sm:min-h-[380px] md:min-h-[420px] aspect-[4/4.6] sm:aspect-[16/11] md:aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#0f1118] group"
                 >
                   {/* Background Client Photo */}
                   <Image

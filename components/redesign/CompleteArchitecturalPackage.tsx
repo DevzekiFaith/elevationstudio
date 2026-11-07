@@ -48,7 +48,7 @@ export function CompleteArchitecturalPackage() {
       <div className="w-full max-w-7xl mx-auto relative z-10">
         {/* Flagship Hero Card with 3D Physics */}
         <TiltCard maxTilt={4} glare className="w-full">
-          <div className="rounded-none bg-[#0c0d14] border border-white/[0.08] hover:border-white/20 transition-all duration-300 p-4 sm:p-8 md:p-12 lg:p-16 shadow-[0_25px_80px_rgba(0,0,0,0.95)] overflow-hidden w-full">
+          <div className="rounded-2xl sm:rounded-3xl bg-[#0c0d14]/90 border border-white/[0.08] hover:border-white/20 backdrop-blur-xl transition-all duration-300 p-4 sm:p-8 md:p-12 lg:p-16 shadow-[0_25px_80px_rgba(0,0,0,0.95)] overflow-hidden w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
               {/* Left Column: Bold Offer */}
               <div className="lg:col-span-7 space-y-6 sm:space-y-7">
@@ -74,7 +74,7 @@ export function CompleteArchitecturalPackage() {
 
                 {/* Bold Starting Price Card */}
                 <Reveal direction="up" delay={0.3}>
-                  <div className="p-4 sm:p-6 rounded-none bg-black/60 border border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-5 shadow-[0_15px_40px_rgba(0,0,0,0.7)] w-full">
+                  <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-black/70 border border-white/[0.08] backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-5 shadow-[0_15px_40px_rgba(0,0,0,0.7)] w-full">
                     <div>
                       <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block font-bold mb-1">
                         Starting Baseline ({currency})
@@ -108,7 +108,7 @@ export function CompleteArchitecturalPackage() {
                     {CORE_DELIVERABLES.map((item) => (
                       <div
                         key={item.title}
-                        className="p-3.5 sm:p-4 rounded-none bg-white/[0.02] border border-white/5 hover:border-white/15 transition-colors"
+                        className="p-3.5 sm:p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition-colors"
                       >
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-emerald-400 font-bold text-sm">✓</span>
@@ -151,7 +151,7 @@ export function CompleteArchitecturalPackage() {
 
               {/* Right Column: Visual Preview */}
               <div className="lg:col-span-5">
-                <div className="relative h-80 sm:h-[480px] rounded-none overflow-hidden border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.85)] group">
+                <div className="relative h-80 sm:h-[480px] rounded-xl sm:rounded-2xl overflow-hidden border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.85)] group">
                   <Image
                     src="/renders/modern_5bed_bungalow_day.jpg"
                     alt="Complete Architecture Package"

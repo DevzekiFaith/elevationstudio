@@ -16,7 +16,14 @@ import { LocationMap } from "@/components/LocationMap";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full bg-[#060608] text-[#f4f0e8] relative selection:bg-[var(--gold)] selection:text-black">
+    <div className="min-h-screen w-full bg-[#060608] text-[#f4f0e8] relative selection:bg-[var(--gold)] selection:text-black overflow-x-hidden">
+      {/* Global Atmospheric Ambient Backdrops for Fluid Depth */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="ambient-orb ambient-orb-gold w-[700px] h-[700px] top-[15%] -right-40 opacity-[0.07]" />
+        <div className="ambient-orb ambient-orb-bridge w-[650px] h-[650px] top-[45%] -left-36 opacity-[0.05]" />
+        <div className="ambient-orb ambient-orb-gold w-[800px] h-[800px] top-[75%] right-10 opacity-[0.06]" />
+      </div>
+
       {/* Global Navigation Header */}
       <Nav />
 
@@ -45,8 +52,10 @@ export default function Home() {
       <Testimonials />
 
       {/* 09. Interactive Studio Location & Footprint Map */}
-      <section id="location" className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#08090e] border-t border-white/5 relative w-full">
-        <div className="w-full max-w-7xl mx-auto flex flex-col items-center">
+      <section id="location" className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-gradient-to-b from-[#060608] via-[#08090e] to-[#060608] border-t border-white/[0.04] relative w-full overflow-hidden">
+        {/* Subtle Ambient Studio Glow */}
+        <div className="ambient-orb ambient-orb-gold w-[550px] h-[550px] -top-32 -left-20 opacity-15 pointer-events-none" />
+        <div className="w-full max-w-7xl mx-auto flex flex-col items-center relative z-10">
           <div className="w-full text-center max-w-2xl mx-auto mb-12 pb-6 border-b border-white/10">
             <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-2">
               Operational Base · Physical & Remote Presence
