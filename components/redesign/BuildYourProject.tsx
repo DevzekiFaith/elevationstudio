@@ -178,20 +178,20 @@ Please let me know your consultation schedule and formal quotation.`;
       className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white border-t border-white/[0.04] relative w-full"
     >
       <div className="w-full max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <Reveal direction="down" delay={0.1}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] font-mono text-[10px] uppercase tracking-widest text-white/70 font-semibold mb-3">
+        {/* Section Header (Centered across all screen sizes) */}
+        <div className="w-full max-w-2xl mx-auto mb-10 sm:mb-14 flex flex-col items-center justify-center text-center">
+          <Reveal direction="down" delay={0.1} className="w-full flex justify-center text-center">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] font-mono text-[10px] uppercase tracking-widest text-white/70 font-semibold mb-3 mx-auto">
               <span>✦</span> Custom Scope & Add-Ons
             </div>
           </Reveal>
-          <Reveal direction="up" delay={0.2}>
-            <h2 className="font-syne text-2xl sm:text-4xl md:text-5xl font-black uppercase text-white leading-tight">
+          <Reveal direction="up" delay={0.2} className="w-full flex justify-center text-center">
+            <h2 className="font-syne text-2xl sm:text-4xl md:text-5xl font-black uppercase text-white leading-tight text-center mx-auto w-full">
               Build Your <span className="text-[var(--gold)]">Project Scope</span>
             </h2>
           </Reveal>
-          <Reveal direction="up" delay={0.3}>
-            <p className="font-sans text-xs sm:text-sm text-white/60 font-light mt-2 max-w-lg mx-auto">
+          <Reveal direction="up" delay={0.3} className="w-full flex justify-center text-center">
+            <p className="font-sans text-xs sm:text-sm text-white/60 font-light mt-2 max-w-lg mx-auto text-center w-full">
               Select your project category below to check baseline investment, then add optional services to your cart.
             </p>
           </Reveal>

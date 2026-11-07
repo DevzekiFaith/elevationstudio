@@ -23,15 +23,15 @@ export function WhoWeWorkWith() {
       className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#07070a] text-white border-t border-white/5 w-full"
     >
       <div className="w-full max-w-7xl mx-auto">
-        {/* Minimal Section Header */}
-        <div className="text-center max-w-xl mx-auto mb-10 sm:mb-14">
-          <Reveal direction="down" delay={0.1}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 font-mono text-[10px] uppercase tracking-widest text-white/70 font-semibold mb-3">
+        {/* Minimal Section Header (Centered across all screen sizes) */}
+        <div className="w-full max-w-xl mx-auto mb-10 sm:mb-14 flex flex-col items-center justify-center text-center">
+          <Reveal direction="down" delay={0.1} className="w-full flex justify-center text-center">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 font-mono text-[10px] uppercase tracking-widest text-white/70 font-semibold mb-3 mx-auto">
               <span>✦</span> Client Portals
             </div>
           </Reveal>
-          <Reveal direction="up" delay={0.2}>
-            <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase text-white leading-tight">
+          <Reveal direction="up" delay={0.2} className="w-full flex justify-center text-center">
+            <h2 className="font-syne text-3xl sm:text-5xl font-black uppercase text-white leading-tight text-center mx-auto w-full">
               B2C <span className="text-white/30">&</span> <span className="text-[var(--gold)]">B2B</span>
             </h2>
           </Reveal>
