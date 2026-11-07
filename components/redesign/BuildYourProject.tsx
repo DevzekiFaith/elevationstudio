@@ -198,9 +198,9 @@ Please let me know your consultation schedule and formal quotation.`;
         </div>
 
         {/* Outer Container (Full Width Responsive Edge-to-Edge on Mobile) */}
-        <div className="rounded-none bg-[#0a0a0f] border border-white/[0.06] p-4 sm:p-7 md:p-10 lg:p-12 shadow-[0_25px_80px_rgba(0,0,0,0.95)] space-y-8 sm:space-y-10 w-full">
+        <div className="rounded-none bg-[#0a0a0f] border border-white/[0.06] p-4 sm:p-7 md:p-10 lg:p-12 shadow-[0_25px_80px_rgba(0,0,0,0.95)] w-full">
           {/* 01. PRIMARY FOUNDATION: Complete Architectural Design Package */}
-          <div className="w-full">
+          <div className="w-full mb-[1.5rem]">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-white/[0.05]">
               <div className="flex items-center gap-2.5">
                 <span className="font-mono text-xs uppercase tracking-widest text-[var(--gold)] font-bold">
@@ -273,7 +273,7 @@ Please let me know your consultation schedule and formal quotation.`;
           </div>
 
           {/* 02. OPTIONAL ADD-ONS: Digital, Branding, 3D Video, Training */}
-          <div className="w-full mt-10 sm:mt-14 lg:mt-16 pt-8 sm:pt-10 border-t border-white/[0.06]">
+          <div className="w-full pt-6 border-t border-white/[0.06]">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-white/[0.05]">
               <div className="flex items-center gap-2.5">
                 <span className="font-mono text-xs uppercase tracking-widest text-[var(--gold)] font-bold">
