@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import { Magnetic } from "@/components/Magnetic";
 import { useCurrency } from "@/components/CurrencyContext";
 import { useCart } from "@/components/cart/CartContext";
+import { CartTrolleyIcon } from "@/components/cart/CartTrolleyIcon";
 
 interface TypologyOption {
   id: string;
@@ -112,16 +114,28 @@ export function BuildYourProject() {
       cartItems.some((i) => i.isPrimary && i.typology === t.name)
     ) || null;
 
+  const [notification, setNotification] = useState<string | null>(null);
+
+  const showNotification = (msg: string) => {
+    setNotification(msg);
+    setTimeout(() => {
+      setNotification((curr) => (curr === msg ? null : curr));
+    }, 2800);
+  };
+
   const handleSelectTypology = (typ: TypologyOption) => {
     if (selectedTypology?.id === typ.id) {
       // Tapping the active typology deselects it back to default
       removePrimaryArchitecture();
+      showNotification(`Removed "${typ.name}" from cart`);
     } else {
       setPrimaryArchitectureTypology(typ.name, typ.priceNgn, typ.priceUsd);
+      showNotification(`✓ Added "${typ.name}" to cart`);
     }
   };
 
   const handleToggleAddOn = (addon: AddOn) => {
+    const isAdding = !isAddOnInCart(addon.id);
     cartToggleAddOn({
       id: addon.id,
       title: addon.name,
@@ -130,6 +144,11 @@ export function BuildYourProject() {
       priceUsd: addon.priceUsd,
       deliverables: [addon.desc],
     });
+    if (isAdding) {
+      showNotification(`✓ Added "${addon.name}" to cart`);
+    } else {
+      showNotification(`Removed "${addon.name}" from cart`);
+    }
   };
 
   const isAddOnInCart = (id: string) => cartItems.some((i) => i.id === id);
@@ -221,11 +240,11 @@ Please let me know your consultation schedule and formal quotation.`
                   01 · Primary Foundation
                 </span>
                 <span
-                  className={`font-mono text-[9px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-none transition-colors ${
-                    selectedTypology ? "text-black bg-[var(--gold)]" : "text-white/60 bg-white/10"
+                  className={`font-mono text-[9px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-none transition-all ${
+                    selectedTypology ? "text-black bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.4)]" : "text-white/60 bg-white/10"
                   }`}
                 >
-                  {selectedTypology ? "Included in Cart" : "Choose Below"}
+                  {selectedTypology ? "✓ Included in Cart" : "Choose Below"}
                 </span>
               </div>
               <div className="flex flex-wrap items-center gap-2">
@@ -264,7 +283,7 @@ Please let me know your consultation schedule and formal quotation.`
                       onClick={() => handleSelectTypology(typ)}
                       className={`w-full sm:w-auto px-4 sm:px-5 py-3 sm:py-3 rounded-none font-syne text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center justify-between sm:justify-start gap-2.5 ${
                         isSelected
-                          ? "bg-white text-black font-black shadow-lg"
+                          ? "bg-emerald-500 text-black font-black shadow-[0_4px_20px_rgba(16,185,129,0.35)]"
                           : "bg-white/[0.03] hover:bg-white/[0.08] text-white/75 hover:text-white"
                       }`}
                     >
@@ -306,8 +325,9 @@ Please let me know your consultation schedule and formal quotation.`
               <button
                 type="button"
                 onClick={openCart}
-                className="font-mono text-[11px] text-[var(--gold)] hover:underline flex items-center gap-1 cursor-pointer"
+                className="font-mono text-[11px] text-[var(--gold)] hover:text-white flex items-center gap-1.5 cursor-pointer transition-colors"
               >
+                <CartTrolleyIcon className="w-3.5 h-3.5 text-emerald-400" />
                 <span>View Scope Cart ({itemCount})</span>
                 <span>↗</span>
               </button>
@@ -322,7 +342,7 @@ Please let me know your consultation schedule and formal quotation.`
                     onClick={() => handleToggleAddOn(addon)}
                     className={`p-4 sm:p-5 rounded-none text-left transition-all duration-300 cursor-pointer flex flex-col justify-between w-full ${
                       isAdded
-                        ? "bg-white/[0.08] shadow-[0_10px_30px_rgba(212,168,67,0.15)]"
+                        ? "bg-emerald-500/[0.08] shadow-[0_10px_30px_rgba(16,185,129,0.15)] ring-1 ring-emerald-500/30"
                         : "bg-white/[0.02] hover:bg-white/[0.05]"
                     }`}
                   >
@@ -333,7 +353,7 @@ Please let me know your consultation schedule and formal quotation.`
                         </span>
                         <span
                           className={`font-mono text-xs font-bold ${
-                            isAdded ? "text-[var(--gold)]" : "text-white/60"
+                            isAdded ? "text-emerald-400" : "text-white/60"
                           }`}
                         >
                           {addon.priceFormatted}
@@ -353,8 +373,8 @@ Please let me know your consultation schedule and formal quotation.`
                       type="button"
                       className={`w-full py-2.5 px-3 rounded-none font-mono text-[10px] uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer ${
                         isAdded
-                          ? "bg-white text-black font-bold shadow-sm"
-                          : "bg-white/[0.04] text-white/70 hover:text-white"
+                          ? "bg-emerald-500 hover:bg-emerald-400 text-black font-bold shadow-[0_4px_20px_rgba(16,185,129,0.35)]"
+                          : "bg-white/[0.04] text-white/70 hover:text-white hover:bg-white/10"
                       }`}
                     >
                       <span>{isAdded ? "✓ Added to Cart" : "+ Add to Cart"}</span>
@@ -379,7 +399,7 @@ Please let me know your consultation schedule and formal quotation.`
 
               <div className="flex flex-wrap items-center gap-2 text-xs">
                 {selectedTypology && (
-                  <span className="px-2.5 py-1 bg-white/[0.06] rounded-none font-syne font-semibold text-white">
+                  <span className="px-2.5 py-1 bg-emerald-500/15 ring-1 ring-emerald-500/30 rounded-none font-syne font-semibold text-emerald-400 flex items-center gap-1">
                     ✓ {selectedTypology.name} (
                     {formatCompactPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)})
                   </span>
@@ -387,9 +407,9 @@ Please let me know your consultation schedule and formal quotation.`
                 {selectedAddOns.map((addon) => (
                   <span
                     key={addon.id}
-                    className="px-2.5 py-1 bg-white/[0.04] rounded-none font-syne text-[var(--gold)] font-semibold flex items-center gap-1"
+                    className="px-2.5 py-1 bg-emerald-500/15 ring-1 ring-emerald-500/30 rounded-none font-syne text-emerald-400 font-semibold flex items-center gap-1"
                   >
-                    <span>+</span> {addon.name}
+                    <span>✓</span> {addon.name}
                   </span>
                 ))}
                 {totalServicesCount === 0 && (
@@ -421,9 +441,7 @@ Please let me know your consultation schedule and formal quotation.`
                 onClick={openCart}
                 className="w-full sm:w-auto px-6 py-4 rounded-none bg-white/5 hover:bg-white/10 text-white font-syne font-bold text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center justify-center gap-2"
               >
-                <svg className="w-4 h-4 text-[var(--gold)]" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
+                <CartTrolleyIcon className="w-4 h-4 text-emerald-400" />
                 <span>Review Cart & Invoice Details</span>
                 <span>↗</span>
               </button>
@@ -443,6 +461,23 @@ Please let me know your consultation schedule and formal quotation.`
           </div>
         </div>
       </div>
+
+      {/* Floating Green Cart Notification Toast */}
+      <AnimatePresence>
+        {notification && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="fixed bottom-6 right-6 z-[150] flex items-center gap-2.5 px-4 py-2.5 rounded-none bg-[#09150f]/95 border border-emerald-500/40 text-emerald-400 font-mono text-xs shadow-[0_10px_35px_rgba(16,185,129,0.35)] backdrop-blur-md pointer-events-none"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
+            <CartTrolleyIcon className="w-4 h-4 text-emerald-400 shrink-0" />
+            <span className="font-semibold">{notification}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

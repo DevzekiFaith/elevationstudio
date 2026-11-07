@@ -4,25 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart, type CartItem } from "./CartContext";
 import { useCurrency } from "@/components/CurrencyContext";
-
-function CartBagIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-      />
-    </svg>
-  );
-}
+import { CartTrolleyIcon } from "./CartTrolleyIcon";
 
 const QUICK_ADDONS: CartItem[] = [
   {
@@ -181,8 +163,12 @@ Please review my detailed scope, confirm availability, and prepare the formal it
             {/* 1. Header with Generous Padding */}
             <div className="px-5 sm:px-12 py-5 sm:py-8 flex items-center justify-between bg-black/50">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/20 flex items-center justify-center">
-                  <CartBagIcon className="w-5 h-5 text-[var(--gold)]" />
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${
+                  itemCount > 0
+                    ? "bg-emerald-500/15 border border-emerald-500/30"
+                    : "bg-[var(--gold)]/10 border border-[var(--gold)]/20"
+                }`}>
+                  <CartTrolleyIcon className={`w-5 h-5 ${itemCount > 0 ? "text-emerald-400" : "text-[var(--gold)]"}`} />
                 </div>
                 <div>
                   <span className="font-mono text-[9px] uppercase tracking-[3px] text-[var(--gold)] block mb-0.5 font-bold">
@@ -195,7 +181,11 @@ Please review my detailed scope, confirm availability, and prepare the formal it
               </div>
 
               <div className="flex items-center gap-3">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-white/70 bg-white/[0.06] px-3 py-1 rounded-full">
+                <span className={`font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold transition-colors ${
+                  itemCount > 0
+                    ? "text-emerald-400 bg-emerald-500/15"
+                    : "text-white/70 bg-white/[0.06]"
+                }`}>
                   {itemCount} {itemCount === 1 ? "Item" : "Items"}
                 </span>
                 <button
@@ -213,7 +203,7 @@ Please review my detailed scope, confirm availability, and prepare the formal it
               {items.length === 0 ? (
                 <div className="text-center py-24 space-y-5">
                   <div className="w-16 h-16 rounded-full bg-white/[0.03] border border-white/[0.08] flex items-center justify-center mx-auto text-[var(--gold)] shadow-lg">
-                    <CartBagIcon className="w-7 h-7" />
+                    <CartTrolleyIcon className="w-7 h-7" />
                   </div>
                   <div>
                     <h3 className="font-syne text-2xl font-bold text-white uppercase mb-2">
@@ -315,9 +305,9 @@ Please review my detailed scope, confirm availability, and prepare the formal it
                             <button
                               type="button"
                               onClick={() => addItem(addon)}
-                              className="px-4.5 py-2.5 rounded-full bg-white/[0.06] hover:bg-white text-white hover:text-black font-mono text-[10px] uppercase tracking-wider transition-all cursor-pointer border border-white/10 shrink-0 flex items-center gap-1.5 shadow-sm"
+                              className="px-4.5 py-2.5 rounded-full bg-white/[0.06] hover:bg-emerald-500 text-white hover:text-black font-mono text-[10px] uppercase tracking-wider transition-all cursor-pointer border border-white/10 hover:border-emerald-500 shrink-0 flex items-center gap-1.5 shadow-sm font-bold group"
                             >
-                              <CartBagIcon className="w-3.5 h-3.5" />
+                              <CartTrolleyIcon className="w-3.5 h-3.5 text-emerald-400 group-hover:text-black transition-colors" />
                               <span>+ Add</span>
                             </button>
                           </div>
@@ -543,9 +533,9 @@ Please review my detailed scope, confirm availability, and prepare the formal it
                   <button
                     type="button"
                     onClick={handleWhatsAppCheckout}
-                    className="w-full py-4.5 px-7 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-[0_4px_30px_rgba(16,185,129,0.4)] flex items-center justify-center gap-2.5 cursor-pointer"
+                    className="w-full py-4.5 px-7 rounded-none bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-[0_4px_30px_rgba(16,185,129,0.4)] flex items-center justify-center gap-2.5 cursor-pointer"
                   >
-                    <CartBagIcon className="w-4 h-4" />
+                    <CartTrolleyIcon className="w-4 h-4" />
                     <span>Transmit Scope on WhatsApp</span>
                     <span>→</span>
                   </button>
@@ -565,9 +555,9 @@ Please review my detailed scope, confirm availability, and prepare the formal it
                       setInvoiceRequested(true);
                       handleWhatsAppCheckout();
                     }}
-                    className="w-full py-4.5 px-7 rounded-xl bg-white hover:bg-[var(--gold)] text-black font-syne font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2.5 cursor-pointer"
+                    className="w-full py-4.5 px-7 rounded-none bg-white hover:bg-[var(--gold)] text-black font-syne font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2.5 cursor-pointer"
                   >
-                    <CartBagIcon className="w-4 h-4" />
+                    <CartTrolleyIcon className="w-4 h-4" />
                     <span>Generate & Transmit Invoice ({referenceId})</span>
                     <span>→</span>
                   </button>
