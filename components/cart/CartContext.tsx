@@ -24,6 +24,7 @@ interface CartContextType {
     priceUsd?: number,
     deliverables?: string[]
   ) => void;
+  removePrimaryArchitecture: () => void;
   clearCart: () => void;
   isOpen: boolean;
   openCart: () => void;
@@ -33,7 +34,7 @@ interface CartContextType {
   totalUsd: number;
 }
 
-const CART_STORAGE_KEY = "elevation_studio_cart_v1";
+const CART_STORAGE_KEY = "elevation_studio_cart_v2";
 
 const DEFAULT_PRIMARY_ITEM: CartItem = {
   id: "primary-architecture",
@@ -54,7 +55,8 @@ const DEFAULT_PRIMARY_ITEM: CartItem = {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([DEFAULT_PRIMARY_ITEM]);
+  // Start with default empty cart until a product/typology is explicitly picked
+  const [items, setItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
   // Lazy-load from localStorage after initial render without triggering synchronous cascading renders
@@ -64,12 +66,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
         const saved = localStorage.getItem(CART_STORAGE_KEY);
         if (saved) {
           const parsed = JSON.parse(saved);
-          if (Array.isArray(parsed) && parsed.length > 0) {
+          if (Array.isArray(parsed)) {
             setItems(parsed);
           }
         }
       } catch {
-        // Fallback to default
+        // Fallback to default empty
       }
     }, 0);
 
@@ -158,6 +160,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
     });
   };
 
+  const removePrimaryArchitecture = () => {
+    setItems((prev) => prev.filter((i) => !i.isPrimary));
+  };
+
   const clearCart = () => {
     setItems([]);
   };
@@ -175,6 +181,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         removeItem,
         toggleAddOn,
         setPrimaryArchitectureTypology,
+        removePrimaryArchitecture,
         clearCart,
         isOpen,
         openCart,

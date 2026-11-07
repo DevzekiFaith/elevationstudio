@@ -101,21 +101,24 @@ export function BuildYourProject() {
     items: cartItems,
     toggleAddOn: cartToggleAddOn,
     setPrimaryArchitectureTypology,
+    removePrimaryArchitecture,
     openCart,
     itemCount,
   } = useCart();
 
-  // Find initial typology from cart or fallback to Duplex
-  const initialTypology =
+  // Find selected typology from cart (null on default until a typology is explicitly picked)
+  const selectedTypology =
     TYPOLOGIES.find((t) =>
       cartItems.some((i) => i.isPrimary && i.typology === t.name)
-    ) || TYPOLOGIES[1];
-
-  const [selectedTypology, setSelectedTypology] = useState<TypologyOption>(initialTypology);
+    ) || null;
 
   const handleSelectTypology = (typ: TypologyOption) => {
-    setSelectedTypology(typ);
-    setPrimaryArchitectureTypology(typ.name, typ.priceNgn, typ.priceUsd);
+    if (selectedTypology?.id === typ.id) {
+      // Tapping the active typology deselects it back to default
+      removePrimaryArchitecture();
+    } else {
+      setPrimaryArchitectureTypology(typ.name, typ.priceNgn, typ.priceUsd);
+    }
   };
 
   const handleToggleAddOn = (addon: AddOn) => {
@@ -137,10 +140,15 @@ export function BuildYourProject() {
   const addOnsTotalNgn = selectedAddOns.reduce((acc, item) => acc + item.priceNgn, 0);
   const addOnsTotalUsd = selectedAddOns.reduce((acc, item) => acc + item.priceUsd, 0);
 
-  const totalNgn = selectedTypology.priceNgn + addOnsTotalNgn;
-  const totalUsd = selectedTypology.priceUsd + addOnsTotalUsd;
+  const primaryNgn = selectedTypology ? selectedTypology.priceNgn : 0;
+  const primaryUsd = selectedTypology ? selectedTypology.priceUsd : 0;
+
+  const totalNgn = primaryNgn + addOnsTotalNgn;
+  const totalUsd = primaryUsd + addOnsTotalUsd;
+  const totalServicesCount = (selectedTypology ? 1 : 0) + selectedAddOns.length;
 
   const formatPrice = (ngn: number, usd: number) => {
+    if (ngn === 0 && usd === 0) return "₦0 ($0)";
     if (currency === "USD") return `$${usd.toLocaleString()}`;
     if (currency === "GBP") return `£${Math.round(usd * 0.75).toLocaleString()}`;
     if (ngn < 1000000) {
@@ -152,6 +160,7 @@ export function BuildYourProject() {
   };
 
   const formatCompactPrice = (ngn: number, usd: number) => {
+    if (ngn === 0 && usd === 0) return "₦0 ($0)";
     if (currency === "USD") return `$${usd.toLocaleString()}`;
     if (currency === "GBP") return `£${Math.round(usd * 0.75).toLocaleString()}`;
     if (ngn < 1000000) {
@@ -164,11 +173,13 @@ export function BuildYourProject() {
 
   const formattedTotal = formatPrice(totalNgn, totalUsd);
 
-  const whatsappMessage = `Hello Elevation Studio! I tailored a project scope on your website:
-- Primary Architecture: Complete Architectural Design Package (${selectedTypology.name}) — ${formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}
+  const whatsappMessage = totalServicesCount > 0
+    ? `Hello Elevation Studio! I tailored a project scope on your website:
+${selectedTypology ? `- Primary Architecture: Complete Architectural Design Package (${selectedTypology.name}) — ${formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}` : "- Primary Architecture: None selected"}
 - Selected Add-ons: ${selectedAddOns.length > 0 ? selectedAddOns.map((a) => a.name).join(", ") : "None (Core Architecture Only)"}
 - Estimated Baseline Investment: ${formattedTotal} (Open to Discussion)
-Please let me know your consultation schedule and formal quotation.`;
+Please let me know your consultation schedule and formal quotation.`
+    : `Hello Elevation Studio! I am exploring your project packages and would like to discuss my project needs.`;
 
   const whatsappUrl = `https://wa.me/2349119059859?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -209,15 +220,21 @@ Please let me know your consultation schedule and formal quotation.`;
                 <span className="font-mono text-xs uppercase tracking-widest text-[var(--gold)] font-bold">
                   01 · Primary Foundation
                 </span>
-                <span className="font-mono text-[9px] uppercase tracking-wider text-black bg-[var(--gold)] font-bold px-2 py-0.5 rounded-full">
-                  Included in Cart
+                <span
+                  className={`font-mono text-[9px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full transition-colors ${
+                    selectedTypology ? "text-black bg-[var(--gold)]" : "text-white/60 bg-white/10"
+                  }`}
+                >
+                  {selectedTypology ? "Included in Cart" : "Choose Below"}
                 </span>
               </div>
               <div className="flex flex-wrap items-center gap-2">
                 <span className="font-mono text-xs text-white/70">
                   Baseline:{" "}
                   <strong className="text-white font-bold ml-1 text-sm">
-                    {formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}
+                    {selectedTypology
+                      ? formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)
+                      : "Tap a typology below"}
                   </strong>
                 </span>
                 <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/30 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
@@ -239,7 +256,7 @@ Please let me know your consultation schedule and formal quotation.`;
               {/* Second Layer: Interactive Typology Buttons with Direct Pricing (Full-Width on Mobile) */}
               <div className="grid grid-cols-1 sm:flex sm:flex-wrap gap-2 sm:gap-3 w-full">
                 {TYPOLOGIES.map((typ) => {
-                  const isSelected = selectedTypology.id === typ.id;
+                  const isSelected = selectedTypology?.id === typ.id;
                   return (
                     <button
                       key={typ.id}
@@ -356,15 +373,17 @@ Please let me know your consultation schedule and formal quotation.`;
                   Cart Scope Breakdown:
                 </span>
                 <span className="font-mono text-[10px] text-white/40">
-                  ({1 + selectedAddOns.length} Service{1 + selectedAddOns.length === 1 ? "" : "s"})
+                  ({totalServicesCount} Service{totalServicesCount === 1 ? "" : "s"})
                 </span>
               </div>
 
               <div className="flex flex-wrap items-center gap-2 text-xs">
-                <span className="px-2.5 py-1 bg-white/[0.06] border border-white/[0.06] font-syne font-semibold text-white">
-                  ✓ {selectedTypology.name} (
-                  {formatCompactPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)})
-                </span>
+                {selectedTypology && (
+                  <span className="px-2.5 py-1 bg-white/[0.06] border border-white/[0.06] font-syne font-semibold text-white">
+                    ✓ {selectedTypology.name} (
+                    {formatCompactPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)})
+                  </span>
+                )}
                 {selectedAddOns.map((addon) => (
                   <span
                     key={addon.id}
@@ -373,7 +392,12 @@ Please let me know your consultation schedule and formal quotation.`;
                     <span>+</span> {addon.name}
                   </span>
                 ))}
-                {selectedAddOns.length === 0 && (
+                {totalServicesCount === 0 && (
+                  <span className="font-sans text-xs text-white/40 italic">
+                    (Cart is on default — tap any typology or add-on above to begin calculation)
+                  </span>
+                )}
+                {selectedTypology && selectedAddOns.length === 0 && (
                   <span className="font-sans text-xs text-white/40 italic">
                     (No add-ons selected — tap any card above to include)
                   </span>
@@ -383,7 +407,7 @@ Please let me know your consultation schedule and formal quotation.`;
               <div className="font-mono text-xs text-white/60 pt-1 flex flex-wrap items-center gap-2">
                 <span>Estimated Cart Total:</span>
                 <strong className="text-white font-bold text-sm sm:text-base">
-                  {formattedTotal}
+                  {totalServicesCount > 0 ? formattedTotal : "₦0 ($0)"}
                 </strong>
                 <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] tracking-wider uppercase font-semibold">
                   Open to Discussion
