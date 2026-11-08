@@ -94,6 +94,7 @@ export default async function RenderDetailPage({ params }: PageProps) {
                 alt={render.title}
                 fill
                 priority
+                loading="eager"
                 className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.025]"
                 sizes="100vw"
               />

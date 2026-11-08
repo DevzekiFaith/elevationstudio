@@ -30,6 +30,7 @@ export function HeroRedesign() {
           alt="Elevation Studio Architecture"
           fill
           priority
+          loading="eager"
           className="object-cover object-center opacity-30 sm:opacity-35 filter brightness-85 scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#060608] via-[#060608]/80 to-transparent" />

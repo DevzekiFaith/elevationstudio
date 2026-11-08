@@ -203,6 +203,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
                   alt={currentItem.title}
                   fill
                   priority
+                  loading="eager"
                   sizes="(max-width: 1024px) 100vw, 1200px"
                   className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                 />
