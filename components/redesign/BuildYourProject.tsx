@@ -29,8 +29,8 @@ const TYPOLOGIES: TypologyOption[] = [
   {
     id: "bungalow",
     name: "Bungalow Villa",
-    priceNgn: 600000,
-    priceUsd: 450,
+    priceNgn: 400000,
+    priceUsd: 300,
   },
   {
     id: "duplex",

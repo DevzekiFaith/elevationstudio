@@ -86,6 +86,8 @@ export function FourDivisions() {
                       src={div.image}
                       alt={div.title}
                       fill
+                      priority={idx === 0}
+                      loading="eager"
                       className="object-cover group-hover:scale-108 transition-transform duration-700 filter brightness-90"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />

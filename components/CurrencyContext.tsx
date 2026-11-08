@@ -25,7 +25,7 @@ const BASE_PRICES_USD = {
 
 const RESIDENTIAL_BASE_USD = {
   concept: 225,
-  architecture: 565,
+  architecture: 300, // Bungalow Villa baseline: ₦400K ($300 / £225)
   masterplan: 3380,
 };
 

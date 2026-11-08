@@ -31,10 +31,11 @@ export function CompleteArchitecturalPackage() {
   const { currency, formatResidentialPrice } = useCurrency();
   const archPrice = formatResidentialPrice("architecture");
 
+  const cleanPrice = archPrice.replace(/^From\s+/i, "");
   const whatsappUrl =
     "https://wa.me/2349119059859?text=" +
     encodeURIComponent(
-      `Hello Elevation Studio! I am ready to discuss the Complete Architectural Design Package (Starting from ${archPrice}) for my project.`
+      `Hello Elevation Studio! I am ready to discuss the Complete Architectural Design Package (Bungalow starting at ${cleanPrice}) for my project.`
     );
 
   return (
@@ -77,7 +78,7 @@ export function CompleteArchitecturalPackage() {
                   <div className="p-4 sm:p-6 rounded-none bg-black/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-5 shadow-[0_15px_40px_rgba(0,0,0,0.7)] w-full">
                     <div>
                       <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block font-bold mb-1">
-                        Starting Baseline ({currency})
+                        Starting Baseline · Bungalow Villa ({currency})
                       </span>
                       <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                         <span className="font-syne text-3xl sm:text-5xl font-black text-[var(--gold)] tracking-tight">
@@ -91,7 +92,7 @@ export function CompleteArchitecturalPackage() {
                         </span>
                       </div>
                       <span className="font-mono text-[10px] text-white/45 block mt-2 tracking-wide">
-                        ✦ &lt; 1% of total build cost · Safeguards 100% of construction spend
+                        ✦ Bungalow from ₦400K ($300) · Duplex & multi-story from ₦750K ($565)
                       </span>
                     </div>
 
@@ -154,19 +155,24 @@ export function CompleteArchitecturalPackage() {
                 <div className="relative h-80 sm:h-[480px] rounded-none overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.85)] group">
                   <Image
                     src="/renders/modern_5bed_bungalow_day.jpg"
-                    alt="Complete Architecture Package"
+                    alt="Complete Architecture Package — 5-Bedroom Modern Bungalow Villa"
                     fill
+                    priority
+                    loading="eager"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 1024px) 100vw, 40vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6">
-                    <span className="font-mono text-[10px] text-[var(--gold)] uppercase tracking-wider block mb-1">
-                      Elevation Studio Flagship
+                    <span className="font-mono text-[10px] text-[var(--gold)] uppercase tracking-wider block mb-1 font-semibold">
+                      Elevation Studio Flagship · Bungalow Design
                     </span>
                     <h4 className="font-syne text-lg font-bold text-white uppercase">
-                      5-Bedroom Modern Villa
+                      5-Bedroom Modern Bungalow Villa
                     </h4>
+                    <span className="font-mono text-[11px] text-white/70 block mt-1 font-semibold">
+                      Full Architectural Set from ₦400K ($300)
+                    </span>
                   </div>
                 </div>
               </div>

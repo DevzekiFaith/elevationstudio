@@ -38,11 +38,11 @@ const CART_STORAGE_KEY = "elevation_studio_cart_v2";
 
 const DEFAULT_PRIMARY_ITEM: CartItem = {
   id: "primary-architecture",
-  title: "Complete Architecture & Engineering Package",
+  title: "Complete Architectural Package — Bungalow Villa",
   category: "Architecture",
-  typology: "Duplex / Luxury Residence",
-  priceNgn: 750000,
-  priceUsd: 565,
+  typology: "Bungalow Villa",
+  priceNgn: 400000,
+  priceUsd: 300,
   deliverables: [
     "Working drawing sets & floor plans",
     "Licensed structural & MEP calculations",
@@ -123,8 +123,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
   ) => {
     setItems((prev) => {
       const hasPrimary = prev.some((i) => i.isPrimary);
-      const updatedPriceNgn = priceNgn ?? 750000;
-      const updatedPriceUsd = priceUsd ?? 565;
+      const updatedPriceNgn = priceNgn ?? 400000;
+      const updatedPriceUsd = priceUsd ?? 300;
       const updatedDeliverables = deliverables ?? [
         "Working drawing sets & floor plans",
         "Licensed structural & MEP calculations",
