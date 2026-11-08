@@ -107,6 +107,7 @@ export function HomecareSmartPopup() {
                   alt="Elevation Studio Modern Residential Architecture & HomeCare Smart Store"
                   fill
                   priority
+                  loading="eager"
                   className="object-cover object-center filter brightness-90 hover:scale-105 transition-transform duration-700"
                   sizes="(max-width: 600px) 100vw, 520px"
                 />

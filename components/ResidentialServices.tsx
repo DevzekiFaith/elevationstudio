@@ -452,6 +452,7 @@ export function ResidentialServices() {
                   src={curS1.src}
                   alt={curS1.alt}
                   fill
+                  loading="eager"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
