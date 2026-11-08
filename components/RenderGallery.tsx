@@ -122,7 +122,8 @@ export function RenderGallery() {
                             fill
                             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            priority={render.id === "0" || render.id === "1"}
+                            priority={render.id === "0" || render.id === "1" || render.image === "/renders/modern_duplex_residence.jpg"}
+                            loading={render.id === "0" || render.id === "1" || render.image === "/renders/modern_duplex_residence.jpg" ? "eager" : undefined}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0e] via-transparent to-transparent opacity-80" />
                           <div className="absolute top-4 left-4 rounded-none bg-black/85 backdrop-blur-md px-3 py-1 font-mono text-[9px] tracking-widest text-white/90 uppercase">
