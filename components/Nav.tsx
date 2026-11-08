@@ -82,7 +82,7 @@ export function Nav() {
                 <li key={item.label} className="relative">
                   <a
                     href={item.href}
-                    className="relative z-10 block px-3.5 py-2 font-mono text-[11px] xl:text-xs tracking-wider uppercase transition-colors duration-300 rounded-[3px]"
+                    className="relative z-10 block px-2.5 xl:px-3.5 py-1.5 xl:py-2 font-mono text-[11px] xl:text-[12px] font-medium tracking-wider uppercase transition-colors duration-300 rounded-none"
                     style={{
                       color: hoveredIndex === idx ? "var(--white)" : "var(--white-dim)"
                     }}
@@ -146,7 +146,7 @@ export function Nav() {
                 <button
                   type="button"
                   onClick={() => setReviewModalOpen(true)}
-                  className="px-4 py-2 bg-white/5 hover:bg-[var(--gold)]/10 text-white hover:text-[var(--gold)] rounded-none font-mono text-[11px] xl:text-xs tracking-wider transition-all duration-300"
+                  className="px-3.5 py-2 bg-white/5 hover:bg-[var(--gold)]/10 text-white hover:text-[var(--gold)] rounded-none font-mono text-[11px] xl:text-[12px] tracking-wider transition-all duration-300"
                   title="Submit a verified client review"
                 >
                   Review Us
@@ -156,7 +156,7 @@ export function Nav() {
               <Magnetic strength={0.2}>
                 <a
                   href="#build-project"
-                  className="px-5 py-2.5 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-[11px] xl:text-xs font-bold uppercase tracking-wider rounded-none transition-all duration-300 shadow-md shadow-[var(--gold)]/10 hover:scale-[1.02]"
+                  className="px-4 py-2 bg-[var(--gold)] hover:bg-[var(--gold-bright)] text-[#060606] font-mono text-[11px] xl:text-[12px] font-bold uppercase tracking-wider rounded-none transition-all duration-300 shadow-md shadow-[var(--gold)]/10 hover:scale-[1.02]"
                 >
                   Build Scope →
                 </a>
