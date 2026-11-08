@@ -49,7 +49,7 @@ export function Nav() {
       >
         <div
           className={`
-            w-full pointer-events-auto
+            w-full max-w-[1560px] mx-auto pointer-events-auto
             grid grid-cols-[auto_1fr_auto] items-center
             px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-3.5
             rounded-none transition-all duration-500

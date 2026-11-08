@@ -303,13 +303,13 @@ export function Testimonials() {
   return (
     <Reveal direction="up" duration={0.7} className="w-full">
       <section
-        className="testimonials-section relative py-16 sm:py-24 md:py-32 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#070709] overflow-hidden w-full"
+        className="testimonials-section relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-18 2xl:px-22 bg-[#070709] overflow-hidden w-full"
         id="testimonials"
       >
         {/* Subtle Ambient Golden Glow */}
         <div className="absolute top-1/3 left-1/3 w-[320px] sm:w-[500px] h-[200px] sm:h-[300px] bg-[radial-gradient(ellipse_at_center,rgba(212,168,67,0.06)_0%,transparent_70%)] pointer-events-none blur-3xl" />
 
-        <div className="testimonials-inner w-full max-w-7xl mx-auto relative z-10">
+        <div className="testimonials-inner w-full max-w-[1560px] mx-auto relative z-10">
           
           {/* Top Bar Header & Action Buttons (Line-Free) */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 sm:mb-14 pb-4 sm:pb-6">

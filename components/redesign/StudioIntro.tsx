@@ -6,7 +6,7 @@ import { Reveal } from "@/components/Reveal";
 export function StudioIntro() {
   return (
     <section id="about" className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-12 bg-[#090a0f] text-white border-t border-white/5">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-[1560px] mx-auto">
         {/* Top Tag & Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 pb-8 border-b border-white/10">
           <div>

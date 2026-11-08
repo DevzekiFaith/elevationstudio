@@ -16,7 +16,7 @@ import { LocationMap } from "@/components/LocationMap";
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full bg-[#060608] text-[#f4f0e8] relative selection:bg-[var(--gold)] selection:text-black overflow-x-hidden">
+    <div className="min-h-screen w-full bg-[#060608] text-[#f4f0e8] relative selection:bg-[var(--gold)] selection:text-black overflow-x-hidden flex flex-col">
       {/* Global Atmospheric Ambient Backdrops for Fluid Depth */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="ambient-orb ambient-orb-gold w-[700px] h-[700px] top-[15%] -right-40 opacity-[0.07]" />
@@ -27,35 +27,37 @@ export default function Home() {
       {/* Global Navigation Header */}
       <Nav />
 
-      {/* 01. Hero Section: Big Bold Letters & Immediate Closing */}
-      <HeroRedesign />
+      {/* Flexible & Adaptive Main Content Container */}
+      <main className="w-full flex-grow flex flex-col items-stretch">
+        {/* 01. Hero Section: Big Bold Letters & Immediate Closing */}
+        <HeroRedesign />
 
-      {/* 02. The 4 Specialized Divisions (Clean Visual Cards) */}
-      <FourDivisions />
+        {/* 02. The 4 Specialized Divisions (Clean Visual Cards) */}
+        <FourDivisions />
 
-      {/* 03. Visual Proof: 3D Photorealistic Architectural Renders */}
-      <RenderGallery />
+        {/* 03. Visual Proof: 3D Photorealistic Architectural Renders */}
+        <RenderGallery />
 
-      {/* 04. Flagship Offer: Complete Architectural Design Package */}
-      <CompleteArchitecturalPackage />
+        {/* 04. Flagship Offer: Complete Architectural Design Package */}
+        <CompleteArchitecturalPackage />
 
-      {/* 05. 3-Click Scope Configurator: Build & Close on WhatsApp */}
-      <BuildYourProject />
+        {/* 05. 3-Click Scope Configurator: Build & Close on WhatsApp */}
+        <BuildYourProject />
 
-      {/* 06. Customer Pathways: B2C & B2B Dual Portals */}
-      <WhoWeWorkWith />
+        {/* 06. Customer Pathways: B2C & B2B Dual Portals */}
+        <WhoWeWorkWith />
 
-      {/* 07. Dedicated B2B & Developer Partnership Section */}
-      <ProfessionalPartnerships />
+        {/* 07. Dedicated B2B & Developer Partnership Section */}
+        <ProfessionalPartnerships />
 
-      {/* 08. Verified Client Feedback */}
-      <Testimonials />
+        {/* 08. Verified Client Feedback */}
+        <Testimonials />
 
-      {/* 09. Interactive Studio Location & Footprint Map (Line-Free) */}
-      <section id="location" className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-gradient-to-b from-[#060608] via-[#08090e] to-[#060608] relative w-full overflow-hidden">
-        {/* Subtle Ambient Studio Glow */}
-        <div className="ambient-orb ambient-orb-gold w-[550px] h-[550px] -top-32 -left-20 opacity-15 pointer-events-none" />
-        <div className="w-full max-w-7xl mx-auto flex flex-col items-center relative z-10">
+        {/* 09. Interactive Studio Location & Footprint Map (Line-Free) */}
+        <section id="location" className="py-16 sm:py-24 md:py-28 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-18 2xl:px-22 bg-gradient-to-b from-[#060608] via-[#08090e] to-[#060608] relative w-full overflow-hidden">
+          {/* Subtle Ambient Studio Glow */}
+          <div className="ambient-orb ambient-orb-gold w-[550px] h-[550px] -top-32 -left-20 opacity-15 pointer-events-none" />
+          <div className="w-full max-w-[1560px] mx-auto flex flex-col items-center relative z-10">
           <div className="w-full text-center max-w-2xl mx-auto mb-12 pb-6">
             <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-2">
               Operational Base · Physical & Remote Presence
@@ -82,10 +84,11 @@ export default function Home() {
 
       {/* 10. Big Bold Final Closing Section */}
       <FinalCTASection />
+      </main>
 
       {/* 11. Minimalist Studio Footer (Line-Free) */}
       <footer className="footer relative z-10 bg-[#040406] text-white w-full">
-        <div className="w-full max-w-7xl mx-auto px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 py-10 sm:py-14 grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10">
+        <div className="w-full max-w-[1560px] mx-auto px-4 sm:px-6 md:px-10 lg:px-14 xl:px-18 2xl:px-22 py-10 sm:py-14 grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10">
           {/* Brand Info (5 cols) */}
           <div className="md:col-span-5 space-y-4">
             <Link href="/" className="inline-block">
@@ -166,10 +169,6 @@ export default function Home() {
               Direct Contact
             </span>
             <div>
-              <span className="text-white/40 block text-[10px] uppercase">Principal Lead</span>
-              <span className="text-white font-semibold">Zeki Ubor</span>
-            </div>
-            <div>
               <span className="text-white/40 block text-[10px] uppercase">Direct WhatsApp</span>
               <a
                 href="https://wa.me/2349119059859"
@@ -188,7 +187,7 @@ export default function Home() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-white/5 py-5 px-4 sm:px-6 lg:px-12 text-center sm:flex sm:justify-between sm:items-center max-w-7xl mx-auto font-mono text-[11px] text-white/40">
+        <div className="border-t border-white/5 py-5 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-18 2xl:px-22 text-center sm:flex sm:justify-between sm:items-center max-w-[1560px] mx-auto font-mono text-[11px] text-white/40">
           <div>
             © 2026 Elevation Studio · All Rights Reserved
           </div>

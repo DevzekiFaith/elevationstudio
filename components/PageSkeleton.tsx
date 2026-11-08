@@ -38,7 +38,7 @@ export function PageSkeleton() {
           </div>
 
           {/* Monumental Hero Section Skeleton */}
-          <div className="w-full max-w-7xl mx-auto px-4 sm:px-10 lg:px-16 py-12 space-y-7 flex-1 flex flex-col justify-center">
+          <div className="w-full max-w-[1560px] mx-auto px-4 sm:px-10 lg:px-16 py-12 space-y-7 flex-1 flex flex-col justify-center">
             <div className="w-44 h-7 bg-white/[0.05] rounded-none animate-pulse" />
             <div className="space-y-4 max-w-4xl">
               <div className="w-11/12 h-12 sm:h-20 lg:h-24 bg-white/[0.07] rounded-none animate-pulse" />

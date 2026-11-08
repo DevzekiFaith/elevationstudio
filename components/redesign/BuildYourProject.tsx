@@ -205,12 +205,12 @@ Please let me know your consultation schedule and formal quotation.`
   return (
     <section
       id="build-project"
-      className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#060608] text-white relative overflow-hidden w-full"
+      className="py-16 sm:py-24 md:py-28 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-18 2xl:px-22 bg-[#060608] text-white relative overflow-hidden w-full"
     >
       {/* Subtle Ambient Lighting */}
       <div className="ambient-orb ambient-orb-gold w-[600px] h-[600px] -top-32 -left-32 opacity-15 pointer-events-none" />
 
-      <div className="w-full max-w-7xl mx-auto relative z-10">
+      <div className="w-full max-w-[1560px] mx-auto relative z-10">
         {/* Section Header (Centered across all screen sizes) */}
         <div className="w-full max-w-2xl mx-auto mb-10 sm:mb-14 flex flex-col items-center justify-center text-center">
           <Reveal direction="down" delay={0.1} className="w-full flex justify-center text-center">

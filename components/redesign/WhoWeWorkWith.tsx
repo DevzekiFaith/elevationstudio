@@ -20,12 +20,12 @@ export function WhoWeWorkWith() {
   return (
     <section
       id="solutions"
-      className="py-16 sm:py-24 md:py-28 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#07070a] text-white relative overflow-hidden w-full"
+      className="py-16 sm:py-24 md:py-28 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-18 2xl:px-22 bg-[#07070a] text-white relative overflow-hidden w-full"
     >
       {/* Subtle ambient lighting */}
       <div className="ambient-orb ambient-orb-bridge w-[500px] h-[500px] -top-24 -right-24 opacity-15 pointer-events-none" />
 
-      <div className="w-full max-w-7xl mx-auto relative z-10">
+      <div className="w-full max-w-[1560px] mx-auto relative z-10">
         {/* Minimal Section Header (Centered across all screen sizes) */}
         <div className="w-full max-w-xl mx-auto mb-10 sm:mb-14 flex flex-col items-center justify-center text-center">
           <Reveal direction="down" delay={0.1} className="w-full flex justify-center text-center">

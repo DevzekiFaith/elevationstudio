@@ -171,7 +171,7 @@ export function IntroExperience({ onEnterStudio }: { onEnterStudio?: () => void 
       </header>
 
       {/* Main Showcase (Visual-First, Fluid Mobile Layout) */}
-      <main className="relative z-20 flex-1 w-full max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-5 sm:py-8 lg:py-10 flex flex-col justify-center gap-5 sm:gap-8">
+      <main className="relative z-20 flex-1 w-full max-w-[1560px] mx-auto px-3.5 sm:px-6 lg:px-8 py-5 sm:py-8 lg:py-10 flex flex-col justify-center gap-5 sm:gap-8">
         {/* Minimal Hero Header */}
         <div className="text-center max-w-2xl mx-auto flex flex-col items-center gap-1.5 sm:gap-2 px-2">
           <span className="font-mono text-[9px] sm:text-[10px] text-[var(--gold)] uppercase tracking-widest font-semibold">

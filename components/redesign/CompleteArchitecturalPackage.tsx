@@ -40,12 +40,12 @@ export function CompleteArchitecturalPackage() {
   return (
     <section
       id="flagship"
-      className="py-16 sm:py-24 md:py-32 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-[#08080c] text-white border-t border-white/5 relative overflow-hidden w-full"
+      className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-18 2xl:px-22 bg-[#08080c] text-white border-t border-white/5 relative overflow-hidden w-full"
     >
       {/* Subtle ambient orb */}
       <div className="ambient-orb ambient-orb-gold w-[600px] h-[600px] -top-32 -right-32 opacity-20 pointer-events-none" />
 
-      <div className="w-full max-w-7xl mx-auto relative z-10">
+      <div className="w-full max-w-[1560px] mx-auto relative z-10">
         {/* Flagship Hero Card with 3D Physics (Straight Corners, Seamless Line-Free Luxury Shell) */}
         <TiltCard maxTilt={4} glare className="w-full">
           <div className="rounded-none bg-[#0c0d14] transition-all duration-300 p-4 sm:p-8 md:p-12 lg:p-16 shadow-[0_25px_80px_rgba(0,0,0,0.95)] overflow-hidden w-full">

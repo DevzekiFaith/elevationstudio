@@ -120,7 +120,7 @@ export default async function RenderDetailPage({ params }: PageProps) {
         </section>
 
         {/* SPECIFICATIONS & ARCHITECTURAL BREAKDOWN */}
-        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 mb-16 sm:mb-20">
+        <section className="max-w-[1560px] mx-auto px-4 sm:px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 mb-16 sm:mb-20">
           <div className="lg:col-span-7 flex flex-col gap-8">
             <Reveal direction="up" delay={0.1}>
               <div>
@@ -190,7 +190,7 @@ export default async function RenderDetailPage({ params }: PageProps) {
         </section>
 
         {/* BOTTOM PREVIOUS / NEXT PROJECT NAVIGATION */}
-        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 border-t border-[#333336] pt-12">
+        <section className="max-w-[1560px] mx-auto px-4 sm:px-6 md:px-12 border-t border-[#333336] pt-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <Link
               href={`/renders/${prevRender.id}`}

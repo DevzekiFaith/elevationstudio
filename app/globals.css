@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --container: 1280px;
-  --container-max: 1320px;
-  --gutter: clamp(24px, 4vw, 64px);
+  --container: min(1560px, 94vw);
+  --container-max: min(1720px, 96vw);
+  --gutter: clamp(1rem, 3.5vw, 3.5rem);
   --black: #08080c;
   --off-black: #0e0e12;
   --steel: #14141a;
@@ -20,6 +20,26 @@
   --muted: #96928a;
   --bridge: #183b30;
   --bridge-accent: #4ecba0;
+}
+
+/* Flexible and Adjustable Luxury Container System */
+.site-container,
+.container-flexible {
+  width: 100%;
+  max-width: min(1560px, 94vw);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.site-container-padded {
+  width: 100%;
+  max-width: min(1560px, 94vw);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 3.5vw, 3.5rem);
+  padding-right: clamp(1rem, 3.5vw, 3.5rem);
+  box-sizing: border-box;
 }
 
 /* Ensure all sections retain dark luxury background and readable text */

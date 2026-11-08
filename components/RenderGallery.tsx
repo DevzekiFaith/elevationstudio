@@ -47,10 +47,10 @@ export function RenderGallery() {
   return (
     <Reveal className="w-full">
       <section
-        className="render-gallery-section py-16 sm:py-24 md:py-36 px-3.5 sm:px-6 md:px-10 lg:px-16 xl:px-20 relative w-full"
+        className="render-gallery-section py-16 sm:py-24 md:py-36 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-18 2xl:px-22 relative w-full"
         id="renders"
       >
-        <div className="render-gallery-inner w-full max-w-7xl mx-auto">
+        <div className="render-gallery-inner w-full max-w-[1560px] mx-auto">
           {/* Section Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-14">
             <div>

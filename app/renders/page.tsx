@@ -42,8 +42,8 @@ export default function RendersArchivePage() {
   return (
     <>
       <Nav />
-      <main className="min-h-screen bg-[#060608] text-white pt-28 sm:pt-36 pb-24 px-6 sm:px-10 lg:px-16 xl:px-20 relative">
-        <div className="w-full max-w-7xl mx-auto">
+      <main className="min-h-screen bg-[#060608] text-white pt-28 sm:pt-36 pb-24 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-18 2xl:px-22 relative">
+        <div className="w-full max-w-[1560px] mx-auto">
           {/* Breadcrumb Header */}
           <div className="mb-12">
             <Link

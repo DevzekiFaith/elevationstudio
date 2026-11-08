@@ -85,7 +85,7 @@ export default async function PackageDetailPage({ params }: PageProps) {
           }}
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-28 sm:pt-36 pb-20 sm:pb-32 flex flex-col gap-8 lg:gap-12">
+        <div className="relative z-10 max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-10 pt-28 sm:pt-36 pb-20 sm:pb-32 flex flex-col gap-8 lg:gap-12">
           
           {/* Friendly Top Bar */}
           <div className="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-white/10">

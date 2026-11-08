@@ -22,7 +22,7 @@ export default function Loading() {
       </div>
 
       {/* 2. Monumental Hero Section Skeleton */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 space-y-8">
+      <div className="w-full max-w-[1560px] mx-auto px-4 sm:px-10 lg:px-16 pt-16 sm:pt-24 pb-16 space-y-8">
         {/* Tag Pill Skeleton */}
         <div className="w-44 h-7 bg-white/[0.05] rounded-none animate-pulse" />
 
