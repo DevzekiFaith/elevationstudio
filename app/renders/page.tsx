@@ -74,8 +74,20 @@ export default function RendersArchivePage() {
                         src={render.image}
                         alt={render.title}
                         fill
-                        priority={idx < 3 || render.image === "/renders/modern_duplex_residence.jpg"}
-                        loading={idx < 3 || render.image === "/renders/modern_duplex_residence.jpg" ? "eager" : undefined}
+                        priority={
+                          idx < 4 ||
+                          render.image === "/renders/modern_5bed_alternative_materials.jpg" ||
+                          render.image === "/renders/modern_duplex_residence.jpg" ||
+                          render.image === "/renders/modern_5bed_bungalow_day.jpg"
+                        }
+                        loading={
+                          idx < 4 ||
+                          render.image === "/renders/modern_5bed_alternative_materials.jpg" ||
+                          render.image === "/renders/modern_duplex_residence.jpg" ||
+                          render.image === "/renders/modern_5bed_bungalow_day.jpg"
+                            ? "eager"
+                            : undefined
+                        }
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />

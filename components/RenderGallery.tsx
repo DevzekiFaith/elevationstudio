@@ -74,11 +74,10 @@ export function RenderGallery() {
                 <button
                   key={tab.id}
                   type="button"
-                  className={`px-5 py-2.5 rounded-none font-mono text-[11px] tracking-wider uppercase transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? "bg-white text-black font-bold shadow-[0_4px_20px_rgba(255,255,255,0.2)]"
-                      : "bg-[#0e0e12] text-white/70 hover:text-white hover:bg-white/[0.06]"
-                  }`}
+                  className={`px-5 py-2.5 rounded-none font-mono text-[11px] tracking-wider uppercase transition-all duration-300 cursor-pointer ${isActive
+                    ? "bg-white text-black font-bold shadow-[0_4px_20px_rgba(255,255,255,0.2)]"
+                    : "bg-[#0e0e12] text-white/70 hover:text-white hover:bg-white/[0.06]"
+                    }`}
                   onClick={() => setFilter(tab.id)}
                 >
                   {tab.label}
@@ -106,7 +105,14 @@ export function RenderGallery() {
               grabCursor={true}
               className="rg-swiper-container pb-14"
             >
-              {filteredRenders.map((render) => (
+              {filteredRenders.map((render, renderIdx) => {
+                const isEager =
+                  renderIdx < 3 ||
+                  render.image === "/renders/modern_5bed_alternative_materials.jpg" ||
+                  render.image === "/renders/modern_duplex_residence.jpg" ||
+                  render.image === "/renders/modern_5bed_bungalow_day.jpg";
+
+                return (
                 <SwiperSlide key={render.id} className="h-auto">
                   <TiltCard glare maxTilt={6} className="h-full">
                     <div className="group rounded-none bg-[#0a0a0e] transition-all duration-300 h-full flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.85)] hover:shadow-[0_30px_80px_rgba(0,0,0,0.98)]">
@@ -122,8 +128,8 @@ export function RenderGallery() {
                             fill
                             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            priority={render.id === "0" || render.id === "1" || render.image === "/renders/modern_duplex_residence.jpg"}
-                            loading={render.id === "0" || render.id === "1" || render.image === "/renders/modern_duplex_residence.jpg" ? "eager" : undefined}
+                            priority={isEager}
+                            loading={isEager ? "eager" : undefined}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0e] via-transparent to-transparent opacity-80" />
                           <div className="absolute top-4 left-4 rounded-none bg-black/85 backdrop-blur-md px-3 py-1 font-mono text-[9px] tracking-widest text-white/90 uppercase">
@@ -157,7 +163,8 @@ export function RenderGallery() {
                     </div>
                   </TiltCard>
                 </SwiperSlide>
-              ))}
+              );
+            })}
             </Swiper>
           </div>
         </div>
@@ -190,6 +197,7 @@ export function RenderGallery() {
                     fill
                     className="object-cover"
                     priority
+                    loading="eager"
                     sizes="(max-width: 900px) 100vw, 60vw"
                   />
                   <Link
