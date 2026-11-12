@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { QrMobileIcon } from "@/components/icons/ArchitecturalIcons";
 
 export interface ReviewData {
   id: string;
@@ -222,7 +223,10 @@ export function ReviewModal({ isOpen, onClose, onReviewSubmitted, initialTab = "
                 }}
                 onClick={() => setActiveTab("qr")}
               >
-                📱 Mobile QR Review Scan
+                <span className="inline-flex items-center gap-1.5 justify-center">
+                  <QrMobileIcon className="w-3.5 h-3.5 inline" />
+                  <span>Mobile QR Review Scan</span>
+                </span>
               </button>
             </div>
 

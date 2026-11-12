@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { InstagramIcon } from "@/components/icons/ArchitecturalIcons";
 
 export function WhatsAppButton() {
   const [open, setOpen] = useState(false);
@@ -83,9 +84,10 @@ export function WhatsAppButton() {
               href="https://instagram.com/elevationstudio.ng"
               target="_blank"
               rel="noopener noreferrer"
-              className="py-2 px-3 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white rounded-full font-mono text-xs text-center font-semibold block cursor-pointer"
+              className="py-2 px-3 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white rounded-full font-mono text-xs text-center font-semibold flex items-center justify-center gap-1.5 cursor-pointer"
             >
-              Follow @elevationstudio.ng on Instagram 📸
+              <InstagramIcon className="w-3.5 h-3.5 text-white inline" />
+              <span>Follow @elevationstudio.ng on Instagram</span>
             </a>
             <a
               href={getWhatsAppLink("Hello Elevation Studio, I'm reaching out directly from your website.")}

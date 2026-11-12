@@ -6,6 +6,21 @@ import Link from "next/link";
 import { Reveal } from "./Reveal";
 import { motion, AnimatePresence } from "framer-motion";
 import { ReviewModal, ReviewData } from "./ReviewModal";
+import {
+  CubeSpatialIcon,
+  DraftingIcon,
+  BuildingIcon,
+  ShieldCheckIcon,
+  GlobeIcon,
+  TrophyIcon,
+  HotelIcon,
+  UsersIcon,
+  TrendingUpIcon,
+  MapPinIcon,
+  StarIcon,
+  CheckBadgeIcon,
+  QrMobileIcon,
+} from "@/components/icons/ArchitecturalIcons";
 
 export interface ReviewItem {
   id: string | number;
@@ -21,7 +36,7 @@ export interface ReviewItem {
   tag: string;
   packageUsed: string;
   packageHref: string;
-  pills: { icon: string; label: string }[];
+  pills: { icon: React.ReactNode; label: string }[];
   isUserSubmitted?: boolean;
 }
 
@@ -42,9 +57,9 @@ const FEATURED_REVIEWS: ReviewItem[] = [
     packageUsed: "Package 03 — The Elevation",
     packageHref: "/packages/3",
     pills: [
-      { icon: "✦", label: "3D Spatial Renders" },
-      { icon: "🏢", label: "Masterplan Portal" },
-      { icon: "🛡", label: "Real Estate" },
+      { icon: <CubeSpatialIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "3D Spatial Renders" },
+      { icon: <BuildingIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "Masterplan Portal" },
+      { icon: <ShieldCheckIcon className="w-3.5 h-3.5 text-emerald-400" />, label: "Real Estate" },
     ],
   },
   {
@@ -63,9 +78,9 @@ const FEATURED_REVIEWS: ReviewItem[] = [
     packageUsed: "Package 03 — The Elevation",
     packageHref: "/packages/3",
     pills: [
-      { icon: "✦", label: "Spatial Concepts" },
-      { icon: "🌐", label: "Digital Platform" },
-      { icon: "🏆", label: "Brand System" },
+      { icon: <CubeSpatialIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "Spatial Concepts" },
+      { icon: <GlobeIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "Digital Platform" },
+      { icon: <TrophyIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "Brand System" },
     ],
   },
   {
@@ -84,9 +99,9 @@ const FEATURED_REVIEWS: ReviewItem[] = [
     packageUsed: "Package 03 — The Elevation",
     packageHref: "/packages/3",
     pills: [
-      { icon: "🏛", label: "Luxury Realty" },
-      { icon: "⚡", label: "Investor Portal" },
-      { icon: "✦", label: "Spatial Renders" },
+      { icon: <BuildingIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "Luxury Realty" },
+      { icon: <GlobeIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "Investor Portal" },
+      { icon: <CubeSpatialIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "Spatial Renders" },
     ],
   },
   {
@@ -105,9 +120,9 @@ const FEATURED_REVIEWS: ReviewItem[] = [
     packageUsed: "Package 04 — The Master Plan",
     packageHref: "/packages/4",
     pills: [
-      { icon: "⚡", label: "Next.js Engine" },
-      { icon: "👥", label: "Mindvest Culture" },
-      { icon: "🏨", label: "Luxury VI Hotel" },
+      { icon: <GlobeIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "Next.js Engine" },
+      { icon: <UsersIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "Mindvest Culture" },
+      { icon: <HotelIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "Luxury VI Hotel" },
     ],
   },
   {
@@ -126,9 +141,9 @@ const FEATURED_REVIEWS: ReviewItem[] = [
     packageUsed: "Package 02 — The Structure",
     packageHref: "/packages/2",
     pills: [
-      { icon: "🏛", label: "Civic Portal" },
-      { icon: "🎨", label: "Brand System" },
-      { icon: "⚙", label: "Enterprise Web" },
+      { icon: <BuildingIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "Civic Portal" },
+      { icon: <DraftingIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "Brand System" },
+      { icon: <CubeSpatialIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "Enterprise Web" },
     ],
   },
   {
@@ -147,9 +162,9 @@ const FEATURED_REVIEWS: ReviewItem[] = [
     packageUsed: "Package 03 — The Elevation",
     packageHref: "/packages/3",
     pills: [
-      { icon: "🏢", label: "4-Story Plaza 3D" },
-      { icon: "📈", label: "Tenant Portal" },
-      { icon: "📍", label: "Lekki Phase 1" },
+      { icon: <BuildingIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "4-Story Plaza 3D" },
+      { icon: <TrendingUpIcon className="w-3.5 h-3.5 text-emerald-400" />, label: "Tenant Portal" },
+      { icon: <MapPinIcon className="w-3.5 h-3.5 text-[var(--gold)]" />, label: "Lekki Phase 1" },
     ],
   },
 ];
@@ -329,7 +344,7 @@ export function Testimonials() {
                 }}
                 className="flex-1 sm:flex-initial px-3.5 sm:px-4 py-2 sm:py-2.5 bg-[var(--gold)] hover:bg-[#e2bd47] text-black font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer active:scale-98"
               >
-                <span>★</span>
+                <StarIcon className="w-3.5 h-3.5 fill-black" />
                 <span>Write Review</span>
               </button>
 
@@ -341,7 +356,7 @@ export function Testimonials() {
                 }}
                 className="flex-1 sm:flex-initial px-3.5 sm:px-4 py-2 sm:py-2.5 bg-[#12141c] hover:bg-[#181a24] border border-[#2d3142] hover:border-[var(--gold-border)] text-zinc-300 hover:text-[var(--gold)] font-mono text-[11px] sm:text-xs font-semibold uppercase tracking-wider rounded-full transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-98"
               >
-                <span>📱</span>
+                <QrMobileIcon className="w-3.5 h-3.5 text-[var(--gold)]" />
                 <span>Scan QR</span>
               </button>
             </div>
@@ -472,8 +487,8 @@ export function Testimonials() {
                   <div className="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-6 sm:left-6 sm:right-6 z-10 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2">
                     <div className="flex flex-wrap items-center gap-1 sm:gap-2">
                       {/* Highlighted First Pill */}
-                      <span className="inline-flex items-center gap-1 px-2 sm:px-3 py-0.5 sm:py-1 bg-white text-black font-sans text-[10px] sm:text-xs font-semibold rounded-full shadow-lg">
-                        <span>👍</span>
+                      <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-0.5 sm:py-1 bg-white text-black font-sans text-[10px] sm:text-xs font-semibold rounded-full shadow-lg">
+                        <CheckBadgeIcon className="w-3.5 h-3.5 text-black" />
                         <span>{active.tag}</span>
                       </span>
 

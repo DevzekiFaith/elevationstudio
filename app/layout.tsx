@@ -291,7 +291,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen antialiased overflow-x-hidden" suppressHydrationWarning>
+      <body className="min-h-screen w-full flex flex-col antialiased overflow-x-hidden bg-[#060608] text-[#f4f0e8] selection:bg-[var(--gold)] selection:text-black" suppressHydrationWarning>
         <PageSkeleton />
         <CurrencyProvider>
           <CartProvider>

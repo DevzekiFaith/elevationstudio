@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { TiltCard } from "@/components/TiltCard";
 import { Magnetic } from "@/components/Magnetic";
+import { CubeSpatialIcon, DraftingIcon, HandshakeIcon } from "@/components/icons/ArchitecturalIcons";
 
 export function ProfessionalPartnerships() {
   const whatsappUrl =
@@ -15,17 +16,17 @@ export function ProfessionalPartnerships() {
 
   const capabilities = [
     {
-      icon: "🎨",
+      icon: <CubeSpatialIcon className="w-6 h-6 text-[var(--gold)]" />,
       title: "Outsourced 3D Visuals",
       desc: "Cinema 4K renders & walkthroughs under strict mutual NDA.",
     },
     {
-      icon: "📐",
+      icon: <DraftingIcon className="w-6 h-6 text-[var(--gold)]" />,
       title: "Engineering Detailing",
       desc: "Structural, MEP, and working drawings drafted to code.",
     },
     {
-      icon: "🤝",
+      icon: <HandshakeIcon className="w-6 h-6 text-[var(--gold)]" />,
       title: "Developer Retainers",
       desc: "Dedicated monthly throughput for phased estate developments.",
     },
@@ -67,7 +68,9 @@ export function ProfessionalPartnerships() {
                     <TiltCard maxTilt={6} glare className="h-full">
                       <div className="p-5 rounded-none bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 h-full flex flex-col justify-between shadow-[0_10px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
                         <div>
-                          <span className="text-2xl mb-2.5 block">{c.icon}</span>
+                          <div className="w-10 h-10 rounded-none bg-white/[0.04] flex items-center justify-center mb-3">
+                            {c.icon}
+                          </div>
                           <h4 className="font-syne text-xs font-bold uppercase text-white mb-1.5 tracking-wide">
                             {c.title}
                           </h4>
