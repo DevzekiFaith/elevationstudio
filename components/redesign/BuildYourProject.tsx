@@ -157,11 +157,6 @@ export function BuildYourProject() {
   const totalUsd = primaryUsd + addOnsTotalUsd;
   const totalServicesCount = (selectedTypology ? 1 : 0) + selectedAddOns.length;
 
-  const discountNgn = Math.round(totalNgn * 0.1);
-  const discountUsd = Math.round(totalUsd * 0.1);
-  const discountedTotalNgn = totalNgn - discountNgn;
-  const discountedTotalUsd = totalUsd - discountUsd;
-
   const formatPrice = (ngn: number, usd: number) => {
     if (ngn === 0 && usd === 0) return "₦0 ($0)";
     if (currency === "USD") return `$${usd.toLocaleString()}`;
@@ -187,34 +182,24 @@ export function BuildYourProject() {
   };
 
   const formattedStandardTotal = formatPrice(totalNgn, totalUsd);
-  const formattedDiscountedTotal = formatPrice(discountedTotalNgn, discountedTotalUsd);
-  const formattedDiscountAmount = formatPrice(discountNgn, discountUsd);
 
   const whatsappMessage = totalServicesCount > 0
     ? `Hello Elevation Studio! I tailored a project scope on your website:
 ${
   selectedTypology
-    ? `- Primary Architecture: Complete Architectural Design Package (${selectedTypology.name})\n  • Standard: ${formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}\n  • Available 10% Discount: ${formatPrice(Math.round(selectedTypology.priceNgn * 0.9), Math.round(selectedTypology.priceUsd * 0.9))}`
+    ? `- Primary Architecture: Complete Architectural Design Package (${selectedTypology.name}) — ${formatPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}`
     : "- Primary Architecture: None selected"
 }
 - Selected Add-ons: ${
         selectedAddOns.length > 0
           ? selectedAddOns
-              .map(
-                (a) =>
-                  `${a.name} (Std: ${formatPrice(a.priceNgn, a.priceUsd)} → Disc: ${formatPrice(
-                    Math.round(a.priceNgn * 0.9),
-                    Math.round(a.priceUsd * 0.9)
-                  )})`
-              )
+              .map((a) => `${a.name} (${formatPrice(a.priceNgn, a.priceUsd)})`)
               .join(", ")
           : "None (Core Architecture Only)"
       }
-- Standard Total: ${formattedStandardTotal}
-- Available 10% Discount: -${formattedDiscountAmount}
-- Estimated Discussable Total: ${formattedDiscountedTotal}
+- Estimated Total: ${formattedStandardTotal}
 
-*Commercial Note:* All prices are discussable. Enjoy up to 10% discount on applicable services. Final project fees are determined through consultation and agreement on project scope.
+*Commercial Note:* All prices are discussable. Final project fees are determined through consultation and agreement on project scope.
 
 Please let me know your consultation schedule and formal quotation.`
     : `Hello Elevation Studio! I am exploring your project packages and would like to discuss my project needs.`;
@@ -269,20 +254,12 @@ Please let me know your consultation schedule and formal quotation.`
               <div className="flex flex-wrap items-center gap-2">
                 <span className="font-mono text-xs text-white/70">
                   {selectedTypology ? (
-                    <span className="flex items-baseline gap-2">
-                      <span className="line-through text-white/40 text-[10px]">
-                        Std: {formatCompactPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}
-                      </span>
-                      <strong className="text-white font-bold text-sm">
-                        From {formatCompactPrice(Math.round(selectedTypology.priceNgn * 0.9), Math.round(selectedTypology.priceUsd * 0.9))}
-                      </strong>
-                    </span>
+                    <strong className="text-white font-bold text-sm">
+                      {formatCompactPrice(selectedTypology.priceNgn, selectedTypology.priceUsd)}
+                    </strong>
                   ) : (
                     "Tap a typology below"
                   )}
-                </span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-none bg-emerald-500/10 text-emerald-400 font-mono text-[10px] tracking-wider uppercase font-semibold">
-                  10% Disc. Available
                 </span>
                 <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-none bg-[var(--gold)]/10 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
                   <span>✦</span> Discussable
@@ -386,18 +363,15 @@ Please let me know your consultation schedule and formal quotation.`
                         </span>
                         {addon.priceNgn > 0 ? (
                           <div className="flex flex-col items-end text-right">
-                            <span className="font-mono text-[9px] text-white/40 line-through">
-                              Std: {addon.priceFormatted}
-                            </span>
                             <span
                               className={`font-mono text-xs font-bold ${
                                 isAdded ? "text-emerald-400" : "text-[var(--gold)]"
                               }`}
                             >
-                              + {formatCompactPrice(Math.round(addon.priceNgn * 0.9), Math.round(addon.priceUsd * 0.9))}
+                              + {addon.priceFormatted}
                             </span>
-                            <span className="text-[8.5px] uppercase font-mono text-emerald-400 font-semibold">
-                              10% Disc. · Discussable
+                            <span className="text-[8.5px] uppercase font-mono text-[var(--gold)] font-semibold">
+                              Discussable
                             </span>
                           </div>
                         ) : (
@@ -473,25 +447,15 @@ Please let me know your consultation schedule and formal quotation.`
 
               <div className="font-mono text-xs text-white/60 pt-1 flex flex-col gap-1.5">
                 {totalServicesCount > 0 ? (
-                  <>
-                    <div className="flex flex-wrap items-baseline gap-3">
-                      <span className="text-white/45 line-through text-[11px]">
-                        Standard Total: {formattedStandardTotal}
-                      </span>
-                      <span className="text-emerald-400 font-semibold text-[11px]">
-                        Available 10% Discount: -{formattedDiscountAmount}
-                      </span>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span>Estimated Discussable Total:</span>
-                      <strong className="text-white font-bold text-base sm:text-lg text-[var(--gold)]">
-                        {formattedDiscountedTotal}
-                      </strong>
-                      <span className="px-2.5 py-0.5 rounded-none bg-emerald-500/10 text-emerald-400 font-mono text-[10px] tracking-wider uppercase font-semibold">
-                        All Prices Discussable
-                      </span>
-                    </div>
-                  </>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span>Estimated Discussable Total:</span>
+                    <strong className="text-white font-bold text-base sm:text-lg text-[var(--gold)]">
+                      {formattedStandardTotal}
+                    </strong>
+                    <span className="px-2.5 py-0.5 rounded-none bg-[var(--gold)]/10 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
+                      All Prices Discussable
+                    </span>
+                  </div>
                 ) : (
                   <div className="flex items-center gap-2">
                     <span>Estimated Cart Total:</span>
@@ -499,7 +463,7 @@ Please let me know your consultation schedule and formal quotation.`
                   </div>
                 )}
                 <p className="font-sans text-[11px] text-white/50 italic mt-1 max-w-xl leading-relaxed">
-                  &ldquo;All prices are discussable. Enjoy up to 10% discount on applicable services. Final project fees are determined through consultation and agreement on project scope.&rdquo;
+                  &ldquo;All prices are discussable. Final project fees are determined through consultation and agreement on project scope.&rdquo;
                 </p>
               </div>
             </div>

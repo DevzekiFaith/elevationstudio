@@ -13,7 +13,7 @@ const PACKAGES = [
     name: "The Foundation",
     tier: "B2B",
     short: "Brand identity only",
-    range: "Standard: From ₦500K → From ₦450K (10% Disc.) · Discussable",
+    range: "From ₦500K · Discussable",
     bridge: false,
   },
   {
@@ -22,7 +22,7 @@ const PACKAGES = [
     name: "The Structure",
     tier: "B2B",
     short: "Brand + Digital + Presence",
-    range: "Standard: From ₦1.5M → From ₦1.35M (10% Disc.) · Discussable",
+    range: "From ₦1.5M · Discussable",
     bridge: false,
   },
   {
@@ -31,7 +31,7 @@ const PACKAGES = [
     name: "The Elevation",
     tier: "B2B",
     short: "Brand + Digital + Space",
-    range: "Standard: From ₦5M → From ₦4.5M (10% Disc.) · Discussable",
+    range: "Investment from ₦5M · Discussable",
     bridge: false,
   },
   {
@@ -40,7 +40,7 @@ const PACKAGES = [
     name: "The Master Plan",
     tier: "B2B",
     short: "Full transformation",
-    range: "Standard: From ₦15M → From ₦13.5M (10% Disc.) · Discussable",
+    range: "Investment from ₦15M · Discussable",
     bridge: true,
   },
   {
@@ -49,7 +49,7 @@ const PACKAGES = [
     name: "Concept & Space Planning",
     tier: "B2C",
     short: "Floor Layouts, Zoning & Spatial Discovery",
-    range: "Standard: From ₦600K → From ₦540K (10% Disc.) · Discussable",
+    range: "From ₦600K · Discussable",
     bridge: false,
   },
   {
@@ -58,7 +58,7 @@ const PACKAGES = [
     name: "Residential Architecture",
     tier: "B2C",
     short: "Modern Bungalows, Duplexes & Private Homes",
-    range: "Standard: From ₦1.5M → From ₦1.35M (10% Disc.) · Discussable",
+    range: "From ₦1.5M · Discussable",
     bridge: false,
   },
   {
@@ -67,7 +67,7 @@ const PACKAGES = [
     name: "Residential Masterplan",
     tier: "B2C",
     short: "Luxury Villas, Compounds & Multiple Buildings",
-    range: "Standard: From ₦4.5M → From ₦4.05M (10% Disc.) · Discussable",
+    range: "From ₦4.5M · Discussable",
     bridge: false,
   },
 ] as const;
@@ -456,7 +456,7 @@ function ContactFormInner() {
         </div>
 
         <p style={{ fontSize: "11px", color: "var(--muted)", fontStyle: "italic", marginTop: "10px", lineHeight: "1.5" }}>
-          All prices are discussable. Enjoy up to 10% discount on applicable services. Final project fees are determined through consultation and agreement on project scope.
+          All prices are discussable. Final project fees are determined through consultation and agreement on project scope.
         </p>
 
         <div className="contact-detail-block">

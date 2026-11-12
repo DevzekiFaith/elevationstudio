@@ -81,14 +81,8 @@ export function CompleteArchitecturalPackage() {
                         Starting Baseline · Bungalow Villa ({currency})
                       </span>
                       <div className="flex flex-wrap items-baseline gap-2 sm:gap-3">
-                        <span className="font-mono text-xs sm:text-sm text-white/45 line-through">
-                          Standard: {archTier.standard}
-                        </span>
                         <span className="font-syne text-3xl sm:text-5xl font-black text-[var(--gold)] tracking-tight">
-                          {archTier.discounted}
-                        </span>
-                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-none bg-emerald-500/15 text-emerald-400 font-mono text-[10px] tracking-wider uppercase font-semibold">
-                          ✦ 10% Disc. Available
+                          {archTier.standard}
                         </span>
                         <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-none bg-[var(--gold)]/10 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
                           Discussable
@@ -99,10 +93,10 @@ export function CompleteArchitecturalPackage() {
                       </div>
                       <div className="font-mono text-[10px] sm:text-[11px] text-white/60 mt-2.5 space-y-1">
                         <div>
-                          ✦ <strong className="text-white font-semibold">Bungalow:</strong> Standard ₦400K ($300) → <strong className="text-[var(--gold)]">From ₦360K ($270)</strong> with 10% discount
+                          ✦ <strong className="text-white font-semibold">Bungalow:</strong> From ₦400K ($300) · Discussable
                         </div>
                         <div>
-                          ✦ <strong className="text-white font-semibold">Duplex &amp; Multi-Story:</strong> Standard ₦750K ($565) → <strong className="text-[var(--gold)]">From ₦675K ($508)</strong> with 10% discount
+                          ✦ <strong className="text-white font-semibold">Duplex &amp; Multi-Story:</strong> From ₦750K ($565) · Discussable
                         </div>
                       </div>
                       <p className="font-sans text-[11px] text-white/55 italic mt-3 pt-2.5 border-t border-white/5 leading-relaxed max-w-xl">
@@ -185,7 +179,7 @@ export function CompleteArchitecturalPackage() {
                       5-Bedroom Modern Bungalow Villa
                     </h4>
                     <span className="font-mono text-[11px] text-white/70 block mt-1 font-semibold">
-                      Full Set: Standard ₦400K ($300) → From ₦360K ($270) [10% Disc.] · Discussable
+                      Full Set: From ₦400K ($300) · Discussable
                     </span>
                   </div>
                 </div>

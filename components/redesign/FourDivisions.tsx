@@ -24,9 +24,9 @@ const DIVISIONS: DivisionItem[] = [
     title: "Architectural Design",
     flagship: true,
     tag: "Bungalows · Duplexes · Plazas · Estates",
-    standardPrice: "Standard: ₦750K ($565)",
-    discountedPrice: "From ₦675K ($508)",
-    discountBadge: "10% Disc. · Discussable",
+    standardPrice: "From ₦750K ($565)",
+    discountedPrice: "From ₦750K ($565)",
+    discountBadge: "Discussable",
     image: "/renders/modern_duplex_residence.jpg",
     ctaText: "Get Architecture Quote",
     ctaHref: "#build-project",
@@ -36,9 +36,9 @@ const DIVISIONS: DivisionItem[] = [
     title: "Technical Coordination",
     flagship: false,
     tag: "Structural · MEP · Council Drawings",
-    standardPrice: "Standard: ₦400K ($300)",
-    discountedPrice: "From ₦360K ($270)",
-    discountBadge: "10% Disc. · Discussable",
+    standardPrice: "From ₦400K ($300)",
+    discountedPrice: "From ₦400K ($300)",
+    discountBadge: "Discussable",
     image: "/renders/commercial_plaza_facade.jpg",
     ctaText: "Request Technical Drawings",
     ctaHref: "#build-project",
@@ -48,9 +48,9 @@ const DIVISIONS: DivisionItem[] = [
     title: "3D Visualization",
     flagship: false,
     tag: "Photorealistic 3D · 4K Walkthroughs · Stills",
-    standardPrice: "Standard: ₦250K ($190)",
-    discountedPrice: "From ₦225K ($171)",
-    discountBadge: "10% Disc. · Discussable",
+    standardPrice: "From ₦250K ($190)",
+    discountedPrice: "From ₦250K ($190)",
+    discountBadge: "Discussable",
     image: "/renders/modern_5bed_bungalow_evening.jpg",
     ctaText: "Outsource 3D Renders",
     ctaHref: "#build-project",
@@ -126,22 +126,17 @@ export function FourDivisions() {
                     </div>
 
                     <div className="pt-2 flex flex-col gap-1 font-mono text-[11px]">
-                      <div className="flex items-baseline justify-between gap-2">
-                        <span className="text-white/45 uppercase text-[10px]">Baseline Fee:</span>
-                        {div.standardPrice && (
-                          <span className="text-white/40 line-through text-[10px]">
-                            {div.standardPrice}
-                          </span>
-                        )}
-                      </div>
                       <div className="flex items-center justify-between gap-2">
+                        <span className="text-white/45 uppercase text-[10px]">Baseline Fee:</span>
                         <span className="text-[var(--gold)] font-bold text-xs">{div.discountedPrice}</span>
-                        {div.discountBadge && (
-                          <span className="text-[9px] uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-0.5 font-semibold">
+                      </div>
+                      {div.discountBadge && (
+                        <div className="flex justify-end">
+                          <span className="text-[9px] uppercase tracking-wider text-[var(--gold)] bg-[var(--gold)]/10 px-2 py-0.5 font-semibold">
                             {div.discountBadge}
                           </span>
-                        )}
-                      </div>
+                        </div>
+                      )}
                     </div>
 
                     <a
@@ -160,7 +155,7 @@ export function FourDivisions() {
 
         {/* Commercial Pricing Note */}
         <div className="mt-10 sm:mt-12 p-4 sm:p-5 bg-white/[0.02] border border-white/5 text-center max-w-3xl mx-auto font-mono text-[11px] text-white/60 leading-relaxed">
-          &ldquo;All prices are discussable. Enjoy up to 10% discount on applicable services. Final project fees are determined through consultation and agreement on project scope.&rdquo;
+          &ldquo;All prices are discussable. Final project fees are determined through consultation and agreement on project scope.&rdquo;
         </div>
       </div>
     </section>

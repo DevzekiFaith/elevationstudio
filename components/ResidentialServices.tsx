@@ -369,11 +369,7 @@ export function ResidentialServices() {
                 </div>
                 <h3 className="res-service-title">Residential Concept Design</h3>
                 <div className="res-price flex items-center flex-wrap gap-2.5">
-                  <span className="line-through text-white/40 text-xs">{conceptTier.standard}</span>
-                  <span className="text-[var(--gold)] font-bold">{conceptTier.discounted}</span>
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[9px] tracking-wider uppercase font-semibold">
-                    10% Disc. Available
-                  </span>
+                  <span className="text-[var(--gold)] font-bold">{conceptTier.standard}</span>
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/25 text-[var(--gold)] font-mono text-[9.5px] tracking-wider uppercase font-semibold">
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
@@ -498,11 +494,7 @@ export function ResidentialServices() {
                 </div>
                 <h3 className="res-service-title">Complete Residential Architecture</h3>
                 <div className="res-price flex items-center flex-wrap gap-2.5">
-                  <span className="line-through text-white/40 text-xs">{architectureTier.standard}</span>
-                  <span className="text-[var(--gold)] font-bold">{architectureTier.discounted}</span>
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[9px] tracking-wider uppercase font-semibold">
-                    10% Disc. Available
-                  </span>
+                  <span className="text-[var(--gold)] font-bold">{architectureTier.standard}</span>
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/25 text-[var(--gold)] font-mono text-[9.5px] tracking-wider uppercase font-semibold">
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
@@ -556,11 +548,7 @@ export function ResidentialServices() {
                 </div>
                 <h3 className="res-service-title">Residential Masterplan</h3>
                 <div className="res-price flex items-center flex-wrap gap-2.5">
-                  <span className="line-through text-white/40 text-xs">{masterplanTier.standard}</span>
-                  <span className="text-[var(--gold)] font-bold">{masterplanTier.discounted}</span>
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[9px] tracking-wider uppercase font-semibold">
-                    10% Disc. Available
-                  </span>
+                  <span className="text-[var(--gold)] font-bold">{masterplanTier.standard}</span>
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/25 text-[var(--gold)] font-mono text-[9.5px] tracking-wider uppercase font-semibold">
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
@@ -659,32 +647,20 @@ export function ResidentialServices() {
                     <th className="res-th-pkg">
                       <div className="res-th-tag">Package A · Concept Stage</div>
                       <div className="res-th-name">Concept Design</div>
-                      <div className="res-th-price flex flex-col items-center gap-0.5">
-                        <span className="line-through text-white/40 text-[10px]">{conceptTier.standard}</span>
-                        <span className="text-[var(--gold)] font-bold">{conceptTier.discounted}</span>
-                        <span className="text-[9px] font-mono text-emerald-400">10% Disc. Available</span>
-                      </div>
+                      <div className="res-th-price text-[var(--gold)] font-bold">{conceptTier.standard}</div>
                       <div className="text-[9px] font-mono text-[var(--gold)] uppercase tracking-wider mt-1 opacity-90">Discussable</div>
                     </th>
                     <th className="res-th-pkg res-th-featured">
                       <div className="res-th-badge">★ Principal Design</div>
                       <div className="res-th-tag">Package B · Full Private Home</div>
                       <div className="res-th-name">Complete Architecture</div>
-                      <div className="res-th-price flex flex-col items-center gap-0.5">
-                        <span className="line-through text-white/40 text-[10px]">{architectureTier.standard}</span>
-                        <span className="text-[var(--gold)] font-bold">{architectureTier.discounted}</span>
-                        <span className="text-[9px] font-mono text-emerald-400">10% Disc. Available</span>
-                      </div>
+                      <div className="res-th-price text-[var(--gold)] font-bold">{architectureTier.standard}</div>
                       <div className="text-[9px] font-mono text-[var(--gold)] uppercase tracking-wider mt-1 opacity-90">Discussable</div>
                     </th>
                     <th className="res-th-pkg">
                       <div className="res-th-tag">Package C · Compounds &amp; Estates</div>
                       <div className="res-th-name">Residential Masterplan</div>
-                      <div className="res-th-price flex flex-col items-center gap-0.5">
-                        <span className="line-through text-white/40 text-[10px]">{masterplanTier.standard}</span>
-                        <span className="text-[var(--gold)] font-bold">{masterplanTier.discounted}</span>
-                        <span className="text-[9px] font-mono text-emerald-400">10% Disc. Available</span>
-                      </div>
+                      <div className="res-th-price text-[var(--gold)] font-bold">{masterplanTier.standard}</div>
                       <div className="text-[9px] font-mono text-[var(--gold)] uppercase tracking-wider mt-1 opacity-90">Discussable</div>
                     </th>
                   </tr>
@@ -851,7 +827,7 @@ export function ResidentialServices() {
         <div className="res-pricing-inner">
           <span className="res-pricing-dash" />
           <p className="res-pricing-text">
-            All prices are discussable. Enjoy up to 10% discount on applicable services. Final project fees are determined through consultation and agreement on project scope.
+            All prices are discussable. Final project fees are determined through consultation and agreement on project scope.
           </p>
         </div>
       </div>

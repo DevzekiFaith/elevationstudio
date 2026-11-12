@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState, useEffect, type ReactNode }
 export type Currency = "NGN" | "USD" | "GBP";
 
 export const PRICING_NOTE =
-  "All prices are discussable. Enjoy up to 10% discount on applicable services. Final project fees are determined through consultation and agreement on project scope.";
+  "All prices are discussable. Final project fees are determined through consultation and agreement on project scope.";
 
 export interface FormattedTierPrice {
   standard: string;
@@ -152,95 +152,87 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
   const formatPrice = (pkgId: 1 | 2 | 3 | 4) => {
     const base = BASE_PRICES_USD[pkgId];
     const prefix = base.isInvestment ? "Investment from " : "From ";
-    const discountedUsd = base.min * 0.9;
 
     if (currency === "NGN") {
       const standardNgn = base.min * rates.NGN;
-      const discountedNgn = standardNgn * 0.9;
       const standardStr = `${prefix}${formatNaira(standardNgn)}`;
-      const discountedStr = `${prefix}${formatNaira(discountedNgn)}`;
       return {
-        min: discountedStr,
+        min: standardStr,
         max: "",
         standard: standardStr,
-        discounted: discountedStr,
+        discounted: standardStr,
       };
     }
 
     if (currency === "USD") {
       const standardStr = `${prefix}$${roundForeign(base.min).toLocaleString("en-US")}`;
-      const discountedStr = `${prefix}$${roundForeign(discountedUsd).toLocaleString("en-US")}`;
       return {
-        min: discountedStr,
+        min: standardStr,
         max: "",
         standard: standardStr,
-        discounted: discountedStr,
+        discounted: standardStr,
       };
     }
 
     // GBP
     const standardGbp = roundForeign(base.min * rates.GBP);
-    const discountedGbp = roundForeign(discountedUsd * rates.GBP);
     const standardStr = `${prefix}£${standardGbp.toLocaleString("en-US")}`;
-    const discountedStr = `${prefix}£${discountedGbp.toLocaleString("en-US")}`;
     return {
-      min: discountedStr,
+      min: standardStr,
       max: "",
       standard: standardStr,
-      discounted: discountedStr,
+      discounted: standardStr,
     };
   };
 
   const formatResidentialPrice = (resPkgId: "architecture" | "masterplan" | "concept") => {
     const baseUsd = RESIDENTIAL_BASE_USD[resPkgId];
-    // Shows the discounted price with available 10% commercial discount
-    const discountedUsd = baseUsd * 0.9;
 
     if (currency === "NGN") {
-      const ngnValue = discountedUsd * rates.NGN;
+      const ngnValue = baseUsd * rates.NGN;
       return `From ${formatNaira(ngnValue)}`;
     }
 
     if (currency === "USD") {
-      return `From $${roundForeign(discountedUsd).toLocaleString("en-US")}`;
+      return `From $${roundForeign(baseUsd).toLocaleString("en-US")}`;
     }
 
     // GBP
-    const gbpValue = discountedUsd * rates.GBP;
+    const gbpValue = baseUsd * rates.GBP;
     return `From £${roundForeign(gbpValue).toLocaleString("en-US")}`;
   };
 
   const formatResidentialTier = (resPkgId: "architecture" | "masterplan" | "concept"): FormattedTierPrice => {
     const baseUsd = RESIDENTIAL_BASE_USD[resPkgId];
-    const discountedUsd = baseUsd * 0.9;
 
     if (currency === "NGN") {
       const standardNgn = baseUsd * rates.NGN;
-      const discountedNgn = standardNgn * 0.9;
+      const formatted = `From ${formatNaira(standardNgn)}`;
       return {
-        standard: `From ${formatNaira(standardNgn)}`,
-        discounted: `From ${formatNaira(discountedNgn)}`,
-        discountRate: "10% Available Discount",
+        standard: formatted,
+        discounted: formatted,
+        discountRate: "",
         isDiscussable: true,
       };
     }
 
     if (currency === "USD") {
+      const formatted = `From $${roundForeign(baseUsd).toLocaleString("en-US")}`;
       return {
-        standard: `From $${roundForeign(baseUsd).toLocaleString("en-US")}`,
-        discounted: `From $${roundForeign(discountedUsd).toLocaleString("en-US")}`,
-        discountRate: "10% Available Discount",
+        standard: formatted,
+        discounted: formatted,
+        discountRate: "",
         isDiscussable: true,
       };
     }
 
     // GBP
     const standardGbp = roundForeign(baseUsd * rates.GBP);
-    const discountedGbp = roundForeign(discountedUsd * rates.GBP);
+    const formatted = `From £${standardGbp.toLocaleString("en-US")}`;
     return {
-      standard: `From £${standardGbp.toLocaleString("en-US")}`,
-      discounted: `From £${discountedGbp.toLocaleString("en-US")}`,
-      discountRate: "10% Available Discount",
+      standard: formatted,
+      discounted: formatted,
+      discountRate: "",
       isDiscussable: true,
     };
   };

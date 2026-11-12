@@ -53,16 +53,13 @@ export function WhoWeWorkWith() {
                       <span className="font-mono text-[10px] uppercase tracking-widest text-white/70 font-bold px-2.5 py-0.5 bg-white/[0.06] rounded-none">
                         B2C · Private &amp; Diaspora
                       </span>
-                      <span className="font-mono text-[10px] text-white/40 line-through">
-                        Standard: ₦750K ($565)
+                      <span className="font-mono text-xs text-[var(--gold)] font-bold">
+                        From ₦750K ($565)
                       </span>
                     </div>
-                    <div className="flex items-center justify-between gap-2 pt-1">
-                      <span className="font-mono text-xs text-[var(--gold)] font-bold">
-                        From ₦675K ($508)
-                      </span>
-                      <span className="text-[9px] uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-0.5 font-mono font-semibold">
-                        10% Disc. · Discussable
+                    <div className="flex justify-end pt-1">
+                      <span className="text-[9px] uppercase tracking-wider text-[var(--gold)] bg-[var(--gold)]/10 px-2 py-0.5 font-mono font-semibold">
+                        Discussable
                       </span>
                     </div>
                   </div>
@@ -153,7 +150,7 @@ export function WhoWeWorkWith() {
 
         {/* Commercial Pricing Note */}
         <div className="mt-10 sm:mt-12 p-4 sm:p-5 bg-white/[0.02] border border-white/5 text-center max-w-2xl mx-auto font-mono text-[11px] text-white/60 leading-relaxed">
-          &ldquo;All prices are discussable. Enjoy up to 10% discount on applicable services. Final project fees are determined through consultation and agreement on project scope.&rdquo;
+          &ldquo;All prices are discussable. Final project fees are determined through consultation and agreement on project scope.&rdquo;
         </div>
       </div>
     </section>
