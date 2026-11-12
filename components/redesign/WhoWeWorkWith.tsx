@@ -3,6 +3,7 @@
 import React from "react";
 import { Reveal } from "@/components/Reveal";
 import { TiltCard } from "@/components/TiltCard";
+import { DownloadIcon } from "@/components/icons/ArchitecturalIcons";
 
 export function WhoWeWorkWith() {
   const b2cWhatsapp =
@@ -103,7 +104,7 @@ export function WhoWeWorkWith() {
                   </p>
                 </div>
 
-                <div className="pt-4">
+                <div className="pt-4 flex flex-col items-center gap-3">
                   <a
                     href={b2bWhatsapp}
                     target="_blank"
@@ -112,6 +113,17 @@ export function WhoWeWorkWith() {
                   >
                     <span>Discuss Developer Partnership</span>
                     <span>→</span>
+                  </a>
+
+                  <a
+                    href="/docs/elevation-studio-b2b-capabilities.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download="Elevation-Studio-B2B-Capabilities.pdf"
+                    className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-white/50 hover:text-[var(--gold)] transition-colors py-1 group"
+                  >
+                    <DownloadIcon className="w-3.5 h-3.5 text-[var(--gold)] group-hover:translate-y-0.5 transition-transform" />
+                    <span>Download 1-Page Capabilities Deck (PDF)</span>
                   </a>
                 </div>
               </div>

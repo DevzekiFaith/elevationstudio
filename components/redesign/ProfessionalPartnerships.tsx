@@ -5,7 +5,12 @@ import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { TiltCard } from "@/components/TiltCard";
 import { Magnetic } from "@/components/Magnetic";
-import { CubeSpatialIcon, DraftingIcon, HandshakeIcon } from "@/components/icons/ArchitecturalIcons";
+import {
+  CubeSpatialIcon,
+  DraftingIcon,
+  HandshakeIcon,
+  DownloadIcon,
+} from "@/components/icons/ArchitecturalIcons";
 
 export function ProfessionalPartnerships() {
   const whatsappUrl =
@@ -84,14 +89,14 @@ export function ProfessionalPartnerships() {
                 ))}
               </div>
 
-              {/* CTAs */}
-              <Reveal direction="up" delay={0.5} className="pt-4 flex flex-wrap items-center gap-4">
+              {/* CTAs: WhatsApp Consultation + Instant 1-Page B2B Deck Download */}
+              <Reveal direction="up" delay={0.5} className="pt-4 flex flex-col sm:flex-row sm:items-center gap-4">
                 <Magnetic strength={0.2}>
                   <a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-8 py-4 rounded-none bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-xs uppercase tracking-wider transition-all shadow-[0_6px_30px_rgba(16,185,129,0.35)] hover:scale-105 flex items-center gap-2 cursor-pointer inline-flex"
+                    className="px-8 py-4 rounded-none bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-black font-syne font-black text-xs uppercase tracking-wider transition-all shadow-[0_6px_30px_rgba(16,185,129,0.35)] hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Discuss B2B Collaboration</span>
                     <span>→</span>
@@ -100,12 +105,29 @@ export function ProfessionalPartnerships() {
 
                 <Magnetic strength={0.15}>
                   <a
-                    href="/contact?intent=b2b-partnership"
-                    className="px-7 py-4 rounded-none bg-white/[0.04] hover:bg-white/[0.08] text-white font-syne font-semibold text-xs uppercase tracking-wider transition-colors cursor-pointer inline-flex"
+                    href="/docs/elevation-studio-b2b-capabilities.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download="Elevation-Studio-B2B-Capabilities.pdf"
+                    className="px-6 py-4 rounded-none bg-white/[0.05] hover:bg-white/[0.1] text-white hover:text-[var(--gold)] font-syne font-semibold text-xs uppercase tracking-wider transition-all border border-white/10 hover:border-[var(--gold)]/40 cursor-pointer flex items-center justify-center gap-2.5 group"
                   >
-                    Request Partnership Deck
+                    <DownloadIcon className="w-4 h-4 text-[var(--gold)] group-hover:translate-y-0.5 transition-transform" />
+                    <span>Download 1-Page B2B Deck (PDF)</span>
                   </a>
                 </Magnetic>
+              </Reveal>
+
+              {/* Instant Access & Confidentiality Trust Note */}
+              <Reveal direction="up" delay={0.55}>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[10.5px] text-white/50 pt-1">
+                  <span className="flex items-center gap-1.5">
+                    <span className="text-[var(--gold)]">✦</span> Instant PDF Download
+                  </span>
+                  <span className="text-white/20 hidden sm:inline">·</span>
+                  <span>1-Page Executive Spec Sheet</span>
+                  <span className="text-white/20 hidden sm:inline">·</span>
+                  <span>100% White-Label &amp; Mutual NDA</span>
+                </div>
               </Reveal>
             </div>
 

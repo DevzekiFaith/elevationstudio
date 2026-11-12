@@ -307,3 +307,23 @@ export function InstagramIcon({ className = "w-4 h-4" }: IconProps) {
     </svg>
   );
 }
+
+// Clean Vector Download Icon
+export function DownloadIcon({ className = "w-4 h-4" }: IconProps) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.75}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M7.5 10.5L12 15m0 0l4.5-4.5M12 15V3"
+      />
+    </svg>
+  );
+}
