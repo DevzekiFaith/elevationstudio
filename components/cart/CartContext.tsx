@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState, useEffect, type ReactNode }
 export interface CartItem {
   id: string;
   title: string;
-  category: "Architecture" | "Digital" | "Branding" | "3D Visualization" | "Training";
+  category: "Architecture" | "Digital" | "Branding" | "3D Visualization";
   typology?: string;
   priceNgn: number;
   priceUsd: number;

@@ -226,7 +226,7 @@ const jsonLd = {
               name: "Division 01 — Complete Architectural Design Package",
               description: "Contractor-ready working drawings, structural/MEP sets, 4K renders, and municipal submission sets.",
             },
-            price: "750000",
+            price: "675000",
             priceCurrency: "NGN",
           },
           {
@@ -236,7 +236,7 @@ const jsonLd = {
               name: "Division 02 — Standalone 3D Visualization & 4K Animation",
               description: "Photorealistic 3D exterior/interior renders and cinematic marketing walkthroughs.",
             },
-            price: "250000",
+            price: "225000",
             priceCurrency: "NGN",
           },
           {
@@ -246,16 +246,8 @@ const jsonLd = {
               name: "Division 03 — Branding & High-Performance Digital Platforms",
               description: "Brand identity systems, investor pitch collateral, and custom Next.js web portals.",
             },
-            price: "300000",
+            price: "270000",
             priceCurrency: "NGN",
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Division 04 — Corporate Workforce Capacity Building",
-              description: "Custom organizational development and workforce training powered by Mindvest Global.",
-            },
           },
         ],
       },

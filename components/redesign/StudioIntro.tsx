@@ -24,7 +24,7 @@ export function StudioIntro() {
 
           <Reveal direction="left" delay={0.3} className="max-w-md">
             <p className="font-sans text-sm sm:text-base text-white/70 leading-relaxed font-light">
-              We eliminate the friction of fragmented project procurement. Elevation Studio unites spatial design, structural engineering, photorealistic 3D visualization, digital systems, and organizational training under one coordinated roof.
+              We eliminate the friction of fragmented project procurement. Elevation Studio unites spatial design, structural engineering, photorealistic 3D visualization, and digital systems under one coordinated roof.
             </p>
           </Reveal>
         </div>

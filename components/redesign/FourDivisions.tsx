@@ -5,45 +5,54 @@ import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { TiltCard } from "@/components/TiltCard";
 
-const DIVISIONS = [
+interface DivisionItem {
+  num: string;
+  title: string;
+  flagship: boolean;
+  tag: string;
+  standardPrice?: string;
+  discountedPrice: string;
+  discountBadge?: string;
+  image: string;
+  ctaText: string;
+  ctaHref: string;
+}
+
+const DIVISIONS: DivisionItem[] = [
   {
     num: "01",
-    title: "Architecture & Spatial Design",
+    title: "Architectural Design",
     flagship: true,
-    tag: "Bungalows · Duplexes · Plazas · Churches",
-    price: "From ₦750K ($565) · Open to Discussion",
+    tag: "Bungalows · Duplexes · Plazas · Estates",
+    standardPrice: "Standard: ₦750K ($565)",
+    discountedPrice: "From ₦675K ($508)",
+    discountBadge: "10% Disc. · Discussable",
     image: "/renders/modern_duplex_residence.jpg",
     ctaText: "Get Architecture Quote",
     ctaHref: "#build-project",
   },
   {
     num: "02",
-    title: "Engineering & 3D Visualization",
+    title: "Technical Coordination",
     flagship: false,
-    tag: "Photorealistic 3D · 4K Walkthroughs · MEP",
-    price: "From ₦250K ($190) · Open to Discussion",
-    image: "/renders/modern_5bed_bungalow_evening.jpg",
-    ctaText: "Outsource 3D Renders",
+    tag: "Structural · MEP · Council Drawings",
+    standardPrice: "Standard: ₦400K ($300)",
+    discountedPrice: "From ₦360K ($270)",
+    discountBadge: "10% Disc. · Discussable",
+    image: "/renders/commercial_plaza_facade.jpg",
+    ctaText: "Request Technical Drawings",
     ctaHref: "#build-project",
   },
   {
     num: "03",
-    title: "Branding & Digital Platforms",
+    title: "3D Visualization",
     flagship: false,
-    tag: "Next.js Web Platforms · Estate Portals",
-    price: "From ₦300K ($225) · Open to Discussion",
-    image: "/renders/commercial_plaza_facade.jpg",
-    ctaText: "Build Digital Platform",
-    ctaHref: "#build-project",
-  },
-  {
-    num: "04",
-    title: "Workforce & Corporate Training",
-    flagship: false,
-    tag: "Capacity Building · Powered by Mindvest",
-    price: "Tailored Corporate Proposal",
-    image: "/renders/corporate_lobby_corridor.jpg",
-    ctaText: "Book Corporate Training",
+    tag: "Photorealistic 3D · 4K Walkthroughs · Stills",
+    standardPrice: "Standard: ₦250K ($190)",
+    discountedPrice: "From ₦225K ($171)",
+    discountBadge: "10% Disc. · Discussable",
+    image: "/renders/modern_5bed_bungalow_evening.jpg",
+    ctaText: "Outsource 3D Renders",
     ctaHref: "#build-project",
   },
 ];
@@ -57,25 +66,25 @@ export function FourDivisions() {
           <div>
             <Reveal direction="down" delay={0.1}>
               <span className="font-mono text-xs uppercase tracking-[3px] text-[var(--gold)] font-bold block mb-3">
-                Our 4 Core Divisions
+                Our Core Practice Capabilities
               </span>
             </Reveal>
             <Reveal direction="up" delay={0.2}>
               <h2 className="font-syne text-3xl sm:text-5xl md:text-6xl font-extrabold uppercase text-white leading-tight">
-                Specialized Services. <br />
+                Architectural Services. <br />
                 <span className="text-[var(--gold)]">One Standard of Excellence.</span>
               </h2>
             </Reveal>
           </div>
           <Reveal direction="left" delay={0.3}>
             <p className="font-sans text-xs sm:text-base text-white/75 max-w-md font-light leading-relaxed">
-              Hire us for a single deliverable or an entire turnkey venture. Choose only what you need.
+              Tailored architectural design, technical drawings, and 3D visualization. Choose only what your project needs.
             </p>
           </Reveal>
         </div>
 
-        {/* 4 Clean Visual Cards Grid with 3D Tilt & Glare Animations (Straight Corners, Line-Free) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-7 w-full">
+        {/* 3 Clean Architectural Capability Cards Grid with 3D Tilt (Straight Corners, Line-Free) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 w-full">
           {DIVISIONS.map((div, idx) => (
             <Reveal key={div.num} direction="up" delay={0.1 * idx}>
               <TiltCard maxTilt={8} glare className="h-full">
@@ -116,9 +125,23 @@ export function FourDivisions() {
                       </span>
                     </div>
 
-                    <div className="pt-2 flex items-center justify-between font-mono text-[11px]">
-                      <span className="text-white/45 uppercase">Baseline Fee:</span>
-                      <span className="text-[var(--gold)] font-bold">{div.price}</span>
+                    <div className="pt-2 flex flex-col gap-1 font-mono text-[11px]">
+                      <div className="flex items-baseline justify-between gap-2">
+                        <span className="text-white/45 uppercase text-[10px]">Baseline Fee:</span>
+                        {div.standardPrice && (
+                          <span className="text-white/40 line-through text-[10px]">
+                            {div.standardPrice}
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-[var(--gold)] font-bold text-xs">{div.discountedPrice}</span>
+                        {div.discountBadge && (
+                          <span className="text-[9px] uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-0.5 font-semibold">
+                            {div.discountBadge}
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     <a
@@ -133,6 +156,11 @@ export function FourDivisions() {
               </TiltCard>
             </Reveal>
           ))}
+        </div>
+
+        {/* Commercial Pricing Note */}
+        <div className="mt-10 sm:mt-12 p-4 sm:p-5 bg-white/[0.02] border border-white/5 text-center max-w-3xl mx-auto font-mono text-[11px] text-white/60 leading-relaxed">
+          &ldquo;All prices are discussable. Enjoy up to 10% discount on applicable services. Final project fees are determined through consultation and agreement on project scope.&rdquo;
         </div>
       </div>
     </section>

@@ -27,7 +27,7 @@ const GUARANTEES: GuaranteeItem[] = [
     num: "03",
     title: "Operational Support",
     subtitle: "Lifetime Partnership Scaling",
-    desc: "We don't vanish at handover. We stay by your side to support organizational culture changes, digital systems training, and future spatial or brand expansions."
+    desc: "We don't vanish at handover. We stay by your side to support future spatial, digital, and brand expansions with continuity and long-term partnership."
   }
 ];
 

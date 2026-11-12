@@ -48,13 +48,23 @@ export function WhoWeWorkWith() {
             <TiltCard maxTilt={5} glare className="h-full w-full">
               <div className="p-5 sm:p-8 md:p-10 rounded-none bg-[#0c0d12] transition-all duration-300 h-full flex flex-col justify-between shadow-[0_20px_60px_rgba(0,0,0,0.85)] hover:shadow-[0_25px_80px_rgba(0,0,0,0.98)] group w-full">
                 <div>
-                  <div className="flex items-center justify-between gap-3 mb-5 pb-3">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-white/70 font-bold px-2.5 py-0.5 bg-white/[0.06] rounded-none">
-                      B2C · Private & Diaspora
-                    </span>
-                    <span className="font-mono text-xs text-[var(--gold)] font-bold">
-                      From ₦750K ($565)
-                    </span>
+                  <div className="flex flex-col gap-1 mb-5 pb-3 border-b border-white/5">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-white/70 font-bold px-2.5 py-0.5 bg-white/[0.06] rounded-none">
+                        B2C · Private &amp; Diaspora
+                      </span>
+                      <span className="font-mono text-[10px] text-white/40 line-through">
+                        Standard: ₦750K ($565)
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between gap-2 pt-1">
+                      <span className="font-mono text-xs text-[var(--gold)] font-bold">
+                        From ₦675K ($508)
+                      </span>
+                      <span className="text-[9px] uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-0.5 font-mono font-semibold">
+                        10% Disc. · Discussable
+                      </span>
+                    </div>
                   </div>
 
                   <h3 className="font-syne text-2xl sm:text-3xl font-extrabold uppercase text-white mb-3 group-hover:text-[var(--gold)] transition-colors leading-tight">
@@ -86,13 +96,23 @@ export function WhoWeWorkWith() {
             <TiltCard maxTilt={5} glare className="h-full w-full">
               <div className="p-5 sm:p-8 md:p-10 rounded-none bg-[#0c0d12] transition-all duration-300 h-full flex flex-col justify-between shadow-[0_20px_60px_rgba(0,0,0,0.85)] hover:shadow-[0_25px_80px_rgba(0,0,0,0.98)] group w-full">
                 <div>
-                  <div className="flex items-center justify-between gap-3 mb-5 pb-3">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--gold)] font-bold px-2.5 py-0.5 bg-[var(--gold)]/10 rounded-none">
-                      B2B · Developers & Studios
-                    </span>
-                    <span className="font-mono text-xs text-white/70 font-bold">
-                      Retainers & Phased SLA
-                    </span>
+                  <div className="flex flex-col gap-1 mb-5 pb-3 border-b border-white/5">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--gold)] font-bold px-2.5 py-0.5 bg-[var(--gold)]/10 rounded-none">
+                        B2B · Developers &amp; Studios
+                      </span>
+                      <span className="font-mono text-[10px] text-emerald-400 font-semibold uppercase">
+                        Discussable
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between gap-2 pt-1">
+                      <span className="font-mono text-xs text-white/80 font-bold">
+                        Retainers &amp; Phased SLAs
+                      </span>
+                      <span className="text-[9px] uppercase tracking-wider text-[var(--gold)] bg-[var(--gold)]/10 px-2 py-0.5 font-mono font-semibold">
+                        Discuss Your Project
+                      </span>
+                    </div>
                   </div>
 
                   <h3 className="font-syne text-2xl sm:text-3xl font-extrabold uppercase text-white mb-3 group-hover:text-[var(--gold)] transition-colors leading-tight">
@@ -129,6 +149,11 @@ export function WhoWeWorkWith() {
               </div>
             </TiltCard>
           </Reveal>
+        </div>
+
+        {/* Commercial Pricing Note */}
+        <div className="mt-10 sm:mt-12 p-4 sm:p-5 bg-white/[0.02] border border-white/5 text-center max-w-2xl mx-auto font-mono text-[11px] text-white/60 leading-relaxed">
+          &ldquo;All prices are discussable. Enjoy up to 10% discount on applicable services. Final project fees are determined through consultation and agreement on project scope.&rdquo;
         </div>
       </div>
     </section>

@@ -24,12 +24,12 @@ const ARTICLES = [
     image: "/renders/luxury_terrace_duplex_estate.jpg",
   },
   {
-    category: "Workforce & Capability",
-    title: "The Human Architecture: Aligning Operational Teams with Modern Facility Standards",
+    category: "Design & Technology",
+    title: "Parametric Facades & Algorithmic Form-Finding: How Computational Design is Reshaping Nigerian Architecture",
     readTime: "6 min read",
     date: "September 2026",
     summary:
-      "Physical structures succeed only when the people inside them are equipped. Insights from the Mindvest human capital framework for growing enterprises.",
+      "How leading studios are using generative design tools to push architectural boundaries — producing structurally rational, visually distinctive facades that manual drafting could never achieve.",
     image: "/renders/corporate_lobby_corridor.jpg",
   },
 ];
@@ -56,7 +56,7 @@ export function InsightsSection() {
 
           <Reveal direction="left" delay={0.3} className="max-w-md">
             <p className="font-sans text-sm sm:text-base text-white/70 leading-relaxed font-light">
-              We publish regular analyses on architecture, property development economics, and organisational capability building.
+              We publish regular analyses on architecture, property development economics, and built-environment innovation.
             </p>
           </Reveal>
         </div>

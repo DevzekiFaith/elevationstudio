@@ -94,25 +94,25 @@ export function CartDrawer() {
     return `₦${mStr}M (${ngn.toLocaleString()} NGN)`;
   };
 
-  const formattedTotal =
-    currency === "USD"
-      ? `$${totalUsd.toLocaleString()}`
-      : currency === "GBP"
-      ? `£${Math.round(totalUsd * 0.75).toLocaleString()}`
-      : totalNgn < 1000000
-      ? `₦${Math.round(totalNgn / 1000)}K (${totalNgn.toLocaleString()} NGN)`
-      : (() => {
-          const inM = totalNgn / 1000000;
-          const mStr = inM % 1 === 0 ? inM.toString() : inM.toFixed(2).replace(/0$/, "");
-          return `₦${mStr}M (${totalNgn.toLocaleString()} NGN)`;
-        })();
+  const discountNgn = Math.round(totalNgn * 0.1);
+  const discountUsd = Math.round(totalUsd * 0.1);
+  const discountedTotalNgn = totalNgn - discountNgn;
+  const discountedTotalUsd = totalUsd - discountUsd;
 
   const handleWhatsAppCheckout = () => {
     const itemLines = items
-      .map(
-        (it, idx) =>
-          `${idx + 1}. ${it.title} [${it.category}] — ${formatPrice(it.priceNgn, it.priceUsd)}`
-      )
+      .map((it, idx) => {
+        if (it.priceNgn === 0) {
+          return `${idx + 1}. ${it.title} [${it.category}] — Discuss Your Project`;
+        }
+        return `${idx + 1}. ${it.title} [${it.category}] — Standard: ${formatPrice(
+          it.priceNgn,
+          it.priceUsd
+        )} → Discounted: ${formatPrice(
+          Math.round(it.priceNgn * 0.9),
+          Math.round(it.priceUsd * 0.9)
+        )} (10% available discount · discussable)`;
+      })
       .join("\n");
 
     const message = `*ELEVATION STUDIO — OFFICIAL PROJECT SCOPE & ORDER TRANSMISSION*
@@ -130,9 +130,14 @@ ${projectNotes.trim() ? `• Project Notes: ${projectNotes.trim()}\n` : ""}
 *Selected Scope Deliverables (${itemCount} Item${itemCount === 1 ? "" : "s"}):*
 ${itemLines}
 
-*Total Estimated Baseline:* ${formattedTotal} (Open to Discussion)
+*Standard Baseline Total:* ${formatPrice(totalNgn, totalUsd)}
+*Available 10% Discount:* -${formatPrice(discountNgn, discountUsd)}
+*Estimated Discussable Total:* ${formatPrice(discountedTotalNgn, discountedTotalUsd)}
 ---------------------------------------------
-Please review my detailed scope, confirm availability, and prepare the formal itemized contract.`;
+*Commercial Pricing Note:*
+All prices are discussable. Enjoy up to 10% discount on applicable services. Final project fees are determined through consultation and agreement on project scope.
+
+Please review my detailed scope, confirm availability, and prepare the formal itemized quotation.`;
 
     const url = `https://wa.me/2349119059859?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
@@ -250,9 +255,23 @@ Please review my detailed scope, confirm availability, and prepare the formal it
                           </div>
 
                           <div className="text-right shrink-0">
-                            <span className="font-mono text-sm sm:text-base font-bold text-white block">
-                              {formatPrice(item.priceNgn, item.priceUsd)}
-                            </span>
+                            {item.priceNgn > 0 ? (
+                              <>
+                                <span className="font-mono text-[10px] text-white/40 line-through block">
+                                  Std: {formatPrice(item.priceNgn, item.priceUsd)}
+                                </span>
+                                <span className="font-mono text-sm sm:text-base font-bold text-[var(--gold)] block">
+                                  {formatPrice(Math.round(item.priceNgn * 0.9), Math.round(item.priceUsd * 0.9))}
+                                </span>
+                                <span className="text-[9px] uppercase font-mono text-emerald-400 font-semibold block">
+                                  10% Disc. · Discussable
+                                </span>
+                              </>
+                            ) : (
+                              <span className="font-mono text-xs font-bold text-[var(--gold)] block">
+                                Discuss Your Project
+                              </span>
+                            )}
                             <button
                               type="button"
                               onClick={() => removeItem(item.id)}
@@ -480,24 +499,38 @@ Please review my detailed scope, confirm availability, and prepare the formal it
             {/* 3. Checkout Footer with Spacious Layout */}
             {items.length > 0 && (
               <div className="px-5 sm:px-12 py-5 sm:py-8 border-t border-white/[0.08] bg-[#06060a]/95 space-y-4 sm:space-y-5">
-                <div className="flex items-baseline justify-between pb-1">
-                  <div>
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-0.5">
-                      Total Estimated Baseline
-                    </span>
-                    <span className="font-mono text-xs text-white/60">
-                      Confirmed upon site dimension brief
-                    </span>
+                <div className="space-y-2 pb-1 border-b border-white/[0.06]">
+                  <div className="flex items-baseline justify-between text-xs font-mono text-white/50">
+                    <span>Standard Scope Baseline:</span>
+                    <span className="line-through">{formatPrice(totalNgn, totalUsd)}</span>
+                  </div>
+                  <div className="flex items-baseline justify-between text-xs font-mono text-emerald-400">
+                    <span>Available 10% Discount:</span>
+                    <span>- {formatPrice(discountNgn, discountUsd)}</span>
+                  </div>
+                  <div className="flex items-baseline justify-between pt-1">
+                    <div>
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-0.5">
+                        Estimated Discussable Total
+                      </span>
+                      <span className="font-mono text-[10.5px] text-emerald-400 font-semibold uppercase tracking-wider block">
+                        ✦ All Prices Discussable
+                      </span>
+                    </div>
+
+                    <div className="text-right">
+                      <span className="font-syne text-2xl sm:text-3xl font-black text-[var(--gold)] block">
+                        {formatPrice(discountedTotalNgn, discountedTotalUsd)}
+                      </span>
+                      <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider block mt-0.5">
+                        Subject to Scope Consultation
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="text-right">
-                    <span className="font-syne text-2xl sm:text-3xl font-black text-[var(--gold)] block">
-                      {formattedTotal}
-                    </span>
-                    <span className="text-[10px] font-mono text-emerald-400 font-semibold uppercase tracking-wider block mt-0.5">
-                      Open to Discussion
-                    </span>
-                  </div>
+                  <p className="font-sans text-[11px] text-white/50 italic pt-1 leading-relaxed">
+                    &ldquo;All prices are discussable. Enjoy up to 10% discount on applicable services. Final project fees are determined through consultation and agreement on project scope.&rdquo;
+                  </p>
                 </div>
 
                 {/* Checkout Mode Toggle */}

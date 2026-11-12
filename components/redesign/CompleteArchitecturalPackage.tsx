@@ -28,14 +28,14 @@ const CORE_DELIVERABLES = [
 ];
 
 export function CompleteArchitecturalPackage() {
-  const { currency, formatResidentialPrice } = useCurrency();
-  const archPrice = formatResidentialPrice("architecture");
+  const { currency, formatResidentialTier, pricingNote } = useCurrency();
+  const archTier = formatResidentialTier("architecture");
 
-  const cleanPrice = archPrice.replace(/^From\s+/i, "");
+  const cleanPrice = archTier.discounted.replace(/^From\s+/i, "");
   const whatsappUrl =
     "https://wa.me/2349119059859?text=" +
     encodeURIComponent(
-      `Hello Elevation Studio! I am ready to discuss the Complete Architectural Design Package (Bungalow starting at ${cleanPrice}) for my project.`
+      `Hello Elevation Studio! I am ready to discuss the Complete Architectural Design Package (Bungalow starting at ${cleanPrice}, standard ${archTier.standard}) for my project.`
     );
 
   return (
@@ -80,20 +80,34 @@ export function CompleteArchitecturalPackage() {
                       <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 block font-bold mb-1">
                         Starting Baseline · Bungalow Villa ({currency})
                       </span>
-                      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                      <div className="flex flex-wrap items-baseline gap-2 sm:gap-3">
+                        <span className="font-mono text-xs sm:text-sm text-white/45 line-through">
+                          Standard: {archTier.standard}
+                        </span>
                         <span className="font-syne text-3xl sm:text-5xl font-black text-[var(--gold)] tracking-tight">
-                          {archPrice}
+                          {archTier.discounted}
+                        </span>
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-none bg-emerald-500/15 text-emerald-400 font-mono text-[10px] tracking-wider uppercase font-semibold">
+                          ✦ 10% Disc. Available
                         </span>
                         <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-none bg-[var(--gold)]/10 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
-                          ✦ Open to Discussion
+                          Discussable
                         </span>
                         <span className="font-mono text-xs text-white/70 uppercase">
                           All 8 Disciplines
                         </span>
                       </div>
-                      <span className="font-mono text-[10px] text-white/45 block mt-2 tracking-wide">
-                        ✦ Bungalow from ₦400K ($300) · Duplex & multi-story from ₦750K ($565)
-                      </span>
+                      <div className="font-mono text-[10px] sm:text-[11px] text-white/60 mt-2.5 space-y-1">
+                        <div>
+                          ✦ <strong className="text-white font-semibold">Bungalow:</strong> Standard ₦400K ($300) → <strong className="text-[var(--gold)]">From ₦360K ($270)</strong> with 10% discount
+                        </div>
+                        <div>
+                          ✦ <strong className="text-white font-semibold">Duplex &amp; Multi-Story:</strong> Standard ₦750K ($565) → <strong className="text-[var(--gold)]">From ₦675K ($508)</strong> with 10% discount
+                        </div>
+                      </div>
+                      <p className="font-sans text-[11px] text-white/55 italic mt-3 pt-2.5 border-t border-white/5 leading-relaxed max-w-xl">
+                        &ldquo;{pricingNote}&rdquo;
+                      </p>
                     </div>
 
                     <div className="shrink-0 pt-3 sm:pt-0">
@@ -171,7 +185,7 @@ export function CompleteArchitecturalPackage() {
                       5-Bedroom Modern Bungalow Villa
                     </h4>
                     <span className="font-mono text-[11px] text-white/70 block mt-1 font-semibold">
-                      Full Architectural Set from ₦400K ($300)
+                      Full Set: Standard ₦400K ($300) → From ₦360K ($270) [10% Disc.] · Discussable
                     </span>
                   </div>
                 </div>

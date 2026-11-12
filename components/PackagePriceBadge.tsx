@@ -9,46 +9,52 @@ interface PackagePriceBadgeProps {
 }
 
 export function PackagePriceBadge({ pkgId, fallback, showBadge = true }: PackagePriceBadgeProps) {
-  const { formatPrice, formatResidentialPrice } = useCurrency();
+  const { formatPrice, formatResidentialTier } = useCurrency();
   const numId = parseInt(pkgId, 10);
 
-  let rawPrice = fallback;
+  let standardPrice = "";
+  let discountedPrice = fallback;
 
   if (numId >= 1 && numId <= 4) {
     const p = formatPrice(numId as 1 | 2 | 3 | 4);
-    rawPrice = p.min;
+    standardPrice = p.standard;
+    discountedPrice = p.discounted;
   } else if (pkgId === "res-concept" || pkgId === "concept") {
-    rawPrice = formatResidentialPrice("concept");
+    const tier = formatResidentialTier("concept");
+    standardPrice = tier.standard;
+    discountedPrice = tier.discounted;
   } else if (pkgId === "res-arch" || pkgId === "architecture") {
-    rawPrice = formatResidentialPrice("architecture");
+    const tier = formatResidentialTier("architecture");
+    standardPrice = tier.standard;
+    discountedPrice = tier.discounted;
   } else if (pkgId === "res-master" || pkgId === "masterplan") {
-    rawPrice = formatResidentialPrice("masterplan");
+    const tier = formatResidentialTier("masterplan");
+    standardPrice = tier.standard;
+    discountedPrice = tier.discounted;
   }
 
   // Strip duplicate suffix from fallback if present
-  const displayPrice = rawPrice.replace(/\s*·\s*Open to Discussion/gi, "").trim();
+  const displayStandard = standardPrice.replace(/\s*·\s*Open to Discussion/gi, "").trim();
+  const displayDiscounted = discountedPrice.replace(/\s*·\s*Open to Discussion/gi, "").trim();
 
   return (
-    <span className="inline-flex items-center flex-wrap gap-2.5">
-      <span>{displayPrice}</span>
-      {showBadge && (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/25 text-[var(--gold)] font-mono text-[10px] tracking-wider uppercase font-semibold">
-          <svg
-            width="11"
-            height="11"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-          </svg>
-          Open to Discussion
+    <div className="inline-flex flex-col sm:flex-row sm:items-baseline flex-wrap gap-2">
+      {displayStandard && (
+        <span className="font-mono text-xs text-zinc-400 line-through">
+          Std: {displayStandard}
         </span>
       )}
-    </span>
+      <span className="font-bold text-[var(--gold)]">{displayDiscounted}</span>
+      {showBadge && (
+        <span className="inline-flex items-center gap-1.5 flex-wrap">
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[9px] tracking-wider uppercase font-semibold">
+            10% Disc. Available
+          </span>
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[var(--gold)]/10 border border-[var(--gold)]/25 text-[var(--gold)] font-mono text-[9px] tracking-wider uppercase font-semibold">
+            Discussable
+          </span>
+        </span>
+      )}
+    </div>
   );
 }

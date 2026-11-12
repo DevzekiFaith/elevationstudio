@@ -41,15 +41,13 @@ export function HeroRedesign() {
       <div className="hero-ticker relative z-10 w-full mb-6 sm:mb-8">
         <div className="ticker-inner">
           <div className="ticker-item"><span>◆</span> Architecture & Spatial Design</div>
-          <div className="ticker-item"><span>◆</span> Engineering Coordination</div>
-          <div className="ticker-item"><span>◆</span> 3D Visualization & 4K Animation</div>
-          <div className="ticker-item"><span>◆</span> Digital Platforms</div>
-          <div className="ticker-item"><span>◆</span> Workforce Development</div>
+          <div className="ticker-item"><span>◆</span> Engineering & Structural Detailing</div>
+          <div className="ticker-item"><span>◆</span> Photorealistic 3D Visualization</div>
+          <div className="ticker-item"><span>◆</span> Masterplanning & Estates</div>
           <div className="ticker-item"><span>◆</span> Ogun — Lagos Corridor & Diaspora</div>
           <div className="ticker-item"><span>◆</span> Architecture & Spatial Design</div>
-          <div className="ticker-item"><span>◆</span> Engineering Coordination</div>
-          <div className="ticker-item"><span>◆</span> 3D Visualization & 4K Animation</div>
-          <div className="ticker-item"><span>◆</span> Digital Platforms</div>
+          <div className="ticker-item"><span>◆</span> Engineering & Structural Detailing</div>
+          <div className="ticker-item"><span>◆</span> Photorealistic 3D Visualization</div>
         </div>
       </div>
 
@@ -118,24 +116,20 @@ export function HeroRedesign() {
         </Reveal>
       </div>
 
-      {/* Free Full-Width Division Quick Ticker Bar (Seamless Line-Free) */}
+      {/* Free Full-Width Practice Quick Ticker Bar (Seamless Line-Free) */}
       <div className="relative z-10 w-full max-w-[1560px] mx-auto pt-6 sm:pt-10 mt-6 sm:mt-8">
-        <div className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 font-mono text-[11px] sm:text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 font-mono text-[11px] sm:text-xs">
           <a href="#divisions" className="text-white/70 hover:text-[var(--gold)] transition-colors flex items-center gap-2 group py-1">
             <span className="text-[var(--gold)] font-bold group-hover:scale-110 transition-transform">01 ·</span>
-            <span className="uppercase tracking-wider">Architecture & Spatial</span>
+            <span className="uppercase tracking-wider">Architectural Design</span>
           </a>
           <a href="#divisions" className="text-white/70 hover:text-[var(--gold)] transition-colors flex items-center gap-2 group py-1">
             <span className="text-[var(--gold)] font-bold group-hover:scale-110 transition-transform">02 ·</span>
-            <span className="uppercase tracking-wider">Engineering & 3D Visuals</span>
+            <span className="uppercase tracking-wider">Technical Coordination</span>
           </a>
           <a href="#divisions" className="text-white/70 hover:text-[var(--gold)] transition-colors flex items-center gap-2 group py-1">
             <span className="text-[var(--gold)] font-bold group-hover:scale-110 transition-transform">03 ·</span>
-            <span className="uppercase tracking-wider">Branding & Digital Web</span>
-          </a>
-          <a href="#divisions" className="text-white/70 hover:text-[var(--gold)] transition-colors flex items-center gap-2 group py-1">
-            <span className="text-[var(--gold)] font-bold group-hover:scale-110 transition-transform">04 ·</span>
-            <span className="uppercase tracking-wider">Workforce Development</span>
+            <span className="uppercase tracking-wider">3D Photorealistic Visuals</span>
           </a>
         </div>
       </div>

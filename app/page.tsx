@@ -136,11 +136,6 @@ export default function Home() {
                 </a>
               </li>
               <li>
-                <a href="#divisions" className="hover:text-[var(--gold)] transition-colors">
-                  04 Workforce Training
-                </a>
-              </li>
-              <li>
                 <a href="#flagship" className="hover:text-[var(--gold)] transition-colors">
                   Flagship Complete Pack
                 </a>
